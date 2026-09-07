@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실험계획과 응용 · 3.2 분산분석</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  pre.rout{ background:#f6f7f9; border:1px solid #dcdfe4; border-left:3px solid #8a94a6;
+            padding:10px 14px; overflow-x:auto; font-size:0.82rem; line-height:1.5; margin:14px 0; }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">실험계획과 응용 · 3장 일원배치법</div>
+  <h1><span class="no">3.2</span>분산분석 <span class="en">analysis of variance</span></h1>
+</header>
+
+<p>일원배치법을 통해 $a$ 개의 수준별 모평균 간에 차이가 존재하는지 검정하는 것은,
+결국 $a$ 개의 수준효과 $\alpha_i$ 가 <b>모두 $0$ 인지</b>(귀무가설) 아니면 <b>적어도 하나가 $0$ 이 아닌지</b>(대립가설)
+확인하는 문제와 같다. <a href="3-1_data-and-model.html">식 (3.1)</a>을 수준효과로 다시 쓰면 다음과 같다.</p>
+
+<div class="box thm">
+  <span class="tag">식 (3.5)</span><span class="title">수준효과에 대한 가설</span>
+  $$H_0:\ \alpha_1=\alpha_2=\cdots=\alpha_a=0$$
+  $$H_1:\ \text{모든 }\alpha_i\text{ 가 }0\text{ 인 것은 아니다.}$$
+</div>
+
+<p><b>분산분석</b>은 이러한 가설을 검증하기 위해 총변동을 요인이 설명할 수 있는 <b>수준 간 변동</b>과
+그렇지 않은 <b>수준 내 변동</b>(오차)으로 분할하여, 요인의 여러 수준이 특성값에 유의한 영향을 미치는지를 살펴보는 것이다.</p>
+
+<h2 class="sub">3.2.1 총변동의 분할 <span class="en">partitioning the total variation</span></h2>
+
+<p>각 수준별 관측값 $x_{ij}$ 와 전체 평균 $\bar{\bar x}$ 간의 차이를 총편차의 척도로 삼되,
+수준효과 $\alpha_i$ 를 고려해서 각 수준의 평균 $\bar x_{i\cdot}$ 에서 떨어진 정도도 함께 보면
+총편차를 다음과 같이 분해할 수 있다.</p>
+
+$$\underbrace{x_{ij}-\bar{\bar x}}_{\text{총편차}}
+  =\underbrace{\left(\bar x_{i\cdot}-\bar{\bar x}\right)}_{\alpha_i\text{ 에 기인하는 편차}}
+  +\underbrace{\left(x_{ij}-\bar x_{i\cdot}\right)}_{\text{잔차}}\tag{3.6}$$
+
+<figure class="fig">
+<svg viewBox="0 0 480 265" role="img" aria-label="한 관측값의 전체평균으로부터의 편차가 수준평균까지의 편차와 수준평균으로부터의 잔차로 쪼개지는 그림">
+  <line class="grid" x1="50" y1="40" x2="50" y2="215"/>
+  <line class="grid" x1="50" y1="215" x2="440" y2="215"/>
+
+  <line class="aux" x1="55" y1="140" x2="435" y2="140"/>
+  <text class="lbl" x="437" y="136" font-size="11">x̄ (전체평균)</text>
+
+  <line class="vec" x1="82"  y1="175" x2="158" y2="175"/>
+  <line class="vec" x1="202" y1="95"  x2="278" y2="95"/>
+  <line class="vec" x1="322" y1="135" x2="398" y2="135"/>
+
+  <g fill="#444">
+    <circle cx="100" cy="185" r="3"/><circle cx="120" cy="160" r="3"/><circle cx="140" cy="180" r="3"/>
+    <circle cx="220" cy="110" r="3"/><circle cx="260" cy="105" r="3"/>
+    <circle cx="340" cy="145" r="3"/><circle cx="360" cy="120" r="3"/><circle cx="380" cy="140" r="3"/>
+  </g>
+  <circle cx="240" cy="70" r="4.5" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+
+  <line x1="240" y1="140" x2="240" y2="95" stroke="#1d6fb8" stroke-width="2.5"/>
+  <line x1="240" y1="95"  x2="240" y2="70" stroke="#0f8a7d" stroke-width="2.5"/>
+  <line class="grid" x1="234" y1="140" x2="246" y2="140"/>
+  <line class="grid" x1="234" y1="95"  x2="246" y2="95"/>
+
+  <text class="lbl b" x="252" y="122" font-size="11">x̄₂. − x̄  (수준 간)</text>
+  <text class="lbl t" x="252" y="86"  font-size="11">x₂ⱼ − x̄₂.  (잔차)</text>
+  <text class="lbl p" x="252" y="66"  font-size="11">관측값 x₂ⱼ</text>
+
+  <g class="lbl">
+    <text x="120" y="233" text-anchor="middle">A₁</text>
+    <text x="240" y="233" text-anchor="middle">A₂</text>
+    <text x="360" y="233" text-anchor="middle">A₃</text>
+  </g>
+  <text class="lbl" x="240" y="256" text-anchor="middle">파란 조각을 모두 제곱해 더하면 SS_A, 초록 조각을 모두 제곱해 더하면 SS_E</text>
+</svg>
+<figcaption>파란 선분은 <b>수준평균이 전체평균에서 벗어난 정도</b>, 초록 선분은 <b>관측값이 자기 수준평균에서 벗어난 정도</b>다.
+두 조각의 길이를 더하면 총편차가 된다.</figcaption>
+</figure>
+
+<p>식 $(3.6)$ 의 양변을 동시에 제곱하여 전체 $ar$ 개의 데이터의 제곱의 합을 구하면 다음이 성립한다.</p>
+
+$$\sum_{i=1}^{a}\sum_{j=1}^{r}\left(x_{ij}-\bar{\bar x}\right)^2
+  =\sum_{i=1}^{a}r\left(\bar x_{i\cdot}-\bar{\bar x}\right)^2
+  +\sum_{i=1}^{a}\sum_{j=1}^{r}\left(x_{ij}-\bar x_{i\cdot}\right)^2\tag{3.7}$$
+
+<ul class="props">
+  <li>좌변 — <b>총제곱합</b> 또는 총변동, $SS_T$ (Total Sum of Squares)</li>
+  <li>우변 첫째 항 — 각 수준효과 간의 차이에 기인하는 편차들의 제곱합이므로
+    <b>처리제곱합</b> 또는 수준 간 변동(급간변동), $SS_A$</li>
+  <li>우변 둘째 항 — 각 처리수준 내에서의 잔차들의 제곱합이므로
+    <b>잔차제곱합</b> 또는 수준 내 변동(급내변동), $SS_E$</li>
+</ul>
+
+$$SS_T=SS_A+SS_E\tag{3.8}$$
+
+<div class="note">
+  식 $(3.7)$ 에서 <b>교차항이 사라지는 것</b>이 이 분해의 핵심이다.
+  각 수준 안에서 $\sum_j\left(x_{ij}-\bar x_{i\cdot}\right)=0$ 이므로
+  $2\sum_i\left(\bar x_{i\cdot}-\bar{\bar x}\right)\sum_j\left(x_{ij}-\bar x_{i\cdot}\right)=0$ 이 된다.
+  덕분에 “총변동 = 요인변동 + 오차변동” 이라는 <b>깔끔한 덧셈</b>이 성립한다.
+</div>
+
+<p>실제로 데이터로부터 $SS_T,\ SS_A,\ SS_E$ 를 계산할 때는 일일이 편차를 계산하는 대신
+<b>수정항</b>(correction term) $CT$ 를 활용하면 좀 더 간편한 계산이 가능하다.</p>
+
+<div class="box def">
+  <span class="tag">식 (3.9)~(3.12)</span><span class="title">제곱합의 계산식</span>
+  $$CT=\frac{T^2}{ar},\qquad T=\sum_{i=1}^{a}\sum_{j=1}^{r}x_{ij}\tag{3.9}$$
+  $$SS_T=\sum_{i=1}^{a}\sum_{j=1}^{r}x_{ij}^2-CT\tag{3.10}$$
+  $$SS_A=\sum_{i=1}^{a}\frac{T_{i\cdot}^2}{r}-CT\tag{3.11}$$
+  $$SS_E=SS_T-SS_A\tag{3.12}$$
+</div>
+
+<h2 class="sub">3.2.2 자유도의 분할 <span class="en">partitioning the degrees of freedom</span></h2>
+
+<p>제곱합의 자유도는 <b>‘편차 항의 개수에서 부과되는 선형 제약조건의 수를 뺀 것’</b>으로 정의된다.</p>
+
+<div class="scroll"><table class="data">
+  <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-2&gt; 각 제곱합의 자유도</caption>
+  <tr><th>제곱합</th><th>편차의 개수</th><th>선형제약조건</th><th>자유도</th></tr>
+  <tr><th>총제곱합 $SS_T$</th><td>$ar$</td>
+      <td>$\displaystyle\sum_{i=1}^{a}\sum_{j=1}^{r}\left(x_{ij}-\bar{\bar x}\right)=0$</td>
+      <td>$\phi_T=ar-1$</td></tr>
+  <tr><th>처리제곱합 $SS_A$</th><td>$a$</td>
+      <td>$\displaystyle\sum_{i=1}^{a}\left(\bar x_{i\cdot}-\bar{\bar x}\right)=0$</td>
+      <td>$\phi_A=a-1$</td></tr>
+  <tr><th>잔차제곱합 $SS_E$</th><td>$ar$</td>
+      <td>$\displaystyle\sum_{j=1}^{r}\left(x_{ij}-\bar x_{i\cdot}\right)=0,\quad i=1,2,\dots,a$</td>
+      <td>$\phi_E=a(r-1)$</td></tr>
+</table></div>
+
+<p>총변동이 원인별로 분할되는 것과 마찬가지로, 자유도도 다음과 같이 분할된다.</p>
+$$\phi_T=\phi_A+\phi_E\tag{3.13}$$
+
+<div class="note">
+  잔차제곱합의 제약조건은 <b>수준마다 하나씩, 모두 $a$ 개</b>다.
+  그래서 $\phi_E=ar-a=a(r-1)$ 이 되고,
+  $(ar-1)=(a-1)+a(r-1)$ 로 자유도의 덧셈이 정확히 맞아떨어진다.
+</div>
+
+<h2 class="sub">3.2.3 평균제곱의 기댓값과 $F$ 검정 <span class="en">expected mean squares and the F test</span></h2>
+
+<p><b>평균제곱</b>(MS: Mean Square)은 ‘제곱합을 해당 자유도로 나누어 준 값’이다.</p>
+$$MS_A=\frac{SS_A}{a-1}\tag{3.14}\qquad\qquad MS_E=\frac{SS_E}{a(r-1)}\tag{3.15}$$
+
+<div class="box thm">
+  <span class="tag">식 (3.16)(3.17)</span><span class="title">평균제곱의 기댓값</span>
+  <p>유도 과정은 생략하고 결과만 쓰면 다음과 같다.</p>
+  $$E(MS_A)=\sigma_E^2+r\sum_{i=1}^{a}\frac{\alpha_i^2}{a-1}\tag{3.16}$$
+  $$E(MS_E)=\sigma_E^2\tag{3.17}$$
+</div>
+
+<div class="note">
+  <b>이 두 식이 $F$ 검정의 전부다.</b>
+  $MS_E$ 는 언제나 $\sigma_E^2$ 의 <b>불편추정량</b>이다.
+  반면 $MS_A$ 는 $H_0$ 가 참일 때만($\alpha_i$ 가 모두 $0$ 일 때만) 식 $(3.16)$ 의 둘째 항이 $0$ 이 되어
+  역시 $\sigma_E^2$ 의 불편추정량이 되고, $H_0$ 가 거짓이면 $\sigma_E^2$ 보다 <b>커진다</b>.
+  그러니 둘의 비를 보면 된다.
+</div>
+
+<div class="box def">
+  <span class="tag">식 (3.18)(3.19)</span><span class="title">검정통계량과 기각역</span>
+  $$F_0=\frac{MS_A}{MS_E}\tag{3.18}$$
+  <p>귀무가설이 사실일 경우 $F_0$ 는 자유도 $(\phi_A,\ \phi_E)$ 인 $F$ 분포를 따른다.
+  대립가설이 옳다면 $MS_A$ 가 상대적으로 더 크게 관측될 것이므로 기각역은 <b>오른쪽 꼬리</b>가 된다.</p>
+  $$F_0>F(\phi_A,\ \phi_E\ ;\ \alpha)\tag{3.19}$$
+</div>
+
+<h2 class="sub">3.2.4 분산분석표의 작성 <span class="en">the ANOVA table</span></h2>
+
+<div class="scroll"><table class="anova">
+  <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-3&gt; 분산분석표</caption>
+  <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th><th>$F(\alpha)$</th></tr>
+  <tr><td>$A$</td><td>$SS_A$</td><td>$a-1$</td><td>$MS_A$</td><td>$\dfrac{MS_A}{MS_E}$</td><td>$F\left(a-1,\ a(r-1)\ ;\ \alpha\right)$</td></tr>
+  <tr><td>$E$</td><td>$SS_E$</td><td>$a(r-1)$</td><td>$MS_E$</td><td></td><td></td></tr>
+  <tr><td>$T$</td><td>$SS_T$</td><td>$ar-1$</td><td></td><td></td><td></td></tr>
+</table></div>
+
+<p>검정통계량 $F_0$ 의 값이 $F\left(a-1,\ a(r-1);\ \alpha\right)$ 보다 커지면 귀무가설을 기각하고,
+요인이 특성값에 영향을 미친다고 판단하여 어떤 수준(처리)들 간에 평균 차이가 존재한다고 결론지을 수 있다.</p>
+
+<h2 class="sub">예 3.1 일원배치 분산분석 <span class="en">worked example</span></h2>
+
+<div class="box ex">
+  <span class="tag">예 3.1</span><span class="title">직물 마모도 — 납품업체 4곳의 비교</span>
+  <p>어느 의류 제조회사에서는 직물의 긁힘에 대한 저항성을 측정하기 위하여
+  검사 대상을 마모도 검사 기계에 몇 사이클 돌린 후 감소된 무게를 그램으로 측정한다.
+  이 회사는 원단 납품업체 $A_1,A_2,A_3,A_4$ 의 제품을 마모도의 측면에서 비교하고자 한다.
+  각 납품업체의 제품 중 4개를 랜덤하게 선택하여 일원배치법에 의해 실험한 결과가 다음과 같다.
+  납품업체들 간에 마모도에 유의한 차이가 있는지를 분산분석을 통하여 검정하라.</p>
+
+  <div class="scroll"><table class="data">
+    <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-4&gt; 마모도 검사자료</caption>
+    <tr><th></th><th colspan="4">반복</th><th>$T_{i\cdot}$</th><th>$\bar x_{i\cdot}$</th></tr>
+    <tr><th>$A_1$</th><td>1.93</td><td>2.38</td><td>2.20</td><td>2.25</td><td>8.76</td><td>2.19</td></tr>
+    <tr><th>$A_2$</th><td>2.55</td><td>2.72</td><td>2.75</td><td>2.70</td><td>10.72</td><td>2.68</td></tr>
+    <tr><th>$A_3$</th><td>2.40</td><td>2.68</td><td>2.32</td><td>2.28</td><td>9.68</td><td>2.42</td></tr>
+    <tr><th>$A_4$</th><td>2.33</td><td>2.38</td><td>2.28</td><td>2.25</td><td>9.24</td><td>2.31</td></tr>
+    <tr><th>계</th><td colspan="4"></td><td>38.4</td><td>2.40</td></tr>
+  </table></div>
+
+  <p><b>풀이</b></p>
+  <ol class="fill">
+    <li><span class="step">1) 가설의 설정.</span>
+      $$H_0:\ \alpha_1=\alpha_2=\alpha_3=\alpha_4=0\quad(\text{마모도 차이가 없다})$$
+      $$H_1:\ \alpha_i\text{ 가 모두 }0\text{ 인 것은 아니다}\quad(\text{마모도에 차이가 존재한다})$$</li>
+
+    <li><span class="step">2) 제곱합과 자유도의 계산.</span> $a=4$, $r=4$, $T=38.4$ 이므로
+      $$CT=\frac{T^2}{ar}=\frac{38.4^2}{16}=92.16$$
+      $$SS_T=\sum\sum x_{ij}^2-CT=(1.93)^2+(2.38)^2+\cdots+(2.25)^2-92.16=0.7626$$
+      $$SS_A=\sum\frac{T_{i\cdot}^2}{r}-CT=\frac14\left(8.76^2+10.72^2+9.68^2+9.24^2\right)-92.16=0.5240$$
+      $$SS_E=SS_T-SS_A=0.7626-0.5240=0.2386$$
+      $$\phi_T=ar-1=15,\qquad \phi_A=a-1=3,\qquad \phi_E=\phi_T-\phi_A=12$$</li>
+
+    <li><span class="step">3) 분산분석표 작성 및 해석.</span>
+      <div class="scroll"><table class="anova">
+        <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th><th>$F(0.01)$</th></tr>
+        <tr><td>$A$</td><td>0.5240</td><td>3</td><td>0.1747</td><td>$8.78^{**}$</td><td>5.95</td></tr>
+        <tr><td>$E$</td><td>0.2386</td><td>12</td><td>0.0199</td><td></td><td></td></tr>
+        <tr><td>$T$</td><td>0.7626</td><td>15</td><td></td><td></td><td></td></tr>
+      </table></div>
+      <p>$F_0=8.78$ 이 $F(3,12;0.01)=5.95$ 보다 크므로 귀무가설을 기각한다. 즉,
+      <b>‘납품업체에 따라 직물 마모도에 차이가 존재한다’</b>라고 결론 내린다.</p></li>
+  </ol>
+</div>
+
+<div class="note">
+  <b>별표 표기.</b> 요인 $A$ 의 수준효과가 $\alpha=0.05$ 에서만 유의하면 계산된 $F_0$ 에 $^{*}$ 를,
+  $\alpha=0.01$ 에서 유의한 경우에는 $^{**}$ 를 붙여서 표시한다.
+</div>
+
+<h2 class="sub">R 로 확인하기 <span class="en">in R</span></h2>
+
+<pre class="rout">a1 = c(1.93, 2.38, 2.20, 2.25)
+a2 = c(2.55, 2.72, 2.75, 2.70)
+a3 = c(2.40, 2.68, 2.32, 2.28)
+a4 = c(2.33, 2.38, 2.28, 2.25)
+wear = c(a1, a2, a3, a4)
+group = c("a1", "a2", "a3", "a4")
+group &lt;- rep(group, c(4, 4, 4, 4))
+wear.dat &lt;- data.frame(group, wear)
+attach(wear.dat)
+
+tapply(wear, group, sum)
+   a1     a2     a3     a4
+ 8.76  10.72   9.68   9.24
+tapply(wear, group, mean)
+   a1     a2     a3     a4
+ 2.19   2.68   2.42   2.31
+sum(wear)
+[1] 38.4
+mean(wear)
+[1] 2.4
+
+boxplot(wear ~ group)
+
+aov.out = aov(wear ~ group, data = wear.dat)
+summary(aov.out)
+            Df  Sum Sq  Mean Sq  F value  Pr(&gt;F)
+group        3  0.5240  0.17467    8.785  0.00235 **
+Residuals   12  0.2386  0.01988
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+qf(.99, df1 = 3, df2 = 12)
+[1] 5.952545</pre>
+
+<div class="note">
+  <b>비고 1.</b> <code>oneway.test(wear ~ group, var.equal = TRUE)</code> 를 실행해도 같은 결과가 나온다.
+  그냥 <code>oneway.test(wear ~ group)</code> 만 실행하면 등분산을 가정하지 않는
+  <b>Welch 방식</b>의 $F$ 검정을 실시한다.
+</div>
+
+<p><b>비고 2.</b> 앞의 <code>aov</code> 또는 <code>oneway.test</code> 를 사용하기 전에
+등분산 가정이 성립하는지 다음 검정을 통해 먼저 확인해야 한다.</p>
+
+<pre class="rout">bartlett.test(wear ~ group, data = wear.dat)
+
+        Bartlett test of homogeneity of variances
+
+data:  wear by group
+Bartlett's K-squared = 4.3318, df = 3, p-value = 0.2278</pre>
+
+<p>$P$ 값이 $0.2278$ 로 통상적인 유의수준 $0.05$ 보다 훨씬 더 크게 나타나서
+등분산 가정을 기각할 근거가 없으므로, 바틀렛 검정의 귀무가설인 <b>등분산 가정을 채택</b>한다.</p>
+
+<div class="note">
+  <b>비고 3 — 랜덤화.</b> &lt;표 3-4&gt;의 16개 데이터를 얻기 위해서는
+  <a href="../ch01/1-2_basic-principles.html">실험계획의 원리</a> 중에서 <b>랜덤화</b>를 적용해야 한다.
+  16개 cell 을 좌에서 우로, 위에서 아래로 $1,2,\dots,16$ 번까지 기입한 다음 R 의 <code>sample</code> 을 쓴다.
+  <pre class="rout">sample(16)
+ [1] 16  2 13 11  7  8 10 14  6 15  3  1  9  5  4 12</pre>
+  이렇게 나오는 경우, 16 에 해당하는 납품업체 $A_4$ 의 마모도를 먼저 검사하고,
+  그다음 2 에 해당하는 $A_1$, 이어서 13 에 해당하는 $A_4$ 를 검사하는 방식으로 진행한다.
+</div>
+
+<nav class="pager">
+  <a href="3-1_data-and-model.html">← 이전<small>3.1 일원배치법의 데이터 구조와 구조모형</small></a>
+  <a class="next" href="3-3_post-hoc.html">다음 →<small>3.3 분산분석 후의 추정</small></a>
+</nav>
+
+</body>
+</html>

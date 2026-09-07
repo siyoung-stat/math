@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실험계획과 응용 · 3장 연습문제</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  .ex{ margin:26px 0; line-height:1.75; }
+  .exn{ font-weight:800; color:var(--def); margin-right:8px; }
+  .ex ol{ margin:4px 0 0; padding-left:26px; }
+  .ex li{ margin:5px 0; }
+  .answersheet{ page-break-before:always; }
+  .ans{ margin:24px 0; line-height:1.75; }
+  .ans .exn{ color:var(--thm); }
+  .ans ol.fill{ margin:6px 0 0; padding-left:24px; }
+  .ans ol.fill li{ margin:9px 0; }
+  .ans ol.props{ padding-left:24px; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">실험계획과 응용 · 3장 일원배치법</div>
+  <h1><span class="no">연습문제</span>3장 <span class="en">exercises</span></h1>
+</header>
+
+<p>3장(일원배치법) 교재 연습문제와 정답·해설. 정답 시트는 인쇄 시 다음 페이지부터 나온다.</p>
+
+<h2 class="sub">교재 연습문제 <span class="en">textbook exercises</span></h2>
+
+<div class="ex"><span class="exn">01</span>완전확률화 실험의 장점이 <b>아닌</b> 것은?
+  <ol>
+    <li>처리의 수나 반복수에 제한이 없다.</li>
+    <li>처리별 반복수가 다른 경우에도 통계분석이 용이하다.</li>
+    <li>결측값(missing value)이 있는 경우에도 통계분석이 용이하다.</li>
+    <li>실험단위가 이질적인 경우에도 효과적이다.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">02</span>다음 중 일원배치법 구조모형에서 오차항에 대한 가정에 해당하지 <b>않는</b> 것은?
+  <ol>
+    <li>정규성</li>
+    <li>독립성</li>
+    <li>중심성</li>
+    <li>등분산성</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">03</span>화학약품의 수율을 향상시키기 위해 반응온도 $200^\circ\mathrm{C}$, $220^\circ\mathrm{C}$, $240^\circ\mathrm{C}$ 에서
+반복 4회의 일원배치법 실험을 실시하였다. 이때 잔차제곱합의 자유도는 얼마인가?
+  <ol>
+    <li>$9$</li>
+    <li>$10$</li>
+    <li>$11$</li>
+    <li>$12$</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">04</span>반복 2회의 2수준 일원배치법 실험에서 각 수준에서의 특성값들의 합계가 $15$, $25$ 이다.
+요인 $A$ 에 의한 변동은 얼마인가?
+  <ol>
+    <li>$15$</li>
+    <li>$20$</li>
+    <li>$25$</li>
+    <li>$40$</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">05</span>서로 다른 세 가지 형태의 유리관에서 각각 8개를 랜덤하게 선택하여 가열시킬 때
+걸리는 시간(초)을 랜덤한 순서로 측정하여 얻은 실험자료가 다음과 같다.
+  <div class="scroll"><table class="data">
+    <tr><th rowspan="4">유리관<br>형태</th></tr>
+    <tr><th>$A_1$</th><td>19</td><td>20</td><td>23</td><td>20</td><td>26</td><td>18</td><td>18</td><td>35</td></tr>
+    <tr><th>$A_2$</th><td>20</td><td>20</td><td>32</td><td>27</td><td>40</td><td>24</td><td>22</td><td>18</td></tr>
+    <tr><th>$A_3$</th><td>16</td><td>15</td><td>18</td><td>26</td><td>19</td><td>17</td><td>19</td><td>18</td></tr>
+  </table></div>
+  <ol>
+    <li>분산분석표를 작성하라.</li>
+    <li>각각의 모평균에 대한 95% 신뢰구간을 구하라.</li>
+    <li>유의수준 $\alpha=0.05$ 에서 최소유의차($LSD$)를 구하라.
+      실험 결과를 얻기 전에 유리관 형태 $A_1$ 과 $A_2$ 의 비교에 관심이 있는 경우에
+      차이가 있다고 판단하는가?</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">06</span>교습 방법에 따라 학생들의 성취도가 달라지는가를 조사하기 위해
+30명의 학생을 다음의 5개 그룹에 각 6명씩 랜덤하게 할당하였다.
+  <div class="scroll"><table class="data">
+    <tr><th>처리</th><th>교습 방법의 묘사</th></tr>
+    <tr><td>1</td><td>현재의 교재</td></tr>
+    <tr><td>2</td><td>선생님과 교재 $A$</td></tr>
+    <tr><td>3</td><td>기계와 교재 $A$</td></tr>
+    <tr><td>4</td><td>선생님과 교재 $B$</td></tr>
+    <tr><td>5</td><td>기계와 교재 $B$</td></tr>
+  </table></div>
+  <p>학기말에 평가점수가 기록되었고 통계량의 일부가 다음과 같다.</p>
+  <div class="scroll"><table class="data">
+    <tr><th></th><th colspan="5">처리</th></tr>
+    <tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+    <tr><th>합계</th><td>120</td><td>600</td><td>720</td><td>240</td><td>420</td></tr>
+  </table></div>
+  <p>처리변동 $=340$, 총변동 $=465$</p>
+  <ol>
+    <li>구조모형과 검정할 가설을 세워라.</li>
+    <li>분산분석표를 작성하고, 유의수준 $\alpha=0.05$ 에서 처리효과가 있는지를 검정하라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">07</span>3개의 처리를 갖는 일원배치 완전랜덤화계획법의 실험 결과 다음과 같은 자료를 얻었다.
+제곱합을 계산하고 분산분석표를 작성하라.
+  <div class="scroll"><table class="data">
+    <tr><th>처리 1</th><td>19</td><td>18</td><td>21</td><td>18</td><td></td><td></td></tr>
+    <tr><th>처리 2</th><td>16</td><td>11</td><td>13</td><td>14</td><td>11</td><td></td></tr>
+    <tr><th>처리 3</th><td>13</td><td>16</td><td>28</td><td>11</td><td>15</td><td>11</td></tr>
+  </table></div>
+</div>
+
+<div class="ex"><span class="exn">08</span>방직회사에서는 수많은 직조기를 설치하여 직물을 생산한다.
+공정관리자는 직조기가 균일하여 생산된 직물들이 일정한 강도를 유지하기 바란다.
+그런데 공정관리를 하다 보니, 동일 제조기에서 생산된 직물 간의 강도변동뿐 아니라
+직조기 간에도 상당한 강도변동이 있다고 의심된다.
+이를 조사하기 위해 직조기 4대를 랜덤으로 선정하고,
+각 직조기에서 생산된 직물에 대하여 네 차례에 걸쳐 강도를 측정한 결과가 다음과 같다.
+  <div class="scroll"><table class="data">
+    <tr><th rowspan="5">직물강도</th></tr>
+    <tr><th>직조기</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+    <tr><th></th><td>98</td><td>91</td><td>96</td><td>95</td></tr>
+    <tr><th></th><td>97</td><td>90</td><td>95</td><td>96</td></tr>
+    <tr><th></th><td>99</td><td>93</td><td>97</td><td>99</td></tr>
+    <tr><th></th><td>96</td><td>92</td><td>95</td><td>98</td></tr>
+  </table></div>
+  <ol>
+    <li>분산분석을 하라.</li>
+    <li>만약 직조기에 따라 차이가 있다면, 총분산 중 직조기 차이에 기인한 분산이 차지하는 비율인
+      기여율을 추정해 보라.</li>
+  </ol>
+</div>
+
+<!-- ============================ 정답 시트 ============================ -->
+<div class="answersheet">
+<header class="doc">
+  <div class="ch">실험계획과 응용 · 3장 일원배치법</div>
+  <h1><span class="no">정답·해설</span>3장 <span class="en">answers</span></h1>
+</header>
+
+<h2 class="sub">01~04 객관식</h2>
+
+<div class="ans"><span class="exn">01</span><b>정답 ④.</b>
+  완전확률화(완전랜덤화)계획법은 <b>실험단위가 균질할 때</b> 효과적이다.
+  실험단위가 이질적인 경우에는 그 이질성이 그대로 오차항에 들어가 $MS_E$ 를 키우므로 검정력이 떨어진다.
+  이럴 때는 <a href="../ch01/1-2_basic-principles.html">블록화</a>를 적용해
+  난괴법(확률화블록계획법) 같은 다른 계획을 써야 한다.
+  나머지 ①②③ 은 모두 완전랜덤화계획의 장점이 맞다 — 처리 수·반복수에 제한이 없고,
+  <a href="3-4_unequal-replications.html">반복수가 달라도</a> $r$ 을 $r_i$ 로 바꾸기만 하면 분석이 그대로 된다.
+</div>
+
+<div class="ans"><span class="exn">02</span><b>정답 ③.</b>
+  <a href="3-1_data-and-model.html">3.1절</a>의 오차 가정은
+  <b>정규성 · 독립성 · 불편성 · 등분산성</b> 네 가지다. ‘중심성’이라는 가정은 없다.
+  ③ 자리에 들어가야 할 것은 <b>불편성</b>($E(\varepsilon_{ij})=0$)이다.
+</div>
+
+<div class="ans"><span class="exn">03</span><b>정답 ①.</b>
+  수준 수 $a=3$(온도 3가지), 반복수 $r=4$ 이므로
+  $$\phi_E=a(r-1)=3\times3=9$$
+  <p>참고로 $\phi_A=a-1=2$, $\phi_T=ar-1=11$ 이고 $2+9=11$ 로 자유도의 덧셈이 맞는다.</p>
+</div>
+
+<div class="ans"><span class="exn">04</span><b>정답 ③.</b>
+  $a=2$, $r=2$, $T_{1\cdot}=15$, $T_{2\cdot}=25$, $T=40$ 이므로
+  $$CT=\frac{T^2}{ar}=\frac{40^2}{4}=400,\qquad
+    SS_A=\sum\frac{T_{i\cdot}^2}{r}-CT=\frac{15^2+25^2}{2}-400=425-400=25$$
+</div>
+
+<h2 class="sub">05 유리관 세 형태의 가열시간</h2>
+
+<div class="ans"><span class="exn">05 (1)</span><b>분산분석표.</b>
+  $a=3$, $r=8$, $N=24$ 이고 수준별 합계는 $T_{1\cdot}=179$, $T_{2\cdot}=203$, $T_{3\cdot}=148$, $T=530$ 이다.
+  $$CT=\frac{530^2}{24}=11704.17$$
+  $$SS_T=\sum\sum x_{ij}^2-CT=12592-11704.17=887.83$$
+  $$SS_A=\frac{179^2+203^2+148^2}{8}-CT=11894.25-11704.17=190.08$$
+  $$SS_E=887.83-190.08=697.75$$
+  <div class="scroll"><table class="anova">
+    <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th><th>$F(0.05)$</th></tr>
+    <tr><td>$A$</td><td>190.08</td><td>2</td><td>95.04</td><td>2.86</td><td>3.47</td></tr>
+    <tr><td>$E$</td><td>697.75</td><td>21</td><td>33.23</td><td></td><td></td></tr>
+    <tr><td>$T$</td><td>887.83</td><td>23</td><td></td><td></td><td></td></tr>
+  </table></div>
+  <p>$F_0=2.86$ 이 $F(2,21;0.05)=3.47$ 보다 <b>작으므로 귀무가설을 기각하지 못한다</b>.
+  유의수준 5%에서 유리관 형태에 따른 가열시간의 차이가 있다고 볼 근거가 없다.</p>
+</div>
+
+<div class="ans"><span class="exn">05 (2)</span><b>각 모평균의 95% 신뢰구간.</b>
+  $\bar x_{1\cdot}=22.375$, $\bar x_{2\cdot}=25.375$, $\bar x_{3\cdot}=18.5$ 이고
+  $t(21;0.025)=2.080$, $MS_E=33.23$, $r=8$ 이므로 신뢰구간의 폭은
+  $$t(21;0.025)\sqrt{\frac{MS_E}{r}}=2.080\sqrt{\frac{33.23}{8}}=2.080\times2.038=4.24$$
+  $$\begin{aligned}
+    \mu_1&:\ 22.375\pm4.24=(18.14,\ 26.61)\\
+    \mu_2&:\ 25.375\pm4.24=(21.14,\ 29.61)\\
+    \mu_3&:\ 18.50\pm4.24=(14.26,\ 22.74)
+  \end{aligned}$$
+  <p>반복수가 세 수준 모두 $8$ 로 같으므로 <b>신뢰구간의 폭도 모두 같다</b>.</p>
+</div>
+
+<div class="ans"><span class="exn">05 (3)</span><b>$LSD=5.99$, 차이가 있다고 판단하지 않는다.</b>
+  $$LSD=t(21;0.025)\sqrt{\frac{2MS_E}{r}}=2.080\sqrt{\frac{2\times33.23}{8}}=2.080\times2.882=5.99$$
+  <p>$\left|\bar x_{1\cdot}-\bar x_{2\cdot}\right|=|22.375-25.375|=3.00$ 이고,
+  이것이 $LSD=5.99$ 보다 작으므로 $A_1$ 과 $A_2$ 의 가열시간에 유의한 차이가 있다고 판단하지 않는다.</p>
+  <p>실험 <b>전에</b> 정해 둔 비교이므로 다중검정 보정 없이 $LSD$ 를 그대로 쓴 것이다.
+  실험 후에 눈에 띄는 쌍을 골라 비교했다면
+  <a href="3-3_post-hoc.html">본페로니나 투키 HSD</a> 로 더 엄격하게 판단해야 한다.</p>
+</div>
+
+<h2 class="sub">06 교습 방법에 따른 성취도</h2>
+
+<div class="ans"><span class="exn">06 (1)</span><b>구조모형과 가설.</b>
+  $$x_{ij}=\mu+\alpha_i+\varepsilon_{ij},\qquad i=1,\dots,5\ ;\ j=1,\dots,6$$
+  <p>단, $\sum_{i=1}^{5}\alpha_i=0$ 이고 $\varepsilon_{ij}$ 는 서로 독립이며 $N(0,\sigma_E^2)$ 를 따른다.</p>
+  $$H_0:\ \alpha_1=\alpha_2=\cdots=\alpha_5=0\quad(\text{교습 방법에 따른 성취도 차이가 없다})$$
+  $$H_1:\ \text{모든 }\alpha_i\text{ 가 }0\text{ 인 것은 아니다}$$
+</div>
+
+<div class="ans"><span class="exn">06 (2)</span><b>처리효과가 있다($F_0=17$).</b>
+  문제에서 처리변동 $SS_A=340$, 총변동 $SS_T=465$ 를 직접 주었으므로
+  $$SS_E=SS_T-SS_A=465-340=125$$
+  $$\phi_A=a-1=4,\qquad \phi_T=N-1=29,\qquad \phi_E=29-4=25$$
+  <div class="scroll"><table class="anova">
+    <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th><th>$F(0.05)$</th></tr>
+    <tr><td>$A$</td><td>340</td><td>4</td><td>85</td><td>$17^{*}$</td><td>2.76</td></tr>
+    <tr><td>$E$</td><td>125</td><td>25</td><td>5</td><td></td><td></td></tr>
+    <tr><td>$T$</td><td>465</td><td>29</td><td></td><td></td><td></td></tr>
+  </table></div>
+  <p>$F_0=17$ 이 $F(4,25;0.05)=2.76$ 보다 크므로 귀무가설을 기각한다.
+  유의수준 5%에서 <b>교습 방법에 따라 성취도에 차이가 있다</b>.</p>
+  <p>참고로 합계 행으로부터 각 처리의 표본평균은
+  $20,\ 100,\ 120,\ 40,\ 70$ 이며, 사후분석은 이 값들을 써서 진행하면 된다.</p>
+</div>
+
+<h2 class="sub">07 반복수가 다른 세 처리</h2>
+
+<div class="ans"><span class="exn">07</span><b>$F_0=2.11$ 로 처리 간 차이가 유의하지 않다.</b>
+  반복수가 다르므로 <a href="3-4_unequal-replications.html">3.4절</a>의 식을 쓴다.
+  $r_1=4$, $r_2=5$, $r_3=6$, $N=15$ 이고
+  $T_{1\cdot}=76$, $T_{2\cdot}=65$, $T_{3\cdot}=94$, $T=235$ 이다.
+  $$CT=\frac{235^2}{15}=3681.67$$
+  $$SS_T=\sum\sum x_{ij}^2-CT=3989-3681.67=307.33$$
+  $$SS_A=\frac{76^2}{4}+\frac{65^2}{5}+\frac{94^2}{6}-CT=3761.67-3681.67=80.00$$
+  $$SS_E=307.33-80.00=227.33$$
+  $$\phi_T=N-1=14,\qquad \phi_A=a-1=2,\qquad \phi_E=N-a=12$$
+  <div class="scroll"><table class="anova">
+    <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th><th>$F(0.05)$</th></tr>
+    <tr><td>$A$</td><td>80.00</td><td>2</td><td>40.00</td><td>2.11</td><td>3.89</td></tr>
+    <tr><td>$E$</td><td>227.33</td><td>12</td><td>18.94</td><td></td><td></td></tr>
+    <tr><td>$T$</td><td>307.33</td><td>14</td><td></td><td></td><td></td></tr>
+  </table></div>
+  <p>$F_0=2.11 &lt; F(2,12;0.05)=3.89$ 이므로 귀무가설을 기각하지 못한다.
+  처리 3 의 $28$ 이 다른 값들과 크게 떨어져 있어 $SS_E$ 를 크게 만든 것이
+  유의하지 않게 나온 한 원인이다.</p>
+</div>
+
+<h2 class="sub">08 직조기의 강도변동 — 랜덤모형</h2>
+
+<div class="ans"><span class="exn">08 (1)</span><b>분산분석 — 직조기 간 산포가 존재한다.</b>
+  직조기 4대를 <b>랜덤으로 선정</b>했으므로 <a href="3-5_random-model.html">랜덤모형</a>이다.
+  $$H_0:\ \sigma_A^2=0\ (\text{직조기 간 산포가 없다}),\qquad H_1:\ \sigma_A^2>0$$
+  <p>$a=4$, $r=4$, $T_{i\cdot}=390,\ 366,\ 383,\ 388$, $T=1527$ 이므로</p>
+  $$CT=\frac{1527^2}{16}=145733.06$$
+  $$SS_T=145845-145733.06=111.94$$
+  $$SS_A=\frac{390^2+366^2+383^2+388^2}{4}-CT=145822.25-145733.06=89.19$$
+  $$SS_E=111.94-89.19=22.75$$
+  <div class="scroll"><table class="anova">
+    <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th><th>$F(0.01)$</th></tr>
+    <tr><td>$A$</td><td>89.19</td><td>3</td><td>29.73</td><td>$15.68^{**}$</td><td>5.95</td></tr>
+    <tr><td>$E$</td><td>22.75</td><td>12</td><td>1.90</td><td></td><td></td></tr>
+    <tr><td>$T$</td><td>111.94</td><td>15</td><td></td><td></td><td></td></tr>
+  </table></div>
+  <p>$F_0=15.68$ 이 $F(3,12;0.01)=5.95$ 보다 크므로 귀무가설을 기각한다.
+  즉 <b>직조기 간에 강도의 산포가 존재하여 직조기가 이질적</b>이라고 결론 내린다.</p>
+</div>
+
+<div class="ans"><span class="exn">08 (2)</span><b>기여율 $\hat\rho\approx78.6\%$.</b>
+  $$\widehat{\sigma_E^2}=MS_E=1.90$$
+  $$\widehat{\sigma_A^2}=\frac{1}{r}\left(MS_A-MS_E\right)=\frac14\left(29.73-1.90\right)=6.96$$
+  $$\widehat{Var}(x_{ij})=6.96+1.90=8.85$$
+  $$\hat\rho=\frac{6.96}{8.85}\times100\%=78.6\%$$
+  <p>즉 직물강도 총분산의 약 <b>78.6%가 직조기 간의 차이</b>에서 오고,
+  나머지 약 21.4%가 같은 직조기 안에서의 변동(오차)에 기인한다.
+  직조기 간 산포를 줄이는 것이 강도 균일화의 가장 효과적인 방향이라는 뜻이다.</p>
+</div>
+
+</div>
+
+<nav class="pager">
+  <a href="3-5_random-model.html">← 이전<small>3.5 랜덤모형</small></a>
+</nav>
+
+</body>
+</html>

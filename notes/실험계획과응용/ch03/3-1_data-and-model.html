@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실험계획과 응용 · 3.1 일원배치법의 데이터 구조와 구조모형</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">실험계획과 응용 · 3장 일원배치법</div>
+  <h1><span class="no">3.1</span>일원배치법의 데이터 구조와 구조모형 <span class="en">data structure and the model</span></h1>
+</header>
+
+<p><b>일원배치법</b>(one-way layout)은 관심 있는 요인이 <b>하나</b>일 때,
+그 요인의 여러 수준(처리)에 실험단위를 <b>완전 랜덤하게</b> 배정하여 얻은 자료를 분석하는 방법이다.
+<a href="../ch02/2-2_two-means-independent.html">2.2절</a>에서 다룬 두 모평균의 비교를
+$a$ 개의 모평균으로 확장한 것이라고 보면 된다.</p>
+
+<h2 class="sub">고정요인과 랜덤요인 <span class="en">fixed vs. random factors</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">고정모형과 랜덤모형</span>
+  <ol class="props">
+    <li><b>고정요인 · 고정모형</b>(fixed model, 모수모형) — 요인의 수준이 <b>고정</b>되어 있고
+      그 수준 자체가 기술적 의미를 갖는 경우.
+      예: 특정 온도, 압력, 벼 품종 등.</li>
+    <li><b>랜덤요인 · 랜덤모형</b>(random model, 변량모형) — 일정 범위 내에서 수준이
+      <b>랜덤하게</b> 선정되어 각 수준 자체가 기술적 의미를 갖지 않는 경우.
+      예: 원자재 로트(여러 로트 중 일부), 실험일(여러 날짜 중 특정 실험일), 작업자(많은 작업자 중 일부).</li>
+  </ol>
+</div>
+
+<div class="note">
+  <b>관심사가 다르다.</b> 고정요인은 각 수준에서의 <b>효과 크기와 최적조건</b>을 찾는 데 관심이 있고,
+  랜덤요인은 수준 간 산포의 크기인 <b>분산성분</b>에 집중한다.
+  이 장의 3.1~3.4절은 요인 $A$ 가 고정요인이라고 가정하며,
+  랜덤요인의 경우는 <a href="3-5_random-model.html">3.5절</a>에서 논의한다.
+</div>
+
+<h2 class="sub">데이터 구조 <span class="en">data structure</span></h2>
+
+<p>어떤 요인 $A$ 의 수준(처리)이 총 $a$ 개이고, $i$ 번째 수준에서 $r$ 개의 특성값을 얻는다고 하자.
+$i$ 번째 수준에서 $j$ 번째의 특성값을 $x_{ij}$ 로 표시하면 데이터 구조는 다음과 같다.</p>
+
+<div class="scroll"><table class="data">
+  <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-1&gt; 일원배치법의 데이터 구조</caption>
+  <tr><th></th><th colspan="4">실험의 반복</th><th>합계</th><th>평균</th></tr>
+  <tr><th>$A_1$</th><td>$x_{11}$</td><td>$x_{12}$</td><td>$\cdots$</td><td>$x_{1r}$</td><td>$T_{1\cdot}$</td><td>$\bar x_{1\cdot}$</td></tr>
+  <tr><th>$A_2$</th><td>$x_{21}$</td><td>$x_{22}$</td><td>$\cdots$</td><td>$x_{2r}$</td><td>$T_{2\cdot}$</td><td>$\bar x_{2\cdot}$</td></tr>
+  <tr><th>$\vdots$</th><td></td><td></td><td>$\vdots$</td><td></td><td>$\vdots$</td><td>$\vdots$</td></tr>
+  <tr><th>$A_a$</th><td>$x_{a1}$</td><td>$x_{a2}$</td><td>$\cdots$</td><td>$x_{ar}$</td><td>$T_{a\cdot}$</td><td>$\bar x_{a\cdot}$</td></tr>
+  <tr><th></th><td colspan="4"></td><td>$T$</td><td>$\bar{\bar x}$</td></tr>
+</table></div>
+
+<p>여기서 $T_{i\cdot}$ 과 $\bar x_{i\cdot}$ 은 수준 $A_i$ 에서 실험된 $r$ 개의 데이터의 <b>합과 평균</b>이며,
+$T$ 와 $\bar{\bar x}$ 는 $ar$ 개의 <b>전체 데이터의 합과 평균</b>이다.</p>
+
+<h2 class="sub">가설과 구조모형 <span class="en">hypotheses and the structural model</span></h2>
+
+<p>$a$ 개의 수준 간 효과에 차이가 있는지를 통계적으로 검정하려면 각 수준에 대한 모집단 모형이 필요하다.
+각각의 수준에 해당하는 $a$ 개의 모집단이 서로 독립적이고,
+평균이 $\mu_i$, 공통분산 $\sigma_E^2$ 을 갖는 정규분포를 한다고 가정하고 다음 가설을 생각하자.</p>
+
+<div class="box thm">
+  <span class="tag">식 (3.1)</span><span class="title">모평균에 대한 가설</span>
+  $$H_0:\ \mu_1=\mu_2=\cdots=\mu_a$$
+  $$H_1:\ \text{모든 }\mu_i\text{ 가 같은 것은 아니다.}$$
+</div>
+
+<div class="note">
+  대립가설 $H_1$ 은 <b>‘Not $H_0$’</b> 의 의미로서, 그 안에는 무수히 많은 경우의 수들이 존재한다.
+  “모두 다르다”가 아니라 “<b>적어도 하나가</b> 다르다”는 뜻이다.
+</div>
+
+<p>앞의 모집단 가정에 의하여 $x_{ij}$ 는 다음과 같이 표시할 수 있다.</p>
+$$x_{ij}=\mu_i+\varepsilon_{ij}\tag{3.2}$$
+<p>여기서 $\varepsilon_{ij}$ 는 실험오차에 해당되는 확률변수로서 평균 $0$, 분산 $\sigma_E^2$ 인 정규분포를 따른다.
+실험전체의 모평균을 $\mu$ 라 하면</p>
+$$\mu=\frac{\sum_{i=1}^{a}\mu_i}{a}\tag{3.3}$$
+<p>로 정의된다. $i$ 번째 수준의 모평균 $\mu_i$ 는 실험전체의 모평균 $\mu$ 와
+$i$ 번째 처리에서의 <b>순수효과</b>(pure effect)인 $\alpha_i$ 의 합으로 나타낼 수 있으므로
+$\mu_i=\mu+\alpha_i$ 로 대체하면 일원배치 데이터의 구조모형을 얻는다.</p>
+
+<div class="box def">
+  <span class="tag">식 (3.4)</span><span class="title">일원배치법의 구조모형 <span class="en">structural model</span></span>
+  $$x_{ij}=\mu+\alpha_i+\varepsilon_{ij},\qquad i=1,2,\dots,a\ ;\ j=1,2,\dots,r$$
+  <ul class="props">
+    <li>$\mu$ : 전체모평균</li>
+    <li>$\alpha_i$ : 요인 $A$ 의 $i$ 번째 <b>수준효과</b>로서 $\displaystyle\sum_{i=1}^{a}\alpha_i=0$ 을 만족</li>
+    <li>$\varepsilon_{ij}$ : 오차항으로 서로 독립이며 $N(0,\ \sigma_E^2)$ 분포를 따른다</li>
+  </ul>
+</div>
+
+<div class="note">
+  $\sum\alpha_i=0$ 은 식 $(3.3)$ 에서 자동으로 따라 나온다.
+  $\mu$ 를 $\mu_i$ 들의 평균으로 정의했으므로 $\sum(\mu_i-\mu)=0$, 즉 $\sum\alpha_i=0$ 이다.
+  이 제약 하나 때문에 뒤에서 요인 $A$ 의 자유도가 $a$ 가 아니라 <b>$a-1$</b> 이 된다.
+</div>
+
+<h2 class="sub">오차에 대한 네 가지 가정 <span class="en">assumptions on the error term</span></h2>
+
+<div class="box def">
+  <span class="tag">가정</span><span class="title">오차 $\varepsilon_{ij}$ 에 대한 네 가지 가정</span>
+  <ol class="props">
+    <li><b>정규성</b>(normality) — 오차 $\varepsilon_{ij}$ 의 분포는 정규분포를 따른다.</li>
+    <li><b>독립성</b>(independence) — 오차들은 서로 독립이다.</li>
+    <li><b>불편성</b>(unbiasedness) — 오차의 기댓값은 $0$ 으로 치우침(bias)이 없다.</li>
+    <li><b>등분산성</b>(homoscedasticity) — 오차 $\varepsilon_{ij}$ 의 분산은 $\sigma_E^2$ 으로,
+      요인의 <b>각 수준에서 오차항의 분산은 동일</b>하다.</li>
+  </ol>
+</div>
+
+<div class="note">
+  네 가정은 분석이 끝난 뒤 <b>잔차로 확인</b>한다.
+  등분산성은 <a href="3-2_anova.html">바틀렛 검정</a>으로, 정규성은 잔차의 정규 Q–Q 그림으로,
+  독립성·불편성은 잔차 대 예측치 그림에 특정한 패턴이 없는지로 살펴본다
+  (→ <a href="3-4_unequal-replications.html">3.4절</a>의 잔차 진단).
+</div>
+
+<nav class="pager">
+  <a href="../ch02/2-exercises.html">← 이전<small>2장 연습문제</small></a>
+  <a class="next" href="3-2_anova.html">다음 →<small>3.2 분산분석</small></a>
+</nav>
+
+</body>
+</html>

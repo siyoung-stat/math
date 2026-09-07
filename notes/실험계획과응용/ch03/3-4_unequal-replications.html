@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실험계획과 응용 · 3.4 반복수가 같지 않은 실험</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  pre.rout{ background:#f6f7f9; border:1px solid #dcdfe4; border-left:3px solid #8a94a6;
+            padding:10px 14px; overflow-x:auto; font-size:0.82rem; line-height:1.5; margin:14px 0; }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">실험계획과 응용 · 3장 일원배치법</div>
+  <h1><span class="no">3.4</span>반복수가 같지 않은 실험 <span class="en">unbalanced one-way layout</span></h1>
+</header>
+
+<p>앞에서는 일원배치법의 각 수준에서 반복수가 일정하게 $r$ 인 경우를 다루었는데,
+실제 실험 현장에서는 여러 가지 이유로 각 수준의 반복수가 달라지는 데이터를 얻게 될 수 있다.
+이런 자료를 흔히 <b>불균형자료</b>라 부르며, 주로 다음과 같은 경우에 발생한다.</p>
+
+<ul class="props">
+  <li>실험 도중 불의의 사고 또는 실험자의 실수로 특성값을 관측하지 못하는 경우</li>
+  <li>관심요인의 특정 수준에서 더 높은 정도(precision)를 얻으려고 더 많은 반복을 취한 경우</li>
+</ul>
+
+<h2 class="sub">구조모형과 계산식 <span class="en">model and formulas</span></h2>
+
+<p>반복수가 같지 않은 일원배치법의 총실험횟수를 $N$ 이라고 하면 다음과 같다.</p>
+$$N=r_1+r_2+\cdots+r_a\tag{3.23}$$
+
+<p>자료의 구조, 구조모형과 분산분석은 반복수 $r$ 대신 각 수준 $i$ 에서의 반복수 $r_i$ 로
+대체한 것을 제외하고는 기본적으로 똑같다.</p>
+$$x_{ij}=\mu+\alpha_i+\varepsilon_{ij},\qquad i=1,\dots,a\ ;\ j=1,\dots,r_i\tag{3.24}$$
+
+<div class="box def">
+  <span class="tag">계산</span><span class="title">변동과 자유도</span>
+  <p><span class="step">1) 변동의 계산.</span></p>
+  $$SS_T=\sum_{i=1}^{a}\sum_{j=1}^{r_i}x_{ij}^2-CT,\qquad
+    CT=\frac{T^2}{N},\qquad T=\sum_{i=1}^{a}\sum_{j=1}^{r_i}x_{ij},\qquad N=\sum_{i=1}^{a}r_i$$
+  $$SS_A=\sum_{i=1}^{a}\frac{T_{i\cdot}^2}{r_i}-CT,\qquad SS_E=SS_T-SS_A$$
+  <p><span class="step">2) 자유도 계산.</span></p>
+  $$\phi_T=N-1,\qquad \phi_A=a-1,\qquad \phi_E=\phi_T-\phi_A=N-a$$
+</div>
+
+<div class="note">
+  달라지는 것은 딱 두 군데다 — $CT$ 의 분모가 $ar$ 대신 <b>$N$</b> 이고,
+  $SS_A$ 에서 각 수준의 합을 <b>그 수준의 반복수 $r_i$ 로</b> 나눈다는 것.
+  나머지는 <a href="3-2_anova.html">3.2절</a>과 완전히 같다.
+</div>
+
+<div class="scroll"><table class="anova">
+  <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-5&gt; 반복수가 같지 않은 일원배치법의 분산분석표</caption>
+  <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th><th>$F(\alpha)$</th></tr>
+  <tr><td>$A$</td><td>$SS_A$</td><td>$a-1$</td><td>$MS_A$</td><td>$\dfrac{MS_A}{MS_E}$</td><td>$F\left(a-1,\ N-a\ ;\ \alpha\right)$</td></tr>
+  <tr><td>$E$</td><td>$SS_E$</td><td>$N-a$</td><td>$MS_E$</td><td></td><td></td></tr>
+  <tr><td>$T$</td><td>$SS_T$</td><td>$N-1$</td><td></td><td></td><td></td></tr>
+</table></div>
+
+<div class="note">
+  분산분석의 <b>검정력은 균형자료</b>($r_1=r_2=\cdots=r_a=r$)<b>일 때 최대</b>가 되므로,
+  가능하면 균형자료를 얻는 것이 바람직하다.
+</div>
+
+<h2 class="sub">예 3.4 반복수가 다른 일원배치 분산분석 <span class="en">worked example</span></h2>
+
+<div class="box ex">
+  <span class="tag">예 3.4</span><span class="title">네 종류의 식단에 따른 혈액응고시간</span>
+
+  <p><span class="step">1) 실험목적.</span>
+  네 종류의 식단 $A_1,A_2,A_3,A_4$ 에 따른 식이요법이 동물의 혈액응고시간에
+  유의한 영향을 주는지 알아보고자 한다.</p>
+
+  <p><span class="step">2) 실험의 랜덤화 및 자료의 수집.</span></p>
+  <ol class="fill">
+    <li><b>랜덤화.</b> 24마리의 동물에 1번에서 24번까지 일련번호를 매기고,
+      24개 번호의 무작위 배열을 구한 뒤, 처음 6개의 난수에 해당되는 동물에 $A_1$ 을 배정하고
+      다음 6개에 $A_2$, 그다음 6개에 $A_3$, 나머지 6마리에 $A_4$ 를 배정한다.</li>
+    <li><b>처리 적용 및 진행.</b> 두 달 동안 각각의 식단에 따라서 먹이를 준다. 그런데
+      $A_1$ 에 할당된 동물 한 마리가 실험과 관련이 없는 질병으로 3주 만에 죽어서
+      $A_1$ 에서의 반복수가 $5$ 가 되었다. 처음에는 반복수가 같도록 계획하였지만
+      얻어진 실험자료는 $r_1=5,\ r_2=6,\ r_3=6,\ r_4=6$ 으로 <b>반복수가 다른 실험</b>이 되었다.</li>
+    <li><b>결과변수 측정.</b> 각 처리가 적용된 다음 각 동물에서 혈액 표본을 채취한다.
+      혈액응고시간의 검사 순서 역시 랜덤한 순서대로 실시한다.</li>
+  </ol>
+
+  <div class="scroll"><table class="data">
+    <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-6&gt; 혈액응고시간 자료</caption>
+    <tr><th></th><th colspan="6">실험의 반복</th></tr>
+    <tr><th>$A_1$</th><td>62</td><td>60</td><td>63</td><td>59</td><td>61</td><td></td></tr>
+    <tr><th>$A_2$</th><td>63</td><td>67</td><td>71</td><td>64</td><td>65</td><td>66</td></tr>
+    <tr><th>$A_3$</th><td>68</td><td>66</td><td>71</td><td>67</td><td>68</td><td>68</td></tr>
+    <tr><th>$A_4$</th><td>56</td><td>62</td><td>60</td><td>61</td><td>63</td><td>64</td></tr>
+  </table></div>
+
+  <p>대부분의 실험자료가 $65$ 근처이므로 제곱합 계산을 간단하게 하기 위해서 자료변환</p>
+  $$y_{ij}=x_{ij}-65$$
+  <p>를 하였다. 이 경우 변환된 자료와 원래 자료의 <b>제곱합은 동일</b>하다.</p>
+
+  <div class="scroll"><table class="data">
+    <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-7&gt; 변환된 자료</caption>
+    <tr><th></th><th colspan="6">실험의 반복</th><th>합계</th><th>평균</th></tr>
+    <tr><th>$A_1$</th><td>$-3$</td><td>$-5$</td><td>$-2$</td><td>$-6$</td><td>$-4$</td><td></td><td>$-20$</td><td>$-4$</td></tr>
+    <tr><th>$A_2$</th><td>$-2$</td><td>$2$</td><td>$6$</td><td>$-1$</td><td>$0$</td><td>$1$</td><td>$6$</td><td>$1$</td></tr>
+    <tr><th>$A_3$</th><td>$3$</td><td>$1$</td><td>$6$</td><td>$2$</td><td>$3$</td><td>$3$</td><td>$18$</td><td>$3$</td></tr>
+    <tr><th>$A_4$</th><td>$-9$</td><td>$-3$</td><td>$-5$</td><td>$-4$</td><td>$-2$</td><td>$-1$</td><td>$-24$</td><td>$-4$</td></tr>
+  </table></div>
+
+  <p><span class="step">3) 분산분석.</span></p>
+  <p>① 가설의 설정</p>
+  $$H_0:\ \alpha_1=\alpha_2=\alpha_3=\alpha_4=0\quad(\text{식이요법에 따라 혈액응고시간이 달라지지 않는다})$$
+  $$H_1:\ \text{모든 }\alpha_i\text{ 가 }0\text{ 인 것은 아니다}\quad(\text{적어도 한 식이요법은 다른 혈액응고시간을 유발한다})$$
+
+  <p>② 제곱합과 자유도의 계산</p>
+  $$CT=\frac{T^2}{N}=\frac{(-20)^2}{23}=17.3913$$
+  $$SS_T=\sum\sum x_{ij}^2-CT=(-3)^2+(-5)^2+\cdots+(-1)^2-17.3913=322.6087$$
+  $$SS_A=\sum_{i=1}^{4}\frac{T_{i\cdot}^2}{r_i}-CT
+    =\left[\frac{(-20)^2}{5}+\frac{6^2}{6}+\frac{18^2}{6}+\frac{(-24)^2}{6}\right]-17.3913=218.6087$$
+  $$SS_E=SS_T-SS_A=322.6087-218.6087=104$$
+  $$\phi_T=N-1=22,\qquad \phi_A=a-1=3,\qquad \phi_E=\phi_T-\phi_A=19$$
+
+  <p>③ 분산분석표의 작성</p>
+  <div class="scroll"><table class="anova">
+    <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th><th>$F(0.01)$</th></tr>
+    <tr><td>$A$</td><td>218.6087</td><td>3</td><td>72.8696</td><td>$13.31^{***}$</td><td>5.01</td></tr>
+    <tr><td>$E$</td><td>104.0000</td><td>19</td><td>5.4737</td><td></td><td></td></tr>
+    <tr><td>$T$</td><td>322.6087</td><td>22</td><td></td><td></td><td></td></tr>
+  </table></div>
+  <p>$F_0=13.31$ 이 $F(3,19;0.01)=5.01$ 보다 크므로 귀무가설을 기각한다. 즉, 유의수준 1%하에서
+  <b>식이요법이 달라지면 혈액응고시간에 유의한 차이가 생긴다.</b></p>
+
+  <p><span class="step">4) 사후분석.</span> ① $A_i$ 수준에서의 모평균 $\mu_i$ 의 95% 신뢰구간</p>
+  $$\bar x_{i\cdot}\pm t\!\left(\phi_E\ ;\ 0.025\right)\sqrt{\frac{MS_E}{r_i}}$$
+  <p>$r_1=5$, $r_2=r_3=r_4=6$, $t(19;0.025)=2.093$, $MS_E=5.4737$ 을 대입하면</p>
+  $$\begin{aligned}
+    \mu_1&:\ 61\pm2.093\sqrt{\tfrac{5.4737}{5}}=(58.81,\ 63.19)\\
+    \mu_2&:\ 66\pm2.093\sqrt{\tfrac{5.4737}{6}}=(64.00,\ 68.00)\\
+    \mu_3&:\ 68\pm1.9991=(66.00,\ 70.00)\\
+    \mu_4&:\ 61\pm1.9991=(59.00,\ 63.00)
+  \end{aligned}$$
+  <p>으로 각 수준에서의 <b>반복수에 따라서 신뢰구간의 폭이 달라진다</b>.
+  반복수가 많은 수준에서는 자료평균의 표준편차의 추정치인 $\sqrt{MS_E/r_i}$ 가 작아지기 때문에
+  신뢰구간의 폭이 좁아져서 정밀도가 높은 신뢰구간을 얻고,
+  반복수가 상대적으로 적은 수준에서는 $\sqrt{MS_E/r_i}$ 가 커지므로 신뢰구간의 폭이 넓어진다.</p>
+</div>
+
+<h2 class="sub">R 로 확인하기 <span class="en">in R</span></h2>
+
+<pre class="rout">a1 &lt;- c(62, 60, 63, 59, 61)
+a2 &lt;- c(63, 67, 71, 64, 65, 66)
+a3 &lt;- c(68, 66, 71, 67, 68, 68)
+a4 &lt;- c(56, 62, 60, 61, 63, 64)
+y &lt;- c(a1, a2, a3, a4)
+x &lt;- c("a1", "a2", "a3", "a4")
+x &lt;- rep(x, c(5, 6, 6, 6))
+anova &lt;- aov(y ~ x)
+summary(anova)
+            Df  Sum Sq  Mean Sq  F value   Pr(&gt;F)
+x            3   218.6    72.87    13.31  6.49e-05 ***
+Residuals   19   104.0     5.47
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+qf(p = 0.01, df1 = 3, df2 = 19, lower.tail = FALSE)
+[1] 5.010287
+
+tapply(y, x, mean)
+ a1 a2 a3 a4
+ 61 66 68 61
+tapply(y, x, length)
+ a1 a2 a3 a4
+  5  6  6  6
+
+boxplot(y ~ x)</pre>
+
+<p>② 다중 비교를 보정한 쌍 비교</p>
+
+<pre class="rout">pairwise.t.test(y, x, p.adj = "none")     # 보정 전의 LSD
+
+     a1        a2       a3
+a2   0.0022    -        -
+a3   9.1e-05   0.1551   -
+a4   1.0000    0.0015   5.3e-05
+
+P value adjustment method: none
+
+
+pairwise.t.test(y, x, p.adj = "bonferroni")   # 본페로니 보정
+
+     a1        a2        a3
+a2   0.01345   -         -
+a3   0.00054   0.93056   -
+a4   1.00000   0.00909   0.00032
+
+P value adjustment method: bonferroni
+
+
+TukeyHSD(anova)   # 투키의 HSD 검정
+
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = y ~ x)
+
+$x
+        diff    lwr          upr         p adj
+a2-a1    5      1.016479     8.983521    0.0110141
+a3-a1    7      3.016479    10.983521    0.0004845
+a4-a1    0     -3.983521     3.983521    1.0000000
+a3-a2    2     -1.798138     5.798138    0.4678560
+a4-a2   -5     -8.798138    -1.201862    0.0075558
+a4-a3   -7    -10.798138    -3.201862    0.0002854</pre>
+
+<p>위의 다중비교 검정 결과들을 통해 전체 유의수준 5%하에서
+$\mu_1$ 은 $\mu_2$ 및 $\mu_3$ 와, $\mu_2$ 는 $\mu_4$ 와, $\mu_3$ 는 $\mu_4$ 와
+유의하게 다르다는 것을 확인할 수 있다(보정 방법에 따라 결과가 조금씩 다를 수 있음).</p>
+
+<h2 class="sub">모형 진단 <span class="en">model diagnostics</span></h2>
+
+<p><b>비고 1 — 등분산성의 검정.</b> 적합시킨 모델식에서의 등분산성 검정은 다음과 같이 실시할 수 있다.</p>
+
+<pre class="rout">bartlett.test(y ~ x)
+
+        Bartlett test of homogeneity of variances
+
+data:  y by x
+Bartlett's K-squared = 2.4724, df = 3, p-value = 0.4803</pre>
+
+<p>$P$ 값이 상당히 크므로 등분산성을 가정해도 좋을 것 같다.</p>
+
+<p><b>비고 2 — 잔차의 패턴.</b> 잔차(residual)에 어떤 패턴이 나타나는지 살펴보아야 한다.
+모델식이 적합하다면 각 예측치에서 잔차가 특정한 패턴을 보여서는 안 된다.</p>
+
+<pre class="rout">plot(anova, 1)   # Residuals vs Fitted — 특정한 패턴을 보이지는 않는다
+plot(anova, 2)   # Normal Q-Q — 점들을 직선으로 적합시키는 데 무리가 없다</pre>
+
+<div class="note">
+  <code>plot(anova, 1)</code> 은 예측치(수준평균)에 대해 잔차를 그린 것으로,
+  <b>수평 띠 모양</b>이면 등분산성과 모형 적합에 문제가 없다는 뜻이다.
+  <code>plot(anova, 2)</code> 는 표준화잔차의 정규 Q–Q 그림으로,
+  점들이 <b>직선에 가깝게</b> 놓이면 잔차가 정규분포를 따른다고 할 수 있다.
+  이 예제에서는 두 그림 모두 문제가 없어
+  <a href="3-1_data-and-model.html">3.1절의 네 가지 가정</a>이 무리 없이 성립한다고 본다.
+</div>
+
+<nav class="pager">
+  <a href="3-3_post-hoc.html">← 이전<small>3.3 분산분석 후의 추정</small></a>
+  <a class="next" href="3-5_random-model.html">다음 →<small>3.5 랜덤모형</small></a>
+</nav>
+
+</body>
+</html>

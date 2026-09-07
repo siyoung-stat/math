@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실험계획과 응용 · 3.5 랜덤모형</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  pre.rout{ background:#f6f7f9; border:1px solid #dcdfe4; border-left:3px solid #8a94a6;
+            padding:10px 14px; overflow-x:auto; font-size:0.82rem; line-height:1.5; margin:14px 0; }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">실험계획과 응용 · 3장 일원배치법</div>
+  <h1><span class="no">3.5</span>랜덤모형 <span class="en">the random effects model</span></h1>
+</header>
+
+<p>지금까지는 <b>고정모형</b>을 가정하여 요인의 수준들이 연구자가 관심 있는 특정 값을 갖도록 설정된 경우를 살펴보았다.
+반면, <b>랜덤모형</b>은 요인 $A$ 가 실험일, 원료 로트, 블록, 원자재의 배치(batch) 등과 같이
+요인의 수준들이 고정되어 있지 않고 <b>랜덤하게 선택된</b> 경우의 구조모형이다.</p>
+
+<div class="note">
+  랜덤모형에서는 요인 $A$ 의 수준들이 랜덤하게 선택되기 때문에
+  각각의 수준에서의 값들이 <b>기술적인 의미를 갖지 못하고</b> 그저 모집단에서 무작위로 뽑힌 값이라고 볼 수 있다.
+  그리하여 <b>수준 간 산포의 크기</b>에만 관심이 있다.
+  요인 수준 간 산포가 존재하는 경우, 자료의 총분산 중에서 요인 $A$ 에 의한 분산의 비율인
+  <b>기여율</b>의 추정에 관심을 갖게 된다.
+</div>
+
+<h2 class="sub">구조모형과 가설 <span class="en">model and hypotheses</span></h2>
+
+<div class="box def">
+  <span class="tag">식 (3.25)</span><span class="title">랜덤모형의 구조모형</span>
+  <p>요인 $A$ 의 수준들이 랜덤하기 때문에 <b>분산이 $\sigma_A^2$ 인 정규분포를 따른다</b>는 점을 제외하고
+  고정모형인 경우와 동일하다.</p>
+  $$x_{ij}=\mu+a_i+\varepsilon_{ij}$$
+  <ul class="props">
+    <li>$a_i\sim N(0,\ \sigma_A^2)$ 이고, 서로 독립</li>
+    <li>$\varepsilon_{ij}\sim N(0,\ \sigma_E^2)$ 이고, 서로 독립</li>
+    <li>$a_i$ 와 $\varepsilon_{ij}$ 는 서로 독립</li>
+  </ul>
+</div>
+
+<div class="note">
+  고정모형의 $\alpha_i$ 는 <b>제약 $\sum\alpha_i=0$ 을 만족하는 상수</b>였지만,
+  랜덤모형의 $a_i$ 는 <b>평균 $0$, 분산 $\sigma_A^2$ 인 확률변수</b>다.
+  이 한 글자 차이가 “수준별 평균값”에 대한 관심을 “수준 간 산포의 크기”에 대한 관심으로 바꾼다.
+</div>
+
+<div class="box thm">
+  <span class="tag">식 (3.26)</span><span class="title">랜덤모형의 가설</span>
+  $$H_0:\ \sigma_A^2=0\quad(\text{랜덤요인이 동질적이다})$$
+  $$H_1:\ \sigma_A^2>0\quad(\text{랜덤요인이 이질적이다})$$
+</div>
+
+<p>일원배치법인 경우 랜덤모형에서의 변동의 계산과 자유도의 계산, $F$ 검정은 고정모형에서와 동일하다.
+다시 말해서 <b>가설에만 차이가 나고</b>, 이를 검정하기 위한 분산분석표의 작성은 고정모형에서와 같다.</p>
+
+<h2 class="sub">분산성분의 추정 <span class="en">estimating the variance components</span></h2>
+
+<p>이때 관심사는 수준별 평균값의 차이가 아닌 $\sigma_A^2$ 의 <b>추정</b>이다.
+평균제곱 $MS$ 의 기댓값을 구해 보면(유도 과정 생략) 다음과 같다.</p>
+
+$$E(MS_E)=\sigma_E^2\tag{3.27}\qquad\qquad E(MS_A)=\sigma_E^2+r\,\sigma_A^2\tag{3.28}$$
+
+<div class="box thm">
+  <span class="tag">식 (3.29)(3.30)</span><span class="title">$\sigma_E^2$ 과 $\sigma_A^2$ 의 불편추정치</span>
+  $$\widehat{\sigma_E^2}=MS_E\tag{3.29}$$
+  $$\widehat{\sigma_A^2}=\frac{1}{r}\left(MS_A-MS_E\right)\tag{3.30}$$
+</div>
+
+<div class="note">
+  식 $(3.30)$ 은 $(3.28)$ 을 $\sigma_A^2$ 에 대해 푼 것뿐이다.
+  $E(MS_A)-E(MS_E)=r\sigma_A^2$ 이므로 양변을 $r$ 로 나눈다.
+  $H_0$ 가 참이면 $MS_A\approx MS_E$ 라서 추정치가 $0$ 근처에 놓이고,
+  실제로 <b>음수가 나올 수도 있는데</b> 그때는 $\widehat{\sigma_A^2}=0$ 으로 본다.
+</div>
+
+<p>랜덤모형의 구조모형인 식 $(3.25)$ 로부터 자료의 총분산은 요인 $A$ 의 수준에서의 분산과
+오차의 분산의 합으로 다음과 같이 표현된다.</p>
+$$Var(x_{ij})=Var(a_i)+Var(\varepsilon_{ij})=\sigma_A^2+\sigma_E^2\tag{3.31}$$
+$$\widehat{Var}(x_{ij})=\widehat{\sigma_A^2}+\widehat{\sigma_E^2}\tag{3.32}$$
+
+<div class="box def">
+  <span class="tag">식 (3.33)(3.34)</span><span class="title">기여율 <span class="en">contribution ratio</span></span>
+  <p>자료의 총분산 중에서 요인 $A$ 의 수준 간 산포에만 기인하는 비율인 기여율 $\rho$ 는</p>
+  $$\rho=\frac{\sigma_A^2}{\sigma_A^2+\sigma_E^2}\times100\%\tag{3.33}$$
+  <p>로 정의되며, 그 추정치는 다음과 같다.</p>
+  $$\hat\rho=\frac{\widehat{\sigma_A^2}}{\widehat{Var}(x_{ij})}\times100\%\tag{3.34}$$
+</div>
+
+<h2 class="sub">예 3.5 랜덤요인을 가진 일원배치 분산분석 <span class="en">worked example</span></h2>
+
+<div class="box ex">
+  <span class="tag">예 3.5</span><span class="title">화학약품 배치(batch)의 순도</span>
+  <p>화학약품 회사에서는 매년 수백 개의 배치(batch)로 원자재를 정제하여 순도가 높은 화학약품을 만든다.
+  원자재의 품질을 관리하기 위해 수백 개의 배치 중에서 5개의 배치를 랜덤하게 선택하고,
+  선택된 배치당 3개의 시료를 채취해서 정제하여 순도를 측정한다.
+  이 실험을 통해 배치의 평균순도 간에 산포가 존재하는지 파악하라.
+  선택된 15개의 시료에 대한 순도의 측정은 랜덤하게 실시하였다.</p>
+
+  <div class="scroll"><table class="data">
+    <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-8&gt; 배치자료에 의한 화학약품의 순도</caption>
+    <tr><th>batch</th><th colspan="3">순도</th></tr>
+    <tr><th>1</th><td>74</td><td>76</td><td>75</td></tr>
+    <tr><th>2</th><td>68</td><td>71</td><td>72</td></tr>
+    <tr><th>3</th><td>75</td><td>77</td><td>77</td></tr>
+    <tr><th>4</th><td>72</td><td>74</td><td>73</td></tr>
+    <tr><th>5</th><td>79</td><td>81</td><td>79</td></tr>
+  </table></div>
+
+  <p><b>풀이</b> &nbsp;&lt;표 3-8&gt;의 대부분의 자료가 $75$ 근처이기 때문에
+  제곱합의 계산을 간단하게 하기 위하여 자료변환 $y_{ij}=x_{ij}-75$ 를 하였다.
+  이와 같이 변환된 자료와 원래 자료의 제곱합은 동일하다.</p>
+
+  <div class="scroll"><table class="data">
+    <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-9&gt; 변환된 자료</caption>
+    <tr><th>batch</th><th colspan="3">화학약품의 순도</th><th>$T_{i\cdot}$</th></tr>
+    <tr><th>1</th><td>$-1$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr>
+    <tr><th>2</th><td>$-7$</td><td>$-4$</td><td>$-3$</td><td>$-14$</td></tr>
+    <tr><th>3</th><td>$0$</td><td>$2$</td><td>$2$</td><td>$4$</td></tr>
+    <tr><th>4</th><td>$-3$</td><td>$-1$</td><td>$-2$</td><td>$-6$</td></tr>
+    <tr><th>5</th><td>$4$</td><td>$6$</td><td>$4$</td><td>$14$</td></tr>
+  </table></div>
+
+  <ol class="fill">
+    <li><span class="step">1) 가설의 설정.</span>
+      $$H_0:\ \sigma_A^2=0\quad(\text{배치 간 산포가 존재하지 않는다})\ \ (=\text{요인의 효과가 없다})$$
+      $$H_1:\ \sigma_A^2>0\quad(\text{배치 간 산포가 존재한다})\ \ (=\text{요인의 효과가 있다})$$</li>
+
+    <li><span class="step">2) 제곱합과 자유도의 계산.</span> $a=5$, $r=3$, $T=-2$ 이므로
+      $$CT=\frac{(-2)^2}{15}=0.27$$
+      $$SS_T=\sum_{i=1}^{5}\sum_{j=1}^{3}y_{ij}^2-CT=(-1)^2+1^2+\cdots+4^2-0.27=165.73$$
+      $$SS_A=\sum_{i=1}^{5}\frac{T_{i\cdot}^2}{r}-CT
+        =\frac13\left[0^2+(-14)^2+4^2+(-6)^2+14^2\right]-0.27=147.74$$
+      $$SS_E=SS_T-SS_A=165.73-147.74=17.99$$
+      $$\phi_T=ar-1=14,\qquad \phi_A=a-1=4,\qquad \phi_E=\phi_T-\phi_A=10$$</li>
+
+    <li><span class="step">3) 분산분석표의 작성.</span>
+      <div class="scroll"><table class="anova">
+        <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th><th>$F(0.01)$</th></tr>
+        <tr><td>$A$</td><td>147.74</td><td>4</td><td>36.94</td><td>$20.52^{***}$</td><td>5.99</td></tr>
+        <tr><td>$E$</td><td>17.99</td><td>10</td><td>1.80</td><td></td><td></td></tr>
+        <tr><td>$T$</td><td>165.73</td><td>14</td><td></td><td></td><td></td></tr>
+      </table></div>
+      <p>$F_0=20.52$ 가 $F(4,10;0.01)=5.99$ 보다 크므로 귀무가설을 기각한다.
+      따라서 <b>배치 간의 산포가 존재하여 배치가 동질적이 아니라고(이질적이라고) 결론</b> 내린다.</p></li>
+
+    <li><span class="step">4) 기여율의 추정치 계산.</span>
+      $$\widehat{\sigma_E^2}=MS_E=1.80$$
+      $$\widehat{\sigma_A^2}=\frac13\left(MS_A-MS_E\right)=\frac13\left(36.94-1.80\right)=11.71$$
+      $$\widehat{Var}(x_{ij})=\widehat{\sigma_A^2}+\widehat{\sigma_E^2}=11.71+1.80=13.51$$
+      $$\hat\rho=\frac{\widehat{\sigma_A^2}}{\widehat{Var}(x_{ij})}\times100\%=\frac{11.71}{13.51}\times100\%=86.7\%$$
+      <p>따라서 자료의 총분산 중에서 <b>86.7%는 순수하게 배치 간의 산포 탓</b>으로 설명할 수 있고,
+      <b>13.3%는 배치 내 오차의 산포</b>에 기인한다.</p></li>
+  </ol>
+</div>
+
+<figure class="fig">
+<svg viewBox="0 0 420 140" role="img" aria-label="총분산 13.51 중 배치 간 산포가 11.71로 86.7퍼센트, 배치 내 오차가 1.80으로 13.3퍼센트를 차지함을 보이는 누적 막대">
+  <text class="lbl" x="210" y="24" text-anchor="middle">Var(x_ij) = σ²_A + σ²_E = 11.71 + 1.80 = 13.51</text>
+  <rect x="40"  y="40" width="295" height="40" fill="#cfe3f5" stroke="#1d6fb8"/>
+  <rect x="335" y="40" width="45"  height="40" fill="#d7efe9" stroke="#0f8a7d"/>
+  <text class="lbl b" x="187" y="65" text-anchor="middle" font-size="13">σ̂²_A = 11.71  (86.7%)</text>
+  <line class="grid" x1="357" y1="80" x2="357" y2="94"/>
+  <text class="lbl t" x="357" y="106" text-anchor="middle" font-size="11">1.80 (13.3%)</text>
+  <text class="lbl" x="187" y="106" text-anchor="middle" font-size="11">배치 간 산포</text>
+  <text class="lbl" x="357" y="120" text-anchor="middle" font-size="11">배치 내 오차</text>
+</svg>
+<figcaption>기여율은 <b>총분산이라는 막대를 두 조각으로 나눈 비율</b>이다. 이 자료에서는 배치를 바꾸는 것이 순도 변동의 대부분을 설명한다.</figcaption>
+</figure>
+
+<h2 class="sub">R 로 확인하기 <span class="en">in R</span></h2>
+
+<pre class="rout">b1 &lt;- c(74, 76, 75)
+b2 &lt;- c(68, 71, 72)
+b3 &lt;- c(75, 77, 77)
+b4 &lt;- c(72, 74, 73)
+b5 &lt;- c(79, 81, 79)
+y &lt;- c(b1, b2, b3, b4, b5)
+x &lt;- c("b1", "b2", "b3", "b4", "b5")
+x &lt;- rep(x, c(3, 3, 3, 3, 3))
+
+boxplot(y ~ x)   # 5개의 배치 간 평균순도에 차이가 없을지 가늠해 본다
+
+anova &lt;- aov(y ~ x)
+summary(anova)
+            Df  Sum Sq  Mean Sq  F value   Pr(&gt;F)
+x            4   147.7    36.93    20.52  8.25e-05 ***
+Residuals   10    18.0     1.80
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+qf(p = 0.01, df1 = 4, df2 = 10, lower.tail = FALSE)
+[1] 5.994339</pre>
+
+<div class="note">
+  <b>비고 1.</b> 일원배치 실험의 분산분석에서는 <b>고정효과 모형이든 랜덤효과 모형이든
+  동일한 $F$ 통계량과 $P$ 값</b>을 얻게 된다.
+  즉, 식 $(3.5)$ 나 식 $(3.26)$ 의 가설이 다소 달라 보이더라도
+  수학적으로 같은 식(분산비)으로 검정하기 때문에 검정 결과도 동일하다.
+  다만 $\sigma_E^2$ 과 $\sigma_A^2$ 값의 추정을 위해서는 <code>lme4</code> 패키지를 사용해야 한다.
+</div>
+
+<pre class="rout">install.packages("lme4")
+library(lme4)
+lmer(y ~ (1 | x))
+
+Linear mixed model fit by REML ['lmerMod']
+Formula: y ~ (1 | x)
+REML criterion at convergence: 62.7527
+Random effects:
+ Groups     Name          Std.Dev.
+ x          (Intercept)   3.422
+ Residual                 1.342
+Number of obs: 15, groups:  x, 5
+Fixed Effects:
+(Intercept)
+      74.87</pre>
+
+<p>여기서 $\hat\sigma_A=3.422\ \left(=\sqrt{11.71}\right)$, $\hat\sigma_E=1.342\ \left(=\sqrt{1.8}\right)$ 임을 알 수 있고,
+$\hat\sigma_A$ 가 $\hat\sigma_E$ 보다 훨씬 더 크므로 <b>배치 간 산포가 유의하다</b>는 것도 간접적으로 확인 가능하다.</p>
+
+<p><b>비고 2.</b> $\hat\sigma_A$ 와 $\hat\sigma_E$ 의 95% 신뢰구간은 다음 코드를 통해 구할 수 있다.</p>
+
+<pre class="rout">confint(lmer(y ~ (1 | x)))
+Computing profile confidence intervals ...
+                 2.5 %       97.5 %
+.sig01        1.6923760     6.794179
+.sigma        0.9151474     2.240424
+(Intercept)  71.4923472    78.240985</pre>
+
+<div class="note">
+  <code>.sig01</code> 이 $\sigma_A$, <code>.sigma</code> 가 $\sigma_E$ 의 신뢰구간이다.
+  두 구간이 <b>겹치지 않는다</b>는 점도 배치 간 산포가 오차 산포보다 확실히 크다는 것을 보여 준다.
+</div>
+
+<nav class="pager">
+  <a href="3-4_unequal-replications.html">← 이전<small>3.4 반복수가 같지 않은 실험</small></a>
+  <a class="next" href="3-exercises.html">다음 →<small>연습문제 · 정답·해설</small></a>
+</nav>
+
+</body>
+</html>

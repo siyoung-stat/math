@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실험계획과 응용 · 3.3 분산분석 후의 추정</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  pre.rout{ background:#f6f7f9; border:1px solid #dcdfe4; border-left:3px solid #8a94a6;
+            padding:10px 14px; overflow-x:auto; font-size:0.82rem; line-height:1.5; margin:14px 0; }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">실험계획과 응용 · 3장 일원배치법</div>
+  <h1><span class="no">3.3</span>분산분석 후의 추정 <span class="en">estimation after ANOVA</span></h1>
+</header>
+
+<p>앞에서 분산분석을 실시하여 대립가설 ‘적어도 하나의 $\alpha_i$ 가 $0$ 이 아니다’가 채택되었다면
+(요인 $A$ 가 특성값에 유의한 영향을 끼친다는 것을 알게 되면),
+이제 구체적으로 <b>어느 수준들 간에 차이가 있는지</b> 살펴보아야 한다.
+이를 <b>추후분석</b>(follow-up analysis) 또는 <b>사후분석</b>(post-hoc analysis)이라고 한다.</p>
+
+<h2 class="sub">각 수준 모평균의 신뢰구간 <span class="en">CI for a single level mean</span></h2>
+
+<p>어느 한 수준 $A_i$ 의 모평균을 $\mu_i=\mu+\alpha_i$ 라 놓을 때, 그 추정값은
+해당 수준에서의 특성값들의 표본평균 $\bar x_{i\cdot}$ 가 적절하다.
+<a href="3-1_data-and-model.html">식 (3.4)</a>의 구조모형으로부터 $\bar x_{i\cdot}$ 의 분포는
+$N\!\left(\mu_i,\ \sigma_E^2/r\right)$ 임을 알 수 있다.
+여기서 오차의 분산 $\sigma_E^2$ 은 미지의 값이므로 불편추정값인 $MS_E$ 로 추정한다.</p>
+
+<div class="box thm">
+  <span class="tag">식 (3.20)</span><span class="title">$\mu_i$ 의 $100(1-\alpha)\%$ 신뢰구간</span>
+  $$\bar x_{i\cdot}\pm t\!\left(\phi_E\ ;\ \frac{\alpha}{2}\right)\sqrt{\frac{MS_E}{r}}$$
+</div>
+
+<div class="note">
+  오차의 자유도 $\phi_E$ 가 클수록, 그리고 $MS_E$ 값이 작아질수록 신뢰구간은 좁아진다.
+  또 식 $(3.20)$ 은 등분산 가정하에서 실험의 반복수 $r$ 이 모든 수준에서 동일할 경우
+  <b>신뢰구간의 폭 역시 모든 수준에서 일정</b>하다는 것을 보여 준다.
+  (반복수가 다르면 폭이 달라진다 → <a href="3-4_unequal-replications.html">3.4절</a>)
+</div>
+
+<div class="box ex">
+  <span class="tag">예 3.2</span><span class="title">각 수준 모평균의 95% 신뢰구간</span>
+  <p><a href="3-2_anova.html">[예 3.1]</a>의 직물 마모도 예제에서 각 수준(납품업체)에서의
+  직물 마모도 모평균에 대한 95% 신뢰구간을 구하라.</p>
+  <p><b>풀이</b> &nbsp;$\phi_E=12$, $MS_E=0.0199$, $r=4$ 이므로 신뢰구간의 폭은</p>
+  $$t(12;0.025)\sqrt{\frac{MS_E}{r}}=2.179\sqrt{\frac{0.0199}{4}}=0.1537$$
+  <p>따라서 각각의 수준에서 모평균에 대한 95% 신뢰구간은 다음과 같다.</p>
+  $$\begin{aligned}
+    \mu_1&:\ 2.19\pm0.1537=(2.0363,\ 2.3437)\\
+    \mu_2&:\ 2.68\pm0.1537=(2.5263,\ 2.8337)\\
+    \mu_3&:\ 2.42\pm0.1537=(2.2663,\ 2.5737)\\
+    \mu_4&:\ 2.31\pm0.1537=(2.1563,\ 2.4637)
+  \end{aligned}$$
+  <p>예를 들어 $\mu_1$ 의 모평균 값이 $2$ 라고 가정한다면(귀무가설 $H_0:\mu_1=2$),
+  95% 신뢰구간 $(2.0363,\ 2.3437)$ 은 $2$ 를 포함하지 않으므로 유의수준 5%하에서 기각할 수 있다.
+  만약 $2.2$ 라고 가정한다면($H_0:\mu_1=2.2$) 신뢰구간이 해당 값을 포함하고 있으므로 기각할 수 없다.</p>
+</div>
+
+<h2 class="sub">두 수준 차이의 신뢰구간과 최소유의차 <span class="en">LSD</span></h2>
+
+<p>두 수준 비교, 즉 $A_i$ 와 $A_j$ 에서의 모평균의 차이 $(\mu_i-\mu_j)$ 에 대한 추정값으로는
+$(\bar x_{i\cdot}-\bar x_{j\cdot})$ 가 적절하며, 그 분포는 $N\!\left(\mu_i-\mu_j,\ 2\sigma_E^2/r\right)$ 이다.</p>
+
+<div class="box thm">
+  <span class="tag">식 (3.21)(3.22)</span><span class="title">차이의 신뢰구간과 $LSD$</span>
+  <p>$(\mu_i-\mu_j)$ 의 $100(1-\alpha)\%$ 신뢰구간은 (수준별 반복수가 동일하다는 가정하에서)</p>
+  $$\left(\bar x_{i\cdot}-\bar x_{j\cdot}\right)\pm t\!\left(\phi_E\ ;\ \frac{\alpha}{2}\right)\sqrt{\frac{2MS_E}{r}}\tag{3.21}$$
+  <p>이 신뢰구간에 $0$ 이 포함되어 있지 않으면 $H_0:\mu_i=\mu_j$ 를 기각한다. 즉,</p>
+  $$\left|\bar x_{i\cdot}-\bar x_{j\cdot}\right|>t\!\left(\phi_E\ ;\ \frac{\alpha}{2}\right)\sqrt{\frac{2MS_E}{r}}\tag{3.22}$$
+  <p>일 때 $H_0$ 를 기각하며, 이때 우변의 임계값을
+  <b>최소유의차</b>(LSD: Least Significant Difference)라고 부른다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예 3.3</span><span class="title">최소유의차로 어느 수준 간 차이가 유의한지 보기</span>
+  <p>[예 3.1]의 직물 마모도에서 $LSD$ 를 이용하여 어떤 수준 간에 차이가 유의한지 알아보라.</p>
+  <p><b>풀이</b></p>
+  $$LSD=2.179\sqrt{\frac{2\times0.0199}{4}}=0.2174$$
+  <p>이므로 두 수준에서의 자료평균의 차이가 $0.2174$ 보다 크면
+  두 수준에서의 직물 마모도가 유의수준 $\alpha=0.05$ 에서 차이가 있다고 결론 내린다.</p>
+  $$\begin{aligned}
+    \bar x_{1\cdot}-\bar x_{2\cdot}&=2.19-2.68=-0.49^{*}\\
+    \bar x_{1\cdot}-\bar x_{3\cdot}&=2.19-2.42=-0.23^{*}\\
+    \bar x_{1\cdot}-\bar x_{4\cdot}&=2.19-2.31=-0.12\\
+    \bar x_{2\cdot}-\bar x_{3\cdot}&=2.68-2.42=\ \ \,0.26^{*}\\
+    \bar x_{2\cdot}-\bar x_{4\cdot}&=2.68-2.31=\ \ \,0.37^{*}\\
+    \bar x_{3\cdot}-\bar x_{4\cdot}&=2.42-2.31=\ \ \,0.11
+  \end{aligned}$$
+  <p>따라서 $A_1$ 과 $A_2$, $A_1$ 과 $A_3$, $A_2$ 와 $A_3$, $A_2$ 와 $A_4$ 간에
+  <b>개별</b> 유의수준 5%하에서 통계적으로 유의한 차이가 있는 것으로 판단된다.</p>
+</div>
+
+<h2 class="sub">다중검정 문제와 본페로니 보정 <span class="en">multiplicity and the Bonferroni correction</span></h2>
+
+<div class="note">
+  <b>왜 “개별” 유의수준인가.</b> 여러 번 검정을 수행하게 되면 <b>우연에 의한 기각횟수가 증가</b>한다.
+  귀무가설 $H_0:\mu_1=\cdots=\mu_4$ 가 참일 때 우연에 의해 $A_1$ 과 $A_2$ 가 다르다고 결론 내릴 확률이 $0.05$ 인데,
+  $A_1$ 과 $A_3$ 역시 우연히 다르다고 판단할 확률이 $0.05$ 만큼 추가로 존재하고,
+  이런 식으로 총 $\binom{4}{2}=6$ 번의 경우의 수가 존재하기 때문이다.
+</div>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">본페로니 보정 <span class="en">Bonferroni correction</span></span>
+  <p>유의수준을 <b>총검정횟수만큼 나누는</b> 방법이다.
+  검정 수에 맞추어서 더 엄격한 임계값을 요구하는 것으로,
+  전체 유의수준을 5%로 설정했다면 여기에다 총검정횟수 $6$ 을 나눈 $\tfrac56\%$ 를
+  각 검정의 개별 유의수준으로 사용한다.
+  R 에서 $P$ 값으로 표현할 때에는, 보정 전 $P$ 값에 전체 검정횟수를 곱해서 구현하기도 한다.</p>
+</div>
+
+<pre class="rout">pairwise.t.test(wear, group, p.adj = "none")   # 보정 전의 LSD
+
+        Pairwise comparisons using t tests with pooled SD
+
+data:  wear and group
+
+     a1       a2      a3
+a2   0.00036  -       -
+a3   0.03971  0.02290 -
+a4   0.25198  0.00298 0.29156
+
+P value adjustment method: none
+
+
+pairwise.t.test(wear, group, p.adj = "bonferroni")   # 본페로니 보정
+
+        Pairwise comparisons using t tests with pooled SD
+
+data:  wear and group
+
+     a1       a2      a3
+a2   0.0021   -       -
+a3   0.2383   0.1374  -
+a4   1.0000   0.0179  1.0000
+
+P value adjustment method: bonferroni</pre>
+
+<div class="note">
+  보정 전에는 유의했던 $A_1$–$A_3$($0.03971$)과 $A_2$–$A_3$($0.02290$)가
+  본페로니 보정 후에는 $0.2383$, $0.1374$ 로 <b>유의하지 않게</b> 바뀐다.
+  보정 전 $P$ 값에 $6$ 을 곱한 값(최대 $1$)이 보정 후 $P$ 값이다.
+</div>
+
+<h2 class="sub">투키의 HSD 검정 <span class="en">Tukey's HSD</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">투키의 HSD 검정 <span class="en">Tukey's Honestly Significant Difference</span></span>
+  <p>모든 처리 평균 중 <b>가장 큰 표본평균과 가장 작은 표본평균의 차이(범위)</b>를 스튜던트화(student)하여,
+  해당 분포(<b>스튜던트화 범위 분포</b>)를 참조함으로써
+  개별 쌍에 대해 추가적인 보정 없이도 전체 유의수준을 $\alpha$ 로 유지해 준다.
+  그래서 이를 ‘Tukey’s range test’라고 부르기도 한다.</p>
+  <p>참고로 투키의 HSD 검정은 <b>모든 처리 내 표본수가 동일함을 가정</b>한다.</p>
+</div>
+
+<pre class="rout">TukeyHSD(aov.out)   # 투키의 HSD 검정
+
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = wear ~ group, data = wear.dat)
+
+$group
+        diff    lwr          upr         p adj
+a2-a1   0.49    0.19397708   0.78602292  0.0017496
+a3-a1   0.23   -0.06602292   0.52602292  0.1509207
+a4-a1   0.12   -0.17602292   0.41602292  0.6362891
+a3-a2  -0.26   -0.55602292   0.03602292  0.0924227
+a4-a2  -0.37   -0.66602292  -0.07397708  0.0136804
+a4-a3  -0.11   -0.40602292   0.18602292  0.6943908
+
+plot(TukeyHSD(aov(wear ~ group)))   # conf.level = .95 가 default 임</pre>
+
+<p>다중검정을 위해 보정된 위의 결과들을 통해, <b>전체</b> 유의수준 5%에서
+$\mu_1$ 과 $\mu_2$, $\mu_2$ 와 $\mu_4$ 간에 유의한 차이가 있음을 확인할 수 있다
+(보정 방법에 따라 결과가 조금씩 다를 수 있음).</p>
+
+<div class="note">
+  <b>세 방법의 관계.</b> 같은 자료에 대해
+  $LSD$(보정 없음) → 투키 HSD → 본페로니 순으로 <b>점점 더 보수적</b>이다.
+  $LSD$ 는 4쌍을 유의하다고 보았고, 투키 HSD 는 2쌍, 본페로니는 2쌍만 남겼다.
+  “개별 유의수준”을 지킬 것인가 “전체 유의수준”을 지킬 것인가의 문제다.
+</div>
+
+<nav class="pager">
+  <a href="3-2_anova.html">← 이전<small>3.2 분산분석</small></a>
+  <a class="next" href="3-4_unequal-replications.html">다음 →<small>3.4 반복수가 같지 않은 실험</small></a>
+</nav>
+
+</body>
+</html>
