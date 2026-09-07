@@ -25,9 +25,7 @@
   <h1><span class="no">3.2</span>분산분석 <span class="en">analysis of variance</span></h1>
 </header>
 
-<p>일원배치법을 통해 $a$ 개의 수준별 모평균 간에 차이가 존재하는지 검정하는 것은,
-결국 $a$ 개의 수준효과 $\alpha_i$ 가 <b>모두 $0$ 인지</b>(귀무가설) 아니면 <b>적어도 하나가 $0$ 이 아닌지</b>(대립가설)
-확인하는 문제와 같다. <a href="3-1_data-and-model.html">식 (3.1)</a>을 수준효과로 다시 쓰면 다음과 같다.</p>
+<p><a href="3-1_data-and-model.html">식 (3.1)</a>의 모평균 가설을 수준효과로 다시 쓰면 다음과 같다.</p>
 
 <div class="box thm">
   <span class="tag">식 (3.5)</span><span class="title">수준효과에 대한 가설</span>
@@ -35,14 +33,10 @@
   $$H_1:\ \text{모든 }\alpha_i\text{ 가 }0\text{ 인 것은 아니다.}$$
 </div>
 
-<p><b>분산분석</b>은 이러한 가설을 검증하기 위해 총변동을 요인이 설명할 수 있는 <b>수준 간 변동</b>과
-그렇지 않은 <b>수준 내 변동</b>(오차)으로 분할하여, 요인의 여러 수준이 특성값에 유의한 영향을 미치는지를 살펴보는 것이다.</p>
+<p><b>분산분석</b>은 총변동을 요인이 설명하는 <b>수준 간 변동</b>과
+그렇지 않은 <b>수준 내 변동</b>(오차)으로 분할하는 것이다.</p>
 
 <h2 class="sub">3.2.1 총변동의 분할 <span class="en">partitioning the total variation</span></h2>
-
-<p>각 수준별 관측값 $x_{ij}$ 와 전체 평균 $\bar{\bar x}$ 간의 차이를 총편차의 척도로 삼되,
-수준효과 $\alpha_i$ 를 고려해서 각 수준의 평균 $\bar x_{i\cdot}$ 에서 떨어진 정도도 함께 보면
-총편차를 다음과 같이 분해할 수 있다.</p>
 
 $$\underbrace{x_{ij}-\bar{\bar x}}_{\text{총편차}}
   =\underbrace{\left(\bar x_{i\cdot}-\bar{\bar x}\right)}_{\alpha_i\text{ 에 기인하는 편차}}
@@ -87,7 +81,7 @@ $$\underbrace{x_{ij}-\bar{\bar x}}_{\text{총편차}}
 두 조각의 길이를 더하면 총편차가 된다.</figcaption>
 </figure>
 
-<p>식 $(3.6)$ 의 양변을 동시에 제곱하여 전체 $ar$ 개의 데이터의 제곱의 합을 구하면 다음이 성립한다.</p>
+<p>양변을 제곱하여 $ar$ 개 데이터에 대해 모두 더하면 다음이 성립한다.</p>
 
 $$\sum_{i=1}^{a}\sum_{j=1}^{r}\left(x_{ij}-\bar{\bar x}\right)^2
   =\sum_{i=1}^{a}r\left(\bar x_{i\cdot}-\bar{\bar x}\right)^2
@@ -103,15 +97,7 @@ $$\sum_{i=1}^{a}\sum_{j=1}^{r}\left(x_{ij}-\bar{\bar x}\right)^2
 
 $$SS_T=SS_A+SS_E\tag{3.8}$$
 
-<div class="note">
-  식 $(3.7)$ 에서 <b>교차항이 사라지는 것</b>이 이 분해의 핵심이다.
-  각 수준 안에서 $\sum_j\left(x_{ij}-\bar x_{i\cdot}\right)=0$ 이므로
-  $2\sum_i\left(\bar x_{i\cdot}-\bar{\bar x}\right)\sum_j\left(x_{ij}-\bar x_{i\cdot}\right)=0$ 이 된다.
-  덕분에 “총변동 = 요인변동 + 오차변동” 이라는 <b>깔끔한 덧셈</b>이 성립한다.
-</div>
-
-<p>실제로 데이터로부터 $SS_T,\ SS_A,\ SS_E$ 를 계산할 때는 일일이 편차를 계산하는 대신
-<b>수정항</b>(correction term) $CT$ 를 활용하면 좀 더 간편한 계산이 가능하다.</p>
+<p>실제 계산에서는 편차를 일일이 구하는 대신 <b>수정항</b>(correction term) $CT$ 를 쓴다.</p>
 
 <div class="box def">
   <span class="tag">식 (3.9)~(3.12)</span><span class="title">제곱합의 계산식</span>
@@ -123,7 +109,7 @@ $$SS_T=SS_A+SS_E\tag{3.8}$$
 
 <h2 class="sub">3.2.2 자유도의 분할 <span class="en">partitioning the degrees of freedom</span></h2>
 
-<p>제곱합의 자유도는 <b>‘편차 항의 개수에서 부과되는 선형 제약조건의 수를 뺀 것’</b>으로 정의된다.</p>
+<p>자유도 $=$ <b>편차 항의 개수 $-$ 부과되는 선형 제약조건의 수</b>.</p>
 
 <div class="scroll"><table class="data">
   <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-2&gt; 각 제곱합의 자유도</caption>
@@ -139,18 +125,12 @@ $$SS_T=SS_A+SS_E\tag{3.8}$$
       <td>$\phi_E=a(r-1)$</td></tr>
 </table></div>
 
-<p>총변동이 원인별로 분할되는 것과 마찬가지로, 자유도도 다음과 같이 분할된다.</p>
+<p>자유도도 같은 방식으로 분할된다.</p>
 $$\phi_T=\phi_A+\phi_E\tag{3.13}$$
-
-<div class="note">
-  잔차제곱합의 제약조건은 <b>수준마다 하나씩, 모두 $a$ 개</b>다.
-  그래서 $\phi_E=ar-a=a(r-1)$ 이 되고,
-  $(ar-1)=(a-1)+a(r-1)$ 로 자유도의 덧셈이 정확히 맞아떨어진다.
-</div>
 
 <h2 class="sub">3.2.3 평균제곱의 기댓값과 $F$ 검정 <span class="en">expected mean squares and the F test</span></h2>
 
-<p><b>평균제곱</b>(MS: Mean Square)은 ‘제곱합을 해당 자유도로 나누어 준 값’이다.</p>
+<p><b>평균제곱</b>(MS: Mean Square) $=$ 제곱합 $\div$ 해당 자유도.</p>
 $$MS_A=\frac{SS_A}{a-1}\tag{3.14}\qquad\qquad MS_E=\frac{SS_E}{a(r-1)}\tag{3.15}$$
 
 <div class="box thm">
@@ -158,14 +138,6 @@ $$MS_A=\frac{SS_A}{a-1}\tag{3.14}\qquad\qquad MS_E=\frac{SS_E}{a(r-1)}\tag{3.15}
   <p>유도 과정은 생략하고 결과만 쓰면 다음과 같다.</p>
   $$E(MS_A)=\sigma_E^2+r\sum_{i=1}^{a}\frac{\alpha_i^2}{a-1}\tag{3.16}$$
   $$E(MS_E)=\sigma_E^2\tag{3.17}$$
-</div>
-
-<div class="note">
-  <b>이 두 식이 $F$ 검정의 전부다.</b>
-  $MS_E$ 는 언제나 $\sigma_E^2$ 의 <b>불편추정량</b>이다.
-  반면 $MS_A$ 는 $H_0$ 가 참일 때만($\alpha_i$ 가 모두 $0$ 일 때만) 식 $(3.16)$ 의 둘째 항이 $0$ 이 되어
-  역시 $\sigma_E^2$ 의 불편추정량이 되고, $H_0$ 가 거짓이면 $\sigma_E^2$ 보다 <b>커진다</b>.
-  그러니 둘의 비를 보면 된다.
 </div>
 
 <div class="box def">
@@ -186,18 +158,16 @@ $$MS_A=\frac{SS_A}{a-1}\tag{3.14}\qquad\qquad MS_E=\frac{SS_E}{a(r-1)}\tag{3.15}
   <tr><td>$T$</td><td>$SS_T$</td><td>$ar-1$</td><td></td><td></td><td></td></tr>
 </table></div>
 
-<p>검정통계량 $F_0$ 의 값이 $F\left(a-1,\ a(r-1);\ \alpha\right)$ 보다 커지면 귀무가설을 기각하고,
-요인이 특성값에 영향을 미친다고 판단하여 어떤 수준(처리)들 간에 평균 차이가 존재한다고 결론지을 수 있다.</p>
+<p>$F_0$ 가 $F\left(a-1,\ a(r-1);\ \alpha\right)$ 보다 크면 귀무가설을 기각하고,
+어떤 수준들 간에 평균 차이가 존재한다고 결론짓는다.</p>
 
 <h2 class="sub">예 3.1 일원배치 분산분석 <span class="en">worked example</span></h2>
 
 <div class="box ex">
   <span class="tag">예 3.1</span><span class="title">직물 마모도 — 납품업체 4곳의 비교</span>
-  <p>어느 의류 제조회사에서는 직물의 긁힘에 대한 저항성을 측정하기 위하여
-  검사 대상을 마모도 검사 기계에 몇 사이클 돌린 후 감소된 무게를 그램으로 측정한다.
-  이 회사는 원단 납품업체 $A_1,A_2,A_3,A_4$ 의 제품을 마모도의 측면에서 비교하고자 한다.
-  각 납품업체의 제품 중 4개를 랜덤하게 선택하여 일원배치법에 의해 실험한 결과가 다음과 같다.
-  납품업체들 간에 마모도에 유의한 차이가 있는지를 분산분석을 통하여 검정하라.</p>
+  <p>원단 납품업체 $A_1\sim A_4$ 의 제품 중 각 4개를 랜덤하게 선택하여
+  마모도(감소된 무게, g)를 측정하였다.
+  납품업체 간에 마모도에 유의한 차이가 있는지 분산분석으로 검정하라.</p>
 
   <div class="scroll"><table class="data">
     <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-4&gt; 마모도 검사자료</caption>
@@ -232,11 +202,6 @@ $$MS_A=\frac{SS_A}{a-1}\tag{3.14}\qquad\qquad MS_E=\frac{SS_E}{a(r-1)}\tag{3.15}
       <p>$F_0=8.78$ 이 $F(3,12;0.01)=5.95$ 보다 크므로 귀무가설을 기각한다. 즉,
       <b>‘납품업체에 따라 직물 마모도에 차이가 존재한다’</b>라고 결론 내린다.</p></li>
   </ol>
-</div>
-
-<div class="note">
-  <b>별표 표기.</b> 요인 $A$ 의 수준효과가 $\alpha=0.05$ 에서만 유의하면 계산된 $F_0$ 에 $^{*}$ 를,
-  $\alpha=0.01$ 에서 유의한 경우에는 $^{**}$ 를 붙여서 표시한다.
 </div>
 
 <h2 class="sub">R 로 확인하기 <span class="en">in R</span></h2>
@@ -281,8 +246,7 @@ qf(.99, df1 = 3, df2 = 12)
   <b>Welch 방식</b>의 $F$ 검정을 실시한다.
 </div>
 
-<p><b>비고 2.</b> 앞의 <code>aov</code> 또는 <code>oneway.test</code> 를 사용하기 전에
-등분산 가정이 성립하는지 다음 검정을 통해 먼저 확인해야 한다.</p>
+<p><b>비고 2.</b> <code>aov</code> 를 쓰기 전에 등분산 가정을 먼저 확인해야 한다.</p>
 
 <pre class="rout">bartlett.test(wear ~ group, data = wear.dat)
 
@@ -291,8 +255,7 @@ qf(.99, df1 = 3, df2 = 12)
 data:  wear by group
 Bartlett's K-squared = 4.3318, df = 3, p-value = 0.2278</pre>
 
-<p>$P$ 값이 $0.2278$ 로 통상적인 유의수준 $0.05$ 보다 훨씬 더 크게 나타나서
-등분산 가정을 기각할 근거가 없으므로, 바틀렛 검정의 귀무가설인 <b>등분산 가정을 채택</b>한다.</p>
+<p>$P=0.2278>0.05$ 이므로 <b>등분산 가정을 채택</b>한다.</p>
 
 <div class="note">
   <b>비고 3 — 랜덤화.</b> &lt;표 3-4&gt;의 16개 데이터를 얻기 위해서는

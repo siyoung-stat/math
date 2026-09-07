@@ -25,17 +25,10 @@
   <h1><span class="no">3.5</span>랜덤모형 <span class="en">the random effects model</span></h1>
 </header>
 
-<p>지금까지는 <b>고정모형</b>을 가정하여 요인의 수준들이 연구자가 관심 있는 특정 값을 갖도록 설정된 경우를 살펴보았다.
-반면, <b>랜덤모형</b>은 요인 $A$ 가 실험일, 원료 로트, 블록, 원자재의 배치(batch) 등과 같이
-요인의 수준들이 고정되어 있지 않고 <b>랜덤하게 선택된</b> 경우의 구조모형이다.</p>
-
-<div class="note">
-  랜덤모형에서는 요인 $A$ 의 수준들이 랜덤하게 선택되기 때문에
-  각각의 수준에서의 값들이 <b>기술적인 의미를 갖지 못하고</b> 그저 모집단에서 무작위로 뽑힌 값이라고 볼 수 있다.
-  그리하여 <b>수준 간 산포의 크기</b>에만 관심이 있다.
-  요인 수준 간 산포가 존재하는 경우, 자료의 총분산 중에서 요인 $A$ 에 의한 분산의 비율인
-  <b>기여율</b>의 추정에 관심을 갖게 된다.
-</div>
+<p><b>랜덤모형</b>은 요인 $A$ 의 수준들이 실험일 · 원료 로트 · 블록 · 배치(batch) 처럼
+고정되어 있지 않고 <b>랜덤하게 선택된</b> 경우의 구조모형이다.
+수준 자체가 기술적 의미를 갖지 못하므로 <b>수준 간 산포의 크기</b>, 즉
+총분산 중 요인 $A$ 에 의한 분산의 비율인 <b>기여율</b>의 추정에 관심을 갖는다.</p>
 
 <h2 class="sub">구조모형과 가설 <span class="en">model and hypotheses</span></h2>
 
@@ -51,25 +44,17 @@
   </ul>
 </div>
 
-<div class="note">
-  고정모형의 $\alpha_i$ 는 <b>제약 $\sum\alpha_i=0$ 을 만족하는 상수</b>였지만,
-  랜덤모형의 $a_i$ 는 <b>평균 $0$, 분산 $\sigma_A^2$ 인 확률변수</b>다.
-  이 한 글자 차이가 “수준별 평균값”에 대한 관심을 “수준 간 산포의 크기”에 대한 관심으로 바꾼다.
-</div>
-
 <div class="box thm">
   <span class="tag">식 (3.26)</span><span class="title">랜덤모형의 가설</span>
   $$H_0:\ \sigma_A^2=0\quad(\text{랜덤요인이 동질적이다})$$
   $$H_1:\ \sigma_A^2>0\quad(\text{랜덤요인이 이질적이다})$$
 </div>
 
-<p>일원배치법인 경우 랜덤모형에서의 변동의 계산과 자유도의 계산, $F$ 검정은 고정모형에서와 동일하다.
-다시 말해서 <b>가설에만 차이가 나고</b>, 이를 검정하기 위한 분산분석표의 작성은 고정모형에서와 같다.</p>
+<p>변동·자유도의 계산과 $F$ 검정은 고정모형과 <b>완전히 동일</b>하고, 가설만 다르다.</p>
 
 <h2 class="sub">분산성분의 추정 <span class="en">estimating the variance components</span></h2>
 
-<p>이때 관심사는 수준별 평균값의 차이가 아닌 $\sigma_A^2$ 의 <b>추정</b>이다.
-평균제곱 $MS$ 의 기댓값을 구해 보면(유도 과정 생략) 다음과 같다.</p>
+<p>관심사는 $\sigma_A^2$ 의 <b>추정</b>이다. 평균제곱의 기댓값은(유도 생략)</p>
 
 $$E(MS_E)=\sigma_E^2\tag{3.27}\qquad\qquad E(MS_A)=\sigma_E^2+r\,\sigma_A^2\tag{3.28}$$
 
@@ -79,15 +64,7 @@ $$E(MS_E)=\sigma_E^2\tag{3.27}\qquad\qquad E(MS_A)=\sigma_E^2+r\,\sigma_A^2\tag{
   $$\widehat{\sigma_A^2}=\frac{1}{r}\left(MS_A-MS_E\right)\tag{3.30}$$
 </div>
 
-<div class="note">
-  식 $(3.30)$ 은 $(3.28)$ 을 $\sigma_A^2$ 에 대해 푼 것뿐이다.
-  $E(MS_A)-E(MS_E)=r\sigma_A^2$ 이므로 양변을 $r$ 로 나눈다.
-  $H_0$ 가 참이면 $MS_A\approx MS_E$ 라서 추정치가 $0$ 근처에 놓이고,
-  실제로 <b>음수가 나올 수도 있는데</b> 그때는 $\widehat{\sigma_A^2}=0$ 으로 본다.
-</div>
-
-<p>랜덤모형의 구조모형인 식 $(3.25)$ 로부터 자료의 총분산은 요인 $A$ 의 수준에서의 분산과
-오차의 분산의 합으로 다음과 같이 표현된다.</p>
+<p>식 $(3.25)$ 로부터 총분산은 두 분산의 합으로 표현된다.</p>
 $$Var(x_{ij})=Var(a_i)+Var(\varepsilon_{ij})=\sigma_A^2+\sigma_E^2\tag{3.31}$$
 $$\widehat{Var}(x_{ij})=\widehat{\sigma_A^2}+\widehat{\sigma_E^2}\tag{3.32}$$
 
@@ -103,11 +80,8 @@ $$\widehat{Var}(x_{ij})=\widehat{\sigma_A^2}+\widehat{\sigma_E^2}\tag{3.32}$$
 
 <div class="box ex">
   <span class="tag">예 3.5</span><span class="title">화학약품 배치(batch)의 순도</span>
-  <p>화학약품 회사에서는 매년 수백 개의 배치(batch)로 원자재를 정제하여 순도가 높은 화학약품을 만든다.
-  원자재의 품질을 관리하기 위해 수백 개의 배치 중에서 5개의 배치를 랜덤하게 선택하고,
-  선택된 배치당 3개의 시료를 채취해서 정제하여 순도를 측정한다.
-  이 실험을 통해 배치의 평균순도 간에 산포가 존재하는지 파악하라.
-  선택된 15개의 시료에 대한 순도의 측정은 랜덤하게 실시하였다.</p>
+  <p>수백 개의 배치(batch) 중 5개를 랜덤 선택하고 배치당 3개의 시료를 채취해 순도를 측정하였다
+  (측정 순서는 랜덤). 배치의 평균순도 간에 산포가 존재하는지 파악하라.</p>
 
   <div class="scroll"><table class="data">
     <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-8&gt; 배치자료에 의한 화학약품의 순도</caption>
@@ -119,9 +93,7 @@ $$\widehat{Var}(x_{ij})=\widehat{\sigma_A^2}+\widehat{\sigma_E^2}\tag{3.32}$$
     <tr><th>5</th><td>79</td><td>81</td><td>79</td></tr>
   </table></div>
 
-  <p><b>풀이</b> &nbsp;&lt;표 3-8&gt;의 대부분의 자료가 $75$ 근처이기 때문에
-  제곱합의 계산을 간단하게 하기 위하여 자료변환 $y_{ij}=x_{ij}-75$ 를 하였다.
-  이와 같이 변환된 자료와 원래 자료의 제곱합은 동일하다.</p>
+  <p><b>풀이</b> &nbsp;자료가 $75$ 근처이므로 $y_{ij}=x_{ij}-75$ 로 변환한다(제곱합은 동일).</p>
 
   <div class="scroll"><table class="data">
     <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 3-9&gt; 변환된 자료</caption>
@@ -161,8 +133,7 @@ $$\widehat{Var}(x_{ij})=\widehat{\sigma_A^2}+\widehat{\sigma_E^2}\tag{3.32}$$
       $$\widehat{\sigma_A^2}=\frac13\left(MS_A-MS_E\right)=\frac13\left(36.94-1.80\right)=11.71$$
       $$\widehat{Var}(x_{ij})=\widehat{\sigma_A^2}+\widehat{\sigma_E^2}=11.71+1.80=13.51$$
       $$\hat\rho=\frac{\widehat{\sigma_A^2}}{\widehat{Var}(x_{ij})}\times100\%=\frac{11.71}{13.51}\times100\%=86.7\%$$
-      <p>따라서 자료의 총분산 중에서 <b>86.7%는 순수하게 배치 간의 산포 탓</b>으로 설명할 수 있고,
-      <b>13.3%는 배치 내 오차의 산포</b>에 기인한다.</p></li>
+      <p>즉 총분산의 <b>86.7%는 배치 간 산포</b>, <b>13.3%는 배치 내 오차</b>에 기인한다.</p></li>
   </ol>
 </div>
 
@@ -228,10 +199,11 @@ Fixed Effects:
 (Intercept)
       74.87</pre>
 
-<p>여기서 $\hat\sigma_A=3.422\ \left(=\sqrt{11.71}\right)$, $\hat\sigma_E=1.342\ \left(=\sqrt{1.8}\right)$ 임을 알 수 있고,
-$\hat\sigma_A$ 가 $\hat\sigma_E$ 보다 훨씬 더 크므로 <b>배치 간 산포가 유의하다</b>는 것도 간접적으로 확인 가능하다.</p>
+<p>$\hat\sigma_A=3.422\,(=\sqrt{11.71})$, $\hat\sigma_E=1.342\,(=\sqrt{1.8})$ 이며,
+$\hat\sigma_A\gg\hat\sigma_E$ 이므로 <b>배치 간 산포가 유의</b>함을 간접 확인할 수 있다.</p>
 
-<p><b>비고 2.</b> $\hat\sigma_A$ 와 $\hat\sigma_E$ 의 95% 신뢰구간은 다음 코드를 통해 구할 수 있다.</p>
+<p><b>비고 2.</b> $\hat\sigma_A,\ \hat\sigma_E$ 의 95% 신뢰구간
+(<code>.sig01</code> $=\sigma_A$, <code>.sigma</code> $=\sigma_E$).</p>
 
 <pre class="rout">confint(lmer(y ~ (1 | x)))
 Computing profile confidence intervals ...
@@ -239,11 +211,6 @@ Computing profile confidence intervals ...
 .sig01        1.6923760     6.794179
 .sigma        0.9151474     2.240424
 (Intercept)  71.4923472    78.240985</pre>
-
-<div class="note">
-  <code>.sig01</code> 이 $\sigma_A$, <code>.sigma</code> 가 $\sigma_E$ 의 신뢰구간이다.
-  두 구간이 <b>겹치지 않는다</b>는 점도 배치 간 산포가 오차 산포보다 확실히 크다는 것을 보여 준다.
-</div>
 
 <nav class="pager">
   <a href="3-4_unequal-replications.html">← 이전<small>3.4 반복수가 같지 않은 실험</small></a>
