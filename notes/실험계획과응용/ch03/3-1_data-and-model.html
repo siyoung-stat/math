@@ -25,6 +25,27 @@
 실험단위를 <b>완전 랜덤하게</b> 배정하여 얻은 자료를 분석하는 방법.
 <a href="../ch02/2-2_two-means-independent.html">2.2절</a>의 두 모평균 비교를 $a$ 개로 확장한 것이다.</p>
 
+<div class="box def">
+  <span class="tag">정의</span><span class="title">완전확률화 실험 <span class="en">completely randomized design, 완전랜덤화계획법</span></span>
+  <p>$a$ 개의 처리에 $N$ 개의 실험단위를 <b>완전히 랜덤하게</b> 배정하는 계획.
+  <b>블록이 없으므로</b> 구조모형에 블록 항이 들어가지 않는다.
+  일원배치법은 이 계획에서 얻은 자료를 분석하는 방법이다.</p>
+  <p><b>랜덤화</b> — 실험단위에 $1\sim N$ 번호를 매기고 무작위 배열을 구해
+  앞에서부터 $r_1$ 개는 $A_1$, 다음 $r_2$ 개는 $A_2$, … 로 배정한다 (R: <code>sample(N)</code>).</p>
+</div>
+
+<div class="scroll"><table class="data">
+  <tr><th>장점</th><th>단점 · 조건</th></tr>
+  <tr><td>처리 수·반복수에 <b>제한이 없다</b></td>
+      <td>실험단위가 <b>이질적이면 비효율</b> — 이질성이 오차로 들어가 $MS_E$ 가 커진다</td></tr>
+  <tr><td>처리별 <b>반복수가 달라도</b> 분석이 용이 (→ <a href="3-4_unequal-replications.html">3.4절</a>)</td>
+      <td>이질적일 때는 <b>블록화</b>(난괴법·확률화블록계획)를 써야 한다</td></tr>
+  <tr><td><b>결측값</b>이 있어도 분석이 용이</td>
+      <td>블록효과가 있는데 무시하면 요인효과를 검출하기 어려워진다</td></tr>
+  <tr><td>계획·분석이 가장 단순하고 <b>오차자유도가 가장 크다</b></td>
+      <td>피할 수 있는 외부 요인은 블록화로, 피할 수 없는 것은 랜덤화로 상쇄시킨다</td></tr>
+</table></div>
+
 <h2 class="sub">고정요인과 랜덤요인 <span class="en">fixed vs. random factors</span></h2>
 
 <div class="box def">

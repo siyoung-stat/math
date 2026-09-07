@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실험계획과 응용 · 시험노트</title>
+<link rel="stylesheet" href="../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  table.data td, table.data th, table.anova td, table.anova th{ font-size:0.86rem; }
+  .ck{ margin:14px 0; padding:12px 16px; border:1px solid #d9a441; border-radius:8px; background:#fff7e6; }
+  .ck ol{ margin:6px 0 0; padding-left:22px; } .ck li{ margin:6px 0; }
+  .ck .h{ font-weight:800; font-size:0.74rem; letter-spacing:0.05em; color:#c98a1e; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../index.html">⌂ 홈</a>
+  <div class="ch">실험계획과 응용 · 1~3장</div>
+  <h1><span class="no">시험노트</span>실험계획과 응용 <span class="en">exam sheet</span></h1>
+</header>
+
+<p class="lead">분류축 — <b>1장</b> 원리(5개)·절차(7단계) · <b>2장</b> 비교대상 × 표본구조 · <b>3장</b> 모형(고정/랜덤) × 반복수(균형/불균형)</p>
+
+<h2 class="sub">1장 · 원리와 절차 <span class="en">principles &amp; procedure</span></h2>
+
+<div class="box def">
+  <span class="tag">데이터</span><span class="title">두 종류</span>
+  <p><b>관찰데이터</b> = 랜덤화 없이 조사로 얻은 자료 &nbsp;|&nbsp;
+  <b>실험데이터</b> = 계획·관리된 실험으로 얻은 자료</p>
+</div>
+
+<div class="scroll"><table class="data">
+  <tr><th>원리</th><th>하는 일</th><th>얻는 것</th></tr>
+  <tr><th>랜덤화</th><td>배정·순서를 랜덤하게</td><td>기타 원인의 편향 누적 차단 → <b>오차 독립성 가정</b> 정당화</td></tr>
+  <tr><th>블록화</th><td>블록 내 동질 · 블록 간 이질로 나눔</td><td>블록 변동을 오차에서 빼냄 → <b>$MS_E$ 감소</b></td></tr>
+  <tr><th>반복</th><td>같은 조건에서 2회 이상</td><td>① <b>실험오차 추정</b> ② 평균으로 정밀도↑</td></tr>
+  <tr><th>교락</th><td>고차 교호작용을 블록과 겹침</td><td>실험 효율↑ (개별 효과 분리는 포기)</td></tr>
+  <tr><th>직교화</th><td>요인 간 직교성 유지</td><td>적은 횟수로 <b>독립 추정</b>, 정도↑</td></tr>
+</table></div>
+
+<div class="box thm">
+  <span class="tag">절차</span><span class="title">7단계</span>
+  <p>목적 설정 → 반응변수 → 요인·수준 → 계획 선정 → 수행 → 분석 → 결론·조치
+  (목적 미달이면 <b>다음 단계 실험으로 순환</b>)</p>
+</div>
+
+<h2 class="sub">2장 · 두 모집단의 비교 — 검정 선택표 <span class="en">which test?</span></h2>
+
+<div class="scroll"><table class="data">
+  <tr><th>비교 대상</th><th>표본 구조</th><th>검정</th><th>검정통계량</th><th>자유도</th></tr>
+  <tr><th rowspan="3">두 모평균</th>
+      <td>독립 · <b>소표본</b> · 등분산</td><td>독립 이표본 $t$</td>
+      <td>$t=\dfrac{(\bar x_1-\bar x_2)-\delta_0}{s_p\sqrt{\frac1{n_1}+\frac1{n_2}}}$</td>
+      <td>$n_1+n_2-2$</td></tr>
+  <tr><td>독립 · <b>대표본</b>($n_i\gt30$)</td><td>$z$ 검정</td>
+      <td>같은 꼴에서 $t\to z$ (정규성 가정 불필요)</td><td>—</td></tr>
+  <tr><td><b>짝지어짐</b>(블록)</td><td>짝지어진 $t$</td>
+      <td>$t=\dfrac{\bar d-\delta_0}{s_d/\sqrt n}$, &nbsp;$d_i=x_{1i}-x_{2i}$</td>
+      <td>$n-1$</td></tr>
+  <tr><th>두 모분산</th><td>독립</td><td>$F$ 검정</td>
+      <td>$F=\dfrac{V_1}{V_2}$</td><td>$(n_1-1,\ n_2-1)$</td></tr>
+</table></div>
+
+$$s_p^2=\frac{(n_1-1)V_1+(n_2-1)V_2}{n_1+n_2-2}\qquad
+  \bar d=\frac{\sum d_i}{n},\quad V_d=\frac{\sum(d_i-\bar d)^2}{n-1}$$
+
+<div class="scroll"><table class="data">
+  <tr><th>대립가설</th><th>기각역 ($t$ 검정, 자유도 $\phi$)</th><th>기각역 ($F$ 검정)</th></tr>
+  <tr><td>$\gt$ (우측)</td><td>$t\gt t(\phi;\alpha)$</td><td>$F\gt F(\phi_1,\phi_2;\alpha)$</td></tr>
+  <tr><td>$\lt$ (좌측)</td><td>$t\lt-t(\phi;\alpha)$</td><td>$F\lt 1/F(\phi_2,\phi_1;\alpha)$</td></tr>
+  <tr><td>$\ne$ (양측)</td><td>$|t|\gt t(\phi;\alpha/2)$</td><td>위 두 임계값을 $\alpha/2$ 로</td></tr>
+</table></div>
+
+<p>신뢰구간은 모두 <b>추정량 $\pm$ 임계값 $\times$ 추정량의 표준편차</b> 꼴이다.</p>
+$$(\bar x_1-\bar x_2)\pm t\!\left(\phi;\tfrac\alpha2\right)s_p\sqrt{\tfrac1{n_1}+\tfrac1{n_2}}
+  \qquad
+  \bar d\pm t\!\left(n-1;\tfrac\alpha2\right)\frac{s_d}{\sqrt n}$$
+
+<div class="ck">
+  <div class="h">2장 함정</div>
+  <ol>
+    <li>짝지어진 자료에 <b>독립 이표본 $t$</b> 를 쓰면 안 된다 — 쌍 안의 두 값은 독립이 아니다.
+      차이 $d_i$ 를 취하면 블록효과가 소거되어 분모가 작아진다.</li>
+    <li>$F$ 검정의 <b>양측 임계값은 서로 역수</b> 관계 — $F_{1-\alpha/2}(\phi_1,\phi_2)=1/F_{\alpha/2}(\phi_2,\phi_1)$.
+      신뢰구간 오른쪽 끝에서 자유도 순서가 뒤바뀌는 것은 오타가 아니다.</li>
+    <li>독립 이표본 $t$ 는 <b>등분산 가정</b>이 전제 → 쓰기 전에 $F$ 검정(또는 바틀렛)으로 확인.
+      등분산을 못 쓰면 <b>Welch</b> 방식.</li>
+    <li>$\alpha$ 와 $\beta$ 는 <b>동시에 줄일 수 없다</b> → $\alpha$ 고정 후 $\beta$ 최소화. $1-\beta$ = 검정력.</li>
+  </ol>
+</div>
+
+<h2 class="sub">3장 · 완전확률화 실험 <span class="en">completely randomized design</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">완전확률화 실험 <span class="en">CRD, 완전랜덤화계획법</span></span>
+  <p>$a$ 개의 처리에 $N$ 개의 실험단위를 <b>완전히 랜덤하게</b> 배정하는 계획.
+  <b>블록이 없다</b>. 이 계획에서 얻은 자료를 분석하는 것이 <b>일원배치법</b>이다.</p>
+  $$x_{ij}=\mu+\alpha_i+\varepsilon_{ij}\qquad(\text{블록 항이 없다})$$
+  <p><b>랜덤화 방법</b> — 실험단위에 $1\sim N$ 번호를 매기고 무작위 배열을 구해,
+  앞에서부터 $r_1$ 개는 $A_1$, 다음 $r_2$ 개는 $A_2$, … 로 배정한다 (R: <code>sample(N)</code>).</p>
+</div>
+
+<div class="scroll"><table class="data">
+  <tr><th>장점</th><th>단점 · 조건</th></tr>
+  <tr><td>처리 수·반복수에 <b>제한이 없다</b></td>
+      <td>실험단위가 <b>이질적이면 비효율</b> — 그 이질성이 전부 오차로 들어가 $MS_E$ 가 커진다</td></tr>
+  <tr><td>처리별 <b>반복수가 달라도</b> 분석이 용이 (→ 3.4절)</td>
+      <td>이질적일 때는 <b>블록화</b>(난괴법·확률화블록계획)로 가야 한다</td></tr>
+  <tr><td><b>결측값</b>이 있어도 분석이 용이</td>
+      <td rowspan="2">외부 요인 중 <b>피할 수 있는 것은 블록화</b>로,
+        <b>피할 수 없는 것은 랜덤화</b>로 상쇄시키는 것이 원칙</td></tr>
+  <tr><td>계획·분석이 가장 단순하고 <b>오차자유도가 가장 크다</b></td></tr>
+</table></div>
+
+<div class="scroll"><table class="data">
+  <tr><th></th><th>완전확률화 (CRD)</th><th>확률화블록 (난괴법)</th></tr>
+  <tr><th>실험단위</th><td>균질</td><td>이질 — 블록으로 묶어 통제</td></tr>
+  <tr><th>구조모형</th><td>$\mu+\alpha_i+\varepsilon_{ij}$</td><td>$\mu+\alpha_i+\beta_j+\varepsilon_{ij}$</td></tr>
+  <tr><th>$\phi_E$</th><td>$N-a$ (가장 큼)</td><td>블록 자유도만큼 줄어듦</td></tr>
+  <tr><th>반복수</th><td>달라도 무관</td><td>블록마다 모든 처리가 있어야 함</td></tr>
+</table></div>
+
+<h2 class="sub">3장 · 일원배치법 — 상황 판별표 <span class="en">which model?</span></h2>
+
+<div class="scroll"><table class="data">
+  <tr><th>상황</th><th>가설</th><th>$(\phi_A,\ \phi_E)$</th><th>사후에 구하는 것</th></tr>
+  <tr><th>고정모형 · 균형 ($r$)</th>
+      <td>$H_0:\alpha_1=\cdots=\alpha_a=0$</td><td>$(a-1,\ a(r-1))$</td>
+      <td>모평균 CI · LSD · 다중비교</td></tr>
+  <tr><th>고정모형 · 불균형 ($r_i$)</th>
+      <td>같음</td><td>$(a-1,\ N-a)$</td>
+      <td>수준마다 <b>폭이 다른</b> CI</td></tr>
+  <tr><th>랜덤모형</th>
+      <td>$H_0:\sigma_A^2=0$</td><td>같음</td>
+      <td>분산성분 · <b>기여율</b></td></tr>
+</table></div>
+
+<div class="box def">
+  <span class="tag">모형</span><span class="title">고정 vs 랜덤</span>
+  <p><b>고정</b>: $\alpha_i$ 는 $\sum\alpha_i=0$ 인 <b>상수</b>. 수준 자체가 기술적 의미 (온도, 품종).<br>
+  <b>랜덤</b>: $a_i\sim N(0,\sigma_A^2)$ 인 <b>확률변수</b>. 수준이 무작위 추출 (배치, 실험일, 작업자).</p>
+  $$x_{ij}=\mu+\alpha_i+\varepsilon_{ij},\qquad \varepsilon_{ij}\ \text{iid}\ N(0,\ \sigma_E^2)$$
+  <p>오차 가정 4개 — <b>정규성 · 독립성 · 불편성 · 등분산성</b></p>
+</div>
+
+<h3 class="sub">제곱합·자유도 — 균형과 불균형 대조</h3>
+
+<div class="scroll"><table class="data">
+  <tr><th></th><th>균형 (반복 $r$)</th><th>불균형 (반복 $r_i$, $N=\sum r_i$)</th></tr>
+  <tr><th>$CT$</th><td>$T^2/(ar)$</td><td>$T^2/N$</td></tr>
+  <tr><th>$SS_T$</th><td colspan="2">$\sum\sum x_{ij}^2-CT$</td></tr>
+  <tr><th>$SS_A$</th><td>$\sum T_{i\cdot}^2/r-CT$</td><td>$\sum T_{i\cdot}^2/r_i-CT$</td></tr>
+  <tr><th>$SS_E$</th><td colspan="2">$SS_T-SS_A$</td></tr>
+  <tr><th>$\phi_T$</th><td>$ar-1$</td><td>$N-1$</td></tr>
+  <tr><th>$\phi_A$</th><td colspan="2">$a-1$</td></tr>
+  <tr><th>$\phi_E$</th><td>$a(r-1)$</td><td>$N-a$</td></tr>
+</table></div>
+
+<div class="scroll"><table class="anova">
+  <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th><th>기각역</th></tr>
+  <tr><td>$A$</td><td>$SS_A$</td><td>$\phi_A$</td><td>$MS_A=SS_A/\phi_A$</td>
+      <td>$MS_A/MS_E$</td><td>$F_0\gt F(\phi_A,\phi_E;\alpha)$</td></tr>
+  <tr><td>$E$</td><td>$SS_E$</td><td>$\phi_E$</td><td>$MS_E=SS_E/\phi_E$</td><td></td><td></td></tr>
+  <tr><td>$T$</td><td>$SS_T$</td><td>$\phi_T$</td><td></td><td></td><td></td></tr>
+</table></div>
+
+<div class="box thm">
+  <span class="tag">근거</span><span class="title">왜 분산비인가</span>
+  $$E(MS_E)=\sigma_E^2,\qquad E(MS_A)=\sigma_E^2+r\sum\frac{\alpha_i^2}{a-1}$$
+  <p>$MS_E$ 는 항상 $\sigma_E^2$ 의 불편추정량, $MS_A$ 는 $H_0$ 참일 때만 그렇고 거짓이면 커진다.
+  $^{*}$ = $\alpha=0.05$ 유의, $^{**}$ = $\alpha=0.01$ 유의.</p>
+</div>
+
+<h3 class="sub">사후분석 3방법</h3>
+
+<div class="scroll"><table class="data">
+  <tr><th>방법</th><th>통제하는 유의수준</th><th>임계값</th><th>보수성</th></tr>
+  <tr><th>$LSD$</th><td>개별</td>
+      <td>$t\!\left(\phi_E;\frac\alpha2\right)\sqrt{\dfrac{2MS_E}{r}}$</td><td>낮음</td></tr>
+  <tr><th>본페로니</th><td>전체</td>
+      <td>개별 유의수준을 $\alpha/k$ ($k=\binom{a}{2}$)</td><td><b>가장 높음</b></td></tr>
+  <tr><th>투키 HSD</th><td>전체</td>
+      <td>스튜던트화 범위 분포</td><td>중간 (반복수 동일 가정)</td></tr>
+</table></div>
+
+$$\mu_i\ \text{의 CI}:\ \bar x_{i\cdot}\pm t\!\left(\phi_E;\tfrac\alpha2\right)\sqrt{\frac{MS_E}{r_i}}
+  \qquad
+  (\mu_i-\mu_j)\ \text{의 CI}:\ (\bar x_{i\cdot}-\bar x_{j\cdot})\pm t\!\left(\phi_E;\tfrac\alpha2\right)\sqrt{\frac{2MS_E}{r}}$$
+
+<h3 class="sub">랜덤모형 — 분산성분과 기여율</h3>
+
+$$\widehat{\sigma_E^2}=MS_E,\qquad
+  \widehat{\sigma_A^2}=\frac{1}{r}\left(MS_A-MS_E\right),\qquad
+  \hat\rho=\frac{\widehat{\sigma_A^2}}{\widehat{\sigma_A^2}+\widehat{\sigma_E^2}}\times100\%$$
+
+<div class="ck">
+  <div class="h">3장 함정</div>
+  <ol>
+    <li>$\phi_E=a(r-1)$ — $ar-1$ 은 $\phi_T$ 다. 불균형이면 $\phi_E=N-a$.</li>
+    <li><b>완전랜덤화</b>는 실험단위가 <b>균질</b>할 때 효과적. 이질적이면 블록화(난괴법)로 가야 한다.</li>
+    <li>오차 가정에 <b>‘중심성’은 없다</b> — 불편성이 맞다.</li>
+    <li>고정모형과 랜덤모형은 <b>$F_0$ 와 $P$ 값이 완전히 같다</b>. 가설과 사후 관심사만 다르다.</li>
+    <li>$\widehat{\sigma_A^2}$ 이 음수로 나오면 <b>$0$ 으로 본다</b>.</li>
+    <li>자료변환 $y=x-c$ 는 <b>제곱합·분산이 불변</b> (평균만 $c$ 만큼 이동) → 계산을 줄이는 정석.</li>
+    <li>$LSD$ 는 <b>실험 전에 정한</b> 비교에만 쓴다. 결과를 보고 고른 쌍이면 보정 필요.</li>
+    <li>$F$ 검정 전 <b>바틀렛 검정</b>으로 등분산 확인, 후에 <b>잔차 대 예측치 · 정규 Q–Q</b> 로 가정 점검.</li>
+    <li>불균형자료는 검정력이 떨어진다 — <b>균형자료일 때 최대</b>.</li>
+  </ol>
+</div>
+
+<h2 class="sub">R 명령 요약 <span class="en">R commands</span></h2>
+
+<div class="scroll"><table class="data">
+  <tr><th>목적</th><th>명령</th></tr>
+  <tr><td>두 모평균 (독립/짝)</td><td><code>t.test(x, y, var.equal=T)</code> / <code>t.test(x, y, paired=T)</code></td></tr>
+  <tr><td>두 모분산</td><td><code>var.test(x, y)</code></td></tr>
+  <tr><td>등분산 검정 (다집단)</td><td><code>bartlett.test(y ~ x)</code></td></tr>
+  <tr><td>분산분석</td><td><code>anova &lt;- aov(y ~ x)</code> ; <code>summary(anova)</code></td></tr>
+  <tr><td>임계값 $F(\phi_A,\phi_E;\alpha)$</td><td><code>qf(p=α, df1, df2, lower.tail=FALSE)</code></td></tr>
+  <tr><td>쌍 비교 / 보정</td><td><code>pairwise.t.test(y, x, p.adj="none" | "bonferroni")</code></td></tr>
+  <tr><td>투키 HSD</td><td><code>TukeyHSD(anova)</code> ; <code>plot(TukeyHSD(...))</code></td></tr>
+  <tr><td>분산성분 (랜덤모형)</td><td><code>library(lme4)</code> ; <code>lmer(y ~ (1|x))</code> ; <code>confint(...)</code></td></tr>
+  <tr><td>랜덤화 순서</td><td><code>sample(n)</code></td></tr>
+  <tr><td>잔차 진단</td><td><code>plot(anova, 1)</code> (vs Fitted) ; <code>plot(anova, 2)</code> (Q–Q)</td></tr>
+</table></div>
+
+<h2 class="sub">풀이 순서 <span class="en">solving order</span></h2>
+
+<div class="box thm">
+  <span class="tag">절차</span><span class="title">일원배치 문제를 받으면</span>
+  <ol class="fill">
+    <li><span class="step">판별.</span> 수준이 고정인가 랜덤인가, 반복수가 같은가 다른가 → 위 판별표에서 $(\phi_A,\phi_E)$ 확정.</li>
+    <li><span class="step">가설.</span> 고정 → $\alpha_i$, 랜덤 → $\sigma_A^2$.</li>
+    <li><span class="step">변환.</span> 자료가 한 값 근처면 $y=x-c$.</li>
+    <li><span class="step">계산.</span> $T_{i\cdot}$ → $T$ → $CT$ → $SS_T$ → $SS_A$ → $SS_E$.</li>
+    <li><span class="step">표.</span> 분산분석표 채우고 $F_0$ 와 임계값 비교.</li>
+    <li><span class="step">사후.</span> 고정 → CI·$LSD$·다중비교, 랜덤 → $\widehat{\sigma_A^2}$·$\hat\rho$.</li>
+  </ol>
+</div>
+
+<nav class="pager">
+  <a href="index.html">← 목차<small>실험계획과 응용</small></a>
+</nav>
+
+</body>
+</html>
