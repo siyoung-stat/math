@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회귀분석 · 3장 연습문제</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  .ex{ margin:24px 0; line-height:1.75; }
+  .exn{ font-weight:800; color:var(--def); margin-right:8px; }
+  .mark{ color:#d64541; font-weight:800; margin:0 5px 0 2px; letter-spacing:2px; }
+  .ex ol{ margin:4px 0 0; padding-left:26px; }
+  .ex li{ margin:5px 0; }
+  .answersheet{ page-break-before:always; }
+  .ans{ margin:24px 0; line-height:1.75; }
+  .ans .exn{ color:var(--thm); }
+  .ans ol.fill{ margin:6px 0 0; padding-left:24px; }
+  .ans ol.fill li{ margin:9px 0; }
+  .ans ol.props{ padding-left:24px; }
+  .sec{ margin:34px 0 10px; padding-bottom:4px; border-bottom:2px solid #ddd;
+        font-size:0.9rem; font-weight:700; letter-spacing:0.04em; color:var(--muted); }
+  table.data{ border-collapse:collapse; margin:12px 0; font-size:0.92rem; }
+  table.data th, table.data td{ border:1px solid #bbb; padding:4px 12px; text-align:center; }
+  table.data th{ background:#f0f0f0; font-weight:700; }
+  table.data td.sep, table.data th.sep{ border-left:3px double #888; }
+  .cap{ font-size:0.86rem; color:var(--muted); margin:10px 0 0; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } .mark{ color:#000; } }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">회귀분석 · 3장 단순회귀분석</div>
+  <h1><span class="no">연습문제</span>3장 <span class="en">exercises</span></h1>
+</header>
+
+<p>3장(단순회귀분석) 교재 연습문제 3.1~3.10 과 정답·해설. 정답 시트는 인쇄 시 다음 페이지부터 나온다.
+표기는 본문과 같이 $S_{xx}=\sum(x_i-\bar x)^2$, $S_{yy}=\sum(y_i-\bar y)^2$, $S_{xy}=\sum(x_i-\bar x)(y_i-\bar y)$,
+$s_{y\cdot x}^2=MSE$ 이고, $F_\alpha(k_1,k_2)$ 는 상위 $\alpha$ 분위수이다.</p>
+
+<div class="note"><b>대조 요망</b> — 원본 사진이 가려져 다음 부분은 옮기지 못했다. 교재와 대조해 채울 것.
+<ol>
+  <li><b>3.4</b> — 주어진 요약통계까지만 보인다(소문항 없음). 또 $S_{(xx)}=160.0$ 과 $S_{(xx)}=90.0$ 이 같은 기호로
+    두 번 인쇄돼 있는데, 뒤의 것은 $S_{(yy)}=90.0$ 의 오타로 보인다.</li>
+  <li><b>3.5</b> — 문항 전체가 사진에 없다.</li>
+  <li><b>3.6</b> — 앞부분(모형 설정과 $\hat\beta_0$)이 없고, 뒤쪽 $\hat\beta_i$ · $SSE$ · $\phi_E$ 부분만 보인다.</li>
+  <li><b>3.9 (1)</b> — "가정하자." 다음의 한 구절(추정값 목록으로 보임)이 페이지 오른쪽에 잘려 있다.</li>
+  <li><b>3.10</b> — 자료와 배경 설명까지만 보이고 소문항 (1)(2)… 이 잘려 있다.</li>
+</ol></div>
+
+<div class="sec">자료를 이용한 회귀분석 (3.1~3.2)</div>
+
+<div class="ex"><span class="exn">3.1</span>어떤 큰 공장에서 동일한 기계들의 정비기록에 관한 표본자료를 취하였다.
+이는 기계의 사용연도(age of machines)와 정비비용(maintenance cost) 간에 어떤 관계가 있는가를 알아보기 위한 것이다.
+그 자료는 다음과 같다(표본의 크기 $n=14$).
+  <table class="data">
+    <tr><th>사용연도 $X$<br>(단위 : 년)</th><th>정비비용 $Y$<br>(단위 : 1,000원)</th>
+        <th class="sep">사용연도 $X$<br>(단위 : 년)</th><th>정비비용 $Y$<br>(단위 : 1,000원)</th></tr>
+    <tr><td>3</td><td>39</td><td class="sep">6</td><td>90</td></tr>
+    <tr><td>1</td><td>24</td><td class="sep">9</td><td>140</td></tr>
+    <tr><td>5</td><td>115</td><td class="sep">3</td><td>112</td></tr>
+    <tr><td>8</td><td>105</td><td class="sep">5</td><td>70</td></tr>
+    <tr><td>1</td><td>50</td><td class="sep">7</td><td>186</td></tr>
+    <tr><td>4</td><td>86</td><td class="sep">2</td><td>43</td></tr>
+    <tr><td>2</td><td>67</td><td class="sep">6</td><td>126</td></tr>
+  </table>
+  <ol>
+    <li>이 데이터의 산점도를 그리시오.</li>
+    <li>최소제곱법에 의한 회귀직선을 적합시키시오.</li>
+    <li>추정값의 표준오차 $s_{y\cdot x}$ 를 구하시오.</li>
+    <li>결정계수와 상관계수를 구하시오.</li>
+    <li>분산분석표를 작성하고 회귀직선의 유의 여부를 검정하시오(유의수준 $\alpha=0.05$ 사용).</li>
+    <li>사용연도가 4년인 기계의 평균 정비비용은 어느 정도인가를 추정하시오.</li>
+    <li>잔차 $e_i=y_i-\hat y_i$ 를 구하고 잔차의 합이 $0$ 임을 확인하시오.</li>
+    <li>잔차들의 $x_i$ 에 대한 가중합, $\sum x_ie_i$ 를 구하시오.</li>
+    <li>잔차들의 $\hat y_i$ 에 대한 가중합 $\sum\hat y_ie_i$ 를 구하시오.</li>
+    <li>두 변수 $X,Y$ 를 표준화된 변수(식 (3.43) 참조)로 고친 후 회귀직선을 적합시키고,
+      그 회귀계수가 두 변수 $X,Y$ 간의 상관계수와 같음을 밝히시오.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">3.2</span>자동차의 무게가 무거우면 이를 움직이는 데 더 많은 연료가 소모된다는 것은 알려진 사실이다.
+자동차의 무게와 자동차를 1km 움직이는 데 필요한 에너지량과의 함수관계를 정확히 판단하기 위하여
+$A$ 자동차회사는 다음의 자료를 실험을 통하여 얻었다. 실험 비용이 많이 드는 관계로 9번만 실험하였다.
+  <table class="data">
+    <tr><th>무게 $X$<br>(단위 : 1,000kg)</th><th>에너지 소모량 $Y$<br>(단위 : 1,000Btu)</th>
+        <th class="sep">무게 $X$<br>(단위 : 1,000kg)</th><th>에너지 소모량 $Y$<br>(단위 : 1,000Btu)</th></tr>
+    <tr><td>0.9</td><td>2.0</td><td class="sep">1.7</td><td>3.2</td></tr>
+    <tr><td>1.3</td><td>2.6</td><td class="sep">0.7</td><td>1.8</td></tr>
+    <tr><td>2.1</td><td>4.3</td><td class="sep">1.2</td><td>2.3</td></tr>
+    <tr><td>2.5</td><td>5.8</td><td class="sep">1.6</td><td>3.0</td></tr>
+    <tr><td>2.4</td><td>5.1</td><td class="sep"></td><td></td></tr>
+  </table>
+  <ol>
+    <li>$X$ 에 대한 $Y$ 의 회귀직선을 최소제곱법에 의하여 구하시오.
+      데이터의 산점도를 그리고 추정한 회귀직선을 산점도 위에 그리시오.</li>
+    <li>분산분석표를 작성하고 회귀직선의 유의 여부를 유의수준 5%에서 검정하시오.</li>
+    <li>무게가 3,000kg이 되는 차량의 에너지 소모량을 예측하시오.
+      무게가 1,000kg이 되는 차량의 에너지 소모량의 몇 배인가?</li>
+    <li>원점을 지나는 회귀직선을 구하시오.</li>
+    <li>원점을 지나는 회귀직선의 결정계수를 구하시오.</li>
+    <li>오차항의 분산이 같지 않다는 것이 밝혀지고 $\operatorname{Var}(\epsilon_i)=kx_i^2$ 으로 $x_i^2$ 의 크기에
+      비례한다면 가중회귀를 사용하여야 한다. 가중최소제곱법에 의하여 가중회귀직선을 구하고
+      회귀변동($SSR$)을 구하시오.</li>
+  </ol>
+</div>
+
+<div class="sec">가중회귀 · 요약통계 (3.3~3.4)</div>
+
+<div class="ex"><span class="exn">3.3</span>다음의 직선회귀모형
+$$y_i=\beta_0+\beta_1x_i+\epsilon_i,\quad i=1,2,\cdots,n,\qquad
+\operatorname{Var}(\epsilon_i)=kx_i\ (k\text{는 상수})$$
+에서 가중회귀직선을 구하려 한다. 정규방정식을 구하고 가중잔차의 합이 $0$ 이 됨을 증명하시오.</div>
+
+<div class="ex"><span class="exn">3.4</span>어떤 화학제품의 중요한 품질특성의 하나로, 점도 $Y$ 가 문제가 되어 있다.
+점도를 정하여진 범위 안에 들어가도록 하기 위한 요인으로 여러 가지가 생각되지만 여기서는 반응온도 $X$ 가
+중요한 검토의 대상으로 취급되었다. $X$ 와 $Y$ 에 관해서 20번 실험을 하여 얻어진 결과는 다음과 같다.
+$$\bar x=15.0,\quad S_{(xx)}=160.0,\quad S_{(yy)}=90.0$$
+$$\bar y=13.0,\quad S_{(xy)}=83.2$$
+<p class="cap">(소문항은 사진에 잡히지 않았다 — 대조 요망.)</p></div>
+
+<div class="sec">최소제곱추정 (3.6~3.8)</div>
+
+<div class="ex"><span class="exn">3.6</span><span class="cap">(앞부분 사진 없음 — 대조 요망.)</span> …
+$$\hat\beta_i=\frac{\sum_{j=1}^{n_i}x_{ij}y_{ij}-\hat\beta_0\sum_{j=1}^{n_i}x_{ij}}{\sum_{j=1}^{n_i}x_{ij}^2},
+\quad i=1,2,\cdots,m$$
+또한 잔차제곱합은 $SSE$ 와 그의 자유도 $\phi_E$ 가 다음과 같음을 보이시오.
+$$\begin{aligned}
+SSE&=\sum_{i=1}^m\sum_{j=1}^{n_i}y_{ij}^2-\sum_{i=1}^m\hat\beta_i^2\sum_{j=1}^{n_i}x_{ij}^2
+  +\hat\beta_0^2\sum_{i=1}^m n_i-2\hat\beta_0\sum_{i=1}^m n_i\bar y_i\\
+\phi_E&=\sum_{i=1}^m n_i-m-1
+\end{aligned}$$
+</div>
+
+<div class="ex"><span class="exn">3.7</span>만약
+$$\begin{aligned}
+y_1&=\beta_0+\epsilon_1\\
+y_2&=2\beta_0-\beta_1+\epsilon_2\\
+y_3&=\beta_0+2\beta_1+\epsilon_3
+\end{aligned}$$
+이고, $\mathrm{E}(\epsilon_i)=0$, $i=1,2,3$ 이라면 $\beta_0$ 와 $\beta_1$ 의 최소제곱추정값은 무엇인가?
+$y_i$, $i=1,2,3$ 의 함수로써 나타내어라. 그리고 이 경우의 잔차제곱합(residual sum of squares)을 구하시오.</div>
+
+<div class="ex"><span class="exn">3.8</span>두 모수(parameters)인 $\alpha$ 와 $\beta$ 를 추정하기 위하여
+다음과 같은 세 가지 형태의 측정을 할 수 있다.
+  <ol>
+    <li>$\alpha$ 에 대한 측정</li>
+    <li>$\alpha+\beta$ 에 대한 측정</li>
+    <li>$\alpha-2\beta$ 에 대한 측정</li>
+  </ol>
+  <p>위의 모든 측정은 서로 독립이고 기대값이 $0$ 이고 분산이 같은 오차를 수반하고 있다.
+  만약 $m$ 개의 측정값이 (1)에 대하여, 또한 다른 $m$ 개의 측정값이 (2)에 대하여, 그리고 $n$ 개의 측정값이
+  (3)에 대하여 얻어졌다고 하자. $\alpha$ 와 $\beta$ 의 최소제곱추정값을 구하고 $m=2n$ 이 성립하면
+  $\alpha$ 와 $\beta$ 의 최소제곱추정값 간의 공분산(covariance)이 $0$ 임을 증명하시오.</p>
+</div>
+
+<div class="sec">스케일 불변성 · R 실습 (3.9~3.10)</div>
+
+<div class="ex"><span class="exn">3.9</span>스케일 불변성(scale invariance). (문제의 출처 : 참고문헌 (3.8))
+  <ol>
+    <li>단순회귀모형 (3.3)에서 각각의 $x_i$ 가 $cx_i\ (c\ne0)$ 로 대체된다고 가정하자.
+      $s_{y\cdot x}^2$, $R^2$ 과 $H_0:\beta_1=0$ 에 대한 $t$-검정 결과는 어떤 영향을 받는가?</li>
+    <li>각각의 $y_i$ 가 $dy_i\ (d\ne0)$ 로 대체된다고 가정하고, (1)의 질문에 답하시오.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">3.10</span><b>R 실습</b> 아마존 강 수위 문제(문제의 출처 : 참고문헌(3.8))
+  <p>아마존 강 유역은 지구상의 가장 큰 열대림 지역이지만 대부분의 다른 자연자원과 마찬가지로 개발의 손길이
+  미치면서 열대림이 급속히 파괴됐다. 1970년대 이후 아마존 상류지역에 도로가 건설되면서 인구가 빠르게
+  증가되었고 대규모의 삼림파괴가 이뤄졌다. 강수량과 유수량이 모두 영향을 받을 수 있기 때문에 이것은 결국
+  아마존 강 전체에 영향을 미치는 심각한 기후학적 및 수문학적 변화를 가져왔다. 다음의 표는 페루
+  이키토스(Iquitos)에서 1962년부터 1978년까지 기록한 아마존 강 최고수위(High)와 최저수위(Low)를
+  기록한 것이다(단위: 미터).</p>
+  <table class="data">
+    <tr><th>Year</th><th>High($m$)</th><th>Low($m$)</th>
+        <th class="sep">Year</th><th>High($m$)</th><th>Low($m$)</th></tr>
+    <tr><td>1962</td><td>25.82</td><td>18.24</td><td class="sep">1971</td><td>27.36</td><td>21.91</td></tr>
+    <tr><td>1963</td><td>25.35</td><td>16.50</td><td class="sep">1972</td><td>26.65</td><td>22.51</td></tr>
+    <tr><td>1964</td><td>24.29</td><td>20.26</td><td class="sep">1973</td><td>27.13</td><td>18.81</td></tr>
+    <tr><td>1965</td><td>24.05</td><td>20.97</td><td class="sep">1974</td><td>27.49</td><td>19.42</td></tr>
+    <tr><td>1966</td><td>24.89</td><td>19.43</td><td class="sep">1975</td><td>27.08</td><td>19.10</td></tr>
+    <tr><td>1967</td><td>25.35</td><td>19.31</td><td class="sep">1976</td><td>27.51</td><td>18.80</td></tr>
+    <tr><td>1968</td><td>25.23</td><td>20.85</td><td class="sep">1977</td><td>27.54</td><td>18.80</td></tr>
+    <tr><td>1969</td><td>25.06</td><td>19.54</td><td class="sep">1978</td><td>26.21</td><td>17.57</td></tr>
+    <tr><td>1970</td><td>27.13</td><td>20.49</td><td class="sep"></td><td></td><td></td></tr>
+  </table>
+  <p class="cap">표 3.7 아마존 강 데이터(Amazon River data)</p>
+  <p>1962년부터 1969년까지의 데이터는 개발 이전에 수집된 데이터이고, 1970년부터 1978년까지의 데이터는
+  개발이후에 관측된 데이터를 나타낸다. 이 데이터는 아마존 상류지역의 삼림파괴가 아마존 유역의 강 수위에
+  변화를 일으켰는지 분석하고자 한다. 우리의 관심은 시간에 따른 아마존 강 수위 …
+  <span class="cap">(이하 및 소문항은 사진에 잡히지 않았다 — 대조 요망.)</span></p>
+</div>
+
+<div class="answersheet">
+<header class="doc">
+  <div class="ch">회귀분석 · 3장 단순회귀분석</div>
+  <h1><span class="no">정답</span>3장 연습문제 <span class="en">answers</span></h1>
+</header>
+
+<div class="ans"><span class="exn">3.1</span><b>정답</b> (2) $\hat y=29.11+13.64x$ &nbsp;(3) $s_{y\cdot x}=29.11$
+&nbsp;(4) $R^2=0.610$, $r=0.781$ &nbsp;(5) $F_0=18.75$ 로 유의 &nbsp;(6) 83.66(천원)
+&nbsp;(7)(8)(9) 모두 $0$ &nbsp;(10) 기울기 $=r=0.781$
+  <p>기본 합계는 $n=14$, $\sum x_i=62$, $\sum y_i=1253$ 이므로 $\bar x=4.4286$, $\bar y=89.5$ 이고</p>
+  $$S_{xx}=85.4286,\qquad S_{yy}=26053.5,\qquad S_{xy}=1165.0$$
+  <p>(2) $\hat\beta_1=S_{xy}/S_{xx}=1165.0/85.4286=13.637$, $\hat\beta_0=89.5-13.637(4.4286)=29.107$.</p>
+  <p>(3) $SSR=\hat\beta_1S_{xy}=15887.2$, $SSE=S_{yy}-SSR=10166.3$ 이므로
+  $s_{y\cdot x}=\sqrt{10166.3/12}=\sqrt{847.19}=29.11$.</p>
+  <p>(4) $R^2=SSR/S_{yy}=0.6098$, $r=+\sqrt{R^2}=0.7809$ (기울기가 양수).</p>
+  <p>(5) 분산분석표는 다음과 같고, $F_0=18.75\gt F_{0.05}(1,12)=4.75$ 이므로 회귀직선은 유의하다.</p>
+  <table class="data">
+    <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th></tr>
+    <tr><td>회귀</td><td>15887.25</td><td>1</td><td>15887.25</td><td>18.75</td></tr>
+    <tr><td>잔차</td><td>10166.25</td><td>12</td><td>847.19</td><td></td></tr>
+    <tr><td>계</td><td>26053.50</td><td>13</td><td></td><td></td></tr>
+  </table>
+  <p>(6) $\hat y=29.107+13.637(4)=83.66$.</p>
+  <p>(7)(8) 정규방정식 (3.12), (3.13)이 각각 $\sum e_i=0$, $\sum x_ie_i=0$ 이다.</p>
+  <p>(9) $\sum\hat y_ie_i=\hat\beta_0\sum e_i+\hat\beta_1\sum x_ie_i=0$.</p>
+  <p>(10) $u_i=(x_i-\bar x)/s_x$, $v_i=(y_i-\bar y)/s_y$ 로 두면 $\bar u=\bar v=0$ 이므로 절편은 $0$ 이고</p>
+  $$\hat\beta_1^{*}=\frac{\sum u_iv_i}{\sum u_i^2}=\frac{S_{xy}/(s_xs_y)}{S_{xx}/s_x^2}
+    =\frac{S_{xy}}{S_{xx}}\cdot\frac{s_x}{s_y}=\frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}}=r=0.781$$
+</div>
+
+<div class="ans"><span class="exn">3.2</span><b>정답</b> (1) $\hat y=-0.116+2.163x$ &nbsp;(2) $F_0=141.16$ 으로 유의
+&nbsp;(3) $6.372$(천Btu), 약 $3.11$ 배 &nbsp;(4) $\hat y=2.099x$ &nbsp;(5) $R^2=0.993$
+&nbsp;(6) $\hat y=0.359+1.842x$, $SSR=4.937$
+  <p>$n=9$, $\sum x_i=14.4$, $\sum y_i=30.1$, $\sum x_i^2=26.3$, $\sum x_iy_i=55.21$, $\sum y_i^2=116.67$ 이므로
+  $\bar x=1.6$, $\bar y=3.3444$ 이고</p>
+  $$S_{xx}=3.26,\qquad S_{yy}=16.0022,\qquad S_{xy}=7.05$$
+  <p>(1) $\hat\beta_1=7.05/3.26=2.1626$, $\hat\beta_0=3.3444-2.1626(1.6)=-0.1157$.</p>
+  <p>(2) $SSR=\hat\beta_1S_{xy}=15.246$, $SSE=0.756$, $MSE=0.756/7=0.108$ 이므로
+  $F_0=15.246/0.108=141.16\gt F_{0.05}(1,7)=5.59$ — 유의하다.</p>
+  <table class="data">
+    <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th></tr>
+    <tr><td>회귀</td><td>15.246</td><td>1</td><td>15.246</td><td>141.16</td></tr>
+    <tr><td>잔차</td><td>0.756</td><td>7</td><td>0.108</td><td></td></tr>
+    <tr><td>계</td><td>16.002</td><td>8</td><td></td><td></td></tr>
+  </table>
+  <p>(3) $\hat y(3)=6.372$, $\hat y(1)=2.047$ 이므로 $6.372/2.047=3.11$ 배.
+  절편이 $0$ 이 아니므로 무게가 3배라고 소모량이 정확히 3배가 되지는 않는다.</p>
+  <p>(4) 식 (3.46)에서 $\hat\beta_1=\sum x_iy_i/\sum x_i^2=55.21/26.3=2.0992$.</p>
+  <p>(5) 원점회귀에서는 $SST=\sum y_i^2=116.67$, $SSR=\hat\beta_1\sum x_iy_i=115.90$ 이므로
+  $R^2=115.90/116.67=0.9934$.</p>
+  <p>(6) $\operatorname{Var}(\epsilon_i)=kx_i^2$ 이므로 가중치는 $w_i=1/x_i^2$. 가중정규방정식 (3.54)는</p>
+  $$\hat\beta_0\sum\frac{1}{x_i^2}+\hat\beta_1\sum\frac{1}{x_i}=\sum\frac{y_i}{x_i^2},\qquad
+    \hat\beta_0\sum\frac{1}{x_i}+\hat\beta_1 n=\sum\frac{y_i}{x_i}$$
+  <p>이고 $\sum1/x_i^2=5.8586$, $\sum1/x_i=6.6483$, $\sum y_i/x_i^2=14.3459$, $\sum y_i/x_i=18.9603$ 을 넣어 풀면
+  $\hat\beta_0=0.3587$, $\hat\beta_1=1.8417$. 가중평균은 $\bar x_w=1.1348$, $\bar y_w=2.4487$ 이므로 식 (3.57)에서</p>
+  $$SSR=\frac{\big[\sum w_i(x_i-\bar x_w)(y_i-\bar y_w)\big]^2}{\sum w_i(x_i-\bar x_w)^2}=4.937$$
+</div>
+
+<div class="ans"><span class="exn">3.3</span><b>정답</b> 가중치는 $w_i=1/x_i$ 이고, 가중잔차의 합이 $0$ 이라는 것은 첫 정규방정식 그 자체이다.
+  <p>$\operatorname{Var}(\epsilon_i)=kx_i=\sigma^2/w_i$ 이므로 $w_i=1/x_i$. 식 (3.53)의
+  $Q=\sum w_i(y_i-\beta_0-\beta_1x_i)^2$ 을 $\beta_0,\beta_1$ 로 편미분해 $0$ 으로 놓으면</p>
+  $$\hat\beta_0\sum\frac{1}{x_i}+\hat\beta_1 n=\sum\frac{y_i}{x_i},\qquad
+    \hat\beta_0 n+\hat\beta_1\sum x_i=\sum y_i$$
+  <p>($\sum w_ix_i=n$, $\sum w_ix_i^2=\sum x_i$ 이므로 합이 이렇게 줄어든다.)
+  첫 식을 이항하면 $\sum w_i\big(y_i-\hat\beta_0-\hat\beta_1x_i\big)=0$, 즉 $\sum w_ie_i=0$ 이다.</p>
+</div>
+
+<div class="ans"><span class="exn">3.7</span><b>정답</b>
+$\hat\beta_0=\dfrac{y_1+2y_2+y_3}{6}$, $\hat\beta_1=\dfrac{2y_3-y_2}{5}$
+  <p>$S(\beta_0,\beta_1)=(y_1-\beta_0)^2+(y_2-2\beta_0+\beta_1)^2+(y_3-\beta_0-2\beta_1)^2$ 을 편미분하면
+  정규방정식은</p>
+  $$6\hat\beta_0+0\cdot\hat\beta_1=y_1+2y_2+y_3,\qquad 0\cdot\hat\beta_0+5\hat\beta_1=-y_2+2y_3$$
+  <p>두 모수의 교차항 계수가 $1(0)+2(-1)+1(2)=0$ 이라 두 식이 분리된다. 잔차제곱합은</p>
+  $$SSE=\sum y_i^2-\hat\beta_0(y_1+2y_2+y_3)-\hat\beta_1(2y_3-y_2)
+    =\sum_{i=1}^3y_i^2-\frac{(y_1+2y_2+y_3)^2}{6}-\frac{(2y_3-y_2)^2}{5}$$
+</div>
+
+<div class="ans"><span class="exn">3.8</span><b>정답</b> $m=2n$ 일 때
+$\hat\alpha=\dfrac{T_1+T_2+T_3}{5n}$, $\hat\beta=\dfrac{T_2-2T_3}{6n}$ 이고 $\operatorname{Cov}(\hat\alpha,\hat\beta)=0$.
+  <p>세 형태의 측정값 합을 각각 $T_1,T_2,T_3$ 이라 하면 최소제곱법의 정규방정식은</p>
+  $$(2m+n)\hat\alpha+(m-2n)\hat\beta=T_1+T_2+T_3,\qquad
+    (m-2n)\hat\alpha+(m+4n)\hat\beta=T_2-2T_3$$
+  <p>계수행렬이 $X'X$ 이고 $\operatorname{Cov}(\hat\alpha,\hat\beta)=\sigma^2\big[(X'X)^{-1}\big]_{12}
+  =-\sigma^2(m-2n)/|X'X|$ 이므로, $m=2n$ 이면 비대각원소 $m-2n=0$ 이 되어 공분산이 $0$ 이다.
+  이때 정규방정식은 $5n\hat\alpha=T_1+T_2+T_3$, $6n\hat\beta=T_2-2T_3$ 으로 분리된다.</p>
+</div>
+
+<div class="ans"><span class="exn">3.9</span><b>정답</b> (1) 셋 다 불변 &nbsp;(2) $s_{y\cdot x}^2\to d^2s_{y\cdot x}^2$,
+$R^2$ 불변, $t$-검정 결과 불변
+  <p>(1) $x_i\to cx_i$ 이면 $S_{xx}\to c^2S_{xx}$, $S_{xy}\to cS_{xy}$ 이므로 $\hat\beta_1\to\hat\beta_1/c$ 이고
+  $\hat\beta_0$ 는 그대로여서 적합값 $\hat y_i$ 와 잔차가 변하지 않는다. 따라서 $s_{y\cdot x}^2$, $R^2$ 모두 불변이고,
+  $\widehat{se}(\hat\beta_1)=s_{y\cdot x}/\sqrt{S_{xx}}$ 도 $1/c$ 배가 되어
+  $t_0=\hat\beta_1/\widehat{se}(\hat\beta_1)$ 이 불변이다.</p>
+  <p>(2) $y_i\to dy_i$ 이면 $\hat\beta_0,\hat\beta_1$ 과 잔차가 모두 $d$ 배이므로
+  $s_{y\cdot x}^2\to d^2s_{y\cdot x}^2$. 반면 $SSR,SST$ 가 함께 $d^2$ 배라 $R^2$ 은 불변이고,
+  $t_0\to d\hat\beta_1/(|d|\,\widehat{se})=\operatorname{sgn}(d)\,t_0$ 로 $|t_0|$ 가 같아 검정 결과도 같다.</p>
+</div>
+
+</div>
+
+<nav class="pager">
+  <a href="3-8_weighted-regression.html">← 이전<small>3.8 가중회귀</small></a>
+  <span class="spacer"></span>
+</nav>
+
+</body>
+</html>
