@@ -48,12 +48,10 @@ $s_{y\cdot x}^2=MSE$ 이고, $F_\alpha(k_1,k_2)$ 는 상위 $\alpha$ 분위수�
 
 <div class="note"><b>대조 요망</b> — 원본 사진이 가려져 다음 부분은 옮기지 못했다. 교재와 대조해 채울 것.
 <ol>
-  <li><b>3.4</b> — 주어진 요약통계까지만 보인다(소문항 없음). 또 $S_{(xx)}=160.0$ 과 $S_{(xx)}=90.0$ 이 같은 기호로
-    두 번 인쇄돼 있는데, 뒤의 것은 $S_{(yy)}=90.0$ 의 오타로 보인다.</li>
-  <li><b>3.5</b> — 문항 전체가 사진에 없다.</li>
-  <li><b>3.6</b> — 앞부분(모형 설정과 $\hat\beta_0$)이 없고, 뒤쪽 $\hat\beta_i$ · $SSE$ · $\phi_E$ 부분만 보인다.</li>
-  <li><b>3.9 (1)</b> — "가정하자." 다음의 한 구절(추정값 목록으로 보임)이 페이지 오른쪽에 잘려 있다.</li>
-  <li><b>3.10</b> — 자료와 배경 설명까지만 보이고 소문항 (1)(2)… 이 잘려 있다.</li>
+  <li><b>3.4</b> — $S_{(xx)}=160.0$ 과 $S_{(xx)}=90.0$ 이 같은 기호로 두 번 인쇄돼 있는데,
+    뒤의 것은 $S_{(yy)}=90.0$ 의 오타로 보아 그렇게 옮겼다.</li>
+  <li><b>3.10</b> — 적합모형 $\texttt{High}=\beta_0+\beta_1\times\texttt{Year}+\epsilon$ 까지만 보이고
+    그 뒤 소문항 (1)(2)… 이 잘려 있다.</li>
 </ol></div>
 
 <div class="sec">자료를 이용한 회귀분석 (3.1~3.2)</div>
@@ -125,11 +123,42 @@ $$y_i=\beta_0+\beta_1x_i+\epsilon_i,\quad i=1,2,\cdots,n,\qquad
 중요한 검토의 대상으로 취급되었다. $X$ 와 $Y$ 에 관해서 20번 실험을 하여 얻어진 결과는 다음과 같다.
 $$\bar x=15.0,\quad S_{(xx)}=160.0,\quad S_{(yy)}=90.0$$
 $$\bar y=13.0,\quad S_{(xy)}=83.2$$
-<p class="cap">(소문항은 사진에 잡히지 않았다 — 대조 요망.)</p></div>
+  <ol>
+    <li>회귀직선모형 $y_i=\beta_0+\beta_1x_i+\epsilon_i$, $\operatorname{Var}(\epsilon_i)=\sigma^2$ 을 가정하고
+      회귀직선을 적합시키시오.</li>
+    <li>분산분석표를 작성하시오.</li>
+    <li>표본의 상관계수를 구하시오.</li>
+  </ol>
+</div>
 
-<div class="sec">최소제곱추정 (3.6~3.8)</div>
+<div class="sec">회귀직선군의 최소제곱추정 (3.5~3.6)</div>
 
-<div class="ex"><span class="exn">3.6</span><span class="cap">(앞부분 사진 없음 — 대조 요망.)</span> …
+<div class="ex"><span class="exn">3.5</span>(문제의 출처 : 참고문헌 (3.2)) 다음과 같은 회귀직선군(family of straight lines)
+$$\mathrm{E}(Y\mid X=x_i)=\beta_{0i}+\beta_1x_i,\quad i=1,2,\cdots,m$$
+의 모수들 $(\beta_{01},\beta_{02},\cdots,\beta_{0m},\beta_1)$ 의 최소제곱추정값
+$(\hat\beta_{01},\hat\beta_{02},\cdots,\hat\beta_{0m},\hat\beta_1)$ 들이 다음과 같음을 증명하시오.
+$$\begin{aligned}
+\hat\beta_1&=\frac{\sum_{i=1}^m\sum_{j=1}^{n_i}(x_{ij}-\bar x_i)(y_{ij}-\bar y_i)}
+  {\sum_{i=1}^m\sum_{j=1}^{n_i}(x_{ij}-\bar x_i)^2}\\
+\hat\beta_{0i}&=\bar y_i-\hat\beta_1\bar x_i,\quad i=1,2,\cdots,m
+\end{aligned}$$
+여기서
+$$\{(x_{i1},y_{i1}),(x_{i2},y_{i2}),\cdots,(x_{in_i},y_{in_i})\}$$
+들은 $i$ 번째 직선에 관련된 $x_i$ 와 $y_i$ 들의 측정값이다. 또한 잔차제곱합(residual sum of squares)
+$SSE$ 와 그의 관련된 자유도 $\phi_E$ 가 다음과 같음을 보이시오.
+$$\begin{aligned}
+SSE&=\sum_{i=1}^m\sum_{j=1}^{n_i}(y_{ij}-\bar y_i)^2-\hat\beta_1^2\sum_{i=1}^m\sum_{j=1}^{n_i}(x_{ij}-\bar x_i)^2\\
+\phi_E&=\sum_{i=1}^m n_i-m-1
+\end{aligned}$$
+</div>
+
+<div class="ex"><span class="exn">3.6</span>(문제의 출처 : 참고문헌 (3.2)) 다음과 같은 회귀직선군
+$$\mathrm{E}(y_i)=\beta_0+\beta_ix_i,\quad i=1,2,\cdots,m$$
+의 모수들 $(\beta_0,\beta_1,\beta_2,\cdots,\beta_m)$ 의 최소제곱추정값
+$(\hat\beta_0,\hat\beta_1,\hat\beta_2,\cdots,\hat\beta_m)$ 들이 다음과 같음을 증명하시오.
+여기서 $(x_{ij},y_{ij})$ 의 값의 의미는 앞 문제 <b>3.5</b>와 동일하다.
+$$\hat\beta_0=\frac{\sum_{i=1}^m n_i\Big[\bar y_i-\bar x_i\big(\sum_{j=1}^{n_i}x_{ij}y_{ij}\big/\sum_{j=1}^{n_i}x_{ij}^2\big)\Big]}
+  {\sum_{i=1}^m n_i\Big(1-n_i\bar x_i^2\big/\sum_{j=1}^{n_i}x_{ij}^2\Big)}$$
 $$\hat\beta_i=\frac{\sum_{j=1}^{n_i}x_{ij}y_{ij}-\hat\beta_0\sum_{j=1}^{n_i}x_{ij}}{\sum_{j=1}^{n_i}x_{ij}^2},
 \quad i=1,2,\cdots,m$$
 또한 잔차제곱합은 $SSE$ 와 그의 자유도 $\phi_E$ 가 다음과 같음을 보이시오.
@@ -139,6 +168,8 @@ SSE&=\sum_{i=1}^m\sum_{j=1}^{n_i}y_{ij}^2-\sum_{i=1}^m\hat\beta_i^2\sum_{j=1}^{n
 \phi_E&=\sum_{i=1}^m n_i-m-1
 \end{aligned}$$
 </div>
+
+<div class="sec">최소제곱추정 (3.7~3.8)</div>
 
 <div class="ex"><span class="exn">3.7</span>만약
 $$\begin{aligned}
@@ -167,7 +198,8 @@ $y_i$, $i=1,2,3$ 의 함수로써 나타내어라. 그리고 이 경우의 잔�
 <div class="ex"><span class="exn">3.9</span>스케일 불변성(scale invariance). (문제의 출처 : 참고문헌 (3.8))
   <ol>
     <li>단순회귀모형 (3.3)에서 각각의 $x_i$ 가 $cx_i\ (c\ne0)$ 로 대체된다고 가정하자.
-      $s_{y\cdot x}^2$, $R^2$ 과 $H_0:\beta_1=0$ 에 대한 $t$-검정 결과는 어떤 영향을 받는가?</li>
+      $\hat\beta_0$, $\hat\beta_1$, $s_{y\cdot x}^2$, $R^2$ 과 $H_0:\beta_1=0$ 에 대한 $t$-검정 결과는
+      어떤 영향을 받는가?</li>
     <li>각각의 $y_i$ 가 $dy_i\ (d\ne0)$ 로 대체된다고 가정하고, (1)의 질문에 답하시오.</li>
   </ol>
 </div>
@@ -195,8 +227,10 @@ $y_i$, $i=1,2,3$ 의 함수로써 나타내어라. 그리고 이 경우의 잔�
   <p class="cap">표 3.7 아마존 강 데이터(Amazon River data)</p>
   <p>1962년부터 1969년까지의 데이터는 개발 이전에 수집된 데이터이고, 1970년부터 1978년까지의 데이터는
   개발이후에 관측된 데이터를 나타낸다. 이 데이터는 아마존 상류지역의 삼림파괴가 아마존 유역의 강 수위에
-  변화를 일으켰는지 분석하고자 한다. 우리의 관심은 시간에 따른 아마존 강 수위 …
-  <span class="cap">(이하 및 소문항은 사진에 잡히지 않았다 — 대조 요망.)</span></p>
+  변화를 일으켰는지 분석하고자 한다. 우리의 관심은 시간에 따른 아마존 강 수위 변화여부이다.
+  예를 들어, 우리가 다음을 적합한다면,</p>
+  $$\texttt{High}=\beta_0+\beta_1\times\texttt{Year}+\epsilon$$
+  <p class="cap">(이 아래의 소문항 (1)(2)… 은 사진에 잡히지 않았다 — 대조 요망.)</p>
 </div>
 
 <div class="answersheet">
@@ -266,6 +300,51 @@ $y_i$, $i=1,2,3$ 의 함수로써 나타내어라. 그리고 이 경우의 잔�
   첫 식을 이항하면 $\sum w_i\big(y_i-\hat\beta_0-\hat\beta_1x_i\big)=0$, 즉 $\sum w_ie_i=0$ 이다.</p>
 </div>
 
+<div class="ans"><span class="exn">3.4</span><b>정답</b> (1) $\hat y=5.2+0.52x$ &nbsp;(2) $F_0=16.66$ 으로 유의
+&nbsp;(3) $r=0.693$
+  <p>(1) $\hat\beta_1=S_{(xy)}/S_{(xx)}=83.2/160.0=0.52$, $\hat\beta_0=13.0-0.52(15.0)=5.2$.</p>
+  <p>(2) $SSR=\hat\beta_1S_{(xy)}=0.52(83.2)=43.264$, $SSE=90.0-43.264=46.736$ 이고 $n=20$ 이므로
+  잔차 자유도는 $18$ 이다. $F_0=43.264/2.596=16.66\gt F_{0.05}(1,18)=4.41$ 로 유의하다.</p>
+  <table class="data">
+    <tr><th>요인</th><th>제곱합</th><th>자유도</th><th>평균제곱</th><th>$F_0$</th></tr>
+    <tr><td>회귀</td><td>43.264</td><td>1</td><td>43.264</td><td>16.66</td></tr>
+    <tr><td>잔차</td><td>46.736</td><td>18</td><td>2.596</td><td></td></tr>
+    <tr><td>계</td><td>90.000</td><td>19</td><td></td><td></td></tr>
+  </table>
+  <p>(3) $r=\dfrac{S_{(xy)}}{\sqrt{S_{(xx)}S_{(yy)}}}=\dfrac{83.2}{\sqrt{160(90)}}=\dfrac{83.2}{120}=0.6933$.</p>
+</div>
+
+<div class="ans"><span class="exn">3.5</span><b>정답</b> 절편만 직선마다 다르고 기울기는 공통이므로,
+$\hat\beta_1$ 은 각 군에서 중심화한 뒤 모두 합쳐 구한 기울기가 된다.
+  <p>$Q=\sum_i\sum_j(y_{ij}-\beta_{0i}-\beta_1x_{ij})^2$ 을 $\beta_{0i}$ 로 편미분하면
+  $\sum_j(y_{ij}-\hat\beta_{0i}-\hat\beta_1x_{ij})=0$, 즉 $\hat\beta_{0i}=\bar y_i-\hat\beta_1\bar x_i$ 이다.
+  이를 $\partial Q/\partial\beta_1=0$ 인 $\sum_i\sum_j x_{ij}(y_{ij}-\hat\beta_{0i}-\hat\beta_1x_{ij})=0$ 에 넣으면</p>
+  $$\sum_i\sum_j x_{ij}\big[(y_{ij}-\bar y_i)-\hat\beta_1(x_{ij}-\bar x_i)\big]=0$$
+  <p>이고, $\sum_j(y_{ij}-\bar y_i)=\sum_j(x_{ij}-\bar x_i)=0$ 이므로 $x_{ij}$ 를 $x_{ij}-\bar x_i$ 로 바꿔도 값이 같다. 따라서</p>
+  $$\hat\beta_1=\frac{\sum_i\sum_j(x_{ij}-\bar x_i)(y_{ij}-\bar y_i)}{\sum_i\sum_j(x_{ij}-\bar x_i)^2}$$
+  <p>잔차는 $e_{ij}=(y_{ij}-\bar y_i)-\hat\beta_1(x_{ij}-\bar x_i)$ 이므로 제곱해 더하면 교차항이
+  $-2\hat\beta_1\sum\sum(x-\bar x)(y-\bar y)=-2\hat\beta_1^2\sum\sum(x-\bar x)^2$ 이 되어</p>
+  $$SSE=\sum_i\sum_j(y_{ij}-\bar y_i)^2-\hat\beta_1^2\sum_i\sum_j(x_{ij}-\bar x_i)^2$$
+  <p>추정한 모수가 $\beta_{01},\cdots,\beta_{0m},\beta_1$ 의 $m+1$ 개이므로
+  $\phi_E=\sum n_i-m-1$.</p>
+</div>
+
+<div class="ans"><span class="exn">3.6</span><b>정답</b> 이번에는 절편이 공통이고 기울기가 직선마다 다르다.
+  <p>$Q=\sum_i\sum_j(y_{ij}-\beta_0-\beta_ix_{ij})^2$ 을 $\beta_i$ 로 편미분하면
+  $\sum_j x_{ij}(y_{ij}-\hat\beta_0-\hat\beta_ix_{ij})=0$ 에서 곧바로</p>
+  $$\hat\beta_i=\frac{\sum_j x_{ij}y_{ij}-\hat\beta_0\sum_j x_{ij}}{\sum_j x_{ij}^2}
+    =\frac{\sum_j x_{ij}y_{ij}-\hat\beta_0 n_i\bar x_i}{\sum_j x_{ij}^2}$$
+  <p>$\beta_0$ 로 편미분한 식 $\sum_i\sum_j(y_{ij}-\hat\beta_0-\hat\beta_ix_{ij})=0$ 은
+  $\sum_i n_i\bar y_i-\hat\beta_0\sum_i n_i-\sum_i\hat\beta_i n_i\bar x_i=0$ 이므로,
+  여기에 위의 $\hat\beta_i$ 를 대입해 $\hat\beta_0$ 으로 정리하면</p>
+  $$\sum_i n_i\Big[\bar y_i-\bar x_i\frac{\sum_j x_{ij}y_{ij}}{\sum_j x_{ij}^2}\Big]
+    =\hat\beta_0\sum_i n_i\Big[1-\frac{n_i\bar x_i^2}{\sum_j x_{ij}^2}\Big]$$
+  <p>이 되어 주어진 식을 얻는다. $SSE$ 는 전개한 뒤 $\sum_j x_{ij}y_{ij}=\hat\beta_i\sum_j x_{ij}^2+\hat\beta_0 n_i\bar x_i$
+  를 써서 교차항을 없애면</p>
+  $$SSE=\sum_i\sum_j y_{ij}^2-\sum_i\hat\beta_i^2\sum_j x_{ij}^2+\hat\beta_0^2\sum_i n_i-2\hat\beta_0\sum_i n_i\bar y_i$$
+  <p>추정한 모수가 $\beta_0,\beta_1,\cdots,\beta_m$ 의 $m+1$ 개이므로 $\phi_E=\sum n_i-m-1$.</p>
+</div>
+
 <div class="ans"><span class="exn">3.7</span><b>정답</b>
 $\hat\beta_0=\dfrac{y_1+2y_2+y_3}{6}$, $\hat\beta_1=\dfrac{2y_3-y_2}{5}$
   <p>$S(\beta_0,\beta_1)=(y_1-\beta_0)^2+(y_2-2\beta_0+\beta_1)^2+(y_3-\beta_0-2\beta_1)^2$ 을 편미분하면
@@ -286,8 +365,9 @@ $\hat\alpha=\dfrac{T_1+T_2+T_3}{5n}$, $\hat\beta=\dfrac{T_2-2T_3}{6n}$ 이고 $\
   이때 정규방정식은 $5n\hat\alpha=T_1+T_2+T_3$, $6n\hat\beta=T_2-2T_3$ 으로 분리된다.</p>
 </div>
 
-<div class="ans"><span class="exn">3.9</span><b>정답</b> (1) 셋 다 불변 &nbsp;(2) $s_{y\cdot x}^2\to d^2s_{y\cdot x}^2$,
-$R^2$ 불변, $t$-검정 결과 불변
+<div class="ans"><span class="exn">3.9</span><b>정답</b> (1) $\hat\beta_1\to\hat\beta_1/c$ 이고 나머지($\hat\beta_0$,
+$s_{y\cdot x}^2$, $R^2$, $t$-검정 결과)는 모두 불변 &nbsp;(2) $\hat\beta_0\to d\hat\beta_0$,
+$\hat\beta_1\to d\hat\beta_1$, $s_{y\cdot x}^2\to d^2s_{y\cdot x}^2$, $R^2$ 불변, $t$-검정 결과 불변
   <p>(1) $x_i\to cx_i$ 이면 $S_{xx}\to c^2S_{xx}$, $S_{xy}\to cS_{xy}$ 이므로 $\hat\beta_1\to\hat\beta_1/c$ 이고
   $\hat\beta_0$ 는 그대로여서 적합값 $\hat y_i$ 와 잔차가 변하지 않는다. 따라서 $s_{y\cdot x}^2$, $R^2$ 모두 불변이고,
   $\widehat{se}(\hat\beta_1)=s_{y\cdot x}/\sqrt{S_{xx}}$ 도 $1/c$ 배가 되어
