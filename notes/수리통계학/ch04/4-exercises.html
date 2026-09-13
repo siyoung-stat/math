@@ -37,12 +37,223 @@
   <h1><span class="no">연습문제</span>4장 <span class="en">exercises</span></h1>
 </header>
 
-<p>4장(추정) 교재 연습문제 01~52 와 정답·해설. 정답 시트는 인쇄 시 다음 페이지부터 나온다.
+<p>4장(추정)의 정의·정리 암기 문제 A01~A41(4.1~4.6 전 절)과 교재 연습문제 01~52, 그리고 정답·해설. 정답 시트는 인쇄 시 다음 페이지부터 나온다.
 표기는 본문과 같이 $\overline{X}_n=\frac1n\sum X_i$, $S^2=\frac{1}{n-1}\sum(X_i-\overline X_n)^2$,
 $X_{(1)}\le\cdots\le X_{(n)}$ 은 순서통계량, $\mathrm{EXP}(\lambda)$ 는 평균이 $\lambda$ 인 지수분포를 뜻한다.
 $\chi^2_{k;\alpha}$, $t_{k;\alpha}$, $F_{k_1,k_2;\alpha}$ 는 각각 상위 $\alpha$ 분위수이다.</p>
 
-<div class="sec">적률추정법 · 최대가능도 추정법 (01~10)</div>
+<div class="sec">정의·정리 암기 (A01~A41)</div>
+
+<div class="note">4.1~4.6 각 절의 정의·정리·공식을 <b>진술만</b> 쓰는 회상 문제다. 증명은 요구하지 않으며,
+조건과 식을 정확히 적는 것이 목표다.</div>
+
+<div class="sec">4.1 적률추정법 (A01~A03)</div>
+
+<div class="ex"><span class="exn">A01</span>다음 용어의 정의를 각각 쓰라.
+  <ol>
+    <li>통계량</li>
+    <li>추정량</li>
+    <li>추정값</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A02</span>확률변수 $X$ 와 랜덤표본 $X_1,\dots,X_n$ 에 대하여 다음을 식으로 쓰라.
+  <ol>
+    <li>$r$ 차 모적률</li>
+    <li>$r$ 차 표본적률</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A03</span>모수가 $\theta=(\theta_1,\dots,\theta_k)$ 인 분포에서 적률추정량을 구하는 방법(적률방정식)을
+식으로 쓰라.</div>
+
+<div class="sec">4.2 최대가능도 추정법 (A04~A07)</div>
+
+<div class="ex"><span class="exn">A04</span>가능도함수에 대하여 다음에 답하라.
+  <ol>
+    <li>가능도함수 $L(\theta)$ 의 정의를 쓰라.</li>
+    <li>$X_1,\dots,X_n$ 이 $f(x;\theta)$ 로부터의 랜덤표본일 때 $L(\theta)$ 를 식으로 쓰라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A05</span>최대가능도 추정량의 정의를 쓰라.</div>
+
+<div class="ex"><span class="exn">A06</span>로그가능도함수에 대하여 다음에 답하라.
+  <ol>
+    <li>로그가능도함수를 식으로 쓰고, 이것을 최대화해도 되는 이유를 한 줄로 쓰라.</li>
+    <li>미분을 이용해 MLE 를 구할 때 해를 구한 뒤 반드시 확인해야 하는 것은 무엇인가?</li>
+    <li>모수가 $\theta=(\theta_1,\dots,\theta_k)$ 인 벡터일 때 풀어야 하는 방정식을 쓰라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A07</span>최대가능도 추정량의 불변성(정리 4.1)을 진술하라.</div>
+
+<div class="sec">4.3 추정량의 평가기준 (A08~A12)</div>
+
+<div class="ex"><span class="exn">A08</span>추정량 $T(X)$ 로 $g(\theta)$ 를 추정할 때 쓰이는 손실함수 세 가지를 각각 식으로 쓰라.
+  <ol>
+    <li>절대오차</li>
+    <li>제곱오차</li>
+    <li>가중제곱오차</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A09</span>평균제곱오차(MSE)의 정의를 식으로 쓰라.</div>
+
+<div class="ex"><span class="exn">A10</span>$T(X)$ 가 $g(\theta)$ 의 추정량일 때 다음을 식으로 쓰라.
+  <ol>
+    <li>$T(X)$ 의 편향</li>
+    <li>$T(X)$ 가 비편향추정량이라는 조건</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A11</span>평균제곱오차의 분해(정리 4.2)를 식으로 쓰라.</div>
+
+<div class="ex"><span class="exn">A12</span>두 비편향추정량 $T_1(X)$ 와 $T_2(X)$ 에 대하여 $T_1$ 의 $T_2$ 에 대한 상대효율의 정의를
+식으로 쓰라.</div>
+
+<div class="sec">4.4 최소분산 비편향추정량 (A13~A25)</div>
+
+<div class="ex"><span class="exn">A13</span>최소분산 비편향추정량(MVUE)의 정의를 쓰라 — 두 조건을 모두 쓸 것.
+  <ol>
+    <li>첫째 조건</li>
+    <li>둘째 조건</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A14</span>피셔의 정보 $I(\theta)$ 를 나타내는 세 가지 표현을 각각 식으로 쓰라.
+  <ol>
+    <li>스코어의 분산 형태</li>
+    <li>스코어 제곱의 기댓값 형태</li>
+    <li>$2$ 차 미분을 이용한 형태</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A15</span>바틀릿 항등식을 쓰라. (스코어의 기댓값에 관한 식도 함께 쓸 것)
+  <ol>
+    <li>스코어의 기댓값</li>
+    <li>바틀릿 항등식</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A16</span>정보부등식(크래머–라오 하한값, 정리 4.3)에 대하여 다음을 쓰라.
+  <ol>
+    <li>$E(T(X))=g(\theta)$ 일 때의 하한값</li>
+    <li>$g(\theta)=\theta$ 일 때의 하한값</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A17</span>충분통계량의 정의(조건부분포를 이용한 정의)를 쓰라.</div>
+
+<div class="ex"><span class="exn">A18</span>인수분해 정리(정리 4.4)를 진술하라 — 두 인수 $g,h$ 가 각각 무엇의 함수인지 밝힐 것.</div>
+
+<div class="ex"><span class="exn">A19</span>라오–블랙웰 정리(정리 4.5)에 대하여 다음을 쓰라.
+  <ol>
+    <li>가정과 새로 만드는 추정량 $\delta(S)$ 의 정의</li>
+    <li>$\delta(S)$ 가 갖는 두 가지 결론</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A20</span>완비통계량의 정의를 쓰라.</div>
+
+<div class="ex"><span class="exn">A21</span>레만–쉐페 정리(정리 4.6)를 진술하라.</div>
+
+<div class="ex"><span class="exn">A22</span>지수족의 정의를 식으로 쓰고, 확률밀도함수가 양인 집합에 대한 조건도 함께 쓰라.</div>
+
+<div class="ex"><span class="exn">A23</span>지수족의 완비 충분통계량(정리 4.7)을 진술하라.</div>
+
+<div class="ex"><span class="exn">A24</span>보조통계량의 정의를 쓰라.</div>
+
+<div class="ex"><span class="exn">A25</span>바수 정리(정리 4.8)를 진술하라.</div>
+
+<div class="sec">4.5 추정량의 점근적 성질 (A26~A31)</div>
+
+<div class="ex"><span class="exn">A26</span>일치성(일치추정량)의 정의를 식으로 쓰라.</div>
+
+<div class="ex"><span class="exn">A27</span>평균제곱오차를 이용한 일치성 판정에 대하여 다음을 쓰라.
+  <ol>
+    <li>정리 4.9의 진술</li>
+    <li>비편향추정량에 대한 따름정리의 진술</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A28</span>연속함수에 의한 일치성의 보존(정리 4.10)을 진술하라.</div>
+
+<div class="ex"><span class="exn">A29</span>일치추정량의 연산(정리 4.11)에 대하여 다음을 쓰라.
+  <ol>
+    <li>$c_n\to c$, $d_n\to d$ 일 때 $c_nT_n+d_nS_n$ 의 극한</li>
+    <li>$T_nS_n$ 과 $T_n/S_n$ 의 극한</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A30</span>최대가능도추정량의 일치성(정리 4.12)을 진술하라.</div>
+
+<div class="ex"><span class="exn">A31</span>최대가능도추정량의 점근적 정규성(정리 4.13)을 식으로 쓰라.</div>
+
+<div class="sec">4.6 구간추정 (A32~A41)</div>
+
+<div class="ex"><span class="exn">A32</span>신뢰구간에 대하여 다음을 쓰라.
+  <ol>
+    <li>$100(1-\alpha)\%$ 신뢰구간의 정의</li>
+    <li>신뢰계수(신뢰도)가 무엇인지</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A33</span>단측 신뢰구간의 정의를 쓰라.
+  <ol>
+    <li>단측 하한신뢰구간</li>
+    <li>단측 상한신뢰구간</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A34</span>추축변량의 정의를 쓰라.</div>
+
+<div class="ex"><span class="exn">A35</span>추축변량을 이용하여 신뢰구간을 구하는 절차를 순서대로 쓰라.</div>
+
+<div class="ex"><span class="exn">A36</span>$N(\mu,\sigma^2)$ 에서 얻은 랜덤표본에 대하여 모평균 $\mu$ 의 $100(1-\alpha)\%$ 신뢰구간을 쓰라.
+  <ol>
+    <li>모분산 $\sigma^2$ 을 아는 경우 — 사용한 추축변량과 그 분포도 함께 쓸 것</li>
+    <li>모분산 $\sigma^2$ 을 모르는 경우 — 사용한 추축변량과 그 분포도 함께 쓸 것</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A37</span>$N(\mu,\sigma^2)$ 에서 얻은 랜덤표본에 대하여 모분산 $\sigma^2$ 의 $100(1-\alpha)\%$ 신뢰구간을 쓰라.
+  <ol>
+    <li>모평균 $\mu$ 를 아는 경우 — 사용한 추축변량과 그 분포도 함께 쓸 것</li>
+    <li>모평균 $\mu$ 를 모르는 경우 — 사용한 추축변량과 그 분포도 함께 쓸 것</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A38</span>서로 독립인 두 정규 랜덤표본 $X_1,\dots,X_n$ 과 $Y_1,\dots,Y_m$ 에 대하여
+$\mu_X-\mu_Y$ 의 $100(1-\alpha)\%$ 신뢰구간을 쓰라.
+  <ol>
+    <li>모분산 $\sigma_X^2,\sigma_Y^2$ 을 아는 경우</li>
+    <li>모분산을 모르고 등분산인 경우에 쓰는 합동추정량 $S_p^2$ 의 정의</li>
+    <li>모분산을 모르고 등분산인 경우의 신뢰구간</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A39</span>등분산이 아닌 두 정규모집단의 모평균 차에 대한 웰치의 근사에서 사용하는 $t$ 분포의
+자유도를 식으로 쓰라.</div>
+
+<div class="ex"><span class="exn">A40</span>서로 독립인 두 정규 랜덤표본에 대하여 모분산의 비 $\sigma_X^2/\sigma_Y^2$ 의
+$100(1-\alpha)\%$ 신뢰구간을 쓰라.
+  <ol>
+    <li>모평균 $\mu_X,\mu_Y$ 를 아는 경우</li>
+    <li>모평균을 모두 모르는 경우</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">A41</span>다음 근사신뢰구간(신뢰도 $100(1-\alpha)\%$)을 각각 쓰라.
+  <ol>
+    <li>모평균 $\mu$</li>
+    <li>모비율 $p$</li>
+    <li>두 모평균의 차 $\mu_X-\mu_Y$</li>
+    <li>두 모비율의 차 $p_X-p_Y$</li>
+  </ol>
+</div>
+
+<div class="sec">교재 연습문제 — 적률추정법 · 최대가능도 추정법 (01~10)</div>
 
 <div class="ex"><span class="exn">01</span>$X_1,X_2,\dots,X_n$ 이 $U(\mu-\sqrt3\sigma,\ \mu+\sqrt3\sigma)$ 로부터 구한 랜덤표본이라고 하자.
 이때 적률을 이용하여 $\mu$ 와 $\sigma$ 를 추정하라.</div>
@@ -345,7 +556,214 @@ $$E\left(\left.\frac{d}{d\theta}\log f(X;\theta)\right|_{\theta=\theta_0}\right)
   <h1><span class="no">정답·해설</span>4장 연습문제 <span class="en">answers</span></h1>
 </header>
 
-<div class="sec">적률추정법 · 최대가능도 추정법 (01~10)</div>
+<div class="sec">정의·정리 암기 (A01~A41)</div>
+
+<div class="ans"><span class="exn">A01</span><b>정답</b>
+  <ol class="props">
+    <li><b>통계량</b>: 미지의 모수를 포함하지 않는 랜덤표본의 함수 $T(X)=T(X_1,\dots,X_n)$.</li>
+    <li><b>추정량</b>: $g(\theta)$ 를 추정하는 데 쓰는 통계량 $T(X)$ — 확률변수.</li>
+    <li><b>추정값</b>: 관측값을 대입한 $T(x)=T(x_1,\dots,x_n)$ — 수.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">A02</span><b>정답</b>
+  $$\text{(1)}\ \mu_r'=E(X^r),\qquad \text{(2)}\ m_r'=\frac1n\sum_{i=1}^n X_i^{\,r}$$
+</div>
+
+<div class="ans"><span class="exn">A03</span><b>정답</b> 낮은 차수부터 $k$ 개의 적률을 같다고 놓은 연립방정식
+  $$m_j'=\mu_j'(\theta_1,\theta_2,\dots,\theta_k),\qquad j=1,2,\dots,k$$
+  <p>의 해 $(\hat\theta_1,\dots,\hat\theta_k)$ 가 적률추정량.</p>
+</div>
+
+<div class="ans"><span class="exn">A04</span><b>정답</b>
+  <p>(1) 결합 확률밀도함수 $f(x_1,\dots,x_n;\theta)$ 를 관측치 고정 후 $\theta\in\Omega$ 의 함수로 본 것:</p>
+  $$L(\theta)=L(\theta;x_1,\dots,x_n)=f(x_1,\dots,x_n;\theta)$$
+  $$\text{(2)}\ L(\theta;x_1,\dots,x_n)=\prod_{i=1}^n f(x_i;\theta)$$
+</div>
+
+<div class="ans"><span class="exn">A05</span><b>정답</b> 가능도함수 $L(\theta;x_1,\dots,x_n)$ 을 최대화하는 $\hat\theta=\hat\theta(x_1,\dots,x_n)\in\Omega$
+  에 대하여 $\hat\theta=\hat\theta(X_1,\dots,X_n)$ 을 $\theta$ 의 최대가능도 추정량이라 한다.</div>
+
+<div class="ans"><span class="exn">A06</span><b>정답</b>
+  $$\text{(1)}\ \log L(\theta;x_1,\dots,x_n)=\sum_{i=1}^n\log f_i(x_i;\theta)$$
+  <p>$\log$ 는 증가함수이므로 $L$ 의 최대점과 $\log L$ 의 최대점이 같다.</p>
+  <p>(2) 구한 해에서 $2$ 차 미분 $\lt0$ 임을 확인(최댓값임의 확인).</p>
+  $$\text{(3)}\ \frac{\partial}{\partial\theta_i}\log L(\theta_1,\dots,\theta_k)=0,\qquad i=1,\dots,k$$
+</div>
+
+<div class="ans"><span class="exn">A07</span><b>정답</b> (불변성) $\hat\theta_n$ 이 $\theta$ 의 MLE 이면, 임의의 함수 $g$ 에 대하여
+  $g(\hat\theta_n)$ 이 $g(\theta)$ 의 MLE 이다.</div>
+
+<div class="ans"><span class="exn">A08</span><b>정답</b>
+  $$\text{(1)}\ |T(X)-g(\theta)|,\qquad
+    \text{(2)}\ \big(T(X)-g(\theta)\big)^2,\qquad
+    \text{(3)}\ \big(T(X)-g(\theta)\big)^2w(\theta)$$
+</div>
+
+<div class="ans"><span class="exn">A09</span><b>정답</b> $\mathrm{MSE}=E\big(T(X)-g(\theta)\big)^2$ — 제곱오차 손실의 기댓값.</div>
+
+<div class="ans"><span class="exn">A10</span><b>정답</b>
+  $$\text{(1)}\ \text{bias}=E[T(X)]-g(\theta),\qquad \text{(2)}\ E[T(X)]=g(\theta)$$
+</div>
+
+<div class="ans"><span class="exn">A11</span><b>정답</b> $\mathrm{MSE}=\operatorname{Var}(T(X))+(\text{bias})^2$</div>
+
+<div class="ans"><span class="exn">A12</span><b>정답</b> $T_1$ 의 $T_2$ 에 대한 상대효율 $=\dfrac{\operatorname{Var}[T_2(X)]}{\operatorname{Var}[T_1(X)]}$
+  (단 $T_1,T_2$ 는 $g(\theta)$ 의 비편향추정량).</div>
+
+<div class="ans"><span class="exn">A13</span><b>정답</b>
+  <ol class="props">
+    <li>$E[T^*(X)]=g(\theta)$ — 비편향.</li>
+    <li>$g(\theta)$ 의 <b>임의의</b> 비편향추정량 $T(X)$ 에 대하여 $\operatorname{Var}(T^*(X))\le\operatorname{Var}(T(X))$.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">A14</span><b>정답</b>
+  $$I(\theta)=\operatorname{Var}\!\Big(\frac{\partial}{\partial\theta}\log f(X;\theta)\Big)
+  =E\!\left[\Big(\frac{\partial}{\partial\theta}\log f(X;\theta)\Big)^{\!2}\right]
+  =-E\!\left[\frac{\partial^2}{\partial\theta^2}\log f(X;\theta)\right]$$
+</div>
+
+<div class="ans"><span class="exn">A15</span><b>정답</b>
+  $$\text{(1)}\ E\!\left[\frac{\partial\log f}{\partial\theta}\right]=0,\qquad
+    \text{(2)}\ E\!\left[\frac{\partial^2\log f}{\partial\theta^2}\right]
+    +E\!\left[\Big(\frac{\partial\log f}{\partial\theta}\Big)^{\!2}\right]=0$$
+</div>
+
+<div class="ans"><span class="exn">A16</span><b>정답</b>
+  $$\text{(1)}\ \operatorname{Var}(T(X))\ge\frac{[g'(\theta)]^2}{n\,I(\theta)},\qquad
+    \text{(2)}\ \operatorname{Var}(T(X))\ge\frac{1}{n\,I(\theta)}$$
+</div>
+
+<div class="ans"><span class="exn">A17</span><b>정답</b> $S(X)$ 가 충분통계량 $\iff$ 조건부분포 $(X_1,\dots,X_n)\mid S(X)$ 가 모수 $\theta$ 에
+  의존하지 않는다. (벡터인 경우 결합 충분통계량.)</div>
+
+<div class="ans"><span class="exn">A18</span><b>정답</b> $S(X)$ 가 충분통계량일 필요충분조건은
+  $$f(x_1,\dots,x_n;\theta)=g(s(x);\theta)\times h(x_1,\dots,x_n)$$
+  <p>$g$ 는 $\theta$ 와 $s$ 만의 함수, $h$ 는 $\theta$ 를 포함하지 않는 자료만의 함수.</p>
+</div>
+
+<div class="ans"><span class="exn">A19</span><b>정답</b>
+  <p>(1) $S$ 가 충분통계량, $T(X)$ 가 $g(\theta)$ 의 비편향추정량일 때 $\delta(S)=E(T(X)\mid S)$.</p>
+  <p>(2) $\delta(S)$ 도 $g(\theta)$ 의 비편향추정량이며, 모든 $\theta$ 에 대하여</p>
+  $$\operatorname{Var}(\delta(S))\le\operatorname{Var}(T(X))$$
+</div>
+
+<div class="ans"><span class="exn">A20</span><b>정답</b> 모든 $\theta\in\Omega$ 에 대하여 $E[g(S)]=0$ 을 만족하는 함수가 $g\equiv0$ 뿐이면
+  $S$ 를 완비통계량이라 한다. 충분성까지 갖추면 완비 충분통계량.</div>
+
+<div class="ans"><span class="exn">A21</span><b>정답</b> $S$ 가 $\theta$ 의 완비 충분통계량이고 $T(X)$ 가 $g(\theta)$ 의 임의의 비편향추정량이면
+  $\delta(S)=E(T(X)\mid S)$ 는 $g(\theta)$ 의 <b>유일한</b> MVUE 이다.</div>
+
+<div class="ans"><span class="exn">A22</span><b>정답</b>
+  $$f(x;\theta)=a(\theta)\,b(x)\exp\!\left[\sum_{i=1}^k c_i(\theta)t_i(x)\right]$$
+  <p>이고 $\{x: f(x;\theta)\gt0\}$ 이 $\theta$ 에 의존하지 않을 때 $k$ 모수 지수족이라 한다.</p>
+</div>
+
+<div class="ans"><span class="exn">A23</span><b>정답</b> 지수족에서 얻은 랜덤표본 $X_1,\dots,X_n$ 에 대하여
+  $$S_j=\sum_{i=1}^n t_j(X_i),\qquad j=1,\dots,k$$
+  <p>는 $(\theta_1,\dots,\theta_k)$ 의 결합 완비 충분통계량이다.</p>
+</div>
+
+<div class="ans"><span class="exn">A24</span><b>정답</b> 확률밀도함수는 $\theta$ 에 의존하지만 <b>분포가 $\theta$ 에 의존하지 않는</b> 통계량 $T$ 를
+  $\theta$ 의 보조통계량이라 한다.</div>
+
+<div class="ans"><span class="exn">A25</span><b>정답</b> $S$ 가 $\theta$ 의 완비 충분통계량이고 $T$ 가 보조통계량이면 $S$ 와 $T$ 는 서로 독립이다.</div>
+
+<div class="ans"><span class="exn">A26</span><b>정답</b> 임의의 $\varepsilon\gt0$ 에 대하여
+  $$\lim_{n\to\infty}P\big[\,|T_n(X)-g(\theta)|\le\varepsilon\,\big]=1$$
+  <p>이면 $T_n(X)$ 를 $g(\theta)$ 의 일치추정량이라 한다 ($T_n\xrightarrow{\ p\ }g(\theta)$).</p>
+</div>
+
+<div class="ans"><span class="exn">A27</span><b>정답</b>
+  <p>(1) 모든 $\theta$ 에 대하여 $\lim_{n\to\infty}E[T_n(X)-g(\theta)]^2=0$ 이면 $T_n$ 은 일치성을 갖는다
+  (MSE $\to0$ ⟹ 일치).</p>
+  <p>(2) $T_n$ 이 비편향이면 $\lim_{n\to\infty}\operatorname{Var}(T_n)=0$ 만으로 일치성을 갖는다.</p>
+</div>
+
+<div class="ans"><span class="exn">A28</span><b>정답</b> $T_n$ 이 $\theta$ 의 일치추정량이고 $g$ 가 $\theta$ 에서 연속이면 $g(T_n)$ 은 $g(\theta)$ 의
+  일치추정량이다.</div>
+
+<div class="ans"><span class="exn">A29</span><b>정답</b> $T_n\xrightarrow{\ p\ }\theta_1$, $S_n\xrightarrow{\ p\ }\theta_2$, $c_n\to c$, $d_n\to d$ 일 때
+  $$\text{(1)}\ c_nT_n+d_nS_n\xrightarrow{\ p\ }c\theta_1+d\theta_2,\qquad
+    \text{(2)}\ T_nS_n\xrightarrow{\ p\ }\theta_1\theta_2,\quad
+    \frac{T_n}{S_n}\xrightarrow{\ p\ }\frac{\theta_1}{\theta_2}\ (\theta_2\ne0)$$
+</div>
+
+<div class="ans"><span class="exn">A30</span><b>정답</b> 적절한 조건하에서 MLE $\hat\theta_n$ 은 $\theta$ 의 일치추정량이다:
+  $\hat\theta_n\xrightarrow{\ p\ }\theta$.</div>
+
+<div class="ans"><span class="exn">A31</span><b>정답</b> 참값이 $\theta_0$ 일 때 적절한 조건하에서
+  $$\sqrt n\,(\hat\theta_n-\theta_0)\ \xrightarrow{\ d\ }\ N\!\left(0,\ \frac{1}{I(\theta_0)}\right)$$
+</div>
+
+<div class="ans"><span class="exn">A32</span><b>정답</b>
+  <p>(1) 두 통계량 $L,U$ 가 $P[L(X_1,\dots,X_n)\le\theta\le U(X_1,\dots,X_n)]=1-\alpha$ 를 만족하면
+  $[L,U]$ 를 $\theta$ 의 $100(1-\alpha)\%$ 신뢰구간이라 한다($L$ 은 하한, $U$ 는 상한).</p>
+  <p>(2) $1-\alpha$ 를 신뢰계수(신뢰도)라 한다.</p>
+</div>
+
+<div class="ans"><span class="exn">A33</span><b>정답</b>
+  <p>(1) $P[L\le\theta]=1-\alpha$ 이면 $[L,+\infty)$ — 단측 하한신뢰구간.</p>
+  <p>(2) $P[\theta\le U]=1-\alpha$ 이면 $(-\infty,U]$ — 단측 상한신뢰구간.</p>
+</div>
+
+<div class="ans"><span class="exn">A34</span><b>정답</b> 표본과 모수의 함수 $T(X_1,\dots,X_n;\theta)$ 의 <b>분포가 $\theta$ 에 의존하지 않으면</b>
+  $T$ 를 추축변량이라 한다.</div>
+
+<div class="ans"><span class="exn">A35</span><b>정답</b>
+  <ol class="props">
+    <li>추축변량 $T=T(X_1,\dots,X_n;\theta)$ 에 대해 $P(t_1\lt T\lt t_2)=1-\alpha$ 인 $t_1,t_2$ 를 구한다.</li>
+    <li>$T$ 의 분포가 모수에 의존하지 않으므로 $t_1,t_2$ 는 상수다.</li>
+    <li>$t_1\lt T\lt t_2$ 를 $\theta$ 에 관해 풀어 $L(x)\lt\theta\lt U(x)$ 꼴로 바꾼다.</li>
+    <li>$[L,U]$ 가 $\theta$ 의 $100(1-\alpha)\%$ 신뢰구간이다.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">A36</span><b>정답</b>
+  <p>(1) $\dfrac{\sqrt n(\overline X_n-\mu)}{\sigma}\sim N(0,1)$ 이므로</p>
+  $$\left[\ \overline X_n-z_{\alpha/2}\frac{\sigma}{\sqrt n},\ \
+    \overline X_n+z_{\alpha/2}\frac{\sigma}{\sqrt n}\ \right]$$
+  <p>(2) $\dfrac{\sqrt n(\overline X_n-\mu)}{S_n}\sim t(n-1)$ 이므로</p>
+  $$\left[\ \overline X_n-t_{\alpha/2}(n-1)\frac{S_n}{\sqrt n},\ \
+    \overline X_n+t_{\alpha/2}(n-1)\frac{S_n}{\sqrt n}\ \right]$$
+</div>
+
+<div class="ans"><span class="exn">A37</span><b>정답</b>
+  <p>(1) $\sum(X_i-\mu)^2/\sigma^2\sim\chi^2(n)$ 이므로</p>
+  $$\left[\ \frac{\sum_{i=1}^n(X_i-\mu)^2}{\chi^2_{\alpha/2}(n)},\ \
+    \frac{\sum_{i=1}^n(X_i-\mu)^2}{\chi^2_{1-\alpha/2}(n)}\ \right]$$
+  <p>(2) $(n-1)S_n^2/\sigma^2\sim\chi^2(n-1)$ 이므로</p>
+  $$\left[\ \frac{\sum_{i=1}^n(X_i-\overline X_n)^2}{\chi^2_{\alpha/2}(n-1)},\ \
+    \frac{\sum_{i=1}^n(X_i-\overline X_n)^2}{\chi^2_{1-\alpha/2}(n-1)}\ \right]$$
+</div>
+
+<div class="ans"><span class="exn">A38</span><b>정답</b>
+  $$\text{(1)}\ (\overline X_n-\overline Y_m)\ \pm\ z_{\alpha/2}\sqrt{\frac{\sigma_X^2}{n}+\frac{\sigma_Y^2}{m}}$$
+  $$\text{(2)}\ S_p^2=\frac{(n-1)S_X^2+(m-1)S_Y^2}{n+m-2}$$
+  $$\text{(3)}\ (\overline X_n-\overline Y_m)\ \pm\ t_{\alpha/2}(n{+}m{-}2)\,S_p\sqrt{\frac1n+\frac1m}$$
+</div>
+
+<div class="ans"><span class="exn">A39</span><b>정답</b>
+  $$\frac{\big(S_X^2/n+S_Y^2/m\big)^2}{\dfrac{(S_X^2/n)^2}{n-1}+\dfrac{(S_Y^2/m)^2}{m-1}}$$
+</div>
+
+<div class="ans"><span class="exn">A40</span><b>정답</b> ($\widetilde S_X^2=\sum(X_i-\mu_X)^2/n$, $\widetilde S_Y^2=\sum(Y_i-\mu_Y)^2/m$)
+  $$\text{(1)}\ \left[\ \frac{\widetilde S_X^2}{\widetilde S_Y^2}F_{1-\alpha/2}(m,n),\ \
+    \frac{\widetilde S_X^2}{\widetilde S_Y^2}F_{\alpha/2}(m,n)\ \right]$$
+  $$\text{(2)}\ \left[\ \frac{S_X^2}{S_Y^2}F_{1-\alpha/2}(m{-}1,n{-}1),\ \
+    \frac{S_X^2}{S_Y^2}F_{\alpha/2}(m{-}1,n{-}1)\ \right]$$
+</div>
+
+<div class="ans"><span class="exn">A41</span><b>정답</b>
+  $$\text{(1)}\ \overline X_n\pm z_{\alpha/2}\frac{S_n}{\sqrt n},\qquad
+    \text{(2)}\ \hat p\pm z_{\alpha/2}\sqrt{\frac{\hat p(1-\hat p)}{n}}\ \ (\hat p=\overline X_n)$$
+  $$\text{(3)}\ (\overline X_n-\overline Y_m)\pm z_{\alpha/2}\sqrt{\frac{S_X^2}{n}+\frac{S_Y^2}{m}}$$
+  $$\text{(4)}\ (\hat p_X-\hat p_Y)\pm z_{\alpha/2}
+    \sqrt{\frac{\hat p_X(1-\hat p_X)}{n}+\frac{\hat p_Y(1-\hat p_Y)}{m}}$$
+</div>
+
+<div class="sec">교재 연습문제 — 적률추정법 · 최대가능도 추정법 (01~10)</div>
 
 <div class="ans"><span class="exn">01</span><b>정답</b> $\hat\mu=\overline X_n$, &nbsp;$\hat\sigma=\sqrt{\frac1n\sum(X_i-\overline X_n)^2}$
   <p>이 모수화에서 $E(X)=\mu$, $Var(X)=\dfrac{(2\sqrt3\sigma)^2}{12}=\sigma^2$.
