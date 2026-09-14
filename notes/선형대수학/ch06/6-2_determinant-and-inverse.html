@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선형대수학 · 6.2 행렬식과 역행렬</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">선형대수학 · 6장 크래머 공식과 역행렬</div>
+  <h1><span class="no">6.2</span>행렬식과 역행렬 <span class="en">determinant and inverse matrix</span></h1>
+</header>
+
+<p>$|A|\ne0$ 일 때 행렬식 $|A|$ 를 이용하여 역행렬 $A^{-1}$ 을 구하는 방법에 대해 설명한다.
+<a href="../ch04/4-2_finding-inverse.html">4.2절</a>의 <b>알고리즘 4.1</b>이 $(A\mid I)$ 를 기본행연산으로
+$(I\mid A^{-1})$ 까지 밀어서 역행렬을 구하는 방법이었다면, 여기서는
+<a href="../ch05/5-1_determinant.html">여인수</a>만으로 역행렬을 <b>한 번에 조립</b>한다.</p>
+
+<h2 class="sub">여인수행렬과 수반행렬 <span class="en">cofactor matrix and adjoint matrix</span></h2>
+
+<div class="box def">
+  <span class="tag">정의 6.1</span><span class="title">여인수행렬 · 수반행렬</span>
+  <p>$n$차 정방행렬 $A=(a_{ij})$ 에 대해 $(i,j)$ 원소가 $A$ 의 원소 $a_{ij}$ 에 대한
+  <a href="../ch05/5-1_determinant.html">여인수</a> $A_{ij}$ 인 행렬을 $A$ 의
+  <b>여인수행렬</b>(cofactor matrix)이라 하며, $A$ 의 여인수행렬의 <b>전치행렬</b>을 $A$ 의
+  <b>수반행렬</b>(adjoint matrix)이라 하고 $\operatorname{adj}A$ 로 표시한다. 즉,</p>
+  $$\operatorname{adj}A=
+    \begin{pmatrix}
+      A_{11}&A_{12}&\cdots&A_{1n}\\
+      A_{21}&A_{22}&\cdots&A_{2n}\\
+      \vdots&\vdots&\ddots&\vdots\\
+      A_{n1}&A_{n2}&\cdots&A_{nn}
+    \end{pmatrix}^{\!T}
+    =\begin{pmatrix}
+      A_{11}&A_{21}&\cdots&A_{n1}\\
+      A_{12}&A_{22}&\cdots&A_{n2}\\
+      \vdots&\vdots&\ddots&\vdots\\
+      A_{1n}&A_{2n}&\cdots&A_{nn}
+    \end{pmatrix}$$
+</div>
+
+<div class="note">
+  <b>순서에 주의</b> — 여인수행렬은 $A_{ij}$ 를 <b>제자리</b>에 놓은 것이고, 수반행렬은 거기서 한 번
+  <a href="../ch03/3-5_transpose.html">전치</a>한 것이다. 즉 $\operatorname{adj}A$ 의 $(i,j)$ 원소는
+  $A_{ij}$ 가 아니라 <b>$A_{ji}$</b> 이다. 이 전치를 빠뜨리는 것이 가장 흔한 실수다.
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">$3$차 행렬의 수반행렬</span>
+  <p>다음 행렬의 수반행렬을 구해 보자.</p>
+  $$A=\begin{pmatrix}1&2&3\\2&5&3\\1&0&8\end{pmatrix}$$
+  <p>먼저 아홉 개의 여인수 $A_{ij}=(-1)^{i+j}M_{ij}$ 를 모두 구한다.</p>
+  $$\begin{aligned}
+    &A_{11}=+\begin{vmatrix}5&3\\0&8\end{vmatrix}=40,\quad
+     A_{12}=-\begin{vmatrix}2&3\\1&8\end{vmatrix}=-13,\quad
+     A_{13}=+\begin{vmatrix}2&5\\1&0\end{vmatrix}=-5,\\[2pt]
+    &A_{21}=-\begin{vmatrix}2&3\\0&8\end{vmatrix}=-16,\quad
+     A_{22}=+\begin{vmatrix}1&3\\1&8\end{vmatrix}=5,\quad
+     A_{23}=-\begin{vmatrix}1&2\\1&0\end{vmatrix}=2,\\[2pt]
+    &A_{31}=+\begin{vmatrix}2&3\\5&3\end{vmatrix}=-9,\quad
+     A_{32}=-\begin{vmatrix}1&3\\2&3\end{vmatrix}=3,\quad
+     A_{33}=+\begin{vmatrix}1&2\\2&5\end{vmatrix}=1
+  \end{aligned}$$
+  <p>이를 제자리에 놓은 것이 여인수행렬이고, 전치한 것이 수반행렬이다.</p>
+  $$\text{여인수행렬}=\begin{pmatrix}40&-13&-5\\-16&5&2\\-9&3&1\end{pmatrix}
+    \ \xrightarrow{\ \text{전치}\ }\
+    \operatorname{adj}A=\begin{pmatrix}40&-16&-9\\-13&5&3\\-5&2&1\end{pmatrix}$$
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">$2$차 행렬의 수반행렬</span>
+  <p>$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$ 의 여인수는 $1$차 행렬식이므로 원소 하나씩이다.</p>
+  $$A_{11}=+d,\quad A_{12}=-c,\quad A_{21}=-b,\quad A_{22}=+a$$
+  $$\text{여인수행렬}=\begin{pmatrix}d&-c\\-b&a\end{pmatrix}
+    \ \xrightarrow{\ \text{전치}\ }\
+    \operatorname{adj}A=\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$$
+  <p><b>주대각은 자리를 바꾸고 부대각은 부호만 바꾸는</b> 익숙한 모양이 여기서 나온다.</p>
+</div>
+
+<h2 class="sub">수반행렬에 의한 역행렬 <span class="en">inverse via the adjoint matrix</span></h2>
+
+<p>$n$차 정방행렬 $A$ 에 대해 $|A|\ne0$ 이라면 $A^{-1}$ 은 [정리 6.2]와 같이 $|A|$ 와
+$\operatorname{adj}A$ 로 구할 수 있다.</p>
+
+<div class="box thm">
+  <span class="tag">정리 6.2</span><span class="title">수반행렬에 의한 역행렬</span>
+  <p>$n$차 정방행렬 $A$ 에 대해 $|A|\ne0$ 일 때 $A^{-1}$ 은 다음과 같다.</p>
+  $$A^{-1}=\frac{\operatorname{adj}A}{|A|}$$
+</div>
+
+<div class="note">
+  <p><b>왜 성립하는가</b> — 여인수 전개를 행렬곱으로 읽으면 된다. $A\,(\operatorname{adj}A)$ 의 $(i,i)$ 원소는
+  $a_{i1}A_{i1}+\cdots+a_{in}A_{in}=|A|$ 로 <a href="../ch05/5-1_determinant.html">$i$행에 의한 여인수 전개</a>
+  그 자체이고, $(i,k)\,(i\ne k)$ 원소는 $a_{i1}A_{k1}+\cdots+a_{in}A_{kn}$ 으로
+  <b>$k$행을 $i$행으로 바꿔 쓴 행렬</b>($i$행과 $k$행이 같은 행렬)의 행렬식이라
+  <a href="../ch05/5-2_properties.html">정리 5.3의 따름정리</a>에 의해 $0$ 이다. 따라서</p>
+  $$A\,(\operatorname{adj}A)=|A|\,I$$
+  <p>이고, $|A|\ne0$ 이므로 양변을 $|A|$ 로 나누면 $\operatorname{adj}A/|A|$ 가 $A$ 의 역행렬이다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">$3$차 역행렬 구하기</span>
+  <p>앞의 예에서 구한 $A$ 와 $\operatorname{adj}A$ 를 그대로 쓴다. $3$행으로 전개하면</p>
+  $$|A|=\begin{vmatrix}1&2&3\\2&5&3\\1&0&8\end{vmatrix}
+    =1\begin{vmatrix}2&3\\5&3\end{vmatrix}-0+8\begin{vmatrix}1&2\\2&5\end{vmatrix}
+    =-9+8=-1\ne0$$
+  <p>이므로 $A$ 는 정칙행렬이고</p>
+  $$A^{-1}=\frac{\operatorname{adj}A}{|A|}
+    =\frac{1}{-1}\begin{pmatrix}40&-16&-9\\-13&5&3\\-5&2&1\end{pmatrix}
+    =\begin{pmatrix}-40&16&9\\13&-5&-3\\5&-2&-1\end{pmatrix}$$
+  <p>검산하면 $AA^{-1}=I$ 이다. 예컨대 $(1,1)$ 원소는 $1(-40)+2(13)+3(5)=1$,
+  $(1,2)$ 원소는 $1(16)+2(-5)+3(-2)=0$ 이다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">$2$차 역행렬 공식의 유도</span>
+  <p>$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$ 에 [정리 6.2]를 적용하면 $|A|=ad-bc$ 이므로</p>
+  $$A^{-1}=\frac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}\qquad(ad-bc\ne0)$$
+  <p>가 되어 <a href="../ch04/4-1_nonsingular-and-inverse.html">4.1절</a>에서 외운
+  $2$차 역행렬 공식이 그대로 나온다. 수치로 확인하면</p>
+  $$A=\begin{pmatrix}3&5\\1&2\end{pmatrix}\ \Rightarrow\ |A|=1,\qquad
+    A^{-1}=\frac11\begin{pmatrix}2&-5\\-1&3\end{pmatrix}=\begin{pmatrix}2&-5\\-1&3\end{pmatrix}$$
+</div>
+
+<h2 class="sub">역행렬에 의한 연립방정식의 해 <span class="en">solving a linear system by the inverse</span></h2>
+
+<div class="box thm">
+  <span class="tag">정리 6.3</span><span class="title">역행렬에 의한 유일한 해</span>
+  <p>일차연립방정식 $AX=B$ 는 $|A|\ne0$ 일 때 <b>유일한 해</b></p>
+  $$X=A^{-1}B$$
+  <p>를 갖는다.</p>
+</div>
+
+<div class="note">
+  [정리 6.3]은 일차방정식 $ax=b$ 의 해가 $a\ne0$ 일 때 $a^{-1}b$ 라는 사실과 유사하다.
+  실수에서 "$0$ 으로 나눌 수 없다"에 해당하는 것이 행렬에서는 "$|A|=0$ 이면 역행렬이 없다"
+  (<a href="../ch05/5-3_matrix-operations.html">정리 5.9</a>)이다.
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">역행렬로 연립방정식 풀기</span>
+  <p><a href="6-1_cramers-rule.html">6.1절</a>에서 크래머 공식으로 풀었던 연립방정식을 이번에는
+  역행렬로 푼다.</p>
+  $$\begin{cases}x_1+2x_2+3x_3=5\\ 2x_1+5x_2+3x_3=3\\ x_1+8x_3=17\end{cases}
+    \ \Longleftrightarrow\
+    \begin{pmatrix}1&2&3\\2&5&3\\1&0&8\end{pmatrix}
+    \begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}
+    =\begin{pmatrix}5\\3\\17\end{pmatrix}$$
+  <p>$|A|=-1\ne0$ 이므로 유일한 해를 가지며, 앞에서 구한 $A^{-1}$ 을 곱하면 된다.</p>
+  $$X=A^{-1}B=\begin{pmatrix}-40&16&9\\13&-5&-3\\5&-2&-1\end{pmatrix}
+    \begin{pmatrix}5\\3\\17\end{pmatrix}
+    =\begin{pmatrix}-200+48+153\\65-15-51\\25-6-17\end{pmatrix}
+    =\begin{pmatrix}1\\-1\\2\end{pmatrix}$$
+  <p>크래머 공식으로 얻은 $x_1=1,\ x_2=-1,\ x_3=2$ 와 같다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">상수행렬만 바뀔 때의 이점</span>
+  <p>같은 계수행렬 $A$ 에 상수행렬만 $B'=(1\ 0\ 1)^{T}$ 로 바뀌면, $A^{-1}$ 을 이미 구해 두었으므로
+  곱셈 한 번이면 끝난다.</p>
+  $$X=A^{-1}B'=\begin{pmatrix}-40&16&9\\13&-5&-3\\5&-2&-1\end{pmatrix}
+    \begin{pmatrix}1\\0\\1\end{pmatrix}
+    =\begin{pmatrix}-31\\10\\4\end{pmatrix}$$
+  <p>계수행렬이 같고 상수행렬만 여러 개인 문제에서는 <b>역행렬을 한 번 구해 두는 쪽</b>이
+  크래머 공식보다 유리하다(크래머 공식은 $B$ 가 바뀔 때마다 행렬식을 $n$ 개씩 다시 계산해야 한다).</p>
+</div>
+
+<div class="terms">
+  <div class="h">알아두기 — 세 가지 해법 비교</div>
+  <dl>
+    <dt>가우스 소거법</dt>
+    <dd>제한 없음 — 정방이 아니어도, $|A|=0$ 이어도 쓸 수 있다. 계산량이 가장 적다.</dd>
+    <dt>크래머 공식</dt>
+    <dd>정방 + $|A|\ne0$ — 미지수 하나만 필요할 때 유리. $n+1$ 개의 행렬식이 필요.</dd>
+    <dt>역행렬 $X=A^{-1}B$</dt>
+    <dd>정방 + $|A|\ne0$ — 같은 $A$ 에 상수행렬 $B$ 만 여러 번 바뀔 때 유리.</dd>
+  </dl>
+</div>
+
+<nav class="pager">
+  <a href="6-1_cramers-rule.html">← 이전<small>6.1 크래머 공식</small></a>
+</nav>
+
+</body>
+</html>
