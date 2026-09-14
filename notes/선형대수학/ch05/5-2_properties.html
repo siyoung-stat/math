@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선형대수학 · 5.2 행렬식의 성질</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">선형대수학 · 5장 행렬식</div>
+  <h1><span class="no">5.2</span>행렬식의 성질 <span class="en">properties of the determinant</span></h1>
+</header>
+
+<p>행렬식의 성질은 <b>크기가 큰 행렬의 행렬식</b>을 구하는 데 유용하게 사용할 수 있다.</p>
+
+<h2 class="sub">영행을 가지면 $0$ <span class="en">zero row</span></h2>
+
+<div class="box thm">
+  <span class="tag">정리 5.2</span><span class="title">영행이 있으면 행렬식은 $0$</span>
+  <p>$n$차 정방행렬 $A=(a_{ij})$ 가 <b>영행</b>을 갖는다면 $|A|=0$ 이다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>둘째 행이 영행이므로 그 행으로 전개하면 모든 항이 $0$ 이다.</p>
+  $$\begin{vmatrix}1&1&1&1&1\\0&0&0&0&0\\2&2&2&2&2\\3&3&3&3&3\\4&4&4&4&4\end{vmatrix}=0$$
+</div>
+
+<h2 class="sub">기본행연산과 행렬식 <span class="en">row operations</span></h2>
+
+<div class="box thm">
+  <span class="tag">정리 5.3</span><span class="title">행 교환 $R_{i,j}$ — 부호가 바뀐다</span>
+  <p>$n$차 정방행렬 $A=(a_{ij})$ 에 기본행연산 $R_{i,j}$ 를 적용하여 얻은 행렬을 $B$ 라 하면
+  $|B|=-|A|$ 이다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$1$행과 $3$행을 바꾸면 부호만 뒤집힌다.</p>
+  $$\begin{vmatrix}8&1&5\\0&0&1\\5&1&6\end{vmatrix}
+    =-\begin{vmatrix}5&1&6\\0&0&1\\8&1&5\end{vmatrix}=3$$
+</div>
+
+<div class="box thm">
+  <span class="tag">따름정리</span><span class="title">두 행이 같으면 $0$</span>
+  <p>$n$차 정방행렬 $A=(a_{ij})$ 에 대해 다음이 성립한다.</p>
+  <ol class="props">
+    <li>$A$ 의 <b>두 행이 서로 같을 때</b> $|A|=0$ 이다.</li>
+    <li>$i\ne j$ 이면 $\displaystyle\sum_{k=1}^{n}a_{ik}A_{jk}=0$ 이다.</li>
+  </ol>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$1$행과 $3$행이 같다. 두 행을 바꿔도 행렬이 그대로이므로 $|A|=-|A|$, 즉 $|A|=0$ 이다.</p>
+  $$\begin{vmatrix}3&3&2\\1&2&3\\3&3&2\end{vmatrix}=0$$
+  <p>$(2)$ 는 <b>다른 행의 여인수</b>를 곱해 더하면 $0$ 이 된다는 뜻이다 —
+  그 합은 두 행이 같은 행렬의 행렬식이기 때문이다.</p>
+</div>
+
+<div class="box thm">
+  <span class="tag">정리 5.4</span><span class="title">한 행에 $c$ 배 $R_i(c)$ — 행렬식도 $c$ 배</span>
+  <p>$n$차 정방행렬 $A=(a_{ij})$ 에 기본행연산 $R_i(c)$ 를 적용하여 얻은 행렬을 $B$ 라 하면
+  $|B|=c|A|$ 가 성립한다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>셋째 행에서 공통인수 $3$ 을 <b>행렬식 밖으로</b> 빼낸다.</p>
+  $$\begin{vmatrix}8&1&5\\0&0&1\\15&3&18\end{vmatrix}
+    =\begin{vmatrix}8&1&5\\0&0&1\\3\cdot5&3\cdot1&3\cdot6\end{vmatrix}
+    =3\begin{vmatrix}8&1&5\\0&0&1\\5&1&6\end{vmatrix}=9$$
+</div>
+
+<div class="box thm">
+  <span class="tag">정리 5.5</span><span class="title">다른 행의 $c$ 배 더하기 $R_{i,j}(c)$ — 불변</span>
+  <p>$n$차 정방행렬 $A=(a_{ij})$ 에 기본행연산 $R_{i,j}(c)$ 를 적용하여 얻은 행렬을 $B$ 라 하면
+  $|B|=|A|$ 이다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$R_{1,3}(1)$ 로 $3$행에 $1$행을 더해 제$1$열에 $0$ 을 하나 더 만든다. 행렬식은 그대로다.</p>
+  $$\begin{vmatrix}-1&1&3\\0&3&3\\1&8&0\end{vmatrix}
+    =\begin{vmatrix}-1&1&3\\0&3&3\\0&9&3\end{vmatrix}
+    =(-1)\begin{vmatrix}3&3\\9&3\end{vmatrix}=-(-18)=18$$
+</div>
+
+<div class="scroll"><table class="data">
+  <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">기본행연산과 행렬식의 관계</caption>
+  <tr><th>기본행연산</th><th>행렬식</th></tr>
+  <tr><td>$A\xrightarrow{\ R_{i,j}\ }B$</td><td>$|B|=-|A|$</td></tr>
+  <tr><td>$A\xrightarrow{\ R_i(c)\ }B$</td><td>$|B|=c|A|$</td></tr>
+  <tr><td>$A\xrightarrow{\ R_{i,j}(c)\ }B$</td><td>$|B|=|A|$</td></tr>
+</table></div>
+
+<p>복잡한 행렬의 행렬식을 구할 때는 기본행연산을 적용하여 <b>행제형으로 고치거나</b>,
+어떤 행이나 열의 원소를 가급적 <b>$0$ 이 많도록</b> 변환함으로써 행렬식을 간단히 구할 수 있다.</p>
+
+<h2 class="sub">삼각행렬 <span class="en">triangular matrix</span></h2>
+
+<div class="box thm">
+  <span class="tag">정리 5.6</span><span class="title">삼각행렬의 행렬식은 주대각원소의 곱</span>
+  <p>$n$차 삼각행렬 $A=(a_{ij})$ 의 행렬식 $|A|$ 는 다음과 같다.</p>
+  $$|A|=a_{11}a_{22}\cdots a_{nn}=\prod_{i=1}^{n}a_{ii}$$
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>상삼각행렬이므로 주대각만 곱한다.</p>
+  $$\begin{vmatrix}3&-7&13&27\\0&2&-8&19\\0&0&1&6\\0&0&0&4\end{vmatrix}
+    =3\cdot2\cdot1\cdot4=24$$
+  <p>따라서 <b>$R_{i,j}(c)$ 로 삼각행렬을 만든 뒤 주대각을 곱하는 것</b>이
+  큰 행렬식의 표준 계산법이다. 이 연산은 행렬식을 바꾸지 않기 때문이다.</p>
+</div>
+
+<nav class="pager">
+  <a href="5-1_determinant.html">← 이전<small>5.1 행렬식</small></a>
+  <a class="next" href="5-3_matrix-operations.html">다음 →<small>5.3 행렬연산과 행렬식</small></a>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선형대수학 · 5.1 행렬식</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">선형대수학 · 5장 행렬식</div>
+  <h1><span class="no">5.1</span>행렬식 <span class="en">determinant</span></h1>
+</header>
+
+<p><b>행렬식</b>(determinant)이란 <b>정방행렬에 실수를 대응시키는 함수</b>이다.
+정방행렬 $A$ 의 행렬식은 $|A|$ 또는 $\det A$ 로 나타낸다.
+$n$차 정방행렬의 행렬식은 차수가 하나 낮은 $(n-1)$차 정방행렬의 행렬식을 이용하여
+<b>귀납적으로</b> 정의한다.</p>
+
+<h2 class="sub">소행렬식과 여인수 <span class="en">minor and cofactor</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">소행렬 · 소행렬식 · 여인수</span>
+  <p>$A=(a_{ij})$ 를 $n$차 정방행렬이라 할 때</p>
+  <ol class="props">
+    <li><b>소행렬</b>(submatrix) — $A$ 에서 $i$번째 행과 $j$번째 열을 제거하여 구성되는 $(n-1)$차 정방행렬.</li>
+    <li><b>소행렬식</b>(minor) — 그 소행렬의 행렬식. $a_{ij}$ 에 대한 소행렬식이라 하며 $M_{ij}$ 로 표시한다.</li>
+    <li><b>여인수</b>(cofactor) — 다음으로 정의되는 $A_{ij}$.
+      $$A_{ij}=(-1)^{i+j}M_{ij}$$</li>
+  </ol>
+</div>
+
+<figure class="fig">
+<svg viewBox="0 0 470 205" role="img" aria-label="왼쪽은 여인수 부호가 체커보드로 번갈아 나타나는 3차 격자, 오른쪽은 1행과 2열을 지워 소행렬식 M12를 만드는 그림">
+  <text class="lbl" x="100" y="24" text-anchor="middle">여인수의 부호 (−1)ⁱ⁺ʲ</text>
+  <g class="cell">
+    <rect x="40"  y="36" width="40" height="40"/><rect x="80"  y="36" width="40" height="40"/><rect x="120" y="36" width="40" height="40"/>
+    <rect x="40"  y="76" width="40" height="40"/><rect x="80"  y="76" width="40" height="40"/><rect x="120" y="76" width="40" height="40"/>
+    <rect x="40"  y="116" width="40" height="40"/><rect x="80" y="116" width="40" height="40"/><rect x="120" y="116" width="40" height="40"/>
+  </g>
+  <g class="lbl" font-size="18">
+    <text x="60"  y="63" text-anchor="middle">+</text><text x="100" y="63" text-anchor="middle">−</text><text x="140" y="63" text-anchor="middle">+</text>
+    <text x="60"  y="103" text-anchor="middle">−</text><text x="100" y="103" text-anchor="middle">+</text><text x="140" y="103" text-anchor="middle">−</text>
+    <text x="60"  y="143" text-anchor="middle">+</text><text x="100" y="143" text-anchor="middle">−</text><text x="140" y="143" text-anchor="middle">+</text>
+  </g>
+  <text class="lbl" x="100" y="176" text-anchor="middle" font-size="11">(1,1) 이 +, 한 칸 옮길 때마다 부호가 바뀐다</text>
+
+  <text class="lbl" x="330" y="24" text-anchor="middle">M₁₂ — 1행과 2열을 지운다</text>
+  <g class="cell">
+    <rect x="270" y="36" width="40" height="40"/><rect x="310" y="36" width="40" height="40"/><rect x="350" y="36" width="40" height="40"/>
+    <rect x="270" y="76" width="40" height="40"/><rect x="310" y="76" width="40" height="40"/><rect x="350" y="76" width="40" height="40"/>
+    <rect x="270" y="116" width="40" height="40"/><rect x="310" y="116" width="40" height="40"/><rect x="350" y="116" width="40" height="40"/>
+  </g>
+  <rect x="270" y="36" width="120" height="40" fill="#f5e6e6" stroke="#c8867f"/>
+  <rect x="310" y="36" width="40" height="120" fill="#f5e6e6" stroke="#c8867f"/>
+  <rect class="cellhi" x="270" y="76"  width="40" height="40"/>
+  <rect class="cellhi" x="350" y="76"  width="40" height="40"/>
+  <rect class="cellhi" x="270" y="116" width="40" height="40"/>
+  <rect class="cellhi" x="350" y="116" width="40" height="40"/>
+  <g class="lbl" font-size="12">
+    <text x="290" y="62"  text-anchor="middle">a₁₁</text><text x="330" y="62"  text-anchor="middle">a₁₂</text><text x="370" y="62"  text-anchor="middle">a₁₃</text>
+    <text x="290" y="102" text-anchor="middle">a₂₁</text><text x="330" y="102" text-anchor="middle">a₂₂</text><text x="370" y="102" text-anchor="middle">a₂₃</text>
+    <text x="290" y="142" text-anchor="middle">a₃₁</text><text x="330" y="142" text-anchor="middle">a₃₂</text><text x="370" y="142" text-anchor="middle">a₃₃</text>
+  </g>
+  <text class="lbl b" x="330" y="176" text-anchor="middle" font-size="11">남은 파란 네 칸의 2차 행렬식이 M₁₂</text>
+</svg>
+<figcaption>여인수 $A_{ij}$ 는 <b>소행렬식 $M_{ij}$ 에 체커보드 부호를 붙인 것</b>이다.</figcaption>
+</figure>
+
+<h2 class="sub">여인수 전개 <span class="en">cofactor expansion</span></h2>
+
+<div class="box def">
+  <span class="tag">정의 5.1</span><span class="title">행렬식 <span class="en">determinant</span></span>
+  <p>$1$차 정방행렬 $A=(a)$ 에 대해 $|A|=a$ 이고, $n\ge2$ 일 때 $n$차 정방행렬 $A=(a_{ij})$ 에 대해</p>
+  $$|A|=a_{11}A_{11}+a_{12}A_{12}+\cdots+a_{1n}A_{1n}=\sum_{j=1}^{n}a_{1j}A_{1j}$$
+  <p>이다. 이 식을 <b>첫 번째 행에 의한</b> 행렬식 $|A|$ 의
+  <b>여인수 전개</b>(cofactor expansion) 또는 <b>라플라스 전개</b>(Laplace expansion)라고 한다.
+  또한 $n$차 정방행렬의 행렬식을 간단히 <b>$n$차 행렬식</b>이라고 한다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">$2$차와 $3$차 행렬식</span>
+  <p>$2$차는 정의에서 바로 나온다.</p>
+  $$\begin{vmatrix}a&b\\c&d\end{vmatrix}=a\cdot d-b\cdot c=ad-bc$$
+  <p>$3$차는 $1$행에 대해 전개한다.</p>
+  $$\begin{vmatrix}2&-1&2\\1&2&1\\3&0&-1\end{vmatrix}
+    =2\begin{vmatrix}2&1\\0&-1\end{vmatrix}
+    -(-1)\begin{vmatrix}1&1\\3&-1\end{vmatrix}
+    +2\begin{vmatrix}1&2\\3&0\end{vmatrix}$$
+  $$=2(-2)+1(-4)+2(-6)=-4-4-12=-20$$
+</div>
+
+<div class="box thm">
+  <span class="tag">정리 5.1</span><span class="title">어느 행·열로 전개해도 결과는 같다</span>
+  <p>$n$차 정방행렬 $A=(a_{ij})$ 의 행렬식은 <b>$i$번째 행에 의한</b> 여인수 전개</p>
+  $$|A|=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}=\sum_{j=1}^{n}a_{ij}A_{ij}$$
+  <p>또는 <b>$j$번째 열에 의한</b> 여인수 전개</p>
+  $$|A|=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots+a_{nj}A_{nj}=\sum_{i=1}^{n}a_{ij}A_{ij}$$
+  <p>로 계산할 수 있다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">$0$ 이 많은 행·열을 고른다</span>
+  <p>같은 행렬을 <b>$3$행</b>(원소 $3,0,-1$)으로 전개해 보자. $a_{32}=0$ 이라 항 하나가 통째로 사라진다.</p>
+  $$\begin{vmatrix}2&-1&2\\1&2&1\\3&0&-1\end{vmatrix}
+    =3\begin{vmatrix}-1&2\\2&1\end{vmatrix}
+    -0\begin{vmatrix}2&2\\1&1\end{vmatrix}
+    +(-1)\begin{vmatrix}2&-1\\1&2\end{vmatrix}$$
+  $$=3(-5)-0+(-1)(5)=-15-5=-20$$
+  <p>$1$행으로 전개한 값과 같다. <b>$0$ 이 가장 많은 행이나 열</b>을 고르는 것이 계산량을 줄이는 요령이다.</p>
+</div>
+
+<nav class="pager">
+  <a href="../ch04/4-exercises.html">← 이전<small>4장 연습문제</small></a>
+  <a class="next" href="5-2_properties.html">다음 →<small>5.2 행렬식의 성질</small></a>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5장 · 연습문제</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  .ex{ margin:26px 0; line-height:1.75; }
+  .exn{ font-weight:800; color:var(--def); margin-right:8px; }
+  .ex ol{ margin:4px 0 0; padding-left:26px; }
+  .ex li{ margin:5px 0; }
+  .answersheet{ page-break-before:always; }
+  .ans{ margin:24px 0; line-height:1.75; }
+  .ans .exn{ color:var(--thm); }
+  .ans ol.fill{ margin:6px 0 0; padding-left:24px; }
+  .ans ol.fill li{ margin:9px 0; }
+  .ans ol.props{ padding-left:24px; }
+  .mgrid{ display:flex; flex-wrap:wrap; gap:10px 26px; margin:8px 0 0; }
+  .past .exn{ color:#c98a1e; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">선형대수학 · 5장 행렬식</div>
+  <h1><span class="no">연습문제</span>5장 <span class="en">exercises</span></h1>
+</header>
+
+<p>5장(행렬식) 교재 연습문제와 워크북 기출문제, 그리고 정답·해설. 정답 시트는 인쇄 시 다음 페이지부터 나온다.</p>
+
+<h2 class="sub">교재 연습문제 <span class="en">textbook exercises</span></h2>
+
+<div class="ex"><span class="exn">01</span>다음 3차 정방행렬 $A$ 에 대해 물음에 답하라.
+  $$A=\begin{pmatrix}2&-1&2\\1&2&1\\3&0&-1\end{pmatrix}$$
+  <ol>
+    <li>$A$ 의 $(i,j)$ 소행렬식 $M_{ij}$ 를 구하라 $(1\le i,j\le3)$.</li>
+    <li>$A$ 의 $(i,j)$ 여인수 $A_{ij}$ 를 구하라 $(1\le i,j\le3)$.</li>
+    <li>$|A|$ 를 [정의 5.1]에 의해 구하라.</li>
+    <li>$|A|$ 를 $2$번째 행에 의한 여인수 전개로 구하라.</li>
+    <li>$|A|$ 를 $3$번째 열에 의한 여인수 전개로 구하라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">02</span>다음 각각의 행렬에 대해 행렬식을 구하라.
+  <div class="mgrid">
+    <span>$(1)\ A=\begin{pmatrix}5&2&4&3&8\\12&-4&2&1&6\\0&0&0&0&0\\12&21&-7&11&34\\9&11&3&78&-5\end{pmatrix}$</span>
+    <span>$(2)\ B=\begin{pmatrix}23&-43&1\\2&5&0\\5&3&0\end{pmatrix}$</span>
+    <span>$(3)\ C=\begin{pmatrix}1&5&-3\\2&7&1\\3&13&-5\end{pmatrix}$</span>
+    <span>$(4)\ D=\begin{pmatrix}4&-8&19\\1&0&0\\3&-7&16\end{pmatrix}$</span>
+    <span>$(5)\ E=\begin{pmatrix}3&-7&13&27\\0&2&-8&19\\0&0&1&6\\0&0&0&4\end{pmatrix}$</span>
+    <span>$(6)\ F=\begin{pmatrix}3&6&-1\\2&1&0\\-5&4&1\end{pmatrix}$</span>
+    <span>$(7)\ G=\begin{pmatrix}0&0&0&1\\0&0&2&3\\0&4&5&6\\7&8&9&10\end{pmatrix}$</span>
+    <span>$(8)\ H=\begin{pmatrix}-1&5&2\\0&1&4\\1&3&2\end{pmatrix}$</span>
+  </div>
+</div>
+
+<div class="ex"><span class="exn">03</span>다음 행렬의 행렬식을 구하라.
+  <div class="mgrid">
+    <span>$(1)\ \begin{pmatrix}a&0&0\\0&b&0\\0&0&c\end{pmatrix}$</span>
+    <span>$(2)\ \begin{pmatrix}x^2&y^2&z^2\\x&y&z\\1&1&1\end{pmatrix}$</span>
+    <span>$(3)\ \begin{pmatrix}a&b&c\\c&a&b\\b&c&a\end{pmatrix}$</span>
+    <span>$(4)\ \begin{pmatrix}0&c&b\\c&0&a\\b&a&0\end{pmatrix}$</span>
+  </div>
+</div>
+
+<div class="ex"><span class="exn">04</span>다음 행렬의 행렬식이 $0$ 이 되기 위한 실수 $x$ 를 구하라.
+  <div class="mgrid">
+    <span>$(1)\ A=\begin{pmatrix}x-3&-2\\4&x+3\end{pmatrix}$</span>
+    <span>$(2)\ B=\begin{pmatrix}x-1&0&0\\0&x-2&3\\0&5&x\end{pmatrix}$</span>
+  </div>
+</div>
+
+<div class="ex"><span class="exn">05</span>다음 행렬 $A$ 가 역행렬을 갖지 못하게 되는 실수 $x$ 를 구하라.
+  $$A=\begin{pmatrix}x+3&-x+3\\4&x-3\end{pmatrix}$$
+</div>
+
+<div class="ex"><span class="exn">06</span>다음 3차 정방행렬 $A$ 에 대해 물음에 답하라.
+  $$A=\begin{pmatrix}3&7&-1\\-4&8&-9\\2&0&3\end{pmatrix}$$
+  <ol>
+    <li>$A$ 가 정칙행렬임을 $|A|$ 를 구하여 확인하라.</li>
+    <li>$A$ 를 기본행렬의 곱으로 표시하라.</li>
+    <li>$(2)$ 번의 결과와 [정리 5.7]을 이용하여 $|A|$ 를 구하라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">07</span>다음 3차 정방행렬 $A$ 에 대해 다음을 구하라.
+  $$A=\begin{pmatrix}1&4&3\\1&6&8\\1&2&-1\end{pmatrix}$$
+  <ol>
+    <li>$A^{-1}$ 을 [알고리즘 4.1]에 따라 구하라.</li>
+    <li>기본행연산과 행렬식의 관계를 이용해서 $A$ 의 행렬식을 구하라.</li>
+    <li>$\left|A^{-1}\right|$ 을 구하라.</li>
+    <li>$c=-3$ 일 때 $|cA|$ 를 구하라.</li>
+    <li>$\left|A^{T}\right|$ 를 구하라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">08</span>3차 정방행렬 $A$ 에 대해 $|A|=2$ 라 할 때 다음을 계산하라.
+  <ol>
+    <li>$|-3A|$</li>
+    <li>$\left|3A^{-1}\right|$</li>
+    <li>$\left|(4A)^{-1}\right|$</li>
+    <li>$\left|6A^{T}\right|$</li>
+    <li>$B=E_{1,2}\!\left(\tfrac1{16}\right)E_{2,3}(-1)\,E_2(4)\,E_{3,2}(-4)\,E_1(3)$ 과 같이
+      $B$ 가 기본행렬의 곱으로 표시되었을 때 $|AB|$ 를 구하라.</li>
+    <li>$B=\tfrac13A$ 이고 $C=2B^{-1}$ 이라 할 때 $|C|$ 를 구하라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">09</span>다음 행렬이 정칙행렬이 되기 위한 조건을 구하라.
+  $$A=\begin{pmatrix}3&2&1\\2&x+3&6\\-x-3&0&2\end{pmatrix}$$
+</div>
+
+<div class="ex"><span class="exn">10</span>4차 정방행렬 $A$ 와 $B$ 에 대해서 $|A|=-3$, $|B|=-1$ 일 때 다음을 계산하라.
+  <div class="mgrid">
+    <span>$(1)\ |AB|$</span>
+    <span>$(2)\ \left|B^3\right|$</span>
+    <span>$(3)\ |3A|$</span>
+    <span>$(4)\ |2B|$</span>
+    <span>$(5)\ \left|A^{T}BA\right|$</span>
+    <span>$(6)\ \left|BAB^{-1}\right|$</span>
+  </div>
+</div>
+
+<h2 class="sub">기출문제 <span class="en">past exam questions</span></h2>
+
+<div class="ex past"><span class="exn">기출 1</span>3차 정방행렬 $A$ 가 다음과 같이 기본행렬들의 곱으로 표시된다고 하였을 때, $A$ 의 행렬식은?
+  $$A=E_{1,2}\,E_3(4)\,E_{1,3}(3)$$
+  <div class="mgrid">
+    <span>① $-3$</span><span>② $3$</span><span>③ $-4$</span><span>④ $4$</span>
+  </div>
+</div>
+
+<div class="ex past"><span class="exn">기출 2</span>$c$ 가 임의의 실수이고 $A$ 와 $B$ 가 $n$차 정방행렬일 때, <b>부적절한</b> 것은?
+  <ol>
+    <li>$|AB|=|A||B|$</li>
+    <li>$|A+B|=|A|+|B|$</li>
+    <li>$|cA|=c^{n}|A|$</li>
+    <li>$\left|A^{-1}\right|=|A|^{-1}$ (단, $A$ 는 정칙행렬)</li>
+  </ol>
+</div>
+
+<div class="ex past"><span class="exn">기출 3</span>2차 정방행렬 $A$ 에 대해 $|A|=5$ 일 경우, <b>옳지 않은</b> 것은?
+  <div class="mgrid">
+    <span>① $|-2A|=20$</span>
+    <span>② $\left|A^{-1}\right|=0.2$</span>
+    <span>③ $\left|2A^{-1}\right|=0.8$</span>
+    <span>④ $\left|2A^{T}\right|=10$</span>
+  </div>
+</div>
+
+<div class="ex past"><span class="exn">기출 4</span>다음 행렬 $A$ 의 행렬식을 <b>올바르게</b> 구한 것은?
+  $$A=\begin{pmatrix}a&b&c\\d&e&f\\g&h&i\end{pmatrix}$$
+  <ol>
+    <li>$a\begin{vmatrix}e&f\\h&i\end{vmatrix}+b\begin{vmatrix}d&f\\g&i\end{vmatrix}+c\begin{vmatrix}d&e\\g&h\end{vmatrix}$</li>
+    <li>$b\begin{vmatrix}d&f\\g&i\end{vmatrix}-e\begin{vmatrix}a&c\\g&i\end{vmatrix}+h\begin{vmatrix}a&c\\d&f\end{vmatrix}$</li>
+    <li>$g\begin{vmatrix}b&c\\e&f\end{vmatrix}-h\begin{vmatrix}a&c\\d&f\end{vmatrix}+i\begin{vmatrix}a&b\\d&e\end{vmatrix}$</li>
+    <li>$-c\begin{vmatrix}d&e\\g&h\end{vmatrix}+f\begin{vmatrix}a&b\\g&h\end{vmatrix}-i\begin{vmatrix}a&b\\d&e\end{vmatrix}$</li>
+  </ol>
+</div>
+
+<div class="ex past"><span class="exn">기출 5</span>다음 행렬 $A$ 가 정칙행렬이기 위한 실수 $x$ 의 조건은?
+  $$A=\begin{pmatrix}1&2&3\\0&x-2&0\\1&2&x+3\end{pmatrix}$$
+  <div class="mgrid">
+    <span>① $x\ne\pm2$</span>
+    <span>② $x\ne2,\ x\ne-3$</span>
+    <span>③ $x\ne0,\ x\ne2$</span>
+    <span>④ $x=2,\ x=-3$</span>
+  </div>
+</div>
+
+<!-- ============================ 정답 시트 ============================ -->
+<div class="answersheet">
+<header class="doc">
+  <div class="ch">선형대수학 · 5장 행렬식</div>
+  <h1><span class="no">정답·해설</span>5장 <span class="en">answers</span></h1>
+</header>
+
+<h2 class="sub">01 소행렬식 · 여인수 · 여인수 전개</h2>
+
+<div class="ans"><span class="exn">01 (1)</span><b>소행렬식 $M_{ij}$.</b>
+  $i$행과 $j$열을 지운 $2$차 행렬식이다.
+  $$\begin{aligned}
+    M_{11}&=\begin{vmatrix}2&1\\0&-1\end{vmatrix}=-2, &
+    M_{12}&=\begin{vmatrix}1&1\\3&-1\end{vmatrix}=-4, &
+    M_{13}&=\begin{vmatrix}1&2\\3&0\end{vmatrix}=-6\\[4pt]
+    M_{21}&=\begin{vmatrix}-1&2\\0&-1\end{vmatrix}=1, &
+    M_{22}&=\begin{vmatrix}2&2\\3&-1\end{vmatrix}=-8, &
+    M_{23}&=\begin{vmatrix}2&-1\\3&0\end{vmatrix}=3\\[4pt]
+    M_{31}&=\begin{vmatrix}-1&2\\2&1\end{vmatrix}=-5, &
+    M_{32}&=\begin{vmatrix}2&2\\1&1\end{vmatrix}=0, &
+    M_{33}&=\begin{vmatrix}2&-1\\1&2\end{vmatrix}=5
+  \end{aligned}$$
+</div>
+
+<div class="ans"><span class="exn">01 (2)</span><b>여인수 $A_{ij}=(-1)^{i+j}M_{ij}$.</b>
+  체커보드 부호 $\begin{pmatrix}+&-&+\\-&+&-\\+&-&+\end{pmatrix}$ 를 씌운다.
+  $$\left(A_{ij}\right)=\begin{pmatrix}-2&4&-6\\-1&-8&-3\\-5&0&5\end{pmatrix}$$
+</div>
+
+<div class="ans"><span class="exn">01 (3)</span><b>$|A|=-20$ ($1$행 전개).</b>
+  $$|A|=a_{11}A_{11}+a_{12}A_{12}+a_{13}A_{13}=2(-2)+(-1)(4)+2(-6)=-4-4-12=-20$$
+</div>
+
+<div class="ans"><span class="exn">01 (4)</span><b>$|A|=-20$ ($2$행 전개).</b>
+  $$|A|=a_{21}A_{21}+a_{22}A_{22}+a_{23}A_{23}=1(-1)+2(-8)+1(-3)=-20$$
+</div>
+
+<div class="ans"><span class="exn">01 (5)</span><b>$|A|=-20$ ($3$열 전개).</b>
+  $$|A|=a_{13}A_{13}+a_{23}A_{23}+a_{33}A_{33}=2(-6)+1(-3)+(-1)(5)=-20$$
+  <p>어느 행·열로 전개해도 값이 같다는 [정리 5.1]의 확인이다.</p>
+</div>
+
+<h2 class="sub">02 여러 행렬의 행렬식</h2>
+
+<div class="ans"><span class="exn">02</span><b>정답</b>
+  $(1)\ 0$ &nbsp;$(2)\ -19$ &nbsp;$(3)\ 2$ &nbsp;$(4)\ -5$ &nbsp;
+  $(5)\ 24$ &nbsp;$(6)\ -22$ &nbsp;$(7)\ 56$ &nbsp;$(8)\ 28$
+  <ol class="fill">
+    <li><span class="step">(1)</span> $3$행이 <b>영행</b>이므로 [정리 5.2]에 의해 $|A|=0$.</li>
+    <li><span class="step">(2)</span> $3$열에 $0$ 이 둘이므로 $3$열로 전개한다.
+      $$|B|=1\cdot(-1)^{1+3}\begin{vmatrix}2&5\\5&3\end{vmatrix}=6-25=-19$$</li>
+    <li><span class="step">(3)</span> $1$행 전개.
+      $$|C|=1(-35-13)-5(-10-3)+(-3)(26-21)=-48+65-15=2$$</li>
+    <li><span class="step">(4)</span> $2$행이 $(1,0,0)$ 이므로 $2$행으로 전개한다.
+      $$|D|=1\cdot(-1)^{2+1}\begin{vmatrix}-8&19\\-7&16\end{vmatrix}=-(-128+133)=-5$$</li>
+    <li><span class="step">(5)</span> <b>상삼각행렬</b>이므로 [정리 5.6]에 의해 주대각의 곱.
+      $$|E|=3\cdot2\cdot1\cdot4=24$$</li>
+    <li><span class="step">(6)</span> $1$행 전개.
+      $$|F|=3(1-0)-6(2-0)+(-1)(8+5)=3-12-13=-22$$</li>
+    <li><span class="step">(7)</span> 행 순서를 거꾸로 뒤집으면($1\!\leftrightarrow\!4$, $2\!\leftrightarrow\!3$ — 교환 <b>$2$ 번</b>)
+      상삼각행렬이 된다. 교환이 짝수 번이므로 부호는 그대로다.
+      $$|G|=(-1)^2\begin{vmatrix}7&8&9&10\\0&4&5&6\\0&0&2&3\\0&0&0&1\end{vmatrix}=7\cdot4\cdot2\cdot1=56$$</li>
+    <li><span class="step">(8)</span> $1$행 전개.
+      $$|H|=-1(2-12)-5(0-4)+2(0-1)=10+20-2=28$$</li>
+  </ol>
+</div>
+
+<h2 class="sub">03 문자식 행렬식</h2>
+
+<div class="ans"><span class="exn">03</span><b>정답</b>
+  $(1)\ abc$ &nbsp;$(2)\ (x-y)(y-z)(x-z)$ &nbsp;
+  $(3)\ a^3+b^3+c^3-3abc$ &nbsp;$(4)\ 2abc$
+  <ol class="fill">
+    <li><span class="step">(1)</span> 대각행렬은 삼각행렬이므로 주대각의 곱 $abc$.</li>
+    <li><span class="step">(2)</span> <b>판데르몬드</b>(Vandermonde) 꼴이다.
+      $1$행과 $3$행을 바꾸면 표준형 $\begin{vmatrix}1&1&1\\x&y&z\\x^2&y^2&z^2\end{vmatrix}=(y-x)(z-x)(z-y)$ 가 되므로
+      교환 $1$ 번의 부호를 붙여
+      $$|A|=-(y-x)(z-x)(z-y)=(x-y)(y-z)(x-z)$$
+      <p>($x=1,y=2,z=3$ 로 확인하면 양쪽 모두 $-2$.)</p></li>
+    <li><span class="step">(3)</span> 순환행렬(circulant)이다. $1$행 전개하면
+      $$a(a^2-bc)-b(ca-b^2)+c(c^2-ab)=a^3+b^3+c^3-3abc$$</li>
+    <li><span class="step">(4)</span> $1$행 전개.
+      $$0(0-a^2)-c(0-ab)+b(ca-0)=abc+abc=2abc$$</li>
+  </ol>
+</div>
+
+<h2 class="sub">04~05 행렬식이 $0$ 이 되는 $x$</h2>
+
+<div class="ans"><span class="exn">04 (1)</span><b>$x=\pm1$.</b>
+  $$|A|=(x-3)(x+3)-(-2)(4)=x^2-9+8=x^2-1=0$$
+</div>
+
+<div class="ans"><span class="exn">04 (2)</span><b>$x=1,\ 5,\ -3$.</b>
+  $1$열에 $0$ 이 둘이므로 $1$열로 전개한다.
+  $$|B|=(x-1)\begin{vmatrix}x-2&3\\5&x\end{vmatrix}=(x-1)\left(x^2-2x-15\right)=(x-1)(x-5)(x+3)=0$$
+</div>
+
+<div class="ans"><span class="exn">05</span><b>$x=-7$ 또는 $x=3$.</b>
+  역행렬이 없다는 것은 [정리 5.9]에 의해 $|A|=0$ 이라는 뜻이다.
+  $$|A|=(x+3)(x-3)-(-x+3)(4)=x^2-9+4x-12=x^2+4x-21=(x+7)(x-3)=0$$
+</div>
+
+<h2 class="sub">06 기본행렬의 곱으로 표시하고 행렬식 구하기</h2>
+
+<div class="ans"><span class="exn">06 (1)</span><b>$|A|=46\ne0$ 이므로 정칙행렬.</b>
+  $1$행 전개하면
+  $$|A|=3(24-0)-7(-12+18)+(-1)(0-16)=72-42+16=46$$
+</div>
+
+<div class="ans"><span class="exn">06 (2)</span><b>$10$ 개의 기본행렬의 곱.</b>
+  $A$ 에 $1$ 이 없으므로 먼저 $R_{3,1}(-1)$ 로 선도 $1$ 을 만든다.
+  <div class="scroll">
+  $$\begin{aligned}
+  A&\xrightarrow{\ R_{3,1}(-1)\ }\begin{pmatrix}1&7&-4\\-4&8&-9\\2&0&3\end{pmatrix}
+   \xrightarrow{\ R_{1,2}(4),\ R_{1,3}(-2)\ }\begin{pmatrix}1&7&-4\\0&36&-25\\0&-14&11\end{pmatrix}\\[4pt]
+  &\xrightarrow{\ R_{3,2}(2)\ }\begin{pmatrix}1&7&-4\\0&8&-3\\0&-14&11\end{pmatrix}
+   \xrightarrow{\ R_{2,3}\left(\frac74\right)\ }\begin{pmatrix}1&7&-4\\0&8&-3\\0&0&\frac{23}{4}\end{pmatrix}\\[4pt]
+  &\xrightarrow{\ R_2\left(\frac18\right),\ R_3\left(\frac4{23}\right)\ }
+   \xrightarrow{\ R_{2,1}(-7),\ R_{3,1}\left(\frac{11}8\right),\ R_{3,2}\left(\frac38\right)\ }I_3
+  \end{aligned}$$
+  </div>
+  <p>따라서 순서를 뒤집고 각각을 역기본행렬로 바꾸면</p>
+  $$A=E_{3,1}(1)\,E_{1,2}(-4)\,E_{1,3}(2)\,E_{3,2}(-2)\,E_{2,3}\!\left(-\tfrac74\right)
+     E_2(8)\,E_3\!\left(\tfrac{23}{4}\right)E_{2,1}(7)\,E_{3,1}\!\left(-\tfrac{11}8\right)E_{3,2}\!\left(-\tfrac38\right)$$
+  <p>소거 순서에 따라 인수 구성은 달라질 수 있다.</p>
+</div>
+
+<div class="ans"><span class="exn">06 (3)</span><b>$|A|=46$ — (1)과 일치.</b>
+  [정리 5.7]에서 $\left|E_{i,j}(c)\right|=1$ 이므로 <b>$E_i(c)$ 꼴만</b> 행렬식에 기여한다.
+  $$|A|=\left|E_2(8)\right|\cdot\left|E_3\!\left(\tfrac{23}{4}\right)\right|=8\cdot\frac{23}{4}=46$$
+</div>
+
+<h2 class="sub">07 역행렬과 행렬식</h2>
+
+<div class="ans"><span class="exn">07 (1)</span><b>$A^{-1}$.</b>
+  $(A\,|\,I_3)$ 에 [알고리즘 4.1]을 적용한다.
+  <div class="scroll">
+  $$\left(\begin{array}{ccc|ccc}1&4&3&1&0&0\\1&6&8&0&1&0\\1&2&-1&0&0&1\end{array}\right)
+    \xrightarrow{\ R_{1,2}(-1),\ R_{1,3}(-1)\ }
+    \left(\begin{array}{ccc|ccc}1&4&3&1&0&0\\0&2&5&-1&1&0\\0&-2&-4&-1&0&1\end{array}\right)$$
+  $$\xrightarrow{\ R_{2,3}(1),\ R_2\left(\frac12\right)\ }
+    \left(\begin{array}{ccc|ccc}1&4&3&1&0&0\\0&1&\frac52&-\frac12&\frac12&0\\0&0&1&-2&1&1\end{array}\right)
+    \xrightarrow{\ R_{2,1}(-4),\ R_{3,1}(7),\ R_{3,2}\left(-\frac52\right)\ }
+    \left(\begin{array}{ccc|ccc}1&0&0&-11&5&7\\0&1&0&\frac92&-2&-\frac52\\0&0&1&-2&1&1\end{array}\right)$$
+  </div>
+  $$A^{-1}=\begin{pmatrix}-11&5&7\\[2pt]\tfrac92&-2&-\tfrac52\\[2pt]-2&1&1\end{pmatrix}
+    =\frac12\begin{pmatrix}-22&10&14\\9&-4&-5\\-4&2&2\end{pmatrix}$$
+  <p>확인: $A$ 의 $1$행 $(1,4,3)$ 과 $A^{-1}$ 의 $1$열 $\left(-11,\tfrac92,-2\right)$ 의 곱은
+  $-11+18-6=1$.</p>
+</div>
+
+<div class="ans"><span class="exn">07 (2)</span><b>$|A|=2$.</b>
+  $R_{i,j}(c)$ 는 행렬식을 바꾸지 않으므로, 그 연산만으로 삼각행렬을 만들면 된다.
+  $$\begin{vmatrix}1&4&3\\1&6&8\\1&2&-1\end{vmatrix}
+    \overset{R_{1,2}(-1),\,R_{1,3}(-1)}{=}\begin{vmatrix}1&4&3\\0&2&5\\0&-2&-4\end{vmatrix}
+    \overset{R_{2,3}(1)}{=}\begin{vmatrix}1&4&3\\0&2&5\\0&0&1\end{vmatrix}=1\cdot2\cdot1=2$$
+</div>
+
+<div class="ans"><span class="exn">07 (3)~(5)</span><b>$\left|A^{-1}\right|=\tfrac12$, &nbsp;$|cA|=-54$, &nbsp;$\left|A^{T}\right|=2$.</b>
+  [정리 5.11]을 그대로 쓴다. $n=3$ 임에 주의한다.
+  $$\left|A^{-1}\right|=\frac1{|A|}=\frac12,\qquad
+    |-3A|=(-3)^3|A|=-27\cdot2=-54,\qquad
+    \left|A^{T}\right|=|A|=2$$
+</div>
+
+<h2 class="sub">08 $3$차, $|A|=2$</h2>
+
+<div class="ans"><span class="exn">08</span><b>정답</b>
+  $(1)\ -54$ &nbsp;$(2)\ \tfrac{27}2$ &nbsp;$(3)\ \tfrac1{128}$ &nbsp;
+  $(4)\ 432$ &nbsp;$(5)\ 24$ &nbsp;$(6)\ 108$
+  <ol class="fill">
+    <li><span class="step">(1)</span> $|-3A|=(-3)^3|A|=-27\cdot2=-54$</li>
+    <li><span class="step">(2)</span> $\left|3A^{-1}\right|=3^3\left|A^{-1}\right|=27\cdot\tfrac12=\tfrac{27}2$</li>
+    <li><span class="step">(3)</span> $\left|(4A)^{-1}\right|=\dfrac1{|4A|}=\dfrac1{4^3\cdot2}=\dfrac1{128}$</li>
+    <li><span class="step">(4)</span> $\left|6A^{T}\right|=6^3\left|A^{T}\right|=216\cdot2=432$</li>
+    <li><span class="step">(5)</span> $E_{i,j}(c)$ 꼴은 행렬식이 $1$ 이므로 $E_2(4)$ 와 $E_1(3)$ 만 남는다.
+      $$|B|=1\cdot1\cdot4\cdot1\cdot3=12,\qquad |AB|=|A||B|=2\cdot12=24$$</li>
+    <li><span class="step">(6)</span> $|B|=\left(\tfrac13\right)^3|A|=\tfrac{2}{27}$ 이므로
+      $\left|B^{-1}\right|=\tfrac{27}2$ 이고
+      $$|C|=\left|2B^{-1}\right|=2^3\left|B^{-1}\right|=8\cdot\frac{27}2=108$$</li>
+  </ol>
+</div>
+
+<h2 class="sub">09~10</h2>
+
+<div class="ans"><span class="exn">09</span><b>$x\ne\pm\sqrt{17}$.</b>
+  $3$행에 $0$ 이 있으므로 $3$행으로 전개하면
+  $$|A|=(-x-3)\begin{vmatrix}2&1\\x+3&6\end{vmatrix}
+        +2\begin{vmatrix}3&2\\2&x+3\end{vmatrix}
+      =(-x-3)(9-x)+2(3x+5)=x^2-17$$
+  <p>[정리 5.9]에 의해 정칙행렬이려면 $|A|\ne0$, 즉 $x^2\ne17$ 이어야 한다.</p>
+</div>
+
+<div class="ans"><span class="exn">10</span><b>정답</b>
+  $(1)\ 3$ &nbsp;$(2)\ -1$ &nbsp;$(3)\ -243$ &nbsp;
+  $(4)\ -16$ &nbsp;$(5)\ -9$ &nbsp;$(6)\ -3$
+  <p>$n=4$ 이므로 $|cA|=c^4|A|$ 이다.</p>
+  <ol class="fill">
+    <li><span class="step">(1)</span> $|AB|=|A||B|=(-3)(-1)=3$</li>
+    <li><span class="step">(2)</span> $\left|B^3\right|=|B|^3=(-1)^3=-1$</li>
+    <li><span class="step">(3)</span> $|3A|=3^4|A|=81(-3)=-243$</li>
+    <li><span class="step">(4)</span> $|2B|=2^4|B|=16(-1)=-16$</li>
+    <li><span class="step">(5)</span> $\left|A^{T}BA\right|=\left|A^{T}\right||B||A|=|A|^2|B|=9(-1)=-9$</li>
+    <li><span class="step">(6)</span> $\left|BAB^{-1}\right|=|B||A|\dfrac1{|B|}=|A|=-3$
+      — <b>닮은 행렬은 행렬식이 같다</b>는 사실이다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">기출문제 정답</h2>
+
+<div class="ans"><span class="exn">기출 1</span><b>정답 ③ $-4$.</b>
+  세 기본행렬의 행렬식을 곱한다.
+  $$|A|=\left|E_{1,2}\right|\left|E_3(4)\right|\left|E_{1,3}(3)\right|=(-1)\cdot4\cdot1=-4$$
+</div>
+
+<div class="ans"><span class="exn">기출 2</span><b>정답 ② — $|A+B|=|A|+|B|$ 는 성립하지 않는다.</b>
+  나머지 $①③④$ 는 [정리 5.10], [정리 5.11]로 모두 성립한다.
+  반례: $A=\begin{pmatrix}1&0\\0&0\end{pmatrix}$, $B=\begin{pmatrix}0&0\\0&1\end{pmatrix}$ 이면
+  $|A|=|B|=0$ 이지만 $|A+B|=|I_2|=1$ 이다.
+</div>
+
+<div class="ans"><span class="exn">기출 3</span><b>정답 ④ — $\left|2A^{T}\right|=20$ 이다.</b>
+  $n=2$ 이므로 $|cA|=c^2|A|$ 이고 $\left|A^{T}\right|=|A|$ 이므로
+  $$\left|2A^{T}\right|=2^2\left|A^{T}\right|=4\cdot5=20\ne10$$
+  <p>나머지는 옳다 — $|-2A|=4\cdot5=20$, $\left|A^{-1}\right|=\tfrac15=0.2$,
+  $\left|2A^{-1}\right|=4\cdot0.2=0.8$.</p>
+</div>
+
+<div class="ans"><span class="exn">기출 4</span><b>정답 ③ — $3$행에 의한 여인수 전개.</b>
+  [정리 5.1]에 따라 어느 행·열로 전개해도 되지만 <b>부호</b>가 맞아야 한다.
+  <ol class="props">
+    <li>① $1$행 전개인데 <b>둘째 항이 $-$ 여야</b> 한다.</li>
+    <li>② $2$열 전개인데 모든 항의 부호가 반대다.</li>
+    <li>③ $3$행 전개로 <b>부호 $+,-,+$ 가 맞다</b>.</li>
+    <li>④ $3$열 전개인데 모든 항의 부호가 반대다.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">기출 5</span><b>정답 ③ $x\ne0,\ x\ne2$.</b>
+  $2$행이 $(0,\ x-2,\ 0)$ 이므로 $2$행으로 전개한다.
+  $$|A|=(x-2)\begin{vmatrix}1&3\\1&x+3\end{vmatrix}=(x-2)(x+3-3)=x(x-2)$$
+  <p>[정리 5.9]에 의해 $|A|\ne0$ 이어야 하므로 $x\ne0$, $x\ne2$ 이다.</p>
+</div>
+
+</div>
+
+<nav class="pager">
+  <a href="5-3_matrix-operations.html">← 이전<small>5.3 행렬연산과 행렬식</small></a>
+  <a class="next" href="../index.html">목차 →<small>선형대수학</small></a>
+</nav>
+
+</body>
+</html>
