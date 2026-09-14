@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6장 · 연습문제</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  .ex{ margin:26px 0; line-height:1.75; }
+  .exn{ font-weight:800; color:var(--def); margin-right:8px; }
+  .mark{ color:#d64541; font-weight:800; margin:0 5px 0 2px; letter-spacing:2px; }
+  .ex ol{ margin:4px 0 0; padding-left:26px; }
+  .ex li{ margin:5px 0; }
+  .answersheet{ page-break-before:always; }
+  .ans{ margin:24px 0; line-height:1.75; }
+  .ans .exn{ color:var(--thm); }
+  .ans ol.fill{ margin:6px 0 0; padding-left:24px; }
+  .ans ol.fill li{ margin:9px 0; }
+  .ans ol.props{ padding-left:24px; }
+  .mgrid{ display:flex; flex-wrap:wrap; gap:10px 26px; margin:8px 0 0; }
+  .past .exn{ color:#c98a1e; }
+  .blank{ display:inline-block; min-width:74px; border-bottom:1.5px solid #999; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } .mark{ color:#000; } }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">선형대수학 · 6장 크래머 공식과 역행렬</div>
+  <h1><span class="no">연습문제</span>6장 <span class="en">exercises</span></h1>
+</header>
+
+<p>6장(크래머 공식과 역행렬) 교재 연습문제·연구과제와 워크북 문제, 그리고 정답·해설.
+정답 시트는 인쇄 시 다음 페이지부터 나온다.</p>
+
+<div class="note">
+  <b>대조 요망</b> — 교재 <b>06</b>의 두 $4$차 행렬은 원본 사진이 흐려 일부 원소가 불확실하다.
+  아래 표기가 교재와 다르면 행렬을 고치고 답도 다시 계산할 것. 워크북 객관식은
+  <b>2번부터</b> 옮겼다(1번은 사진에 없음).
+</div>
+
+<h2 class="sub">교재 연습문제 <span class="en">textbook exercises</span></h2>
+
+<p>$(1\sim3)$ 크래머 공식을 이용하여 다음 방정식을 풀어라.</p>
+
+<div class="ex"><span class="exn">01</span>
+  $$\begin{cases}2x_1+\ x_2+\ x_3=\ 5\\ \ x_1\qquad\ +\ x_3=\ 7\\ \ x_1-2x_2\qquad\ =15\end{cases}$$
+</div>
+
+<div class="ex"><span class="exn">02</span>
+  $$\begin{cases}x_1+\ x_2+4x_3=3\\ x_1+2x_2-\ x_3=6\\ 2x_1+2x_2+\ x_3=9\end{cases}$$
+</div>
+
+<div class="ex"><span class="exn">03</span>
+  $$\begin{cases}\ x_1+\ x_2+2x_3=\ \ 2\\ 5x_1+3x_2+6x_3=-2\\ 2x_1+2x_2+3x_3=\ \ 3\end{cases}$$
+</div>
+
+<p>$(4\sim6)$ 다음 행렬에 대해 역행렬이 있으면 행렬식을 이용하여 역행렬을 구하라.</p>
+
+<div class="ex"><span class="exn">04</span>
+  $$A=\begin{pmatrix}7&-2\\3&1\end{pmatrix},\qquad
+    B=\begin{pmatrix}7&-6\\-6&5\end{pmatrix}$$
+</div>
+
+<div class="ex"><span class="exn">05</span>
+  $$A=\begin{pmatrix}1&1&2\\3&2&6\\2&7&5\end{pmatrix},\qquad
+    B=\begin{pmatrix}1&2&3\\1&1&2\\1&1&1\end{pmatrix}$$
+</div>
+
+<div class="ex"><span class="exn">06</span>
+  $$A=\begin{pmatrix}1&-3&2&-3\\1&1&-3&1\\2&-3&2&3\\2&-1&3&1\end{pmatrix},\qquad
+    B=\begin{pmatrix}2&1&0&1\\1&-1&2&-3\\2&1&3&2\\1&-1&-3&-1\end{pmatrix}$$
+</div>
+
+<div class="ex"><span class="exn">07</span>다음 연립방정식이 유일한 해를 가질 실수 $a$ 의 조건과 그때의 해를 구하라.
+  $$\begin{cases}\ x_1+\ x_2-\ x_3=\ \ 3\\ \ x_1-2x_2-3x_3=-7\\ 2x_1+2x_2+ax_3=\ \ 4\end{cases}$$
+</div>
+
+<p>$(8\sim10)$ 다음 주어진 연립방정식이 유일한 해를 갖는지를 판단하고, 유일한 해를 가지면
+역행렬을 이용하여 구하라.</p>
+
+<div class="ex"><span class="exn">08</span>
+  $$\begin{cases}\ x_1-3x_2-2x_3=0\\ 2x_1-2x_2-4x_3=0\\ 3x_1+5x_2-\ x_3=0\end{cases}$$
+</div>
+
+<div class="ex"><span class="exn">09</span>
+  $$\begin{cases}4x_1+5x_2+8x_3=10\\ 2x_1+3x_2+4x_3=\ \ 6\\ 6x_1+2x_2+7x_3=\ \ 4\end{cases}$$
+</div>
+
+<div class="ex"><span class="exn">10</span>
+  $$\begin{cases}\qquad-2x_2+2x_3\qquad=\ \ 2\\ 2x_1\qquad\qquad+2x_4=\ \ 5\\ \ x_1\qquad-2x_3\qquad=-2\\ \qquad\ \ 3x_2\qquad+2x_4=\ \ 4\end{cases}$$
+</div>
+
+<h2 class="sub">연구과제 <span class="en">projects</span></h2>
+
+<div class="ex"><span class="exn">연구 1</span>다음 행렬 $A,B$ 에 대하여 소행렬 $A_{11},A_{22},A_{33}$ 과
+$B_{11},B_{22},B_{33}$ 의 행렬식을 구하라.
+  $$\text{(1)}\ A=\begin{pmatrix}a&0&0\\0&b&0\\0&0&c\end{pmatrix}\qquad
+    \text{(2)}\ B=\begin{pmatrix}x^2&y^2&z^2\\x&y&z\\1&1&1\end{pmatrix}$$
+</div>
+
+<div class="ex"><span class="exn">연구 2</span>크래머 공식을 이용해서 다음 행렬의 역행렬을 구하라.
+  $$A=\begin{pmatrix}\cos\theta&-\sin\theta&0\\ \sin\theta&\cos\theta&0\\ 0&0&1\end{pmatrix},\quad
+    B=\begin{pmatrix}1&0&0\\ 0&\cos\theta&-\sin\theta\\ 0&\sin\theta&\cos\theta\end{pmatrix},\quad
+    C=\begin{pmatrix}\cos\theta&0&-\sin\theta\\ 0&1&0\\ \sin\theta&0&\cos\theta\end{pmatrix}$$
+</div>
+
+<div class="ex"><span class="exn">연구 3</span>다음 물음에 답하라.
+  <ol>
+    <li>$A=\begin{pmatrix}1&2&3\\2&3&1\\3&2&1\end{pmatrix}$ 일 때, 행렬식을 이용해서 $A^{-1}$ 을 구하라.</li>
+    <li>$A=\begin{pmatrix}a&d&e\\0&b&f\\0&0&c\end{pmatrix}$ 가 $|A|\ne0$ 일 때, $A^{-1}$ 도 삼각행렬임을 보여라.</li>
+  </ol>
+</div>
+
+<h2 class="sub">워크북 주관식 연습문제 <span class="en">workbook · fill in the blanks</span></h2>
+
+<p>※ 괄호 안에 알맞은 것을 넣으시오.</p>
+
+<div class="ex"><span class="exn">주관 1</span>[정리 6.1]은 <span class="blank"></span> 에 관한 정리이다.
+  계수행렬 $A$ 의 행렬식이 $|A|\ne0$ 이면 연립방정식은 <span class="blank"></span> 를 가지며, 그 해는
+  $x_j=\dfrac{|A_j|}{|A|}$ 이다. 여기에서 분자는 <span class="blank"></span> 을 상수행렬
+  $B=(b_1\ b_2\ \cdots\ b_n)^{T}$ 로 대체한 행렬식이다.</div>
+
+<div class="ex"><span class="exn">주관 2</span>[정의 6.1] $n$차 정방행렬 $A=(a_{ij})$ 에 대해 $(i,j)$ 원소가
+  <span class="blank"></span> 에 대한 여인수 $A_{ij}$ 인 행렬을 $A$ 의 여인수행렬이라 하며,
+  $A$ 의 여인수행렬의 전치행렬을 $A$ 의 <span class="blank"></span> 이라 하고 $\operatorname{adj}A$ 로
+  표시한다.</div>
+
+<div class="ex"><span class="exn">주관 3</span>$n$차 정방행렬 $A$ 에 대해 $|A|\ne0$ 이라면
+  <span class="blank"></span> 은 [정리 6.2]와 같이 $|A|$ 와 <span class="blank"></span> 로 구할 수 있다.</div>
+
+<div class="ex"><span class="exn">주관 4</span>[정리 6.2] $n$차 정방행렬 $A=(a_{ij})$ 에 대해
+  <span class="blank"></span> 일 때 $A^{-1}$ 은 다음과 같다. $A^{-1}=$ <span class="blank"></span></div>
+
+<div class="ex"><span class="exn">주관 5</span>[정리 6.3] 일차연립방정식 $AX=B$ 는 $|A|\ne0$ 일 때 유일한 해
+  <span class="blank"></span> 를 갖는다.</div>
+
+<div class="ex"><span class="exn">주관 6</span>[정리 6.3]은 일차방정식 $ax=b$ 의 해가 $a\ne0$ 일 때
+  <span class="blank"></span> 라는 사실과 아주 유사하다.</div>
+
+<h2 class="sub">워크북 객관식 <span class="en">workbook · multiple choice</span></h2>
+
+<div class="ex past"><span class="exn">객관 2</span>크래머의 공식을 사용해서 다음 방정식의 해를 구하라.
+  $$\begin{cases}5x_1-x_2=3\\ 3x_1+x_2=5\end{cases}$$
+  <div class="mgrid">
+    <span>① $(x_1,x_2)=(-1,2)$</span>
+    <span>② $(x_1,x_2)=(1,2)$</span>
+    <span>③ $(x_1,x_2)=(2,1)$</span>
+    <span>④ $(x_1,x_2)=(-2,1)$</span>
+  </div>
+</div>
+
+<div class="ex past"><span class="exn">객관 3</span>다음 $n$차 정칙행렬 $A$ 에 대해 올바른 것은?
+  <div class="mgrid">
+    <span>① $(\operatorname{adj}A)^{-1}=|A|A$</span>
+    <span>② $|A|A=(\operatorname{adj}A)\cdot I_n$</span>
+    <span>③ $A\cdot\dfrac{\operatorname{adj}A}{|A|}=-I_n$</span>
+    <span>④ $A^{-1}=\dfrac{\operatorname{adj}A}{|A|}$</span>
+  </div>
+</div>
+
+<div class="ex past"><span class="exn">객관 4</span>다음 행렬의 행렬식과 $\operatorname{adj}A$ 를 맞게 짝 지은 것은?
+  $$A=\begin{pmatrix}2&-3&5\\0&1&-2\\0&-2&2\end{pmatrix}$$
+  <div class="mgrid">
+    <span>① $4,\ \begin{pmatrix}-2&-4&1\\0&4&4\\0&4&2\end{pmatrix}$</span>
+    <span>② $4,\ \begin{pmatrix}-2&-4&1\\0&4&-4\\0&4&2\end{pmatrix}$</span>
+    <span>③ $-4,\ \begin{pmatrix}-2&-4&1\\0&4&4\\0&4&2\end{pmatrix}$</span>
+    <span>④ $-4,\ \begin{pmatrix}-2&-4&1\\0&4&-4\\0&4&2\end{pmatrix}$</span>
+  </div>
+</div>
+
+<div class="ex past"><span class="exn">객관 5</span>다음 중 $n$차 정방행렬 $A$ 의 성질로 맞는 것은?
+  <ol>
+    <li>하삼각행렬 $A$ 의 $\operatorname{adj}A$ 는 상삼각행렬이다.</li>
+    <li>연립방정식 $AX=B$ 의 해는 항상 유일하게 존재한다.</li>
+    <li>$|A|A^{-1}=\operatorname{adj}A$ 이다.</li>
+    <li>$\left|A^{-1}\right||A|=-1$ 이다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">기출문제 <span class="en">past exam questions</span></h2>
+
+<div class="ex past"><span class="exn">기출 1</span>다음 행렬 $A$ 의 역행렬을 크래머 공식으로 구하라.
+  $$A=\begin{pmatrix}1&2&1\\0&0&3\\2&3&0\end{pmatrix}$$
+</div>
+
+<!-- ============================ 정답 시트 ============================ -->
+<div class="answersheet">
+<header class="doc">
+  <div class="ch">선형대수학 · 6장 크래머 공식과 역행렬</div>
+  <h1><span class="no">정답·해설</span>6장 <span class="en">answers</span></h1>
+</header>
+
+<h2 class="sub">교재 연습문제</h2>
+
+<div class="ans"><span class="exn">01</span><b>정답</b>
+  $x_1=\dfrac{11}{3}$, &nbsp;$x_2=-\dfrac{17}{3}$, &nbsp;$x_3=\dfrac{10}{3}$
+  <p>$A=\begin{pmatrix}2&1&1\\1&0&1\\1&-2&0\end{pmatrix}$, $B=(5\ 7\ 15)^{T}$ 이고 $|A|=3$.</p>
+  $$|A_1|=\begin{vmatrix}5&1&1\\7&0&1\\15&-2&0\end{vmatrix}=11,\quad
+    |A_2|=\begin{vmatrix}2&5&1\\1&7&1\\1&15&0\end{vmatrix}=-17,\quad
+    |A_3|=\begin{vmatrix}2&1&5\\1&0&7\\1&-2&15\end{vmatrix}=10$$
+</div>
+
+<div class="ans"><span class="exn">02</span><b>정답</b>
+  $x_1=\dfrac{27}{7}$, &nbsp;$x_2=\dfrac{6}{7}$, &nbsp;$x_3=-\dfrac{3}{7}$
+  <p>$|A|=-7$ 이고 $|A_1|=-27$, $|A_2|=-6$, $|A_3|=3$.</p>
+</div>
+
+<div class="ans"><span class="exn">03</span><b>정답</b> $x_1=-4$, &nbsp;$x_2=4$, &nbsp;$x_3=1$
+  <p>$|A|=2$ 이고 $|A_1|=-8$, $|A_2|=8$, $|A_3|=2$.</p>
+</div>
+
+<div class="ans"><span class="exn">04</span><b>정답</b>
+  $$A^{-1}=\frac1{13}\begin{pmatrix}1&2\\-3&7\end{pmatrix},\qquad
+    B^{-1}=\begin{pmatrix}-5&-6\\-6&-7\end{pmatrix}$$
+  <p>$|A|=7+6=13$, $\operatorname{adj}A=\begin{pmatrix}1&2\\-3&7\end{pmatrix}$.</p>
+  <p>$|B|=35-36=-1$, $\operatorname{adj}B=\begin{pmatrix}5&6\\6&7\end{pmatrix}$ 이므로 부호가 모두 뒤집힌다.</p>
+</div>
+
+<div class="ans"><span class="exn">05</span><b>정답</b>
+  $$A^{-1}=\begin{pmatrix}32&-9&-2\\3&-1&0\\-17&5&1\end{pmatrix},\qquad
+    B^{-1}=\begin{pmatrix}-1&1&1\\1&-2&1\\0&1&-1\end{pmatrix}$$
+  <ol class="fill">
+    <li><span class="step">$A$.</span> $|A|=-1$ 이고 여인수행렬이
+      $\begin{pmatrix}-32&-3&17\\9&1&-5\\2&0&-1\end{pmatrix}$ 이므로
+      $\operatorname{adj}A=\begin{pmatrix}-32&9&2\\-3&1&0\\17&-5&-1\end{pmatrix}$,
+      $A^{-1}=\operatorname{adj}A/(-1)$.</li>
+    <li><span class="step">$B$.</span> $|B|=1$ 이고
+      $\operatorname{adj}B=\begin{pmatrix}-1&1&1\\1&-2&1\\0&1&-1\end{pmatrix}$ 이므로
+      $B^{-1}=\operatorname{adj}B$.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">06</span><b>정답</b> $|A|=-112$, &nbsp;$|B|=-33$ 이므로 둘 다 역행렬이 존재한다.
+  $$A^{-1}=\frac1{112}\begin{pmatrix}14&42&-14&42\\-17&5&-31&37\\-8&-24&-8&24\\-21&-7&21&-7\end{pmatrix},
+    \qquad
+    B^{-1}=\frac1{33}\begin{pmatrix}5&3&6&8\\38&3&-27&-25\\-6&3&6&-3\\-15&-9&15&9\end{pmatrix}$$
+  <ol class="fill">
+    <li><span class="step">행렬식.</span> $A$ 는 $R_2-R_1,\ R_3-2R_1,\ R_4-2R_1$ 로 $1$열을 쓸어
+      $|A|=\begin{vmatrix}4&-5&4\\3&-2&9\\5&-1&7\end{vmatrix}=-112$,
+      $B$ 는 $R_1-2R_4,\ R_2-R_4,\ R_3-2R_4$ 로
+      $|B|=-\begin{vmatrix}3&6&3\\0&5&-2\\3&9&4\end{vmatrix}=-33$ 이다.</li>
+    <li><span class="step">수반행렬.</span> $4$차이므로 여인수 $16$ 개를 모두 구한다.
+      $$\operatorname{adj}A=\begin{pmatrix}-14&-42&14&-42\\17&-5&31&-37\\8&24&8&-24\\21&7&-21&7\end{pmatrix},
+        \qquad
+        \operatorname{adj}B=\begin{pmatrix}-5&-3&-6&-8\\-38&-3&27&25\\6&-3&-6&3\\15&9&-15&-9\end{pmatrix}$$</li>
+    <li><span class="step">나누기.</span> $A^{-1}=\operatorname{adj}A/(-112)$,
+      $B^{-1}=\operatorname{adj}B/(-33)$ 이므로 위 결과가 된다. 각 행·열의 여인수 전개가 모두
+      $|A|$ 로 같은지를 확인하면 검산이 된다.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">07</span><b>정답</b> $a\ne-2$ 이고, 그때
+  $$x_1=-\frac{a+12}{3(a+2)},\qquad x_2=\frac{10a+24}{3(a+2)},\qquad x_3=-\frac{2}{a+2}$$
+  <ol class="fill">
+    <li><span class="step">유일한 해의 조건.</span>
+      $|A|=\begin{vmatrix}1&1&-1\\1&-2&-3\\2&2&a\end{vmatrix}=-3a-6=-3(a+2)$ 이므로
+      $|A|\ne0\iff a\ne-2$.</li>
+    <li><span class="step">크래머 공식.</span> $|A_1|=a+12$, $|A_2|=-10a-24$, $|A_3|=6$ 이므로
+      각각을 $-3(a+2)$ 로 나눈다.</li>
+    <li><span class="step">검산.</span> $a=0$ 이면 $(x_1,x_2,x_3)=(-2,4,-1)$ 이고
+      세 식에 대입하면 $3,\ -7,\ 4$ 로 맞는다.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">08</span><b>정답</b> $|A|=20\ne0$ 이므로 유일한 해를 가지며, 그 해는
+  자명해 $x_1=x_2=x_3=0$.
+  <p>동차연립방정식이므로 $B=O$ 이고 $X=A^{-1}O=O$ 이다.
+  (계수행렬이 정칙이면 동차연립방정식은 자명해만 갖는다.)</p>
+</div>
+
+<div class="ans"><span class="exn">09</span><b>정답</b> $|A|=-10\ne0$ 이므로 유일한 해를 가지며
+  $x_1=0$, &nbsp;$x_2=2$, &nbsp;$x_3=0$.
+  $$\operatorname{adj}A=\begin{pmatrix}13&-19&-4\\10&-20&0\\-14&22&2\end{pmatrix}
+    \ \Rightarrow\
+    A^{-1}=-\frac1{10}\begin{pmatrix}13&-19&-4\\10&-20&0\\-14&22&2\end{pmatrix}$$
+  $$X=A^{-1}B=-\frac1{10}\begin{pmatrix}13&-19&-4\\10&-20&0\\-14&22&2\end{pmatrix}
+    \begin{pmatrix}10\\6\\4\end{pmatrix}
+    =-\frac1{10}\begin{pmatrix}0\\-20\\0\end{pmatrix}=\begin{pmatrix}0\\2\\0\end{pmatrix}$$
+</div>
+
+<div class="ans"><span class="exn">10</span><b>정답</b> $|A|=-4\ne0$ 이므로 유일한 해를 가지며
+  $x_1=2$, &nbsp;$x_2=1$, &nbsp;$x_3=2$, &nbsp;$x_4=\dfrac12$.
+  <p>미지수 순서를 $x_1,x_2,x_3,x_4$ 로 두면
+  $A=\begin{pmatrix}0&-2&2&0\\2&0&0&2\\1&0&-2&0\\0&3&0&2\end{pmatrix}$,
+  $B=(2\ 5\ -2\ 4)^{T}$ 이고</p>
+  $$\operatorname{adj}A=\begin{pmatrix}12&-8&12&8\\8&-4&8&4\\6&-4&8&4\\-12&6&-12&-8\end{pmatrix}
+    \ \Rightarrow\
+    A^{-1}=\begin{pmatrix}-3&2&-3&-2\\-2&1&-2&-1\\-\tfrac32&1&-2&-1\\3&-\tfrac32&3&2\end{pmatrix}$$
+  $$X=A^{-1}B=\begin{pmatrix}2\\1\\2\\\tfrac12\end{pmatrix}$$
+</div>
+
+<h2 class="sub">연구과제</h2>
+
+<div class="ans"><span class="exn">연구 1</span><b>정답</b>
+  <p>(1) $A_{11}$ 의 행렬식 $=bc$, &nbsp;$A_{22}$ 의 행렬식 $=ac$, &nbsp;$A_{33}$ 의 행렬식 $=ab$</p>
+  $$\begin{vmatrix}b&0\\0&c\end{vmatrix}=bc,\qquad
+    \begin{vmatrix}a&0\\0&c\end{vmatrix}=ac,\qquad
+    \begin{vmatrix}a&0\\0&b\end{vmatrix}=ab$$
+  <p>(2) $B_{11}$ 의 행렬식 $=y-z$, &nbsp;$B_{22}$ 의 행렬식 $=x^2-z^2$, &nbsp;$B_{33}$ 의 행렬식 $=xy(x-y)$</p>
+  $$\begin{vmatrix}y&z\\1&1\end{vmatrix}=y-z,\qquad
+    \begin{vmatrix}x^2&z^2\\1&1\end{vmatrix}=x^2-z^2,\qquad
+    \begin{vmatrix}x^2&y^2\\x&y\end{vmatrix}=x^2y-xy^2$$
+</div>
+
+<div class="ans"><span class="exn">연구 2</span><b>정답</b> 세 행렬 모두 $|{\cdot}|=1$ 이고 역행렬은 전치행렬
+  — 즉 $\theta$ 를 $-\theta$ 로 바꾼 회전이다.
+  $$A^{-1}=\begin{pmatrix}\cos\theta&\sin\theta&0\\-\sin\theta&\cos\theta&0\\0&0&1\end{pmatrix},\quad
+    B^{-1}=\begin{pmatrix}1&0&0\\0&\cos\theta&\sin\theta\\0&-\sin\theta&\cos\theta\end{pmatrix},\quad
+    C^{-1}=\begin{pmatrix}\cos\theta&0&\sin\theta\\0&1&0\\-\sin\theta&0&\cos\theta\end{pmatrix}$$
+  <ol class="fill">
+    <li><span class="step">행렬식.</span> $A$ 를 $3$행으로 전개하면
+      $|A|=1\cdot\begin{vmatrix}\cos\theta&-\sin\theta\\ \sin\theta&\cos\theta\end{vmatrix}
+      =\cos^2\theta+\sin^2\theta=1$. $B,C$ 도 같은 방식으로 $1$ 이다.</li>
+    <li><span class="step">수반행렬.</span> $A$ 의 여인수행렬은
+      $\begin{pmatrix}\cos\theta&-\sin\theta&0\\ \sin\theta&\cos\theta&0\\0&0&1\end{pmatrix}$
+      이고 이를 전치한 것이 $\operatorname{adj}A$ 이다. $|A|=1$ 이므로
+      $A^{-1}=\operatorname{adj}A=A^{T}$.</li>
+    <li><span class="step">해석.</span> 회전행렬은 $A^{-1}=A^{T}$ 를 만족하는
+      <b>직교행렬</b>이다 — 되돌리는 변환이 곧 반대 방향의 회전이다.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">연구 3</span><b>정답</b>
+  $$\text{(1)}\ A^{-1}=-\frac1{12}\begin{pmatrix}1&4&-7\\1&-8&5\\-5&4&-1\end{pmatrix}
+    =\frac1{12}\begin{pmatrix}-1&-4&7\\-1&8&-5\\5&-4&1\end{pmatrix}$$
+  <ol class="fill">
+    <li><span class="step">(1) 행렬식.</span>
+      $|A|=\begin{vmatrix}1&2&3\\2&3&1\\3&2&1\end{vmatrix}=1(3-2)-2(2-3)+3(4-9)=-12$.</li>
+    <li><span class="step">(1) 수반행렬.</span> 여인수행렬이
+      $\begin{pmatrix}1&1&-5\\4&-8&4\\-7&5&-1\end{pmatrix}$ 이므로
+      $\operatorname{adj}A=\begin{pmatrix}1&4&-7\\1&-8&5\\-5&4&-1\end{pmatrix}$ 이고
+      $A^{-1}=\operatorname{adj}A/(-12)$.</li>
+    <li><span class="step">(2) 여인수 계산.</span> $A=\begin{pmatrix}a&d&e\\0&b&f\\0&0&c\end{pmatrix}$ 에서
+      $1$열 아래쪽이 모두 $0$ 이므로
+      $$A_{12}=-\begin{vmatrix}0&f\\0&c\end{vmatrix}=0,\quad
+        A_{13}=+\begin{vmatrix}0&b\\0&0\end{vmatrix}=0,\quad
+        A_{23}=-\begin{vmatrix}a&d\\0&0\end{vmatrix}=0$$
+      이고 나머지는
+      $A_{11}=bc$, $A_{22}=ac$, $A_{33}=ab$, $A_{21}=-cd$, $A_{31}=df-be$, $A_{32}=-af$ 이다.</li>
+    <li><span class="step">(2) 결론.</span> 여인수행렬이 <b>하</b>삼각행렬이므로 그 전치인
+      $\operatorname{adj}A$ 는 <b>상</b>삼각행렬이고, $|A|=abc\ne0$ 으로 나눠도 모양은 그대로다.
+      $$A^{-1}=\frac1{abc}\begin{pmatrix}bc&-cd&df-be\\0&ac&-af\\0&0&ab\end{pmatrix}
+        =\begin{pmatrix}\frac1a&-\frac{d}{ab}&\frac{df-be}{abc}\\[2pt]0&\frac1b&-\frac{f}{bc}\\[2pt]0&0&\frac1c\end{pmatrix}$$
+      따라서 $A^{-1}$ 도 상삼각행렬이다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">워크북 주관식 연습문제</h2>
+
+<div class="ans"><span class="exn">주관 1</span><b>정답</b> 크래머 공식, &nbsp;유일한 해, &nbsp;계수행렬의 $j$열</div>
+
+<div class="ans"><span class="exn">주관 2</span><b>정답</b> $A$ 의 원소 $a_{ij}$, &nbsp;수반행렬(adjoint matrix)</div>
+
+<div class="ans"><span class="exn">주관 3</span><b>정답</b> $A^{-1}$, &nbsp;$\operatorname{adj}A$</div>
+
+<div class="ans"><span class="exn">주관 4</span><b>정답</b> $|A|\ne0$, &nbsp;$\dfrac{\operatorname{adj}A}{|A|}$</div>
+
+<div class="ans"><span class="exn">주관 5</span><b>정답</b> $X=A^{-1}B$</div>
+
+<div class="ans"><span class="exn">주관 6</span><b>정답</b> $a^{-1}b$</div>
+
+<h2 class="sub">워크북 객관식</h2>
+
+<div class="ans"><span class="exn">객관 2</span><b>정답</b> ②
+  <p>$A=\begin{pmatrix}5&-1\\3&1\end{pmatrix}$ 이므로 $|A|=8$ 이고</p>
+  $$x_1=\frac18\begin{vmatrix}3&-1\\5&1\end{vmatrix}=1,\qquad
+    x_2=\frac18\begin{vmatrix}5&3\\3&5\end{vmatrix}=2$$
+</div>
+
+<div class="ans"><span class="exn">객관 3</span><b>정답</b> ④
+  <p>$n$차 정방행렬 $A=(a_{ij})$ 에 대해 $|A|\ne0$ 일 때
+  $A^{-1}=\dfrac{\operatorname{adj}A}{|A|}$ 이다.</p>
+</div>
+
+<div class="ans"><span class="exn">객관 4</span><b>정답</b> ③
+  <p>$1$열에서 $a_{21}=a_{31}=0$ 이므로 $1$열로 전개하면</p>
+  $$|A|=2\begin{vmatrix}1&-2\\-2&2\end{vmatrix}=2(2-4)=-4$$
+  <p>여인수행렬이 $\begin{pmatrix}-2&0&0\\-4&4&4\\1&4&2\end{pmatrix}$ 이므로 이를 전치하여</p>
+  $$\operatorname{adj}A=\begin{pmatrix}-2&-4&1\\0&4&4\\0&4&2\end{pmatrix}$$
+</div>
+
+<div class="ans"><span class="exn">객관 5</span><b>정답</b> ③
+  <ol class="props">
+    <li>하삼각행렬의 $\operatorname{adj}$ 는 <b>하</b>삼각행렬이 된다.</li>
+    <li>연립방정식의 해는 유일하거나, 무수히 많거나, 없을 수 있다.</li>
+    <li>$A^{-1}=\dfrac{\operatorname{adj}A}{|A|}$ 의 양변에 $|A|$ 를 곱한 형태로 옳은 답이다.</li>
+    <li>$\left|A^{-1}\right||A|=\left|A^{-1}A\right|=|I|=1$ 이다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">기출문제</h2>
+
+<div class="ans"><span class="exn">기출 1</span><b>정답</b>
+  $$A^{-1}=\frac13\begin{pmatrix}-9&3&6\\6&-2&-3\\0&1&0\end{pmatrix}
+    =\begin{pmatrix}-3&1&2\\2&-\tfrac23&-1\\0&\tfrac13&0\end{pmatrix}$$
+  <ol class="fill">
+    <li><span class="step">행렬식.</span> $0$ 이 두 개인 $2$행으로 전개하면
+      $$|A|=-0+0-3\begin{vmatrix}1&2\\2&3\end{vmatrix}=-3(3-4)=3$$</li>
+    <li><span class="step">여인수행렬.</span>
+      $$\begin{pmatrix}
+        +\begin{vmatrix}0&3\\3&0\end{vmatrix}&-\begin{vmatrix}0&3\\2&0\end{vmatrix}&+\begin{vmatrix}0&0\\2&3\end{vmatrix}\\[6pt]
+        -\begin{vmatrix}2&1\\3&0\end{vmatrix}&+\begin{vmatrix}1&1\\2&0\end{vmatrix}&-\begin{vmatrix}1&2\\2&3\end{vmatrix}\\[6pt]
+        +\begin{vmatrix}2&1\\0&3\end{vmatrix}&-\begin{vmatrix}1&1\\0&3\end{vmatrix}&+\begin{vmatrix}1&2\\0&0\end{vmatrix}
+      \end{pmatrix}
+      =\begin{pmatrix}-9&6&0\\3&-2&1\\6&-3&0\end{pmatrix}$$</li>
+    <li><span class="step">전치하고 나누기.</span>
+      $\operatorname{adj}A=\begin{pmatrix}-9&3&6\\6&-2&-3\\0&1&0\end{pmatrix}$ 이므로
+      $A^{-1}=\operatorname{adj}A/3$.</li>
+  </ol>
+</div>
+
+</div>
+
+<nav class="pager">
+  <a href="6-2_determinant-and-inverse.html">← 이전<small>6.2 행렬식과 역행렬</small></a>
+  <a class="next" href="../index.html">목차 →<small>선형대수학</small></a>
+</nav>
+
+</body>
+</html>
