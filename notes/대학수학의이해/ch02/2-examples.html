@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대학수학의 이해 · 2장 예제</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  .ex{ margin:26px 0; line-height:1.75; }
+  .exn{ font-weight:800; color:var(--def); margin-right:8px; }
+  .mark{ color:#d64541; font-weight:800; margin:0 5px 0 2px; letter-spacing:2px; }
+  .ex ol{ margin:4px 0 0; padding-left:26px; }
+  .ex li{ margin:5px 0; }
+  .answersheet{ page-break-before:always; }
+  .ans{ margin:24px 0; line-height:1.75; }
+  .ans .exn{ color:var(--thm); }
+  .ans ol{ margin:6px 0 0; padding-left:24px; }
+  .ans ol li{ margin:7px 0; }
+  .ans ol.fill li{ margin:9px 0; }
+  .sec{ margin:34px 0 10px; padding-bottom:4px; border-bottom:2px solid #ddd;
+        font-size:0.9rem; font-weight:700; letter-spacing:0.04em; color:var(--muted); }
+  .maps{ display:flex; flex-wrap:wrap; gap:14px 28px; margin:10px 0 0; }
+  .maps figure{ margin:0; }
+  .maps figcaption{ font-size:0.8rem; color:var(--muted); text-align:center; margin-top:2px; }
+  svg text{ font-size:13px; fill:#333; font-family:inherit; }
+  svg .ell{ fill:none; stroke:#999; stroke-width:1.2; }
+  svg .arw{ stroke:#8a6b52; stroke-width:1.2; fill:none; marker-end:url(#ah); }
+  svg .ax{ stroke:#666; stroke-width:1.2; }
+  svg .crv{ fill:none; stroke:#8a6b52; stroke-width:1.8; }
+  svg .dot{ fill:#8a6b52; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } .mark{ color:#000; } }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#8a6b52"/>
+    </marker>
+  </defs>
+</svg>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">대학수학의 이해 · 2장 함수와 그래프</div>
+  <h1><span class="no">예제</span>2장 <span class="en">worked examples</span></h1>
+</header>
+
+<p>교재 <b>대학수학의 이해</b> 2장의 예제 $2.1\sim2.15$ 를 그대로 옮긴 문제 노트다.
+풀이는 인쇄 시 다음 페이지부터 나오는 정답 시트에 있다.</p>
+
+<div class="sec">1. 함수 (예제 2.1~2.4)</div>
+
+<div class="ex"><span class="exn">2.1</span>집합 $X$, $Y$ 에 대한 다음의 대응을 보고 이들 대응이 함수인지 말하시오.
+또한 함수인 경우 각각의 정의역과 공역, 치역을 나타내시오.
+  <div class="maps">
+    <figure>
+      <svg width="190" height="180" viewBox="0 0 190 180" role="img" aria-label="(1) 1→1, 2→2, 3→3, 4→4 대응">
+        <ellipse class="ell" cx="45" cy="95" rx="27" ry="70"/>
+        <ellipse class="ell" cx="145" cy="95" rx="27" ry="70"/>
+        <text x="38" y="18">X</text><text x="138" y="18">Y</text>
+        <text x="41" y="45">1</text><text x="41" y="78">2</text><text x="41" y="111">3</text><text x="41" y="144">4</text>
+        <text x="141" y="45">1</text><text x="141" y="78">3</text><text x="141" y="111">2</text><text x="141" y="144">4</text>
+        <path class="arw" d="M55,41 L133,41"/>
+        <path class="arw" d="M55,74 L133,107"/>
+        <path class="arw" d="M55,107 L133,74"/>
+        <path class="arw" d="M55,140 L133,140"/>
+      </svg>
+      <figcaption>(1)</figcaption>
+    </figure>
+    <figure>
+      <svg width="190" height="180" viewBox="0 0 190 180" role="img" aria-label="(2) 1→3, 2→4, 4→1, 4→2 대응">
+        <ellipse class="ell" cx="45" cy="95" rx="27" ry="70"/>
+        <ellipse class="ell" cx="145" cy="95" rx="27" ry="70"/>
+        <text x="38" y="18">X</text><text x="138" y="18">Y</text>
+        <text x="41" y="45">1</text><text x="41" y="78">2</text><text x="41" y="111">3</text><text x="41" y="144">4</text>
+        <text x="141" y="45">1</text><text x="141" y="78">2</text><text x="141" y="111">3</text><text x="141" y="144">4</text>
+        <path class="arw" d="M55,41 L133,107"/>
+        <path class="arw" d="M55,74 L133,140"/>
+        <path class="arw" d="M55,140 L133,41"/>
+        <path class="arw" d="M55,140 L133,74"/>
+      </svg>
+      <figcaption>(2)</figcaption>
+    </figure>
+    <figure>
+      <svg width="190" height="180" viewBox="0 0 190 180" role="img" aria-label="(3) 1→2, 2→3, 3→1 대응, 4는 대응 없음">
+        <ellipse class="ell" cx="45" cy="95" rx="27" ry="70"/>
+        <ellipse class="ell" cx="145" cy="95" rx="27" ry="70"/>
+        <text x="38" y="18">X</text><text x="138" y="18">Y</text>
+        <text x="41" y="45">1</text><text x="41" y="78">2</text><text x="41" y="111">3</text><text x="41" y="144">4</text>
+        <text x="141" y="45">1</text><text x="141" y="78">2</text><text x="141" y="111">3</text><text x="141" y="144">4</text>
+        <path class="arw" d="M55,41 L133,74"/>
+        <path class="arw" d="M55,74 L133,107"/>
+        <path class="arw" d="M55,107 L133,41"/>
+      </svg>
+      <figcaption>(3)</figcaption>
+    </figure>
+    <figure>
+      <svg width="190" height="180" viewBox="0 0 190 180" role="img" aria-label="(4) 1,2,3,4 모두 2로 대응">
+        <ellipse class="ell" cx="45" cy="95" rx="27" ry="70"/>
+        <ellipse class="ell" cx="145" cy="95" rx="27" ry="70"/>
+        <text x="38" y="18">X</text><text x="138" y="18">Y</text>
+        <text x="41" y="45">1</text><text x="41" y="78">2</text><text x="41" y="111">3</text><text x="41" y="144">4</text>
+        <text x="141" y="45">1</text><text x="141" y="78">2</text><text x="141" y="111">3</text><text x="141" y="144">4</text>
+        <path class="arw" d="M55,41 L133,74"/>
+        <path class="arw" d="M55,74 L133,74"/>
+        <path class="arw" d="M55,107 L133,74"/>
+        <path class="arw" d="M55,140 L133,74"/>
+      </svg>
+      <figcaption>(4)</figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="ex"><span class="exn">2.2</span>다음 함수의 그래프를 그리시오.
+  <ol>
+    <li>$f(x)=x+1$ (단, 정의역은 $\{-1,0,1,2\}$, 공역은 $\{-1,0,1,2,3\}$)</li>
+    <li>$g(x)=x^{2}+1$ (단, 정의역과 공역은 실수)</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">2.3</span>다음 함수가 전사함수인지 단사함수인지 판별하시오.
+  <ol>
+    <li>$f(x)=-2x$ (단, 정의역과 공역은 정수)</li>
+    <li>$g(x)=3x-1$ (단, 정의역과 공역은 실수)</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">2.4</span>다음의 역함수를 구하시오.
+  <div class="maps">
+    <figure>
+      <svg width="190" height="145" viewBox="0 0 190 145" role="img" aria-label="(1) f: 1→2, 2→1, 3→3 대응">
+        <ellipse class="ell" cx="45" cy="75" rx="27" ry="58"/>
+        <ellipse class="ell" cx="145" cy="75" rx="27" ry="58"/>
+        <text x="90" y="18">f</text>
+        <text x="41" y="48">1</text><text x="41" y="80">2</text><text x="41" y="112">3</text>
+        <text x="141" y="48">1</text><text x="141" y="80">2</text><text x="141" y="112">3</text>
+        <path class="arw" d="M55,44 L133,76"/>
+        <path class="arw" d="M55,76 L133,44"/>
+        <path class="arw" d="M55,108 L133,108"/>
+      </svg>
+      <figcaption>(1)</figcaption>
+    </figure>
+  </div>
+  <p style="margin:6px 0 0">(2) $g(x)=3x-1$ (단, 정의역과 공역은 실수)</p>
+</div>
+
+<div class="sec">2. 함수의 연산 (예제 2.5~2.8)</div>
+
+<div class="ex"><span class="exn">2.5</span>함수 $f$ 와 $g$ 가 다음과 같이 정의되었을 때
+$f+g$, $f-g$, $f\cdot g$, $\dfrac{f}{g}$ 를 구하시오.
+  $$f(x)=x+1,\qquad g(x)=\frac{1}{x^{2}}\ (\text{단},\ x\ne0)$$
+</div>
+
+<div class="ex"><span class="exn">2.6</span>$f(x)=x+1$, $g(x)=\sqrt{x}$ (단, $x\ge0$)일 때,
+$f\circ g$ 와 $g\circ f$ 를 구하시오.</div>
+
+<div class="ex"><span class="exn">2.7</span>다음 함수가 우함수인지 기함수인지 판별하시오.
+  <ol>
+    <li>$f(x)=x^{4}+x^{2}+1$</li>
+    <li>$g(x)=x^{3}+3x$</li>
+    <li>$h(x)=x^{2}+3x$</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">2.8</span>다음 함수가 다항함수, 유리함수, 무리함수 중 어느 것인지 판별하시오.
+  <ol>
+    <li>$f(x)=3x^{3}-2x^{2}+7$</li>
+    <li>$g(x)=\dfrac{2x^{2}}{x-3}$ (단, $x\ne3$)</li>
+    <li>$h(x)=\sqrt{x+2}$</li>
+  </ol>
+</div>
+
+<div class="sec">3. 초월함수 (예제 2.9~2.12)</div>
+
+<div class="ex"><span class="exn">2.9</span>$y=2\sin\!\left(2x+\dfrac{\pi}{4}\right)$ 의 그래프를 $y=\sin x$ 그래프와 함께 그리고,
+주기, 진폭, 위상각을 구하시오.</div>
+
+<div class="ex"><span class="exn">2.10</span>$f(x)=\dfrac{e^{x}-e^{-x}}{e^{x}+e^{-x}}$ 에서 $f(a)=\dfrac14$, $f(b)=\dfrac12$ 일 때,
+$e^{2a}$, $e^{2b}$ 및 $f(a+b)$ 의 값을 구하시오.</div>
+
+<div class="ex"><span class="exn">2.11</span>$y=\ln(2x+2)$ 의 그래프를 그리시오.</div>
+
+<div class="ex"><span class="exn">2.12</span>로그함수 $y=\ln\!\left(x+\sqrt{x^{2}-1}\right)$ (단, $x\ge1$)의 역함수를 구하시오.</div>
+
+<div class="sec">4. 도형의 방정식 (예제 2.13~2.15)</div>
+
+<div class="ex"><span class="exn">2.13</span>두 점 $(2,1)$, $(4,5)$ 를 지나는 직선의 방정식을 구하고 그래프를 그리시오.</div>
+
+<div class="ex"><span class="exn">2.14</span>다음을 원의 방정식으로 나타내시오.
+  <ol>
+    <li>원의 중심이 원점 $(0,0)$ 이고, 반지름이 $1$ 인 원</li>
+    <li>원의 중심이 $(1,2)$ 이고, 반지름이 $5$ 인 원</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">2.15</span>초점이 $A(-c,0)$, $B(c,0)$ 이고 타원 위의 점을 $C(x,y)$ 라 할 때,
+$\overline{AC}+\overline{BC}=2a$ 이면 타원의 방정식
+  $$\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1\quad(\text{단},\ b^{2}=a^{2}-c^{2})$$
+  <p>이 성립함을 보이시오.</p>
+</div>
+
+<!-- ============================ 정답 시트 ============================ -->
+<div class="answersheet">
+<header class="doc">
+  <div class="ch">대학수학의 이해 · 2장 함수와 그래프</div>
+  <h1><span class="no">풀이</span>2장 예제 <span class="en">solutions</span></h1>
+</header>
+
+<div class="sec">1. 함수</div>
+
+<div class="ans"><span class="exn">2.1</span><b>정답</b> $(1)$, $(4)$ 는 함수이고 $(2)$, $(3)$ 은 함수가 아니다.
+  <ol>
+    <li>정의역은 $\{1,2,3,4\}$, 공역과 치역도 모두 $\{1,2,3,4\}$ 이다.
+      특히 $(1)$ 과 같이 $X$ 의 임의의 원소 $x$ 에 대하여 $f(x)=x$ 로 주어지는 함수를
+      <b>항등함수</b>라고 한다.</li>
+    <li>$4\in X$ 에 대응하는 값이 $1$ 과 $2$ 로 $2$ 개이므로 “오직 하나의 원소에만 대응한다”는
+      함수의 정의에 어긋난다.</li>
+    <li>$4\in X$ 의 경우 대응하는 함숫값이 존재하지 않으므로 함수가 될 수 없다.</li>
+    <li>임의의 $x\in X$ 를 취하더라도 하나의 원소에 대응하고 있으므로 함수이다.
+      정의역은 $\{1,2,3,4\}$, 공역은 $\{1,2,3,4\}$, 치역은 $\{2\}$ 가 된다.
+      $(4)$ 와 같이 $X$ 의 모든 원소에 대응하는 $Y$ 의 값이 같은 경우를 <b>상수함수</b>라고 한다.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">2.2</span><b>정답</b> $f(x)$ 의 치역은 $\{0,1,2,3\}$ 이고,
+$g(x)$ 의 치역은 $1$ 보다 크거나 같은 실수이다.
+  <div class="maps">
+    <figure>
+      <svg width="230" height="185" viewBox="0 0 230 185" role="img" aria-label="f(x)=x+1의 네 점 그래프">
+        <path class="ax" d="M20,120 L210,120"/><path class="ax" d="M75,15 L75,170"/>
+        <text x="200" y="138">$x$</text><text x="58" y="25">$y$</text>
+        <text x="40" y="138">−1</text><text x="80" y="138">O</text>
+        <text x="108" y="138">1</text><text x="140" y="138">2</text>
+        <text x="58" y="95">1</text><text x="58" y="68">2</text><text x="58" y="41">3</text><text x="58" y="152">−1</text>
+        <circle class="dot" cx="43" cy="120" r="3.5"/>
+        <circle class="dot" cx="75" cy="93" r="3.5"/>
+        <circle class="dot" cx="107" cy="66" r="3.5"/>
+        <circle class="dot" cx="139" cy="39" r="3.5"/>
+      </svg>
+      <figcaption>(1) $y=f(x)$</figcaption>
+    </figure>
+    <figure>
+      <svg width="230" height="185" viewBox="0 0 230 185" role="img" aria-label="g(x)=x^2+1의 포물선">
+        <path class="ax" d="M20,150 L210,150"/><path class="ax" d="M115,15 L115,170"/>
+        <text x="200" y="168">$x$</text><text x="98" y="25">$y$</text>
+        <text x="120" y="130">1</text><text x="120" y="168">O</text>
+        <path class="crv" d="M50,20 Q115,215 180,20"/>
+      </svg>
+      <figcaption>(2) $y=g(x)$</figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="ans"><span class="exn">2.3</span><b>정답</b> $(1)$ 단사함수, &nbsp;$(2)$ 전단사함수
+  <ol>
+    <li>$f(x)$ 의 치역은 $\{\dots,6,4,2,0,-2,-4,-6,\dots\}$ 로서 치역과 공역(정수 전체)이 다르므로
+      전사함수는 아니지만, 서로 다른 정수 $x_1$ 과 $x_2$ 에 대해서 각각의 함숫값은
+      $f(x_1)=-2x_1$, $f(x_2)=-2x_2$ 이고 $f(x_1)\ne f(x_2)$ 이므로 단사함수이다.</li>
+    <li>$g(x)$ 의 공역과 치역이 실수집합으로 같고, $g(x_1)=g(x_2)$ 이면
+      $3x_1-1=3x_2-1\iff x_1=x_2$ 이므로 전단사함수이다.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">2.4</span><b>정답</b>
+  <ol>
+    <li>$f:1\to2$ 이므로 $f^{-1}:2\to1$, &nbsp;$f:2\to1$ 이므로 $f^{-1}:1\to2$,
+      &nbsp;$f:3\to3$ 이므로 $f^{-1}:3\to3$ 이다.</li>
+    <li>$f(x)=3x-1\iff x=\dfrac13f(x)+\dfrac13$ 이므로
+      $f^{-1}(x)=\dfrac13x+\dfrac13$ 이다.</li>
+  </ol>
+</div>
+
+<div class="sec">2. 함수의 연산</div>
+
+<div class="ans"><span class="exn">2.5</span><b>정답</b> (단, $x\ne0$)
+  $$\begin{aligned}
+    (f+g)(x)&=f(x)+g(x)=x+1+\frac{1}{x^{2}}=x+\frac{1}{x^{2}}+1\\
+    (f-g)(x)&=f(x)-g(x)=x+1-\frac{1}{x^{2}}=x-\frac{1}{x^{2}}+1\\
+    (f\cdot g)(x)&=f(x)g(x)=(x+1)\cdot\frac{1}{x^{2}}=\frac1x+\frac{1}{x^{2}}\\
+    \left(\frac{f}{g}\right)(x)&=\frac{f(x)}{g(x)}=\frac{x+1}{\dfrac{1}{x^{2}}}=x^{3}+x^{2}
+  \end{aligned}$$
+</div>
+
+<div class="ans"><span class="exn">2.6</span><b>정답</b>
+  $$(f\circ g)(x)=f(g(x))=\sqrt{x}+1\ \ (x\ge0),\qquad
+    (g\circ f)(x)=g(f(x))=\sqrt{x+1}\ \ (x\ge-1)$$
+  <p>두 결과가 서로 같지 않다 — 함수의 합성에서는 교환법칙이 성립하지 않는다.</p>
+</div>
+
+<div class="ans"><span class="exn">2.7</span><b>정답</b> $(1)$ 우함수, &nbsp;$(2)$ 기함수, &nbsp;$(3)$ 우함수도 기함수도 아니다.
+  <ol>
+    <li>$f(-x)=(-x)^{4}+(-x)^{2}+1=x^{4}+x^{2}+1=f(x)$ 이므로 우함수이다.</li>
+    <li>$g(-x)=(-x)^{3}+3(-x)=-x^{3}-3x=-g(x)$ 이므로 기함수이다.</li>
+    <li>$h(-x)=(-x)^{2}+3(-x)=x^{2}-3x$ 이므로 $h(x)$ 도 $-h(x)$ 도 아니다.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">2.8</span><b>정답</b> $(1)$ 다항함수, &nbsp;$(2)$ 유리함수, &nbsp;$(3)$ 무리함수
+  <ol>
+    <li>$f(x)$ 는 $x$ 의 거듭제곱들의 합으로 이루어진 식이고, 지수가 모두 $0$ 이상의 정수이므로
+      다항함수이다.</li>
+    <li>$g(x)$ 는 분자와 분모가 모두 다항식인 분수 형태의 함수이므로 유리함수이다. (단, $x\ne3$)</li>
+    <li>$h(x)$ 는 근호가 포함되어 다항식의 분수 형태로 나타낼 수 없으므로 무리함수이다.</li>
+  </ol>
+</div>
+
+<div class="sec">3. 초월함수</div>
+
+<div class="ans"><span class="exn">2.9</span><b>정답</b> 주기 $\pi$, &nbsp;진폭 $2$, &nbsp;위상각 $\dfrac{\pi}{4}$
+  <p>$y=A\sin(wx+\phi)$ 의 형태에서 주기는 $\left|\dfrac{2\pi}{w}\right|=\pi$ 이고,
+  진폭은 $|A|=2$ 이며 위상각은 $\phi=\dfrac{\pi}{4}$ 이다.
+  $y=\sin x$ 에 비해 세로로 $2$ 배 늘어나고 가로로 절반으로 압축되며 좌측으로 이동한 모양이다.</p>
+</div>
+
+<div class="ans"><span class="exn">2.10</span><b>정답</b>
+  $e^{2a}=\dfrac53$, &nbsp;$e^{2b}=3$, &nbsp;$f(a+b)=\dfrac23$
+  <ol class="fill">
+    <li><span class="step">$e^{2a}$.</span>
+      $$f(a)=\frac{e^{a}-e^{-a}}{e^{a}+e^{-a}}=\frac{e^{2a}-1}{e^{2a}+1}=\frac14
+        \ \Rightarrow\ e^{2a}+1=4e^{2a}-4,\quad 3e^{2a}=5$$</li>
+    <li><span class="step">$e^{2b}$.</span>
+      $$f(b)=\frac{e^{2b}-1}{e^{2b}+1}=\frac12
+        \ \Rightarrow\ e^{2b}+1=2e^{2b}-2,\quad e^{2b}=3$$</li>
+    <li><span class="step">$f(a+b)$.</span>
+      $$f(a+b)=\frac{e^{2(a+b)}-1}{e^{2(a+b)}+1}=\frac{e^{2a}e^{2b}-1}{e^{2a}e^{2b}+1}
+        =\frac{\frac53\times3-1}{\frac53\times3+1}=\frac46=\frac23$$</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">2.11</span><b>정답</b> 정의역은 $\{x\in R\mid x\gt-1\}$ 이고 치역은 실수 전체이다.
+  <div class="maps">
+    <figure>
+      <svg width="250" height="190" viewBox="0 0 250 190" role="img" aria-label="y=ln(2x+2)의 그래프">
+        <path class="ax" d="M25,130 L235,130"/><path class="ax" d="M95,15 L95,180"/>
+        <text x="225" y="148">$x$</text><text x="78" y="25">$y$</text>
+        <text x="55" y="148">−1</text><text x="100" y="148">O</text>
+        <text x="76" y="95">2</text><text x="76" y="62">4</text>
+        <path d="M65,15 L65,180" stroke="#999" stroke-width="1" stroke-dasharray="4 3"/>
+        <path class="crv" d="M66,180 C70,140 80,118 95,107 C130,86 175,66 225,52"/>
+      </svg>
+      <figcaption>$y=\ln(2x+2)$</figcaption>
+    </figure>
+  </div>
+  <p>$2x+2\gt0$ 에서 $x\gt-1$ 이고, $x=-1$ 이 수직점근선이다.</p>
+</div>
+
+<div class="ans"><span class="exn">2.12</span><b>정답</b> $y=\dfrac12\left(e^{x}+e^{-x}\right)$ (단, $x\ge0$)
+  <ol class="fill">
+    <li><span class="step">지수 형태로.</span> $y=\ln\!\left(x+\sqrt{x^{2}-1}\right)$ 에서
+      $$e^{y}=x+\sqrt{x^{2}-1},\qquad e^{y}-x=\sqrt{x^{2}-1}$$</li>
+    <li><span class="step">제곱해서 근호 제거.</span>
+      $$(e^{y}-x)^{2}=x^{2}-1,\quad e^{2y}-2xe^{y}+x^{2}=x^{2}-1
+        \ \Rightarrow\ e^{2y}+1=2xe^{y}$$</li>
+    <li><span class="step">$x$ 에 대해 풀기.</span>
+      $$x=\frac{e^{2y}+1}{2e^{y}}=\frac12\left(e^{y}+e^{-y}\right)
+        \quad(\text{단},\ x\ge1\iff y\ge0)$$</li>
+    <li><span class="step">$x$ 와 $y$ 를 교환.</span>
+      $$y=\frac12\left(e^{x}+e^{-x}\right)\quad(\text{단},\ x\ge0)$$</li>
+  </ol>
+</div>
+
+<div class="sec">4. 도형의 방정식</div>
+
+<div class="ans"><span class="exn">2.13</span><b>정답</b> $y=2x-3$
+  <p>먼저 기울기를 구하면 $\beta=\dfrac{5-1}{4-2}=2$ 이다. 따라서 두 점을 지나는 직선의 방정식은
+  $y-1=2(x-2)$ 이고, 이를 정리하면 $y=2x-3$ 이다.</p>
+  <div class="maps">
+    <figure>
+      <svg width="250" height="200" viewBox="0 0 250 200" role="img" aria-label="y=2x-3의 그래프">
+        <path class="ax" d="M25,140 L235,140"/><path class="ax" d="M65,15 L65,190"/>
+        <text x="225" y="158">$x$</text><text x="48" y="25">$y$</text>
+        <text x="40" y="158">−1</text><text x="70" y="158">O</text>
+        <text x="95" y="158">1</text><text x="123" y="158">2</text><text x="151" y="158">3</text><text x="179" y="158">4</text>
+        <text x="46" y="118">1</text><text x="46" y="90">3</text><text x="46" y="62">5</text><text x="42" y="180">−3</text>
+        <path class="crv" d="M79,190 L207,34"/>
+        <circle class="dot" cx="121" cy="112" r="3.5"/>
+        <circle class="dot" cx="177" cy="56" r="3.5"/>
+        <path d="M65,112 L121,112 M121,112 L121,140" stroke="#999" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+        <path d="M65,56 L177,56 M177,56 L177,140" stroke="#999" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+      </svg>
+      <figcaption>$y=2x-3$</figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="ans"><span class="exn">2.14</span><b>정답</b>
+  $$\text{(1)}\ x^{2}+y^{2}=1,\qquad \text{(2)}\ (x-1)^{2}+(y-2)^{2}=5^{2}$$
+</div>
+
+<div class="ans"><span class="exn">2.15</span><b>정답</b>
+  $\overline{AC}+\overline{BC}=2a$ 이므로
+  $\sqrt{(x+c)^{2}+y^{2}}+\sqrt{(x-c)^{2}+y^{2}}=2a$ 이다. 이를 정리하면 다음과 같다.
+  $$\begin{aligned}
+    x^{2}+2cx+c^{2}+y^{2}&=4a^{2}-4a\sqrt{(x-c)^{2}+y^{2}}+x^{2}-2cx+c^{2}+y^{2}\\
+    4a\sqrt{(x-c)^{2}+y^{2}}&=4a^{2}-4cx
+      \ \Rightarrow\ a\sqrt{(x-c)^{2}+y^{2}}=a^{2}-cx\\
+    a^{2}\left\{(x-c)^{2}+y^{2}\right\}&=a^{4}-2a^{2}cx+c^{2}x^{2}
+      \ \Rightarrow\ (a^{2}-c^{2})x^{2}+a^{2}c^{2}+a^{2}y^{2}-a^{4}=0\\
+    (a^{2}-c^{2})x^{2}+a^{2}y^{2}&=a^{2}(a^{2}-c^{2})
+      \ \Rightarrow\ b^{2}x^{2}+a^{2}y^{2}=a^{2}b^{2}
+  \end{aligned}$$
+  $$\therefore\ \frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1\quad(\text{단},\ b^{2}=a^{2}-c^{2})$$
+  <p>만약 $a=b$ 이면 타원은 원이 된다.</p>
+</div>
+
+</div>
+
+<nav class="pager">
+  <a href="../ch01/1-exercises.html">← 이전<small>1장 연습문제</small></a>
+  <a class="next" href="../index.html">목차 →<small>대학수학의 이해</small></a>
+</nav>
+
+</body>
+</html>
