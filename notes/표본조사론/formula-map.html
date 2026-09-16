@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>표본조사론 · 추출법별 공식 대조</title>
+<link rel="stylesheet" href="../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  .box.def{ margin-bottom:6px; }
+  .box.ex{ margin-top:6px; }
+  table.data td, table.data th{ font-size:0.86rem; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../index.html">⌂ 홈</a>
+  <div class="ch">표본조사론</div>
+  <h1><span class="no">공식 대조</span>추출법별 공식 <span class="en">formula map</span></h1>
+</header>
+
+<p class="lead">추출법 이름 ↔ 공식을 1:1로 붙여 놓고, 각 공식 아래에 예제만 하나씩 둔다.</p>
+
+<h2 class="sub">한눈에 <span class="en">at a glance</span></h2>
+
+<div class="scroll"><table class="data">
+  <tr><th>추출법</th><th>모평균 추정량</th><th>분산(추정)</th><th>표본크기</th></tr>
+  <tr><th>단순임의추출</th>
+      <td>$\bar y=\frac1n\sum y_i$</td>
+      <td>$\frac{N-n}{N}\cdot\frac{s^2}{n}$</td>
+      <td>$n=\frac{n_0}{1+n_0/N}$</td></tr>
+  <tr><th>층화추출</th>
+      <td>$\bar y_{st}=\sum W_h\bar y_h$</td>
+      <td>$\sum W_h^2\frac{N_h-n_h}{N_h}\frac{s_h^2}{n_h}$</td>
+      <td>$n=\frac{\sum N_h^2S_h^2/w_h}{N^2D+\sum N_hS_h^2}$</td></tr>
+  <tr><th>계통추출</th>
+      <td>$\bar y_{sy}=\frac1n\sum y_i$</td>
+      <td>$\frac{N-n}{N}\frac{S^2}{n}\left[1+(n-1)\rho_c\right]$</td>
+      <td>단순임의추출과 동일</td></tr>
+  <tr><th>비추정</th>
+      <td>$\hat\mu_y=r\mu_x$, &nbsp;$r=\bar y/\bar x$</td>
+      <td>$\frac{N-n}{N}\cdot\frac1n\cdot\frac{\sum(y_i-rx_i)^2}{n-1}$</td>
+      <td>—</td></tr>
+  <tr><th>회귀추정</th>
+      <td>$\hat\mu_{yL}=\bar y+b(\mu_x-\bar x)$</td>
+      <td>$\frac{N-n}{N}\cdot\frac{MSE}{n}$</td>
+      <td>—</td></tr>
+</table></div>
+
+<p>신뢰구간은 모든 추출법에서 <b>추정량 $\pm\,z_{\alpha/2}\sqrt{\text{추정분산}}$</b> 꼴로 같다.</p>
+
+<!-- ==================================================== 단순임의추출법 -->
+<h2 class="sub">단순임의추출법 <span class="en">simple random sampling</span></h2>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">단순임의추출법의 모평균 추정량</span>
+  $$\bar y=\frac1n\sum_{i=1}^{n}y_i$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$n=20$ 가구의 가구원 수 합계가 $74$ 명이면 &nbsp;$\bar y=\dfrac{74}{20}=3.7$ 명.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">단순임의추출법의 모평균 추정량의 분산</span>
+  $$V(\bar y)=\frac{N-n}{N}\cdot\frac{S^2}{n}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$\{1,2,3,4\}$ 에서 $n=2$ 를 뽑으면 $S^2=\tfrac53$ 이므로
+  &nbsp;$V(\bar y)=\dfrac{4-2}{4}\cdot\dfrac{5/3}{2}=\dfrac{5}{12}$.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">단순임의추출법의 모평균 추정분산</span>
+  $$\hat V(\bar y)=\frac{N-n}{N}\cdot\frac{s^2}{n},\qquad
+    s^2=\frac{1}{n-1}\sum_{i=1}^{n}(y_i-\bar y)^2$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=1{,}000$, $n=20$, $s^2=0.7474$ 이면
+  &nbsp;$\hat V(\bar y)=\dfrac{980}{1{,}000}\cdot\dfrac{0.7474}{20}=0.0366$.
+  신뢰구간은 $3.7\pm2\sqrt{0.0366}=3.7\pm0.38$.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">단순임의추출법의 모총계 추정량과 추정분산</span>
+  $$\hat\tau=N\bar y,\qquad
+    \hat V(\hat\tau)=N^2\cdot\frac{N-n}{N}\cdot\frac{s^2}{n}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=6{,}000$, $n=100$, $\bar y=25.2$, $s^2=136.00$ 이면</p>
+  $$\hat\tau=6{,}000\times25.2=151{,}200,\qquad
+    \hat V(\hat\tau)=6{,}000^2\cdot\frac{5{,}900}{6{,}000}\cdot\frac{136}{100}=48{,}144{,}000$$
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">단순임의추출법의 모비율 추정량과 추정분산</span>
+  $$\hat p=\frac1n\sum_{i=1}^{n}y_i,\qquad
+    \hat V(\hat p)=\frac{N-n}{N}\cdot\frac{\hat p\hat q}{n-1},\qquad \hat q=1-\hat p$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$n=1{,}500$ 중 찬성 $936$ 명이면 $\hat p=\dfrac{936}{1{,}500}=0.624$ 이고
+  &nbsp;$\hat V(\hat p)\fallingdotseq\dfrac{0.624\times0.376}{1{,}499}=0.000157$,
+  신뢰구간은 $0.624\pm0.0250$.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">단순임의추출법의 표본크기 — 모평균, 절대오차 한계 $B$</span>
+  $$n=\frac{n_0}{1+\dfrac{n_0}{N}},\qquad n_0=\left(\frac{z_{\alpha/2}S}{B}\right)^2$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=109$, $S=23{,}263$, $B=10{,}000$, $z=2$ 이면</p>
+  $$n_0=\frac{(2\times23{,}263)^2}{10{,}000^2}\fallingdotseq21.6,\qquad
+    n=\frac{21.6}{1+\dfrac{21.6}{109}}\fallingdotseq18$$
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">단순임의추출법의 표본크기 — 모비율, 절대오차 한계 $B$</span>
+  $$n=\frac{n_0}{1+\dfrac{n_0}{N}},\qquad n_0=\frac{z^2_{\alpha/2}\,pq}{B^2}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=3{,}000$, 사전조사 $\hat p=0.6$, $B=0.05$, $z=2$ 이면</p>
+  $$n_0=\frac{4\times0.6\times0.4}{0.05^2}=384,\qquad
+    n=\frac{384}{1+\dfrac{384}{3{,}000}}\fallingdotseq340$$
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">단순임의추출법의 표본크기 — 모총계, 절대오차 한계 $B$</span>
+  $$n=\frac{n_0}{1+\dfrac{n_0}{N}},\qquad n_0=N^2\cdot\frac{(z_{\alpha/2}S)^2}{B^2}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=10{,}000$, $S=3{,}000$, $B=5{,}000{,}000$, $z=2$ 이면</p>
+  $$n_0=10{,}000^2\cdot\frac{(2\times3{,}000)^2}{(5{,}000{,}000)^2}=144,\qquad
+    n=\frac{144}{1+\dfrac{144}{10{,}000}}\fallingdotseq142$$
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">단순임의추출법의 표본크기 — 상대오차 한계 $D$</span>
+  $$n=\frac{n_0}{1+\dfrac{n_0}{N}},\qquad n_0=\left(\frac{z_{\alpha/2}C}{D}\right)^2,\qquad
+    C=\frac{S}{\mu}\ (\text{변동계수})$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=10{,}000$, $\hat C=0.10$, $D=0.025$, $z=2$ 이면</p>
+  $$n_0=\left(\frac{2\times0.10}{0.025}\right)^2=64,\qquad
+    n=\frac{64}{1+\dfrac{64}{10{,}000}}\fallingdotseq64$$
+</div>
+
+<!-- ==================================================== 층화추출법 -->
+<h2 class="sub">층화추출법 <span class="en">stratified random sampling</span></h2>
+
+<p>층 $h=1,2,\dots,L$ 에 대해 $N=\sum N_h$, $n=\sum n_h$, 층 가중치 $W_h=N_h/N$,
+배분 비율 $w_h=n_h/n$ 로 쓴다.</p>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">층화추출법의 모평균 추정량</span>
+  $$\bar y_{st}=\sum_{h=1}^{L}W_h\,\bar y_h=\frac1N\sum_{h=1}^{L}N_h\bar y_h$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N_1=300,\ N_2=200,\ N_3=500$ ($N=1{,}000$) 이고 층별 표본평균이 $20,\ 30,\ 10$ 이면</p>
+  $$\bar y_{st}=0.3(20)+0.2(30)+0.5(10)=6+6+5=17$$
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">층화추출법의 모평균 추정분산</span>
+  $$\hat V(\bar y_{st})=\sum_{h=1}^{L}W_h^2\cdot\frac{N_h-n_h}{N_h}\cdot\frac{s_h^2}{n_h}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>위 예에서 $n_1=30,\ n_2=20,\ n_3=50$, $s_h^2=100,\ 25,\ 4$ 이면</p>
+  $$\hat V(\bar y_{st})=0.09\cdot\frac{270}{300}\cdot\frac{100}{30}
+    +0.04\cdot\frac{180}{200}\cdot\frac{25}{20}
+    +0.25\cdot\frac{450}{500}\cdot\frac{4}{50}=0.270+0.045+0.018=0.333$$
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">층화추출법의 모총계 추정량과 추정분산</span>
+  $$\hat\tau_{st}=N\bar y_{st}=\sum_{h=1}^{L}N_h\bar y_h,\qquad
+    \hat V(\hat\tau_{st})=N^2\,\hat V(\bar y_{st})$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$\hat\tau_{st}=1{,}000\times17=17{,}000$, &nbsp;
+  $\hat V(\hat\tau_{st})=1{,}000^2\times0.333=333{,}000$.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">층화추출법의 비례배분</span>
+  $$n_h=n\cdot\frac{N_h}{N}=n\,W_h$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N_h=300,\ 200,\ 500$, $n=100$ 이면 &nbsp;$n_h=30,\ 20,\ 50$.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">층화추출법의 네이만 배분</span>
+  $$n_h=n\cdot\frac{N_hS_h}{\displaystyle\sum_{j=1}^{L}N_jS_j}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$S_h=10,\ 5,\ 2$ 이면 $N_hS_h=3{,}000,\ 1{,}000,\ 1{,}000$ (합 $5{,}000$) 이므로</p>
+  $$n_h=100\cdot\frac{3{,}000,\ 1{,}000,\ 1{,}000}{5{,}000}=60,\ 20,\ 20$$
+  <p>비례배분의 $30,20,50$ 과 달리 <b>산포가 큰 층에 표본이 몰린다</b>.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">층화추출법의 최적배분 — 층별 비용 $c_h$ 가 다를 때</span>
+  $$n_h=n\cdot\frac{N_hS_h/\sqrt{c_h}}{\displaystyle\sum_{j=1}^{L}N_jS_j/\sqrt{c_j}}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>위 예에서 $c_h=1,\ 4,\ 1$ 이면 $N_hS_h/\sqrt{c_h}=3{,}000,\ 500,\ 1{,}000$ (합 $4{,}500$) 이므로
+  &nbsp;$n_h\fallingdotseq67,\ 11,\ 22$. <b>조사비용이 비싼 층의 표본을 줄인다.</b></p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">층화추출법의 표본크기</span>
+  $$n=\frac{\displaystyle\sum_{h=1}^{L}\frac{N_h^2S_h^2}{w_h}}{N^2D+\displaystyle\sum_{h=1}^{L}N_hS_h^2},
+    \qquad D=\frac{B^2}{z^2_{\alpha/2}}\ (\text{모평균}),\qquad
+    D=\frac{B^2}{z^2_{\alpha/2}N^2}\ (\text{모총계})$$
+  <p>배분 방법을 대입하면 다음과 같이 간단해진다.</p>
+  <ol class="props">
+    <li><b>비례배분</b> $\left(w_h=\tfrac{N_h}{N}\right)$ &nbsp;
+      $n=\dfrac{N\sum N_hS_h^2}{N^2D+\sum N_hS_h^2}$</li>
+    <li><b>네이만 배분</b> $\left(w_h=\tfrac{N_hS_h}{\sum N_jS_j}\right)$ &nbsp;
+      $n=\dfrac{\left(\sum N_hS_h\right)^2}{N^2D+\sum N_hS_h^2}$</li>
+  </ol>
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N_h=300,200,500$, $S_h=10,5,2$, $B=1$, $z=2$ 이면 $D=\tfrac{1}{4}=0.25$ 이고</p>
+  $$\sum N_hS_h^2=300(100)+200(25)+500(4)=37{,}000,\qquad N^2D=1{,}000^2(0.25)=250{,}000$$
+  <p>비례배분이면</p>
+  $$n=\frac{1{,}000\times37{,}000}{250{,}000+37{,}000}=\frac{37{,}000{,}000}{287{,}000}\fallingdotseq129$$
+</div>
+
+<!-- ==================================================== 계통추출법 -->
+<h2 class="sub">계통추출법 <span class="en">systematic sampling</span></h2>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">계통추출법의 추출간격</span>
+  $$k=\frac Nn$$
+  <p>$1\sim k$ 에서 난수 $r$ 하나를 뽑고, $r,\ r+k,\ r+2k,\ \dots$ 를 표본으로 삼는다.</p>
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=1{,}000$, $n=50$ 이면 $k=20$. 난수가 $7$ 이면 표본은 $7,\ 27,\ 47,\ \dots,\ 987$.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">계통추출법의 평균 추정량</span>
+  $$\bar y_{sy}=\frac1n\sum_{i=1}^{n}y_i$$
+  <p>단순임의추출법의 $\bar y$ 와 <b>식의 모양이 같다</b>. 달라지는 것은 분산이다.</p>
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>위에서 뽑힌 $50$ 개 값의 합이 $185$ 이면 &nbsp;$\bar y_{sy}=\dfrac{185}{50}=3.7$.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">계통추출법의 평균 추정량의 분산 — 급내상관계수 $\rho_c$</span>
+  $$V(\bar y_{sy})=\frac{N-n}{N}\cdot\frac{S^2}{n}\left[1+(n-1)\rho_c\right]$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$n=50$ 일 때 $\rho_c=0.02$ 이면 $1+49(0.02)=1.98$ 이므로
+  분산이 단순임의추출의 약 <b>$2$ 배</b>가 된다.
+  $\rho_c=0$ 이면 단순임의추출과 같고, $\rho_c$ 가 음수면 오히려 더 좋다.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">계통추출법의 추정분산과 모총계</span>
+  $$\hat V(\bar y_{sy})\fallingdotseq\frac{N-n}{N}\cdot\frac{s^2}{n},\qquad
+    \hat\tau_{sy}=N\bar y_{sy}$$
+  <p>표본이 하나뿐이라 $\rho_c$ 를 추정할 수 없으므로 실무에서는
+  <b>단순임의추출의 식으로 근사</b>한다.</p>
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=1{,}000$, $n=50$, $s^2=0.75$ 이면</p>
+  $$\hat V(\bar y_{sy})\fallingdotseq\frac{950}{1{,}000}\cdot\frac{0.75}{50}=0.01425,\qquad
+    \hat\tau_{sy}=1{,}000\times3.7=3{,}700$$
+</div>
+
+<!-- ==================================================== 비추정 -->
+<h2 class="sub">비추정 <span class="en">ratio estimation</span></h2>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">비추정의 모비 추정량</span>
+  $$R=\frac{\tau_y}{\tau_x},\qquad
+    r=\frac{\displaystyle\sum_{i=1}^{n}y_i}{\displaystyle\sum_{i=1}^{n}x_i}=\frac{\bar y}{\bar x}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>표본 주택의 조사연도 가격 합이 $164.7$, 기준연도 가격 합이 $154.5$ 이면
+  &nbsp;$r=\dfrac{164.7}{154.5}\fallingdotseq1.07$.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">비추정의 모비 추정분산</span>
+  $$\hat V(r)=\frac{N-n}{N}\cdot\frac1n\cdot\frac{1}{\mu_x^2}\cdot
+    \frac{\displaystyle\sum_{i=1}^{n}(y_i-rx_i)^2}{n-1}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=1{,}000$, $n=20$, $\bar x=7.725$, $\sum(y_i-rx_i)^2=1.2844$ 이면</p>
+  $$\hat V(r)=\frac{980}{1{,}000}\cdot\frac{1}{20}\cdot\frac{1}{7.725^2}\cdot\frac{1.2844}{19}
+    =0.0000555$$
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">비추정의 모총계 추정량과 추정분산</span>
+  $$\hat\tau_y=r\cdot\tau_x,\qquad \hat V(\hat\tau_y)=\tau_x^2\,\hat V(r)$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$r=0.9769$, $\tau_x=9{,}904{,}312$ 이면
+  &nbsp;$\hat\tau_y=0.9769\times9{,}904{,}312=9{,}675{,}522$.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">비추정의 모평균 추정량과 추정분산</span>
+  $$\hat\mu_y=r\cdot\mu_x,\qquad
+    \hat V(\hat\mu_y)=\frac{N-n}{N}\cdot\frac1n\cdot
+    \frac{\displaystyle\sum_{i=1}^{n}(y_i-rx_i)^2}{n-1}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=1{,}132$, $n=20$, $r=11.419$, $\mu_x=10.3$, $\sum(y_i-rx_i)^2=6{,}116.728$ 이면</p>
+  $$\hat\mu_y=11.419\times10.3=117.615,\qquad
+    \hat V(\hat\mu_y)=\frac{1{,}112}{1{,}132}\cdot\frac{1}{20}\cdot\frac{6{,}116.728}{19}=15.81$$
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">비추정이 단순임의추출보다 유리할 조건</span>
+  $$\hat\rho>\frac12\cdot\frac{r\,s_x}{s_y}=\frac12\cdot\frac{s_x/\bar x}{s_y/\bar y}$$
+  <p>$x$ 와 $y$ 의 변동계수가 같으면 조건은 $\hat\rho>\tfrac12$ 로 간단해진다.</p>
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$\hat\rho=0.966$, $s_x/\bar x\fallingdotseq s_y/\bar y$ 이면 $0.966>0.5$ 이므로
+  비추정이 더 정확하다.</p>
+</div>
+
+<!-- ==================================================== 회귀추정 -->
+<h2 class="sub">회귀추정 <span class="en">regression estimation</span></h2>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">회귀추정의 모평균 추정량</span>
+  $$\hat\mu_{yL}=\bar y+b(\mu_x-\bar x),\qquad
+    b=\frac{\displaystyle\sum_{i=1}^{n}(x_i-\bar x)(y_i-\bar y)}
+           {\displaystyle\sum_{i=1}^{n}(x_i-\bar x)^2}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$\bar y=76$, $b=0.76556$, $\mu_x=52$, $\bar x=46$ 이면</p>
+  $$\hat\mu_{yL}=76+0.76556(52-46)=80.59$$
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">회귀추정의 모평균 추정분산</span>
+  $$\hat V(\hat\mu_{yL})=\frac{N-n}{N}\cdot\frac{MSE}{n},\qquad
+    MSE=\frac{1}{n-2}\left\{\sum(y_i-\bar y)^2-b^2\sum(x_i-\bar x)^2\right\}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=486$, $n=10$, $MSE=75.75$ 이면</p>
+  $$\hat V(\hat\mu_{yL})=\frac{476}{486}\cdot\frac{75.75}{10}=7.42,\qquad
+    \text{신뢰구간}\ 80.59\pm2\sqrt{7.42}=80.59\pm5.45$$
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">회귀추정의 상대효율</span>
+  $$\widehat{RE}\!\left(\frac{\hat\mu_{yL}}{\bar y}\right)
+    =\frac{\hat V(\bar y)}{\hat V(\hat\mu_{yL})}=\frac{1}{1-\hat\rho^{\,2}}$$
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$\hat V(\bar y)=22.37$, $\hat V(\hat\mu_{yL})=7.42$ 이면
+  &nbsp;$\widehat{RE}=\dfrac{22.37}{7.42}=3.015$ — 표본을 약 $1/3$ 로 줄여도 같은 정도를 얻는다.</p>
+</div>
+
+<nav class="pager">
+  <a href="index.html">← 목차<small>표본조사론</small></a>
+</nav>
+
+</body>
+</html>
