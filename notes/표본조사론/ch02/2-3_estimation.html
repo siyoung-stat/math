@@ -37,14 +37,6 @@
   </ol>
 </div>
 
-<div class="note">
-  통계학에서 일반적으로 사용하는 모분산은 $\sigma^2$ 이지만,
-  <b>표본조사론에서는 $S^2$ 을 주로 사용한다</b>.
-  두 값 사이에는 $S^2=\dfrac{N}{N-1}\sigma^2$ 의 관계가 있으므로
-  <b>모집단의 크기 $N$ 이 큰 경우 두 값은 거의 같다</b>고 봐도 무방하다.
-  한편 모비율은 $y_i$ 의 값이 $0$ 또는 $1$ 인 경우의 <b>모평균의 특별한 형태</b>로 간주할 수 있다.
-</div>
-
 <h2 class="sub">2. 모평균의 추정 <span class="en">estimation of the population mean</span></h2>
 <p>표본조사의 목적은 표본에 나타난 정보를 이용하여 모집단의 특성을 추론하는 것이라고 하였다.
 도시근로자들의 월평균 소득, 우리나라 각 가구당 의료비 지출액, 서울 강남 지역 아파트의 평균 매매가격 등이
@@ -65,34 +57,6 @@ $$\bar y=\frac1n\sum_{i=1}^{n}y_i\tag{2-1}$$
       $$V(\bar y)=\frac{N-n}{N}\cdot\frac{S^2}{n}\tag{2-2}$$
       이다.</li>
   </ol>
-</div>
-
-<div class="box prf">
-  <span class="tag">보충 증명</span><span class="title">정리 2.1 — 교재는 생략하지만 지시함수를 쓰면 어렵지 않다</span>
-  <p>교재는 증명이 복잡하다는 이유로 생략하고 예제로 확인만 한다.
-  그러나 <b>표본에 뽑혔는지를 나타내는 지시함수</b>를 도입하면 다음과 같이 유도된다.</p>
-  <ol>
-    <li><span class="step">지시함수 도입.</span>
-      $a_i=1$ (단위 $i$ 가 표본에 포함됨), $a_i=0$ (포함되지 않음)이라 두면
-      $\bar y=\dfrac1n\sum_{i=1}^{N}a_iy_i$ 로 쓸 수 있다.
-      단순임의추출이므로 각 단위가 뽑힐 확률은 모두 같고
-      $$P(a_i=1)=\frac nN,\qquad P(a_i=1,\;a_j=1)=\frac{n(n-1)}{N(N-1)}\quad(i\ne j)$$</li>
-    <li><span class="step">(i) 비편향성.</span>
-      $$E(\bar y)=\frac1n\sum_{i=1}^{N}y_i\,E(a_i)=\frac1n\cdot\frac nN\sum_{i=1}^{N}y_i=\frac1N\sum_{i=1}^{N}y_i=\mu$$</li>
-    <li><span class="step">(ii) 분산 — 추출비를 $f=n/N$ 이라 두자.</span>
-      $$V(a_i)=f(1-f),\qquad
-        \mathrm{Cov}(a_i,a_j)=\frac{n(n-1)}{N(N-1)}-f^2=-\frac{f(1-f)}{N-1}$$
-      비복원이라 서로 다른 두 단위의 <b>공분산이 음수</b>가 되는 것이 핵심이다.</li>
-    <li><span class="step">대입하여 정리.</span>
-      $$V(\bar y)=\frac{f(1-f)}{n^2}\left\{\sum_i y_i^2-\frac{1}{N-1}\sum_{i\ne j}y_iy_j\right\}$$
-      $\sum_{i\ne j}y_iy_j=\left(\sum_i y_i\right)^2-\sum_i y_i^2=N^2\mu^2-\sum_i y_i^2$ 이므로 중괄호 안은
-      $$\frac{N\left(\sum_i y_i^2-N\mu^2\right)}{N-1}=\frac{N\sum_i(y_i-\mu)^2}{N-1}=N\,S^2$$</li>
-    <li><span class="step">마무리.</span>
-      $$V(\bar y)=\frac{f(1-f)}{n^2}\cdot N S^2
-        =\frac{\frac nN\cdot\frac{N-n}{N}}{n^2}\cdot NS^2
-        =\frac{N-n}{N}\cdot\frac{S^2}{n}$$</li>
-  </ol>
-  <p class="qed">∎</p>
 </div>
 
 <div class="box ex">
@@ -180,14 +144,6 @@ $$\bar y\pm z_{\alpha/2}\sqrt{\hat V(\bar y)}\tag{2-5}$$
 <b>오차의 한계</b>(margin of errors)라고 한다.
 오차의 한계는 <b>추정량의 분산의 크기에 따라 좌우</b>됨을 알 수 있다.</p>
 
-<div class="note">
-  표본조사를 통해 모수를 추정하려 할 때 추정량의 분산이 너무 크다면 조사의 의미가 사라진다.
-  예를 들어 대학생들의 월평균 용돈을 추정하는데 조사 결과 얻은 신뢰구간이 $(0,\,500\text{만})$ 이 된다면
-  이런 결과는 <b>조사를 하지 않았어도 상식적으로 짐작할 수 있는 것</b>이므로 무의미하다.
-  이런 조사가 되지 않도록 하려면 <b>조사를 설계하기 전에 미리 오차의 한계를 결정</b>해 두어야 한다
-  — 그 방법이 <a href="2-4_sample-size.html">2.4절</a>의 표본크기 결정이다.
-</div>
-
 <div class="box ex">
   <span class="tag">예제 2-4</span><span class="title">모평균 추정 사례 — 학생들의 가족 수</span>
   <p>전체 학생 수가 $1{,}000$ 명인 고등학교가 있다. 단순임의추출법에 따라 $20$ 명의 학생을 표본으로 뽑은 후
@@ -228,11 +184,6 @@ $$\hat V(\hat\tau)=\hat V(N\bar y)=N^2\hat V(\bar y)=N^2\cdot\frac{N-n}{N}\cdot\
 <p>그러므로 모총계 $\tau$ 의 $100(1-\alpha)\%$ 신뢰구간은 다음과 같이 나타낼 수 있다.</p>
 $$\hat\tau\pm z_{\alpha/2}\sqrt{\hat V(\hat\tau)}\tag{2-9}$$
 
-<div class="note">
-  상수 $N$ 을 곱했을 뿐이므로 <b>분산에는 $N^2$ 이 곱해진다</b>는 점만 기억하면 된다.
-  모평균 추정 공식을 알면 모총계 추정 공식은 따로 외울 것이 없다.
-</div>
-
 <div class="box ex">
   <span class="tag">예제 2-5</span><span class="title">모총계 추정 사례 — 지역의 총인구</span>
   <p>어느 지역의 지도를 이용하여 지역 전체를 $6{,}000$ 개의 구획으로 나누어 표시하였다.
@@ -267,23 +218,6 @@ $$p=\frac1N\sum_{i=1}^{N}y_i\tag{2-10}$$
 모비율의 추정량 $\hat p$ 은 표본 중 어떤 속성을 지니는 단위들의 비율로</p>
 $$\hat p=\frac1n\sum_{i=1}^{n}y_i\tag{2-11}$$
 <p>로 나타낼 수 있는데, 이는 각 단위들의 값이 $0$ 또는 $1$ 인 경우에 대한 <b>모평균의 추정량과 같다</b>.</p>
-
-<div class="box prf">
-  <span class="tag">유도</span><span class="title">모비율 추정량의 분산 — 모평균 공식에서 그대로 나온다</span>
-  <ol>
-    <li><span class="step">출발점.</span> 〈정리 2.1〉에서 주어진 $\bar y$ 의 분산은
-      $$V(\bar y)=\frac{N-n}{N}\cdot\frac{S^2}{n},\qquad
-        S^2=\frac{1}{N-1}\sum_{i=1}^{N}(y_i-\mu)^2$$</li>
-    <li><span class="step">$S^2$ 을 풀어 쓴다.</span>
-      $$S^2=\frac{1}{N-1}\left(\sum_{i=1}^{N}y_i^2-N\mu^2\right)$$</li>
-    <li><span class="step">$y_i$ 가 $0$ 또는 $1$ 임을 쓴다.</span>
-      그러면 $y_i^2=y_i$ 이고 $\mu=p$ 이므로
-      $$S^2=\frac{1}{N-1}\left(\sum_i y_i-Np^2\right)=\frac{Np-Np^2}{N-1}=\frac{Np(1-p)}{N-1}=\frac{Npq}{N-1}$$</li>
-    <li><span class="step">대입.</span> $\dfrac{N-n}{N}\cdot\dfrac{1}{n}\cdot\dfrac{Npq}{N-1}$ 이므로
-      $$V(\hat p)=\frac{N-n}{N-1}\cdot\frac{pq}{n},\qquad q=1-p\tag{2-12}$$
-      <b>분모가 $N$ 이 아니라 $N-1$ 로 바뀌는 것</b>에 주의한다.</li>
-  </ol>
-</div>
 
 <div class="box thm">
   <span class="tag">주의</span><span class="title">$p,\,q$ 자리에 $\hat p,\,\hat q$ 를 그냥 대입하면 안 된다</span>

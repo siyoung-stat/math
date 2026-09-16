@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>표본조사론 · 4.7 층화임의추출법과 단순임의추출법의 비교</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">표본조사론 · 4장 층화임의추출법</div>
+  <h1><span class="no">4.7</span>층화임의추출법과 단순임의추출법의 비교 <span class="en">stratified vs. SRS</span></h1>
+</header>
+
+<div class="box thm">
+  <span class="tag">원칙</span><span class="title">층화가 효율적일 조건</span>
+  <ol class="props">
+    <li>층화를 효과적으로 하면 층화임의추출법이 단순임의추출법보다 <b>추정의 효율이 높다</b>.</li>
+    <li>층화를 적절하게 하지 못하면 <b>오히려 단순임의추출법보다 효율이 더 떨어질 수도</b> 있다.</li>
+    <li>적절한 층화란 <b>가급적 동질적인 단위들로 층을 구성</b>하는 것이며,
+      이를 위해서는 올바른 <b>층화변수의 선택</b>이 중요하다.</li>
+  </ol>
+</div>
+
+<div class="box ex">
+  <span class="tag">예제 4-11</span><span class="title">단순임의추출법과의 효율 비교 사례 (1) — 체인망을 층으로</span>
+  <p>네 가지 상표의 체인망을 층으로 하고 비례배분법으로 $24$ 개 점포를 표본추출하였다.</p>
+  <div class="scroll"><table class="data">
+    <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 4-7&gt; 각 층별 표본 자료</caption>
+    <tr><th>층</th><th>$N_h$</th><th>$n_h$</th><th>표본 데이터</th><th>$\bar y_h$</th><th>$s_h^2$</th></tr>
+    <tr><td>1</td><td>30</td><td>5</td><td>92 &nbsp;88 &nbsp;100 &nbsp;108 &nbsp;96</td><td>96.8</td><td>59.2</td></tr>
+    <tr><td>2</td><td>42</td><td>7</td><td>89 &nbsp;97 &nbsp;91 &nbsp;103 &nbsp;109 &nbsp;99 &nbsp;98</td><td>98.0</td><td>46.3</td></tr>
+    <tr><td>3</td><td>36</td><td>6</td><td>106 &nbsp;94 &nbsp;98 &nbsp;91 &nbsp;91 &nbsp;94</td><td>95.7</td><td>32.3</td></tr>
+    <tr><td>4</td><td>36</td><td>6</td><td>90 &nbsp;108 &nbsp;92 &nbsp;89 &nbsp;111 &nbsp;92</td><td>97.0</td><td>96.0</td></tr>
+    <tr><th>합계</th><td>144</td><td>24</td><td colspan="3"></td></tr>
+  </table></div>
+
+  <p><b>풀이</b></p>
+  <p><span class="step">(1) 층화임의추출.</span></p>
+  $$\bar y_{st}=\frac1{144}\left(30\times96.8+42\times98.0+36\times95.7+36\times97.0\right)=96.9$$
+  $$\hat V(\bar y_{st})=\frac1{144^2}\left\{30(30-5)\times\frac{59.2}{5}+42(42-7)\times\frac{46.3}{7}
+    +36(36-6)\times\frac{32.3}{6}+36(36-6)\times\frac{96.0}{6}\right\}=2.01$$
+
+  <p><span class="step">(2) 단순임의추출로 간주.</span></p>
+  $$\bar y=\frac1{24}\left(92+88+100+\cdots+89+111+92\right)=96.9$$
+  $$\hat V(\bar y)=\frac{N-n}{N}\cdot\frac{s^2}{n}=\frac{144-24}{144}\cdot\frac{51.0}{24}=1.77$$
+
+  <p><span class="step">(3) 비교.</span> 단순임의추출로 간주했을 때의 분산 $1.77$ 이
+  층화임의추출의 $2.01$ 보다 <b>오히려 작다</b> — 이 경우 층화임의추출법은 비효율적이다.
+  각 상표의 체인망을 하나의 층으로 삼았으나 같은 체인망 안에서도 점포별 매출액 차이가 커서,
+  <b>체인망을 기준으로 층을 나눈 것은 바람직하지 못한 층화</b>였다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예제 4-12</span><span class="title">단순임의추출법과의 효율 비교 사례 (2) — 점포 규모를 층으로</span>
+  <p>같은 자료를 체인망 대신 각 체인점의 규모(전년도 총매출액 기준)에 따라
+  대·중·소 $3$ 개 층으로 나누었다. 표본 크기는 $24$, 비례배분법이다.</p>
+  <div class="scroll"><table class="data">
+    <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 4-8&gt; 각 층별 표본 자료</caption>
+    <tr><th>층</th><th>$N_h$</th><th>$n_h$</th><th>표본 데이터</th><th>$\bar y_h$</th><th>$s_h^2$</th></tr>
+    <tr><td>1(대)</td><td>41</td><td>7</td><td>100 &nbsp;109 &nbsp;108 &nbsp;111 &nbsp;106 &nbsp;103 &nbsp;96</td><td>104.7</td><td>28.6</td></tr>
+    <tr><td>2(중)</td><td>43</td><td>7</td><td>94 &nbsp;98 &nbsp;91 &nbsp;97 &nbsp;91 &nbsp;108 &nbsp;98</td><td>96.7</td><td>33.9</td></tr>
+    <tr><td>3(소)</td><td>60</td><td>10</td><td>92 &nbsp;88 &nbsp;89 &nbsp;99 &nbsp;90 &nbsp;92 &nbsp;91 &nbsp;89 &nbsp;94 &nbsp;92</td><td>91.6</td><td>10.0</td></tr>
+    <tr><th>합계</th><td>144</td><td>24</td><td colspan="3"></td></tr>
+  </table></div>
+
+  <p><b>풀이</b></p>
+  <p><span class="step">(1) 층화임의추출.</span></p>
+  $$\bar y_{st}=\frac1{144}\left(41\times104.7+43\times96.7+60\times91.6\right)=96.9$$
+  $$\hat V(\bar y_{st})=\frac1{144^2}\left\{41(41-7)\times\frac{28.6}{7}+43(43-7)\times\frac{33.9}{7}
+    +60(60-10)\times\frac{10}{10}\right\}=0.78$$
+
+  <p><span class="step">(2) 단순임의추출로 간주.</span> $\bar y=96.9$, $\hat V(\bar y)=1.77$</p>
+
+  <p><span class="step">(3) 비교.</span> 층화임의표본의 분산 추정값 $0.78$ 이
+  단순임의추출의 $1.77$ 보다 작으므로 <b>약 $2.3$ 배 더 효율적</b>이다.
+  층 내부의 단위들이 가급적 동질적이 되도록 층화하였기 때문이다.</p>
+</div>
+
+<div class="scroll"><table class="data">
+  <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">같은 자료, 다른 층화 — 결과 비교</caption>
+  <tr><th>층화 기준</th><th>$\hat V(\bar y_{st})$</th><th>$\hat V(\bar y)$ (SRS)</th><th>판정</th></tr>
+  <tr><td>체인망 (예제 4-11)</td><td>2.01</td><td>1.77</td><td>층화가 <b>비효율적</b></td></tr>
+  <tr><td>점포 규모 (예제 4-12)</td><td>0.78</td><td>1.77</td><td>층화가 약 $2.3$ 배 <b>효율적</b></td></tr>
+</table></div>
+
+<nav class="pager">
+  <a href="4-6_post-stratification.html">← 이전<small>4.6 사후층화</small></a>
+  <a class="next" href="4-exercises.html">다음 →<small>연습문제</small></a>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>표본조사론 · 4.6 사후층화</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">표본조사론 · 4장 층화임의추출법</div>
+  <h1><span class="no">4.6</span>사후층화 <span class="en">post-stratification</span></h1>
+</header>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">사후층화 <span class="en">post-stratification</span></span>
+  <p>단순임의추출법에 따라 얻어진 표본의 구성이 <b>이미 알고 있는 모집단 특성비율을 제대로 반영하지 못할 경우</b>
+  사용하는 방법.</p>
+  <ol class="props">
+    <li><b>사전층화</b> — 표본설계 단계에서, 모집단의 모든 단위에 대해 값을 아는 층화변수를 기준으로 이루어진다.
+      $n_h$ 는 미리 결정된 <b>고정된 값</b>이다.</li>
+    <li><b>사후층화</b> — 표본추출이 이루어진 <b>이후</b> 조사된 데이터에 근거하여 표본의 단위들을 층화한다.
+      $n_h$ 는 <b>확률변수</b>로, 표본을 추출할 때마다 값이 달라진다.</li>
+  </ol>
+</div>
+
+<p>크기 $N$ 인 모집단에서 단순임의추출법으로 $n$ 개의 표본을 추출한 후 $H$ 개의 사후층으로 구분하였을 때,
+$h$ 번째 사후층의 표본평균과 표본분산을 각각 $\bar y_{ph}$, $s_{ph}^2$ 로 표기한다.</p>
+
+<div class="box def">
+  <span class="tag">식 (4-20)(4-21)</span><span class="title">사후층화 추정량과 분산 추정량</span>
+  $$\bar y_{post}=\sum_{h=1}^{H}W_h\cdot\bar y_{ph},\qquad
+    W_h=\frac{N_h}{N},\qquad \bar y_{ph}=\frac1{n_h}\sum_{i}^{n_h}y_{hi}$$
+  $$\hat V(\bar y_{post})=\frac{N-n}{Nn}\cdot\sum_{h=1}^{H}W_h s_{ph}^2
+    +\frac1{n^2}\sum_{h=1}^{H}\left(1-W_h\right)s_{ph}^2$$
+  <p>위 분산의 추정량은 사전층화에서의 분산 추정량에 비해 근사적으로 <b>둘째 항만큼 크다</b>.
+  표본설계 단계에서 층화하지 못하고 표본추출 이후에 층화함으로써 생기는 손해분이다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">도시민의 평균 몸무게</span>
+  <p>인구 $10$ 만 명 도시에서 남녀 비율은 반반이다. 단순임의추출로 $1{,}000$ 명을 추출했더니
+  남자 $800$ 명, 여자 $200$ 명이 뽑혔고 표본 평균 몸무게는 각각 $55\mathrm{kg}$, $45\mathrm{kg}$ 이었다.</p>
+  $$\text{단순평균 추정값}=53\ \mathrm{kg},\qquad
+    \bar y_{post}=0.5\times55+0.5\times45=50\ \mathrm{kg}$$
+</div>
+
+<div class="box ex">
+  <span class="tag">예제 4-10</span><span class="title">사후층화 사례 <span class="en">Scheaffer et al., 1998</span></span>
+  <p>한 회사의 수취 계정 중 $40\%$ 는 도매 계정, $60\%$ 는 소매 계정이다.
+  전체 계정 중 $100$ 개를 단순임의추출하여 사후추정한 결과 도매 $70\%$, 소매 $30\%$ 였다.</p>
+  <div class="scroll"><table class="data">
+    <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 4-6&gt; 조사 데이터</caption>
+    <tr><th></th><th>도매 계정</th><th>소매 계정</th></tr>
+    <tr><th>$n_h$</th><td>70</td><td>30</td></tr>
+    <tr><th>$\bar y_{ph}$</th><td>520</td><td>280</td></tr>
+    <tr><th>$s_{ph}$</th><td>210</td><td>90</td></tr>
+  </table></div>
+
+  <p><b>풀이</b> &nbsp;표본 중 도매 비율이 $70\%$ 로 모집단 비율 $40\%$ 와 크게 다르므로 사후층화를 이용한다.</p>
+  $$\bar y_{post}=0.4\times520+0.6\times280=376$$
+  <p>$N$ 이 주어져 있지 않으나 매우 큰 값으로 간주하여 $\dfrac{N-n}{N}=1$ 로 놓는다.</p>
+  $$\hat V(\bar y_{post})=\frac1{100}\left(0.4\times210^2+0.6\times90^2\right)
+    +\frac1{100^2}\left(0.6\times210^2+0.4\times90^2\right)=227.97$$
+  $$376\pm2\sqrt{227.97}\ \Leftrightarrow\ 376\pm30$$
+</div>
+
+<nav class="pager">
+  <a href="4-5_allocation.html">← 이전<small>4.5 표본의 배분</small></a>
+  <a class="next" href="4-7_comparison.html">다음 →<small>4.7 층화임의추출법과 단순임의추출법의 비교</small></a>
+</nav>
+
+</body>
+</html>

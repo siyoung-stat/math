@@ -198,34 +198,11 @@ $x$ 가 $0$ 이라고 해서 반드시 $y$ 가 $0$ 인 것은 아니다.
 </svg>
 <figcaption>회귀추정의 기하 — 회귀직선을 따라 $\bar x$ 에서 $\mu_x$ 까지 옮겨 가며
 $\bar y$ 를 $b(\mu_x-\bar x)$ 만큼 보정한 값이 $\hat\mu_{yL}=80.59$ 이다.
-이번 표본은 $\bar x=46<\mu_x=52$ 로 낮은 쪽에 치우쳐 뽑혀서, 그만큼 위로 되돌려 준 셈이다.</figcaption>
+이번 표본은 $\bar x=46\lt\mu_x=52$ 로 낮은 쪽에 치우쳐 뽑혀서, 그만큼 위로 되돌려 준 셈이다.</figcaption>
 </figure>
 
 <h2 class="sub">3. 상대효율의 비교 <span class="en">relative efficiency</span></h2>
 <p>모평균에 대한 회귀추정량과 단순추정량의 상대효율을 살펴보자.</p>
-
-<div class="box prf">
-  <span class="tag">유도</span><span class="title">$\hat V(\hat\mu_{yL})$ 을 $s_y^2(1-\hat\rho^2)$ 꼴로 바꾸기</span>
-  <ol>
-    <li><span class="step">출발점 — 식 $(3\text{-}18)$.</span>
-      $$\hat V(\hat\mu_{yL})=\frac{N-n}{N}\cdot\frac1n\cdot\frac{1}{n-2}
-        \left\{\sum(y_i-\bar y)^2-b^2\sum(x_i-\bar x)^2\right\}$$</li>
-    <li><span class="step">간편한 비교를 위해 $n-2$ 를 $n-1$ 로 바꾼다.</span>
-      $n$ 이 충분히 크다고 가정하면 $\dfrac{1}{n-2}\fallingdotseq\dfrac{1}{n-1}$ 이므로
-      중괄호 안의 두 항이 각각 $s_y^2$, $s_x^2$ 이 되어
-      $$\hat V(\hat\mu_{yL})=\frac{N-n}{N}\cdot\frac1n\left(s_y^2-b^2s_x^2\right)$$</li>
-    <li><span class="step">$b=\hat\rho\,s_y/s_x$ 를 대입한다.</span>
-      $$b^2s_x^2=\hat\rho^2\frac{s_y^2}{s_x^2}\,s_x^2=\hat\rho^2s_y^2
-        \;\Longrightarrow\;
-        \hat V(\hat\mu_{yL})=\frac{N-n}{N}\cdot\frac1n\,s_y^2\left(1-\hat\rho^{\,2}\right)$$</li>
-    <li><span class="step">표본평균의 분산과 비교한다.</span>
-      $\hat V(\bar y)=\dfrac{N-n}{N}\cdot\dfrac{s_y^2}{n}$ 이므로 앞의 인수들이 모두 약분되어
-      $$\widehat{RE}\!\left(\frac{\hat\mu_{yL}}{\bar y}\right)
-        =\frac{\hat V(\bar y)}{\hat V(\hat\mu_{yL})}
-        =\frac{s_y^2}{s_y^2\left(1-\hat\rho^{\,2}\right)}
-        =\frac{1}{1-\hat\rho^{\,2}}\tag{3-21}$$</li>
-  </ol>
-</div>
 
 <div class="box thm">
   <span class="tag">결론</span><span class="title">회귀추정은 <b>언제나</b> 표본평균보다 낫다</span>
@@ -284,17 +261,6 @@ $0.8$ 을 넘어서면서 급격히 커진다. 곡선이 <b>$1$ 아래로 내려
   $$\widehat{RE}\!\left(\frac{\hat\mu_{yL}}{\bar y}\right)
     =\frac{\hat V(\bar y)}{\hat V(\hat\mu_{yL})}=\frac{22.37}{7.42}=3.015$$
   <p>가 되므로, 이 경우 <b>회귀추정량을 사용하는 것이 표본평균을 사용하는 것보다 $3$ 배 이상 효율적</b>이라고 할 수 있다.</p>
-</div>
-
-<div class="note">
-  <b>식 $(3\text{-}21)$ 로 계산하면 값이 다르다 — 왜인가.</b>
-  결정계수가 $\hat\rho^{\,2}=0.7052$ 이므로 $(3\text{-}21)$ 은
-  $\dfrac{1}{1-0.7052}=3.393$ 을 준다. 예제 3-5의 $3.015$ 와 어긋나는 것처럼 보이지만,
-  이는 $(3\text{-}21)$ 을 유도할 때 <b>$n-2$ 를 $n-1$ 로 바꾼 근사</b> 때문이다.
-  두 값의 비는 정확히 $\dfrac{n-1}{n-2}=\dfrac98=1.125$ 이고, 실제로 $3.015\times1.125=3.393$ 이다.
-  $n$ 이 크면 무시할 만하지만 이 예제처럼 $n=10$ 이면 $12.5\%$ 나 벌어지므로,
-  <b>수치를 낼 때는 근사식 $(3\text{-}21)$ 이 아니라 $(3\text{-}18)$ 또는 $(3\text{-}20)$ 을 쓴다</b>.
-  $(3\text{-}21)$ 은 “$\hat\rho$ 가 크면 유리하다” 는 <b>구조를 보기 위한 식</b>이다.
 </div>
 
 <div class="terms">

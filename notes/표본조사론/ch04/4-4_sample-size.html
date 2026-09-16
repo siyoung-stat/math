@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>표본조사론 · 4.4 표본의 크기 결정</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">표본조사론 · 4장 층화임의추출법</div>
+  <h1><span class="no">4.4</span>표본의 크기 결정 <span class="en">determining the sample size</span></h1>
+</header>
+
+<p>$100(1-\alpha)\%$ 신뢰도에서 모평균 추정량의 오차의 한계가 $B$ 가 되도록 조사를 계획한다.</p>
+
+$$B=z_{\alpha/2}\sqrt{V(\bar y_{st})},\qquad n_h=n\,w_h\quad(h=1,2,\dots,H)$$
+
+<p>여기서 $w_h$ 는 각 층별로 표본이 배분되는 비율이다.</p>
+
+<div class="box def">
+  <span class="tag">식 (4-13)</span><span class="title">층화임의추출법의 표본크기</span>
+  $$n=\frac{\displaystyle\sum_{h=1}^{H}\frac{N_h^2S_h^2}{w_h}}
+         {N^2D+\displaystyle\sum_{h=1}^{H}N_hS_h^2}$$
+  <p>여기서</p>
+  $$D=\begin{cases}
+      \left(\dfrac{B}{z_{\alpha/2}}\right)^{2} & \text{모평균 }\mu\text{ 를 추정하고자 할 때}\\[10pt]
+      \left(\dfrac{B}{N z_{\alpha/2}}\right)^{2} & \text{모총계 }\tau\text{ 를 추정하고자 할 때}
+    \end{cases}$$
+</div>
+
+<div class="box ex">
+  <span class="tag">예제 4-6</span><span class="title">표본의 크기 결정 사례 — 주당 TV 시청시간</span>
+  <p>어느 도시 대학생들의 주당 TV 시청시간을 조사하고자 한다.
+  이 도시는 $3$ 개의 층으로 나뉘어 있고 각 층의 모집단 크기는
+  $N_1=155$, $N_2=62$, $N_3=93$ 이다.
+  과거의 조사로부터 층 내 분산이 $S_1^2\approx25$, $S_2^2\approx225$, $S_3^2\approx100$ 으로 알려져 있다.
+  $95\%$ 신뢰수준에서 오차의 한계가 $2$ 시간 이내가 되게 추정하려면 표본의 크기를 얼마로 해야 하는가?
+  (단, $w_h$ 는 모두 $1/3$ 로 동일하다.)</p>
+
+  <p><b>풀이</b> &nbsp;모평균 추정이고 $B=2$ 시간이므로</p>
+  $$D=\left(\frac{B}{2}\right)^2=\left(\frac{2}{2}\right)^2=1$$
+  $$n=\frac{\sum N_h^2S_h^2/w_h}{N^2D+\sum N_hS_h^2}
+     =\frac{\left(155^2\times25+62^2\times225+93^2\times100\right)\big/\tfrac13}
+            {310^2\times1+\left(155\times25+62\times225+93\times100\right)}
+     \fallingdotseq57$$
+  <p>$57$ 가구를 표본으로 추출하면 되며, 각 층별 추출률이 $w_h=1/3$ 이므로</p>
+  $$n_1=n_2=n_3=19$$
+</div>
+
+<nav class="pager">
+  <a href="4-3_estimation.html">← 이전<small>4.3 모수의 추정</small></a>
+  <a class="next" href="4-5_allocation.html">다음 →<small>4.5 표본의 배분</small></a>
+</nav>
+
+</body>
+</html>

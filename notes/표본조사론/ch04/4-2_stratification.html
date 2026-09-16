@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>표본조사론 · 4.2 층화</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">표본조사론 · 4장 층화임의추출법</div>
+  <h1><span class="no">4.2</span>층화 <span class="en">stratification</span></h1>
+</header>
+
+<h2 class="sub">1. 층화변수 <span class="en">stratification variable</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">연구변수와 층화변수</span>
+  <ol class="props">
+    <li><b>연구변수</b>(study variable) · 조사변수 — 조사를 통해 연구하고자 하는 특성.</li>
+    <li><b>층화변수</b>(stratification variable) — 모집단을 몇 개의 층으로 나눌 때
+      각 추출단위가 어느 층에 속하는지를 구분하기 위해 사용되는 기준 변수.</li>
+  </ol>
+  <p>층화는 표본을 추출하는 과정이 아니고, 추출을 위해 <b>모집단을 몇 개의 부분군으로 나누는 작업</b>이다.</p>
+</div>
+
+<ol class="props">
+  <li>어떤 보조 정보가 층화변수로 활용되려면 <b>모집단의 모든 단위에 대해 그 값을 알 수 있어야</b> 한다.</li>
+  <li>질적 보조변수 — 지역적 특성 · 성별 · 연령대 등.</li>
+  <li>양적 보조변수 — 연구변수와 가장 관련이 깊은 특성의 변수를 택한다.</li>
+  <li>여론조사 — 성별 · 지역 · 연령 · 학력.</li>
+  <li>제조업체·사업체 조사 — 전년도 매출액 · 종업원 수.</li>
+  <li>농작물 생산량 조사 — 조사구 내 논의 비율, 주로 생산하는 작물의 구분(과수 · 채소 · 특용작물).</li>
+</ol>
+
+<div class="box ex">
+  <span class="tag">예제 4-1</span><span class="title">층화변수 결정 사례</span>
+  <p>어느 대학교 학생들의 주당 평균 학습시간을 조사하려 한다. 적절한 층화변수를 정하라.</p>
+  <p><b>풀이</b></p>
+  <ol class="props">
+    <li>학습시간과 관련이 깊으면서 구하기 쉬운 변수 — <b>성별 · 학년 · 전공</b>.</li>
+    <li>전공을 세분하면 층의 수가 너무 많아지므로 <b>인문 · 이공 · 예체능</b> 3계열로 단순화한다.</li>
+    <li>학년은 <b>저학년</b>(1, 2학년)과 <b>고학년</b>(3, 4학년)으로 구분한다.</li>
+  </ol>
+  $$\text{성별}(2)\times\text{학년}(2)\times\text{전공}(3)=12\ \text{개의 층}$$
+</div>
+
+<h2 class="sub">2. 층의 최적경계점 결정 <span class="en">optimum points of stratification</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">최적경계점 <span class="en">optimum point of stratification</span></span>
+  <p>모집단을 $H$ 개의 층으로 나누려면 $H-1$ 개의 경계점을 결정해야 한다.
+  주어진 여건하에서 <b>추정값의 분산을 최소화</b>시키는 경계점을 최적경계점이라 한다.</p>
+</div>
+
+<div class="box thm">
+  <span class="tag">방법</span><span class="title">누적도수제곱근법 <span class="en">Dalenius &amp; Hodges (1957)</span></span>
+  <ol class="fill">
+    <li><span class="step">1.</span> 관심변수 $y$ 값에 대한 <b>도수분포표</b>를 만든다.</li>
+    <li><span class="step">2.</span> 각 계급의 도수 $f(y)$ 의 제곱근 $\sqrt{f(y)}$ 를 계산한다.</li>
+    <li><span class="step">3.</span> 제곱근의 <b>누적합</b> $F=\sum\sqrt{f(y)}$ 를 구한다.</li>
+    <li><span class="step">4.</span> $B=F/H$ 의 배수 $B,\ 2B,\ 3B,\ \dots,\ (H-1)B$ 를 계산한다.</li>
+    <li><span class="step">5.</span> 각 값에 <b>가장 근사한 누적제곱근</b>을 찾아 그 계급을 층의 경계점으로 정한다.</li>
+  </ol>
+</div>
+
+<div class="box ex">
+  <span class="tag">예제 4-2</span><span class="title">누적제곱근법</span>
+  <p>미국 은행 $13{,}435$ 개의 총대출금 중 기업 대출금이 차지하는 비율에 관한 도수분포표가 다음과 같다.
+  기업 대출금 비율에 따라 모집단을 $6$ 개의 층으로 층화하라.</p>
+
+  <div class="scroll"><table class="data">
+    <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 4-1&gt; 미국 은행들의 기업 대출금 비율 도수분포표</caption>
+    <tr><th>비율(%)</th><th>$f(y)$</th><th>$\sqrt{f(y)}$</th><th>$\sum\sqrt{f(y)}$</th>
+        <th>비율(%)</th><th>$f(y)$</th><th>$\sqrt{f(y)}$</th><th>$\sum\sqrt{f(y)}$</th></tr>
+    <tr><td>0~5</td><td>3,464</td><td>58.9</td><td><b>58.9</b></td>
+        <td>50~55</td><td>126</td><td>11.2</td><td>340.3</td></tr>
+    <tr><td>5~10</td><td>2,516</td><td>50.2</td><td><b>109.1</b></td>
+        <td>55~60</td><td>107</td><td>10.3</td><td>350.6</td></tr>
+    <tr><td>10~15</td><td>2,157</td><td>46.4</td><td>155.5</td>
+        <td>60~65</td><td>82</td><td>9.1</td><td>359.7</td></tr>
+    <tr><td>15~20</td><td>1,581</td><td>39.8</td><td><b>195.3</b></td>
+        <td>65~70</td><td>50</td><td>7.1</td><td>366.8</td></tr>
+    <tr><td>20~25</td><td>1,142</td><td>33.8</td><td>229.1</td>
+        <td>70~75</td><td>39</td><td>6.2</td><td>373.0</td></tr>
+    <tr><td>25~30</td><td>746</td><td>27.3</td><td><b>256.4</b></td>
+        <td>75~80</td><td>25</td><td>5.0</td><td>378.0</td></tr>
+    <tr><td>30~35</td><td>512</td><td>22.6</td><td>279.0</td>
+        <td>80~85</td><td>16</td><td>4.0</td><td>382.0</td></tr>
+    <tr><td>35~40</td><td>376</td><td>19.4</td><td>298.4</td>
+        <td>85~90</td><td>19</td><td>4.4</td><td>386.4</td></tr>
+    <tr><td>40~45</td><td>265</td><td>16.3</td><td>314.7</td>
+        <td>90~95</td><td>2</td><td>1.4</td><td>387.8</td></tr>
+    <tr><td>45~50</td><td>207</td><td>14.4</td><td><b>329.1</b></td>
+        <td>95~100</td><td>3</td><td>1.7</td><td>389.5</td></tr>
+  </table></div>
+
+  <p><b>풀이</b></p>
+  $$F=\sum\sqrt{f(y)}=389.5,\qquad B=\frac{F}{H}=\frac{389.5}{6}=64.9$$
+  <p>최적경계점의 목표값은 $64.9$ 의 배수</p>
+  $$64.9,\quad 129.8,\quad 194.7,\quad 259.6,\quad 324.5$$
+  <p>이고, 이에 가장 가까운 누적제곱근은 표에서 <b>굵게</b> 표시한
+  $58.9,\ 109.1,\ 195.3,\ 256.4,\ 329.1$ 이다. 따라서 층 구분은 다음과 같다.</p>
+
+  <div class="scroll"><table class="data">
+    <tr><th>층</th><th>기업 대출금 비율 범위(%)</th><th>은행 수(개)</th></tr>
+    <tr><td>1</td><td>0~5</td><td>3,464</td></tr>
+    <tr><td>2</td><td>5~10</td><td>2,516</td></tr>
+    <tr><td>3</td><td>10~20</td><td>3,738</td></tr>
+    <tr><td>4</td><td>20~30</td><td>1,888</td></tr>
+    <tr><td>5</td><td>30~50</td><td>1,360</td></tr>
+    <tr><td>6</td><td>50~100</td><td>469</td></tr>
+  </table></div>
+</div>
+
+<nav class="pager">
+  <a href="4-1_overview.html">← 이전<small>4.1 개요</small></a>
+  <a class="next" href="4-3_estimation.html">다음 →<small>4.3 모수의 추정</small></a>
+</nav>
+
+</body>
+</html>

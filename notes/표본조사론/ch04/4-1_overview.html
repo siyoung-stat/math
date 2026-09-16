@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>표본조사론 · 4.1 개요</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">표본조사론 · 4장 층화임의추출법</div>
+  <h1><span class="no">4.1</span>개요 <span class="en">overview</span></h1>
+</header>
+
+<h2 class="sub">단순임의추출법이 곤란한 모집단 <span class="en">when SRS fails</span></h2>
+
+<p>어느 제조업체에서 전국 대리점의 월간 매출액을 조사하려 한다.
+대리점의 규모를 종업원 수에 따라 대·중·소로 구분하면 다음과 같다.</p>
+
+<div class="scroll"><table class="data">
+  <tr><th>소규모 (종업원 수 4명 이하)</th><th>중규모 (5~29명)</th><th>대규모 (30명 이상)</th></tr>
+  <tr><td>대리점 수 3,000개</td><td>대리점 수 300개</td><td>대리점 수 10개</td></tr>
+</table></div>
+
+<p>대부분의 대리점은 규모가 작거나 중간이고 아주 소수만 대규모인데,
+<b>몇몇 대규모 대리점의 매출액이 전체에서 차지하는 비중이 매우 커서 무시할 수 없다.</b></p>
+
+<ol class="props">
+  <li>단순임의추출법을 적용하면 대리점 하나하나가 추출될 확률이 모두 동일하므로,
+    수가 적은 <b>대규모 대리점이 표본으로 뽑힐 확률은 매우 낮다.</b></li>
+  <li>대규모 대리점이 전혀 뽑히지 않으면 총매출액 추정값이 <b>상당히 과소 평가</b>된다.</li>
+  <li>반대로 우연히 대규모 대리점이 여러 개 뽑히면 <b>상당히 과대 추정</b>된다.</li>
+  <li>즉 추정량의 <b>분산이 대단히 커져서 추정의 정도</b>(precision)<b>가 떨어진다.</b></li>
+</ol>
+
+<p>이런 모집단에서는 단위들을 먼저 규모에 따라 구분한 후 각 규모별로 얼마씩 표본을 선택하면,
+전체 모집단의 특성을 더 잘 반영하는 표본을 얻을 수 있고 추정값의 변동이 상당히 줄게 된다.
+위 예에서 모든 대리점은 세 범주 중 하나에만 속하며,
+<b>어느 대리점도 동시에 두 가지 이상의 부류에 속하지 않는다.</b></p>
+
+<h2 class="sub">층화임의추출법 <span class="en">stratified random sampling</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">층 <span class="en">stratum</span></span>
+  <p>모집단을 서로 겹쳐지지 않는 몇 개의 부분군으로 나누었을 때 각각의 부분군.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">정의 4.1</span><span class="title">층화임의추출법 <span class="en">stratified random sampling</span></span>
+  <p>모집단을 먼저 서로 겹쳐지지 않는 여러 개의 층으로 분할한 후,
+  <b>각 층별로 단순임의추출법을 적용</b>시켜 표본을 얻는 방법.</p>
+</div>
+
+<figure class="fig">
+<svg viewBox="0 0 430 210" role="img" aria-label="모집단을 층 1부터 층 H까지 나누고 각 층에서 독립적으로 n1, nh, nH 개의 표본을 단순임의추출하는 그림">
+  <defs>
+    <marker id="ar41" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#5a5a5a"/>
+    </marker>
+  </defs>
+
+  <text class="lbl" x="70"  y="26" text-anchor="middle">층 1</text>
+  <text class="lbl" x="185" y="26" text-anchor="middle">⋯</text>
+  <text class="lbl" x="255" y="26" text-anchor="middle">층 h</text>
+  <text class="lbl" x="325" y="26" text-anchor="middle">⋯</text>
+  <text class="lbl" x="390" y="26" text-anchor="middle">층 H</text>
+
+  <text class="lbl" x="22" y="72" text-anchor="middle">모집단</text>
+  <g class="cell">
+    <rect x="45"  y="36" width="50" height="64"/>
+    <rect x="230" y="36" width="50" height="64"/>
+    <rect x="365" y="36" width="50" height="64"/>
+  </g>
+  <g class="lbl">
+    <text x="70"  y="73" text-anchor="middle">N₁</text>
+    <text x="255" y="73" text-anchor="middle">N_h</text>
+    <text x="390" y="73" text-anchor="middle">N_H</text>
+  </g>
+
+  <line class="axis" x1="70"  y1="104" x2="70"  y2="132" marker-end="url(#ar41)"/>
+  <line class="axis" x1="255" y1="104" x2="255" y2="132" marker-end="url(#ar41)"/>
+  <line class="axis" x1="390" y1="104" x2="390" y2="132" marker-end="url(#ar41)"/>
+
+  <text class="lbl" x="22" y="158" text-anchor="middle">표본</text>
+  <g class="cellhi">
+    <rect x="52"  y="138" width="36" height="34"/>
+    <rect x="237" y="138" width="36" height="34"/>
+    <rect x="372" y="138" width="36" height="34"/>
+  </g>
+  <g class="lbl b">
+    <text x="70"  y="160" text-anchor="middle">n₁</text>
+    <text x="255" y="160" text-anchor="middle">n_h</text>
+    <text x="390" y="160" text-anchor="middle">n_H</text>
+  </g>
+  <text class="lbl" x="185" y="158" text-anchor="middle">⋯</text>
+  <text class="lbl" x="325" y="158" text-anchor="middle">⋯</text>
+
+  <text class="lbl" x="215" y="196" text-anchor="middle">각 층에서의 추출은 다른 층과 <tspan font-weight="700">독립적</tspan>으로 이루어진다</text>
+</svg>
+<figcaption>[그림 4-1] 층화임의추출법 — 모집단을 층으로 분할하고 각 층에서 <b>따로따로</b> 단순임의추출한다.</figcaption>
+</figure>
+
+<div class="box thm">
+  <span class="tag">이유</span><span class="title">층화임의추출법이 널리 이용되는 세 가지 이유</span>
+  <ol class="props">
+    <li>모집단을 효과적으로 층화할 경우 추정량의 오차가 작아져 <b>추정의 정도를 높일 수 있다</b>.
+      각 층 내부에 있는 단위들의 값의 변동이 작을수록,
+      즉 <b>층 내부가 동질적</b>(homogeneous)<b>일수록</b> 층화의 효율이 커진다.</li>
+    <li>전체 모집단에 대한 추정뿐만 아니라 <b>각 층별로도 추정이 가능</b>하다.
+      전국 조사라면 전국 추정값과 함께 각 도(道)별 추정값도 얻을 수 있다.</li>
+    <li>표본의 모집단에 대한 <b>대표성을 높일 수 있고</b>, 조사 관리가 보다 편리하며
+      <b>조사 비용도 절감</b>할 수 있다.</li>
+  </ol>
+</div>
+
+<p>층화임의추출법에서는 단순임의추출법에서 다루었던 추정 이론 외에
+<b>어떻게 층화를 할 것인지 층화의 기준을 정하는 문제</b>(→ <a href="4-2_stratification.html">4.2절</a>)와
+<b>각 층별로 표본의 크기를 배분하는 문제</b>(→ <a href="4-5_allocation.html">4.5절</a>)를 더 고려해야 한다.</p>
+
+<nav class="pager">
+  <a href="../ch03/3-exercises.html">← 이전<small>3장 연습문제</small></a>
+  <a class="next" href="4-2_stratification.html">다음 →<small>4.2 층화</small></a>
+</nav>
+
+</body>
+</html>

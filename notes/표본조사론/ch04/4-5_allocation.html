@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>표본조사론 · 4.5 표본의 배분</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">표본조사론 · 4장 층화임의추출법</div>
+  <h1><span class="no">4.5</span>표본의 배분 <span class="en">allocation of the sample</span></h1>
+</header>
+
+<div class="box def">
+  <span class="tag">고려 요인</span><span class="title">배분법을 결정하는 세 가지 요인</span>
+  <ol class="props">
+    <li>각 층 내의 추출단위들의 수 $N_h$</li>
+    <li>층 내 각 관찰값들의 <b>변동</b>(variation)의 정도 $S_h$, 즉 층 내 기본단위들의 동질성의 정도</li>
+    <li>각 층의 추출단위들을 조사하는 데 드는 <b>조사 비용</b> $c_h$</li>
+  </ol>
+</div>
+
+<div class="scroll"><table class="data">
+  <tr><th>배분법</th><th>고려하는 것</th></tr>
+  <tr><th>비례배분법</th><td>층의 크기 $N_h$</td></tr>
+  <tr><th>네이만배분법</th><td>층의 크기 $N_h$ + 층 내 변동 $S_h$</td></tr>
+  <tr><th>최적배분법</th><td>층의 크기 $N_h$ + 층 내 변동 $S_h$ + 조사 비용 $c_h$</td></tr>
+</table></div>
+
+<h2 class="sub">1. 비례배분법 <span class="en">proportional allocation</span></h2>
+
+<div class="box def">
+  <span class="tag">식 (4-14)(4-15)</span><span class="title">비례배분법</span>
+  $$n_h=n\cdot\frac{N_h}{N},\qquad h=1,2,3,\dots,H$$
+  $$n=\frac{N\displaystyle\sum_{h=1}^{H}N_hS_h^2}{N^2D+\displaystyle\sum_{h=1}^{H}N_hS_h^2}$$
+  <p>각 층 내의 모집단 추출단위들의 수에 비례하여 표본의 크기를 배분한다.
+  층별 변동의 차가 심각하지 않고 층별 조사 비용이 비슷한 경우에 알맞다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예제 4-7</span><span class="title">층별 표본의 크기 결정 — 비례배분법</span>
+  <div class="scroll"><table class="data">
+    <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 4-4&gt; 규모별 제조업체 수 ($N=24{,}500$)</caption>
+    <tr><th>층</th><th>규모(종업원 수)</th><th>제조업체 수 $N_h$</th></tr>
+    <tr><td>1</td><td>49 이하</td><td>18,000</td></tr>
+    <tr><td>2</td><td>50~99</td><td>4,000</td></tr>
+    <tr><td>3</td><td>100~249</td><td>2,000</td></tr>
+    <tr><td>4</td><td>250 이상</td><td>500</td></tr>
+  </table></div>
+  <p>$500$ 개의 업체를 표본으로 조사하려 한다. 비례배분법으로 각 층별 표본의 크기를 계산하라.</p>
+  <p><b>풀이</b></p>
+  $$n_1=500\times\frac{18{,}000}{24{,}500}\fallingdotseq367,\qquad
+    n_2=500\times\frac{4{,}000}{24{,}500}\fallingdotseq82$$
+  $$n_3=500\times\frac{2{,}000}{24{,}500}\fallingdotseq41,\qquad
+    n_4=500\times\frac{500}{24{,}500}\fallingdotseq10$$
+</div>
+
+<h2 class="sub">2. 네이만배분법 <span class="en">Neyman allocation</span></h2>
+
+<div class="box def">
+  <span class="tag">식 (4-16)(4-17)</span><span class="title">네이만배분법</span>
+  $$n_h=n\left(\frac{N_hS_h}{\displaystyle\sum_{k=1}^{H}N_kS_k}\right),\qquad h=1,2,3,\dots,H$$
+  $$n=\frac{\left(\displaystyle\sum_{h=1}^{H}N_hS_h\right)^2}
+         {N^2D+\displaystyle\sum_{h=1}^{H}N_hS_h^2}$$
+  <p>층별 조사 비용은 차이가 없으나 <b>층별 변동의 정도가 많이 차이 나는</b> 경우에 쓴다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예제 4-8</span><span class="title">층별 표본의 크기 결정 — 네이만배분법</span>
+  <div class="scroll"><table class="data">
+    <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:var(--muted); padding-bottom:4px;">&lt;표 4-5&gt; 규모별 제조업체 수 ($N=24{,}500$)</caption>
+    <tr><th>층</th><th>규모(종업원 수)</th><th>$N_h$</th><th>$s_h^2$</th></tr>
+    <tr><td>1</td><td>49 이하</td><td>18,000</td><td>$80^2$</td></tr>
+    <tr><td>2</td><td>50~99</td><td>4,000</td><td>$200^2$</td></tr>
+    <tr><td>3</td><td>100~249</td><td>2,000</td><td>$600^2$</td></tr>
+    <tr><td>4</td><td>250 이상</td><td>500</td><td>$1{,}900^2$</td></tr>
+  </table></div>
+  <p><b>풀이</b></p>
+  $$\sum_{k=1}^{4}N_kS_k=18{,}000\times80+4{,}000\times200+2{,}000\times600+500\times1{,}900=4{,}390{,}000$$
+  $$n_1=500\times\frac{18{,}000\times80}{4{,}390{,}000}\fallingdotseq164,\qquad
+    n_2=500\times\frac{4{,}000\times200}{4{,}390{,}000}\fallingdotseq91$$
+  $$n_3=500\times\frac{2{,}000\times600}{4{,}390{,}000}\fallingdotseq137,\qquad
+    n_4=500\times\frac{500\times1{,}900}{4{,}390{,}000}\fallingdotseq108$$
+</div>
+
+<h2 class="sub">3. 최적배분법 <span class="en">optimum allocation</span></h2>
+
+<div class="box def">
+  <span class="tag">식 (4-18)(4-19)</span><span class="title">최적배분법</span>
+  $$n_h=n\left(\frac{N_hS_h/\sqrt{c_h}}{\displaystyle\sum_{k=1}^{H}N_kS_k/\sqrt{c_k}}\right),
+    \qquad h=1,2,3,\dots,H$$
+  $$n=\frac{\left(\displaystyle\sum_{h=1}^{H}N_hS_h\sqrt{c_h}\right)
+            \left(\displaystyle\sum_{k=1}^{H}N_kS_k/\sqrt{c_k}\right)}
+         {N^2D+\displaystyle\sum_{h=1}^{H}N_hS_h^2}$$
+  <p>주어진 비용하에서 추정량의 분산을 최소화시키거나, 주어진 분산의 범위하에서 비용을 최소화시키는 배분법이다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예제 4-9</span><span class="title">층별 표본의 크기 결정 — 최적배분법</span>
+  <div class="scroll"><table class="data">
+    <tr><th>층</th><th>규모(종업원 수)</th><th>$N_h$</th><th>$s_h^2$</th><th>조사 비용 $c_h$</th></tr>
+    <tr><td>1</td><td>49 이하</td><td>18,000</td><td>$80^2$</td><td>1</td></tr>
+    <tr><td>2</td><td>50~99</td><td>4,000</td><td>$200^2$</td><td>1</td></tr>
+    <tr><td>3</td><td>100~249</td><td>2,000</td><td>$600^2$</td><td>2</td></tr>
+    <tr><td>4</td><td>250 이상</td><td>500</td><td>$1{,}900^2$</td><td>3</td></tr>
+  </table></div>
+  <p><b>풀이</b></p>
+  $$\sum_{k=1}^{4}\frac{N_kS_k}{\sqrt{c_k}}
+    =\frac{18{,}000\times80}{\sqrt1}+\frac{4{,}000\times200}{\sqrt1}
+    +\frac{2{,}000\times600}{\sqrt2}+\frac{500\times1{,}900}{\sqrt3}=3{,}637{,}010$$
+  $$n_1=500\times\frac{1{,}440{,}000}{3{,}637{,}010}\fallingdotseq198,\qquad
+    n_2=500\times\frac{800{,}000}{3{,}637{,}010}\fallingdotseq110$$
+  $$n_3=500\times\frac{848{,}528}{3{,}637{,}010}\fallingdotseq117,\qquad
+    n_4=500\times\frac{548{,}482}{3{,}637{,}010}\fallingdotseq75$$
+</div>
+
+<nav class="pager">
+  <a href="4-4_sample-size.html">← 이전<small>4.4 표본의 크기 결정</small></a>
+  <a class="next" href="4-6_post-stratification.html">다음 →<small>4.6 사후층화</small></a>
+</nav>
+
+</body>
+</html>

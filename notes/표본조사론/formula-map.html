@@ -178,7 +178,8 @@
 
 <div class="box def">
   <span class="tag">공식</span><span class="title">층화추출법의 모평균 추정분산</span>
-  $$\hat V(\bar y_{st})=\sum_{h=1}^{L}W_h^2\cdot\frac{N_h-n_h}{N_h}\cdot\frac{s_h^2}{n_h}$$
+  $$\hat V(\bar y_{st})=\sum_{h=1}^{L}W_h^2\cdot\frac{N_h-n_h}{N_h}\cdot\frac{s_h^2}{n_h}
+    =\frac1{N^2}\sum_{h=1}^{L}N_h^2\cdot\frac{N_h-n_h}{N_h}\cdot\frac{s_h^2}{n_h}$$
 </div>
 <div class="box ex">
   <span class="tag">예</span>
@@ -248,6 +249,23 @@
   $$\sum N_hS_h^2=300(100)+200(25)+500(4)=37{,}000,\qquad N^2D=1{,}000^2(0.25)=250{,}000$$
   <p>비례배분이면</p>
   $$n=\frac{1{,}000\times37{,}000}{250{,}000+37{,}000}=\frac{37{,}000{,}000}{287{,}000}\fallingdotseq129$$
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">사후층화의 추정량과 추정분산</span>
+  $$\bar y_{post}=\sum_{h=1}^{L}W_h\,\bar y_{ph}$$
+  $$\hat V(\bar y_{post})=\frac{N-n}{Nn}\sum_{h=1}^{L}W_h s_{ph}^2
+    +\frac1{n^2}\sum_{h=1}^{L}\left(1-W_h\right)s_{ph}^2$$
+  <p>단순임의추출 후에 층화하므로 $n_h$ 가 확률변수이고,
+  그 대가로 분산에 <b>둘째 항이 더해진다</b>.</p>
+</div>
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$W_h=0.4,\ 0.6$, $n=100$, $n_h=70,\ 30$, $\bar y_{ph}=520,\ 280$, $s_{ph}=210,\ 90$,
+  $N$ 이 매우 크면</p>
+  $$\bar y_{post}=0.4(520)+0.6(280)=376$$
+  $$\hat V(\bar y_{post})=\frac1{100}\left(0.4\cdot210^2+0.6\cdot90^2\right)
+    +\frac1{100^2}\left(0.6\cdot210^2+0.4\cdot90^2\right)=227.97$$
 </div>
 
 <!-- ==================================================== 계통추출법 -->

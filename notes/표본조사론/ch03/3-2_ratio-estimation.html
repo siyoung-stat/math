@@ -22,11 +22,6 @@
 </header>
 
 <h2 class="sub">1. 비추정의 개요 <span class="en">the ratio and its estimator</span></h2>
-<p>크기가 $N$ 인 모집단에서 $n$ 개의 표본을 단순임의추출법으로 추출하여 조사하였다.
-$n$ 개의 표본에서 얻어진 각 단위들의 주변수 $y$ 와 보조변수 $x$ 를 각각
-$y_1,y_2,\dots,y_n$ 과 $x_1,x_2,\dots,x_n$ 이라고 하자.
-먼저 주변수 $y$ 의 총계 $\tau_y$ 와 보조변수 $x$ 의 총계 $\tau_x$ 와의 <b>비</b>(ratio)인 $R$ 의 추정에 대해 생각해 보자.</p>
-
 <div class="box def">
   <span class="tag">정의</span><span class="title">모비 $R$ 과 그 추정량 $r$</span>
   $$R=\frac{\tau_y}{\tau_x}\tag{3-1}$$
@@ -41,17 +36,6 @@ $y_1,y_2,\dots,y_n$ 과 $x_1,x_2,\dots,x_n$ 이라고 하자.
   $$r\pm z_{\alpha/2}\sqrt{\hat V(r)}\tag{3-4}$$
   <p>이 식에서 일반적으로 보조변수 $x$ 의 모평균 $\mu_x$ 는 <b>사전 정보로서 알려져 있는 경우가 많다</b>.
   만약 이 값을 알지 못할 경우에는 그 추정량 $\bar x$ 를 대신 사용하면 된다.</p>
-</div>
-
-<div class="box thm">
-  <span class="tag">직관</span><span class="title">$\sum(y_i-rx_i)^2$ 은 ‘원점을 지나는 직선’ 의 잔차제곱합이다</span>
-  <p>$r$ 은 원점과 점 $(\bar x,\bar y)$ 를 잇는 직선의 <b>기울기</b>이다.
-  그 직선 $y=rx$ 위에서 $i$ 번째 점의 세로 방향 이탈이 바로 $y_i-rx_i$ 이므로,
-  $\sum(y_i-rx_i)^2$ 은 <b>절편 없는 직선을 자료에 맞춘 뒤 남은 잔차제곱합</b>이다.</p>
-  <p>즉 식 $(3\text{-}3)$ 은 <a href="../ch02/2-3_estimation.html">2.3절</a>의
-  $\hat V(\bar y)=\dfrac{N-n}{N}\cdot\dfrac{s^2}{n}$ 에서
-  <b>$s^2$ 자리에 “$y$ 자체의 흩어짐” 대신 “직선에서 벗어난 만큼의 흩어짐” 을 넣은 것</b>이다.
-  $x$ 와 $y$ 가 직선에 가까이 붙어 있을수록 이 값이 작아지고, 그만큼 추정이 정밀해진다.</p>
 </div>
 
 <figure class="fig">
@@ -181,30 +165,6 @@ $$s_x^2=\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar x)^2,\qquad
   $\hat\rho=\dfrac{s_{xy}}{s_xs_y}$ 이다.</p>
 </div>
 
-<div class="box prf">
-  <span class="tag">보충 증명</span><span class="title">$(3\text{-}3)\Rightarrow(3\text{-}5)$ — 근사가 아니라 정확한 항등식이다</span>
-  <p>교재는 결과만 제시하지만, 실제로는 <b>$r$ 의 정의 덕분에 한 줄로 정확히</b> 나온다.</p>
-  <ol>
-    <li><span class="step">핵심 관찰 — 잔차에 상수항이 없다.</span>
-      $r=\bar y/\bar x$ 이므로 $\bar y-r\bar x=0$ 이다. 따라서
-      $$y_i-rx_i=(y_i-\bar y)-r(x_i-\bar x)+\underbrace{(\bar y-r\bar x)}_{=\,0}
-        =(y_i-\bar y)-r(x_i-\bar x)$$
-      <b>근사가 아니라 등식</b>이다.</li>
-    <li><span class="step">제곱해서 더한다.</span>
-      $$\sum_i(y_i-rx_i)^2=\sum_i(y_i-\bar y)^2-2r\sum_i(x_i-\bar x)(y_i-\bar y)+r^2\sum_i(x_i-\bar x)^2$$</li>
-    <li><span class="step">$n-1$ 로 나눈다.</span>
-      $$\frac{\sum_i(y_i-rx_i)^2}{n-1}=s_y^2-2r\,s_{xy}+r^2s_x^2
-        =s_y^2+r^2s_x^2-2r\hat\rho\,s_xs_y$$
-      마지막 등호는 $s_{xy}=\hat\rho\,s_xs_y$ 이기 때문이다. 이것을 $(3\text{-}3)$ 에 넣으면 $(3\text{-}5)$ 이다.</li>
-  </ol>
-  <p class="qed">∎</p>
-</div>
-
-<div class="note">
-  <b>어느 식을 쓸 것인가.</b> 손으로 $\sum(y_i-rx_i)^2$ 을 만들 수 있으면 $(3\text{-}3)$ 이 빠르고,
-  통계 소프트웨어가 이미 뱉어 놓은 <b>평균·표준편차·상관계수만 있을 때</b>는 $(3\text{-}5)$ 가 편리하다.
-</div>
-
 <div class="box ex">
   <span class="tag">예</span><span class="title">〈예제 3-1〉 을 식 $(3\text{-}5)$ 로 다시 계산하기</span>
   <p>〈예제 3-1〉의 데이터를 통계 소프트웨어로 계산하면 다음과 같은 결과를 얻는다.</p>
@@ -216,18 +176,12 @@ $$s_x^2=\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar x)^2,\qquad
   <p>위의 출력된 계산 결과와 식 $(3\text{-}5)$ 를 이용하여 구한 분산의 값은</p>
   $$\hat V(r)=\frac{1{,}000-20}{1{,}000}\cdot\frac{1}{20}\cdot\frac{1}{7.725^2}
     \left(0.957^2+1.07^2\times0.947^2-2\times1.07\times0.966\times0.947\times0.957\right)=0.0000568$$
-  <p>이 된다. 앞서 식 $(3\text{-}3)$ 으로 구한 $0.0000555$ 와의 차이는
-  $r$ 과 표준편차를 <b>소수 셋째 자리에서 반올림해 넣은 데서 오는 반올림 오차</b>일 뿐,
-  두 식은 위 증명대로 같은 값을 준다.</p>
+  <p>식 $(3\text{-}3)$ 으로 구한 $0.0000555$ 와의 차이는 반올림 오차이다.</p>
 </div>
 
 <h2 class="sub">2. 비추정량을 이용한 모총계의 추정 <span class="en">estimating the total</span></h2>
-<p>앞에서 우리나라의 쌀 생산량 추정에 대해 간단하게 언급한 바 있는데,
-그것이 비추정량을 이용하여 모총계를 추정하는 좋은 예이다.
-$R=\dfrac{\tau_y}{\tau_x}$ 의 관계이므로 모총계 $\tau_y$ 는 다음과 같이 표현될 수 있다.</p>
-$$\tau_y=R\cdot\tau_x$$
-<p>$\tau_x$ 는 <b>보조변수의 총계이므로 사전에 미리 알 수 있는 값</b>이다.
-따라서 $R$ 대신 그 추정량인 $r$ 을 대입함으로써 모총계를 추정할 수 있다.</p>
+<p>$\tau_y=R\cdot\tau_x$ 이고 $\tau_x$ 는 <b>사전에 알 수 있는 값</b>이므로,
+$R$ 자리에 $r$ 을 넣어 모총계를 추정한다.</p>
 
 <div class="box def">
   <span class="tag">공식</span><span class="title">모총계의 비추정량</span>
@@ -238,12 +192,6 @@ $$\tau_y=R\cdot\tau_x$$
     =N^2\cdot\frac{N-n}{N}\cdot\frac1n\cdot
      \frac{\displaystyle\sum_{i=1}^{n}(y_i-rx_i)^2}{n-1}\tag{3-7}$$
   $$\hat\tau_y\pm z_{\alpha/2}\sqrt{\hat V(\hat\tau_y)}\tag{3-8}$$
-</div>
-
-<div class="note">
-  마지막 등호에서 $\mu_x$ 가 사라진 이유 — $\tau_x=N\mu_x$ 이므로
-  $\dfrac{\tau_x^2}{\mu_x^2}=\dfrac{N^2\mu_x^2}{\mu_x^2}=N^2$ 이다.
-  즉 <b>모총계의 분산 식에는 $\mu_x$ 를 알 필요조차 없다</b>.
 </div>
 
 <div class="box ex">
@@ -350,18 +298,7 @@ $$\tau_y=R\cdot\tau_x$$
     \;\Leftrightarrow\;117.615\pm7.95$$
 </div>
 
-<div class="note">
-  이 예제가 <b>보조 정보를 쓰는 이유</b>를 가장 잘 보여 준다 —
-  수령은 $20$ 그루만 재고, 직경은 $1{,}132$ 그루 전부를 쟀다.
-  비싼 변수 $y$ 는 표본에서만, 싼 변수 $x$ 는 모집단 전체에서 얻어
-  <b>$\mu_x$ 라는 모수를 그대로 계산에 투입</b>하는 것이 비추정의 요령이다.
-</div>
-
 <h2 class="sub">4. 상대효율의 비교 <span class="en">relative efficiency</span></h2>
-<p>앞에서 우리는 모평균을 추정하기 위한 추정량으로서 <b>단순표본평균 $\bar y$</b> 와
-<b>비추정량 $\hat\mu_y$</b> 에 대해 살펴보았다. 그렇다면 이 두 가지 추정량 중 어느 것이 더 효율적일까?
-이러한 비교를 위해 널리 사용되는 기준으로 <b>상대효율</b>(Relative Efficiency; RE)이 사용된다.</p>
-
 <div class="box def">
   <span class="tag">정의</span><span class="title">상대효율 <span class="en">relative efficiency</span></span>
   <p>상대효율이란 두 가지의 서로 다른 추정량들의 <b>분산의 비</b>를 나타내는 것이다.
@@ -375,44 +312,10 @@ $$\tau_y=R\cdot\tau_x$$
   $$\widehat{RE}\!\left(\frac{E_1}{E_2}\right)=\frac{\hat V(E_2)}{\hat V(E_1)}\tag{3-13}$$
 </div>
 
-<div class="note">
-  분자와 분모가 <b>뒤집혀 있다</b>는 점에 주의한다.
-  “$E_1$ 의 $E_2$ 에 대한 상대효율” 은 $E_1$ 이 좋을수록(즉 $V(E_1)$ 이 작을수록) 커져야 하므로
-  $V(E_1)$ 이 <b>분모</b>로 간다.
-</div>
-
-<p>단순임의추출법에서 모평균의 추정량으로서 표본평균 $\bar y$ 와 비추정량 $\hat\mu_y$ 의 효율을 비교해 보자.
-표본평균 $\bar y$ 의 분산 추정량(<a href="../ch02/2-3_estimation.html">식 $(2\text{-}4)$</a>)과
-비추정량 $\hat\mu_y$ 의 분산 추정량(식 $(3\text{-}10)$)을 식 $(3\text{-}13)$ 에 대입하면
-다음과 같이 표현된다.</p>
-
 <div class="box def">
   <span class="tag">공식</span><span class="title">비추정량의 표본평균에 대한 상대효율</span>
   $$\widehat{RE}\!\left(\frac{\hat\mu_y}{\bar y}\right)=\frac{\hat V(\bar y)}{\hat V(\hat\mu_y)}
     =\frac{s_y^2}{s_y^2+r^2s_x^2-2r\hat\rho\,s_xs_y}\tag{3-14}$$
-  <p>$\dfrac{N-n}{N}\cdot\dfrac1n$ 이 분자·분모에서 그대로 약분되고,
-  분모에는 위에서 증명한 항등식 $\dfrac{\sum(y_i-rx_i)^2}{n-1}=s_y^2+r^2s_x^2-2r\hat\rho\,s_xs_y$ 가 들어간다.</p>
-</div>
-
-<div class="box prf">
-  <span class="tag">유도</span><span class="title">언제 비추정이 이기는가 — $\hat\rho>\tfrac12$ 조건</span>
-  <ol>
-    <li><span class="step">이기는 조건을 부등식으로.</span>
-      $\widehat{RE}>1$ 이려면 분모가 분자보다 작아야 하므로
-      $$s_y^2+r^2s_x^2-2r\hat\rho\,s_xs_y&lt;s_y^2$$</li>
-    <li><span class="step">$s_y^2$ 을 소거하고 $r$ 로 나눈다.</span>
-      $$r^2s_x^2&lt;2r\hat\rho\,s_xs_y\;\Longrightarrow\;r\,s_x^2&lt;2\hat\rho\,s_xs_y$$</li>
-    <li><span class="step">$\hat\rho$ 에 대해 정리한다.</span>
-      $$\hat\rho>\frac12\cdot\frac{r\,s_x}{s_y}
-        =\frac12\cdot\frac{s_x/\bar x}{s_y/\bar y}\tag{3-15}$$
-      마지막 등호는 $r=\bar y/\bar x$ 를 넣은 것이다.
-      즉 조건의 우변은 <b>두 변수의 변동계수의 비</b>이며, $s_x/\bar x$ 는 모집단 변동계수의 추정값이다.</li>
-    <li><span class="step">실전에서의 단순화.</span>
-      비추정량을 사용하는 많은 경우 $x$ 는 <b>$y$ 의 직전 시기의 조사값</b>인 경우가 많다.
-      이럴 경우 $x$ 의 변동계수와 $y$ 의 변동계수가 거의 비슷하므로 그 비가 $1$ 에 가깝고,
-      조건은 다음과 같이 간단해진다.
-      $$\hat\rho>\frac12$$</li>
-  </ol>
 </div>
 
 <div class="box thm">
@@ -421,12 +324,6 @@ $$\tau_y=R\cdot\tau_x$$
   비추정량은 표본평균에 비해 더 효율적이라고 볼 수 있다.
   일반적으로 주변수와 상관관계가 매우 강한 보조변수를 활용할 수 있을 경우에는
   <b>항상 비추정량을 사용하는 것이 더 바람직하다</b>.</p>
-</div>
-
-<div class="note">
-  뒤집어 말하면 <b>상관이 약한 보조변수를 억지로 끌어오면 오히려 손해</b>다.
-  이 점이 다음 절의 회귀추정과 결정적으로 다른데,
-  회귀추정은 $\widehat{RE}=\dfrac{1}{1-\hat\rho^2}\ge1$ 이라 <b>상관이 아무리 약해도 손해를 보지 않는다</b>.
 </div>
 
 <nav class="pager">
