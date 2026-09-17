@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>강의노트 I · 암기 점검 퀴즈</title>
+<link rel="stylesheet" href="../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  .sheettitle{ margin:30px 0 4px; font-size:1.5rem; font-weight:800; }
+  .sheettitle .en{ font-weight:400; }
+  .answersheet{ page-break-before:always; }
+  .qrow{ margin:11px 0; line-height:1.6; }
+  .qid{ font-weight:800; color:var(--def); margin-right:8px; }
+  .qrow ol, .ans ol{ margin:4px 0 0; padding-left:26px; }
+  .qrow li, .ans li{ margin:4px 0; }
+  .ans{ margin:11px 0; padding-left:12px; border-left:3px solid var(--thm); }
+  .ans .qid{ color:var(--thm); }
+  .mark{ color:#d64541; font-weight:800; margin:0 5px 0 2px; letter-spacing:2px; }
+  .src{ font-size:.82em; font-weight:700; color:var(--ex); margin-left:6px; white-space:nowrap; }
+  .lead{ margin:14px 0 22px; padding:12px 14px; border-left:3px solid var(--def); line-height:1.7; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } .mark{ color:#000; } }
+</style>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../index.html">⌂ 홈</a>
+  <div class="ch">수리통계학 · 강의노트 I</div>
+  <h1><span class="no">퀴즈</span>강의노트 I 암기 점검 <span class="en">recall check · Ch.1–2.8</span></h1>
+</header>
+
+<div class="lead">
+출처는 <b>수리통계학 강의노트 I — 확률론과 확률변수·확률분포</b>이며, 범위는 <b>1.1 확률모형과 기본용어</b>부터
+<b>2.8.6 Beta 분포</b>까지(2.9 확률변수의 변환 직전)이다. 강의노트에 등장하는 모든 정의·공식·정리를
+주관식으로 복원하도록 구성하였다. 각 문항은 소문제 단위로 끊어져 있으므로, 빈칸 없이 <b>식 전체를 직접 써서</b> 답한다.
+</div>
+
+<!-- ===== 문제 시트 ===== -->
+<div class="sheettitle">■ 문제 시트 <span class="en">questions</span></div>
+
+<h2 class="sub">A. 확률모형과 집합연산 (1.1–1.2)</h2>
+
+<div class="qrow"><span class="qid">Q1</span>확률모형의 기본 용어에 대하여
+  <ol><li>확률실험(experiment)의 정의를 쓰라.</li>
+  <li>표본점(outcome)의 정의를 기호와 함께 쓰라.</li>
+  <li>표본공간(sample space)의 정의를 기호와 함께 쓰라.</li>
+  <li>사건(event)의 정의를 기호와 함께 쓰라.</li>
+  <li>결정모형과 확률모형의 차이를 한 문장으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q2</span>확률에 대한 네 가지 해석의 이름을 모두 쓰고, 각각을 한 줄로 설명하라. (고전적 해석은 식으로 쓸 것)</div>
+
+<div class="qrow"><span class="qid">Q3</span>두 사건 $A,B$ 에 대하여 다음 네 집합을 각각 <b>원소 조건식</b>으로 쓰라.
+  <ol><li>$A\cup B$</li><li>$A\cap B$</li><li>$A^c$</li><li>$A\setminus B$</li></ol></div>
+
+<div class="qrow"><span class="qid">Q4</span>집합연산의 법칙을 각각 식으로 쓰라.
+  <ol><li>교환법칙(합집합·교집합)</li><li>결합법칙(합집합·교집합)</li><li>분배법칙(두 가지 모두)</li></ol></div>
+
+<div class="qrow"><span class="qid">Q5</span>드모르간의 법칙에 대하여
+  <ol><li>두 사건에 대한 두 식을 쓰라.</li>
+  <li>가산 개 사건에 대한 일반형 두 식을 쓰라.</li>
+  <li>$(A\cup B)^c=A^c\cap B^c$ 를 원소 논법으로 증명하라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q6</span>배반과 분할에 대하여
+  <ol><li>두 사건이 배반(disjoint)이라는 것의 정의를 식으로 쓰라.</li>
+  <li>사건열 $A_1,A_2,\dots$ 가 상호배반이라는 것의 정의를 식으로 쓰라.</li>
+  <li>$\{B_i\}$ 가 표본공간의 분할(partition)이라는 것의 두 조건을 식으로 쓰라.</li>
+  <li>임의의 사건 $A$ 를 사건 $B$ 를 기준으로 배반인 두 부분으로 분해하는 식을 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q7</span>지시함수에 대하여
+  <ol><li>사건 $A$ 의 지시함수 $I_A(\omega)$ 의 정의를 경우로 나누어 쓰라.</li>
+  <li>지시함수의 주요 성질 <b>네 가지</b>($I_{A^c}$, $I_{A\cap B}$, $I_{A\cup B}$, $I_A^2$)를 각각 식으로 쓰라.</li>
+  <li>지시함수의 기댓값과 확률을 잇는 관계식을 쓰라.</li></ol></div>
+
+<h2 class="sub">B. σ-대수와 확률공리 (1.3–1.4)</h2>
+
+<div class="qrow"><span class="qid">Q8</span>$\sigma$-대수에 대하여
+  <ol><li>$\Omega$ 위의 $\sigma$-대수 $\mathcal F$ 가 만족해야 할 <b>세 조건</b>을 각각 식으로 쓰라.</li>
+  <li>첫 번째 조건과 동치인 조건을 쓰라.</li>
+  <li>$\sigma$-대수가 가산 교집합에 대해서도 닫혀 있는 이유를 쓰라.</li>
+  <li>가장 작은 $\sigma$-대수, 유한 표본공간에서 가장 큰 $\sigma$-대수, 사건 $A$ 하나만 관측 가능할 때의 $\sigma$-대수를 각각 쓰라.</li>
+  <li><span class="mark">★</span>왜 모든 부분집합이 아니라 $\sigma$-대수로 제한하는지 이유를 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q9</span>확률공간과 콜모고로프 공리에 대하여
+  <ol><li>확률공간이 무엇의 삼중항인지 쓰라.</li>
+  <li>$P:\mathcal F\to[0,1]$ 이 확률측도가 되기 위한 <b>세 공리</b>(비음성·정규화·가산가법성)를 각각 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q10</span>확률공리에서 유도되는 <b>기본성질 다섯 가지</b>를 각각 식으로 쓰고, 모두 증명하라.
+  <ol><li>$P(\varnothing)$</li><li>$P(A)$ 의 범위</li><li>여사건의 확률</li><li>$A\subseteq B$ 일 때 $P(B\setminus A)$</li><li>합사건의 확률(덧셈공식)</li></ol></div>
+
+<div class="qrow"><span class="qid">Q11</span>
+  <ol><li>단조성 정리를 식으로 쓰라.</li>
+  <li>세 사건에 대한 포함배제원리를 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q12</span>확률의 상·하한에 대하여
+  <ol><li>Boole 부등식을 식으로 쓰라.</li>
+  <li>두 사건에 대한 Bonferroni 부등식을 식으로 쓰라.</li>
+  <li>$n$ 개 사건에 대한 Bonferroni 부등식의 일반형을 식으로 쓰라.</li>
+  <li><span class="mark">★</span>드모르간 법칙과 Boole 부등식을 써서 (3)을 증명하라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q13</span>확률측도의 연속성에 대하여
+  <ol><li>아래로부터의 연속성을 조건과 함께 식으로 쓰고, 표기법도 쓰라.</li>
+  <li>위로부터의 연속성을 조건과 함께 식으로 쓰고, 표기법도 쓰라.</li>
+  <li><span class="mark">★</span>증가사건열의 경우를 배반분해 $B_1=A_1,\ B_n=A_n\setminus A_{n-1}$ 로 증명하고, 감소사건열은 어떻게 귀착시키는지 쓰라.</li></ol></div>
+
+<h2 class="sub">C. 경우의 수 (1.5)</h2>
+
+<div class="qrow"><span class="qid">Q14</span>덧셈법칙과 곱셈법칙을 각각 문장과 식으로 쓰라.</div>
+
+<div class="qrow"><span class="qid">Q15</span>서로 다른 $n$ 개에서 $r$ 개를 뽑을 때
+  <ol><li>순서가 있는 경우의 수 $_nP_r$ 를 곱꼴과 계승꼴 두 가지로 쓰라.</li>
+  <li>순서가 없는 경우의 수 $\binom{n}{r}$ 를 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q16</span>자주 쓰는 경우의 수 <b>여섯 가지</b>를 각각 식으로 쓰라.
+  <ol><li>서로 다른 $n$ 개를 모두 배열</li>
+  <li>서로 다른 $n$ 개 중 순서 있게 $r$ 개 선택</li>
+  <li>서로 다른 $n$ 개 중 순서 없이 $r$ 개 선택</li>
+  <li>복원을 허용하여 순서 있게 $r$ 번 선택</li>
+  <li>$n$ 개 중 중복을 허용하여 순서 없이 $r$ 개 선택</li>
+  <li>동일한 원소가 각각 $r_1,\dots,r_k$ 개인 총 $n$ 개의 배열</li></ol></div>
+
+<div class="qrow"><span class="qid">Q17</span>
+  <ol><li>이항정리를 식으로 쓰라.</li>
+  <li>다항정리를 식으로 쓰고, 다항계수 $\binom{n}{r_1,\dots,r_k}$ 의 정의도 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q18</span>이항계수의 기본 항등식 <b>세 가지</b>를 각각 식으로 쓰고, 둘째 식은 조합적 논증으로, 셋째 식은 이항정리로 증명하라.</div>
+
+<div class="qrow"><span class="qid">Q19</span>중복조합(별과 막대)에 대하여
+  <ol><li>$x_1+\cdots+x_k=n,\ x_i\ge 0$ 의 해의 개수를 식으로 쓰라.</li>
+  <li>모든 $x_i\ge 1$ 인 경우의 해의 개수를 치환 $y_i=x_i-1$ 로 유도하여 쓰라.</li></ol></div>
+
+<h2 class="sub">D. 조건부확률과 독립 (1.6–1.7)</h2>
+
+<div class="qrow"><span class="qid">Q20</span>
+  <ol><li>조건부확률 $P(A\mid B)$ 의 정의를 조건과 함께 식으로 쓰라.</li>
+  <li>조건부확률을 표본공간의 축소·정규화로 해석하는 문장을 쓰고, 고정된 $B$ 에 대해 $P(\cdot\mid B)$ 가 무엇을 만족하는지 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q21</span>
+  <ol><li>곱셈공식을 두 가지 형태로 쓰라.</li>
+  <li>$n$ 개 사건에 대한 연쇄법칙을 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q22</span>전확률정리를 조건과 함께 식으로 쓰고, 증명하라.</div>
+
+<div class="qrow"><span class="qid">Q23</span>베이즈정리를 조건과 함께 식으로 쓰고, 분자와 분모가 각각 무엇을 뜻하는지 설명하라.</div>
+
+<div class="qrow"><span class="qid">Q24</span>두 사건의 독립에 대하여
+  <ol><li>독립의 정의를 식으로 쓰고 표기법도 쓰라.</li>
+  <li>$P(B)>0$ 일 때 독립과 동치인 조건부확률 형태를 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q25</span>$A\perp\!\!\!\perp B$ 이면 여집합에 대해서도 독립이 성립함을 <b>세 경우</b> 모두 식으로 쓰고, 그중 하나를 증명하라.</div>
+
+<div class="qrow"><span class="qid">Q26</span>배반과 독립을 구분하여
+  <ol><li>배반이면 $P(A\cap B)$ 가 얼마인지 쓰라.</li>
+  <li>두 확률이 모두 양수인 배반사건이 독립일 수 없는 이유를 쓰라.</li>
+  <li>배반과 독립의 의미 차이를 각각 한 문장으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q27</span>여러 사건의 독립에 대하여
+  <ol><li>$A_1,\dots,A_n$ 이 쌍별독립이라는 것의 정의를 식으로 쓰라.</li>
+  <li>상호독립이라는 것의 정의를 임의의 부분모임에 대한 식으로 쓰라.</li>
+  <li><span class="mark">★</span>쌍별독립이지만 상호독립이 아닌 예를 하나 들라.</li></ol></div>
+
+<h2 class="sub">E. 확률변수와 분포함수 (2.1–2.2)</h2>
+
+<div class="qrow"><span class="qid">Q28</span>확률변수에 대하여
+  <ol><li>확률변수 $X$ 의 정의를 함수 표기로 쓰라.</li>
+  <li>엄밀한 정의(가측함수 조건)를 식으로 쓰라.</li>
+  <li>확률변수의 세 유형(이산형·연속형·혼합형)을 각각 한 줄로 쓰라.</li>
+  <li><span class="mark">★</span>치역이 구간이면 곧 연속형인지 판단하고, 그 이유를 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q29</span>확률질량함수에 대하여
+  <ol><li>$p_X(x)$ 의 정의를 식으로 쓰라.</li>
+  <li>지지집합 위에서 만족해야 할 <b>두 조건</b>을 각각 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q30</span>확률밀도함수에 대하여
+  <ol><li>$f_X$ 가 만족해야 할 구간확률 식을 쓰라.</li>
+  <li>전체적분 조건을 식으로 쓰라.</li>
+  <li>연속형에서 한 점의 확률 $P(X=x)$ 의 값을 쓰고, $f_X(x)$ 가 확률이 아니라면 무엇인지 설명하라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q31</span>누적분포함수에 대하여
+  <ol><li>$F_X(x)$ 의 정의를 정의역과 함께 식으로 쓰라.</li>
+  <li>어떤 함수 $F$ 가 CDF가 되기 위한 <b>필요충분조건 세 가지</b>를 각각 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q32</span>CDF로부터 다음을 각각 식으로 쓰라.
+  <ol><li>구간확률 $P(a<X\le b)$</li>
+  <li>한 점의 확률(점질량) $P(X=x)$</li>
+  <li>연속형에서 미분가능한 점의 밀도 $f_X(x)$</li></ol></div>
+
+<h2 class="sub">F. 결합·주변·조건부 분포와 독립 (2.3)</h2>
+
+<div class="qrow"><span class="qid">Q33</span>결합분포에 대하여
+  <ol><li>이산형 확률벡터의 결합 PMF $p_{X,Y}(x,y)$ 의 정의를 식으로 쓰라.</li>
+  <li>연속형 확률벡터의 결합 PDF가 만족하는 영역확률 식을 쓰라.</li>
+  <li>결합 CDF $F_{X,Y}(x,y)$ 의 정의를 식으로 쓰라.</li>
+  <li>연속형에서 결합 CDF로부터 결합 PDF를 얻는 식을 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q34</span>주변분포를 구하는 식을 이산형·연속형 각각에 대해 $X$, $Y$ 두 경우 모두 쓰라.</div>
+
+<div class="qrow"><span class="qid">Q35</span>조건부 PMF $p_{Y\mid X}(y\mid x)$ 와 조건부 PDF $f_{Y\mid X}(y\mid x)$ 의 정의를 조건과 함께 각각 식으로 쓰라.</div>
+
+<div class="qrow"><span class="qid">Q36</span>확률변수의 독립에 대하여
+  <ol><li>$X,Y$ 가 독립일 필요충분조건을 PMF와 PDF 각각에 대해 식으로 쓰라.</li>
+  <li><span class="mark">★</span>식이 $g(x)h(y)$ 꼴로 보여도 독립이 아닐 수 있는 경우를 쓰고, 지지집합이 만족해야 할 조건을 쓰라.</li></ol></div>
+
+<h2 class="sub">G. 기대값·분산·공분산 (2.4)</h2>
+
+<div class="qrow"><span class="qid">Q37</span>
+  <ol><li>기대값 $E(X)$ 의 정의를 이산형·연속형으로 나누어 쓰라.</li>
+  <li>기대값이 존재한다는 것의 조건을 식으로 쓰라.</li>
+  <li>LOTUS를 이산형·연속형으로 나누어 식으로 쓰고, 이 정리의 효용을 한 문장으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q38</span>
+  <ol><li>기대값의 선형성을 $n$ 개 확률변수의 일차결합에 대해 식으로 쓰라.</li>
+  <li><span class="mark">★</span>선형성에 독립이 필요한지 판단하고, $E(XY)=E(X)E(Y)$ 는 언제 성립하는지 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q39</span>분산에 대하여
+  <ol><li>$\mathrm{Var}(X)$ 와 표준편차 $\sigma_X$ 의 정의를 각각 식으로 쓰라.</li>
+  <li>분산의 계산식을 쓰고 증명하라.</li>
+  <li>일차변환 $aX+b$ 의 분산 공식을 쓰고 증명하라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q40</span>
+  <ol><li>공분산 $\mathrm{Cov}(X,Y)$ 의 정의와 계산식을 각각 식으로 쓰라.</li>
+  <li>상관계수 $\mathrm{Corr}(X,Y)$ 의 정의를 조건과 함께 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q41</span>합의 분산에 대하여
+  <ol><li>$\mathrm{Var}\!\left(\sum_{i=1}^n X_i\right)$ 의 일반 공식을 식으로 쓰라.</li>
+  <li>서로 독립일 때 어떻게 되는지 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q42</span>무상관과 독립의 관계에 대하여
+  <ol><li>독립과 공분산 $0$ 중 어느 쪽이 더 강한 조건인지 쓰라.</li>
+  <li><span class="mark">★</span>공분산이 $0$ 이지만 독립이 아닌 예를 하나 들라.</li>
+  <li>무상관과 독립이 동치가 되는 분포를 쓰라.</li></ol></div>
+
+<h2 class="sub">H. 조건부 기대값과 분산분해 (2.5)</h2>
+
+<div class="qrow"><span class="qid">Q43</span>
+  <ol><li>조건부 기대값 $E(Y\mid X=x)$ 의 정의를 이산형·연속형으로 나누어 쓰라.</li>
+  <li>$m(x)=E(Y\mid X=x)$ 일 때 $m(X)=E(Y\mid X)$ 가 무엇인지(수인지 확률변수인지) 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q44</span>
+  <ol><li>이중기대값법칙을 식으로 쓰라.</li>
+  <li>$g(X,Y)$ 에 대한 일반형을 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q45</span><span class="mark">★</span>전분산공식을 식으로 쓰고 증명하라.</div>
+
+<div class="qrow"><span class="qid">Q46</span><span class="mark">★</span>집단지표 $G\sim\text{Bernoulli}(\pi)$ 이고 $Y\mid G=0\sim(\mu_0,\sigma_0^2)$, $Y\mid G=1\sim(\mu_1,\sigma_1^2)$ 인 혼합분포에 대하여
+  <ol><li>$E(Y)$ 를 식으로 쓰라.</li>
+  <li>$\mathrm{Var}(Y)$ 를 식으로 쓰고, 마지막 항이 무엇을 뜻하는지 쓰라.</li></ol></div>
+
+<h2 class="sub">I. 확률부등식 (2.6)</h2>
+
+<div class="qrow"><span class="qid">Q47</span>Markov 부등식에 대하여
+  <ol><li>기본형을 조건과 함께 식으로 쓰라.</li>
+  <li>$u(X)\ge 0$ 에 대한 일반형을 식으로 쓰라.</li>
+  <li>지시함수를 이용해 증명하라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q48</span>Chebyshev 부등식에 대하여
+  <ol><li>기본형을 조건과 함께 식으로 쓰라.</li>
+  <li>동치인 하한 형태를 식으로 쓰라.</li>
+  <li>Markov 부등식에서 어떤 확률변수와 어떤 문턱값을 써서 유도하는지 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q49</span>
+  <ol><li>Cauchy–Schwarz 부등식을 조건과 함께 식으로 쓰라.</li>
+  <li>여기서 따라 나오는 상관계수의 성질을 식으로 쓰라.</li></ol></div>
+
+<h2 class="sub">J. 주요 이산형 확률분포 (2.7)</h2>
+
+<div class="qrow"><span class="qid">Q50</span>Bernoulli 분포에 대하여
+  <ol><li>PMF를 지지집합과 함께 식으로 쓰라.</li>
+  <li>평균과 분산을 각각 식으로 쓰라.</li>
+  <li>지시변수 $I_A$ 가 따르는 분포를 모수까지 포함하여 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q51</span>Binomial 분포에 대하여
+  <ol><li>Bernoulli 시행과의 관계를 식으로 쓰라.</li>
+  <li>PMF를 지지집합과 함께 식으로 쓰라.</li>
+  <li>평균과 분산을 각각 식으로 쓰라.</li>
+  <li>$n$ 번 시행에서 적어도 한 번 성공할 확률을 여사건으로 구하여 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q52</span>Poisson 분포에 대하여
+  <ol><li>어떤 상황을 모델링하는지 한 줄로 쓰라.</li>
+  <li>PMF를 지지집합과 함께 식으로 쓰라.</li>
+  <li>평균과 분산을 각각 식으로 쓰라.</li>
+  <li>독립인 $X_i\sim\text{Poisson}(\lambda_i)$ 의 합이 따르는 분포를 식으로 쓰라.</li>
+  <li><span class="mark">★</span>이항분포의 Poisson 근사가 성립하는 조건과 근사식을 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q53</span>Geometric 분포에 대하여
+  <ol><li>$X$ 가 무엇을 세는 확률변수인지 쓰라. (강의노트의 규약을 밝힐 것)</li>
+  <li>PMF를 지지집합과 함께 식으로 쓰라.</li>
+  <li>평균과 분산을 각각 식으로 쓰라.</li>
+  <li><span class="mark">★</span>무기억성 정리를 조건과 함께 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q54</span>Hypergeometric 분포에 대하여
+  <ol><li>모집단 크기·성공개체 수·추출 수를 정하는 추출 상황을 한 줄로 쓰라.</li>
+  <li>PMF를 식으로 쓰라.</li>
+  <li>가능한 $x$ 의 범위를 식으로 쓰라.</li>
+  <li>평균과 분산을 각각 식으로 쓰고, 이항분포와 달리 분산에 곱해지는 인자의 이름과 식을 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q55</span>Negative Binomial 분포에 대하여
+  <ol><li>$X$ 가 무엇을 세는 확률변수인지 쓰라.</li>
+  <li>PMF를 지지집합과 함께 식으로 쓰라.</li>
+  <li>평균과 분산을 각각 식으로 쓰라.</li>
+  <li>$r=1$ 일 때 어떤 분포가 되는지 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q56</span><span class="mark">★</span>이산분포 요약표를 <b>아무것도 보지 않고</b> 복원하라. (분포 · 지지집합 · PMF · 평균 · 분산의 5열, 6개 분포)</div>
+
+<h2 class="sub">K. 주요 연속형 확률분포 (2.8)</h2>
+
+<div class="qrow"><span class="qid">Q57</span>Uniform 분포 $U(a,b)$ 에 대하여
+  <ol><li>PDF를 지지집합과 함께 식으로 쓰라.</li>
+  <li>CDF를 구간별로 나누어 식으로 쓰라.</li>
+  <li>평균과 분산을 각각 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q58</span>Exponential 분포 $\text{Exp}(\lambda)$ 에 대하여
+  <ol><li>어떤 확률과정의 무엇을 나타내는 분포인지 쓰라.</li>
+  <li>PDF를 지지집합과 함께 식으로 쓰라.</li>
+  <li>CDF를 식으로 쓰라.</li>
+  <li>꼬리확률 $P(X>x)$ 를 식으로 쓰라.</li>
+  <li>평균과 분산을 각각 식으로 쓰라.</li>
+  <li><span class="mark">★</span>연속형 무기억성 정리를 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q59</span>Normal 분포 $N(\mu,\sigma^2)$ 에 대하여
+  <ol><li>PDF를 정의역과 함께 식으로 쓰라.</li>
+  <li>평균과 분산을 각각 쓰라.</li>
+  <li>표준화 변수 $Z$ 를 식으로 쓰고 그 분포를 쓰라.</li>
+  <li>$P(a<X<b)$ 를 $\Phi$ 로 나타내는 식을 쓰라.</li>
+  <li><span class="mark">★</span>독립인 정규확률변수들의 선형결합에 관한 정리를 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q60</span><span class="mark">★</span>이변량 정규분포에 대하여
+  <ol><li>평균벡터 $\boldsymbol\mu$ 와 공분산행렬 $\Sigma$ 를 성분으로 쓰라.</li>
+  <li>$|\rho|<1$ 일 때 결합 PDF를 식으로 쓰라.</li>
+  <li>독립성과 $\rho$ 의 관계를 식으로 쓰라.</li>
+  <li>조건부분포 $Y\mid X=x$ 를 평균·분산까지 포함하여 식으로 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q61</span>Gamma 분포에 대하여
+  <ol><li>감마함수 $\Gamma(\alpha)$ 의 정의를 조건과 함께 식으로 쓰라.</li>
+  <li>부분적분으로 얻어지는 점화식과, 양의 정수 $n$ 에 대한 값을 각각 식으로 쓰라.</li>
+  <li>shape $\alpha$, rate $\beta$ 모수화에서 PDF를 지지집합과 함께 식으로 쓰라.</li>
+  <li>평균과 분산을 각각 식으로 쓰라.</li>
+  <li><span class="mark">★</span>rate 모수화와 scale 모수화의 차이를 평균으로 구분하여 쓰라.</li>
+  <li>$\alpha=1$ 일 때, 그리고 $\alpha=\nu/2,\ \beta=1/2$ 일 때 각각 어떤 분포가 되는지 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q62</span>Beta 분포에 대하여
+  <ol><li>베타함수 $B(\alpha,\beta)$ 의 적분 정의와 감마함수와의 관계를 각각 식으로 쓰라.</li>
+  <li>PDF를 지지집합과 함께 식으로 쓰라.</li>
+  <li>평균과 분산을 각각 식으로 쓰라.</li>
+  <li>어떤 양을 모델링하는 데 적합한지 쓰고, $\alpha=\beta=1$ 이면 어떤 분포가 되는지 쓰라.</li></ol></div>
+
+<div class="qrow"><span class="qid">Q63</span><span class="mark">★</span>연속분포 요약표를 <b>아무것도 보지 않고</b> 복원하라. (분포 · 지지집합 · PDF · 평균 · 분산의 5열, 5개 분포)</div>
+
+<!-- ===== 정답 시트 ===== -->
+<div class="answersheet">
+<div class="sheettitle">■ 정답 시트 <span class="en">answer key</span></div>
+
+<h2 class="sub">A. 확률모형과 집합연산</h2>
+
+<div class="ans"><span class="qid">A1.</span>
+  <ol><li>확률실험: 결과를 사전에 완전히 결정할 수 없는 관찰 과정.</li>
+  <li>표본점: 한 번의 실험에서 관찰된 개별 결과 $\omega$.</li>
+  <li>표본공간: 가능한 모든 표본점의 집합 $\Omega$.</li>
+  <li>사건: 표본공간의 부분집합 $A\subseteq\Omega$.</li>
+  <li>결정모형은 입력이 주어지면 결과가 하나로 결정되지만, 확률모형은 동일한 조건에서도 여러 결과가 가능하며 각 결과 또는 사건에 확률을 부여한다.</li></ol></div>
+
+<div class="ans"><span class="qid">A2.</span>
+  <ol><li>고전적 해석: 유한한 등가능 표본공간에서 $P(A)=|A|/|\Omega|$.</li>
+  <li>상대도수 해석: 동일한 실험을 반복할 때 사건의 상대도수의 극한.</li>
+  <li>주관적 해석: 현재 정보에 근거한 불확실성의 정도. 베이지안 추론의 기반.</li>
+  <li>공리적 해석: 확률이 만족해야 할 최소한의 수학적 조건을 제시하는 방식.</li></ol>
+  고전적 정의는 등가능성이 성립하지 않거나 표본공간이 무한하면 직접 적용하기 어렵다.</div>
+
+<div class="ans"><span class="qid">A3.</span>
+  $A\cup B=\{\omega:\omega\in A\ \text{또는}\ \omega\in B\}$,
+  $A\cap B=\{\omega:\omega\in A\ \text{이고}\ \omega\in B\}$,
+  $A^c=\Omega\setminus A$,
+  $A\setminus B=A\cap B^c$.</div>
+
+<div class="ans"><span class="qid">A4.</span>
+  <ol><li>교환: $A\cup B=B\cup A$, $A\cap B=B\cap A$.</li>
+  <li>결합: $(A\cup B)\cup C=A\cup(B\cup C)$, $(A\cap B)\cap C=A\cap(B\cap C)$.</li>
+  <li>분배: $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$, $A\cup(B\cap C)=(A\cup B)\cap(A\cup C)$.</li></ol></div>
+
+<div class="ans"><span class="qid">A5.</span>
+  <ol><li>$(A\cup B)^c=A^c\cap B^c$, $(A\cap B)^c=A^c\cup B^c$.</li>
+  <li>$\left(\bigcup_{i=1}^\infty A_i\right)^c=\bigcap_{i=1}^\infty A_i^c$, $\left(\bigcap_{i=1}^\infty A_i\right)^c=\bigcup_{i=1}^\infty A_i^c$.</li>
+  <li>임의의 $\omega$ 에 대해 $\omega\in(A\cup B)^c\iff\omega\notin A\cup B\iff\omega\notin A$ 이고 $\omega\notin B\iff\omega\in A^c\cap B^c$. 따라서 두 집합의 원소가 정확히 같다.</li></ol></div>
+
+<div class="ans"><span class="qid">A6.</span>
+  <ol><li>$A\cap B=\varnothing$.</li>
+  <li>$i\ne j$ 일 때 $A_i\cap A_j=\varnothing$.</li>
+  <li>$\bigcup_i B_i=\Omega$ 이고 $i\ne j$ 일 때 $B_i\cap B_j=\varnothing$.</li>
+  <li>$A=(A\cap B)\cup(A\cap B^c)$ — 덧셈공식·전확률정리·조건부기대값의 출발점.</li></ol></div>
+
+<div class="ans"><span class="qid">A7.</span>
+  <ol><li>$I_A(\omega)=\begin{cases}1,&\omega\in A,\\ 0,&\omega\notin A.\end{cases}$</li>
+  <li>$I_{A^c}=1-I_A$, $I_{A\cap B}=I_AI_B$, $I_{A\cup B}=I_A+I_B-I_AI_B$, $I_A^2=I_A$.</li>
+  <li>$E(I_A)=P(A)$ — 확률과 기대값을 잇는 관계.</li></ol></div>
+
+<h2 class="sub">B. σ-대수와 확률공리</h2>
+
+<div class="ans"><span class="qid">A8.</span>
+  <ol><li>① $\Omega\in\mathcal F$; ② $A\in\mathcal F\Rightarrow A^c\in\mathcal F$; ③ $A_1,A_2,\dots\in\mathcal F\Rightarrow\bigcup_{i=1}^\infty A_i\in\mathcal F$.</li>
+  <li>$\varnothing\in\mathcal F$ 로 써도 동치이다.</li>
+  <li>여집합과 가산합집합에 닫혀 있으므로 드모르간 법칙에 의해 가산교집합에도 닫혀 있다.</li>
+  <li>가장 작은 것은 $\{\varnothing,\Omega\}$, 유한 표본공간에서 가장 큰 것은 멱집합 $2^\Omega$, 사건 $A$ 하나만 관측 가능할 때는 $\{\varnothing,A,A^c,\Omega\}$.</li>
+  <li>유한 표본공간에서는 모든 부분집합에 확률을 부여해도 문제가 거의 없으나, 비가산 무한 표본공간에서는 모든 부분집합에 길이와 호환되는 확률을 동시에 정의할 수 없다. 그래서 확률을 부여할 사건의 모임을 $\sigma$-대수로 제한한다.</li></ol></div>
+
+<div class="ans"><span class="qid">A9.</span>
+  <ol><li>확률공간은 삼중항 $(\Omega,\mathcal F,P)$ 이다.</li>
+  <li>① 비음성: $P(A)\ge 0$; ② 정규화: $P(\Omega)=1$; ③ 가산가법성: 상호배반인 $A_1,A_2,\dots$ 에 대해 $P\!\left(\bigcup_{i=1}^\infty A_i\right)=\sum_{i=1}^\infty P(A_i)$.</li></ol></div>
+
+<div class="ans"><span class="qid">A10.</span>
+  $P(\varnothing)=0$, $0\le P(A)\le1$, $P(A^c)=1-P(A)$, $A\subseteq B$ 이면 $P(B\setminus A)=P(B)-P(A)$, $P(A\cup B)=P(A)+P(B)-P(A\cap B)$.<br>
+  증명: $\Omega=\Omega\cup\varnothing$ 은 배반합이므로 $1=P(\Omega)=P(\Omega)+P(\varnothing)$ 에서 $P(\varnothing)=0$. 또 $\Omega=A\cup A^c$ 가 배반합이므로 $1=P(A)+P(A^c)$. $A\subseteq B$ 이면 $B=A\cup(B\setminus A)$ 가 배반합이므로 차집합 공식과 단조성이 따라온다. 마지막으로 $A\cup B=A\cup(B\setminus A)$ 를 이용한다.</div>
+
+<div class="ans"><span class="qid">A11.</span>
+  <ol><li>$A\subseteq B\Rightarrow P(A)\le P(B)$.</li>
+  <li>$P(A\cup B\cup C)=P(A)+P(B)+P(C)-P(A\cap B)-P(A\cap C)-P(B\cap C)+P(A\cap B\cap C)$.</li></ol></div>
+
+<div class="ans"><span class="qid">A12.</span>
+  <ol><li>Boole: $P\!\left(\bigcup_{i=1}^\infty A_i\right)\le\sum_{i=1}^\infty P(A_i)$.</li>
+  <li>$P(A\cap B)\ge P(A)+P(B)-1$.</li>
+  <li>$P\!\left(\bigcap_{i=1}^n A_i\right)\ge\sum_{i=1}^n P(A_i)-(n-1)$.</li>
+  <li>$1-P\!\left(\bigcap_{i=1}^n A_i\right)=P\!\left(\bigcup_{i=1}^n A_i^c\right)\le\sum_{i=1}^n P(A_i^c)=n-\sum_{i=1}^n P(A_i)$. 정리하면 원하는 하한을 얻는다.</li></ol></div>
+
+<div class="ans"><span class="qid">A13.</span>
+  <ol><li>$A_1\subseteq A_2\subseteq\cdots$ 이고 $A=\bigcup_{n=1}^\infty A_n$ 이면 $P(A)=\lim_{n\to\infty}P(A_n)$. 표기 $A_n\uparrow A$.</li>
+  <li>$A_1\supseteq A_2\supseteq\cdots$ 이고 $A=\bigcap_{n=1}^\infty A_n$ 이면 $P(A)=\lim_{n\to\infty}P(A_n)$. 표기 $A_n\downarrow A$.</li>
+  <li>$B_1=A_1$, $B_n=A_n\setminus A_{n-1}$ 로 두면 $B_n$ 들이 상호배반이고 $A_n=\bigcup_{k=1}^n B_k$, $A=\bigcup_{k=1}^\infty B_k$ 이다. 가산가법성을 적용한다. 감소사건열은 $A_n^c\uparrow A^c$ 에 증가사건열 결과를 적용한다.</li></ol></div>
+
+<h2 class="sub">C. 경우의 수</h2>
+
+<div class="ans"><span class="qid">A14.</span> 덧셈법칙: 서로 겹치지 않는 선택 방법이 각각 $m,n$ 가지이면 전체 방법은 $m+n$ 가지. 곱셈법칙: 첫 단계가 $m$ 가지이고 각 경우마다 두 번째 단계가 $n$ 가지이면 전체 방법은 $mn$ 가지.</div>
+
+<div class="ans"><span class="qid">A15.</span> $_nP_r=n(n-1)\cdots(n-r+1)=\dfrac{n!}{(n-r)!}$, $\dbinom{n}{r}={}_nC_r=\dfrac{n!}{r!\,(n-r)!}$.</div>
+
+<div class="ans"><span class="qid">A16.</span>
+  <ol><li>$n!$</li><li>$_nP_r$</li><li>$\dbinom{n}{r}$</li><li>$n^r$</li>
+  <li>$\dbinom{n+r-1}{r}$</li><li>$\dfrac{n!}{r_1!\cdots r_k!}$</li></ol></div>
+
+<div class="ans"><span class="qid">A17.</span>
+  <ol><li>$(a+b)^n=\displaystyle\sum_{k=0}^{n}\binom{n}{k}a^kb^{n-k}$.</li>
+  <li>$r_1+\cdots+r_k=n$ 일 때 $(a_1+\cdots+a_k)^n=\displaystyle\sum_{r_1+\cdots+r_k=n}\binom{n}{r_1,\dots,r_k}\prod_{j=1}^{k}a_j^{r_j}$, $\displaystyle\binom{n}{r_1,\dots,r_k}=\frac{n!}{r_1!\cdots r_k!}$.</li></ol></div>
+
+<div class="ans"><span class="qid">A18.</span>
+  $\dbinom{n}{r}=\dbinom{n}{n-r}$, $\dbinom{n}{r}=\dbinom{n-1}{r}+\dbinom{n-1}{r-1}$, $\displaystyle\sum_{r=0}^{n}\binom{n}{r}=2^n$.<br>
+  둘째 식은 특정 원소를 선택하지 않는 경우와 선택하는 경우로 나누어 조합적으로 증명한다. 셋째 식은 $(1+1)^n$ 에 이항정리를 적용한다.</div>
+
+<div class="ans"><span class="qid">A19.</span>
+  <ol><li>$\dbinom{n+k-1}{k-1}$.</li>
+  <li>$y_i=x_i-1$ 로 치환하면 $y_1+\cdots+y_k=n-k,\ y_i\ge0$ 이므로 $\dbinom{n-1}{k-1}$.</li></ol></div>
+
+<h2 class="sub">D. 조건부확률과 독립</h2>
+
+<div class="ans"><span class="qid">A20.</span>
+  <ol><li>$P(B)>0$ 일 때 $P(A\mid B)=\dfrac{P(A\cap B)}{P(B)}$.</li>
+  <li>표본공간을 $\Omega$ 에서 $B$ 로 축소하고 다시 정규화한 확률이다. 고정된 $B$ 에 대해 $P(\cdot\mid B)$ 는 확률공리를 만족한다.</li></ol></div>
+
+<div class="ans"><span class="qid">A21.</span>
+  <ol><li>$P(A\cap B)=P(A\mid B)P(B)=P(B\mid A)P(A)$.</li>
+  <li>$P\!\left(\bigcap_{i=1}^n A_i\right)=P(A_1)\displaystyle\prod_{i=2}^n P(A_i\mid A_1\cap\cdots\cap A_{i-1})$.</li></ol></div>
+
+<div class="ans"><span class="qid">A22.</span> $B_1,B_2,\dots$ 가 표본공간의 분할이고 $P(B_i)>0$ 이면 $P(A)=\displaystyle\sum_i P(A\mid B_i)P(B_i)$.<br>
+  증명: $A=\bigcup_i(A\cap B_i)$ 이고 이 합집합은 상호배반이다. 따라서 $P(A)=\sum_i P(A\cap B_i)=\sum_i P(A\mid B_i)P(B_i)$.</div>
+
+<div class="ans"><span class="qid">A23.</span> 분할 $B_1,B_2,\dots$ 와 $P(A)>0$ 에 대해
+  $P(B_j\mid A)=\dfrac{P(A\mid B_j)P(B_j)}{\sum_i P(A\mid B_i)P(B_i)}$.<br>
+  분자는 “해당 원인 $B_j$ 와 관측결과 $A$ 가 함께 발생”하는 확률이고, 분모는 가능한 모든 원인에서 관측결과가 발생하는 확률의 합이다.</div>
+
+<div class="ans"><span class="qid">A24.</span>
+  <ol><li>$P(A\cap B)=P(A)P(B)$ 이면 독립이며 $A\perp\!\!\!\perp B$ 로 표기한다.</li>
+  <li>$P(B)>0$ 이면 $A\perp\!\!\!\perp B\iff P(A\mid B)=P(A)$, 즉 $B$ 의 발생 여부가 $A$ 의 확률을 바꾸지 않는다.</li></ol></div>
+
+<div class="ans"><span class="qid">A25.</span> $A\perp\!\!\!\perp B$ 이면 $A^c\perp\!\!\!\perp B$, $A\perp\!\!\!\perp B^c$, $A^c\perp\!\!\!\perp B^c$.<br>
+  증명: $P(A\cap B^c)=P(A)-P(A\cap B)=P(A)-P(A)P(B)=P(A)P(B^c)$. 다른 경우도 같은 방식으로 보인다.</div>
+
+<div class="ans"><span class="qid">A26.</span>
+  <ol><li>$P(A\cap B)=0$.</li>
+  <li>두 확률이 모두 양수라면 $P(A)P(B)>0$ 인데 $P(A\cap B)=0$ 이므로 독립일 수 없다.</li>
+  <li>배반은 “동시에 발생할 수 없음”, 독립은 “한 사건이 다른 사건의 확률을 바꾸지 않음”.</li></ol></div>
+
+<div class="ans"><span class="qid">A27.</span>
+  <ol><li>모든 쌍에 대해 $P(A_i\cap A_j)=P(A_i)P(A_j)$.</li>
+  <li>임의의 부분모임 $i_1,\dots,i_k$ 에 대해 $P\!\left(\bigcap_{r=1}^k A_{i_r}\right)=\prod_{r=1}^k P(A_{i_r})$.</li>
+  <li>공정한 동전을 두 번 던지고 $A=\{HH,HT\}$, $B=\{HH,TH\}$, $C=\{HH,TT\}$. 각 확률이 $1/2$, 각 두 사건의 교집합 확률이 $1/4$ 이므로 쌍별독립이지만, $P(A\cap B\cap C)=P(\{HH\})=\tfrac14\ne\tfrac18=P(A)P(B)P(C)$ 이므로 상호독립은 아니다.</li></ol></div>
+
+<h2 class="sub">E. 확률변수와 분포함수</h2>
+
+<div class="ans"><span class="qid">A28.</span>
+  <ol><li>$X:\Omega\to\mathbb R$ — 표본공간의 각 결과를 실수에 대응시키는 함수.</li>
+  <li>모든 $x\in\mathbb R$ 에 대해 $\{\omega:X(\omega)\le x\}\in\mathcal F$ 를 만족하는 가측함수.</li>
+  <li>이산형: 가능한 값의 집합이 유한 또는 가산무한. 연속형: 확률이 어떤 밀도함수의 적분으로 표현됨. 혼합형: 특정 점에 양의 확률을 가지면서 연속 부분도 존재.</li>
+  <li>아니다. 칸토어 분포처럼 밀도함수가 없는 연속분포도 있으므로, 입문 수리통계학에서는 대부분 PDF를 갖는 절대연속 확률변수를 “연속형”이라 부른다.</li></ol></div>
+
+<div class="ans"><span class="qid">A29.</span>
+  <ol><li>$p_X(x)=P(X=x)$.</li>
+  <li>$p_X(x)\ge0$ (지지집합 위에서), $\displaystyle\sum_{x\in\mathrm{supp}(X)}p_X(x)=1$.</li></ol></div>
+
+<div class="ans"><span class="qid">A30.</span>
+  <ol><li>$P(a<X\le b)=\displaystyle\int_a^b f_X(x)\,dx$ 를 만족하는 비음함수.</li>
+  <li>$\displaystyle\int_{-\infty}^{\infty}f_X(x)\,dx=1$.</li>
+  <li>$P(X=x)=0$. $f_X(x)$ 는 확률 자체가 아니라, 밀도의 높이로서 작은 구간의 확률을 근사하는 값이다.</li></ol></div>
+
+<div class="ans"><span class="qid">A31.</span>
+  <ol><li>$F_X(x)=P(X\le x),\ x\in\mathbb R$.</li>
+  <li>① $F$ 는 단조 비감소; ② $F$ 는 우연속; ③ $\lim_{x\to-\infty}F(x)=0,\ \lim_{x\to\infty}F(x)=1$.</li></ol></div>
+
+<div class="ans"><span class="qid">A32.</span>
+  <ol><li>$P(a<X\le b)=F_X(b)-F_X(a)$.</li>
+  <li>$P(X=x)=F_X(x)-F_X(x^-)$ (CDF의 점프 크기).</li>
+  <li>$f_X(x)=F_X'(x)$.</li></ol></div>
+
+<h2 class="sub">F. 결합·주변·조건부 분포와 독립</h2>
+
+<div class="ans"><span class="qid">A33.</span>
+  <ol><li>$p_{X,Y}(x,y)=P(X=x,\,Y=y)$.</li>
+  <li>영역 $A\subset\mathbb R^2$ 에 대해 $P((X,Y)\in A)=\displaystyle\iint_A f_{X,Y}(x,y)\,dx\,dy$.</li>
+  <li>$F_{X,Y}(x,y)=P(X\le x,\,Y\le y)$.</li>
+  <li>$f_{X,Y}(x,y)=\dfrac{\partial^2}{\partial x\,\partial y}F_{X,Y}(x,y)$.</li></ol></div>
+
+<div class="ans"><span class="qid">A34.</span>
+  $p_X(x)=\displaystyle\sum_y p_{X,Y}(x,y)$, $p_Y(y)=\displaystyle\sum_x p_{X,Y}(x,y)$;
+  $f_X(x)=\displaystyle\int_{-\infty}^{\infty}f_{X,Y}(x,y)\,dy$, $f_Y(y)=\displaystyle\int_{-\infty}^{\infty}f_{X,Y}(x,y)\,dx$.<br>
+  적분구간은 공식으로 자동 결정되지 않으므로, 결합 지지집합을 그린 뒤 고정한 변수에 따라 다른 변수의 범위를 읽어야 한다.</div>
+
+<div class="ans"><span class="qid">A35.</span> 분모가 양수일 때
+  $p_{Y\mid X}(y\mid x)=\dfrac{p_{X,Y}(x,y)}{p_X(x)}$, $f_{Y\mid X}(y\mid x)=\dfrac{f_{X,Y}(x,y)}{f_X(x)}$.</div>
+
+<div class="ans"><span class="qid">A36.</span>
+  <ol><li>모든 지지집합에서 $p_{X,Y}(x,y)=p_X(x)p_Y(y)$ 또는 $f_{X,Y}(x,y)=f_X(x)f_Y(y)$.</li>
+  <li>결합밀도의 대수식이 $g(x)h(y)$ 로 보이더라도 지지집합이 삼각형 $\{0<y<x<1\}$ 처럼 $x$ 와 $y$ 를 함께 묶으면 독립이 아니다. 독립이면 결합 지지집합도 본질적으로 주변 지지집합의 데카르트 곱이어야 한다.</li></ol></div>
+
+<h2 class="sub">G. 기대값·분산·공분산</h2>
+
+<div class="ans"><span class="qid">A37.</span>
+  <ol><li>$E(X)=\displaystyle\sum_x x\,p_X(x)$ (이산형), $E(X)=\displaystyle\int_{-\infty}^{\infty}xf_X(x)\,dx$ (연속형).</li>
+  <li>$E|X|<\infty$ 일 때 기대값이 존재한다고 한다.</li>
+  <li>$E[g(X)]=\displaystyle\sum_x g(x)p_X(x)$ 또는 $\displaystyle\int_{-\infty}^{\infty}g(x)f_X(x)\,dx$. $Y=g(X)$ 의 분포를 먼저 구할 필요가 없다.</li></ol></div>
+
+<div class="ans"><span class="qid">A38.</span>
+  <ol><li>독립 여부와 관계없이 $E\!\left(\sum_{i=1}^n a_iX_i+b\right)=\sum_{i=1}^n a_iE(X_i)+b$.</li>
+  <li>선형성에 독립은 필요 없다. $E(X+Y)=E(X)+E(Y)$ 는 항상 성립한다. 반면 $E(XY)=E(X)E(Y)$ 는 일반적으로 성립하지 않으며, 독립이면 성립한다.</li></ol></div>
+
+<div class="ans"><span class="qid">A39.</span>
+  <ol><li>$\mathrm{Var}(X)=E[(X-EX)^2]$, $\sigma_X=\sqrt{\mathrm{Var}(X)}$.</li>
+  <li>$\mathrm{Var}(X)=E(X^2)-[E(X)]^2$. 증명: $\mu=E(X)$ 라 하면 $E[(X-\mu)^2]=E(X^2)-2\mu E(X)+\mu^2=E(X^2)-\mu^2$.</li>
+  <li>$\mathrm{Var}(aX+b)=a^2\mathrm{Var}(X)$. 증명: $aX+b-E(aX+b)=a(X-EX)$ 를 제곱하여 기대값을 취한다.</li></ol></div>
+
+<div class="ans"><span class="qid">A40.</span>
+  <ol><li>$\mathrm{Cov}(X,Y)=E[(X-EX)(Y-EY)]=E(XY)-E(X)E(Y)$.</li>
+  <li>$\sigma_X\sigma_Y>0$ 일 때 $\mathrm{Corr}(X,Y)=\dfrac{\mathrm{Cov}(X,Y)}{\sigma_X\sigma_Y}$.</li></ol></div>
+
+<div class="ans"><span class="qid">A41.</span>
+  <ol><li>$\mathrm{Var}\!\left(\sum_{i=1}^n X_i\right)=\sum_{i=1}^n\mathrm{Var}(X_i)+2\sum_{i<j}\mathrm{Cov}(X_i,X_j)$.</li>
+  <li>서로 독립이면 모든 공분산이 $0$ 이므로 $\mathrm{Var}\!\left(\sum_{i=1}^n X_i\right)=\sum_{i=1}^n\mathrm{Var}(X_i)$.</li></ol></div>
+
+<div class="ans"><span class="qid">A42.</span>
+  <ol><li>독립이 더 강하다. 독립이면 공분산이 $0$ 이지만 역은 일반적으로 거짓이다.</li>
+  <li>$X$ 가 원점대칭 분포이고 $Y=X^2$ 이면 $\mathrm{Cov}(X,Y)=E(X^3)=0$ 일 수 있지만 $Y$ 는 $X$ 에 의해 완전히 결정된다.</li>
+  <li>결합 정규분포에서는 무상관과 독립이 동치이다.</li></ol></div>
+
+<h2 class="sub">H. 조건부 기대값과 분산분해</h2>
+
+<div class="ans"><span class="qid">A43.</span>
+  <ol><li>$E(Y\mid X=x)=\displaystyle\sum_y y\,p_{Y\mid X}(y\mid x)$ 또는 $\displaystyle\int_{-\infty}^{\infty}yf_{Y\mid X}(y\mid x)\,dy$.</li>
+  <li>$m(x)=E(Y\mid X=x)$ 는 $x$ 의 함수이고, 여기에 $X$ 를 대입한 $m(X)=E(Y\mid X)$ 는 확률변수이다.</li></ol></div>
+
+<div class="ans"><span class="qid">A44.</span>
+  <ol><li>$E[E(Y\mid X)]=E(Y)$.</li>
+  <li>$E[g(X,Y)]=E_X\{E[g(X,Y)\mid X]\}$.</li></ol></div>
+
+<div class="ans"><span class="qid">A45.</span> $\mathrm{Var}(Y)=E[\mathrm{Var}(Y\mid X)]+\mathrm{Var}[E(Y\mid X)]$.<br>
+  증명: $E[\mathrm{Var}(Y\mid X)]=E\{E(Y^2\mid X)-[E(Y\mid X)]^2\}=E(Y^2)-E\{[E(Y\mid X)]^2\}$. 여기에 $\mathrm{Var}[E(Y\mid X)]=E\{[E(Y\mid X)]^2\}-[E(Y)]^2$ 를 더하면 $E(Y^2)-[E(Y)]^2=\mathrm{Var}(Y)$ 가 된다.</div>
+
+<div class="ans"><span class="qid">A46.</span>
+  <ol><li>$E(Y)=(1-\pi)\mu_0+\pi\mu_1$.</li>
+  <li>$\mathrm{Var}(Y)=(1-\pi)\sigma_0^2+\pi\sigma_1^2+\pi(1-\pi)(\mu_1-\mu_0)^2$. 마지막 항은 집단평균의 차이에서 생기는 집단 간 변동이다.</li></ol></div>
+
+<h2 class="sub">I. 확률부등식</h2>
+
+<div class="ans"><span class="qid">A47.</span>
+  <ol><li>$X\ge0$ 이고 $a>0$ 이면 $P(X\ge a)\le\dfrac{E(X)}{a}$.</li>
+  <li>$u(X)\ge0$ 이면 $P(u(X)\ge a)\le\dfrac{E[u(X)]}{a}$.</li>
+  <li>점별로 $I_{\{X\ge a\}}\le X/a$ 이다. 양변에 기대값을 취하면 $P(X\ge a)=E[I_{\{X\ge a\}}]\le E(X)/a$.</li></ol></div>
+
+<div class="ans"><span class="qid">A48.</span>
+  <ol><li>평균 $\mu$ 와 유한한 분산 $\sigma^2$ 를 갖는 $X$ 에 대해 $P(|X-\mu|\ge k\sigma)\le\dfrac{1}{k^2},\ k>0$.</li>
+  <li>$P(|X-\mu|<k\sigma)\ge1-\dfrac{1}{k^2}$.</li>
+  <li>Markov 부등식을 비음 확률변수 $(X-\mu)^2$ 와 문턱값 $k^2\sigma^2$ 에 적용한다.</li></ol></div>
+
+<div class="ans"><span class="qid">A49.</span>
+  <ol><li>$E(X^2),E(Y^2)<\infty$ 이면 $|E(XY)|^2\le E(X^2)E(Y^2)$.</li>
+  <li>$|\mathrm{Corr}(X,Y)|\le1$.</li></ol></div>
+
+<h2 class="sub">J. 주요 이산형 확률분포</h2>
+
+<div class="ans"><span class="qid">A50.</span>
+  <ol><li>$P(X=x)=p^x(1-p)^{1-x},\ x\in\{0,1\}$.</li>
+  <li>$E(X)=p$, $\mathrm{Var}(X)=p(1-p)$.</li>
+  <li>$I_A\sim\text{Bernoulli}(P(A))$.</li></ol></div>
+
+<div class="ans"><span class="qid">A51.</span>
+  <ol><li>서로 독립인 동일한 Bernoulli 시행 $X_1,\dots,X_n$ 의 성공횟수 $X=\sum_{i=1}^n X_i\sim\text{Binomial}(n,p)$.</li>
+  <li>$P(X=x)=\dbinom{n}{x}p^x(1-p)^{n-x},\ x=0,\dots,n$.</li>
+  <li>$E(X)=np$, $\mathrm{Var}(X)=np(1-p)$.</li>
+  <li>$P(X\ge1)=1-P(X=0)=1-(1-p)^n$.</li></ol></div>
+
+<div class="ans"><span class="qid">A52.</span>
+  <ol><li>단위구간에서 평균적으로 $\lambda$ 번 발생하는 희귀사건의 횟수를 모델링한다.</li>
+  <li>$P(X=x)=e^{-\lambda}\dfrac{\lambda^x}{x!},\ x=0,1,\dots$</li>
+  <li>$E(X)=\mathrm{Var}(X)=\lambda$.</li>
+  <li>독립인 $X_i\sim\text{Poisson}(\lambda_i)$ 에 대해 $\sum_i X_i\sim\text{Poisson}\!\left(\sum_i\lambda_i\right)$.</li>
+  <li>$n$ 이 크고 $p$ 가 작으며 $np=\lambda$ 가 중간 크기이면 $\text{Binomial}(n,p)\approx\text{Poisson}(np)$. 근사에서는 지지집합의 차이와 꼬리확률의 오차를 함께 인식한다.</li></ol></div>
+
+<div class="ans"><span class="qid">A53.</span>
+  <ol><li>처음 성공할 때까지 필요한 시행횟수. 강의노트에서는 “성공 전 실패 횟수”가 아니라 “성공을 포함한 시행횟수”를 쓴다.</li>
+  <li>$P(X=x)=(1-p)^{x-1}p,\ x=1,2,\dots$</li>
+  <li>$E(X)=\dfrac1p$, $\mathrm{Var}(X)=\dfrac{1-p}{p^2}$.</li>
+  <li>무기억성: $P(X>s+t\mid X>s)=P(X>t),\ s,t\in\{0,1,\dots\}$.</li></ol></div>
+
+<div class="ans"><span class="qid">A54.</span>
+  <ol><li>크기 $N$ 인 유한 모집단에 성공개체가 $K$ 개 있고, 비복원으로 $n$ 개를 추출할 때의 성공 개수.</li>
+  <li>$P(X=x)=\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}$.</li>
+  <li>$\max(0,\,n-N+K)\le x\le\min(n,K)$.</li>
+  <li>$E(X)=\dfrac{nK}{N}$, $\mathrm{Var}(X)=n\dfrac{K}{N}\!\left(1-\dfrac{K}{N}\right)\dfrac{N-n}{N-1}$. 이항분포와 달리 시행들이 독립이 아니며, 분산에 유한모집단 수정 $\dfrac{N-n}{N-1}$ 이 포함된다.</li></ol></div>
+
+<div class="ans"><span class="qid">A55.</span>
+  <ol><li>$r$ 번째 성공이 나올 때까지 필요한 총 시행횟수.</li>
+  <li>$P(X=x)=\dbinom{x-1}{r-1}p^r(1-p)^{x-r},\ x=r,r+1,\dots$</li>
+  <li>$E(X)=\dfrac rp$, $\mathrm{Var}(X)=\dfrac{r(1-p)}{p^2}$.</li>
+  <li>$r=1$ 이면 Geometric 분포.</li></ol></div>
+
+<div class="ans"><span class="qid">A56.</span>
+<table>
+<thead><tr><th>분포</th><th>지지집합</th><th>PMF</th><th>평균</th><th>분산</th></tr></thead>
+<tbody>
+<tr><td>Bernoulli$(p)$</td><td>$0,1$</td><td>$p^x(1-p)^{1-x}$</td><td>$p$</td><td>$p(1-p)$</td></tr>
+<tr><td>Binomial$(n,p)$</td><td>$0,\dots,n$</td><td>$\binom{n}{x}p^x(1-p)^{n-x}$</td><td>$np$</td><td>$np(1-p)$</td></tr>
+<tr><td>Poisson$(\lambda)$</td><td>$0,1,\dots$</td><td>$e^{-\lambda}\lambda^x/x!$</td><td>$\lambda$</td><td>$\lambda$</td></tr>
+<tr><td>Geometric$(p)$</td><td>$1,2,\dots$</td><td>$(1-p)^{x-1}p$</td><td>$1/p$</td><td>$(1-p)/p^2$</td></tr>
+<tr><td>Hypergeo.$(N,K,n)$</td><td>$\max(0,n{-}N{+}K)\le x\le\min(n,K)$</td><td>$\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}$</td><td>$nK/N$</td><td>$n\frac{K}{N}\!\left(1-\frac{K}{N}\right)\!\frac{N-n}{N-1}$</td></tr>
+<tr><td>NegBin$(r,p)$</td><td>$r,r+1,\dots$</td><td>$\binom{x-1}{r-1}p^r(1-p)^{x-r}$</td><td>$r/p$</td><td>$r(1-p)/p^2$</td></tr>
+</tbody></table></div>
+
+<h2 class="sub">K. 주요 연속형 확률분포</h2>
+
+<div class="ans"><span class="qid">A57.</span>
+  <ol><li>$f(x)=\dfrac{1}{b-a},\ a<x<b$.</li>
+  <li>$F(x)=\begin{cases}0,&x\le a,\\[2pt] \dfrac{x-a}{b-a},&a<x<b,\\[4pt] 1,&x\ge b.\end{cases}$</li>
+  <li>$E(X)=\dfrac{a+b}{2}$, $\mathrm{Var}(X)=\dfrac{(b-a)^2}{12}$.</li></ol></div>
+
+<div class="ans"><span class="qid">A58.</span>
+  <ol><li>발생률이 $\lambda$ 인 Poisson 과정에서 첫 사건까지의 대기시간.</li>
+  <li>$f(x)=\lambda e^{-\lambda x},\ x>0$.</li>
+  <li>$F(x)=1-e^{-\lambda x}$.</li>
+  <li>$P(X>x)=e^{-\lambda x}$.</li>
+  <li>$E(X)=\dfrac1\lambda$, $\mathrm{Var}(X)=\dfrac{1}{\lambda^2}$.</li>
+  <li>연속형 무기억성: $X\sim\text{Exp}(\lambda)$ 이면 $P(X>s+t\mid X>s)=P(X>t)$.</li></ol></div>
+
+<div class="ans"><span class="qid">A59.</span>
+  <ol><li>$f(x)=\dfrac{1}{\sqrt{2\pi}\,\sigma}\exp\!\left(-\dfrac{(x-\mu)^2}{2\sigma^2}\right),\ -\infty<x<\infty$.</li>
+  <li>$E(X)=\mu$, $\mathrm{Var}(X)=\sigma^2$.</li>
+  <li>$Z=\dfrac{X-\mu}{\sigma}\sim N(0,1)$.</li>
+  <li>$P(a<X<b)=\Phi\!\left(\dfrac{b-\mu}{\sigma}\right)-\Phi\!\left(\dfrac{a-\mu}{\sigma}\right)$.</li>
+  <li>서로 독립인 $X_i\sim N(\mu_i,\sigma_i^2)$ 에 대해 $\displaystyle\sum_{i=1}^n a_iX_i\sim N\!\left(\sum_{i=1}^n a_i\mu_i,\ \sum_{i=1}^n a_i^2\sigma_i^2\right)$.</li></ol></div>
+
+<div class="ans"><span class="qid">A60.</span>
+  <ol><li>$\boldsymbol\mu=\begin{pmatrix}\mu_X\\ \mu_Y\end{pmatrix}$, $\Sigma=\begin{pmatrix}\sigma_X^2&\rho\sigma_X\sigma_Y\\ \rho\sigma_X\sigma_Y&\sigma_Y^2\end{pmatrix}$.</li>
+  <li>$\dfrac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\!\left\{-\dfrac{1}{2(1-\rho^2)}\!\left[\dfrac{(x-\mu_X)^2}{\sigma_X^2}-\dfrac{2\rho(x-\mu_X)(y-\mu_Y)}{\sigma_X\sigma_Y}+\dfrac{(y-\mu_Y)^2}{\sigma_Y^2}\right]\right\}$.</li>
+  <li>$X\perp\!\!\!\perp Y\iff\rho=0$.</li>
+  <li>$Y\mid X=x\sim N\!\left(\mu_Y+\rho\dfrac{\sigma_Y}{\sigma_X}(x-\mu_X),\ \sigma_Y^2(1-\rho^2)\right)$.</li></ol></div>
+
+<div class="ans"><span class="qid">A61.</span>
+  <ol><li>$\Gamma(\alpha)=\displaystyle\int_0^\infty x^{\alpha-1}e^{-x}\,dx,\ \alpha>0$.</li>
+  <li>$\Gamma(\alpha+1)=\alpha\Gamma(\alpha)$; 양의 정수 $n$ 에 대해 $\Gamma(n)=(n-1)!$.</li>
+  <li>$f(x)=\dfrac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x},\ x>0$ — 이를 $\text{Gamma}(\alpha,\beta)$ 로 표기한다.</li>
+  <li>$E(X)=\dfrac{\alpha}{\beta}$, $\mathrm{Var}(X)=\dfrac{\alpha}{\beta^2}$.</li>
+  <li>교재·소프트웨어에 따라 두 번째 모수를 rate $\beta$ 대신 scale $\theta=1/\beta$ 로 쓴다. rate 모수화에서는 평균이 $\alpha/\beta$, scale 모수화에서는 평균이 $\alpha\theta$ 이다. 반드시 PDF를 확인한다.</li>
+  <li>$\alpha=1$ 이면 $\text{Exp}(\beta)$, $\alpha=\nu/2,\ \beta=1/2$ 이면 자유도 $\nu$ 인 카이제곱분포.</li></ol></div>
+
+<div class="ans"><span class="qid">A62.</span>
+  <ol><li>$B(\alpha,\beta)=\displaystyle\int_0^1 x^{\alpha-1}(1-x)^{\beta-1}dx=\dfrac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$.</li>
+  <li>$f(x)=\dfrac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)},\ 0<x<1$.</li>
+  <li>$E(X)=\dfrac{\alpha}{\alpha+\beta}$, $\mathrm{Var}(X)=\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$.</li>
+  <li>확률·비율·성공확률처럼 $(0,1)$ 범위의 양을 모델링하는 데 적합하다. $\alpha=\beta=1$ 이면 $U(0,1)$.</li></ol></div>
+
+<div class="ans"><span class="qid">A63.</span>
+<table>
+<thead><tr><th>분포</th><th>지지집합</th><th>PDF</th><th>평균</th><th>분산</th></tr></thead>
+<tbody>
+<tr><td>Uniform$(a,b)$</td><td>$a<x<b$</td><td>$1/(b-a)$</td><td>$(a+b)/2$</td><td>$(b-a)^2/12$</td></tr>
+<tr><td>Exponential$(\lambda)$</td><td>$x>0$</td><td>$\lambda e^{-\lambda x}$</td><td>$1/\lambda$</td><td>$1/\lambda^2$</td></tr>
+<tr><td>Normal$(\mu,\sigma^2)$</td><td>$\mathbb R$</td><td>$\dfrac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/(2\sigma^2)}$</td><td>$\mu$</td><td>$\sigma^2$</td></tr>
+<tr><td>Gamma$(\alpha,\beta)$</td><td>$x>0$</td><td>$\dfrac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}$</td><td>$\alpha/\beta$</td><td>$\alpha/\beta^2$</td></tr>
+<tr><td>Beta$(\alpha,\beta)$</td><td>$0<x<1$</td><td>$\dfrac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$</td><td>$\dfrac{\alpha}{\alpha+\beta}$</td><td>$\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$</td></tr>
+</tbody></table></div>
+
+</div>
+
+<nav class="pager">
+  <a href="index.html">← 목차<small>수리통계학</small></a>
+  <a class="next" href="ch02/2-quiz.html">다음 →<small>2장 증명·정리 퀴즈</small></a>
+</nav>
+
+</body>
+</html>
