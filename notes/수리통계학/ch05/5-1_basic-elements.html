@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5장 · 5.1 검정의 기본 요소</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">수리통계학 · 5장 가설검정</div>
+  <h1><span class="no">5.1</span>검정의 기본 요소 <span class="en">basic elements of a test</span></h1>
+</header>
+
+<div class="note">
+  통계적 추론은 <a href="../ch04/4-1_method-of-moments.html">앞 장에서 다루었던 추정문제</a>와 이 장에서 다룰
+  <b>가설검정</b><span class="en">hypothesis testing</span>의 문제로 나누어진다.
+  추정이론에서는 가능한 모수의 값(또는 값들)을 제공하는 데에 목적이 있었지만,
+  검정이론에서는 모집단의 성질에 대한 어떤 가설을 <b>받아들일 것인지 아니면 기각할 것인지를 결정</b>하는 데에
+  목적이 있다. 이 장에서도 확률밀도함수 $f(x;\theta)$ 로부터 랜덤표본 $X_1,X_2,\dots,X_n$ 을 얻는 경우를 주로
+  고려하며, 검정의 대상이 되는 통계적 가설은 표본이 추출된 모집단의 분포에 관한 것이 된다.
+</div>
+
+<!-- ================= 통계적 가설 ================= -->
+<h2 class="sub">통계적 가설 <span class="en">statistical hypothesis</span></h2>
+<div class="box def">
+  <span class="tag">정의 5.1</span><span class="title">통계적 가설 · 단순가설 · 복합가설</span>
+  <ul class="props">
+    <li><b>통계적 가설</b><span class="en">statistical hypothesis</span>: 관심 있는 모집단의 성질에 대한
+      단정이나 추측 등의 표현<span class="en">statement</span>. 흔히 모집단의 성질을 나타내는
+      확률변수의 분포에 대한 표현으로 나타난다.</li>
+    <li><b>단순가설</b><span class="en">simple hypothesis</span>: 어떤 가설이 <b>확률분포를 완전히 결정</b>하는 경우.</li>
+    <li><b>복합가설</b><span class="en">composite hypothesis</span>: 그렇지 않은 경우.</li>
+  </ul>
+</div>
+<div class="box ex">
+  <span class="tag">예 5.1</span><span class="title">단순가설과 복합가설</span>
+  <p>$X_1,X_2,\dots,X_n$ 이 $N(\mu,\sigma^2)$ 으로부터 구한 랜덤표본이라고 하고, 모분포의 성격을 표시하는
+  모수벡터 $(\mu,\sigma^2)$ 에 대한 가설을 고려해 보자.</p>
+  <ul class="props">
+    <li>$(\mu,\sigma^2)=(0,1)$ — 이 가설이 참이면 모집단의 분포가 $N(0,1)$ 로 <b>완전히 결정</b>되므로 단순가설이다.</li>
+    <li>$\mu\gt\mu_0$ — 참이라고 가정하더라도 모수가 여전히 여러 값을 가질 수 있어 모집단의 분포가
+      하나로 결정되지 않으므로 <b>복합가설</b>이다.</li>
+  </ul>
+</div>
+
+<!-- ================= 귀무가설과 대립가설 ================= -->
+<h2 class="sub">귀무가설과 대립가설 <span class="en">null hypothesis and alternative hypothesis</span></h2>
+<div class="box def">
+  <span class="tag">정의</span><span class="title">$H_0$ 와 $H_1$</span>
+  <p>통계적 가설검정에는 언제나 두 개의 상반되는 가설이 등장한다.</p>
+  <ul class="props">
+    <li><b>귀무가설</b><span class="en">null hypothesis</span> $H_0$: 지금까지 알려져 있는 사실 또는 주장으로서,
+      특별한 사유가 없다면 일반적으로 받아들이게 되는 가설.</li>
+    <li><b>대립가설</b><span class="en">alternative hypothesis</span> $H_1$: 지금까지 알려져 있는 것과 다른 주장으로서,
+      이를 뒷받침할 <b>증거가 있어야만</b> 받아들이게 되는 가설.</li>
+  </ul>
+</div>
+<div class="note">
+  통계실험이나 관찰의 목적은 새로운 사실을 입증할 통계적 증거를 찾는 것이므로, <b>실험자가 보이고자 하는 바가
+  대립가설</b>이 된다. 즉 기존의 사실을 $H_0$ 로 두고 연구가설을 $H_1$ 로 택하여, <b>$H_0$ 를 기각할 만한
+  증거가 있는지</b>를 자료에 근거하여 찾아보는 것이 일반적인 방법이다.
+</div>
+<div class="note">
+  두 가설은 처음 설정에서부터 <b>비대칭적</b>이다. 충분한 반증을 찾기 전까지는 $H_0$ 가 참이라고 가정한다.
+  따라서 "$H_0$ 를 기각하지 못했다"는 것은 <b>$H_0$ 가 맞다는 증거를 찾았다는 뜻이 아니라</b>
+  $H_0$ 가 틀렸다는 충분한 증거를 찾지 못했다는 뜻이다. 기각하지 못하면 기존의 상태로 <b>되돌아간다</b>는
+  의미에서 '귀무(歸無)'가설이라는 용어를 쓴다.
+</div>
+
+<!-- ================= 검정통계량과 기각영역 ================= -->
+<h2 class="sub">검정통계량과 기각영역 <span class="en">test statistic and rejection region</span></h2>
+<div class="box def">
+  <span class="tag">정의</span><span class="title">검정통계량 · 기각영역</span>
+  <ul class="props">
+    <li><b>검정통계량</b><span class="en">test statistic</span>: 주어진 랜덤표본 $X_1,X_2,\dots,X_n$ 에 근거하여
+      통계적 가설에 대한 증거를 살펴볼 때 사용되는 통계량.</li>
+    <li><b>기각영역</b><span class="en">rejection region 또는 critical region</span>: 귀무가설을 기각하게 되는
+      검정통계량의 값을 가지는 <b>표본공간의 부분집합</b> $C$.</li>
+  </ul>
+</div>
+<div class="box ex">
+  <span class="tag">예 5.2</span><span class="title">정규모집단 모평균에 대한 단순가설</span>
+  <p>$X_1,X_2,\dots,X_{25}$ 가 $N(\mu,10^2)$ 으로부터 구한 랜덤표본이라 하고</p>
+  $$H_0:\mu=100\qquad\text{대}\qquad H_1:\mu=105$$
+  <p>를 고려해 보자. 이 두 가설은 <b>모두 단순가설</b>이다. 검정통계량으로는 모평균 $\mu$ 에 대한
+  <a href="../ch04/4-4_mvue.html">완비 충분통계량</a>이며
+  <a href="../ch04/4-2_maximum-likelihood.html">최대가능도추정량</a>·
+  <a href="../ch04/4-1_method-of-moments.html">적률추정량</a>·최소분산 비편향추정량인 $\overline X_{25}$ 를 쓰고,
+  기각영역으로는 표본공간의 부분집합</p>
+  $$C=\big\{(x_1,x_2,\dots,x_{25}):\ \bar x_{25}\ge c\big\}\qquad(c\ \text{는 상수})$$
+  <p>를 생각할 수 있다. 대립가설의 모평균 값이 귀무가설의 모평균 값보다 <b>크므로</b>, 표본평균이 클 때
+  귀무가설을 기각하는 것이 합리적이다. 기각영역은 줄여서 $\{\bar x_{25}\ge c\}$ 로 표기하기도 한다.</p>
+</div>
+
+<!-- ================= 두 가지 오류 ================= -->
+<h2 class="sub">두 가지 오류 <span class="en">type 1 error and type 2 error</span></h2>
+<div class="box def">
+  <span class="tag">표 5.1</span><span class="title">가설검정에 수반되는 두 가지 오류</span>
+  <div class="scroll">
+  <table class="data">
+    <tr><th></th><th>$H_0$ 가 참 <span class="en">true</span></th><th>$H_1$ 이 참 <span class="en">true</span></th></tr>
+    <tr><th>$H_0$ 를 기각하지 않음</th><td>올바른 결정</td><td><b>제2종 오류</b></td></tr>
+    <tr><th>$H_0$ 를 기각함</th><td><b>제1종 오류</b></td><td>올바른 결정</td></tr>
+  </table>
+  </div>
+  <ul class="props">
+    <li><b>제1종 오류</b><span class="en">type 1 error</span>: 실제로는 $H_0$ 가 참인데 기각하게 되는 오류.</li>
+    <li><b>제2종 오류</b><span class="en">type 2 error</span>: $H_0$ 가 참이 아닌데 기각하지 않게 되는 오류.</li>
+  </ul>
+</div>
+<div class="box def">
+  <span class="tag">정의</span><span class="title">유의수준 $\alpha$ 와 제2종 오류 확률 $\beta$</span>
+  <p>귀무가설 $H_0$ 가 참인데 이를 기각하는, 제1종 오류를 범할 확률</p>
+  $$P(\text{제1종 오류})=P(H_0\text{를 기각함}\mid H_0)\tag{5.1}$$
+  <p>을 <b>유의수준</b><span class="en">significance level</span>이라 하며 $\alpha$ 로 표기한다.
+  기각영역을 $C$ 로, $H_0$ 하에서 $X_1,X_2,\dots,X_n$ 의 결합 확률밀도함수를 $f(x_1,x_2,\dots,x_n\mid H_0)$ 로
+  표기하면 이 검정의 유의수준은</p>
+  $$P\big[(X_1,\dots,X_n)\in C\mid H_0\big]=
+  \begin{cases}
+    \displaystyle\int\!\cdots\!\int_C f(x_1,\dots,x_n\mid H_0)\,dx_1\cdots dx_n, & \text{연속형}\\[6pt]
+    \displaystyle\sum_{(x_1,\dots,x_n)\in C} f(x_1,\dots,x_n\mid H_0), & \text{이산형}
+  \end{cases}$$
+  <p>으로 계산된다. 또한 $H_0$ 이 참이 아닌데 기각하지 않는, 제2종 오류를 범할 확률</p>
+  $$P(\text{제2종 오류})=P(H_0\text{를 기각하지 않음}\mid H_1)\tag{5.2}$$
+  <p>을 $\beta$ 로 표기한다.</p>
+</div>
+<div class="box ex">
+  <span class="tag">예 5.3</span><span class="title">무죄추정의 원칙</span>
+  <p>법정 피고인에게 적용되는 <b>무죄추정의 원칙</b>은, 피의자가 범죄를 저질렀다는 증거가 밝혀질 때까지는
+  무죄임을 가정하는 것이다. 검찰이 제시한 증거가 충분하다고 인정되면 유죄가, 충분하지 못하면 무죄가 선고된다.
+  무죄 선고는 <b>법정이 충분한 증거를 발견하지 못했다는 뜻이지, 무죄라는 증거가 있다는 뜻은 아니다.</b></p>
+  <ul class="props">
+    <li>제1종 오류 — 피의자가 실제로 무죄인데 유죄를 선고하여 복역하게 하는 것.</li>
+    <li>제2종 오류 — 피의자가 실제로 유죄인데 무죄를 선고하여 풀어주는 것.</li>
+  </ul>
+</div>
+<div class="note">
+  위의 법정 예제에서 제1종 오류를 범하면 매우 심각하고 비극적인 결과를 가져온다. 제2종 오류도 위험하지만
+  <b>제1종 오류는 매우 작은 확률을 갖도록 통제</b>되어야 한다. 통계적 가설검정에서도 제1종 오류를 더
+  '중요시'하는 것이 사실인데, ① 참인 일반적 믿음($H_0$)을 버리고 새로운 변화($H_1$)를 인정하게 되므로
+  불필요한 대처를 하게 되고, ② 연구자가 증명하고자 하는 주장이 $H_1$ 이므로 제1종 오류의 확률이 크면
+  연구 결과가 다른 사람들로부터 신뢰를 받기 어렵기 때문이다. 그래서 <b>유의수준이 항상 작은 값이 되도록
+  관리</b>한다.
+</div>
+<div class="box def">
+  <span class="tag">보충</span><span class="title">손실함수로 본 두 오류</span>
+  <p><a href="../ch04/4-3_estimation-criteria.html">추정이론의 손실함수</a>와 같은 맥락에서,
+  $L(H_i;H_j)$ 를 가설 $H_j$ 가 실제로 참인데 $H_i$ 를 받아들였을 때의 손실이라 하고</p>
+  $$L(H_i;H_j)=\begin{cases}0, & i=j\ \text{인 경우}\\ 1, & i\ne j\ \text{인 경우}\end{cases}\qquad(i,j=0,1)$$
+  <p>로 정의하자. 옳은 결정의 손실이 $0$, 틀린 결정의 손실이 $1$ 이라는 뜻이다. 이 손실함수에 기댓값을 취하면</p>
+  $$E\big[L(H_1;H_0)\big]=P[\text{제1종 오류}],\qquad
+    E\big[L(H_0;H_1)\big]=P[\text{제2종 오류}]$$
+  <p>가 됨을 알 수 있다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예 5.4</span><span class="title">(예 5.2의 계속) $\alpha$ 와 $\beta$ 의 계산</span>
+  <p>예 5.2에서 기각영역을 $\{(x_1,x_2,\dots,x_{25}):\bar x_{25}\ge104\}$ 라고 가정하자. 이때 두 오류를
+  범할 확률은 각각 다음과 같이 계산된다(단, $\Phi$ 는 표준정규분포의 누적확률분포함수).</p>
+  $$\begin{aligned}
+    \alpha&=P(\text{제1종 오류})=P(H_0\text{를 기각}\mid H_0)=P(\overline X_{25}\ge104\mid\mu=100)\\
+    &=P\!\left[\frac{\sqrt{25}\,(\overline X_{25}-100)}{10}\ge\frac{\sqrt{25}\,(104-100)}{10}\ \middle|\ \mu=100\right]\\
+    &=1-\Phi(2)=0.0228
+  \end{aligned}$$
+  $$\begin{aligned}
+    \beta&=P(\text{제2종 오류})=P(H_0\text{를 기각하지 않음}\mid H_1)=P(\overline X_{25}\lt104\mid\mu=105)\\
+    &=P\!\left[\frac{\sqrt{25}\,(\overline X_{25}-105)}{10}\lt\frac{\sqrt{25}\,(104-105)}{10}\ \middle|\ \mu=105\right]\\
+    &=\Phi(-0.5)=0.3085
+  \end{aligned}$$
+</div>
+
+<figure class="fig">
+<svg viewBox="0 0 420 200" role="img" aria-label="두 정규분포와 제1종·제2종 오류 영역">
+  <line class="axis" x1="30" y1="160" x2="400" y2="160"/>
+  <polyline class="vec" points="55,159 64,159 81,155 97,145 114,124 131,93 148,63 165,50 181,63 198,93 215,124 232,145 249,155 265,159 282,160"/>
+  <polyline class="vec2" style="stroke-dasharray:5 4" points="148,159 165,155 181,145 198,124 215,93 232,63 249,50 265,63 282,93 299,124 316,145 333,155 350,159"/>
+  <line class="aux" style="stroke-dasharray:none;stroke:#555;stroke-width:1.3" x1="232" y1="160" x2="232" y2="42"/>
+  <text class="lbl b" x="96" y="62">μ = 100</text>
+  <text class="lbl t" x="292" y="62">μ = 105</text>
+  <text class="lbl" x="224" y="152" text-anchor="end">β</text>
+  <text class="lbl" x="240" y="152" text-anchor="start">α</text>
+  <text class="num" x="165" y="174" text-anchor="middle">100</text>
+  <text class="num" x="228" y="174" text-anchor="middle">104</text>
+  <text class="num" x="258" y="188" text-anchor="middle">105</text>
+  <text class="num" x="110" y="190" text-anchor="middle">채택영역</text>
+  <text class="num" x="330" y="190" text-anchor="middle">기각영역</text>
+</svg>
+<figcaption>그림 5.1 — $\overline X_{25}$ 의 확률밀도함수. 실선은 $H_0(\mu=100)$, 점선은 $H_1(\mu=105)$ 하의
+분포이고, 경계 $104$ 의 오른쪽 실선 꼬리가 $\alpha$, 왼쪽 점선 꼬리가 $\beta$ 이다.</figcaption>
+</figure>
+
+<!-- ================= 검정력함수 ================= -->
+<h2 class="sub">검정력함수 <span class="en">power function</span></h2>
+<div class="box def">
+  <span class="tag">정의 5.2</span><span class="title">검정력함수 <span class="en">power function</span></span>
+  <p>랜덤표본 $X_1,X_2,\dots,X_n$ 을 얻은 모집단의 분포가 모수 $\theta$ 에 의해 특징지어질 때,
+  귀무가설 $H_0$ 에 대한 기각영역이 $C$ 인 검정의 <b>검정력함수</b>는</p>
+  $$\pi(\theta)=P\big[(X_1,X_2,\dots,X_n)\in C\mid\theta\big]$$
+  <p>즉 <b>귀무가설을 기각하는 확률</b>로 정의된다.</p>
+</div>
+<div class="note">
+  검정력함수는 모수 $\theta$ 의 참값이 무엇이냐에 따라 다른 값을 가지게 되므로 $\theta$ 의 함수이고,
+  주어진 $\theta$ 에서의 값 $\pi(\theta)$ 를 이 $\theta$ 에서의 <b>검정력</b><span class="en">power</span>이라고
+  한다. 검정력은 $H_0$ 를 기각할 확률이므로 <b>$\theta$ 가 대립가설에 속하는 값이면 큰 것이 좋고,
+  귀무가설에 속하는 값이면 작은 것이 좋다.</b>
+</div>
+<div class="box def">
+  <span class="tag">성질</span><span class="title">검정력함수의 두 기준점</span>
+  <ul class="props">
+    <li>$\theta$ 가 대립가설에 속하고 이 대립가설이 <b>단순가설</b>인 경우, 검정력은 제2종 오류를 범할 확률
+      $\beta$ 를 $1$ 에서 뺀 $1-\beta$ 와 동일하다.</li>
+    <li>모수 $\theta$ 가 <b>단순귀무가설</b>에서의 값 $\theta_0$ 을 가질 때, 검정력은 유의수준 $\alpha$ 와
+      같다. 즉 $\pi(\theta_0)=\alpha$ 이다.</li>
+  </ul>
+  <p>마치 <a href="../ch04/4-3_estimation-criteria.html">평균제곱오차가 점추정의 기준</a>이 되었던 것처럼,
+  유의수준이 고정되었을 때 검정력함수가 <b>검정방법의 성능을 결정하는 기준</b>이 된다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예 5.5</span><span class="title">(예 5.4의 계속) 검정력함수 구하기</span>
+  <p>앞의 예 5.4에서 기각영역을 $\{(x_1,x_2,\dots,x_{25}):\bar x_{25}\ge104\}$ 라 했을 때 검정력을
+  $\mu=105$ 인 점에서 구해 보았다. 이제 $\mu\gt100$ 인 모든 점에 대해서 검정력을 구해 보자.
+  이는 $\mu$ 에 대한 함수로서 다음과 같이 구해진다.</p>
+  $$\begin{aligned}
+    \pi(\mu)&=P(\overline X_{25}\ge104\mid\mu)\\
+    &=P\!\left[\frac{\sqrt{25}\,(\overline X_{25}-\mu)}{10}\ge\frac{\sqrt{25}\,(104-\mu)}{10}\ \middle|\ \mu\right]\\
+    &=1-\Phi\!\left(\frac{104-\mu}{2}\right).
+  \end{aligned}$$
+  <p>$\mu=100$ 에서 $\pi(100)=1-\Phi(2)=0.0228=\alpha$ 이고,
+  $\mu=105$ 에서 $\pi(105)=1-\Phi(-0.5)=0.6915=1-\beta$ 이다.</p>
+</div>
+
+<figure class="fig">
+<svg viewBox="0 0 390 200" role="img" aria-label="검정력함수 그래프">
+  <line class="axis" x1="60" y1="170" x2="378" y2="170"/>
+  <line class="axis" x1="60" y1="178" x2="60" y2="30"/>
+  <line class="aux" x1="60" y1="40" x2="372" y2="40"/>
+  <line class="aux" x1="60" y1="80" x2="215" y2="80"/>
+  <line class="aux" x1="215" y1="170" x2="215" y2="80"/>
+  <polyline class="vec" points="60,167 91,161 122,149 153,130 184,105 215,80 246,61 277,49 308,42 339,38 370,37"/>
+  <text class="num" x="55" y="43"  text-anchor="end">1.0</text>
+  <text class="num" x="55" y="83"  text-anchor="end">0.6915</text>
+  <text class="num" x="55" y="170" text-anchor="end">0.0228</text>
+  <text class="num" x="60"  y="184" text-anchor="middle">100</text>
+  <text class="num" x="215" y="184" text-anchor="middle">105</text>
+  <text class="lbl" x="374" y="168" text-anchor="start">μ</text>
+  <text class="lbl b" x="250" y="72">π(μ)</text>
+</svg>
+<figcaption>그림 5.2 — 검정력함수 $\pi(\mu)=P(\overline X_{25}\ge104\mid\mu)$.
+$\mu$ 가 참값일 때 <b>기각영역에 떨어질 확률</b>을 $\mu$ 의 함수로 그린 것이다.</figcaption>
+</figure>
+
+<!-- ================= 유의확률 ================= -->
+<h2 class="sub">유의확률 <span class="en">p-value, observed significance level</span></h2>
+<div class="note">
+  좋은 검정법을 찾기 위해 표본공간을 기각영역과 그 여집합인 채택영역으로 나누고 두 오류의 확률을 계산하여,
+  오류의 확률을 작게 만드는 검정법을 고르게 된다. 그런데 관찰된 검정통계량의 값이 기각영역에 속한다고
+  하더라도 <b>값의 크기 등에 따라 통계적 유의성에 대한 의미가 다를 수 있다.</b> 따라서 기각할 것인지 아닌지의
+  <b>이분법적인 결론만을 제시하기보다</b>, 관측한 자료가 귀무가설에 대해 어느 정도의 반증이 되는지를
+  수치적으로 나타낼 수 있는 유의확률을 이용하여 검정의 결론에 이르는 경우가 많이 있다.
+</div>
+<div class="box def">
+  <span class="tag">정의</span><span class="title">유의확률 <span class="en">p-value</span></span>
+  <p><b>관측된 유의수준</b><span class="en">observed significance level</span> 또는 <b>유의확률</b>이라고 하는
+  이것은 간단히 $p-$값<span class="en">p-value</span>이라고도 하는데, <b>귀무가설이 참이라는 가정하에서
+  우리가 관측한 값과 같거나 더 극단적인 값을 얻을 확률</b>로 정의된다. 여기에서 '더 극단적'이라는 것은
+  관측한 값보다 <b>대립가설에 더 가까운</b> 것을 의미한다.</p>
+  <ul class="props">
+    <li>유의확률이 아주 작은 값($0.01$, $0.001$ 등)이면, 관측한 값 자체가 이미 매우 극단적이어서 이보다 더
+      강한 대립가설에 대한 증거를 관측할 확률이 작다는 것이다. 즉 관측값이 <b>귀무가설하에서 나오기 어려운
+      값</b>이므로 $H_0$ 를 기각할 근거가 된다.</li>
+    <li>유의확률이 작지 않은 값($0.3$, $0.4$ 등)이면, 관측한 값이 귀무가설하에서 흔히 나올 수 있는 값이라는
+      것이고, $H_0$ 를 기각할 근거가 되지 않는다.</li>
+  </ul>
+  <p>즉 유의확률은 <b>현재의 실험결과를 가지고 귀무가설을 기각할 수 있는 최소의 유의수준</b>이다.
+  주어진 유의수준보다 유의확률이 작으면 귀무가설을 기각하며, 그렇지 않은 경우에는 귀무가설을 받아들이게 된다.</p>
+</div>
+<div class="box ex">
+  <span class="tag">예</span><span class="title">유의확률의 계산</span>
+  <p>$X_1,X_2,X_3$ 이 $N(\mu,5)$ 에서 나온 랜덤표본이라고 하고, 이에 근거하여 모평균에 대한 가설</p>
+  $$H_0:\mu=10\qquad\text{대}\qquad H_1:\mu\gt10$$
+  <p>을 검정한다고 해 보자. 기각영역을 $\{(x_1,x_2,x_3):\bar x_3\ge12\}$ 라고 하면
+  $P(\overline X_3\ge12\mid\mu=10)$ 의 계산을 통해 유의수준이 $\alpha=0.0606$ 이 됨을 쉽게 알 수 있다.
+  이때 표본평균의 값이 큰 경우가 귀무가설에 대한 반증이 되면서 대립가설을 지지하는 자료가 된다.</p>
+  <p>만약 자료로부터 관측한 값이 $\overline X_3=13$ 이었다고 하자. 귀무가설하에서 관측값과 같거나 더
+  극단적인 값을 얻을 확률은</p>
+  $$p-\text{값}=P(\overline X_3\ge13\mid\mu=10)=P\big(N(0,1)\ge2.3238\big)\fallingdotseq0.0102$$
+  <p>가 된다. 유의수준 $\alpha=0.05$ 로 검정한다면 $0.0102\lt0.05$ 이므로 귀무가설을 기각한다.</p>
+</div>
+<div class="note">
+  $N(\mu,5)$ 는 <b>분산이 $5$</b> 라는 뜻이다. 실제로 $\sqrt3\,(12-10)/\sqrt5=1.5492$ 에서
+  $\alpha=1-\Phi(1.5492)=0.0606$ 이고, $\sqrt3\,(13-10)/\sqrt5=2.3238$ 에서 $p-$값 $=0.0102$ 로 맞아떨어진다.
+</div>
+
+<div class="terms">
+  <div class="h">한눈에 — 5.1절의 용어</div>
+  <dl>
+    <dt>가설</dt>
+    <dd>단순가설(분포를 완전히 결정) / 복합가설. $H_0$ 는 기존 사실, $H_1$ 은 보이고자 하는 주장.</dd>
+    <dt>기각영역 $C$</dt>
+    <dd>$H_0$ 를 기각하게 되는 표본공간의 부분집합. <b>검정방법을 정하는 것이 곧 $C$ 를 정하는 것</b>이다.</dd>
+    <dt>$\alpha$ 와 $\beta$</dt>
+    <dd>$\alpha=P(\text{기각}\mid H_0)$ 가 유의수준, $\beta=P(\text{기각 안 함}\mid H_1)$.
+      둘을 동시에 줄일 수 없으므로 <b>$\alpha$ 를 작은 값으로 먼저 고정</b>하는 것이 검정이론의 출발점이다.</dd>
+    <dt>검정력함수 $\pi(\theta)$</dt>
+    <dd>$P[(X_1,\dots,X_n)\in C\mid\theta]$. $\pi(\theta_0)=\alpha$ 이고, 단순대립가설에서 $\pi(\theta_1)=1-\beta$.</dd>
+    <dt>유의확률</dt>
+    <dd>$H_0$ 를 기각할 수 있는 <b>최소의 유의수준</b>. $p\lt\alpha$ 이면 기각한다.</dd>
+  </dl>
+</div>
+
+<nav class="pager">
+  <a href="../ch04/4-exercises.html">← 이전<small>4장 연습문제 · 정답·해설</small></a>
+  <a class="next" href="5-2_most-powerful-tests.html">다음 →<small>5.2 최강력 검정법</small></a>
+</nav>
+
+</body>
+</html>
