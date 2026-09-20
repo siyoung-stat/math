@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4장 · 4.3 상관계수의 검정</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">회귀분석 · 4장 단순회귀에 관한 추론</div>
+  <h1><span class="no">4.3</span>상관계수의 검정 <span class="en">test for the correlation coefficient</span></h1>
+</header>
+
+<p>먼저 설명변수 $x$ 가 고정된 값이 아닌 <b>확률변수</b>라 하면 $x$ 와 $y$ 의 선형성의 측도인
+<b>모상관계수</b><span class="en">population coefficient of correlation</span> $\rho_{xy}$ 에 대한 검정을 알아보자.
+<a href="../ch03/3-5_correlation.html">식 (3.37)과 (3.38)</a>에 정의되어 있는 $\rho_{xy}$,
+$r_{xy}$ 를 각각 간편하게 하기 위해 $\rho$, $r$ 로 표시하기로 한다.</p>
+
+<div class="note">
+  $x$ 가 <b>고정</b>이면 $\rho$ 라는 모수 자체가 정의되지 않는다. 상관계수의 추론은
+  $(x,y)$ 가 함께 <b>이변량 정규분포</b>를 따른다는 전제 위에서만 뜻이 있다.
+  <a href="4-1_interval-estimation.html">4.1</a>·<a href="4-2_hypothesis-testing.html">4.2</a>절의
+  회귀계수 추론은 $x$ 가 고정이어도 성립했다는 점이 다르다.
+</div>
+
+<!-- ================= r 의 분포 ================= -->
+<h2 class="sub">표본상관계수 $r$ 의 분포 <span class="en">distribution of the sample correlation</span></h2>
+<p><b>표본상관계수</b> $r$ 로 $\rho$ 를 추정하는데, 이의 분포이론은
+<b>피셔</b><span class="en">Fisher</span>에 의하여 다음의 정리를 얻었다.</p>
+<div class="box thm">
+  <span class="tag">성질</span><span class="title">$r$ 의 표본분포</span>
+  <ol class="props">
+    <li>$\rho$ 를 모수로 하는 어떤 확률분포를 갖는다. 이의 분포이론은 복잡하나,
+      $\rho=0$ 인 경우에는 $r$ 의 분포가 <b>$0$ 에 대하여 대칭</b>이 된다.</li>
+    <li>$\rho$ 가 $0$ 이 아닌 경우에는 대칭이지 않으며, $\rho$ 가 $\pm1$ 에 가까울수록
+      <b>심하게 왜곡</b>된다.</li>
+    <li>$n$ 이 커질수록 분포는 대칭에 가까워지며, $n$ 이 매우 크면 <b>정규분포에 가까워진다.</b></li>
+  </ol>
+</div>
+
+<figure class="fig">
+<svg viewBox="0 0 360 200" role="img" aria-label="표본상관계수 r 의 분포 (n=10)">
+  <line class="axis" x1="30" y1="165" x2="345" y2="165"/>
+  <!-- rho = 0 : 대칭 -->
+  <path d="M40,164 L70,160 L100,150 L130,132 L160,112 L187,104 L215,112 L245,132 L275,150 L305,160 L335,164"
+        fill="none" stroke="#1d6fb8" stroke-width="2.1"/>
+  <!-- rho = 0.7 : 왼쪽으로 긴 꼬리, 오른쪽에 봉우리 -->
+  <path d="M60,164 L100,163 L140,160 L175,153 L205,140 L230,115 L250,80 L265,45 L275,32 L288,40 L300,72 L312,120 L322,152 L330,164"
+        fill="none" stroke="#1d6fb8" stroke-width="2.1"/>
+  <text class="num" x="175" y="98"  text-anchor="middle">ρ = 0</text>
+  <text class="num" x="268" y="26"  text-anchor="middle">ρ = 0.7</text>
+  <text class="num" x="40"  y="180" text-anchor="middle">−1</text>
+  <text class="num" x="187" y="180" text-anchor="middle">0</text>
+  <text class="num" x="335" y="180" text-anchor="middle">1</text>
+  <text class="lbl" x="347" y="168" text-anchor="start">r</text>
+</svg>
+<figcaption>그림 4.3 — 표본상관계수 $r$ 의 분포($n=10$). $\rho=0$ 에서는 대칭이지만
+$\rho=0.7$ 에서는 <b>오른쪽 벽 $r=1$ 에 눌려</b> 심하게 왜곡된다. 이 왜곡 때문에 $r$ 을 그대로
+정규근사에 쓸 수 없고, 아래의 $z$ 변환이 필요하다.</figcaption>
+</figure>
+
+<!-- ================= Fisher z 변환 ================= -->
+<h2 class="sub">피셔의 $z$ 변환 <span class="en">Fisher's z transformation</span></h2>
+<p>피셔는 표본상관계수의 <b>분산이 $\rho$ 에 의존하지 않게</b> 부드럽게 만드는
+<b>분산안정화</b><span class="en">variance stabilization</span> 변환을 찾았다. 표본크기가 커지면서
+$r$ 의 분포가 정규분포에 가까워지는 성질을 이용한 것이다.</p>
+<div class="box def">
+  <span class="tag">정의</span><span class="title">피셔의 $z$ 변환</span>
+  <p>다음의 통계량</p>
+  $$Z'=\frac12\ln\!\left(\frac{1+r}{1-r}\right)\tag{4.23}$$
+  <p>은 표본의 크기가 클 경우에(대략 $n\ge25$) 근사적으로 정규분포를 하며, 기댓값과 분산은</p>
+  $$E(Z')=\frac12\ln\!\left(\frac{1+\rho}{1-\rho}\right)\tag{4.24}$$
+  $$\operatorname{Var}(Z')=\frac{1}{n-3}\tag{4.25}$$
+  <p>이 된다. 따라서, 표준화된 통계량</p>
+  $$Z=\frac{Z'-E(Z')}{\sqrt{\operatorname{Var}(Z')}}$$
+  <p>은 대략 표준정규분포 $N(0,1)$ 에 가까운 분포를 한다.</p>
+</div>
+<div class="note">
+  식 (4.23)은 $Z'=\tanh^{-1}(r)$, 즉 <b>역쌍곡탄젠트</b>이다. 따라서 역변환은 $r=\tanh(Z')$ 이고,
+  $\rho$ 의 신뢰구간은 $Z'$ 척도에서 구한 뒤 $\tanh$ 로 되돌려 얻는다. $\rho$ 의 정의역이 $[-1,1]$ 로
+  막혀 있는 것을 $(-\infty,\infty)$ 로 <b>펴 주는</b> 것이 이 변환의 역할이다.
+</div>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">$\rho$ 의 신뢰구간과 가설검정</span>
+  <p>따라서, 식 (4.25)로부터 $E(Z')=\frac12\ln\!\left(\frac{1+\rho}{1-\rho}\right)$ 의
+  $100(1-\alpha)\%$ 신뢰구간은</p>
+  $$Z'\pm z_{\alpha/2}\sqrt{\operatorname{Var}(Z')}\tag{4.26}$$
+  <p>이 된다. 같은 방식으로 $\rho$ 에 대한 가설검정</p>
+  $$H_0:\rho=\rho_0\qquad H_1:\rho\ne\rho_0$$
+  <p>에 대하여, 크기 $n$ 인 표본으로부터 표본상관계수 $r$ 을 구한 후 식 (4.23)을 사용하여 $Z'$ 값을 구한다.
+  또한 $\rho$ 가 어떤 특정한 값 $\rho_0$ 인지에 대응하는 $E(Z')$ 을 구한 후, 식 (4.24)로
+  $\rho_0$ 에 대응하는 $E(Z')$ 을 구한 후 식 (4.25)를 사용하여</p>
+  $$z=\frac{Z'-E(Z')}{\dfrac{1}{\sqrt{n-3}}}\tag{4.27}$$
+  <p>의 관측값 $z$ 를 구하고, 만약 $|z|\gt z_{\alpha/2}$ 이면 귀무가설을 기각한다.</p>
+</div>
+
+<!-- ================= rho=0 ================= -->
+<h2 class="sub">$\rho=0$ 의 검정과 $\beta_1=0$ 의 검정 <span class="en">equivalence of the two tests</span></h2>
+<p>다음으로 $x$ 가 랜덤이 아닌 고정된 값을 가정하는 경우를 생각하여 보자. 회귀모형에서 $x$ 와 $y$ 의
+선형성은 회귀계수 $\beta_1$ 으로 나타나므로, 다음으로 가설검정</p>
+$$H_0:\rho=0,\qquad H_1:\rho\ne0$$
+<p>에 대응되는 가설검정은</p>
+$$H_0:\beta_1=0,\qquad H_1:\beta_1\ne0\tag{4.28}$$
+<p>이 된다. 이 회귀계수 $\beta_1$ 의 가설검정은
+<a href="4-2_hypothesis-testing.html">식 (4.22)</a>와 같으며, 이 검정통계량을 표본상관계수
+$r$ 을 사용하여 재표현하면</p>
+$$t_0=\frac{r}{\sqrt{\dfrac{1-r^2}{n-2}}}\tag{4.29}$$
+<p>이 된다. 이 검정통계량 (4.29)는 자유도 $n-2$ 를 갖는 $t$ 분포를 따른다.</p>
+
+<div class="box prf">
+  <span class="tag">유도</span><span class="title">식 (4.22)와 식 (4.29)가 같은 이유</span>
+  <ol>
+    <li><span class="step">① 분자.</span> $\beta_{10}=0$ 이므로
+      $\hat\beta_1=\dfrac{S_{(xy)}}{S_{(xx)}}$ 이다.</li>
+    <li><span class="step">② 분모.</span>
+      <a href="../ch03/3-4_precision.html">$SSR=r^2S_{(yy)}$</a> 이므로
+      $SSE=S_{(yy)}-SSR=S_{(yy)}(1-r^2)$ 이고, 따라서
+      $$MSE=\frac{S_{(yy)}(1-r^2)}{n-2},\qquad
+        \widehat{\operatorname{Var}}(\hat\beta_1)=\frac{S_{(yy)}(1-r^2)}{(n-2)S_{(xx)}}$$
+      이다.</li>
+    <li><span class="step">③ 나누기.</span> 둘을 합치면
+      $$t_0=\frac{S_{(xy)}/S_{(xx)}}{\sqrt{\dfrac{S_{(yy)}(1-r^2)}{(n-2)S_{(xx)}}}}
+        =\frac{S_{(xy)}}{\sqrt{S_{(xx)}S_{(yy)}}}\cdot\sqrt{\frac{n-2}{1-r^2}}
+        =\frac{r\sqrt{n-2}}{\sqrt{1-r^2}}$$
+      이고, 이것이 곧 식 (4.29)이다.</li>
+  </ol>
+  <div class="qed">∎</div>
+</div>
+<div class="note">
+  만약 $\beta_1$ 이 $0$ 이라면 $x$ 와 $y$ 사이에는 선형의 함수관계가 없다는 뜻이고,
+  이는 $\rho=0$ 과 같은 말이다. 실제로 $\beta_1=\rho\dfrac{\sigma_y}{\sigma_x}$ 이므로
+  <b>$\beta_1$ 과 $\rho$ 는 같은 부호로 동시에 $0$ 이 된다.</b>
+  예를 들어 <a href="../ch03/3-3_estimating-regression-line.html">표 3.1</a> 자료에서 $\rho=0.5$ 이면
+  $$\beta_1=\rho\frac{\sigma_y}{\sigma_x}\fallingdotseq0.5\times\frac{6.397}{2.261}=1.415$$
+  가 되어 $\beta_1=1.415$ 의 검정에 해당한다.
+</div>
+
+<div class="box ex">
+  <span class="tag">예 4.3</span><span class="title">광고료·판매액 자료의 상관계수 추론</span>
+  <p><a href="../ch03/3-3_estimating-regression-line.html">표 3.1</a>에 있는 광고료와 판매액이 얻어진
+  모집단에 대하여 이변량 정규분포를 가정하고, 유의수준 $\alpha=0.05$ 로 모상관계수 $\rho$ 의 구간추정을
+  하고, 또한 $\rho=0.5$ 인지 아닌지에 대하여 가설검정을 하시오.</p>
+  <p><b>풀이</b> &nbsp;$n=10$, $r=0.920$ 이므로 $z'=1.589$ 이며,</p>
+  $$z_{\alpha/2}=z_{0.025}=1.96,\qquad
+    \operatorname{Var}(Z')=\frac{1}{n-3}=\frac17=0.143$$
+  <p>이므로, 식 (4.26)으로부터</p>
+  $$\begin{aligned}
+    z'\pm z_{\alpha/2}\sqrt{\operatorname{Var}(Z')}&=1.589\pm(1.96)\sqrt{0.143}\\
+    &=1.589\pm0.741\\
+    &=(0.848,\ 2.330)
+  \end{aligned}$$
+  <p>이 된다. 이제 $0.848$ 과 $2.330$ 에 대응되는 $\rho$ 의 값을 구하면 각각 $0.690$ 과 $0.981$ 이 되므로,
+  모상관계수 $\rho$ 의 $95\%$ 신뢰구간은</p>
+  $$0.690\le\rho\le0.981$$
+  <p>로 주장할 수 있다. 다음으로 가설검정</p>
+  $$H_0:\rho=0.5\qquad H_1:\rho\ne0.5$$
+  <p>을 하여 보자. $r=0.920$ 에 대응되는 $Z'$ 의 값은 $z'=1.589$ 이고 $\rho_0=0.5$ 로부터 식 (4.24)로
+  $E(Z')=0.549$ 이며, $\operatorname{Var}(Z')=0.143$ 이므로</p>
+  $$z=\frac{Z'-E(Z')}{\sqrt{\operatorname{Var}(Z')}}=\frac{1.589-0.549}{\sqrt{0.143}}
+    =\frac{1.040}{0.378}=2.751$$
+  <p>이다. 그런데 $z_{\alpha/2}=z_{0.025}=1.96$ 이므로 $|z|=2.751\gt1.96$ 이 되어
+  <b>귀무가설을 기각</b>한다. 즉 모상관계수 $\rho$ 의 값이 $0.5$ 라는 것은 틀린 것으로 주장할 수 있다.</p>
+</div>
+<div class="note">
+  신뢰구간 $(0.690,\ 0.981)$ 이 $0.5$ 를 <b>포함하지 않는다</b>는 것과 위 가설검정에서 기각된 것은
+  같은 사실의 두 표현이다. 다만 이 구간은 $Z'$ 척도에서 대칭이지 $\rho$ 척도에서는 대칭이 아니다 —
+  $0.920$ 에서 아래로 $0.230$, 위로 $0.061$ 만큼 뻗어 있다. $\rho$ 가 $1$ 에 가까울수록
+  분포가 눌린다는 그림 4.3의 사실이 구간의 모양에 그대로 나타난 것이다.
+</div>
+
+<nav class="pager">
+  <a href="4-2_hypothesis-testing.html">← 이전<small>4.2 가설검정</small></a>
+  <a class="next" href="4-4_model-adequacy.html">다음 →<small>4.4 모형의 타당성</small></a>
+</nav>
+
+</body>
+</html>

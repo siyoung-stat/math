@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4장 · 4.6 R 실습</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  pre.r{ background:#f6f7f8; border:1px solid var(--line); border-radius:8px;
+         padding:11px 14px; margin:10px 0; overflow-x:auto;
+         font-family:Consolas,"D2Coding",Menlo,monospace; font-size:0.86rem; line-height:1.55; }
+  pre.r .pr{ color:#0f8a7d; }         /* 프롬프트 > */
+  pre.r .out{ color:#666; }           /* 출력 */
+  code.r{ font-family:Consolas,"D2Coding",Menlo,monospace; font-size:0.9em;
+          background:#f2f3f4; border-radius:4px; padding:1px 5px; }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">회귀분석 · 4장 단순회귀에 관한 추론</div>
+  <h1><span class="no">4.6</span>R 실습 <span class="en">R practice</span></h1>
+</header>
+
+<p>아마존 주가에 대하여 <a href="../ch03/3-exercises.html">3장 연습문제 3.10</a>에 대하여 반응변수
+<code class="r">High</code>와 설명변수 <code class="r">Year</code>에 대하여 단순회귀모형을 적합해 보기로 한다.</p>
+
+<div class="box def">
+  <span class="tag">기본</span><span class="title"><code class="r">lm()</code> 함수</span>
+  <p><code class="r">lm()</code> 함수를 사용하여 반응변수 <code class="r">High</code>와 설명변수
+  <code class="r">Year</code>에 대한 단순선형회귀모형을 적합할 수 있다. 기본 모형은
+  <code class="r">lm(y ~ x, data)</code>이다. 이때 <code class="r">y</code>는 반응변수,
+  <code class="r">x</code>는 설명변수를 가리킨다. 여기서 <code class="r">data</code>는 두 변수가 포함된
+  자료를 가리킨다.</p>
+</div>
+
+<pre class="r"><span class="pr">&gt;</span> amazon &lt;- read.csv("amazon.csv")
+<span class="pr">&gt;</span> lm.fit &lt;- lm(High ~ Year, data = amazon)
+<span class="pr">&gt;</span> lm.fit
+<span class="out">
+Call:
+lm(formula = High ~ Year, data = amazon)
+
+Coefficients:
+(Intercept)         Year
+  -330.2124       0.1809
+</span></pre>
+
+<p>출력에서 <code class="r">(Intercept)</code>가 $\hat\beta_0$, <code class="r">Year</code>가
+$\hat\beta_1$ 이다. 즉 적합된 회귀모형은</p>
+$$\widehat{\texttt{High}}=-330.2124+0.1809\times\texttt{Year}$$
+<p>이다.</p>
+
+<div class="note">
+  교재는 계수 출력까지만 보여 주고 끝난다. 그런데 <b>4장에서 배운 구간추정·가설검정·적합결여·자기상관</b>은
+  모두 R 한 줄씩으로 확인할 수 있다. 아래는 4.1~4.5절의 각 내용을 R로 옮긴 것이다.
+</div>
+
+<!-- ================= 보충 ================= -->
+<h2 class="sub">보충 — 4장의 내용을 R로 확인하기 <span class="en">supplement</span></h2>
+
+<div class="box def">
+  <span class="tag">4.2</span><span class="title">계수의 $t$ 검정 — <code class="r">summary()</code></span>
+  <pre class="r"><span class="pr">&gt;</span> summary(lm.fit)</pre>
+  <p>출력의 <code class="r">Coefficients</code> 표에서</p>
+  <ul class="props">
+    <li><code class="r">Estimate</code> — $\hat\beta_0,\ \hat\beta_1$</li>
+    <li><code class="r">Std. Error</code> — $\hat\sigma_{\hat\beta_0},\ \hat\sigma_{\hat\beta_1}$
+      (<a href="4-1_interval-estimation.html">식 (4.5)</a>, 식 (4.12)의 제곱근)</li>
+    <li><code class="r">t value</code> — <a href="4-2_hypothesis-testing.html">식 (4.22)</a>의
+      $t_0$ (단, $\beta_{10}=0$)</li>
+    <li><code class="r">Pr(&gt;|t|)</code> — 그 $t_0$ 의 양측 유의확률</li>
+  </ul>
+  <p>맨 아래 <code class="r">Residual standard error</code>가
+  <a href="../ch03/3-4_precision.html">$s_{y\cdot x}=\sqrt{MSE}$</a>,
+  <code class="r">Multiple R-squared</code>가 $r^2$,
+  <code class="r">F-statistic</code>이 <a href="../ch03/3-6_anova.html">분산분석의 $F_0$</a> 이다.
+  단순회귀에서는 $t_0^2=F_0$ 임을 눈으로 확인할 수 있다.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">4.1</span><span class="title">신뢰구간 — <code class="r">confint()</code>, <code class="r">predict()</code></span>
+  <pre class="r"><span class="pr">&gt;</span> confint(lm.fit, level = 0.95)                 <span class="out"># 식 (4.7), (4.12)</span>
+
+<span class="pr">&gt;</span> nd &lt;- data.frame(Year = 2020)
+<span class="pr">&gt;</span> predict(lm.fit, nd, interval = "confidence")   <span class="out"># 식 (4.16) — 평균반응</span>
+<span class="pr">&gt;</span> predict(lm.fit, nd, interval = "prediction")   <span class="out"># 식 (4.19) — 개별 y</span></pre>
+  <p><code class="r">"confidence"</code>가 $\mu_{y\cdot x}$ 의 신뢰구간,
+  <code class="r">"prediction"</code>이 개별 $y$ 값의 예측구간이다.
+  같은 $x$ 에서 뒤쪽이 항상 더 넓게 나오는데, 이것이 바로
+  <a href="4-1_interval-estimation.html">식 (4.17)</a>의 $+\sigma^2$ 이다.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">4.3</span><span class="title">상관계수의 검정 — <code class="r">cor.test()</code></span>
+  <pre class="r"><span class="pr">&gt;</span> cor.test(amazon$Year, amazon$High)</pre>
+  <p>출력의 <code class="r">t</code> 가 <a href="4-3_correlation-test.html">식 (4.29)</a>의 $t_0$ 이며,
+  <code class="r">summary(lm.fit)</code>의 <code class="r">Year</code> 행의 <code class="r">t value</code> 와
+  <b>정확히 같은 값</b>이다. <code class="r">95 percent confidence interval</code> 은
+  피셔의 $z$ 변환(식 (4.26))으로 구한 $\rho$ 의 신뢰구간이다.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">4.4</span><span class="title">잔차의 검토와 적합결여검정</span>
+  <pre class="r"><span class="pr">&gt;</span> plot(fitted(lm.fit), resid(lm.fit))   <span class="out"># 그림 4.5 의 (ŷ, e) 산점도</span>
+<span class="pr">&gt;</span> abline(h = 0, lty = 2)
+<span class="pr">&gt;</span> plot(lm.fit)                          <span class="out"># 진단 그림 4장 한꺼번에</span>
+
+<span class="out"># 적합결여검정 — 반복측정이 있을 때만 가능</span>
+<span class="pr">&gt;</span> full  &lt;- lm(y ~ factor(x))            <span class="out"># 각 수준의 평균 ȳᵢ 를 적합</span>
+<span class="pr">&gt;</span> anova(lm(y ~ x), full)                <span class="out"># F₀ = MSLF/MSPE, 식 (4.36)</span></pre>
+  <p><code class="r">factor(x)</code> 모형은 각 수준에서 $\bar y_i$ 를 그대로 맞추는 모형이므로
+  그 잔차제곱합이 곧 $SSPE$ 이고, 두 모형의 제곱합 차이가 $SSLF$ 이다.
+  <code class="r">anova()</code>의 비교 결과가 <a href="4-4_model-adequacy.html">식 (4.36)</a>의
+  적합결여검정과 같은 것이다.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">4.5</span><span class="title">더빈–왓슨 검정 — <code class="r">lmtest</code> 패키지</span>
+  <pre class="r"><span class="pr">&gt;</span> install.packages("lmtest")
+<span class="pr">&gt;</span> library(lmtest)
+<span class="pr">&gt;</span> dwtest(lm.fit, alternative = "greater")   <span class="out"># H₁ : ρ &gt; 0</span></pre>
+  <p>출력의 <code class="r">DW</code> 가 <a href="4-5_autocorrelation.html">식 (4.52)</a>의 $d$ 이다.
+  표 A-5 의 $d_L,d_U$ 로 판정하는 대신 <code class="r">p-value</code> 를 바로 주므로
+  <b>불확정 구간이 생기지 않는다.</b> 직접 계산하려면</p>
+  <pre class="r"><span class="pr">&gt;</span> e &lt;- resid(lm.fit)
+<span class="pr">&gt;</span> sum(diff(e)^2) / sum(e^2)</pre>
+  <p>한 줄이면 된다(<code class="r">diff(e)</code>가 $e_i-e_{i-1}$ 이다).</p>
+</div>
+
+<div class="terms">
+  <div class="h">4장 ↔ R 대응표</div>
+  <dl>
+    <dt>4.1 구간추정</dt>
+    <dd><code class="r">confint()</code> · <code class="r">predict(..., interval=)</code></dd>
+    <dt>4.2 가설검정</dt>
+    <dd><code class="r">summary(lm.fit)</code> 의 <code class="r">t value</code>, <code class="r">Pr(&gt;|t|)</code></dd>
+    <dt>4.3 상관계수의 검정</dt>
+    <dd><code class="r">cor.test()</code></dd>
+    <dt>4.4 모형의 타당성</dt>
+    <dd><code class="r">plot(lm.fit)</code> · <code class="r">anova(reduced, full)</code></dd>
+    <dt>4.5 오차의 자기상관</dt>
+    <dd><code class="r">lmtest::dwtest()</code></dd>
+  </dl>
+</div>
+
+<nav class="pager">
+  <a href="4-5_autocorrelation.html">← 이전<small>4.5 오차의 자기상관</small></a>
+  <a class="next" href="4-exercises.html">다음 →<small>4장 연습문제</small></a>
+</nav>
+
+</body>
+</html>

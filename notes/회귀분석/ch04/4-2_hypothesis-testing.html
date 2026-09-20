@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4장 · 4.2 가설검정</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">회귀분석 · 4장 단순회귀에 관한 추론</div>
+  <h1><span class="no">4.2</span>가설검정 <span class="en">hypothesis testing</span></h1>
+</header>
+
+<p>모집단의 회귀직선 $\mu_{y\cdot x}=\beta_0+\beta_1x$ 를 정확히 알기 위해서는 모집단 전체를 관측해야 하는데,
+이것은 실제로 불가능하거나 바람직하지 않을 경우가 많다. 이런 경우에는 $\mu_{y\cdot x}$, $\beta_0$, $\beta_1$ 등에
+대하여 이들의 어떤 특수한 값을 취하는가 아닌가에 대한 가설을 검정을 할 수 있다.</p>
+
+<div class="box def">
+  <span class="tag">일반형</span><span class="title">모수 $\theta$ 에 대한 검정통계량</span>
+  <p>모수 $\theta$ 의 검정통계량을 만들어 다음과 같이 검정할 수 있다. 추정량 $\hat\theta$ 이 $\theta$ 의
+  <b>불편</b><span class="en">unbiased</span>추정량이며 정규분포를 따르면,</p>
+  $$Z_0=\frac{\hat\theta-\theta_0}{\sqrt{\operatorname{Var}(\hat\theta)}}\tag{4.20}$$
+  <p>에서 $\theta_0$ 은 모수 $\theta$ 의 귀무가설의 값(즉, $H_0:\theta=\theta_0$)이다.
+  <b>검정통계량 $Z_0$ 는 표준정규분포</b>를 따르므로, 기각치 $z_{\alpha/2}$(또는 $z_\alpha$)를
+  양측검정인지 또는 한쪽검정인지에 따라서 정할 수 있다.</p>
+  <p>만약 $\theta$ 의 분산 $\operatorname{Var}(\hat\theta)$ 이 미리 알려져 있지 않으면, 이를 표본에서
+  추정하여 $\operatorname{Var}(\hat\theta)$ 대신에 $\widehat{\operatorname{Var}}(\hat\theta)$ 을 대입하여
+  <b>검정통계량</b></p>
+  $$t_0=\frac{\hat\theta-\theta_0}{\sqrt{\widehat{\operatorname{Var}}(\hat\theta)}}\tag{4.21}$$
+  <p>을 구하면, 이는 $t$ 분포를 따르며, 자유도는 단순회귀분석인 경우에 $n-2$ 가 된다.</p>
+</div>
+<div class="note">
+  $t$ 분포의 자유도가 $k$ 인 이유는, 검정통계량이
+  $T=Z/\sqrt{\chi^2(k)/k}$ 의 꼴을 따르기 때문이다. 단순회귀에서는
+  $SSE/\sigma^2\sim\chi^2(n-2)$ 이고 $\hat\beta_0,\hat\beta_1$ 과 <b>독립</b>이므로 자유도가 $n-2$ 가 된다.
+</div>
+
+<!-- ================= 4.2.1 ================= -->
+<h2 class="sub"><span class="no">4.2.1</span>$\beta_1$ 의 검정 <span class="en">testing the slope</span></h2>
+<p>모집단의 회귀모형에서 기울기 $\beta_1$ 에 대한 가설검정을 먼저 알아 보자. $\beta_1$ 의 값이 어떤 특정한
+값 $\beta_{10}$ 이 아니라는 가설검정을 하고자 하면, 다음과 같은 귀무가설과 대립가설을 설정한 후,</p>
+$$H_0:\beta_1=\beta_{10}\qquad H_1:\beta_1\ne\beta_{10}$$
+<p>표본을 취하여 $(x_i,y_i)$, $(i=1,2,\dots,n)$ 을 관측하고, 최소제곱법으로 $\beta_1$ 의 불편추정값
+$\hat\beta_1$ 을 먼저 구한다. $\hat\beta_1$ 의 분포는 <a href="4-1_interval-estimation.html">식 (4.2)</a>에 의하여
+$N(\beta_1,\ \sigma^2/S_{(xx)})$ 이므로, $\sigma^2$ 이 알려져 있지 않은 경우에는 이의 추정값
+$\widehat{\operatorname{Var}}(\hat\beta_1)$ 을 쓴다.</p>
+
+<div class="box def">
+  <span class="tag">검정</span><span class="title">$\beta_1$ 에 대한 $t$ 검정</span>
+  <p>식 (4.21)의 검정통계량에</p>
+  $$\widehat{\operatorname{Var}}(\hat\beta_1)=\frac{MSE}{S_{(xx)}}$$
+  <p>을 사용하므로 $t$ 분포를 따른다. 즉, 검정통계량 $t_0$ 의 값은</p>
+  $$t_0=\frac{\hat\beta_1-\beta_{10}}{\sqrt{\widehat{\operatorname{Var}}(\hat\beta_1)}}
+      =\frac{\hat\beta_1-\beta_{10}}{\sqrt{\dfrac{MSE}{S_{(xx)}}}}\tag{4.22}$$
+  <p>이며, 양측검정이므로 만약 $|t_0|\gt t_{\alpha/2}(n-2)$ 이면 <b>귀무가설을 기각</b>하고,
+  아니면 귀무가설을 채택하게 된다.</p>
+</div>
+<div class="note">
+  가장 많이 쓰이는 경우는 $\beta_{10}=0$ 인 <b>회귀직선의 유의성 검정</b>이다.
+  $H_0:\beta_1=0$ 이 참이면 $x$ 는 $y$ 를 설명하지 못한다. 이 검정은
+  <a href="../ch03/3-6_anova.html">분산분석의 $F$ 검정</a>과 <b>완전히 같은 검정</b>이며, 실제로
+  $t_0^2=F_0$ 이 성립한다. 나아가 <a href="4-3_correlation-test.html">상관계수 $\rho=0$ 의 검정</a>과도
+  같다 — 셋은 한 검정의 세 얼굴이다.
+</div>
+
+<!-- ================= 4.2.2 ================= -->
+<h2 class="sub"><span class="no">4.2.2</span>$\beta_0$ 의 검정 <span class="en">testing the intercept</span></h2>
+<p>모집단의 회귀모형의 $y$ 축 절편 $\beta_0$ 에 대해서도 위의 $\beta_1$ 의 검정과 같은 방법을 따르면 된다.
+앞에서는 양측검정을 보았으므로, 이번에는 <b>단측검정</b>인 경우를 살펴보자.</p>
+$$H_0:\beta_0=\beta_{00}\qquad H_1:\beta_0\lt\beta_{00}$$
+<div class="box def">
+  <span class="tag">검정</span><span class="title">$\beta_0$ 에 대한 $t$ 검정 (단측)</span>
+  <p>절편 $\beta_0$ 의 추정량은 $\hat\beta_0$ 이고, $\hat\beta_0$ 의 분포 또한 정규분포를 따르며,
+  $\sigma^2$ 이 미지인 경우에는 $\hat\beta_0$ 의 분산의 추정값</p>
+  $$\widehat{\operatorname{Var}}(\hat\beta_0)=MSE\left(\frac1n+\frac{(\bar x)^2}{S_{(xx)}}\right)$$
+  <p>이므로, $t_0$ 검정통계량의 값은</p>
+  $$t_0=\frac{\hat\beta_0-\beta_{00}}{\sqrt{\widehat{\operatorname{Var}}(\hat\beta_0)}}
+      =\frac{\hat\beta_0-\beta_{00}}{\sqrt{MSE\left(\dfrac1n+\dfrac{(\bar x)^2}{S_{(xx)}}\right)}}$$
+  <p>이 된다. 대립가설이 $\beta_0\lt\beta_{00}$ 인 단측검정이므로, 기각치는
+  $t_{1-\alpha}(n-2)=-t_\alpha(n-2)$ 가 된다.</p>
+</div>
+
+<figure class="fig">
+<svg viewBox="0 0 340 190" role="img" aria-label="t 분포의 왼쪽 기각역">
+  <line class="axis" x1="30" y1="150" x2="320" y2="150"/>
+  <path d="M40,149 L60,147 L80,142 L100,132 L120,113 L140,86 L160,62 L175,55 L190,62 L210,86
+           L230,113 L250,132 L270,142 L290,147 L310,149"
+        fill="none" stroke="#1d6fb8" stroke-width="2.2"/>
+  <path d="M40,149 L60,147 L80,142 L100,132 L100,150 Z" fill="#cfe3f5" stroke="none"/>
+  <line class="aux" style="stroke-dasharray:none;stroke:#888" x1="100" y1="150" x2="100" y2="128"/>
+  <line class="aux" style="stroke-dasharray:4 3" x1="100" y1="100" x2="230" y2="100"/>
+  <text class="num" x="175" y="164" text-anchor="middle">0</text>
+  <text class="num" x="100" y="176" text-anchor="middle">$t_{1-\alpha}(n-2)=-t_\alpha(n-2)$</text>
+  <text class="num" x="62"  y="136" text-anchor="middle">α</text>
+  <text class="num" x="60"  y="120" text-anchor="middle">기각역</text>
+  <text class="num" x="175" y="95"  text-anchor="middle">1 − α</text>
+  <text class="num" x="220" y="120" text-anchor="middle">채택역</text>
+  <text class="lbl" x="322" y="153" text-anchor="start">t</text>
+</svg>
+<figcaption>그림 4.2 — $t$ 분포의 기각역. 대립가설이 왼쪽에 존재하므로 기각역도
+$t_{1-\alpha}(n-2)=-t_\alpha(n-2)$ 의 <b>왼쪽</b>이 된다.</figcaption>
+</figure>
+
+<!-- ================= 4.2.3 ================= -->
+<h2 class="sub"><span class="no">4.2.3</span>$\mu_{y\cdot x}$ 의 검정 <span class="en">testing the mean response</span></h2>
+<p>주어진 $x$ 의 값에서 $y$ 의 기댓값 $E(Y\mid X=x)=\mu_{y\cdot x}$ 에 대한 가설검정을 알아보자.
+여기서 설정된 값을 $\mu_{y\cdot x}^{0}$ 이라 하고, 다음과 같은 단측검정을 고려하여 보자.</p>
+$$H_0:\mu_{y\cdot x}=\mu_{y\cdot x}^{0}\qquad H_1:\mu_{y\cdot x}\gt\mu_{y\cdot x}^{0}$$
+<div class="box def">
+  <span class="tag">검정</span><span class="title">$\mu_{y\cdot x}$ 에 대한 $t$ 검정 (단측)</span>
+  <p>$\mu_{y\cdot x}$ 의 추정량은 $\hat y=\hat\beta_0+\hat\beta_1x$ 이며, 이의 분산은
+  <a href="4-1_interval-estimation.html">식 (4.13)</a>에서 구하였고 $\sigma^2$ 이 미지라고 가정하고
+  검정통계량의 값을 구하면</p>
+  $$t_0=\frac{\hat y-\mu_{y\cdot x}^{0}}{\sqrt{\widehat{\operatorname{Var}}(\hat y)}}
+      =\frac{\hat y-\mu_{y\cdot x}^{0}}{\sqrt{MSE\left(\dfrac1n+\dfrac{(x-\bar x)^2}{S_{(xx)}}\right)}}$$
+  <p>가 된다. 대립가설이 $\mu_{y\cdot x}\gt\mu_{y\cdot x}^{0}$ 이므로, 이의 분산은 <b>오른쪽</b>에 위치하게 된다.
+  유의수준 $\alpha$ 에서 기각치는 $t_\alpha(n-2)$ 이며, 만약</p>
+  $$t_0\gt t_\alpha(n-2)$$
+  <p>이면 귀무가설을 기각하고, 아니면 귀무가설을 채택하게 된다.</p>
+</div>
+
+<!-- ================= 4.2.4 ================= -->
+<h2 class="sub"><span class="no">4.2.4</span>개별적인 $y$ 값에 대한 검정 <span class="en">testing an individual response</span></h2>
+<p>어떤 $x$ 값에서 $y$ 의 기댓값이 아닌 개별적인 $y$ 값의 예측값 $\hat y_s$ 에 대하여 관심이 있는 경우가 있다.
+이 값이 어떤 특정한 값 $y_0$ 인지 아닌지에 대한 양측검정에 대한 가설은 다음과 같다.</p>
+$$H_0:y_s=y_0\qquad H_1:y_s\ne y_0$$
+<div class="box def">
+  <span class="tag">검정</span><span class="title">개별 $y$ 값에 대한 $t$ 검정 (양측)</span>
+  <p>$\hat y_s$ 의 분산은 <a href="4-1_interval-estimation.html">식 (4.17)</a>에서 $\sigma^2$ 대신에
+  $MSE$ 를 사용할 수 있다.</p>
+  $$\widehat{\operatorname{Var}}(\hat y_s)=MSE\left(1+\frac1n+\frac{(x-\bar x)^2}{S_{(xx)}}\right)$$
+  <p>이므로, 검정통계량의 값을 구해 보면</p>
+  $$t_0=\frac{\hat y_s-y_0}{\sqrt{MSE\left(1+\dfrac1n+\dfrac{(x-\bar x)^2}{S_{(xx)}}\right)}}$$
+  <p>이다. 따라서, 만약 $|t_0|\gt t_{\alpha/2}(n-2)$ 이면 귀무가설을 기각한다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예 4.2</span><span class="title">광고료가 $6$ 일 때 평균 판매액의 검정</span>
+  <p><a href="../ch03/3-3_estimating-regression-line.html">표 3.1</a>에 있는 광고료와 판매액의 표본자료가
+  얻어진 모집단에 대하여 $\mu_{y\cdot x}=\beta_0+\beta_1x$ 가 성립된다고 가정하고, 유의수준 $\alpha=0.05$ 로
+  다음의 가설을 검정하시오. 단, $x$ 값은 $x=6$ 이다.</p>
+  $$H_0:\mu_{y\cdot x}=9\qquad H_1:\mu_{y\cdot x}\gt9$$
+  <p><b>풀이</b> &nbsp;$x=6$ 에서</p>
+  $$\hat y=\hat\beta_0+\hat\beta_1x=-2.270+(2.609)(6)=13.38$$
+  <p>이며, $\sigma^2$ 이 미지이므로 $\widehat{\operatorname{Var}}(\hat y)$ 의 추정값은</p>
+  $$\widehat{\operatorname{Var}}(\hat y)=MSE\left(\frac1n+\frac{(x-\bar x)^2}{S_{(xx)}}\right)
+    =(6.92)\left(\frac1{10}+\frac{(6-8)^2}{46}\right)=1.29$$
+  <p>가 되므로, 검정통계량의 값은</p>
+  $$t_0=\frac{\hat y-\mu_{y\cdot x}^{0}}{\sqrt{\widehat{\operatorname{Var}}(\hat y)}}
+      =\frac{13.38-9}{\sqrt{1.29}}=\frac{4.38}{1.14}=3.84$$
+  <p>이다. 그런데 $t_\alpha(n-2)=t_{0.05}(8)=1.86$ 이며, $t_0=3.84\gt1.86$ 이므로
+  <b>귀무가설이 기각된다.</b> 즉 대립가설이 채택된다.</p>
+</div>
+
+<div class="terms">
+  <div class="h">한눈에 — 4.2절의 네 가지 $t$ 검정</div>
+  <dl>
+    <dt>공통 꼴</dt>
+    <dd>$t_0=\dfrac{\hat\theta-\theta_0}{\sqrt{\widehat{\operatorname{Var}}(\hat\theta)}}\sim t(n-2)$ —
+      <b>바뀌는 것은 분모뿐</b>이다.</dd>
+    <dt>$\beta_1$</dt>
+    <dd>$\widehat{\operatorname{Var}}=MSE\big/S_{(xx)}$</dd>
+    <dt>$\beta_0$</dt>
+    <dd>$\widehat{\operatorname{Var}}=MSE\left(\frac1n+\frac{(\bar x)^2}{S_{(xx)}}\right)$</dd>
+    <dt>$\mu_{y\cdot x}$ (평균반응)</dt>
+    <dd>$\widehat{\operatorname{Var}}=MSE\left(\frac1n+\frac{(x-\bar x)^2}{S_{(xx)}}\right)$</dd>
+    <dt>개별 $y_s$ (예측)</dt>
+    <dd>$\widehat{\operatorname{Var}}=MSE\left(1+\frac1n+\frac{(x-\bar x)^2}{S_{(xx)}}\right)$ —
+      $1$ 이 하나 더 붙는다.</dd>
+  </dl>
+</div>
+
+<nav class="pager">
+  <a href="4-1_interval-estimation.html">← 이전<small>4.1 구간추정</small></a>
+  <a class="next" href="4-3_correlation-test.html">다음 →<small>4.3 상관계수의 검정</small></a>
+</nav>
+
+</body>
+</html>
