@@ -18,6 +18,9 @@
        position:absolute; left:0; top:2px; font-size:0.62rem; font-weight:800;
        letter-spacing:0.03em; color:#fff; background:var(--def);
        padding:2px 5px; border-radius:4px; }
+  .oneline{ border:2px solid var(--thm); background:var(--thm-bg); border-radius:8px;
+       padding:14px 16px; margin:16px 0; text-align:center; font-size:1.04rem; font-weight:700; }
+  .oneline small{ display:block; margin-top:6px; font-weight:400; font-size:0.82rem; color:var(--muted); }
   .yes{ color:#0f8a7d; font-weight:800; }
   .no{ color:#d64541; font-weight:800; }
   table.chk{ border-collapse:collapse; width:100%; margin:12px 0 0; font-size:0.92rem; }
@@ -35,9 +38,8 @@
   <h1><span class="no">풀이법</span>문제 풀이법 <span class="en">problem-solving methods</span></h1>
 </header>
 
-<p>10장은 정의를 깊이 파고들기보다 <b>문제 유형별로 손이 먼저 움직이는 것</b>이 중요하다.
-이 노트는 이론 전개가 아니라 <b>어떤 문제를 만나면 무엇부터 쓰는가</b>만 정리한 것이다.
-문항은 <a href="10-exercises.html">10장 연습문제</a>를 가리킨다.</p>
+<p>이론 전개가 아니라 <b>문제를 만나면 무엇부터 쓰는가</b>만 정리한 노트다.
+문항 번호는 <a href="10-exercises.html">10장 연습문제</a>를 가리킨다.</p>
 
 <div class="note">
   <b>이 노트에서 다루는 것</b> — 유형 1. 선형사상 판정.
@@ -45,141 +47,119 @@
 
 <h2 class="sub">유형 1 · 선형사상 판정 <span class="en">testing whether a map is linear</span></h2>
 
-<p>“다음 중 선형사상인 것과 아닌 것을 구분하라”(연습문제 <b>02</b>) 류의 문제다.
-<b>맞다</b>고 주장할 때와 <b>아니다</b>라고 주장할 때 해야 할 일이 서로 다르다는 것이 핵심이다.</p>
-
-<div class="box def">
-  <span class="tag">정의</span><span class="title">선형사상의 두 조건 <span class="en">linear map</span></span>
-  <p>사상 $T:V\to W$ 가 다음 두 가지를 모두 만족하면 <b>선형사상</b>이다.</p>
-  <ol class="props">
-    <li><b>가산성</b> <span class="en">additivity</span><br>
-      임의의 $U,V$ 에 대하여 $T(U+V)=T(U)+T(V)$</li>
-    <li><b>동차성</b> <span class="en">homogeneity</span><br>
-      임의의 스칼라 $c$ 와 임의의 $U$ 에 대하여 $T(cU)=c\,T(U)$</li>
-  </ol>
-  <p>변수가 둘이든 셋이든 확인할 것은 이 둘뿐이고, 변수 개수에 따라 원리가 달라지지 않는다.</p>
+<div class="oneline">
+  등호 오른쪽이 <b>상수항 없는 일차식</b>인가?
+  <small>이것 하나만 확인하면 된다. 변수가 둘이든 셋이든 원리는 같다.</small>
 </div>
-
-<div class="note">
-  두 조건은 $T(aU+bV)=a\,T(U)+b\,T(V)$ 한 줄로 묶어 써도 된다.
-  답안에 “두 조건을 한 번에 확인한다”라고 적고 이 식 하나만 검증해도 무방하다.
-</div>
-
-<h3>선형임을 보일 때 — 정의대로 쓰는 틀</h3>
-
-<p>맞다고 주장하려면 <b>모든</b> 벡터에 대해 성립함을 보여야 하므로, 반드시 문자로 일반화해서 쓴다.
-아래 네 단계를 그대로 따라가면 어떤 문항이든 답안이 완성된다.</p>
-
-<ol class="recipe">
-  <li>두 벡터를 $U=(x_1,y_1)$, $V=(x_2,y_2)$ 로 두고 스칼라 $c$ 를 잡는다.</li>
-  <li>$U+V$ 를 먼저 계산해 $T$ 에 넣고, 나온 각 성분을 <b>$x_1,y_1$ 묶음 $+$ $x_2,y_2$ 묶음</b>으로 쪼갠다.</li>
-  <li>$cU$ 를 $T$ 에 넣고, 각 성분에서 $c$ 를 <b>밖으로 뽑아낸다</b>.</li>
-  <li>두 결과가 각각 $T(U)+T(V)$, $c\,T(U)$ 와 같음을 확인하고 결론을 쓴다.</li>
-</ol>
-
-<div class="box ex">
-  <span class="tag">예</span><span class="title">연습문제 02 (3) — $T(x,y)=(2x-y,\ x)$</span>
-  <p><b>가산성.</b> $U+V=(x_1+x_2,\ y_1+y_2)$ 이므로</p>
-  $$T(U+V)=\bigl(2(x_1+x_2)-(y_1+y_2),\ \ x_1+x_2\bigr)$$
-  <p>첫 성분을 $x_1,y_1$ 끼리 · $x_2,y_2$ 끼리 모아 다시 쓰면</p>
-  $$=\bigl((2x_1-y_1)+(2x_2-y_2),\ \ x_1+x_2\bigr)$$
-  $$=(2x_1-y_1,\ x_1)+(2x_2-y_2,\ x_2)=T(U)+T(V)$$
-  <p><b>동차성.</b> $cU=(cx_1,\ cy_1)$ 이므로</p>
-  $$T(cU)=\bigl(2(cx_1)-(cy_1),\ \ cx_1\bigr)=\bigl(c(2x_1-y_1),\ \ c\,x_1\bigr)$$
-  $$=c\,(2x_1-y_1,\ x_1)=c\,T(U)$$
-  <p>두 조건을 모두 만족하므로 $T$ 는 <span class="yes">선형사상</span>이다.</p>
-</div>
-
-<div class="note">
-  <b>답안에서 잘 깎이는 곳</b> — 2단계에서 “묶어 쪼개기”를 생략하고
-  $T(U+V)=T(U)+T(V)$ 라고 바로 써 버리는 것. 보여야 할 대상을 전제로 쓰는 셈이라
-  증명이 되지 않는다. 반드시 <b>좌변을 계산한 결과가 우변과 같은 꼴로 정리되는 과정</b>을 남긴다.
-</div>
-
-<h3>선형이 아님을 보일 때 — 반례 하나로 끝낸다</h3>
-
-<p>아니라고 주장할 때는 일반화가 필요 없다. <b>구체적인 수 하나</b>로 조건이 깨지는 것만 보이면 된다.
-아래 순서로 시도하면 대개 첫 줄에서 끝난다.</p>
-
-<ol class="recipe">
-  <li><b>$T(O)=O$ 인가?</b> 먼저 영벡터를 넣어 본다. $T(O)\ne O$ 이면 그 자리에서 선형이 아니다.
-    상수항이 붙은 문항(02번의 (6), (10))은 전부 여기서 걸린다.</li>
-  <li><b>음수 스칼라를 넣어 본다.</b> 절댓값·짝수 제곱이 있으면 $c=-1$ 에서 반드시 깨진다.
-    (02번의 (4): $T(-1,0)=(1,0)$ 이지만 $-T(1,0)=(-1,0)$)</li>
-  <li><b>$c=2$ 를 넣어 본다.</b> 제곱이 있으면 $T(2U)=4\,T(U)\ne2\,T(U)$ 로 갈라진다.
-    (02번의 (2): $T(2,0)=(4,0)$ 이지만 $2\,T(1,0)=(2,0)$)</li>
-</ol>
-
-<div class="note">
-  $T(O)=O$ 은 <b>필요조건일 뿐 충분조건이 아니다.</b>
-  $T(x,y)=(x^2,y^2)$ 는 $T(O)=O$ 이지만 선형이 아니다.
-  즉 1단계를 통과했다고 선형이라고 단정하면 안 되고, 그때는 정의대로 확인하거나 아래 요령을 쓴다.
-</div>
-
-<h3>실전 판정 요령 — 식의 모양만 본다</h3>
 
 <div class="box thm">
-  <span class="tag">요령</span><span class="title">일차식 판정 <span class="en">the one-line test</span></span>
-  <p>출력의 <b>각 성분</b>이 변수들의 <b>일차식(상수항 없음)</b>이기만 하면 그 사상은 선형이다.
-  즉 다음이 하나도 없어야 한다.</p>
+  <span class="tag">요령</span><span class="title">세 가지만 없으면 선형사상</span>
+  <p>출력의 <b>각 성분</b>에 다음 세 가지가 하나도 없으면 무조건 선형사상이다.</p>
   <ol class="props">
-    <li>제곱·거듭제곱 — $x^2$, $y^3$, $\sqrt{x}$</li>
-    <li>절댓값·노름 — $|x|$, $\sqrt{x^2+y^2}$</li>
     <li>변수끼리의 곱 — $xy$, $yz$</li>
-    <li>상수항 — $+1$, $y+1$ 의 $1$</li>
+    <li>제곱·루트·절댓값 — $x^2$, $\sqrt{x}$, $|x|$</li>
+    <li>변수 없이 더해진 순수한 숫자(상수항) — $+1$, $y+1$ 의 $1$</li>
   </ol>
-  <p>$T(x,y)=(2x-y,\ x)$ 는 두 성분 $2x-y$ 와 $x$ 가 모두 상수항 없는 일차식이므로
-  계산 없이 <span class="yes">선형</span>으로 판정된다.</p>
+  <p>예를 들어 <b>02 (3)</b> $T(x,y)=(2x-y,\ x)$ 는 두 성분 $2x-y$ 와 $x$ 가
+  모두 상수항 없는 일차식이므로 계산 없이 <span class="yes">선형</span>이다.</p>
 </div>
 
 <div class="box thm">
   <span class="tag">요령</span><span class="title">행렬로 쓸 수 있으면 선형 <span class="en">matrix form</span></span>
-  <p>계수를 뽑아 $T(X)=AX$ 꼴로 쓸 수 있으면 그것만으로 선형이다.
-  (행렬곱은 $A(U+V)=AU+AV$, $A(cU)=c\,AU$ 를 항상 만족하기 때문이다.)</p>
+  <p>계수만 뽑아 $T(X)=AX$ 꼴로 쓸 수 있으면 그것으로 판정 끝이다.</p>
   $$T\begin{pmatrix}x\\y\end{pmatrix}
     =\begin{pmatrix}2&-1\\1&0\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}$$
-  <p>행렬을 적는 법은 간단하다. <b>$1$행에 첫 성분의 계수, $2$행에 둘째 성분의 계수</b>를
-  $x,y$ 순으로 옮겨 적으면 끝이다. 상수항이 있으면 애초에 이 꼴로 쓸 수 없고,
-  그것이 곧 선형이 아니라는 신호다.</p>
+  <p><b>$1$행에 첫 성분의 계수, $2$행에 둘째 성분의 계수</b>를 $x,y$ 순으로 옮겨 적으면 된다.
+  상수항이 있으면 애초에 이 꼴로 쓸 수 없고, 그것이 곧 선형이 아니라는 신호다.
+  덤으로 이 행렬이 <b>표준기저에 대한 $T$ 의 행렬</b>이라 <b>06·07</b>의 답까지 같이 나온다.</p>
+</div>
+
+<h3>아니라고 주장할 때 — 반례 하나로 끝낸다</h3>
+
+<p>부정할 때는 일반화가 필요 없다. 구체적인 수 하나만 넣으면 되고, 아래 순서로 대개 첫 줄에서 끝난다.</p>
+
+<ol class="recipe">
+  <li><b>$T(O)=O$ 인가.</b> $T(O)\ne O$ 이면 즉시 선형이 아니다.
+    상수항이 붙은 <b>02 (6), (10)</b>이 전부 여기서 걸린다.</li>
+  <li><b>$c=-1$ 을 넣는다.</b> 절댓값이 있으면 반드시 깨진다.
+    <b>02 (4)</b>: $T(-1,0)=(1,0)$ 이지만 $-T(1,0)=(-1,0)$.</li>
+  <li><b>$c=2$ 를 넣는다.</b> 제곱이 있으면 갈라진다.
+    <b>02 (2)</b>: $T(2,0)=(4,0)$ 이지만 $2\,T(1,0)=(2,0)$.</li>
+</ol>
+
+<div class="note">
+  $T(O)=O$ 은 <b>필요조건일 뿐이다.</b> $T(x,y)=(x^2,y^2)$ 는 $T(O)=O$ 이지만 선형이 아니다.
+  1단계를 통과했다고 선형이라 단정하지 말고 위의 일차식 판정으로 넘어갈 것.
+</div>
+
+<h3>정의대로 써야 할 때 — 네 단계</h3>
+
+<p>“정의를 이용하여 보여라”처럼 <b>증명을 요구</b>할 때만 쓴다. 확인할 것은 두 가지뿐이다.</p>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">선형사상의 두 조건 <span class="en">linear map</span></span>
+  <ol class="props">
+    <li><b>가산성</b> <span class="en">additivity</span><br>
+      $T(U+V)=T(U)+T(V)$</li>
+    <li><b>동차성</b> <span class="en">homogeneity</span><br>
+      $T(cU)=c\,T(U)$ ($c$ 는 임의의 스칼라)</li>
+  </ol>
+</div>
+
+<ol class="recipe">
+  <li>$U=(x_1,y_1)$, $V=(x_2,y_2)$ 와 스칼라 $c$ 를 잡는다.</li>
+  <li>$U+V$ 를 $T$ 에 넣고, 각 성분을 <b>$x_1,y_1$ 묶음 $+$ $x_2,y_2$ 묶음</b>으로 쪼갠다.</li>
+  <li>$cU$ 를 $T$ 에 넣고, 각 성분에서 <b>$c$ 를 밖으로 뽑는다</b>.</li>
+  <li>두 결과가 $T(U)+T(V)$, $c\,T(U)$ 와 같음을 확인하고 결론을 쓴다.</li>
+</ol>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">02 (3) — $T(x,y)=(2x-y,\ x)$</span>
+  <p><b>가산성.</b> $U+V=(x_1+x_2,\ y_1+y_2)$ 이므로</p>
+  $$T(U+V)=\bigl(2(x_1+x_2)-(y_1+y_2),\ \ x_1+x_2\bigr)$$
+  $$=\bigl((2x_1-y_1)+(2x_2-y_2),\ \ x_1+x_2\bigr)$$
+  $$=(2x_1-y_1,\ x_1)+(2x_2-y_2,\ x_2)=T(U)+T(V)$$
+  <p><b>동차성.</b> $cU=(cx_1,\ cy_1)$ 이므로</p>
+  $$T(cU)=\bigl(2(cx_1)-(cy_1),\ \ cx_1\bigr)
+        =\bigl(c(2x_1-y_1),\ \ c\,x_1\bigr)=c\,T(U)$$
+  <p>둘 다 성립하므로 <span class="yes">선형사상</span>이다.</p>
 </div>
 
 <div class="note">
-  이 행렬이 곧 <b>표준기저에 대한 $T$ 의 행렬</b>이므로,
-  판정을 끝내면서 연습문제 <b>06·07</b>이 요구하는 답까지 동시에 얻는 셈이다.
-  그래서 판정 문제는 되도록 행렬 꼴로 써 두는 편이 이득이다.
+  <b>답안에서 잘 깎이는 곳</b> — 2단계의 “묶어 쪼개기”를 건너뛰고
+  $T(U+V)=T(U)+T(V)$ 라고 바로 쓰는 것. 보여야 할 것을 전제로 쓴 셈이라 증명이 되지 않는다.
 </div>
 
 <h3>연습문제 02 한눈에 보기</h3>
 
 <table class="chk">
-  <tr><th>문항</th><th>$T$</th><th>판정</th><th>근거 — 이 한 줄이면 끝난다</th></tr>
-  <tr><td>(1)</td><td>$(2x,\,-x)$</td><td class="yes">선형</td><td>두 성분 모두 상수항 없는 일차식</td></tr>
-  <tr><td>(2)</td><td>$(x^2,\,y^2)$</td><td class="no">아님</td><td>$T(2,0)=(4,0)\ne2\,T(1,0)=(2,0)$</td></tr>
+  <tr><th>문항</th><th>$T$</th><th>판정</th><th>근거 — 이 한 줄이면 끝</th></tr>
+  <tr><td>(1)</td><td>$(2x,\,-x)$</td><td class="yes">선형</td><td>상수항 없는 일차식</td></tr>
+  <tr><td>(2)</td><td>$(x^2,\,y^2)$</td><td class="no">아님</td><td>제곱 — $T(2,0)=(4,0)\ne2\,T(1,0)$</td></tr>
   <tr><td>(3)</td><td>$(2x-y,\,x)$</td><td class="yes">선형</td><td>$A=\begin{pmatrix}2&-1\\1&0\end{pmatrix}$ 로 표현됨</td></tr>
-  <tr><td>(4)</td><td>$(|x|,\,y)$</td><td class="no">아님</td><td>$T(-1,0)=(1,0)\ne-T(1,0)=(-1,0)$</td></tr>
-  <tr><td>(5)</td><td>$(x+y,\,z)$</td><td class="yes">선형</td><td>일차식</td></tr>
-  <tr><td>(6)</td><td>$(x+y+z,\,1)$</td><td class="no">아님</td><td>$T(O)=(0,1)\ne O$</td></tr>
+  <tr><td>(4)</td><td>$(|x|,\,y)$</td><td class="no">아님</td><td>절댓값 — $T(-1,0)=(1,0)\ne-T(1,0)$</td></tr>
+  <tr><td>(5)</td><td>$(x+y,\,z)$</td><td class="yes">선형</td><td>상수항 없는 일차식</td></tr>
+  <tr><td>(6)</td><td>$(x+y+z,\,1)$</td><td class="no">아님</td><td>상수항 — $T(O)=(0,1)\ne O$</td></tr>
   <tr><td>(7)</td><td>$(x,\,y)$</td><td class="yes">선형</td><td>사영 — 일차식</td></tr>
   <tr><td>(8)</td><td>$(x,\,y,\,0)$</td><td class="yes">선형</td><td>사영 — 일차식</td></tr>
   <tr><td>(9)</td><td>$(-x,\,-y,\,-z)$</td><td class="yes">선형</td><td>$T=-I$</td></tr>
-  <tr><td>(10)</td><td>$(x,\,y+1,\,z)$</td><td class="no">아님</td><td>$T(O)=(0,1,0)\ne O$ — 평행이동</td></tr>
+  <tr><td>(10)</td><td>$(x,\,y+1,\,z)$</td><td class="no">아님</td><td>상수항 — $T(O)=(0,1,0)\ne O$</td></tr>
 </table>
 
 <div class="note">
-  <b>자주 헷갈리는 것</b> — 연습문제 <b>01</b>의 $T(X)=\sqrt{x_1^{\,2}+\cdots+x_n^{\,2}}$ 는
-  노름이라 선형이 아니지만, 그 문제는 <b>값을 대입해 계산</b>하라는 문제일 뿐
-  선형성을 묻지 않는다. 문항이 무엇을 요구하는지부터 읽을 것.
+  <b>함정</b> — <b>01</b>의 $T(X)=\sqrt{x_1^{\,2}+\cdots+x_n^{\,2}}$ 는 노름이라 선형이 아니지만,
+  그 문제는 <b>값을 대입해 계산</b>하라는 문제일 뿐 선형성을 묻지 않는다.
 </div>
 
 <div class="terms">
   <div class="h">용어</div>
   <dl>
     <dt>선형사상 <span class="en">linear map</span></dt>
-    <dd>가산성과 동차성을 모두 만족하는 사상. 정의역과 공역이 같을 때
+    <dd>가산성과 동차성을 모두 만족하는 사상. 정의역과 공역이 같으면
       <b>선형변환</b><span class="en">linear transformation</span>이라 한다.</dd>
     <dt>아핀변환 <span class="en">affine transformation</span></dt>
-    <dd>$T(X)=AX+B$ 처럼 선형사상에 평행이동이 붙은 것. $B\ne O$ 이면 선형사상이 아니다.
-      02번의 (10)이 이 경우다.</dd>
+    <dd>$T(X)=AX+B$ 처럼 선형사상에 평행이동이 붙은 것. $B\ne O$ 이면 선형사상이 아니다
+      — <b>02 (10)</b>이 이 경우다.</dd>
   </dl>
 </div>
 
