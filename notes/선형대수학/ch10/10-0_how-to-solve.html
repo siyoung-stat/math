@@ -42,7 +42,8 @@
 문항 번호는 <a href="10-exercises.html">10장 연습문제</a>를 가리킨다.</p>
 
 <div class="note">
-  <b>이 노트에서 다루는 것</b> — 유형 1. 선형사상 판정 &nbsp;/&nbsp; 유형 2. 대응하는 행렬 구하기.
+  <b>이 노트에서 다루는 것</b> — 유형 1. 선형사상 판정 &nbsp;/&nbsp; 유형 2. 대응하는 행렬 구하기
+  &nbsp;/&nbsp; 유형 3. 핵 구하기와 단사 판정.
 </div>
 
 <h2 class="sub">유형 1 · 선형사상 판정 <span class="en">testing whether a map is linear</span></h2>
@@ -241,12 +242,96 @@ $T(V_j)$ 를 <b>다시 $V_1,V_2,V_3$ 의 일차결합으로 쓴 계수</b>를 $j
   같은 변환이라도 기저를 잘 고르면 행렬이 이만큼 간단해진다.
 </div>
 
+<h2 class="sub">유형 3 · 핵 구하기와 단사 판정 <span class="en">finding the kernel and testing injectivity</span></h2>
+
+<div class="oneline">
+  “무엇을 넣어야 $O$ 가 나오지?”
+  <small>핵은 $T$ 에 넣었을 때 결과가 <b>영벡터가 되는 입력벡터를 전부 모은 집합</b>이다.</small>
+</div>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">핵 <span class="en">kernel</span></span>
+  $$\ker(T)=\{X\mid T(X)=O\}$$
+  <p>결국 $T(X)=O$ 이라는 <b>동차연립방정식의 해집합</b>이므로,
+  핵을 구하는 것은 연립방정식을 푸는 것과 똑같다.</p>
+</div>
+
+<h3>푸는 순서 — 세 단계</h3>
+
+<ol class="recipe">
+  <li><b>각 성분을 $0$ 으로 놓는다.</b> $T(X)=O$ 를 성분별 연립방정식으로 편다.</li>
+  <li><b>연립을 푼다.</b> 자유변수가 남으면 그 문자로 나머지를 표현한다.</li>
+  <li><b>집합으로 쓴다.</b> 해를 $\operatorname{span}\{\dots\}$ 꼴로 정리하면
+    기저와 차원까지 한꺼번에 나온다.</li>
+</ol>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">11 — $T(x,y)=(x+y,\ y)$ : 핵이 영벡터뿐인 경우</span>
+  <p>$(x+y,\ y)=(0,0)$ 에서 둘째 성분이 $y=0$, 이를 첫째에 넣으면 $x=0$.</p>
+  $$\ker T=\{(0,0)\}$$
+  <p>넣어서 $O$ 이 나오는 것이 원점 하나뿐이다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">15 — $T(x,y,z)=(x+z,\ 0)$ : 핵이 평면인 경우</span>
+  <p>둘째 성분은 항상 $0$ 이라 조건이 되지 않고 남는 식은 $x+z=0$ 하나뿐이다.
+  $z=-x$ 이고 $y$ 는 자유이므로</p>
+  $$\ker T=\{(x,y,-x)\}=\operatorname{span}\{(1,0,-1),\ (0,1,0)\}$$
+  <p>영벡터가 아닌 것을 넣어도 $O$ 이 나오는 경우이고, 그런 벡터를 전부 모으면
+  $R^3$ 안의 <b>평면</b>이 된다. 차원은 $2$.</p>
+</div>
+
+<div class="note">
+  <b>핵의 모양</b> — 남는 식의 개수에 따라 <b>원점 하나 → 직선 → 평면</b>으로 커진다.
+  <b>12</b>번처럼 두 식이 상수배라 사실 같은 식이면 남는 식이 하나로 줄어
+  핵이 직선이 된다는 점을 놓치기 쉽다.
+</div>
+
+<h3>단사 판정 — 핵만 보면 된다</h3>
+
+<div class="oneline">
+  $\ker T=\{O\}\iff$ 단사
+  <small>핵에 영벡터 말고 다른 것이 하나라도 있으면 단사가 아니다.</small>
+</div>
+
+<p>핵을 이미 구했다면 그것으로 끝이고, 구하기 전에 미리 알 수 있는 지름길도 있다.</p>
+
+<ol class="recipe">
+  <li><b>정방행렬이면 행렬식.</b> $|A|\ne0$ 이면 $\ker T=\{O\}$ 이라 단사다(11·13·16).</li>
+  <li><b>차원부터 본다.</b> $\dim(\text{정의역})>\dim(\text{공역})$ 이면
+    <b>계산 없이</b> 단사가 아니다. 15번이 $R^3\to R^2$ 라 여기서 끝난다.</li>
+  <li><b>기저벡터 하나가 $O$ 으로 가면</b> 그 자체로 단사가 아니다.
+    14번은 $T(E_2)=O$ 이라 즉시 결론이 난다.</li>
+</ol>
+
+<h3>연습문제 11~15 한눈에 보기</h3>
+
+<table class="chk">
+  <tr><th>문항</th><th>$\ker T$</th><th>차원</th><th>단사</th></tr>
+  <tr><td>11</td><td>$\{(0,0)\}$</td><td>0</td><td class="yes">단사</td></tr>
+  <tr><td>12</td><td>$\operatorname{span}\{(1,-3)\}$ — 직선</td><td>1</td><td class="no">아님</td></tr>
+  <tr><td>13</td><td>$\{(0,0,0)\}$</td><td>0</td><td class="yes">단사</td></tr>
+  <tr><td>14</td><td>$\operatorname{span}\{(0,1)\}$ — $y$축</td><td>1</td><td class="no">아님</td></tr>
+  <tr><td>15</td><td>$\operatorname{span}\{(1,0,-1),(0,1,0)\}$ — 평면</td><td>2</td><td class="no">아님</td></tr>
+</table>
+
+<div class="note">
+  <b>14번 주의</b> — 식이 아니라 $T(E_1),T(E_2)$ 만 주어졌으므로
+  먼저 $T(x,y)=x\,T(E_1)+y\,T(E_2)=(0,x)$ 로 <b>식을 복원한 뒤</b> 핵을 구한다.
+</div>
+
 <div class="terms">
   <div class="h">용어</div>
   <dl>
     <dt>선형사상 <span class="en">linear map</span></dt>
     <dd>가산성과 동차성을 모두 만족하는 사상. 정의역과 공역이 같으면
       <b>선형변환</b><span class="en">linear transformation</span>이라 한다.</dd>
+    <dt>핵 <span class="en">kernel</span></dt>
+    <dd>$T(X)=O$ 을 만족하는 $X$ 전체의 집합 $\ker T$. 정의역의 부분공간이다.
+      <b>영공간</b><span class="en">null space</span>이라고도 한다.</dd>
+    <dt>단사 <span class="en">injective</span></dt>
+    <dd>서로 다른 것을 서로 다른 것으로 보내는 사상. 선형사상에서는
+      $\ker T=\{O\}$ 과 같은 말이다.</dd>
     <dt>아핀변환 <span class="en">affine transformation</span></dt>
     <dd>$T(X)=AX+B$ 처럼 선형사상에 평행이동이 붙은 것. $B\ne O$ 이면 선형사상이 아니다
       — <b>02 (10)</b>이 이 경우다.</dd>
