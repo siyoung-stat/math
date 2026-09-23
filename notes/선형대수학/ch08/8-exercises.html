@@ -40,12 +40,14 @@
   <h1><span class="no">연습문제</span>8장 <span class="en">exercises</span></h1>
 </header>
 
-<p>8장(벡터공간) 교재 연습문제 01~10 과 정답·해설. 정답 시트는 인쇄 시 다음 페이지부터 나온다.</p>
+<p>8장(벡터공간) 교재 연습문제 01~10 과 연구과제 1, 그리고 정답·해설.
+정답 시트는 인쇄 시 다음 페이지부터 나온다.</p>
 
 <div class="note">
-  <b>대조 요망</b> — <b>연구과제</b>는 사진에서 "1. $R^2$ 에서 벡터의 덧셈 $\oplus$ 를 …" 첫 줄만 보이고
-  그 뒤가 잘려 있어 옮기지 못했다. 또 <b>09·10</b> 이 가리키는 [예제 8.4]의 벡터공간 $C$ 는
+  <b>대조 요망</b> — <b>09·10</b> 이 가리키는 [예제 8.4]의 벡터공간 $C$ 는
   <b>연속함수 전체의 집합</b>으로 보고 풀었으니, 교재의 정의와 대조할 것.
+  (두 문제의 답은 $C$ 가 영함수를 포함하는 함수공간이기만 하면 그대로 성립한다.)
+  <b>연구과제</b>는 사진에 1번만 있다.
 </div>
 
 <h2 class="sub">교재 연습문제 <span class="en">textbook exercises</span></h2>
@@ -120,6 +122,14 @@ $S=\{f\in C\mid f(0)=0,\ f(1)=1\}$ 은 $C$ 의 부분공간인가?</div>
 
 <div class="ex"><span class="exn">10</span>[예제 8.4]의 벡터공간 $C$ 에 대해
 $S=\{f\in C\mid f(0)=f(-1)=0\}$ 은 $C$ 의 부분공간임을 보여라.</div>
+
+<h2 class="sub">연구과제 <span class="en">projects</span></h2>
+
+<div class="ex"><span class="exn">연구 1</span>$R^2$ 에서 벡터의 덧셈 $\oplus$ 를 다음과 같이 정의하자.
+  $$(a_1,a_2)\oplus(b_1,b_2)=(a_1-b_1,\ a_2-b_2)$$
+  그러면 $R^2$ 은 이 연산에 대하여 벡터공간이 되지 않는다.
+  $R^2$ 에서 덧셈을 $\oplus$ 로 정의해 놓을 때 [정의 8.2]의 조건 중
+  <b>만족하지 않는 것을 모두</b> 찾아라.</div>
 
 <div class="answersheet">
 
@@ -327,6 +337,54 @@ $S=\{f\in C\mid f(0)=f(-1)=0\}$ 은 $C$ 의 부분공간임을 보여라.</div>
   <div class="qed">∎</div>
 </div>
 
+<h2 class="sub">연구과제</h2>
+
+<div class="ans"><span class="exn">연구 1</span><b>정답</b>
+깨지는 것은 <b>덧셈의 교환법칙, 덧셈의 결합법칙, 덧셈의 항등원, 덧셈의 역원,
+그리고 스칼라합의 분배법칙 $(c+d)\mathbf u=c\mathbf u\oplus d\mathbf u$</b> 다섯 가지다.
+나머지 다섯 조건은 그대로 성립한다.
+  <p>$\mathbf u=(u_1,u_2)$, $\mathbf v=(v_1,v_2)$, $\mathbf w=(w_1,w_2)$ 로 두고
+  $\mathbf u\oplus\mathbf v=(u_1-v_1,\ u_2-v_2)$ 를 하나씩 확인한다.
+  $\oplus$ 는 결국 <b>뺄셈</b>이라, 뺄셈이 갖지 못한 성질이 그대로 무너진다.</p>
+  <ol class="fill">
+    <li><b>덧셈의 닫힘 — 성립.</b> $(u_1-v_1,\,u_2-v_2)$ 는 실수쌍이므로 $R^2$ 안에 있다.</li>
+    <li><b>교환법칙 — <span class="no">실패</span>.</b>
+      $\mathbf u\oplus\mathbf v=(u_1-v_1,\,u_2-v_2)$ 이지만
+      $\mathbf v\oplus\mathbf u=(v_1-u_1,\,v_2-u_2)$ 로 부호가 반대다.
+      반례: $(1,0)\oplus(0,0)=(1,0)$ 인데 $(0,0)\oplus(1,0)=(-1,0)$.</li>
+    <li><b>결합법칙 — <span class="no">실패</span>.</b>
+      $$(\mathbf u\oplus\mathbf v)\oplus\mathbf w=(u_1-v_1-w_1,\ \cdot\,),\qquad
+        \mathbf u\oplus(\mathbf v\oplus\mathbf w)=(u_1-v_1+w_1,\ \cdot\,)$$
+      $w_1\ne0$ 이면 다르다. 반례: $\mathbf u=\mathbf v=(0,0)$, $\mathbf w=(1,0)$ 이면
+      좌변은 $(-1,0)$, 우변은 $(1,0)$.</li>
+    <li><b>항등원 — <span class="no">실패</span>.</b>
+      $\mathbf u\oplus\mathbf e=\mathbf u$ 에서 $u_1-e_1=u_1$ 이므로 후보는 $\mathbf e=(0,0)$ 뿐인데,
+      반대쪽은 $\mathbf e\oplus\mathbf u=(-u_1,-u_2)\ne\mathbf u$ ($\mathbf u\ne O$).
+      <b>오른쪽 항등원</b>만 있을 뿐 양쪽 항등원은 없다.</li>
+    <li><b>역원 — <span class="no">실패</span>.</b>
+      항등원 자체가 없으므로 역원 조건은 성립할 수 없다.
+      (형식적으로 $\mathbf u\oplus\mathbf u=(0,0)$ 이라 "모든 원소가 자기 자신의 역원"처럼 보이지만,
+      이는 오른쪽 항등원에 대한 것이고 앞 조건이 이미 깨졌다.)</li>
+    <li><b>스칼라곱의 닫힘, $c(d\mathbf u)=(cd)\mathbf u$, $1\mathbf u=\mathbf u$ — 성립.</b>
+      스칼라곱은 원래대로 성분별 곱이라 $\oplus$ 와 아무 상관이 없다.</li>
+    <li><b>$c(\mathbf u\oplus\mathbf v)=c\mathbf u\oplus c\mathbf v$ — 성립.</b>
+      좌변 $=c(u_1-v_1,\ u_2-v_2)=(cu_1-cv_1,\ cu_2-cv_2)$,
+      우변 $=(cu_1,cu_2)\oplus(cv_1,cv_2)=(cu_1-cv_1,\ cu_2-cv_2)$ 로 같다.
+      뺄셈도 스칼라를 밖으로 빼낼 수 있기 때문이다.</li>
+    <li><b>$(c+d)\mathbf u=c\mathbf u\oplus d\mathbf u$ — <span class="no">실패</span>.</b>
+      좌변 $=((c+d)u_1,\ (c+d)u_2)$ 인데
+      우변 $=(cu_1-du_1,\ cu_2-du_2)=((c-d)u_1,\ (c-d)u_2)$.
+      반례: $c=d=1$, $\mathbf u=(1,0)$ 이면 좌변 $(2,0)$, 우변 $(0,0)$.</li>
+  </ol>
+  <div class="note" style="margin-top:8px">
+    덧셈 쪽 공리 <b>네 개</b>(교환·결합·항등원·역원)가 무너지고, 덧셈과 스칼라곱을 잇는
+    분배법칙 중 <b>스칼라를 쪼개는 쪽</b> 하나가 더 무너진다.
+    벡터를 쪼개는 쪽 $c(\mathbf u\oplus\mathbf v)$ 는 살아남는다는 대비가 이 문제의 재미다.
+    ([정의 8.2]의 번호 매김은 교재를 따를 것 — 위는 조건의 <b>내용</b>으로 적었다.)
+  </div>
+  <div class="qed">∎</div>
+</div>
+
 <div class="note">
   <b>8장 연습문제를 관통하는 한 줄</b> — 조건이 <b>$(\text{선형식})=0$</b> 이면 부분공간이고,
   <b>$=0$ 이 아니거나</b>(02·04의 (2)(4)(8)(10), 09) <b>식이 선형이 아니면</b>(04의 (5)(6)(7))
@@ -337,7 +395,7 @@ $S=\{f\in C\mid f(0)=f(-1)=0\}$ 은 $C$ 의 부분공간임을 보여라.</div>
 
 <nav class="pager">
   <a href="../ch07/7-exercises.html">← 이전<small>7장 연습문제</small></a>
-  <a class="next" href="../index.html">목차 →<small>선형대수학</small></a>
+  <a class="next" href="../ch09/9-exercises.html">다음 →<small>9장 연습문제</small></a>
 </nav>
 
 </body>
