@@ -297,6 +297,23 @@ $T(V_j)$ 를 <b>다시 $V_1,V_2,V_3$ 의 일차결합으로 쓴 계수</b>를 $j
   <small>핵에 영벡터 말고 다른 것이 하나라도 있으면 단사가 아니다.</small>
 </div>
 
+<div class="box thm">
+  <span class="tag">요령</span><span class="title">차원이 줄어들면 절대 단사일 수 없다</span>
+  $$\dim(\text{정의역})>\dim(\text{공역})\ \Longrightarrow\ T\ \text{는 단사가 아니다}$$
+  <p><b>이유.</b> 치역은 공역 안에 들어 있으므로
+  $\dim\operatorname{Im}T\le\dim(\text{공역})$ 이다. 차원정리에 넣으면</p>
+  $$\dim\ker T=\dim(\text{정의역})-\dim\operatorname{Im}T
+    \ \ge\ \dim(\text{정의역})-\dim(\text{공역})>0$$
+  <p>핵의 차원이 반드시 $1$ 이상이므로 $\ker T\ne\{O\}$ 이고, 따라서 단사가 아니다.
+  <b>15</b>번은 $R^3\to R^2$ 라 식을 보지도 않고 이 한 줄로 끝난다.</p>
+</div>
+
+<div class="note">
+  <b>거꾸로는 성립하지 않는다.</b> 차원이 늘거나 같다고 단사가 보장되지는 않는다.
+  <b>12</b>번은 $R^2\to R^3$ 로 차원이 늘었는데도 두 식이 사실 같은 식이라
+  핵이 직선이 되어 단사가 아니다. <b>차원이 줄면 즉시 탈락, 아니면 핵을 직접 구할 것.</b>
+</div>
+
 <p>핵을 이미 구했다면 그것으로 끝이고, 구하기 전에 미리 알 수 있는 지름길도 있다.</p>
 
 <ol class="recipe">
