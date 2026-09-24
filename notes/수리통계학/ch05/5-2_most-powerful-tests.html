@@ -311,17 +311,42 @@
 </div>
 
 <div class="box ex">
-  <span class="tag">예 5.12</span><span class="title">(예 5.11의 계속) 정규 모평균의 균일최강력 검정</span>
-  <p>예 5.11에서 본 기각영역</p>
-  $$C=\Big\{(x_1,x_2,\dots,x_n):\bar x_n\ge\mu_0+\frac{z_\alpha}{\sqrt n}\Big\}$$
-  <p>은 $\mu_1(\gt\mu_0)$ 을 어떻게 택하더라도 그 가설검정에 대한 최강력 검정법이고,
-  $P(\overline X_n\ge\mu_0+z_\alpha/\sqrt n\mid H_0)=\alpha$ 를 만족한다. 따라서 $C$ 는</p>
-  $$H_0:\mu=\mu_0\qquad\text{대}\qquad H_1:\mu\gt\mu_0$$
-  <p>에 대한 유의수준 $\alpha$ 인 <b>균일최강력 검정법</b>의 기각영역이 된다.</p>
-  <p>또한 이 기각영역에 대한 검정력함수 $\pi(\mu)$ 가 $\mu$ 에 대한 <b>증가함수</b>이므로</p>
-  $$\max\{\pi(\mu)\mid\mu\le\mu_0\}=\pi(\mu_0)=\alpha$$
-  <p>가 성립한다. 즉, 귀무가설이 $\mu\le\mu_0$ 인 경우에도 이 기각영역의 유의수준이 $\alpha$ 이다.
-  따라서 $C$ 는 $H_0:\mu\le\mu_0$ 대 $H_1:\mu\gt\mu_0$ 에 대해서도 균일최강력 검정법의 기각영역이 된다.</p>
+  <span class="tag">예 5.12</span><span class="title">정규분포 $N(0,\theta)$ 모분산의 균일최강력 검정</span>
+  <p>랜덤표본 $X_1,X_2,\dots,X_n$ 이 평균이 $0$ 이고 분산이 $\theta$ 인 정규분포 $N(0,\theta)$ 를 따를 때,
+  다음 가설을 생각하자. 먼저 대립가설을 <b>단순가설</b>로 두고 출발한다.</p>
+  $$H_0:\theta=\theta'\qquad\text{대}\qquad H_1:\theta=\theta''\ (\gt\theta')$$
+  <p><b>1. 가능도비를 정리한다.</b> 가능도함수가
+  $L(\theta)=(2\pi\theta)^{-n/2}\exp\left[-\dfrac1{2\theta}\sum x_i^2\right]$ 이므로</p>
+  $$\frac{L(\theta')}{L(\theta'')}
+    =\frac{(2\pi\theta')^{-n/2}\exp\left[-\dfrac1{2\theta'}\sum x_i^2\right]}
+          {(2\pi\theta'')^{-n/2}\exp\left[-\dfrac1{2\theta''}\sum x_i^2\right]}
+    =\left(\frac{\theta''}{\theta'}\right)^{n/2}
+     \exp\left[\sum x_i^2\left(-\frac{\theta''-\theta'}{2\theta'\theta''}\right)\right]\le k$$
+  <p><b>2. 기각영역의 형태를 읽는다.</b> $\theta''\gt\theta'$ 이므로
+  $\dfrac{\theta''-\theta'}{2\theta'\theta''}\gt0$ 이고, 지수 안의 값은 $\sum x_i^2$ 이 커질수록 작아진다.
+  즉 가능도비는 $\sum x_i^2$ 의 <b>감소함수</b>이므로</p>
+  $$\frac{L(\theta')}{L(\theta'')}\le k
+    \quad\Longleftrightarrow\quad \sum x_i^2\ge c$$
+  <p><b>3. 분포로 $c$ 를 정한다.</b> $H_0$ 아래에서
+  $\dfrac{X_i}{\sqrt{\theta'}}\sim N(0,1)$ 이므로
+  $\left(\dfrac{X_i}{\sqrt{\theta'}}\right)^{\!2}\sim\chi^2(1)$ 이고, 서로 독립인 것을 더하면</p>
+  $$\frac{\sum X_i^2}{\theta'}\sim\chi^2(n)$$
+  <p>따라서 유의수준 $\alpha$ 인 <b>최강력 기각영역</b>은 다음과 같다.</p>
+  $$\text{$H_0$ 를 기각한다}\quad\Longleftrightarrow\quad
+    \frac{\sum X_i^2}{\theta'}\ \ge\ \chi^2_\alpha(n)$$
+  <p><b>4. 균일최강력임을 확인한다.</b> 위 기각영역에는 $\theta''$ 이 <b>전혀 남아 있지 않다.</b>
+  $\theta''$ 은 $2$단계에서 부등호의 방향을 정하는 데에만 쓰였고
+  ($\theta''\gt\theta'$ 이라는 사실만 이용했다), 그 값 자체는 기각영역에 들어오지 않았다.
+  그러므로 $\theta'$ 보다 큰 어떤 $\theta''$ 을 택하더라도 같은 기각영역이 최강력이 되고,
+  동시에 유의수준이 $\alpha$ 이므로 이 검정은</p>
+  $$H_0:\theta=\theta'\qquad\text{대}\qquad H_1:\theta\gt\theta'$$
+  <p>에 대한 <b>균일최강력 검정법</b>이다. 정의 5.4 뒤에 적어 둔 “즉 …” 이 그대로 적용된 경우다.</p>
+  <div class="note" style="margin-top:8px">
+    $\theta''\lt\theta'$ 인 반대쪽 단측검정에서는 $2$단계의 부호가 뒤집혀
+    기각영역이 $\sum X_i^2\le c$ 가 된다. 이때도 $\theta''$ 이 남지 않으므로 같은 논리로 균일최강력이지만,
+    <b>양측</b>으로 합치면 두 기각영역의 모양이 달라 하나로 묶을 수 없다
+    — 양측검정에 균일최강력 검정법이 없는 이유가 여기에서도 그대로 보인다.
+  </div>
 </div>
 
 <h2 class="sub">단조가능도비의 활용 <span class="en">monotone likelihood ratio</span></h2>
