@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5장 · 5.3 일반화 가능도비 검정법</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">수리통계학 · 5장 가설검정</div>
+  <h1><span class="no">5.3</span>일반화 가능도비 검정법 <span class="en">generalized likelihood ratio test</span></h1>
+</header>
+
+<div class="note">
+  앞 절의 <a href="5-2_most-powerful-tests.html">네이만–피어슨 정리</a>는 <b>단순가설</b>에 대한 검정에 쓸 수 있었다.
+  대립가설이 복합이면 최강력 검정법을 기초로 균일최강력 검정법이 존재하는지 확인해야 하고,
+  귀무가설이 복합인 경우에도 때에 따라 균일최강력 검정법이 존재하며, 단조가능도비를 활용할 수도 있다.
+  그러나 <b>대립가설이 양측</b>으로 주어진다든지, 검정의 직접 대상이 아닌
+  <b>장애모수</b><span class="en">nuisance parameter</span>가 존재할 때
+  — 즉 관심대상이 되는 모수 외에 다른 미지의 모수가 존재할 때 —
+  최강력·균일최강력 검정법의 접근방법을 직접 적용할 수 없는 경우가 많다.
+  예를 들어 정규분포의 모평균에 대한 가설검정에서 <b>모분산이 알려지지 않은 경우</b>가 그렇다.
+  이 절에서 다루는 일반화 가능도비는 점추정에서 최대가능도의 원리를 사용하는 것과 비슷한 방법으로,
+  실제 문제에서 사용되는 대부분의 검정법이 일반화 가능도비 검정이거나 그의 변형이라고 할 수 있다.
+</div>
+
+<h2 class="sub">일반화 가능도비 <span class="en">generalized likelihood ratio</span></h2>
+
+<div class="box def">
+  <span class="tag">정의 5.6</span><span class="title">일반화 가능도비 <span class="en">generalized likelihood ratio</span></span>
+  <p>랜덤표본 $X_1,X_2,\dots,X_n$ 의 결합 확률밀도함수가 $f(x_1,x_2,\dots,x_n;\theta)$ 로 주어졌다고 하자.
+  이제 $H_0:\theta\in\Omega_0$ 대 $H_1:\theta\in\Omega_1(=\Omega-\Omega_0)$ 를 고려할 때,
+  <b>일반화 가능도비</b>는</p>
+  $$\Lambda(x_1,x_2,\dots,x_n)
+    =\frac{\max_{\theta\in\Omega_0}L(\theta;x_1,\dots,x_n)}
+           {\max_{\theta\in\Omega}L(\theta;x_1,\dots,x_n)}
+    =\frac{L(\hat\theta_0)}{L(\hat\theta_n)}$$
+  <p>으로 정의된다. 단, $\hat\theta_n$ 은 모수 $\theta$ 의 최대가능도 추정량이며,
+  $\hat\theta_0$ 은 <b>귀무가설이 참이라는 조건하에서</b> 가능도함수를 최대로 만드는
+  $\theta$ 의 최대가능도 추정량이다.</p>
+</div>
+
+<div class="note">
+  <b>네이만–피어슨의 가능도비와 무엇이 다른가</b> — 두 가지가 다르다.
+  <br>$(1)$ 네이만–피어슨 정리에서는 두 가설이 단순이라 분자와 분모에 어떤 모수값을 써야 하는지가
+  확실하였으나, 복합가설에서는 분명하지 않다. 그래서 일반화 가능도비에서는 여러 가능한 모수값 가운데
+  <b>주어진 관측값을 가장 잘 설명하는</b>(실제로 관측된 자료가 얻어질 확률을 가장 높게 만드는) 모수값을 쓴다.
+  <br>$(2)$ 분모에는 <b>대립가설하에서의</b> 최대가능도 추정량이 아니라
+  <b>전체 모수공간 $\Omega$ 에서의</b> 최대가능도 추정량이 사용된다.
+  그러므로 이미 최대가능도 추정량을 알고 있다면 분모의 계산은 쉬워진다.
+  분자는 제약이 있는 상태에서 가능도함수를 최대화하는 문제를 포함하기 때문에 때로 좀 더 복잡하다.
+</div>
+
+<div class="note">
+  일반화 가능도비 $\Lambda$ 는 관측값 $x_1,\dots,x_n$ 에 대한 함수이다.
+  이제 이 관측값들을 해당되는 확률변수 $X_1,\dots,X_n$ 으로 대체하여
+  $\Lambda(X_1,X_2,\dots,X_n)$ 과 같이 표기하고 역시 일반화 가능도비라고 부른다.
+</div>
+
+<h3>$\Lambda$ 의 값이 뜻하는 것</h3>
+
+<p>이와 같이 정의된 일반화 가능도비 $\Lambda$ 는 언제나 양$(\gt0)$ 이지만 $1$ 보다 클 수 없다.
+귀무가설이 참일 때의 모수공간 $\Omega_0$ 이 전체모수공간 $\Omega$ 의 <b>부분집합</b>이기 때문이다.</p>
+
+$$0\lt\Lambda\le1$$
+
+<p>그런데 $\Lambda$ 의 값이 $1$ 에 가까우면 이는 주어진 관측값들이 귀무가설 $H_0$ 에 부합된다는 것을 의미하며,
+반대로 $0$ 에 가까우면 그렇지 않다는 것을 의미한다. 특히 $\Lambda$ 의 값이 $1$ 이면 관측된 자료를 가장 잘
+설명하는 모수의 값이 귀무가설에 포함된다는 뜻이므로 귀무가설을 기각할 이유가 전혀 없게 된다.
+반대로 $0$ 에 가까우면 대립가설이 귀무가설보다 관측된 자료를 훨씬 더 잘 설명할 수 있음을 뜻하므로
+<b>작은 $\Lambda$ 의 값이 귀무가설을 기각할 증거</b>가 된다.</p>
+
+<div class="box def">
+  <span class="tag">정의 5.7</span><span class="title">일반화 가능도비 검정법 <span class="en">generalized likelihood ratio test</span></span>
+  <p>유의수준이 $\alpha$ 인 <b>일반화 가능도비 검정법</b>은 $0\lt\Lambda\le\lambda^*$ 인 경우 $H_0$ 를 기각한다.
+  단, $\lambda^*$ 는</p>
+  $$\max P(0\lt\Lambda\le\lambda^*\mid H_0)=\alpha$$
+  <p>를 만족하는 상수이며 $0\lt\lambda^*\lt1$ 이다.</p>
+</div>
+
+<div class="note">
+  <b>$\lambda^*$ 를 실제로 어떻게 찾는가</b> — 만일 귀무가설하에서 확률변수 $\Lambda$ 의 확률밀도함수가
+  $f(\lambda\mid H_0)$ 이면 임계값 $\lambda^*$ 는 방정식
+  $\alpha=\int_0^{\lambda^*}f(\lambda\mid H_0)\,d\lambda$ 를 풀어 구할 수 있다.
+  그러나 많은 경우에 $\Lambda$ 의 분포는 알려져 있지 않으며, 이때는
+  <b>$\Lambda$ 의 단조변환꼴로 표현되는 통계량</b>의 귀무가설하에서의 분포를 이용하여 기각영역을 구한다.
+  아래 예들이 모두 이 방법이다.
+</div>
+
+<h2 class="sub">기각영역을 구하는 방법 <span class="en">finding the rejection region</span></h2>
+
+<div class="box ex">
+  <span class="tag">예 5.21</span><span class="title">균등분포 $U(0,\theta)$ — 단측검정</span>
+  <p>$X_1,X_2,\dots,X_n$ 을 $U(0,\theta)$ 로부터 얻은 랜덤표본이라고 하고 다음 가설검정을 생각해 보자.</p>
+  $$H_0:\theta=\theta_0\qquad\text{대}\qquad H_1:\theta\lt\theta_0 \tag{5.12}$$
+  <p>이때 모수공간 $\Omega$ 는 $\{\theta:\theta\le\theta_0\}$ 이므로 $X_{(n)}\le\theta_0$ 을 가정할 수 있고,
+  일반화 가능도비는</p>
+  $$\Lambda(X_1,X_2,\dots,X_n)=\left[\frac{X_{(n)}}{\theta_0}\right]^{n}$$
+  <p>이 되므로 유의수준이 $\alpha$ 인 일반화 가능도비 검정법의 기각영역은
+  $(X_{(n)}/\theta_0)^n\le\lambda^*$ 이다. 단, $\lambda^*$ 는</p>
+  $$\alpha=P\!\left[(X_{(n)}/\theta_0)^n\le\lambda^*\mid H_0\right]
+         =P\!\left[X_{(n)}/\theta_0\le(\lambda^*)^{1/n}\mid H_0\right]$$
+  <p>를 만족시킨다. 이제 $W=\dfrac{X_{(n)}}{\theta_0}$, $w^*=(\lambda^*)^{1/n}$ 라고 정의하면
+  $W$ 의 확률밀도함수가 $0\lt w\lt1$ 에서 $f(w)=nw^{n-1}$ 이므로</p>
+  $$\alpha=\int_0^{w^*}nw^{n-1}dw\quad\text{로부터}\quad (w^*)^n=\alpha$$
+  <p>가 된다. 그러므로 가설 $(5.12)$ 에 대한 유의수준 $\alpha$ 인 일반화 가능도비 검정법의 기각영역은</p>
+  $$W=\frac{X_{(n)}}{\theta_0}\le\alpha^{1/n}$$
+  <p>으로 주어진다.</p>
+  <div class="note" style="margin-top:8px">
+    <b>분자·분모가 왜 저렇게 되는가</b> — 가능도함수는 $\theta\ge x_{(n)}$ 일 때 $L(\theta)=\theta^{-n}$,
+    그렇지 않으면 $0$ 이므로 $\theta$ 에 대한 <b>감소함수</b>다.
+    분모는 $\Omega$ 전체에서의 최대이므로 $\hat\theta_n=X_{(n)}$ 에서 $X_{(n)}^{-n}$,
+    분자는 $\theta=\theta_0$ 하나뿐이므로 $\theta_0^{-n}$ 이다. 그 비가 $(X_{(n)}/\theta_0)^n$ 이다.
+  </div>
+</div>
+
+<div class="box prf">
+  <span class="tag">확인</span><span class="title">예 5.21의 결과는 균일최강력 검정법과 일치한다</span>
+  <p>$\theta_1\lt\theta_0$ 인 $\theta_0$ 과 $\theta_1$ 에 대하여 가능도비
+  $LR(\theta_0,\theta_1;x_1,\dots,x_n)$ 은</p>
+  $$LR(\theta_0,\theta_1;x_1,\dots,x_n)=
+    \begin{cases}\left(\dfrac{\theta_1}{\theta_0}\right)^{n}, & x_{(n)}\le\theta_1\\[6pt]
+    \infty, & \theta_1\lt x_{(n)}\le\theta_0\end{cases}$$
+  <p>가 된다. 이 가능도비는 $T(X_1,\dots,X_n)=X_{(n)}$ 에 대해 <b>비감소함수</b>이므로
+  $X_{(n)}$ 에 대해 단조가능도비의 성질을 갖는다. 그러므로
+  <a href="5-2_most-powerful-tests.html">정리 5.2</a>에 의해 $P(X_{(n)}\le k\mid\theta_0)=\alpha$ 인
+  $k$ 에 대해 $\{(x_1,\dots,x_n):x_{(n)}\le k\}$ 가 유의수준 $\alpha$ 인 균일최강력 검정법의 기각영역이 된다.
+  귀무가설하에서 $X_{(n)}$ 의 분포를 이용하여 $k=\theta_0\alpha^{1/n}$ 임을 알 수 있고,
+  그에 따라 이 기각영역이 <b>일반화 가능도비 기각영역과 같음</b>을 알 수 있다.</p>
+</div>
+
+<div class="note">
+  이제 정규분포로부터 랜덤표본을 구했을 때, 모평균과 모분산에 대한 가설에 일반화 가능도비 검정법을 각각
+  활용하여 잘 알려진 <b>$t$ 검정법</b>과 <b>카이제곱 검정법</b>을 유도해 보기로 한다.
+</div>
+
+<div class="box ex">
+  <span class="tag">예 5.22</span><span class="title">정규 모평균, $\sigma^2$ 이 알려진 경우 — 양측 $Z$ 검정</span>
+  <p>$X_1,X_2,\dots,X_n$ 이 정규분포 $N(\mu,\sigma^2)$ 으로부터 구한 랜덤표본이라고 하고,
+  모분산 $\sigma^2$ 이 알려져 있는 경우 다음을 고려해 보자.</p>
+  $$H_0:\mu=\mu_0\qquad\text{대}\qquad H_1:\mu\ne\mu_0$$
+  <p>가능도함수가 $T(X_1,\dots,X_n)=\sum_{i=1}^n X_i$ 에 대해 비증가하는 단조가능도비의 성질이 있으므로,
+  $H_0:\mu=\mu_0$ 에서 대립가설이 $H_1:\mu\gt\mu_0$ 이면 균일최강력 기각영역이
+  $\left\{\sum X_i\ge k\right\}$ 의 형태를 가지고, $H_1:\mu\lt\mu_0$ 이면
+  $\left\{\sum X_i\le k\right\}$ 의 형태를 갖는다.
+  그러나 최강력 기각영역이 <b>$\mu-\mu_0$ 의 부호에 의존</b>하므로
+  대립가설이 $H_1:\mu\ne\mu_0$ 이면 균일최강력 검정법이 존재하지 않는다.</p>
+  <p>이제 양측 대립가설에 대해 일반화 가능도비 검정법의 기각영역을 구해 보자.
+  $\mu$ 의 최대가능도 추정량이 $\overline X_n$ 이므로 일반화 가능도비는</p>
+  $$\Lambda(X_1,\dots,X_n)
+    =\frac{(2\pi\sigma^2)^{-n/2}\exp\left[-\sum(X_i-\mu_0)^2/(2\sigma^2)\right]}
+           {(2\pi\sigma^2)^{-n/2}\exp\left[-\sum(X_i-\overline X_n)^2/(2\sigma^2)\right]}
+    =\exp\left(-\frac{n}{2\sigma^2}(\overline X_n-\mu_0)^2\right)$$
+  <p>이 되고, 기각영역은 $\exp\left(-\dfrac{n}{2\sigma^2}(\overline X_n-\mu_0)^2\right)\le\lambda^*$ 가 된다.
+  여기에서 $\lambda^*$ 는</p>
+  $$\alpha=P\!\left[\exp\left(-\frac{n}{2\sigma^2}(\overline X_n-\mu_0)^2\right)\le\lambda^*
+    \;\Big|\;H_0\right]$$
+  <p>를 만족한다. 이 기각영역은 $|\overline X_n-\mu_0|\ge c$ 와 동등하고 귀무가설하에서
+  $\overline X_n$ 은 $N\!\left(\mu_0,\dfrac{\sigma^2}{n}\right)$ 을 따르므로</p>
+  $$\alpha=P\!\left[\,|\overline X_n-\mu_0|\ge c\mid H_0\right]$$
+  <p>로부터 $c=z_{\alpha/2}\dfrac{\sigma}{\sqrt n}$ 임을 알 수 있다.
+  즉, 유의수준 $\alpha$ 인 일반화 가능도비 검정법의 기각영역은</p>
+  $$\left\{(x_1,\dots,x_n):\bar x_n\ge\mu_0+z_{\alpha/2}\frac{\sigma}{\sqrt n}
+    \ \ \text{또는}\ \ \bar x_n\le\mu_0-z_{\alpha/2}\frac{\sigma}{\sqrt n}\right\}$$
+  <p>이다. 이는 일반적으로 사용하는 <b>양측 $Z$ 검정법</b>이다.</p>
+  <div class="note" style="margin-top:8px">
+    <b>지수가 왜 저렇게 정리되는가</b> —
+    $\sum(X_i-\mu_0)^2=\sum(X_i-\overline X_n)^2+n(\overline X_n-\mu_0)^2$ 이므로
+    분자와 분모의 지수에서 $\sum(X_i-\overline X_n)^2$ 부분이 상쇄되고
+    $-n(\overline X_n-\mu_0)^2/(2\sigma^2)$ 만 남는다.
+    그리고 $\exp(-t)$ 는 $t$ 의 감소함수이므로
+    <b>$\Lambda$ 가 작다 $\iff$ $(\overline X_n-\mu_0)^2$ 이 크다</b>가 되어 양측 기각영역이 나온다.
+  </div>
+</div>
+
+<h2 class="sub">정규분포의 $t$ 검정과 카이제곱 검정 <span class="en">the t test and the chi-square test</span></h2>
+
+<div class="box ex">
+  <span class="tag">예 5.23</span><span class="title">$t$ 검정 — 모분산이 알려지지 않은 경우</span>
+  <p>$X_1,X_2,\dots,X_n$ 이 정규분포 $N(\mu,\sigma^2)$ 으로부터 구한 랜덤표본이라 하고,
+  모분산 $\sigma^2$ 이 알려져 있지 않은 경우 다음을 고려하자.</p>
+  $$H_0:\mu=\mu_0\qquad\text{대}\qquad H_1:\mu\ne\mu_0 \tag{5.13}$$
+  <p>모수벡터 $(\mu,\sigma^2)$ 의 최대가능도 추정량은</p>
+  $$(\hat\mu,\hat\sigma^2)=\left(\overline X_n,\ \sum_{i=1}^n(X_i-\overline X_n)^2/n\right)$$
+  <p>이며, 귀무가설 $H_0$ 하에서는</p>
+  $$(\hat\mu_0,\hat\sigma_0^{\,2})=\left(\mu_0,\ \sum_{i=1}^n(X_i-\mu_0)^2/n\right)$$
+  <p>이 최대가능도 추정량이다. 따라서 일반화 가능도비는</p>
+  $$\Lambda(X_1,\dots,X_n)
+    =\frac{(2\pi\hat\sigma_0^{\,2})^{-n/2}\exp\left[-\sum(X_i-\hat\mu_0)^2/(2\hat\sigma_0^{\,2})\right]}
+           {(2\pi\hat\sigma^2)^{-n/2}\exp\left[-\sum(X_i-\hat\mu)^2/(2\hat\sigma^2)\right]}
+    =\left[\frac{\sum_{i=1}^n(X_i-\overline X_n)^2}{\sum_{i=1}^n(X_i-\mu_0)^2}\right]^{n/2}$$
+  <p>로 주어진다.</p>
+  <div class="note" style="margin-top:8px">
+    <b>지수 부분이 사라지는 이유</b> — 분자의 지수는
+    $-\dfrac{\sum(X_i-\mu_0)^2}{2\hat\sigma_0^{\,2}}=-\dfrac{n}{2}$,
+    분모의 지수는 $-\dfrac{\sum(X_i-\overline X_n)^2}{2\hat\sigma^2}=-\dfrac{n}{2}$ 로
+    <b>둘 다 $-n/2$</b> 가 되어 $\exp(-n/2)$ 끼리 약분된다. 최대가능도 추정량을 대입했기 때문에
+    생기는 현상이고, 아래 예 5.24에서는 분자만 $H_0$ 로 고정되어 이 약분이 일어나지 않는다.
+  </div>
+  <p>그러나 $\Lambda$ 의 분포는 너무 복잡하므로 다음과 같은 $\Lambda$ 의 <b>단조함수</b>를 고려하기로 한다.
+  먼저</p>
+  $$\sum_{i=1}^n(X_i-\mu_0)^2=\sum_{i=1}^n(X_i-\overline X_n)^2+n(\overline X_n-\mu_0)^2$$
+  <p>이므로 $T=\dfrac{\overline X_n-\mu_0}{S_n/\sqrt n}$ 라고 놓으면
+  $\left(\text{단, }S_n^2=\sum_{i=1}^n(X_i-\overline X_n)^2/(n-1)\right)$,</p>
+  $$\Lambda(X_1,\dots,X_n)
+    =\left[1+\frac{n(\overline X_n-\mu_0)^2}{\sum_{i=1}^n(X_i-\overline X_n)^2}\right]^{-n/2}
+    =\left[1+\frac{T^2}{n-1}\right]^{-n/2}$$
+  <p>이 된다. 이제 $T^2$ 이 증가함에 따라 일반화 가능도비 $\Lambda$ 는 단조감소하므로,
+  원래의 검정법인 $\Lambda\le\lambda^*$ 이면 기각하는 검정법은
+  <b>$T^2$ 이 클 때 $H_0$ 를 기각</b>하는 검정방법과 동등하다.
+  그런데 귀무가설하에서 $T\sim t(n-1)$ 이므로</p>
+  $$0\le\Lambda\le\lambda^*
+    \iff T^2\ge\bigl(t_{\alpha/2}(n-1)\bigr)^2
+    \iff T\le-t_{\alpha/2}(n-1)\ \text{또는}\ T\ge t_{\alpha/2}(n-1)$$
+  <p>이고,</p>
+  $$\left\{(x_1,\dots,x_n):\bar x_n\ge\mu_0+t_{\alpha/2}(n-1)\frac{s}{\sqrt n}
+    \ \ \text{또는}\ \ \bar x_n\le\mu_0-t_{\alpha/2}(n-1)\frac{s}{\sqrt n}\right\}$$
+  <p>이 유의수준 $\alpha$ 인 일반화 가능도비의 기각영역이 된다. 그리고 이는 가설 $(5.13)$ 에 대해
+  잘 알려진 <b>스튜던트 $t$ 검정</b><span class="en">Student's t test</span>이다.</p>
+  <p>한편, 가설 $H_0:\mu\le\mu_0$ 대 $H_1:\mu\gt\mu_0$ 을 고려한다면 대동소이한 방법으로,
+  유의수준이 $\alpha\,(\lt1/2)$ 인 일반화 가능도비 검정법의 기각영역이
+  $T\ge t_\alpha(n-1)$ 으로 주어짐을 알 수 있다(참조: 연습문제 5.25).</p>
+</div>
+
+<div class="box prf">
+  <span class="tag">보충</span><span class="title">단측 $t$ 검정의 검정력과 비중심 $t$ 분포</span>
+  <p>위의 예 5.23에서 구한 $t$ 검정법은 그 응용성이 매우 높다. 여기에서는 단측 대립가설
+  $H_1:\mu\gt\mu_0$ 에 대한 유의수준이 $\alpha$ 인 $t$ 검정법의 검정력을 살펴보기로 한다.
+  기각영역이 $T\ge t_\alpha(n-1)$ 이므로 검정력은</p>
+  $$\pi(\mu)=P\!\left[\frac{\overline X_n-\mu_0}{S/\sqrt n}\ge t_\alpha(n-1)\;\Big|\;\mu\right]
+    =P\!\left[\frac{\overline X_n-\mu+(\mu-\mu_0)}{S/\sqrt n}\ge t_\alpha(n-1)\;\Big|\;\mu\right]$$
+  <p>가 된다. $\delta=\sqrt n(\mu-\mu_0)/\sigma$, $Z=\dfrac{\overline X_n-\mu}{\sigma/\sqrt n}$,
+  $V=(n-1)S^2/\sigma^2$ 이라고 하면 $V\sim\chi^2(n-1)$ 이고 $V$ 와 $Z$ 는 서로 독립이며,
+  모평균의 참값이 $\mu$ 일 때 $Z\sim N(0,1)$ 이다. 이제 $t$ 검정법의 검정력은</p>
+  $$\pi(\mu)=P\!\left[\frac{Z+\delta}{\sqrt{V/(n-1)}}\ge t_\alpha(n-1)\right]$$
+  <p>으로 표현된다. 여기에서 변량 $\dfrac{Z+\delta}{\sqrt{V/(n-1)}}$ 는 $\delta=0$ 일 때
+  자유도가 $n-1$ 인 $t$ 분포를 따르지만, $\delta$ 가 $0$ 이 아니면 자유도가 $n-1$ 이고
+  <b>비중심모수가 $\delta$ 인 비중심 $t$ 분포</b><span class="en">noncentral t distribution</span>를 따른다.
+  따라서 검정력 $\pi(\mu)$ 의 계산을 위해 비중심 $t$ 분포가 필요하나 매우 복잡하므로
+  여기에서는 생략하기로 한다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예 5.24</span><span class="title">카이제곱 검정 — 모분산에 대한 양측검정</span>
+  <p>$X_1,X_2,\dots,X_n$ 이 정규분포 $N(\mu,\sigma^2)$ 으로부터 구한 랜덤표본이라 하고,</p>
+  $$H_0:\sigma^2=\sigma_0^{\,2}\qquad\text{대}\qquad H_1:\sigma^2\ne\sigma_0^{\,2} \tag{5.14}$$
+  <p>을 고려해 보자. 모평균 $\mu$ 의 최대가능도 추정량은 가설에 관계없이 언제나 $\overline X_n$ 이다.
+  또, 모분산 $\sigma^2$ 의 최대가능도 추정량은 귀무가설하에서는 $\sigma_0^{\,2}$ 이며,
+  전체 모수공간 $\Omega$ 내에서는 $\hat\sigma^2=\sum_{i=1}^n(X_i-\overline X_n)^2/n$ 이다.
+  따라서 일반화 가능도비는</p>
+  $$\Lambda(X_1,\dots,X_n)
+    =\left[\frac{\sum_{i=1}^n(X_i-\overline X_n)^2}{n\sigma_0^{\,2}}\right]^{n/2}
+     \times\exp\left[-\frac12\sum_{i=1}^n\{(X_i-\overline X_n)/\sigma_0\}^2+\frac n2\right]$$
+  $$=\left(\frac{\hat\sigma^2}{\sigma_0^{\,2}}\right)^{n/2}
+     \exp\left\{-\left(\frac n2\right)\left(\frac{\hat\sigma^2}{\sigma_0^{\,2}}\right)+\frac n2\right\}$$
+  <p>으로 주어진다. $\Lambda\le\lambda^*$ 일 때 귀무가설을 기각하는 일반화 가능도비 검정법의 기각영역을
+  구체적으로 구하기 위해서는 $\Lambda$ 가 언제 작은 값을 갖는지 알아야 한다.
+  이제 $W=\hat\sigma^2/\sigma_0^{\,2}$ 라 하면</p>
+  $$\Lambda=W^{n/2}\exp\left(-\frac n2 W+\frac n2\right)$$
+  <p>이 된다. 여기에서 $\exp(n/2)$ 는 상수이므로 일반화 가능도비 검정법은</p>
+  $$W\exp(-W)\le(\lambda^*)^{2/n}\exp(-1)=c^*$$
+  <p>이면 귀무가설을 기각하는 검정방법과 동등하다(단, $c^*$ 는 주어진 유의수준 $\alpha$ 에 의해 결정된다).</p>
+
+  <figure class="fig">
+  <svg viewBox="0 0 420 200" role="img" aria-label="y=w exp(-w)의 그래프와 기각영역">
+    <line class="axis" x1="50" y1="165" x2="405" y2="165"/>
+    <line class="axis" x1="50" y1="172" x2="50" y2="30"/>
+    <polygon fill="#d8e6f2" stroke="none"
+      points="50,165 60.5,165 60.5,115.5 56,140 53,155 50,165"/>
+    <polygon fill="#d8e6f2" stroke="none"
+      points="224.9,165 224.9,116 254.1,130 283.2,141 312.4,148.5 341.5,154 370.7,158 399.8,160 399.8,165"/>
+    <polyline class="vec" points="50,165 64.6,101 79.2,65 93.7,48 108.3,44 137.5,55 166.6,76 195.8,97 224.9,116 254.1,130 283.2,141 312.4,148.5 341.5,154 370.7,158 399.8,160"/>
+    <line class="aux" x1="50" y1="115.5" x2="399" y2="115.5"/>
+    <line class="aux" style="stroke-dasharray:none;stroke:#888" x1="60.5" y1="165" x2="60.5" y2="115.5"/>
+    <line class="aux" style="stroke-dasharray:none;stroke:#888" x1="224.9" y1="165" x2="224.9" y2="116"/>
+    <text class="num" x="45" y="119" text-anchor="end">c*</text>
+    <text class="num" x="60.5" y="180" text-anchor="middle">a</text>
+    <text class="num" x="224.9" y="180" text-anchor="middle">b</text>
+    <text class="lbl" x="250" y="70">y = w exp(−w)</text>
+    <text class="lbl" x="402" y="180" text-anchor="end">w</text>
+    <text class="num" x="44" y="36" text-anchor="end">y</text>
+    <text class="num" x="30" y="196" text-anchor="start">기각영역 ←</text>
+    <text class="num" x="300" y="196" text-anchor="start">→ 기각영역</text>
+  </svg>
+  <figcaption>그림 5.6 &nbsp;$y=w\exp(-w)$ 의 그래프와 기각영역</figcaption>
+  </figure>
+
+  <p>$y=w\exp(-w)$ 의 형태를 미분을 통해 살펴보면 $w\lt1$ 일 때는 단조증가하고
+  $w\gt1$ 일 때는 단조감소함을 알 수 있다. 그러므로 기각영역은</p>
+  $$C=\left\{(x_1,x_2,\dots,x_n):(\hat\sigma^2/\sigma_0^{\,2})\le a
+    \ \ \text{또는}\ \ (\hat\sigma^2/\sigma_0^{\,2})\ge b\right\}$$
+  <p>의 꼴이 된다. 그런데 귀무가설하에서 통계량</p>
+  $$\frac{n\hat\sigma^2}{\sigma_0^{\,2}}=\sum_{i=1}^n(X_i-\overline X_n)^2/\sigma_0^{\,2}\sim\chi^2(n-1)$$
+  <p>이므로</p>
+  $$P\!\left[\sum_{i=1}^n(X_i-\overline X_n)^2/\sigma_0^{\,2}\le\chi^2_{1-\alpha/2}(n-1)\;\Big|\;H_0\right]
+    =P\!\left[\sum_{i=1}^n(X_i-\overline X_n)^2/\sigma_0^{\,2}\ge\chi^2_{\alpha/2}(n-1)\;\Big|\;H_0\right]
+    =\frac\alpha2$$
+  <p>이다. 그러므로 카이제곱분포의 <b>양쪽꼬리에서 $\alpha/2$ 씩 고려한</b> 일반화 가능도비 검정법의
+  근사꼴로서 가설 $(5.14)$ 에 대한 유의수준 $\alpha$ 인 기각영역은</p>
+  $$\frac{\sum_{i=1}^n(X_i-\overline X_n)^2}{\sigma_0^{\,2}}\le\chi^2_{1-\alpha/2}(n-1)
+    \qquad\text{또는}\qquad
+    \frac{\sum_{i=1}^n(X_i-\overline X_n)^2}{\sigma_0^{\,2}}\ge\chi^2_{\alpha/2}(n-1)$$
+
+  <figure class="fig">
+  <svg viewBox="0 0 420 200" role="img" aria-label="카이제곱분포의 확률밀도함수와 양쪽 기각영역">
+    <line class="axis" x1="50" y1="165" x2="405" y2="165"/>
+    <polygon fill="#d8e6f2" stroke="none" points="50,165 65.3,165 65.3,120 57,145 50,165"/>
+    <polygon fill="#d8e6f2" stroke="none"
+      points="290.9,165 290.9,158 312.8,160 334.7,162 356.6,163 378.5,164 400.4,164 400.4,165"/>
+    <polyline class="vec" points="50,165 71.9,68 93.8,47 115.7,58 137.6,78 159.5,99 181.4,117 203.3,131 225.2,142 247.1,149 269,154 290.9,158 312.8,160 334.7,162 356.6,163 378.5,164 400.4,164"/>
+    <line class="aux" style="stroke-dasharray:none;stroke:#888" x1="65.3" y1="165" x2="65.3" y2="120"/>
+    <line class="aux" style="stroke-dasharray:none;stroke:#888" x1="290.9" y1="165" x2="290.9" y2="158"/>
+    <text class="lbl" x="40" y="110" text-anchor="middle">α/2</text>
+    <text class="lbl" x="322" y="140" text-anchor="middle">α/2</text>
+    <line class="aux" x1="46" y1="114" x2="60" y2="130"/>
+    <line class="aux" x1="318" y1="145" x2="303" y2="158"/>
+    <text class="num" x="65.3" y="180" text-anchor="middle">χ²₁₋α/₂(n−1)</text>
+    <text class="num" x="290.9" y="180" text-anchor="middle">χ²α/₂(n−1)</text>
+    <text class="num" x="30" y="196" text-anchor="start">기각영역 ←</text>
+    <text class="num" x="330" y="196" text-anchor="start">→ 기각영역</text>
+  </svg>
+  <figcaption>그림 5.7 &nbsp;$\chi^2(n-1)$ 의 확률밀도함수와 기각영역</figcaption>
+  </figure>
+
+  <p>으로 주어진다.</p>
+  <div class="note" style="margin-top:8px">
+    물론 양쪽꼬리에서 $\alpha/2$ 씩 택한 것은 <b>편리성 때문</b>이며, 엄밀한 의미에서는
+    $W\exp(-W)\le c^*$ 에서 적절한 $c^*$ 를 찾고, 이로부터 $W$ 가 클 때와 작을 때의 확률을
+    따로 구해야 한다. 그림 5.6에서 보듯 $a$ 와 $b$ 는 같은 높이 $c^*$ 에서 잘리는 두 점이지
+    양쪽 꼬리확률이 같아지는 점이 아니기 때문이다.
+  </div>
+  <p>한편, $H_0:\sigma^2\le\sigma_0^{\,2}$ 대 대립가설 $H_1:\sigma^2\gt\sigma_0^{\,2}$ 을 고려하면
+  비슷한 방법으로 유의수준 $\alpha$ 인 일반화 가능도비 검정법의 기각영역이</p>
+  $$\frac{\sum_{i=1}^n(X_i-\overline X_n)^2}{\sigma_0^{\,2}}\ge\chi^2_\alpha(n-1)$$
+  <p>로 주어짐을 알 수 있다.</p>
+</div>
+
+<h2 class="sub">대표본 근사 — 윌크스 정리 <span class="en">Wilks' theorem</span></h2>
+
+<div class="note">
+  위의 예들에서는 일반화 가능도비를 적절히 변환시킴으로써 필요한 검정통계량의 분포를 구하였다.
+  하지만 언제나 이러한 변환이 가능한 것은 아니며, 때에 따라서는 일반화 가능도비 검정의 기각영역을
+  찾기가 매우 어렵거나 불가능할 수도 있다. 이런 경우 <b>표본의 크기가 충분히 크다면</b>
+  다음의 정리 5.3에 근거하여 일반화 가능도비 통계량의 근사분포를 구할 수 있다
+  (증명은 이 책의 수준을 넘으므로 생략한다). 정리 5.3의 활용은 후에 <b>적합도검정</b> 등에서도 보여진다.
+</div>
+
+<div class="box thm">
+  <span class="tag">정리 5.3</span><span class="title">윌크스 정리 <span class="en">Wilks' theorem</span></span>
+  <p>최대가능도 추정량의 점근적 정규성을 보인 정리 4.13에서와 같은 적절한 조건이 만족될 때,
+  $-2\log\Lambda(X_1,X_2,\dots,X_n)$ 은 귀무가설하에서 자유도가 $k$ 인 카이제곱분포를 근사적으로 따른다.</p>
+  $$-2\log\Lambda(X_1,X_2,\dots,X_n)\ \xrightarrow{\ \text{근사}\ }\ \chi^2(k)$$
+  <p>단, 자유도 $k$ 는 모수공간 $\Omega$ 와 $\Omega_0$ 에서 <b>제약조건 없이 자유로이 움직일 수 있는
+  모수 개수들의 차이</b>이다.</p>
+</div>
+
+<div class="note">
+  위의 정리 5.3에서 일반화 가능도비 $\Lambda$ 는 $0$ 과 $1$ 사이에 있으므로 $\log\Lambda$ 는 잘 정의되며,
+  $-2\log\Lambda$ 는 $\Lambda$ 의 <b>감소함수</b>이므로 $\Lambda$ 의 값이 충분히 작을 때 귀무가설을
+  기각하는 것은 <b>$-2\log\Lambda$ 가 충분히 클 때</b> 귀무가설을 기각하는 것과 동일한 검정법이다.
+  따라서 근사 기각영역은 $\{-2\log\Lambda\ge\chi^2_\alpha(k)\}$ 가 된다.
+</div>
+
+<div class="box ex">
+  <span class="tag">예 5.25</span><span class="title">베르누이 모비율의 양측검정</span>
+  <p>$X_1,\dots,X_n$ 이 베르누이$(p)$ 에서의 랜덤표본이라고 하고</p>
+  $$H_0:p=p_0\qquad\text{대}\qquad H_1:p\ne p_0$$
+  <p>의 가설검정을 고려해 보자. 대립가설이 양측이므로 이 경우 균일최강력 검정법이 존재하지 않음을
+  쉽게 보일 수 있다. $\Omega=\{p:0\lt p\lt1\}$ 에서 $p$ 의 최대가능도 추정량이 $\overline X_n$ 이므로,
+  일반화 가능도비는</p>
+  $$\Lambda(X_1,\dots,X_n)
+    =\frac{p_0^{\sum X_i}(1-p_0)^{n-\sum X_i}}
+           {\overline X_n^{\sum X_i}(1-\overline X_n)^{n-\sum X_i}}
+    =\left(\frac{p_0}{\overline X_n}\right)^{n\overline X_n}
+     \left(\frac{1-p_0}{1-\overline X_n}\right)^{n-n\overline X_n}$$
+  <p>로 주어진다. 이때
+  $g(x)=\left(\dfrac{p_0}{x}\right)^{nx}\left(\dfrac{1-p_0}{1-x}\right)^{n-nx}$
+  라 놓으면 미분을 통해 $\log g(x)$ 가 $x\lt p_0$ 에서 증가하고 $x\gt p_0$ 에서 감소함을 쉽게 알 수 있다.
+  로그함수는 단조증가이므로 $g(x)$ 도 마찬가지로 $x\lt p_0$ 에서 증가하고 $x\gt p_0$ 에서 감소한다.
+  즉, $\Lambda(X_1,\dots,X_n)\le k$ 는 $c_1\lt p_0\lt c_2$ 인 상수 $c_1$ 과 $c_2$ 에 대하여</p>
+  $$\overline X_n\le c_1\qquad\text{또는}\qquad\overline X_n\ge c_2$$
+  <p>라는 <b>양측 기각영역</b>과 동등하다. 중심극한정리에 의해 $n$ 이 클 때 귀무가설하에서
+  $\overline X_n\sim N\!\left(p_0,\dfrac{p_0(1-p_0)}{n}\right)$ 이 근사적으로 성립하므로</p>
+  $$\overline X_n\le p_0-z_{\alpha/2}\sqrt{p_0(1-p_0)/n}
+    \qquad\text{또는}\qquad
+    \overline X_n\ge p_0+z_{\alpha/2}\sqrt{p_0(1-p_0)/n}$$
+  <p>가 유의수준이 $\alpha$ 인 일반화 가능도비 검정법의 <b>근사 기각영역</b>이 됨을 알 수 있다.</p>
+  <p>한편, 이 문제에서 정리 5.3을 이용한다면 유의수준 $\alpha$ 인 근사 기각영역이
+  $\{(x_1,\dots,x_n):-2\log\Lambda(x_1,\dots,x_n)\ge\chi^2_\alpha(1)\}$ 이 될 것이다.
+  이제 $n=30$, $p_0=0.5$, $\bar x_n=0.65$ 인 경우를 가정해 보자.
+  중심극한정리를 사용하는 근사 검정법을 이용한 $p$ 값은 약 <b>$0.1004$</b> 가 되며,
+  정리 5.3을 이용한 $p$ 값은 약 <b>$0.0977$</b> 이 되어 매우 비슷한 결과를 얻음을 알 수 있다.</p>
+  <div class="note" style="margin-top:8px">
+    자유도가 $1$ 인 이유 — $\Omega=\{p:0\lt p\lt1\}$ 에서 자유로이 움직이는 모수는 $p$ 하나$(1$개$)$,
+    $\Omega_0=\{p_0\}$ 에서는 없으므로$(0$개$)$ 그 차이가 $k=1$ 이다.
+  </div>
+</div>
+
+<div class="box ex">
+  <span class="tag">예 5.26</span><span class="title">(예 5.23의 계속) 양측 $t$ 검정과 정리 5.3의 비교</span>
+  <p>예 5.23에서 다루어진 양측 $t$ 검정과 정리 5.3의 내용을 비교해 보자. 이 경우 일반화 가능도비는</p>
+  $$\Lambda(X_1,X_2,\dots,X_n)
+    =\left[\frac{\sum_{i=1}^n(X_i-\overline X_n)^2}{\sum_{i=1}^n(X_i-\mu_0)^2}\right]^{n/2}$$
+  <p>로 주어진다. 따라서</p>
+  $$-2\log\Lambda(X_1,\dots,X_n)
+    =-2\log\left[1+\frac{n(\overline X_n-\mu_0)^2}{\sum_{i=1}^n(X_i-\overline X_n)^2}\right]^{-n/2}
+    =n\log\left[1+\frac{n(\overline X_n-\mu_0)^2}{\sum_{i=1}^n(X_i-\overline X_n)^2}\right]$$
+  <p>이다. 그런데 $|x|\approx0$ 인 경우 $\log(1+x)\approx x$ 라는 근사관계로부터</p>
+  $$-2\log\Lambda(X_1,\dots,X_n)\approx
+    \frac{n(\overline X_n-\mu_0)^2}{\dfrac1n\sum_{i=1}^n(X_i-\overline X_n)^2}$$
+  <p>이며 $\dfrac1n\sum_{i=1}^n(X_i-\overline X_n)^2$ 은 $\sigma^2$ 으로 수렴한다.
+  이에 충분히 큰 $n$ 에 대해</p>
+  $$-2\log\Lambda(X_1,\dots,X_n)\approx\frac{n(\overline X_n-\mu_0)^2}{\sigma^2}$$
+  <p>이 되고, 귀무가설하에서 $\dfrac{n(\overline X_n-\mu_0)^2}{\sigma^2}\sim\chi^2(1)$ 이 성립하므로
+  일반화 가능도비 검정법은 $-2\log\Lambda(X_1,\dots,X_n)\ge\chi^2_\alpha(1)$ 인 경우에
+  귀무가설을 기각하게 된다. <b>이와 같은 결과는 정리 5.3과 부합된다.</b></p>
+  <div class="note" style="margin-top:8px">
+    자유도 확인 — $\Omega$ 에서 자유로이 움직이는 모수는 $(\mu,\sigma^2)$ 로 $2$ 개,
+    $\Omega_0$ 에서는 $\mu=\mu_0$ 으로 고정되어 $\sigma^2$ 하나뿐이라 $1$ 개다.
+    차이가 $k=2-1=1$ 이므로 $\chi^2(1)$ 이 맞는다.
+  </div>
+</div>
+
+<div class="terms">
+  <div class="h">이 절의 뼈대</div>
+  <dl>
+    <dt>정의 5.6 일반화 가능도비</dt>
+    <dd>$\Lambda=L(\hat\theta_0)/L(\hat\theta_n)$ — 분자는 $\Omega_0$ <b>안에서만</b> 최대화,
+      분모는 $\Omega$ <b>전체에서</b> 최대화. 언제나 $0\lt\Lambda\le1$.</dd>
+    <dt>정의 5.7 검정법</dt>
+    <dd>$\Lambda\le\lambda^*$ 이면 기각. $\Lambda$ 의 분포를 모르면
+      <b>$\Lambda$ 의 단조변환</b>으로 분포를 아는 통계량을 만들어 임계값을 정한다.</dd>
+    <dt>단조변환으로 유도되는 표준 검정법</dt>
+    <dd>$U(0,\theta)$ 단측 $\to X_{(n)}/\theta_0\le\alpha^{1/n}$(예 5.21) ·
+      $\sigma^2$ 기지 정규 양측 $\to Z$ 검정(예 5.22) ·
+      $\sigma^2$ 미지 정규 양측 $\to t$ 검정(예 5.23) ·
+      모분산 양측 $\to$ 카이제곱 검정(예 5.24).</dd>
+    <dt>정리 5.3 윌크스 정리</dt>
+    <dd>변환이 막히면 대표본 근사로 $-2\log\Lambda\approx\chi^2(k)$,
+      $k=$ (자유 모수 개수의 차이). 기각영역은 $-2\log\Lambda\ge\chi^2_\alpha(k)$.</dd>
+  </dl>
+</div>
+
+<nav class="pager">
+  <a href="5-2_most-powerful-tests.html">← 이전<small>5.2 최강력 검정법</small></a>
+  <a class="next" href="../index.html">목차 →<small>수리통계학</small></a>
+</nav>
+
+</body>
+</html>
