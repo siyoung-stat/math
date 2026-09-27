@@ -18,7 +18,10 @@
   .mark{ color:#d64541; font-weight:800; margin:0 5px 0 2px; letter-spacing:2px; }
   .ex ol{ margin:4px 0 0; padding-left:26px; }
   .ex li{ margin:3px 0; }
-  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } }
+  .answersheet{ page-break-before:always; }
+  .ans{ margin:24px 0; line-height:1.75; }
+  .ans .exn{ color:var(--thm); }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } .mark{ color:#000; } }
 </style>
 </head>
 <body>
@@ -29,7 +32,8 @@
   <h1><span class="no">연습문제</span>2장 <span class="en">exercises</span></h1>
 </header>
 
-<p>2장 본문의 예제와 교재 연습문제를 모은 것이다. 풀이는 본문 노트와 <a href="2-quiz.html">증명·정리 퀴즈</a> 참고.</p>
+<p>2장 본문의 예제와 교재 연습문제를 모은 것이다. 정답 시트는 인쇄 시 다음 페이지부터 나온다.
+자세한 유도는 본문 노트와 <a href="2-quiz.html">증명·정리 퀴즈</a> 참고.</p>
 
 <h2 class="sub">예제 <span class="en">examples</span></h2>
 <div class="ex"><span class="exn">예 2.6</span>결합밀도 $f_{X,Y}(x,y)=xy\,e^{-(x+y)}\ (x,y\gt0)$ 에 대하여 $P(X\ge2Y)$ 를 구하라.</div>
@@ -204,6 +208,360 @@ $$f_{X,Y}(x,y)=4e^{-2(x+y)},\qquad x\gt0,\ y\gt0$$
 <div class="ex"><span class="exn">67</span>결합 확률밀도함수가 $f_{X,Y}(x,y)=e^{-y}\ (0\lt x\lt y)$ 인 두 확률변수 $X$ 와 $Y$ 의 결합 적률생성함수를 구하라.</div>
 
 
+
+<div class="answersheet">
+
+<header class="doc">
+  <div class="ch">수리통계학 · 2장 확률변수</div>
+  <h1><span class="no">정답·해설</span>2장 연습문제 <span class="en">answers</span></h1>
+</header>
+
+<div class="sec">예제</div>
+
+<div class="ans"><span class="exn">예 2.6</span><b>정답</b>
+  $$P(X\ge2Y)=\int_0^\infty ye^{-y}\!\left(\int_{2y}^\infty xe^{-x}dx\right)dy
+    =\int_0^\infty ye^{-y}(2y+1)e^{-2y}dy$$
+  $$=\int_0^\infty (2y^2+y)e^{-3y}dy=2\cdot\frac{2!}{3^3}+\frac{1!}{3^2}
+    =\frac4{27}+\frac3{27}=\frac7{27}\fallingdotseq0.2593$$
+</div>
+
+<div class="ans"><span class="exn">예 2.8</span><b>정답</b>
+  $$F_{X,Y}(x,y)=\int_0^x\!\!\int_u^{y}8uv\,dv\,du=2x^2y^2-x^4\qquad(0\lt x\lt y\lt1)$$
+  $$F_{X,Y}(x,y)=\begin{cases}
+    0,& x\le0\ \text{또는}\ y\le0\\
+    2x^2y^2-x^4,& 0\lt x\lt y\lt1\\
+    y^4,& 0\lt y\le x,\ y\lt1\\
+    2x^2-x^4,& 0\lt x\lt1\le y\\
+    1,& x\ge1,\ y\ge1\end{cases}$$
+</div>
+
+<div class="ans"><span class="exn">예 2.9</span><b>정답</b>
+  $$f_{X_1}(x_1)=\binom{n}{x_1}\left(\frac16\right)^{x_1}\left(\frac56\right)^{n-x_1}
+    ,\qquad x_1=0,1,\dots,n$$
+  $$X_1\sim B\!\left(n,\tfrac16\right)$$
+</div>
+
+<div class="ans"><span class="exn">예 2.10</span><b>정답</b>
+  $$f_X(x)=xe^{-x}\ (x\gt0),\qquad f_Y(y)=ye^{-y}\ (y\gt0)$$
+  $$X,Y\ \text{는 독립이며 각각}\ \mathrm{Gamma}(2,1)$$
+</div>
+
+<div class="ans"><span class="exn">예 2.12</span><b>정답</b>
+  $$f_X(x)=\int_0^\infty x^2e^{-x(y+1)}dy=x^2e^{-x}\cdot\frac1x=xe^{-x}\quad(x\gt0)$$
+  $$f_{Y\mid X}(y\mid x)=\frac{x^2e^{-x(y+1)}}{xe^{-x}}=xe^{-xy}\ (y\gt0)
+    \ \Rightarrow\ Y\mid X=x\ \sim\ \mathrm{EXP}(1/x)$$
+</div>
+
+<div class="ans"><span class="exn">예 2.13</span><b>정답</b> 독립이다.
+  $$f_{X,Y}(x,y)=\frac{2^{x+y}e^{-4}}{x!\,y!}
+    =\left(\frac{2^xe^{-2}}{x!}\right)\left(\frac{2^ye^{-2}}{y!}\right)=f_X(x)f_Y(y)$$
+  $$X,Y\ \stackrel{iid}{\sim}\ \mathrm{POI}(2)$$
+</div>
+
+<div class="ans"><span class="exn">예 2.31</span><b>정답</b>
+  $$E(X_1X_2)=n(n-1)p_1p_2,\qquad E(X_1)E(X_2)=n^2p_1p_2$$
+  $$Cov(X_1,X_2)=n(n-1)p_1p_2-n^2p_1p_2=-np_1p_2\ \lt\ 0$$
+  <div class="qed">∎</div>
+</div>
+
+<div class="ans"><span class="exn">예 2.35</span><b>정답</b>
+  $$P(X=5)=\binom{4}{3}(0.7)^4(0.3)=4(0.2401)(0.3)=0.28812\fallingdotseq0.2881$$
+</div>
+
+<div class="ans"><span class="exn">예 2.36</span><b>정답</b> 초기하 $0.3729$, 이항근사 $0.3828$
+  $$\text{(1)}\ P(X\le2)=\sum_{k=0}^{2}\frac{\binom{30}{k}\binom{70}{10-k}}{\binom{100}{10}}
+    =0.02292+0.11272+0.23726\fallingdotseq0.3729$$
+  $$\text{(2)}\ P(X\le2)=(0.7)^{10}+10(0.3)(0.7)^9+45(0.3)^2(0.7)^8
+    =0.02825+0.12106+0.23347\fallingdotseq0.3828$$
+  $$\text{차이}\fallingdotseq0.0099\ (\text{비복원이라 초기하의 분산이 더 작다})$$
+</div>
+
+<div class="ans"><span class="exn">예 2.38</span><b>정답</b>
+  $$P(20\le X\le35)=\Phi\!\left(\frac{35-25}{4}\right)-\Phi\!\left(\frac{20-25}{4}\right)
+    =\Phi(2.5)-\Phi(-1.25)$$
+  $$=0.9938-0.1056=0.8882$$
+</div>
+
+<div class="ans"><span class="exn">예 2.40</span><b>정답</b>
+  $$f_Y(y)=\frac{1}{2\sqrt y}\Big[f_X(\sqrt y)+f_X(-\sqrt y)\Big],\qquad y\gt0$$
+  $$X\sim N(0,1):\quad f_Y(y)=\frac{1}{\sqrt{2\pi y}}e^{-y/2}\ \Rightarrow\ Y\sim\chi^2(1)$$
+</div>
+
+<div class="ans"><span class="exn">예 2.42</span><b>정답</b>
+  $$f_Z(z)=\int_{-\infty}^{\infty}f_X(x)f_Y(z-x)dx
+    =\begin{cases}z,& 0\lt z\le1\\ 2-z,& 1\lt z\lt2\\ 0,&\text{그 외}\end{cases}$$
+</div>
+
+<div class="ans"><span class="exn">예 2.45</span><b>정답</b>
+  $$\text{(1)}\ x_1=\frac{y_1+y_2}{2},\ x_2=\frac{y_1-y_2}{2},\ |J|=\frac12
+    \ \Rightarrow\ f(y_1,y_2)=\frac12e^{-y_1},\quad y_1\gt0,\ |y_2|\lt y_1$$
+  $$\text{(2)}\ f_{Y_1}(y_1)=\int_{-y_1}^{y_1}\frac12e^{-y_1}dy_2=y_1e^{-y_1}
+    \ \Rightarrow\ Y_1\sim\mathrm{Gamma}(2,1)$$
+  $$f_{Y_2}(y_2)=\int_{|y_2|}^{\infty}\frac12e^{-y_1}dy_1=\frac12e^{-|y_2|}
+    \ \Rightarrow\ Y_2\sim\text{라플라스}$$
+  $$\text{(3)}\ \frac12e^{-y_1}\ne y_1e^{-y_1}\cdot\frac12e^{-|y_2|}
+    \ \Rightarrow\ \text{독립이 아니다}$$
+</div>
+
+<div class="ans"><span class="exn">예 2.46</span><b>정답</b>
+  $$f_Y(y)=\frac{1}{\pi(1+y^2)},\qquad -\infty\lt y\lt\infty
+    \ \Rightarrow\ Y\sim\text{표준 코시}$$
+</div>
+
+<div class="ans"><span class="exn">예 2.56–2.59</span><b>정답</b>
+  $$\text{(1)}\ M(t)=\big(1-p+pe^t\big)^n\ \Rightarrow\ B(n,p)$$
+  $$\text{(2)}\ M(t)=\exp\!\Big[\textstyle\sum\lambda_i(e^t-1)\Big]
+    \ \Rightarrow\ \mathrm{POI}\big(\textstyle\sum\lambda_i\big)$$
+  $$\text{(3)}\ M(t)=(1-\theta t)^{-n}\ \Rightarrow\ \mathrm{Gamma}(n,\theta)$$
+  $$\text{(4)}\ M(t)=\exp\!\Big[\textstyle\sum a_i\mu_it+\tfrac12\sum a_i^2\sigma_i^2t^2\Big]
+    \ \Rightarrow\ N\big(\textstyle\sum a_i\mu_i,\ \sum a_i^2\sigma_i^2\big)$$
+</div>
+
+<div class="ans"><span class="exn">예 2.61</span><b>정답</b>
+  $$B(n,p):\ G_X(s)=(1-p+ps)^n,\qquad G_X'(1)=np(1-p+ps)^{n-1}\big|_{s=1}=np$$
+  $$\mathrm{POI}(\lambda):\ G_X(s)=e^{\lambda(s-1)},\qquad G_X'(1)=\lambda e^{\lambda(s-1)}\big|_{s=1}=\lambda$$
+</div>
+
+<div class="sec">연습문제</div>
+
+<div class="ans"><span class="exn">04</span><b>정답</b>
+  $$\sum_{i=1}^n p_if_i(x)\ge0,\qquad
+    \int\sum_{i=1}^n p_if_i(x)dx=\sum_{i=1}^n p_i\!\int f_i(x)dx=\sum_{i=1}^n p_i=1$$
+  <div class="qed">∎</div>
+</div>
+
+<div class="ans"><span class="exn">06</span><b>정답</b>
+  $$\text{(1)}\ f_X(x)=F_X(x)-F_X(x-1)=\left(\frac12\right)^{x}-\left(\frac12\right)^{x+1}
+    =\left(\frac12\right)^{x+1},\quad x=0,1,2,\dots$$
+  $$\text{(2)}\ \sum_{k=0}^{\infty}\left(\frac12\right)^{2k+1}=\frac{1/2}{1-1/4}=\frac23
+    \fallingdotseq0.6667$$
+  $$\text{(3)}\ P(10\lt X\lt20)=F_X(19)-F_X(10)=\left(\frac12\right)^{11}-\left(\frac12\right)^{20}
+    =\frac{511}{1048576}\fallingdotseq0.000487$$
+</div>
+
+<div class="ans"><span class="exn">08</span><b>정답</b>
+  $$P(a\lt X\le b,\ Y\le d)=F(b,d)-F(a,d),\qquad
+    P(a\lt X\le b,\ Y\le c)=F(b,c)-F(a,c)$$
+  $$P(a\lt X\le b,\ c\lt Y\le d)=F(b,d)-F(a,d)-F(b,c)+F(a,c)$$
+  <div class="qed">∎</div>
+</div>
+
+<div class="ans"><span class="exn">12</span><b>정답</b> $X\sim\mathrm{EXP}(1)$, $Y\sim\mathrm{EXP}(1/2)$ 로 독립
+  $$\text{(1)}\ P(X\gt1,Y\lt1)=e^{-1}\big(1-e^{-2}\big)=e^{-1}-e^{-3}
+    =0.36788-0.04979=0.31809$$
+  $$\text{(2)}\ P(X\lt Y)=\int_0^\infty e^{-x}e^{-2x}dx=\int_0^\infty e^{-3x}dx
+    =\frac13\fallingdotseq0.3333$$
+  $$\text{(3)}\ P(X\gt a)=\int_a^\infty e^{-x}dx=e^{-a}$$
+</div>
+
+<div class="ans"><span class="exn">16</span><b>정답</b>
+  $$f_X(x)=\int_0^{1-x}2\,dy=2(1-x),\qquad 0\lt x\lt1$$
+  $$\text{(1)}\ f_{Y\mid x}(y\mid x)=\frac{2}{2(1-x)}=\frac1{1-x}\ (0\lt y\lt1-x)
+    \ \Rightarrow\ Y\mid X=x\sim U(0,1-x)$$
+  $$P\!\left(X\lt\tfrac12\right)=\int_0^{1/2}2(1-x)dx=\frac34,\qquad
+    P\!\left(X\lt\tfrac12,\ Y\lt\tfrac34\right)=\frac38+\frac5{16}=\frac{11}{16}$$
+  $$\text{(2)}\ P\!\left(0\lt Y\lt\tfrac34\ \Big|\ X\lt\tfrac12\right)
+    =\frac{11/16}{3/4}=\frac{11}{12}\fallingdotseq0.9167$$
+</div>
+
+<div class="ans"><span class="exn">18</span><b>정답</b>
+  $$x=\frac{y-1}{3},\quad \left|\frac{dx}{dy}\right|=\frac13
+    \ \Rightarrow\ f_Y(y)=\frac13,\qquad 1\lt y\lt4\quad\big(Y\sim U(1,4)\big)$$
+</div>
+
+<div class="ans"><span class="exn">20</span><b>정답</b>
+  $$\text{(1)}\ x=\frac{y-5}{2},\ \left|\frac{dx}{dy}\right|=\frac12
+    \ \Rightarrow\ f_Y(y)=\frac32e^{-3(y-5)/2},\quad
+    F_Y(y)=1-e^{-3(y-5)/2}\quad(y\gt5)$$
+  $$\text{(2)}\ x=\frac1y,\ \left|\frac{dx}{dy}\right|=\frac1{y^2}
+    \ \Rightarrow\ f_Y(y)=\frac3{y^2}e^{-3/y},\quad
+    F_Y(y)=P\!\left(X\ge\tfrac1y\right)=e^{-3/y}\quad(y\gt0)$$
+</div>
+
+<div class="ans"><span class="exn">22</span><b>정답</b>
+  $$F_Y(y)=P\big(-\sqrt y\le X\le\sqrt y\big)=2\Phi(\sqrt y)-1$$
+  $$f_Y(y)=2\phi(\sqrt y)\cdot\frac1{2\sqrt y}=\frac{1}{\sqrt{2\pi y}}e^{-y/2}\ (y\gt0)
+    \ \Rightarrow\ Y\sim\chi^2(1)$$
+</div>
+
+<div class="ans"><span class="exn">23</span><b>정답</b>
+  $$P(U\le u)=P\big(F(X)\le u\big)=P\big(X\le F^{-1}(u)\big)=F\big(F^{-1}(u)\big)=u,
+    \qquad 0\lt u\lt1$$
+  $$\Rightarrow\ U\sim U(0,1)$$
+  <div class="qed">∎</div>
+</div>
+
+<div class="ans"><span class="exn">24</span><b>정답</b>
+  $$f_Z(z)=\int_{\max(0,\,z-1)}^{z/2}2\big[x+(z-x)\big]dx=2z\Big[\tfrac z2-\max(0,z-1)\Big]$$
+  $$f_Z(z)=\begin{cases}z^2,& 0\le z\le1\\ 2z-z^2,& 1\lt z\le2\\ 0,&\text{그 외}\end{cases}
+    \qquad\left(\int_0^1z^2dz+\int_1^2(2z-z^2)dz=\tfrac13+\tfrac23=1\right)$$
+</div>
+
+<div class="ans"><span class="exn">27</span><b>정답</b>
+  $$E(2^X)=\sum_{x=1}^{\infty}2^x\cdot2^{-x}=\sum_{x=1}^{\infty}1=\infty
+    \ \Rightarrow\ \text{기댓값이 존재하지 않는다}$$
+  <div class="qed">∎</div>
+</div>
+
+<div class="ans"><span class="exn">29</span><b>정답</b>
+  $$X=c\ \Rightarrow\ Var(X)=E(c-c)^2=0$$
+  $$Var(X)=E\big[(X-\mu)^2\big]=0,\ (X-\mu)^2\ge0\ \Rightarrow\ P(X=\mu)=1$$
+  <div class="qed">∎</div>
+</div>
+
+<div class="ans"><span class="exn">34</span><b>정답</b>
+  $$(\Rightarrow)\ F_{X,Y}(x,y)=P(X\le x,Y\le y)=P(X\le x)P(Y\le y)=F_X(x)F_Y(y)$$
+  $$(\Leftarrow)\ f_{X,Y}(x,y)=\frac{\partial^2}{\partial x\,\partial y}F_X(x)F_Y(y)
+    =f_X(x)f_Y(y)$$
+  <div class="qed">∎</div>
+</div>
+
+<div class="ans"><span class="exn">35</span><b>정답</b> 독립이 아니다.
+  $$P\!\left(X\gt\tfrac{\sqrt2}{2}\right)=\frac{2\cdot(\pi/4)}{2\pi}=\frac14,\qquad
+    P\!\left(Y\gt\tfrac{\sqrt2}{2}\right)=\frac{\pi/2}{2\pi}=\frac14$$
+  $$P\!\left(X\gt\tfrac{\sqrt2}{2},\ Y\gt\tfrac{\sqrt2}{2}\right)=0
+    \ \ne\ \frac14\cdot\frac14=\frac1{16}\qquad(X^2+Y^2=1)$$
+</div>
+
+<div class="ans"><span class="exn">36</span><b>정답</b>
+  $$\text{(1)}\ P(X=0,\ Y=2)=0\ \ne\ P(X=0)P(Y=2)=\frac13\cdot\frac23=\frac29
+    \ \Rightarrow\ \text{독립이 아니다}$$
+  $$\text{(2)}\ E(X)=\frac{-1+0+1}{3}=0,\qquad
+    E(XY)=E\big(2X|X|\big)=\frac13\big[-2+0+2\big]=0=E(X)E(Y)$$
+</div>
+
+<div class="ans"><span class="exn">37</span><b>정답</b> $X,Y\sim U(0,20)$ (분) 독립
+  $$P\big(|X-Y|\lt5\big)=1-\left(\frac{15}{20}\right)^{\!2}=1-\frac9{16}=\frac7{16}$$
+  $$P\big(|X-Y|\ge5\big)=\left(\frac{15}{20}\right)^{\!2}=\frac9{16}=0.5625$$
+</div>
+
+<div class="ans"><span class="exn">40</span><b>정답</b> 지지집합 $\tfrac12\lt x\lt1,\ 1\lt y\lt2x$
+  $$f_X(x)=\int_1^{2x}4\,dy=4(2x-1)\ \left(\tfrac12\lt x\lt1\right),\qquad
+    f_Y(y)=\int_{y/2}^{1}4\,dx=4-2y\ (1\lt y\lt2)$$
+  $$\text{(1)}\ Y\mid x\sim U(1,2x)\ \Rightarrow\ E(Y\mid x)=\frac{1+2x}{2}$$
+  $$\text{(2)}\ X\mid y\sim U\!\left(\tfrac y2,1\right)\ \Rightarrow\
+    E(X\mid y)=\frac{\tfrac y2+1}{2}=\frac{y+2}{4}$$
+  $$\text{(3)}\ Var(Y\mid x)=\frac{(2x-1)^2}{12}$$
+</div>
+
+<div class="ans"><span class="exn">41</span><b>정답</b> $\delta=1$
+  $$E(X)=\frac{1+3+32}{18}=\frac{36}{18}=2,\qquad
+    Var(X)=\frac{1+0+1}{18}=\frac2{18}=\frac19$$
+  $$P\big(|X-2|\ge\delta\big)=\frac{2}{18}=\frac19\ \ (0\lt\delta\le1),\qquad
+    \frac{Var(X)}{\delta^2}=\frac{1}{9\delta^2}$$
+  $$\frac19=\frac1{9\delta^2}\ \Longrightarrow\ \delta^2=1\ \Longrightarrow\ \delta=1$$
+</div>
+
+<div class="ans"><span class="exn">42</span><b>정답</b>
+  $$P(Y=y)=P(X=n-y)=\binom{n}{n-y}p^{n-y}(1-p)^{y}=\binom{n}{y}(1-p)^{y}p^{n-y}$$
+  $$\Rightarrow\ Y\sim B(n,\,1-p)$$
+</div>
+
+<div class="ans"><span class="exn">46</span><b>정답</b>
+  $$E(1+X)^2=1+2E(X)+E(X^2)=1+2\lambda+(\lambda+\lambda^2)=\lambda^2+3\lambda+1$$
+</div>
+
+<div class="ans"><span class="exn">48</span><b>정답</b>
+  $$\text{(1)}\ P(X\ge5)=\left(\frac56\right)^{\!4}=\frac{625}{1296}\fallingdotseq0.4823$$
+  $$\text{(2)}\ 1-\left(\frac56\right)^{\!n}\gt\frac12\ \Longrightarrow\
+    n\gt\frac{\log0.5}{\log(5/6)}=\frac{-0.30103}{-0.07918}\fallingdotseq3.802
+    \ \Longrightarrow\ n=4$$
+</div>
+
+<div class="ans"><span class="exn">49</span><b>정답</b>
+  $$\text{(1)}\ P(X=x)=\binom{x-1}{3}p^4(1-p)^{x-4},\qquad x=4,5,6,7$$
+  $$\text{(2)}\ P(\text{7차전})=\binom63p^3(1-p)^3=20\,p^3(1-p)^3
+    \qquad\left(p=\tfrac12:\ \tfrac{20}{64}=\tfrac5{16}=0.3125\right)$$
+</div>
+
+<div class="ans"><span class="exn">51</span><b>정답</b>
+  $$\frac{\binom rx\binom{N-r}{n-x}}{\binom Nn}
+    =\binom nx\cdot\frac{r(r-1)\cdots(r-x+1)\cdot(N-r)\cdots(N-r-n+x+1)}
+                        {N(N-1)\cdots(N-n+1)}$$
+  $$\xrightarrow[\ r/N\to p\ ]{N,r\to\infty}\ \binom nx\,p^x(1-p)^{n-x}
+    \qquad(\text{분자·분모 각 인수의 비가 }p\ \text{또는}\ 1-p\ \text{로 수렴})$$
+  <div class="qed">∎</div>
+</div>
+
+<div class="ans"><span class="exn">53</span><b>정답</b> $X=\mu+\sigma Z$, $Z\sim N(0,1)$
+  $$\text{(2)}\ E\big[(X-\mu)^3\big]=\sigma^3E(Z^3)=0\quad(\text{대칭이라 홀수차 중심적률}=0)$$
+  $$\text{(1)}\ E(X^3)=E\big[(\mu+\sigma Z)^3\big]
+    =\mu^3+3\mu^2\sigma E(Z)+3\mu\sigma^2E(Z^2)+\sigma^3E(Z^3)=\mu^3+3\mu\sigma^2$$
+</div>
+
+<div class="ans"><span class="exn">54</span><b>정답</b>
+  $$\text{(1)}\ F_Y(y)=2\Phi\!\left(\frac y\sigma\right)-1\ \Rightarrow\
+    f_Y(y)=\frac{2}{\sigma\sqrt{2\pi}}e^{-y^2/(2\sigma^2)},\quad y\gt0\ \ (\text{반정규})$$
+  $$\text{(2)}\ x=\log y,\ \left|\frac{dx}{dy}\right|=\frac1y\ \Rightarrow\
+    f_Y(y)=\frac{1}{y\sigma\sqrt{2\pi}}\exp\!\left[-\frac{(\log y-\mu)^2}{2\sigma^2}\right],
+    \quad y\gt0$$
+</div>
+
+<div class="ans"><span class="exn">55</span><b>정답</b>
+  $$f_Z(z)=\int_{\max(0,z)}^{\min(1,1+z)}1\,dx=1-|z|,\qquad -1\lt z\lt1$$
+</div>
+
+<div class="ans"><span class="exn">56</span><b>정답</b>
+  $$\Gamma(a)\Gamma(b)=\int_0^\infty\!\!\int_0^\infty u^{a-1}v^{b-1}e^{-(u+v)}du\,dv
+    \quad\xrightarrow{\ u=st,\ v=s(1-t)\ }\quad |J|=s$$
+  $$=\int_0^\infty s^{a+b-1}e^{-s}ds\int_0^1 t^{a-1}(1-t)^{b-1}dt=\Gamma(a+b)\,B(a,b)$$
+  $$\Rightarrow\ B(a,b)=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$$
+  <div class="qed">∎</div>
+</div>
+
+<div class="ans"><span class="exn">57</span><b>정답</b>
+  $$\text{(1)}\ y_2=(1-y_1)t\ \Rightarrow\
+    \int_0^{1-y_1}\!\! y_2^{\alpha_2-1}(1-y_1-y_2)^{\alpha_3-1}dy_2
+    =(1-y_1)^{\alpha_2+\alpha_3-1}\!\int_0^1\! t^{\alpha_2-1}(1-t)^{\alpha_3-1}dt$$
+  $$=\frac{\Gamma(\alpha_2)\Gamma(\alpha_3)}{\Gamma(\alpha_2+\alpha_3)}(1-y_1)^{\alpha_2+\alpha_3-1}$$
+  $$\text{(2)}\ \int_0^1\!\!\int_0^{1-y_1}\!\!f\,dy_2dy_1
+    =\frac{\Gamma(\alpha_1+\alpha_2+\alpha_3)}{\Gamma(\alpha_1)\Gamma(\alpha_2+\alpha_3)}
+     \int_0^1 y_1^{\alpha_1-1}(1-y_1)^{\alpha_2+\alpha_3-1}dy_1=1$$
+  <div class="qed">∎</div>
+</div>
+
+<div class="ans"><span class="exn">59</span><b>정답</b> $X,Y\ \stackrel{iid}{\sim}\mathrm{EXP}(1/2)$
+  $$\text{(1)}\ f_Z(z)=\int_0^z 4e^{-2x}e^{-2(z-x)}dx=4ze^{-2z}\ (z\gt0)
+    \ \Rightarrow\ Z\sim\mathrm{Gamma}(2,\tfrac12)$$
+  $$\text{(2)}\ x=v,\ y=\frac vu,\ |J|=\frac{v}{u^2}
+    \ \Rightarrow\ f_{U,V}(u,v)=\frac{4v}{u^2}\exp\!\left[-2v\left(1+\frac1u\right)\right]
+    \ (u\gt0,\ v\gt0)$$
+  $$\text{(3)}\ f_U(u)=\frac4{u^2}\int_0^\infty v\,e^{-2v(1+1/u)}dv
+    =\frac4{u^2}\cdot\frac{u^2}{4(1+u)^2}=\frac1{(1+u)^2}\ (u\gt0)$$
+</div>
+
+<div class="ans"><span class="exn">61</span><b>정답</b>
+  $$M_X(t)=\sum_{x=1}^{\infty}e^{tx}p(1-p)^{x-1}=pe^t\sum_{x=1}^{\infty}\big[(1-p)e^t\big]^{x-1}
+    =\frac{pe^t}{1-(1-p)e^t}$$
+  $$\left(t\lt-\log(1-p)\right)$$
+</div>
+
+<div class="ans"><span class="exn">62</span><b>정답</b>
+  $$M_{\sum X_i}(t)=\prod_{i=1}^{k}M_{X_i}(t)=\left[\frac{pe^t}{1-(1-p)e^t}\right]^{k}
+    \ \Rightarrow\ \sum_{i=1}^k X_i\sim\mathrm{NB}(k,p)$$
+</div>
+
+<div class="ans"><span class="exn">63</span><b>정답</b>
+  $$E|X|=\int_{-\infty}^{\infty}\frac{|x|}{\pi(1+x^2)}dx
+    =\frac2\pi\int_0^\infty\frac{x}{1+x^2}dx
+    =\frac1\pi\Big[\log(1+x^2)\Big]_0^\infty=\infty$$
+  $$\Rightarrow\ E(X)\ \text{를 비롯한 어떤 적률도 존재하지 않는다}$$
+  <div class="qed">∎</div>
+</div>
+
+<div class="ans"><span class="exn">66</span><b>정답</b>
+  $$\text{(1)}\ P(X=3)=\frac13\fallingdotseq0.3333$$
+  $$\text{(2)}\ f_X(1)=\frac19,\quad f_X(3)=\frac13=\frac39,\quad f_X(5)=\frac59
+    \qquad\left(\frac19+\frac39+\frac59=1\right)$$
+</div>
+
+<div class="ans"><span class="exn">67</span><b>정답</b>
+  $$M(t_1,t_2)=\int_0^\infty\!\!\int_0^y e^{t_1x+t_2y}e^{-y}dx\,dy
+    =\frac1{t_1}\left[\frac1{1-t_1-t_2}-\frac1{1-t_2}\right]$$
+  $$=\frac{1}{(1-t_1-t_2)(1-t_2)},\qquad t_1+t_2\lt1,\ t_2\lt1$$
+</div>
+
+</div>
 
 <nav class="pager">
   <a href="2-quiz.html">← 이전<small>증명·정리 퀴즈</small></a>
