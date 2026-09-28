@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>11장 · 연습문제</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  .ex{ margin:26px 0; line-height:1.75; }
+  .exn{ font-weight:800; color:var(--def); margin-right:8px; }
+  .mark{ color:#d64541; font-weight:800; margin:0 5px 0 2px; letter-spacing:2px; }
+  .ex ol{ margin:4px 0 0; padding-left:26px; }
+  .ex li{ margin:5px 0; }
+  .answersheet{ page-break-before:always; }
+  .ans{ margin:24px 0; line-height:1.75; }
+  .ans .exn{ color:var(--thm); }
+  .ans ol.fill{ margin:6px 0 0; padding-left:24px; }
+  .ans ol.fill li{ margin:9px 0; }
+  .two{ column-count:2; column-gap:30px; }
+  .two li{ break-inside:avoid; }
+  .blank{ display:inline-block; min-width:5.5em; border-bottom:1px solid #999; }
+  .yes{ color:#0f8a7d; font-weight:800; }
+  .no{ color:#d64541; font-weight:800; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } .mark{ color:#000; } }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">선형대수학 · 11장 선형변환과 행렬</div>
+  <h1><span class="no">연습문제</span>11장 <span class="en">exercises</span></h1>
+</header>
+
+<p>11장(선형변환과 행렬) 교재의 주관식 연습문제·기출문제·연습문제·연구과제와 정답·해설.
+정답 시트는 인쇄 시 다음 페이지부터 나온다. 교재 <b>127~130쪽</b>.</p>
+
+<div class="note">
+  기호는 교재를 따른다. $(T)_{\tilde B}^{\tilde A}$ 는 <b>기저 $\tilde A$ 의 상을 기저 $\tilde B$ 로 표현한 행렬</b>,
+  $(I)_{\tilde B}^{\tilde A}$ 는 <b>기저 $\tilde A$ 에서 기저 $\tilde B$ 로의 기저변환행렬</b>이다.
+  $(k_1,\dots,k_n)_{\tilde A}$ 는 기저 $\tilde A$ 에 대한 좌표를 뜻한다.
+</div>
+
+<h2 class="sub">주관식 연습문제 <span class="en">fill in the blanks</span></h2>
+<p class="lead">※ 괄호 안에 알맞은 것을 넣으시오.</p>
+
+<div class="ex"><span class="exn">1</span>
+  기저가 달라지면서 (<span class="blank"></span>)이 변하고 결과적으로 좌표값이 달라진다.</div>
+
+<div class="ex"><span class="exn">2</span>
+  [정의 11.1] 벡터공간 $V$ 에 대해 $\tilde A=\{A_1,A_2,\dots,A_n\}$ 이 한 기저일 때,
+  $V$ 의 임의의 벡터 $C=k_1A_1+k_2A_2+\dots+k_nA_n$ 의 기저 $\tilde A$ 에 대한
+  좌표<span class="en">coordinate</span>는 (<span class="blank"></span>)로 정의한다.</div>
+
+<div class="ex"><span class="exn">3</span>
+  기저를 구성하는 벡터의 (<span class="blank"></span>)가 바뀌면 그 좌표도 바뀌게 된다.
+  그러므로 기저집합을 나타낼 때 집합기호 $\{\ \}$ 를 사용하지만 벡터의 순서는 그들이 나열된 순서로
+  사용하기로 한다. 그리고 [정의 11.1]에서는 좌표를 기저와 함께 나타내는데,
+  만일 (<span class="blank"></span>)인 경우에는 기저 표시를 생략하기로 한다.</div>
+
+<div class="ex"><span class="exn">4</span>
+  [정의 11.2] $T$ 를 벡터공간 $V$ 에서 $W$ 로의 사상이라고 하자. 그리고 벡터공간 $V$ 의 기저를
+  $\tilde A=\{A_1,A_2,\dots,A_n\}$ 이라 하고, 벡터공간 $W$ 의 기저를
+  $\tilde B=\{B_1,B_2,\dots,B_m\}$ 이라고 하자. 이때 사상 $T$ 에 의한
+  (<span class="blank"></span>)의 상을 (<span class="blank"></span>)로 표현한 행렬을 다음과 같이 정의한다.
+  $$(T)_{\tilde B}^{\tilde A}=\Big(T(A_1)_{\tilde B}\ \ T(A_2)_{\tilde B}\ \cdots\ T(A_n)_{\tilde B}\Big)$$
+</div>
+
+<div class="ex"><span class="exn">5</span>
+  [정리 11.1] $T$ 를 벡터공간 $V$ 에서 $W$ 로의 사상이라고 하자. 그리고 벡터공간 $V$ 의 기저를
+  $\tilde A=\{A_1,A_2,\dots,A_n\}$ 이라 하고, 벡터공간 $W$ 의 기저를
+  $\tilde B=\{B_1,B_2,\dots,B_m\}$ 이라고 하자. 이때 $T$ 가 선형변환일 필요충분조건은 사상 $T$ 에 의한
+  (<span class="blank"></span>)의 상을 (<span class="blank"></span>)로 표현한 행렬이 다음과 같은 것이다.
+  $$(T)_{\tilde B}^{\tilde A}=\Big(T(A_1)_{\tilde B}\ \ T(A_2)_{\tilde B}\ \cdots\ T(A_n)_{\tilde B}\Big)$$
+</div>
+
+<div class="ex"><span class="exn">6</span>
+  [정리 11.2] 벡터공간 $V$ 와 $W$ 의 차원이 각각 $m,n$ 일 때 $L(V,W)$ 와 $M_{nm}(R)$ 은
+  (<span class="blank"></span>)이다. 따라서 $V$ 에서 $W$ 로의 선형변환의 성질을 알아보는 것은
+  $n\times m$ 행렬의 성질을 알아보는 것과 같다.</div>
+
+<div class="ex"><span class="exn">7</span>
+  [정의 11.3] 행렬 $(I)_{\tilde B}^{\tilde A}$ 를 기저 $\tilde A$ 에서 기저 $\tilde B$ 로의
+  (<span class="blank"></span>)행렬이라고 한다.</div>
+
+<div class="ex"><span class="exn">8</span>
+  선형변환 $T$ 에 의한 기저 $\tilde B$ 의 상을 기저 $\tilde B$ 로 표현하는 것은 우선 기저 $\tilde B$ 를
+  (<span class="blank"></span>)로 바꾼 후에 선형변환 $T$ 에 의한 상을 (<span class="blank"></span>)로
+  표현하고 다시 (<span class="blank"></span>)를 기저 $\tilde B$ 로 바꾼 것과 같다.</div>
+
+<div class="ex"><span class="exn">9</span>
+  [정리 11.3] $T$ 를 벡터공간 $V$ 에서 $V$ 로의 선형변환이라고 하자. 그리고 벡터공간 $V$ 의 두 기저를
+  $\tilde A,\tilde B$ 라고 할 때, 이들 기저에 대응되는 행렬에 대해서 다음이 성립한다
+  ($I$ 는 항등변환).
+  $$(T)_{\tilde B}^{\tilde B}=(I)_{\tilde B}^{\tilde A}\,(\,\text{<span class="blank"></span>}\,)\,(I)_{\tilde A}^{\tilde B}$$
+</div>
+
+<div class="ex"><span class="exn">10</span>
+  [정리 11.3]에서 선형변환 $T$ 를 항등행렬 $I$ 로 택하면 기저변환 행렬이 서로 역행렬 관계에 있음도
+  알 수 있다. 즉, $(I)_{\tilde B}^{\tilde A}=(\,$<span class="blank"></span>$\,)$ 이다.</div>
+
+<h2 class="sub">기출문제 <span class="en">past exam questions</span></h2>
+
+<div class="ex"><span class="exn">기출 1</span>
+  벡터공간 $V=R^3$ 과 $V$ 의 한 기저 $\tilde A=\{(1,1,0),(1,0,1),(0,1,1)\}$ 에 대해
+  벡터 $(-1,4,1)$ 을 기저 $\tilde A$ 로 표현한 좌표는?
+  <ol class="two">
+    <li>$(1,-2,3)_{\tilde A}$</li>
+    <li>$(-2,3,1)_{\tilde A}$</li>
+    <li>$(1,3,-2)_{\tilde A}$</li>
+    <li>$(1,2,-3)_{\tilde A}$</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">기출 2</span><span class="mark">★</span>
+  $T:R^3\to R^3$ 이 $T(x,y,z)=(y,\ x-y,\ z)$ 를 만족하고, $R^3$ 의 주어진 기저
+  $\tilde A=\{(1,1,0),(0,2,1),(0,-1,2)\}$ 와 표준기저 $\tilde E$ 를 기저로 할 때
+  $(T)_{\tilde E}^{\tilde A}$ 는?
+  <ol class="two">
+    <li>$\begin{pmatrix}1&2&-1\\0&-2&1\\0&1&2\end{pmatrix}$</li>
+    <li>$\begin{pmatrix}1&2&1\\0&0&-2\\0&0&0\end{pmatrix}$</li>
+    <li>$\begin{pmatrix}0&1&\tfrac12\\1&0&0\\0&1&0\end{pmatrix}$</li>
+    <li>$\begin{pmatrix}\tfrac12&1&0\\0&1&0\\1&1&1\end{pmatrix}$</li>
+  </ol>
+</div>
+
+<p class="lead">※ (기출 3~5) $T:R^2\to R^2$, $T(x,y)=(2y,-x)$,
+$U:R^2\to R^2$, $U(x,y)=(0,y)$ 일 때 다음 물음에 답하라.</p>
+
+<div class="ex"><span class="exn">기출 3</span>$(T+U)(x,y)$ 의 값은?
+  <ol class="two">
+    <li>$(x,\ y-x)$</li>
+    <li>$(2y,\ y+x)$</li>
+    <li>$(x,\ y+x)$</li>
+    <li>$(2y,\ y-x)$</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">기출 4</span>표준기저에 의한 $T+U$ 의 행렬은?
+  <ol class="two">
+    <li>$\begin{pmatrix}1&0\\-1&2\end{pmatrix}$</li>
+    <li>$\begin{pmatrix}0&2\\-1&1\end{pmatrix}$</li>
+    <li>$\begin{pmatrix}2&1\\-1&0\end{pmatrix}$</li>
+    <li>$\begin{pmatrix}-1&2\\0&1\end{pmatrix}$</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">기출 5</span><span class="mark">★</span>
+  기저 $\tilde A=\{(1,0),(1,-1)\}$ 에 의한 $(T\circ U)_{\tilde A}^{\tilde A}$ 와
+  $(U\circ T)_{\tilde A}^{\tilde A}$ 를 바르게 묶은 것은?
+  <ol class="two">
+    <li>$\begin{pmatrix}0&0\\-2&0\end{pmatrix},\ \begin{pmatrix}-1&-1\\1&1\end{pmatrix}$</li>
+    <li>$\begin{pmatrix}0&-2\\0&0\end{pmatrix},\ \begin{pmatrix}0&0\\-1&-1\end{pmatrix}$</li>
+    <li>$\begin{pmatrix}0&0\\0&-2\end{pmatrix},\ \begin{pmatrix}0&0\\-1&-1\end{pmatrix}$</li>
+    <li>$\begin{pmatrix}0&-2\\0&0\end{pmatrix},\ \begin{pmatrix}-1&-1\\1&1\end{pmatrix}$</li>
+  </ol>
+</div>
+
+<h2 class="sub">교재 연습문제 <span class="en">textbook exercises</span></h2>
+<p class="lead">※ (01~02) 주어진 기저에 대한 다음 벡터들의 좌표를 구하라.</p>
+
+<div class="ex"><span class="exn">01</span>$V=R^2$, &nbsp;$\tilde A=\{(2,3),\ (-1,4)\}$
+  <ol class="two">
+    <li>$(0,0)$</li>
+    <li>$(1,0)$</li>
+    <li>$(1,1)$</li>
+    <li>$(-1,-1)$</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">02</span>$V=R^3$, &nbsp;$\tilde A=\{(1,1,1),\ (0,1,1),\ (0,0,-1)\}$
+  <ol class="two">
+    <li>$(0,0,0)$</li>
+    <li>$(0,0,1)$</li>
+    <li>$(0,1,0)$</li>
+    <li>$(0,1,1)$</li>
+    <li>$(1,0,0)$</li>
+    <li>$(1,0,1)$</li>
+    <li>$(1,1,0)$</li>
+    <li>$(1,1,1)$</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">03</span><span class="mark">★</span>
+  $T$ 를 벡터공간 $V$ 에서 $V$ 로의 선형변환이라 하고,
+  $\tilde A=\{A_1,A_2,A_3\}$ 과 $\tilde B=\{A_1,\ -A_1-A_2,\ A_1+A_2+A_3\}$ 을
+  $V$ 의 서로 다른 두 기저라고 하자. 선형변환 $T$ 가
+  $T(A_1)=A_1$, $T(A_2)=A_1+A_2$, $T(A_3)=A_1+A_2+A_3$ 을 만족할 때 다음 물음에 답하라.
+  <ol>
+    <li>$T$ 에 의한 기저 $\tilde A$ 의 상을 기저 $\tilde A$ 로 표현한 행렬 $(T)_{\tilde A}^{\tilde A}$ 를 구하라.</li>
+    <li>$T$ 에 의한 기저 $\tilde B$ 의 상을 기저 $\tilde B$ 로 표현한 행렬 $(T)_{\tilde B}^{\tilde B}$ 를 구하라.</li>
+    <li>$V$ 의 기저 $\tilde A$ 에서 기저 $\tilde B$ 로의 기저변환행렬 $(I)_{\tilde B}^{\tilde A}$ 를 구하라.</li>
+    <li>$V$ 의 기저 $\tilde B$ 에서 기저 $\tilde A$ 로의 기저변환행렬 $(I)_{\tilde A}^{\tilde B}$ 를 구하라.</li>
+    <li>$(T)_{\tilde B}^{\tilde B}=(I)_{\tilde B}^{\tilde A}\,(T)_{\tilde A}^{\tilde A}\,(I)_{\tilde A}^{\tilde B}$ 임을 확인하라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">04</span>
+  $T:R^3\to R^2$, $T(x,y,z)=(2x-y+z,\ y+z)$ 이고 두 기저 $\tilde A$, $\tilde B$ 가 다음과 같을 때
+  아래에 제시한 물음에 답하라.
+  $$\tilde A=\{(1,1,1),\ (2,-1,0),\ (-1,3,2)\},\qquad \tilde B=\{(-1,1),\ (1,1)\}$$
+  <ol>
+    <li>$R^3$ 의 표준기저와 $R^2$ 의 표준기저에 의한 $T$ 의 행렬을 구하라.</li>
+    <li>기저 $\tilde A$ 의 선형변환 $T$ 에 의한 상을 기저 $\tilde B$ 로 표현한 행렬
+      $(T)_{\tilde B}^{\tilde A}$ 를 구하라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">05</span>
+  선형변환 $T$ 와 $U$ 가 다음과 같을 때 아래에 제시한 물음에 답하라.
+  $$T:R^2\to R^2,\ T(x,y)=(3x,\ 2x+4y)\qquad
+    U:R^2\to R^2,\ U(x,y)=(x+y,\ x-y)$$
+  <ol>
+    <li>$(T+U)(x,y)$ 를 구하라.</li>
+    <li>표준기저에 의한 $T+U$ 의 행렬을 구하라.</li>
+    <li>$(T\circ U)(x,y)$, $(U\circ T)(x,y)$ 를 구하라.</li>
+    <li>표준기저에 의한 $T\circ U$, $U\circ T$ 의 행렬을 구하라.</li>
+    <li>기저 $\tilde A=\{(1,0),(0,-1)\}$ 에 의한 $(T\circ U)_{\tilde A}^{\tilde A}$ 와
+      $(U\circ T)_{\tilde A}^{\tilde A}$ 를 구하라.</li>
+  </ol>
+</div>
+
+<h2 class="sub">연구과제 <span class="en">research problems</span></h2>
+
+<div class="ex"><span class="exn">연구 1</span>
+  $V$ 는 $4$ 차원 벡터공간이며, 선형변환 $T:V\to V$ 는 $V$ 의 모든 벡터 $A$ 에 대해
+  $T(A)=kA$ ($k$ 는 상수)를 만족한다. 이때 어떤 기저를 가지고 $T$ 를 행렬로 표현하여도
+  그 행렬이 다음과 같음을 증명하라.
+  $$\begin{pmatrix}k&0&0&0\\0&k&0&0\\0&0&k&0\\0&0&0&k\end{pmatrix}$$
+</div>
+
+<div class="answersheet">
+<header class="doc">
+  <div class="ch">선형대수학 · 11장 선형변환과 행렬</div>
+  <h1><span class="no">정답·해설</span>11장 <span class="en">answers</span></h1>
+</header>
+
+<h2 class="sub">주관식 연습문제</h2>
+
+<div class="ans"><span class="exn">1</span><b>정답</b> 좌표축</div>
+
+<div class="ans"><span class="exn">2</span><b>정답</b> $(k_1,k_2,\dots,k_n)_{\tilde A}$</div>
+
+<div class="ans"><span class="exn">3</span><b>정답</b> 순서, &nbsp;표준기저</div>
+
+<div class="ans"><span class="exn">4</span><b>정답</b> 기저 $\tilde A$, &nbsp;기저 $\tilde B$</div>
+
+<div class="ans"><span class="exn">5</span><b>정답</b> 기저 $\tilde A$, &nbsp;기저 $\tilde B$</div>
+
+<div class="ans"><span class="exn">6</span><b>정답</b> 동형공간</div>
+
+<div class="ans"><span class="exn">7</span><b>정답</b> 기저변환</div>
+
+<div class="ans"><span class="exn">8</span><b>정답</b> 기저 $\tilde A$, &nbsp;기저 $\tilde A$, &nbsp;기저 $\tilde A$</div>
+
+<div class="ans"><span class="exn">9</span><b>정답</b> $(T)_{\tilde A}^{\tilde A}$</div>
+
+<div class="ans"><span class="exn">10</span><b>정답</b> $\left((I)_{\tilde A}^{\tilde B}\right)^{-1}$</div>
+
+<h2 class="sub">기출문제</h2>
+
+<div class="ans"><span class="exn">기출 1</span><b>정답</b> ①
+  $$(-1,4,1)=a(1,1,0)+b(1,0,1)+c(0,1,1)=(a+b,\ a+c,\ b+c)$$
+  $$a+b=-1,\quad a+c=4,\quad b+c=1\ \Longrightarrow\ 2(a+b+c)=4,\ a+b+c=2$$
+  $$c=2-(-1)=3,\qquad b=2-4=-2,\qquad a=2-1=1$$
+  $$\therefore\ (1,-2,3)_{\tilde A}$$
+</div>
+
+<div class="ans"><span class="exn">기출 2</span><b>정답</b> ①
+  $$T(1,1,0)=(1,\ 1-1,\ 0)=(1,0,0),\qquad
+    T(0,2,1)=(2,\ 0-2,\ 1)=(2,-2,1)$$
+  $$T(0,-1,2)=(-1,\ 0+1,\ 2)=(-1,1,2)$$
+  <p>공역의 기저가 표준기저 $\tilde E$ 이므로 위 세 상을 <b>그대로 열로 세우면</b> 된다.</p>
+  $$(T)_{\tilde E}^{\tilde A}=\begin{pmatrix}1&2&-1\\0&-2&1\\0&1&2\end{pmatrix}$$
+</div>
+
+<div class="ans"><span class="exn">기출 3</span><b>정답</b> ④
+  $$(T+U)(x,y)=T(x,y)+U(x,y)=(2y,-x)+(0,y)=(2y,\ -x+y)=(2y,\ y-x)$$
+</div>
+
+<div class="ans"><span class="exn">기출 4</span><b>정답</b> ②
+  $$(T+U)(1,0)=(0,-1),\qquad (T+U)(0,1)=(2,1)$$
+  $$(T+U)_{\tilde E}^{\tilde E}=\begin{pmatrix}0&2\\-1&1\end{pmatrix}$$
+</div>
+
+<div class="ans"><span class="exn">기출 5</span><b>정답</b> ④
+  $$(T\circ U)(x,y)=T(0,y)=(2y,\ 0),\qquad
+    (U\circ T)(x,y)=U(2y,-x)=(0,\ -x)$$
+  <ol class="fill">
+    <li><span class="step">$T\circ U$.</span>
+      $(T\circ U)(1,0)=(0,0)=(0,0)_{\tilde A}$,
+      $(T\circ U)(1,-1)=(-2,0)=-2(1,0)+0(1,-1)=(-2,0)_{\tilde A}$
+      $$(T\circ U)_{\tilde A}^{\tilde A}=\begin{pmatrix}0&-2\\0&0\end{pmatrix}$$</li>
+    <li><span class="step">$U\circ T$.</span>
+      $(U\circ T)(1,0)=(0,-1)=-1(1,0)+1(1,-1)=(-1,1)_{\tilde A}$,
+      $(U\circ T)(1,-1)=(0,-1)=(-1,1)_{\tilde A}$
+      $$(U\circ T)_{\tilde A}^{\tilde A}=\begin{pmatrix}-1&-1\\1&1\end{pmatrix}$$</li>
+    <li><span class="step">주의.</span> 공역의 기저가 표준기저가 아니므로
+      상 $(0,-1)$ 을 그대로 열에 적으면 안 되고, <b>반드시 $\tilde A$ 의 일차결합으로 바꾼 계수</b>를 적는다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">교재 연습문제</h2>
+
+<div class="ans"><span class="exn">01</span><b>정답</b>
+  <p>$a(2,3)+b(-1,4)=(2a-b,\ 3a+4b)=(x,y)$ 를 풀면
+  $\begin{vmatrix}2&-1\\3&4\end{vmatrix}=11\ne0$ 이므로</p>
+  $$a=\frac{4x+y}{11},\qquad b=\frac{-3x+2y}{11}$$
+  $$\text{(1)}\ (0,0)_{\tilde A}\qquad
+    \text{(2)}\ \left(\tfrac4{11},\,-\tfrac3{11}\right)_{\tilde A}$$
+  $$\text{(3)}\ \left(\tfrac5{11},\,-\tfrac1{11}\right)_{\tilde A}\qquad
+    \text{(4)}\ \left(-\tfrac5{11},\,\tfrac1{11}\right)_{\tilde A}$$
+</div>
+
+<div class="ans"><span class="exn">02</span><b>정답</b>
+  <p>$a(1,1,1)+b(0,1,1)+c(0,0,-1)=(a,\ a+b,\ a+b-c)=(x,y,z)$ 이므로</p>
+  $$a=x,\qquad b=y-x,\qquad c=y-z$$
+  $$\text{(1)}\ (0,0,0)_{\tilde A}\qquad \text{(2)}\ (0,0,-1)_{\tilde A}\qquad
+    \text{(3)}\ (0,1,1)_{\tilde A}\qquad \text{(4)}\ (0,1,0)_{\tilde A}$$
+  $$\text{(5)}\ (1,-1,0)_{\tilde A}\qquad \text{(6)}\ (1,-1,-1)_{\tilde A}\qquad
+    \text{(7)}\ (1,0,1)_{\tilde A}\qquad \text{(8)}\ (1,0,0)_{\tilde A}$$
+</div>
+
+<div class="ans"><span class="exn">03</span><b>정답</b>
+  $$\text{(1)}\ (T)_{\tilde A}^{\tilde A}=\begin{pmatrix}1&1&1\\0&1&1\\0&0&1\end{pmatrix}
+    \qquad
+    \text{(2)}\ (T)_{\tilde B}^{\tilde B}=\begin{pmatrix}1&-1&1\\0&1&-1\\0&0&1\end{pmatrix}$$
+  $$\text{(3)}\ (I)_{\tilde B}^{\tilde A}=\begin{pmatrix}1&-1&0\\0&-1&1\\0&0&1\end{pmatrix}
+    \qquad
+    \text{(4)}\ (I)_{\tilde A}^{\tilde B}=\begin{pmatrix}1&-1&1\\0&-1&1\\0&0&1\end{pmatrix}$$
+  <ol class="fill">
+    <li><span class="step">(1)</span> $T(A_1)=A_1=(1,0,0)_{\tilde A}$,
+      $T(A_2)=A_1+A_2=(1,1,0)_{\tilde A}$,
+      $T(A_3)=A_1+A_2+A_3=(1,1,1)_{\tilde A}$ 를 열로 세운다.</li>
+    <li><span class="step">$\tilde B$ 를 $\tilde A$ 로 되돌리는 식.</span>
+      $B_1=A_1$, $B_2=-A_1-A_2$, $B_3=A_1+A_2+A_3$ 에서
+      $$A_1=B_1,\qquad A_2=-B_1-B_2,\qquad A_3=B_2+B_3$$</li>
+    <li><span class="step">(2)</span> $T(B_1)=T(A_1)=A_1=B_1=(1,0,0)_{\tilde B}$
+      <p>$T(B_2)=-T(A_1)-T(A_2)=-A_1-(A_1+A_2)=-2A_1-A_2
+        =-2B_1-(-B_1-B_2)=-B_1+B_2=(-1,1,0)_{\tilde B}$</p>
+      <p>$T(B_3)=T(A_1)+T(A_2)+T(A_3)=3A_1+2A_2+A_3
+        =3B_1+2(-B_1-B_2)+(B_2+B_3)=B_1-B_2+B_3=(1,-1,1)_{\tilde B}$</p></li>
+    <li><span class="step">(3)</span> $(I)_{\tilde B}^{\tilde A}$ 의 열은 $A_j$ 를 $\tilde B$ 로 쓴 좌표다.
+      $A_1=(1,0,0)_{\tilde B}$, $A_2=(-1,-1,0)_{\tilde B}$, $A_3=(0,1,1)_{\tilde B}$.</li>
+    <li><span class="step">(4)</span> $(I)_{\tilde A}^{\tilde B}$ 의 열은 $B_j$ 를 $\tilde A$ 로 쓴 좌표다.
+      $B_1=(1,0,0)_{\tilde A}$, $B_2=(-1,-1,0)_{\tilde A}$, $B_3=(1,1,1)_{\tilde A}$.
+      <p>검산: $(I)_{\tilde B}^{\tilde A}(I)_{\tilde A}^{\tilde B}=I_3$ — 정리 11.3 의 따름(문항 10)과 맞는다.</p></li>
+    <li><span class="step">(5) 확인.</span>
+      $$(T)_{\tilde A}^{\tilde A}(I)_{\tilde A}^{\tilde B}
+        =\begin{pmatrix}1&1&1\\0&1&1\\0&0&1\end{pmatrix}
+         \begin{pmatrix}1&-1&1\\0&-1&1\\0&0&1\end{pmatrix}
+        =\begin{pmatrix}1&-2&3\\0&-1&2\\0&0&1\end{pmatrix}$$
+      $$(I)_{\tilde B}^{\tilde A}\begin{pmatrix}1&-2&3\\0&-1&2\\0&0&1\end{pmatrix}
+        =\begin{pmatrix}1&-1&0\\0&-1&1\\0&0&1\end{pmatrix}
+         \begin{pmatrix}1&-2&3\\0&-1&2\\0&0&1\end{pmatrix}
+        =\begin{pmatrix}1&-1&1\\0&1&-1\\0&0&1\end{pmatrix}=(T)_{\tilde B}^{\tilde B}$$
+      <div class="qed">∎</div></li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">04</span><b>정답</b>
+  $$\text{(1)}\ (T)_{\tilde E}^{\tilde E}=\begin{pmatrix}2&-1&1\\0&1&1\end{pmatrix}
+    \qquad
+    \text{(2)}\ (T)_{\tilde B}^{\tilde A}=\begin{pmatrix}0&-3&4\\2&2&1\end{pmatrix}$$
+  <ol class="fill">
+    <li><span class="step">(1)</span> $T(E_1)=(2,0)$, $T(E_2)=(-1,1)$, $T(E_3)=(1,1)$ 을 열로 세운다.</li>
+    <li><span class="step">(2) 상 계산.</span>
+      $$T(1,1,1)=(2-1+1,\ 1+1)=(2,2)$$
+      $$T(2,-1,0)=(4+1+0,\ -1+0)=(5,-1)$$
+      $$T(-1,3,2)=(-2-3+2,\ 3+2)=(-3,5)$$</li>
+    <li><span class="step">(2) $\tilde B$ 좌표로 변환.</span>
+      $a(-1,1)+b(1,1)=(-a+b,\ a+b)=(x,y)$ 에서
+      $a=\dfrac{y-x}{2}$, $b=\dfrac{x+y}{2}$ 이므로
+      $$(2,2)=(0,2)_{\tilde B},\qquad (5,-1)=(-3,2)_{\tilde B},\qquad (-3,5)=(4,1)_{\tilde B}$$</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">05</span><b>정답</b>
+  $$\text{(1)}\ (T+U)(x,y)=(4x+y,\ 3x+3y)
+    \qquad \text{(2)}\ \begin{pmatrix}4&1\\3&3\end{pmatrix}$$
+  $$\text{(3)}\ (T\circ U)(x,y)=(3x+3y,\ 6x-2y),\qquad
+    (U\circ T)(x,y)=(5x+4y,\ x-4y)$$
+  $$\text{(4)}\ (T\circ U)_{\tilde E}^{\tilde E}=\begin{pmatrix}3&3\\6&-2\end{pmatrix},\qquad
+    (U\circ T)_{\tilde E}^{\tilde E}=\begin{pmatrix}5&4\\1&-4\end{pmatrix}$$
+  $$\text{(5)}\ (T\circ U)_{\tilde A}^{\tilde A}=\begin{pmatrix}3&-3\\-6&-2\end{pmatrix},\qquad
+    (U\circ T)_{\tilde A}^{\tilde A}=\begin{pmatrix}5&-4\\-1&-4\end{pmatrix}$$
+  <ol class="fill">
+    <li><span class="step">(1)</span> $(3x,2x+4y)+(x+y,x-y)=(4x+y,\ 3x+3y)$.</li>
+    <li><span class="step">(3)</span> $(T\circ U)(x,y)=T(x+y,\ x-y)
+      =\big(3(x+y),\ 2(x+y)+4(x-y)\big)=(3x+3y,\ 6x-2y)$
+      <p>$(U\circ T)(x,y)=U(3x,\ 2x+4y)
+      =\big(3x+2x+4y,\ 3x-2x-4y\big)=(5x+4y,\ x-4y)$</p></li>
+    <li><span class="step">(5) 좌표 변환.</span>
+      $a(1,0)+b(0,-1)=(a,-b)=(x,y)$ 이므로 $a=x$, $b=-y$ 다.
+      <p>$(T\circ U)(1,0)=(3,6)=(3,-6)_{\tilde A}$,
+      &nbsp;$(T\circ U)(0,-1)=(-3,2)=(-3,-2)_{\tilde A}$</p>
+      <p>$(U\circ T)(1,0)=(5,1)=(5,-1)_{\tilde A}$,
+      &nbsp;$(U\circ T)(0,-1)=(-4,4)=(-4,-4)_{\tilde A}$</p></li>
+    <li><span class="step">확인.</span> $\tilde A$ 는 $E_2$ 의 부호만 바꾼 기저이므로
+      표준행렬에서 <b>$2$행과 $2$열의 부호를 각각 뒤집은 것</b>과 같다.
+      실제로 $\begin{pmatrix}3&3\\6&-2\end{pmatrix}$ 의 $(1,2)$·$(2,1)$ 성분만 부호가 바뀌었다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">연구과제</h2>
+
+<div class="ans"><span class="exn">연구 1</span><b>정답</b>
+  <p>$\tilde A=\{A_1,A_2,A_3,A_4\}$ 를 $V$ 의 <b>임의의</b> 기저라 하자. 가정에서</p>
+  $$T(A_j)=kA_j=0\cdot A_1+\dots+k\cdot A_j+\dots+0\cdot A_4$$
+  <p>이므로 $T(A_j)$ 의 기저 $\tilde A$ 에 대한 좌표는 $j$ 번째 성분만 $k$ 이고 나머지는 $0$ 이다.
+  이 좌표들을 차례로 열로 세우면</p>
+  $$(T)_{\tilde A}^{\tilde A}=\begin{pmatrix}k&0&0&0\\0&k&0&0\\0&0&k&0\\0&0&0&k\end{pmatrix}=kI_4$$
+  <p>기저 $\tilde A$ 를 어떻게 잡아도 같은 논법이 그대로 성립하므로, 표현행렬은 기저와 무관하게 $kI_4$ 이다.</p>
+  <div class="qed">∎</div>
+  <div class="note" style="margin-top:8px">
+    정리 11.3 으로 보아도 같다. 어떤 기저 $\tilde B$ 에 대해서도
+    $(T)_{\tilde B}^{\tilde B}=(I)_{\tilde B}^{\tilde A}(kI_4)(I)_{\tilde A}^{\tilde B}
+     =k\,(I)_{\tilde B}^{\tilde A}(I)_{\tilde A}^{\tilde B}=kI_4$ 이다
+    — <b>스칼라행렬은 닮음변환으로 변하지 않는</b> 유일한 꼴이다.
+  </div>
+</div>
+
+</div>
+
+<nav class="pager">
+  <a href="../ch10/10-exercises.html">← 이전<small>10장 연습문제</small></a>
+  <a class="next" href="../index.html">목차 →<small>선형대수학</small></a>
+</nav>
+
+</body>
+</html>
