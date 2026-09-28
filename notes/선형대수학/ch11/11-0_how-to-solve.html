@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선형대수학 · 11장 문제 풀이법</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  .recipe{ counter-reset:rstep; margin:12px 0 0; padding-left:0; list-style:none; }
+  .recipe li{ position:relative; padding-left:34px; margin:10px 0; }
+  .recipe li::before{ counter-increment:rstep; content:"STEP " counter(rstep);
+       position:absolute; left:0; top:2px; font-size:0.62rem; font-weight:800;
+       letter-spacing:0.03em; color:#fff; background:var(--def);
+       padding:2px 5px; border-radius:4px; }
+  .oneline{ border:2px solid var(--thm); background:var(--thm-bg); border-radius:8px;
+       padding:14px 16px; margin:16px 0; text-align:center; font-size:1.04rem; font-weight:700; }
+  .oneline small{ display:block; margin-top:6px; font-weight:400; font-size:0.82rem; color:var(--muted); }
+  .warn{ border-left:4px solid #d64541; background:#fdf3f2; padding:10px 14px; margin:18px 0; }
+  table.chk{ border-collapse:collapse; width:100%; margin:12px 0 0; font-size:0.92rem; }
+  table.chk th, table.chk td{ border:1px solid var(--line); padding:6px 9px; text-align:left; }
+  table.chk th{ background:#f4f6f8; font-size:0.82rem; letter-spacing:0.02em; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">선형대수학 · 11장 선형변환과 행렬</div>
+  <h1><span class="no">풀이법</span>문제 풀이법 <span class="en">problem-solving methods</span></h1>
+</header>
+
+<p>이론 전개가 아니라 <b>문제를 만나면 무엇부터 쓰는가</b>만 정리한 노트다.
+문항 번호는 <a href="11-exercises.html">11장 연습문제</a>를 가리킨다.</p>
+
+<h2 class="sub">표기법 읽는 법 <span class="en">how to read the notation</span></h2>
+
+<div class="oneline">
+  $(T)_{\tilde B}^{\tilde A}$ — <b>위</b>는 넣는 기저, <b>아래</b>는 쓰는 기저
+  <small>위첨자 $\tilde A$ 에 속한 벡터를 $T$ 에 넣고, 나온 상을 아래첨자 $\tilde B$ 의 좌표로 적는다.</small>
+</div>
+
+<div class="box def">
+  <span class="tag">정의 11.2</span><span class="title">$(T)_{\tilde B}^{\tilde A}$</span>
+  <p>$T:V\to W$ 이고 $V$ 의 기저가 $\tilde A=\{A_1,\dots,A_n\}$, $W$ 의 기저가
+  $\tilde B=\{B_1,\dots,B_m\}$ 일 때</p>
+  $$(T)_{\tilde B}^{\tilde A}=\Big(T(A_1)_{\tilde B}\ \ T(A_2)_{\tilde B}\ \cdots\ T(A_n)_{\tilde B}\Big)$$
+  <ol class="props">
+    <li><b>위첨자 $\tilde A$</b> — 변환에 <b>넣는</b> 쪽, 즉 정의역 $V$ 의 기저.
+      기저벡터의 개수가 곧 <b>열의 개수</b>다.</li>
+    <li><b>아래첨자 $\tilde B$</b> — 나온 상을 <b>좌표로 적을</b> 쪽, 즉 공역 $W$ 의 기저.
+      기저벡터의 개수가 곧 <b>행의 개수</b>다.</li>
+  </ol>
+  <p>따라서 크기는 $m\times n$ 이고, $(T)_{\tilde A}^{\tilde A}$ 는
+  “넣는 것도 $\tilde A$, 좌표로 쓰는 것도 $\tilde A$”라는 뜻이다.
+  <b>03</b>의 $(T)_{\tilde B}^{\tilde B}$ 는 넣는 것도 쓰는 것도 $\tilde B$ 다.</p>
+</div>
+
+<div class="warn">
+  <b>위·아래를 바꿔 외우면 전부 틀린다</b> — 위가 정의역, 아래가 공역이다.
+  <b>기출 2</b>의 $(T)_{\tilde E}^{\tilde A}$ 는 “$\tilde A$ 의 벡터를 넣고 결과를 <b>표준기저</b> 좌표로 적어라”이지,
+  그 반대가 아니다. 두 기저가 같은 $(T)_{\tilde A}^{\tilde A}$ 꼴에서는 이 차이가 드러나지 않으므로
+  <b>기저가 서로 다른 문항에서 반드시 확인</b>할 것.
+</div>
+
+<table class="chk">
+  <tr><th>표기</th><th>넣는 것(위)</th><th>좌표로 쓰는 것(아래)</th><th>해당 문항</th></tr>
+  <tr><td>$(T)_{\tilde E}^{\tilde A}$</td><td>기저 $\tilde A$</td><td>표준기저 $\tilde E$</td><td>기출 2</td></tr>
+  <tr><td>$(T)_{\tilde B}^{\tilde A}$</td><td>기저 $\tilde A$</td><td>기저 $\tilde B$</td><td>04-(2)</td></tr>
+  <tr><td>$(T)_{\tilde A}^{\tilde A}$</td><td>기저 $\tilde A$</td><td>기저 $\tilde A$</td><td>03-(1), 05-(5)</td></tr>
+  <tr><td>$(I)_{\tilde B}^{\tilde A}$</td><td>기저 $\tilde A$</td><td>기저 $\tilde B$</td><td>03-(3)</td></tr>
+</table>
+
+<h2 class="sub">행렬 세우는 순서 <span class="en">building the matrix</span></h2>
+
+<ol class="recipe">
+  <li><b>위첨자 기저의 벡터를 하나씩 $T$ 에 넣는다.</b> $T(A_1),T(A_2),\dots$</li>
+  <li><b>나온 상을 아래첨자 기저의 일차결합으로 고친다.</b>
+    그 <b>계수</b>가 좌표다. 아래첨자가 표준기저면 이 단계는 건너뛴다.</li>
+  <li><b>좌표를 순서대로 열로 세운다.</b></li>
+</ol>
+
+<div class="warn">
+  <b>가장 흔한 실수</b> — 2단계를 건너뛰고 상 $(0,-1)$ 을 그대로 열에 적는 것.
+  아래첨자가 표준기저가 <b>아닐 때</b>는 반드시 계수로 바꿔야 한다.
+  기출 5에서 $(U\circ T)(1,0)=(0,-1)$ 이지만
+  $\tilde A=\{(1,0),(1,-1)\}$ 기준 좌표는 $(-1,1)_{\tilde A}$ 다.
+</div>
+
+<h2 class="sub">좌표 구하기 <span class="en">finding coordinates</span></h2>
+
+<p>“기저 $\tilde A$ 에 대한 좌표를 구하라”(<b>01·02</b>)는 일차결합의 계수를 구하는 연립방정식이다.</p>
+
+$$C=k_1A_1+\dots+k_nA_n\ \Longrightarrow\ C=(k_1,\dots,k_n)_{\tilde A}$$
+
+<div class="oneline">
+  영벡터의 좌표는 언제나 $(0,0,\dots,0)_{\tilde A}$
+  <small>기저는 일차독립이므로 $k_1A_1+\dots+k_nA_n=O$ 이면 모든 $k_i=0$ 이다.</small>
+</div>
+
+<p>그래서 <b>01-(1)</b>, <b>02-(1)</b> 처럼 영벡터가 나오면 연립방정식을 풀 것 없이 바로 적으면 된다.
+어떤 기저를 쓰든 마찬가지다.</p>
+
+<div class="note">
+  <b>계산을 줄이는 요령</b> — 같은 기저에 대해 여러 벡터의 좌표를 구할 때는
+  $(x,y)$ 또는 $(x,y,z)$ 를 <b>문자로 두고 한 번만</b> 풀어 공식을 만든 뒤 대입한다.
+  01은 $a=\dfrac{4x+y}{11}$, $b=\dfrac{-3x+2y}{11}$,
+  02는 $a=x$, $b=y-x$, $c=y-z$ 로 여덟 문항이 한 줄씩에 끝난다.
+</div>
+
+<h2 class="sub">기저변환행렬 <span class="en">change of basis matrix</span></h2>
+
+<div class="box def">
+  <span class="tag">정의 11.3</span><span class="title">$(I)_{\tilde B}^{\tilde A}$</span>
+  <p>항등변환 $I$ 에 대한 표현행렬이 <b>기저 $\tilde A$ 에서 기저 $\tilde B$ 로의 기저변환행렬</b>이다.
+  위의 규칙 그대로 <b>$\tilde A$ 의 각 벡터를 $\tilde B$ 의 좌표로 적어 열로 세우면</b> 된다.</p>
+  $$(I)_{\tilde B}^{\tilde A}=\Big((A_1)_{\tilde B}\ \ (A_2)_{\tilde B}\ \cdots\ (A_n)_{\tilde B}\Big),
+    \qquad (I)_{\tilde B}^{\tilde A}=\left((I)_{\tilde A}^{\tilde B}\right)^{-1}$$
+</div>
+
+<div class="box thm">
+  <span class="tag">정리 11.3</span><span class="title">기저를 바꾼 표현행렬</span>
+  $$(T)_{\tilde B}^{\tilde B}=(I)_{\tilde B}^{\tilde A}\,(T)_{\tilde A}^{\tilde A}\,(I)_{\tilde A}^{\tilde B}$$
+  <p>오른쪽부터 읽으면 <b>$\tilde B$ 좌표 → $\tilde A$ 좌표로 바꾸고 → $\tilde A$ 에서 변환하고 →
+  다시 $\tilde B$ 좌표로 되돌린다</b>는 뜻이다. 인접한 첨자가 서로 맞물려 지워진다고 보면 순서를 외우기 쉽다.</p>
+</div>
+
+<div class="note">
+  <b>03 을 푸는 순서</b> — $\tilde B$ 가 $\tilde A$ 로 정의되어 있으므로
+  <b>$\tilde A$ 를 $\tilde B$ 로 되돌리는 식을 먼저 만든다.</b>
+  $B_1=A_1$, $B_2=-A_1-A_2$, $B_3=A_1+A_2+A_3$ 에서
+  $A_1=B_1$, $A_2=-B_1-B_2$, $A_3=B_2+B_3$ 을 얻으면 (2)·(3)이 대입만으로 끝난다.
+</div>
+
+<div class="terms">
+  <div class="h">용어</div>
+  <dl>
+    <dt>좌표 <span class="en">coordinate</span></dt>
+    <dd>기저 $\tilde A$ 에 대한 일차결합의 계수 $(k_1,\dots,k_n)_{\tilde A}$.
+      기저가 바뀌면 같은 벡터라도 좌표가 달라진다.</dd>
+    <dt>기저변환행렬 <span class="en">change of basis matrix</span></dt>
+    <dd>$(I)_{\tilde B}^{\tilde A}$. 벡터는 그대로 두고 <b>좌표계만</b> 바꾸는 행렬이며,
+      반대 방향 행렬과 서로 역행렬이다.</dd>
+  </dl>
+</div>
+
+<nav class="pager">
+  <a href="../ch10/10-exercises.html">← 이전<small>10장 연습문제</small></a>
+  <a class="next" href="11-exercises.html">다음 →<small>11장 연습문제</small></a>
+</nav>
+
+</body>
+</html>
