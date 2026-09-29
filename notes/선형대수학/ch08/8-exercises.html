@@ -40,15 +40,117 @@
   <h1><span class="no">연습문제</span>8장 <span class="en">exercises</span></h1>
 </header>
 
-<p>8장(벡터공간) 교재 연습문제 01~10 과 연구과제 1, 그리고 정답·해설.
-정답 시트는 인쇄 시 다음 페이지부터 나온다.</p>
+<p>8장(벡터공간) 본문 예제 8.1~8.15 와 교재 연습문제 01~10, 연구과제 1, 그리고 정답·해설.
+정답 시트는 인쇄 시 다음 페이지부터 나온다. 교재 <b>206~219쪽, 연습문제</b>.</p>
 
 <div class="note">
-  <b>대조 요망</b> — <b>09·10</b> 이 가리키는 [예제 8.4]의 벡터공간 $C$ 는
-  <b>연속함수 전체의 집합</b>으로 보고 풀었으니, 교재의 정의와 대조할 것.
-  (두 문제의 답은 $C$ 가 영함수를 포함하는 함수공간이기만 하면 그대로 성립한다.)
+  <b>09·10</b> 이 가리키는 [예제 8.4]의 벡터공간 $C$ 는 위 <b>예제 8.4</b> 에 실은 대로
+  <b>연속함수 전체의 집합</b> $\{f\mid f:R\to R,\ f\text{는 연속함수}\}$ 이다.
   <b>연구과제</b>는 사진에 1번만 있다.
 </div>
+
+<h2 class="sub">본문 예제 <span class="en">examples</span></h2>
+
+<div class="ex"><span class="exn">예제 8.1</span>
+  집합 $F=\{0,1\}$ 이라 하자. 이 집합에 다음과 같은 덧셈과 곱셈 연산을 정의한다면
+  $F$ 는 체가 됨을 보여라.
+  <div style="margin-top:8px">
+  <table class="data">
+    <tr><th>$+$</th><th>0</th><th>1</th></tr>
+    <tr><th>0</th><td>0</td><td>1</td></tr>
+    <tr><th>1</th><td>1</td><td>0</td></tr>
+  </table>
+  <table class="data">
+    <tr><th>$\times$</th><th>0</th><th>1</th></tr>
+    <tr><th>0</th><td>0</td><td>0</td></tr>
+    <tr><th>1</th><td>0</td><td>1</td></tr>
+  </table>
+  </div>
+</div>
+
+<div class="ex"><span class="exn">예제 8.2</span>
+  집합 $Q(\sqrt2)=\{a+b\sqrt2\mid a,b\text{는 유리수}\}$ 라 놓고 $Q(\sqrt2)$ 에 대한 덧셈과 곱셈을
+  다음과 같이 정의하여 $Q(\sqrt2)$ 가 체임을 보여라.
+  집합 $Q(\sqrt2)$ 의 임의의 두 원소 $k=a+b\sqrt2$, $l=c+d\sqrt2$
+  (단, $a,b,c,d$ 는 유리수)에 대하여
+  $$k+l=(a+b\sqrt2)+(c+d\sqrt2)=(a+c)+(b+d)\sqrt2$$
+  $$kl=(a+b\sqrt2)(c+d\sqrt2)=(ac+2bd)+(ad+bc)\sqrt2$$
+</div>
+
+<div class="ex"><span class="exn">예제 8.3</span>
+  집합 $V$ 를 실수 $R$ 에서 정의된 다항식 전체의 집합이라 하자. 그리고 $V$ 의 원소
+  $p(x),q(x)$ 가 다음과 같을 때, 집합 $V$ 는 실수체 위에 정의된 벡터공간임을 보여라.
+  $$p(x)=a_0+a_1x+a_2x^2+\cdots+a_mx^m\quad(a_i\in R)$$
+  $$q(x)=b_0+b_1x+b_2x^2+\cdots+b_nx^n\quad(b_j\in R)$$
+</div>
+
+<div class="ex"><span class="exn">예제 8.4</span>
+  집합 $C$ 를 정의구역과 공변역이 실수이고 연속인 함수의 모임이라 하자.
+  집합 $C$ 가 실수체 위에 정의된 벡터공간임을 보여라.
+  $$C=\{f\mid f:R\to R,\ f\text{는 연속함수}\}$$
+</div>
+
+<div class="ex"><span class="exn">예제 8.5</span>
+  벡터공간을 위한 체가 [예제 8.1]에서 다룬 $F_2$ 라 할 때,
+  다음 집합이 벡터공간임을 보이고 원소의 개수를 계산하라.
+  $$V=\{a_0+a_1x+a_2x^2+\cdots+a_nx^n\mid n\le m,\ a_i\in F_2,\ i=0,1,2,\dots,n\}$$
+</div>
+
+<div class="ex"><span class="exn">예제 8.6</span>
+  $R^4$ 벡터공간의 부분집합 $S=\{(0,x,y,z)\mid x,y,z\in R\}$ 이
+  $R^4$ 벡터공간의 부분공간임을 보여라.</div>
+
+<div class="ex"><span class="exn">예제 8.7</span>
+  $R^3$ 벡터공간의 부분집합 $S=\{(x,y,z)\mid x+y+z=0,\ x,y,z\in R\}$ 이
+  $R^3$ 벡터공간의 부분공간임을 보여라.</div>
+
+<div class="ex"><span class="exn">예제 8.8</span>
+  $R^2$ 벡터공간의 부분집합 $S=\{(x,x+1)\mid x\in R\}$ 은
+  $R^2$ 벡터공간의 부분공간이 아님을 보여라.</div>
+
+<div class="ex"><span class="exn">예제 8.9</span>
+  다음 연립방정식의 해집합은 $n$ 차 열벡터공간 $M_{n1}(R)$ 의 부분공간임을 보여라.
+  $$\begin{cases}
+    a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=0\\
+    a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=0\\
+    \qquad\vdots\\
+    a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=0
+  \end{cases}$$
+</div>
+
+<div class="ex"><span class="exn">예제 8.10</span>
+  $2\times2$ 행렬 전체의 집합 $M_{22}(R)$ 의 부분집합 $S$ 가 다음과 같이 주어졌을 때
+  $S$ 는 $M_{22}(R)$ 의 부분공간임을 보여라.
+  $$S=\left\{\begin{pmatrix}a&0\\c&d\end{pmatrix}\ \middle|\ a,c,d\in R\right\}$$
+</div>
+
+<div class="ex"><span class="exn">예제 8.11</span>
+  $2\times2$ 행렬 전체의 집합 $M_{22}(R)$ 의 부분집합 $S$ 가 다음과 같이 주어졌을 때
+  $S$ 는 $M_{22}(R)$ 의 부분공간이 아님을 보여라.
+  $$S=\left\{\begin{pmatrix}a&1\\c&d\end{pmatrix}\ \middle|\ a,c,d\in R\right\}$$
+</div>
+
+<div class="ex"><span class="exn">예제 8.12</span>
+  [예제 8.4]의 벡터공간 $C$ 의 부분집합 $S$ 가 다음과 같을 때
+  $S$ 는 벡터공간 $C$ 의 부분공간임을 보여라.
+  $$S=\{f\in C\mid f(-1)=0\}$$
+</div>
+
+<div class="ex"><span class="exn">예제 8.13</span>
+  [예제 8.4]의 벡터공간 $C$ 의 부분집합 $S$ 가 다음과 같을 때
+  $S$ 는 벡터공간 $C$ 의 부분공간이 아님을 보여라.
+  $$S=\{f\in C\mid f(0)=-1\}$$
+</div>
+
+<div class="ex"><span class="exn">예제 8.14</span>
+  $V$ 를 실수체 위에 정의된 벡터공간이라 할 때, $V$ 의 두 원소 $A,B$ 에 대한
+  다음 집합 $S$ 는 $V$ 의 부분공간임을 보여라.
+  $$S=\{kA+lB\mid k,l\in R\}$$
+</div>
+
+<div class="ex"><span class="exn">예제 8.15</span>
+  $V$ 를 실수체 위에 정의된 벡터공간이라 하고, $S,U$ 를 $V$ 의 부분공간이라고 하면
+  $S\cap U$ 도 $V$ 의 부분공간이 됨을 보여라.</div>
 
 <h2 class="sub">교재 연습문제 <span class="en">textbook exercises</span></h2>
 
@@ -148,6 +250,165 @@ $S=\{f\in C\mid f(0)=f(-1)=0\}$ 은 $C$ 의 부분공간임을 보여라.</div>
   나머지 공리(결합·교환·분배 등)는 $V$ 에서 이미 성립하므로 물려받는다. 반대로 부분공간이
   <b>아님</b>을 보일 때는 셋 중 <b>하나가 깨지는 구체적인 예</b> 하나면 충분하다.
 </div>
+
+<h2 class="sub">본문 예제</h2>
+
+<div class="ans"><span class="exn">예제 8.1</span><b>정답</b>
+덧셈 항등원 $0$, 곱셈 항등원 $1$. 원소가 $2$ 개뿐인 <b>유한체 $F_2$</b> 다.
+  <ol class="fill">
+    <li><span class="step">항등원.</span> 표에서 $0+0=0$, $1+0=1$ 이므로 $0$ 이 덧셈 항등원,
+      $0\times1=0$, $1\times1=1$ 이므로 $1$ 이 곱셈 항등원이다.</li>
+    <li><span class="step">역원.</span> $0+0=0$, <b>$1+1=0$</b> 이므로 $-0=0$, $-1=1$.
+      $0$ 이 아닌 원소는 $1$ 뿐이고 $1\times1=1$ 이므로 $1^{-1}=1$.</li>
+    <li><span class="step">나머지 공리.</span> 원소가 둘뿐이라 결합·교환·분배법칙은 표를 대조해
+      모두 확인된다. 따라서 [정의 8.1]의 조건을 모두 만족한다.</li>
+    <li><span class="step">논리연산으로 보기.</span> $0$ 을 거짓, $1$ 을 참으로 보면
+      덧셈은 <b>XOR</b>, 곱셈은 <b>AND</b> 다.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">예제 8.2</span><b>정답</b>
+  <ol class="fill">
+    <li><span class="step">닫힘.</span>
+      $k+l=(a+c)+(b+d)\sqrt2\in Q(\sqrt2)$,
+      $kl=(ac+2bd)+(ad+bc)\sqrt2\in Q(\sqrt2)$
+      — 유리수끼리의 합·곱은 다시 유리수이기 때문이다.</li>
+    <li><span class="step">결합·교환·분배.</span> $Q(\sqrt2)$ 는 <b>실수의 부분집합</b>이므로
+      실수에서 성립하는 이 법칙들을 그대로 물려받는다.</li>
+    <li><span class="step">덧셈 역원.</span>
+      $-k=-(a+b\sqrt2)=(-a)+(-b)\sqrt2\in Q(\sqrt2)$.</li>
+    <li><span class="step">곱셈 역원.</span> $a\ne0$ 또는 $b\ne0$ 일 때
+      $$k^{-1}=\frac1{a+b\sqrt2}=\frac{a-b\sqrt2}{a^2-2b^2}
+        =\left(\frac{a}{a^2-2b^2}\right)+\left(\frac{-b}{a^2-2b^2}\right)\sqrt2
+        \in Q(\sqrt2)$$</li>
+    <li><span class="step">크기 비교.</span> $\sqrt2$ 의 계수 $b$ 가 $0$ 인 원소만 모으면 유리수 집합과
+      같으므로 $Q(\sqrt2)$ 는 유리수체보다 크고, 실수의 부분집합이므로 실수체보다는 작다.
+      $$Q\subsetneq Q(\sqrt2)\subsetneq R$$</li>
+  </ol>
+  <div class="note" style="margin-top:8px">
+    <b>보충 — 분모가 $0$ 이 아닌 이유</b>. 교재는 그냥 넘어가지만, $a^2-2b^2=0$ 이면서
+    $a,b$ 가 모두 $0$ 은 아니라면 $b\ne0$ 이고 $\left(\dfrac ab\right)^2=2$, 즉
+    $\sqrt2=\left|\dfrac ab\right|$ 가 유리수가 되어 모순이다.
+    <b>$\sqrt2$ 가 무리수</b>라는 사실이 곱셈 역원의 존재를 보장한다.
+  </div>
+</div>
+
+<div class="ans"><span class="exn">예제 8.3</span><b>정답</b>
+  <ol class="fill">
+    <li><span class="step">연산.</span> 덧셈은 <b>같은 차수의 항끼리</b> 계수를 더하고,
+      스칼라곱은 각 항에 실수를 곱한다($m\le n$ 이라 하면).
+      $$p(x)+q(x)=(a_0+b_0)+(a_1+b_1)x+\cdots+(a_m+b_m)x^m+b_{m+1}x^{m+1}+\cdots+b_nx^n$$
+      $$k\cdot p(x)=ka_0+ka_1x+\cdots+ka_mx^m$$
+      결과가 모두 다항식이므로 두 연산에 대해 <b>닫혀 있다</b>.</li>
+    <li><span class="step">교환·결합.</span> 각 항의 계수가 실수이므로 실수의 교환·결합법칙에서
+      $p(x)+q(x)=q(x)+p(x)$ 등이 그대로 성립한다.</li>
+    <li><span class="step">항등원·역원.</span> 항등원은 <b>모든 계수가 $0$</b> 인 다항식이고,
+      $$-p(x)=(-a_0)+(-a_1)x+(-a_2)x^2+\cdots+(-a_m)x^m$$
+      이 $V$ 의 원소이며 $p(x)+(-p(x))=0$ 을 만족한다.</li>
+    <li><span class="step">결론.</span> [정의 8.2]의 (2)의 네 성질도 실수의 연산법칙에서 명백하므로
+      $V$ 는 실수체 위에 정의된 벡터공간이다.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">예제 8.4</span><b>정답</b>
+  $$(f+g)(x)=f(x)+g(x),\qquad (k\cdot f)(x)=k\cdot f(x)$$
+  <ol class="fill">
+    <li><span class="step">닫힘.</span> 연속인 두 함수의 합은 연속이고, 연속함수에 실수곱을 해도
+      연속이므로 $f+g$ 와 $k\cdot f$ 는 $C$ 의 원소다.</li>
+    <li><span class="step">교환·결합.</span> $f(x),g(x)$ 가 실수이므로
+      $(f+g)(x)=f(x)+g(x)=g(x)+f(x)=(g+f)(x)$ — 실수의 교환법칙에서 나온다.
+      결합법칙도 같다.</li>
+    <li><span class="step">항등원·역원.</span> 항등원은 모든 실수를 $0$ 으로 보내는
+      <b>영함수</b>, 역원은 $(-f)(x)=-f(x)$ 다.</li>
+    <li><span class="step">결론.</span> [정의 8.2]를 모두 만족하므로 $C$ 는 실수체 위의 벡터공간이다.</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">예제 8.5</span><b>정답</b> 원소의 개수는 $\mathbf{2^{m+1}}$ 개.
+  <ol class="fill">
+    <li><span class="step">벡터공간임.</span> $V$ 는 각 계수가 $F_2$ 의 원소이고 차수가 $m$ 보다 크지 않은
+      다항식의 집합이다. 연산은 [예제 8.3]과 같되 <b>계수의 덧셈이 $F_2$ 의 연산</b>이다.
+      $$(x+x^5)+(1+x+x^2)=1+(1+1)x+x^2+x^5=1+0x+x^2+x^5=1+x^2+x^5$$
+      두 연산에 대해 닫혀 있고 [정의 8.2]의 모든 조건을 만족한다.</li>
+    <li><span class="step">개수 세기.</span> $0$ 차 다항식($=\{0,1\}$)이 $2$ 개,
+      $1$ 차 다항식($=\{x,\ 1+x\}$)이 $2$ 개이며, 일반적으로 $i$ 차 다항식의 개수는 $2^i$ 이므로
+      $$2+\sum_{i=1}^{m}2^i=2+2+2^2+2^3+\cdots+2^m
+        =2+\frac{2(2^m-1)}{2-1}=2^{m+1}$$</li>
+  </ol>
+</div>
+
+<div class="ans"><span class="exn">예제 8.6</span><b>정답</b> 부분공간이다.
+  $$A+B=(0,a_1,b_1,c_1)+(0,a_2,b_2,c_2)=(0,\ a_1+a_2,\ b_1+b_2,\ c_1+c_2)\in S$$
+  $$k\cdot A=k(0,a,b,c)=(0,\ ka,\ kb,\ kc)\in S$$
+  <p>둘 다 <b>첫 성분이 $0$</b> 이고 나머지 성분이 실수이므로 $S$ 의 원소다.</p>
+</div>
+
+<div class="ans"><span class="exn">예제 8.7</span><b>정답</b> 부분공간이다.
+  $$A+B=(a_1+b_1,\ a_2+b_2,\ a_3+b_3)$$
+  $$(a_1+b_1)+(a_2+b_2)+(a_3+b_3)=(a_1+a_2+a_3)+(b_1+b_2+b_3)=0+0=0$$
+  $$k\cdot A=(ka,kb,kc),\qquad ka+kb+kc=k(a+b+c)=k\cdot0=0$$
+  <p>두 연산 모두 조건 $x+y+z=0$ 을 그대로 보존한다.</p>
+</div>
+
+<div class="ans"><span class="exn">예제 8.8</span><b>정답</b> <span class="no">부분공간이 아니다.</span>
+  $$A=(a,a+1),\quad B=(b,b+1)\ \Longrightarrow\ A+B=(a+b,\ a+b+2)$$
+  <p>둘째 성분이 첫째 성분에 $1$ 을 더한 것이 아니므로 $A+B\notin S$ —
+  덧셈에 대하여 닫혀 있지 않다.</p>
+</div>
+
+<div class="ans"><span class="exn">예제 8.9</span><b>정답</b> 부분공간이다. 이 공간을 행렬 $A$ 의
+<b>해공간</b><span class="en">solution space</span>이라 한다.
+  $$A=(a_{ij}),\quad X=\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}
+    \ \Longrightarrow\ S=\{X\in M_{n1}(R)\mid AX=O\}$$
+  $$A(X_1+X_2)=AX_1+AX_2=O+O=O,\qquad A(k\cdot X_1)=k\cdot(AX_1)=k\cdot O=O$$
+</div>
+
+<div class="ans"><span class="exn">예제 8.10</span><b>정답</b> 부분공간이다.
+  $$A+B=\begin{pmatrix}a_1+a_2&0\\c_1+c_2&d_1+d_2\end{pmatrix}\in S,\qquad
+    k\cdot A=\begin{pmatrix}ka_1&0\\kc_1&kd_1\end{pmatrix}\in S$$
+  <p>$(1,2)$ 성분이 $0$ 이라는 조건은 <b>$0$ 에 대한 조건</b>이라 합과 스칼라곱에서 그대로 유지된다.</p>
+</div>
+
+<div class="ans"><span class="exn">예제 8.11</span><b>정답</b> <span class="no">부분공간이 아니다.</span>
+  $$A+B=\begin{pmatrix}a_1+a_2&2\\c_1+c_2&d_1+d_2\end{pmatrix},\qquad
+    k\cdot A=\begin{pmatrix}ka_1&k\\kc_1&kd_1\end{pmatrix}$$
+  <p>$A+B$ 에서 $1$ 행 $2$ 열 원소가 $1$ 이 아니고, $k\cdot A$ 에서도 $k\ne1$ 이면
+  $S$ 의 원소가 되지 못한다.</p>
+  <div class="note" style="margin-top:8px">
+    8.10 과 8.11 의 차이는 고정된 성분이 <b>$0$ 인가 $1$ 인가</b> 하나뿐이다.
+    $0$ 은 연산에 보존되지만 $1$ 은 보존되지 않는다 — 8.12·8.13 도 같은 구조다.
+  </div>
+</div>
+
+<div class="ans"><span class="exn">예제 8.12</span><b>정답</b> 부분공간이다.
+  $$(f+g)(-1)=f(-1)+g(-1)=0+0=0,\qquad (kf)(-1)=k\,f(-1)=k\cdot0=0$$
+</div>
+
+<div class="ans"><span class="exn">예제 8.13</span><b>정답</b> <span class="no">부분공간이 아니다.</span>
+  $$(f+g)(0)=f(0)+g(0)=-1+(-1)=-2\ne-1,\qquad (kf)(0)=k\,f(0)=-k$$
+  <p>두 연산 어느 쪽에 대해서도 닫혀 있지 않다.</p>
+</div>
+
+<div class="ans"><span class="exn">예제 8.14</span><b>정답</b> 부분공간이다.
+  <p>$S$ 의 두 원소 $E_1=k_1A+l_1B$, $E_2=k_2A+l_2B$ 와 실수 $t$ 에 대하여</p>
+  $$E_1+E_2=(k_1A+l_1B)+(k_2A+l_2B)=(k_1+k_2)A+(l_1+l_2)B\in S$$
+  $$tE_1=tk_1A+tl_1B\in S$$
+  <p>계수만 바뀔 뿐 여전히 $A,B$ 의 일차결합이다.
+  이 $S$ 를 $A,B$ 에 의해서 <b>생성된 부분공간</b>이라 하며 9장에서 자세히 다룬다.</p>
+</div>
+
+<div class="ans"><span class="exn">예제 8.15</span><b>정답</b> 부분공간이다.
+  <p>$A,B\in S\cap U$ 이고 $k$ 가 실수라 하자.</p>
+  $$A,B\in S,\ S\text{ 가 부분공간}\ \Longrightarrow\ A+B\in S,\quad kA\in S$$
+  $$A,B\in U,\ U\text{ 가 부분공간}\ \Longrightarrow\ A+B\in U,\quad kA\in U$$
+  $$\therefore\ A+B\in S\cap U,\qquad kA\in S\cap U$$
+  <div class="note" style="margin-top:8px">
+    <b>합집합은 안 된다.</b> $R^2$ 에서 $x$축과 $y$축은 각각 부분공간이지만
+    $(1,0)+(0,1)=(1,1)$ 이 어느 축에도 없으므로 합집합은 부분공간이 아니다.
+  </div>
+</div>
+
+<h2 class="sub">교재 연습문제</h2>
 
 <div class="ans"><span class="exn">01</span><b>정답</b>
 덧셈 항등원 $0$, 곱셈 항등원 $1$.
