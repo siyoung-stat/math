@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대학수학의 이해 워크북 연습문제</title>
+<link rel="stylesheet" href="../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  body{ max-width:1000px; }
+  .q{ margin:0 0 18px; line-height:1.7; break-inside:avoid; }
+  .qn{ display:inline-block; min-width:2.6em; font-weight:800; color:var(--def); }
+  .ch2{ display:grid; grid-template-columns:1fr 1fr; gap:2px 18px; margin:5px 0 0 2.6em; }
+  .ch1{ display:grid; grid-template-columns:1fr; gap:2px; margin:5px 0 0 2.6em; }
+  .ch2 > div, .ch1 > div{ padding:1px 0; }
+  .n{ font-weight:700; color:#555; margin-right:5px; }
+  .given{ margin:8px 0 8px 2.6em; }
+  .chap{ margin:34px 0 14px; padding:8px 12px; background:var(--def); color:#fff;
+         border-radius:6px; font-weight:800; font-size:1.02rem; }
+  .answersheet{ page-break-before:always; }
+  .akey{ display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:4px 10px;
+         margin:8px 0 18px 0; font-size:0.95rem; }
+  .akey b{ color:var(--thm); }
+  @media print{
+    .pager, .home, .note{ display:none; }
+    a{ color:inherit; text-decoration:none; }
+    .q{ page-break-inside:avoid; }
+    .chap{ background:none; color:#000; border:1px solid #000; }
+  }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../index.html">⌂ 홈</a>
+  <div class="ch">대학수학의 이해 · 시험지</div>
+  <h1>워크북 <span class="no">연습문제</span></h1>
+</header>
+
+<p><b>대학수학의 이해 워크북</b>의 장별 연습문제를 모은 시험지다. 정답은 뒤쪽 정답 시트에 있다.</p>
+
+<div class="note">
+  <b>수록 범위</b> — 1장 집합과 수의 체계(01~20) · 2장 함수와 그래프(01~25) ·
+  3장 수열의 극한과 무한급수(01~17). 총 <b>62문항</b>.
+</div>
+
+<!-- ===================== 1장 ===================== -->
+<div class="chap">제1장 · 집합과 수의 체계</div>
+
+<div class="q"><span class="qn">1-01.</span>다음 중 집합의 표현 방법이 <b>아닌</b> 것을 모두 고르시오.
+  <div class="ch2">
+    <div><span class="n">①</span>원소나열법</div><div><span class="n">②</span>조건제시법</div>
+    <div><span class="n">③</span>함수 표현법</div><div><span class="n">④</span>문장 표현법</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-02.</span>다음 중 항상 성립하는 것은 무엇인가?
+  <div class="ch2">
+    <div><span class="n">①</span>$A\cup B=B\cap A$</div>
+    <div><span class="n">②</span>$A\cap B=B\cap A$</div>
+    <div><span class="n">③</span>$A\cup B=A\cap B$</div>
+    <div><span class="n">④</span>$A\cap(B\cap C)=(A\cup B)\cap C$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-03.</span>다음 중 드모르간의 법칙에 해당하는 것은 무엇인가?
+  <div class="ch2">
+    <div><span class="n">①</span>$(A\cup B)^{C}=A^{C}\cup B^{C}$</div>
+    <div><span class="n">②</span>$(A\cap B)^{C}=A^{C}\cap B^{C}$</div>
+    <div><span class="n">③</span>$(A\cup B)^{C}=A^{C}\cap B^{C}$</div>
+    <div><span class="n">④</span>$(A\cap B)^{C}=A\cup B$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-04.</span>집합 $A=\{1,2,3\}$, $B=\{2,3,4\}$ 일 때 $A\cup B$ 는?
+  <div class="ch2">
+    <div><span class="n">①</span>$\{1,2,3\}$</div><div><span class="n">②</span>$\{2,3\}$</div>
+    <div><span class="n">③</span>$\{1,2,3,4\}$</div><div><span class="n">④</span>$\{1,4\}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-05.</span>집합 $A=\{1,2,3\}$, $B=\{2,3,4\}$ 일 때 $A\cap B$ 는?
+  <div class="ch2">
+    <div><span class="n">①</span>$\{1,2\}$</div><div><span class="n">②</span>$\{2,3\}$</div>
+    <div><span class="n">③</span>$\{3,4\}$</div><div><span class="n">④</span>$\{1,4\}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-06.</span>$n(A)=6$, $n(B)=5$, $n(A\cap B)=2$ 일 때, $n(A\cup B)$ 는?
+  <div class="ch2">
+    <div><span class="n">①</span>$9$</div><div><span class="n">②</span>$11$</div>
+    <div><span class="n">③</span>$13$</div><div><span class="n">④</span>$30$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-07.</span>두 집합이 서로소일 때 항상 성립하는 것은 무엇인가?
+  <div class="ch2">
+    <div><span class="n">①</span>$A\cap B=A$</div><div><span class="n">②</span>$A\cup B=A$</div>
+    <div><span class="n">③</span>$A\cap B=\phi$</div><div><span class="n">④</span>$A\cup B=\phi$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-08.</span>집합 $A$ 의 원소 개수가 $4$ 일 때, $n(A\times A)$ 는?
+  <div class="ch2">
+    <div><span class="n">①</span>$4$</div><div><span class="n">②</span>$8$</div>
+    <div><span class="n">③</span>$16$</div><div><span class="n">④</span>$12$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-09.</span>집합 $A$ 의 원소 개수가 $4$ 일 때,
+  곱집합 $A\times A$ 에서 서로 다른 원소(순서쌍)의 개수는?
+  <div class="ch2">
+    <div><span class="n">①</span>$16$</div><div><span class="n">②</span>$12$</div>
+    <div><span class="n">③</span>$8$</div><div><span class="n">④</span>$4$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-10.</span>다음 중 유리수는 무엇인가?
+  <div class="ch2">
+    <div><span class="n">①</span>$\sqrt2$</div><div><span class="n">②</span>$\pi$</div>
+    <div><span class="n">③</span>$\dfrac35$</div><div><span class="n">④</span>$e$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-11.</span>다음 중 무리수는 무엇인가?
+  <div class="ch2">
+    <div><span class="n">①</span>$\dfrac12$</div><div><span class="n">②</span>$0.25$</div>
+    <div><span class="n">③</span>$\sqrt3$</div><div><span class="n">④</span>$-3$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-12.</span>다음 중 옳은 포함관계는 무엇인가?
+  <div class="ch2">
+    <div><span class="n">①</span>정수 $\subset$ 자연수</div><div><span class="n">②</span>유리수 $\subset$ 정수</div>
+    <div><span class="n">③</span>자연수 $\subset$ 정수</div><div><span class="n">④</span>실수 $\subset$ 유리수</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-13.</span>다음 중 실수의 성질로 옳은 것은 무엇인가?
+  <div class="ch2">
+    <div><span class="n">①</span>$a+b=b-a$</div><div><span class="n">②</span>$ab=ba$</div>
+    <div><span class="n">③</span>$a(b+c)=ab+c$</div><div><span class="n">④</span>$a\cdot0=a$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-14.</span>두 실수 사이의 성질로 옳은 것은 무엇인가?
+  <div class="ch1">
+    <div><span class="n">①</span>항상 유리수만 존재한다.</div>
+    <div><span class="n">②</span>항상 하나의 실수만 존재한다.</div>
+    <div><span class="n">③</span>항상 무한히 많은 실수가 존재한다.</div>
+    <div><span class="n">④</span>항상 정수만 존재한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-15.</span>다음 중 열린구간은 무엇인가?
+  <div class="ch2">
+    <div><span class="n">①</span>$[a,b]$</div><div><span class="n">②</span>$(a,b)$</div>
+    <div><span class="n">③</span>$[a,b)$</div><div><span class="n">④</span>$(a,b]$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-16.</span>다음 중 닫힌구간은 무엇인가?
+  <div class="ch2">
+    <div><span class="n">①</span>$(a,b)$</div><div><span class="n">②</span>$(a,b]$</div>
+    <div><span class="n">③</span>$[a,b]$</div><div><span class="n">④</span>$(-\infty,a)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-17.</span>다음 중 상한의 정의로 옳은 것은 무엇인가?
+  <div class="ch1">
+    <div><span class="n">①</span>집합의 가장 작은 원소</div>
+    <div><span class="n">②</span>집합의 가장 큰 원소</div>
+    <div><span class="n">③</span>상계 중 가장 작은 값</div>
+    <div><span class="n">④</span>하계 중 가장 큰 값</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-18.</span>다음 중 명제에 대한 설명으로 옳은 것은 무엇인가?
+  <div class="ch1">
+    <div><span class="n">①</span>항상 참인 문장만 명제이다.</div>
+    <div><span class="n">②</span>참 또는 거짓을 판단할 수 있는 문장이다.</div>
+    <div><span class="n">③</span>거짓인 문장은 명제가 아니다.</div>
+    <div><span class="n">④</span>수식은 명제가 될 수 없다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-19.</span>다음 중 귀류법의 설명으로 옳은 것은 무엇인가?
+  <div class="ch1">
+    <div><span class="n">①</span>결론을 먼저 가정한다.</div>
+    <div><span class="n">②</span>명제가 거짓이라고 가정하여 모순을 이끈다.</div>
+    <div><span class="n">③</span>자연수에 대해 반복한다.</div>
+    <div><span class="n">④</span>이미 알려진 사실만 사용한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-20.</span>다음 중 수학적 귀납법의 특징은 무엇인가?
+  <div class="ch1">
+    <div><span class="n">①</span>모든 실수에 대해 적용된다.</div>
+    <div><span class="n">②</span>명제를 직접 증명한다.</div>
+    <div><span class="n">③</span>자연수에 대해 단계적으로 증명한다.</div>
+    <div><span class="n">④</span>모순을 이용한다.</div>
+  </div>
+</div>
+
+<!-- ===================== 2장 ===================== -->
+<div class="chap">제2장 · 함수와 그래프</div>
+
+<div class="q"><span class="qn">2-01.</span>함수의 정의로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>정의역의 한 원소에 여러 값이 대응된다.</div>
+    <div><span class="n">②</span>공역의 모든 원소에 반드시 대응된다.</div>
+    <div><span class="n">③</span>정의역의 각 원소에 하나의 값이 대응된다.</div>
+    <div><span class="n">④</span>공역의 각 원소는 하나의 정의역 원소와만 대응된다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-02.</span>함수 $f(x)=x^2+1$ 의 그래프 $y=f(x)$ 위의 점은?
+  <div class="ch2">
+    <div><span class="n">①</span>$(-2,3)$</div><div><span class="n">②</span>$(-2,5)$</div>
+    <div><span class="n">③</span>$(2,-3)$</div><div><span class="n">④</span>$(1,1)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-03.</span>함수 $f(x)=\dfrac1{x-1}$ 의 정의역은?
+  <div class="ch2">
+    <div><span class="n">①</span>모든 실수</div><div><span class="n">②</span>$x>1$</div>
+    <div><span class="n">③</span>$x\ne1$</div><div><span class="n">④</span>$x\le0$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-04.</span>함수 $f(x)=\sqrt{x-2}$ 의 정의역은?
+  <div class="ch2">
+    <div><span class="n">①</span>$x\ne2$</div><div><span class="n">②</span>$x\ge2$</div>
+    <div><span class="n">③</span>$x<2$</div><div><span class="n">④</span>모든 실수</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-05.</span>함수 $f(x)=\dfrac1{x^2+1}$ 의 치역은?
+  <div class="ch2">
+    <div><span class="n">①</span>$(0,1]$</div><div><span class="n">②</span>$[0,1)$</div>
+    <div><span class="n">③</span>$(0,\infty)$</div><div><span class="n">④</span>$[1,\infty)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-06.</span>두 점 $(0,1)$, $(2,5)$ 사이의 거리는?
+  <div class="ch2">
+    <div><span class="n">①</span>$2$</div><div><span class="n">②</span>$3$</div>
+    <div><span class="n">③</span>$4$</div><div><span class="n">④</span>$\sqrt{20}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-07.</span>함수 $f(x)=x^2$, $g(x)=x-1$ 에 대하여,
+  $(f\circ g)(x)-(g\circ f)(x)$ 는?
+  <div class="ch2">
+    <div><span class="n">①</span>$2x-1$</div><div><span class="n">②</span>$x^2+1$</div>
+    <div><span class="n">③</span>$-2x+2$</div><div><span class="n">④</span>$2x^2-2x$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-08.</span>함수 $f(x)=\sqrt x$, $g(x)=x^2$ 에 대하여, $(f\circ g)(x)$ 의 정의역은?
+  <div class="ch2">
+    <div><span class="n">①</span>모든 실수</div><div><span class="n">②</span>$x>0$</div>
+    <div><span class="n">③</span>$x\ne0$</div><div><span class="n">④</span>$x\le0$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-09.</span>함수 $f(x)=\dfrac1x$, $g(x)=x-1$ 에 대하여, $(f\circ g)(x)$ 의 치역은?
+  <div class="ch2">
+    <div><span class="n">①</span>모든 실수</div><div><span class="n">②</span>$y\ne0$</div>
+    <div><span class="n">③</span>$y>1$</div><div><span class="n">④</span>$y\ne1$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-10.</span>$(f+g)(x)=x^2+2x$, $(f-g)(x)=x^2$ 일 때, $g(x)$ 는?
+  <div class="ch2">
+    <div><span class="n">①</span>$x$</div><div><span class="n">②</span>$x^2$</div>
+    <div><span class="n">③</span>$2x$</div><div><span class="n">④</span>$\dfrac x2$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-11.</span>$f(x)=x^2\ (x\ge0)$ 의 역함수는?
+  <div class="ch2">
+    <div><span class="n">①</span>$\sqrt x$</div><div><span class="n">②</span>$-\sqrt x$</div>
+    <div><span class="n">③</span>$x^2$</div><div><span class="n">④</span>역함수가 존재하지 않는다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-12.</span>$f(x)=\dfrac{2x+1}{x+1}$ 의 역함수는?
+  <div class="ch2">
+    <div><span class="n">①</span>$\dfrac{x-1}{2-x}$</div><div><span class="n">②</span>$\dfrac{1-x}{2-x}$</div>
+    <div><span class="n">③</span>$\dfrac{x+1}{2-x}$</div><div><span class="n">④</span>$\dfrac{x-1}{x+2}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-13.</span>정의역과 공역이 실수 전체인 함수 $f(x)=\sqrt{x^2+1}$ 에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>전사함수이나 단사함수가 아니다.</div>
+    <div><span class="n">②</span>전사함수도 아니고 단사함수도 아니다.</div>
+    <div><span class="n">③</span>단사함수이나 전사함수가 아니다.</div>
+    <div><span class="n">④</span>전단사함수이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-14.</span>함수 $f(x)=x^3-x$ 에 대한 설명으로 옳지 <b>않은</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>기함수이다.</div>
+    <div><span class="n">②</span>$f(-x)=-f(x)$ 를 만족한다.</div>
+    <div><span class="n">③</span>그래프는 원점에 대하여 대칭이다.</div>
+    <div><span class="n">④</span>전단사함수이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-15.</span>함수 $f(x)=x^4+2x^2$ 에 대한 설명으로 옳지 <b>않은</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>우함수이다.</div>
+    <div><span class="n">②</span>$f(-x)=f(x)$ 를 만족한다.</div>
+    <div><span class="n">③</span>그래프는 $y$ 축에 대하여 대칭이다.</div>
+    <div><span class="n">④</span>주기함수이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-16.</span>함수 $f(x)=\sin x+\cos x$ 에 대하여 $f(x+\pi)$ 와 같은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\sin x+\cos x$</div><div><span class="n">②</span>$-\sin x-\cos x$</div>
+    <div><span class="n">③</span>$\sin x-\cos x$</div><div><span class="n">④</span>$-\sin x+\cos x$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-17.</span>함수 $f(x)=\sin x$ 에 대하여
+  $f\!\left(\dfrac\pi2-x\right)$ 와 같은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\sin x$</div><div><span class="n">②</span>$-\sin x$</div>
+    <div><span class="n">③</span>$\cos x$</div><div><span class="n">④</span>$-\cos x$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-18.</span>함수 $y=3\sin(2x)$ 의 주기는?
+  <div class="ch2">
+    <div><span class="n">①</span>$2\pi$</div><div><span class="n">②</span>$\pi$</div>
+    <div><span class="n">③</span>$\dfrac\pi2$</div><div><span class="n">④</span>$4\pi$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-19.</span>함수 $y=2\cos\!\left(x-\dfrac\pi3\right)$ 에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>진폭은 $2$ 이다.</div>
+    <div><span class="n">②</span>주기는 $\pi$ 이다.</div>
+    <div><span class="n">③</span>위상각은 $\dfrac\pi3$ 이다.</div>
+    <div><span class="n">④</span>각주파수는 $2$ 이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-20.</span>함수 $y=-2\tan x$ 에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>진폭은 $-2$ 이다.</div>
+    <div><span class="n">②</span>주기는 $\pi$ 이다.</div>
+    <div><span class="n">③</span>위상이동이 있다.</div>
+    <div><span class="n">④</span>각주파수는 $2$ 이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-21.</span>함수 $f(x)=\ln(x^2)+\ln(x^3)$ 에 대하여 $f(e)$ 의 값과 같은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$5$</div><div><span class="n">②</span>$6$</div>
+    <div><span class="n">③</span>$e^5$</div><div><span class="n">④</span>$1$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-22.</span>함수 $f(x)=\ln(x-1)+\ln(x+1)$ 에 대하여
+  $f^{-1}(\ln3)$ 의 값과 같은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$1$</div><div><span class="n">②</span>$2$</div>
+    <div><span class="n">③</span>$\sqrt2$</div><div><span class="n">④</span>$3$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-23.</span>원 $(x-1)^2+(y+2)^2=9$ 의 중심과 반지름은?
+  <div class="ch1">
+    <div><span class="n">①</span>중심 $(1,-2)$, 반지름 $3$</div>
+    <div><span class="n">②</span>중심 $(-1,2)$, 반지름 $3$</div>
+    <div><span class="n">③</span>중심 $(1,2)$, 반지름 $9$</div>
+    <div><span class="n">④</span>중심 $(-1,-2)$, 반지름 $3$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-24.</span>타원 $\dfrac{x^2}9+\dfrac{y^2}4=1$ 에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>장축은 $y$ 축 방향이다.</div>
+    <div><span class="n">②</span>단축의 길이는 $3$ 이다.</div>
+    <div><span class="n">③</span>두 초점으로부터의 거리는 $6$ 이다.</div>
+    <div><span class="n">④</span>중심은 $(1,1)$ 이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-25.</span>함수 $f(x)=\sin x$, $g(x)=\ln\!\left(\dfrac{1+x}{1-x}\right)$ 에 대하여,
+  $(g\circ f)(x)$ 의 역함수가 존재하도록 하는 정의역으로 적절한 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>모든 실수</div>
+    <div><span class="n">②</span>$-2\pi<x<2\pi$</div>
+    <div><span class="n">③</span>$-\pi<x<\pi$</div>
+    <div><span class="n">④</span>$-\dfrac\pi2<x<\dfrac\pi2$</div>
+  </div>
+</div>
+
+<!-- ===================== 3장 ===================== -->
+<div class="chap">제3장 · 수열의 극한과 무한급수</div>
+
+<div class="q"><span class="qn">3-01.</span>다음 수열의 극한값은?
+  $$\lim_{n\to\infty}\frac{3n+1}{2n-1}$$
+  <div class="ch2">
+    <div><span class="n">①</span>$0$</div><div><span class="n">②</span>$1$</div>
+    <div><span class="n">③</span>$1.5$</div><div><span class="n">④</span>$-1$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-02.</span>다음 수열의 극한값은?
+  $$\lim_{n\to\infty}\sqrt{n^2+2n}-n$$
+  <div class="ch2">
+    <div><span class="n">①</span>$0$</div><div><span class="n">②</span>$1$</div>
+    <div><span class="n">③</span>$2$</div><div><span class="n">④</span>$0.5$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-03.</span>다음 수열의 극한값은?
+  $$\lim_{n\to\infty}\frac{(-1)^n}{n}$$
+  <div class="ch2">
+    <div><span class="n">①</span>$1$</div><div><span class="n">②</span>$-1$</div>
+    <div><span class="n">③</span>$0$</div><div><span class="n">④</span>발산</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-04.</span>다음 중 수렴하는 수열 $\{a_n\}$ 은?
+  <div class="ch2">
+    <div><span class="n">①</span>$a_n=n$</div><div><span class="n">②</span>$a_n=(-1)^n$</div>
+    <div><span class="n">③</span>$a_n=\dfrac1n$</div><div><span class="n">④</span>$a_n=\sqrt n$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-05.</span>다음 중 수열에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>수렴하는 수열은 항상 발산한다.</div>
+    <div><span class="n">②</span>수렴하는 수열은 항상 유계이다.</div>
+    <div><span class="n">③</span>유계 수열은 항상 수렴한다.</div>
+    <div><span class="n">④</span>발산하는 수열은 항상 유계이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-06.</span>다음 중 단조수렴정리에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>단조수열은 항상 수렴한다.</div>
+    <div><span class="n">②</span>유계 수열은 항상 수렴한다.</div>
+    <div><span class="n">③</span>단조이고 유계인 수열은 수렴한다.</div>
+    <div><span class="n">④</span>단조감소수열은 항상 발산한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-07.</span>다음 급수에 대한 설명으로 옳은 것은?
+  $$\sum_{k=1}^{\infty}\frac1k$$
+  <div class="ch2">
+    <div><span class="n">①</span>수렴한다.</div><div><span class="n">②</span>조건수렴한다.</div>
+    <div><span class="n">③</span>발산한다.</div><div><span class="n">④</span>절대수렴한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-08.</span>다음 급수에 대한 설명으로 옳은 것은?
+  $$\sum_{k=1}^{\infty}\frac1{k^2}$$
+  <div class="ch2">
+    <div><span class="n">①</span>발산한다.</div><div><span class="n">②</span>조건수렴한다.</div>
+    <div><span class="n">③</span>수렴한다.</div><div><span class="n">④</span>진동한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-09.</span>다음 중 급수가 수렴하기 위한 필요조건으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$\sum a_k$ 가 수렴하면 $a_n\to1$</div>
+    <div><span class="n">②</span>$\sum a_k$ 가 수렴하면 $a_n\to0$</div>
+    <div><span class="n">③</span>$\sum a_k$ 가 발산하면 $a_n\to0$</div>
+    <div><span class="n">④</span>$a_n\to0$ 이면 $\sum a_k$ 는 항상 수렴한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-10.</span>다음 중 급수에 대한 설명으로 옳지 <b>않은</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$\sum a_k$ 가 수렴하면 $a_n\to0$</div>
+    <div><span class="n">②</span>$a_n\to0$ 이면 $\sum a_k$ 는 수렴한다.</div>
+    <div><span class="n">③</span>$\sum a_k$ 가 발산할 때, $a_n\not\to0$ 일 수 있다.</div>
+    <div><span class="n">④</span>수렴급수의 일반항은 $0$ 으로 수렴한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-11.</span>다음 중 양항급수에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>부분합이 감소한다.</div>
+    <div><span class="n">②</span>부분합이 단조증가한다.</div>
+    <div><span class="n">③</span>항상 발산한다.</div>
+    <div><span class="n">④</span>항상 수렴한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-12.</span>다음 중 비교판정법에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>큰 급수가 발산하면 작은 급수도 발산한다.</div>
+    <div><span class="n">②</span>작은 급수가 수렴하면 큰 급수도 수렴한다.</div>
+    <div><span class="n">③</span>큰 급수가 수렴하면 작은 급수도 수렴한다.</div>
+    <div><span class="n">④</span>두 급수는 항상 같은 성질을 가진다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-13.</span>다음 중 $p$-급수 $\displaystyle\sum_{k=1}^{\infty}\frac1{k^p}$ 에 대한 설명으로 옳은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$p=1$ 이면 수렴한다.</div><div><span class="n">②</span>$p>1$ 이면 수렴한다.</div>
+    <div><span class="n">③</span>$p<1$ 이면 수렴한다.</div><div><span class="n">④</span>항상 발산한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-14.</span>양항수열 $\{a_n\}$ 에서
+  $\displaystyle\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=c$ 일 때, 다음 중 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$c<1$ 이면 조건수렴</div>
+    <div><span class="n">②</span>$c>1$ 이면 수렴</div>
+    <div><span class="n">③</span>$c=1$ 이면 항상 수렴</div>
+    <div><span class="n">④</span>$c<1$ 이면 수렴</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-15.</span>다음 중 급수에 대한 설명으로 옳지 <b>않은</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>절대수렴하면 반드시 수렴한다.</div>
+    <div><span class="n">②</span>조건수렴하는 급수는 절대수렴하지 않는다.</div>
+    <div><span class="n">③</span>절대수렴하면 발산한다.</div>
+    <div><span class="n">④</span>조건수렴은 수렴의 한 형태이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-16.</span>다음 교대급수에 대한 설명으로 옳은 것은?
+  $$\sum_{k=1}^{\infty}(-1)^{k-1}\frac1k$$
+  <div class="ch2">
+    <div><span class="n">①</span>진동한다.</div><div><span class="n">②</span>절대수렴한다.</div>
+    <div><span class="n">③</span>조건수렴한다.</div><div><span class="n">④</span>수렴하지 않는다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-17.</span>다음 중 교대급수의 수렴 조건으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>항의 절댓값이 증가하고 $0$ 으로 수렴</div>
+    <div><span class="n">②</span>항의 절댓값이 감소하고 $0$ 으로 수렴</div>
+    <div><span class="n">③</span>항의 절댓값이 일정</div>
+    <div><span class="n">④</span>항의 절댓값이 발산</div>
+  </div>
+</div>
+
+<!-- ===================== 정답 시트 ===================== -->
+<div class="answersheet">
+<header class="doc">
+  <div class="ch">대학수학의 이해 · 워크북 연습문제</div>
+  <h1><span class="no">정답</span>정답 시트 <span class="en">answer key</span></h1>
+</header>
+
+<div class="chap">제1장 · 집합과 수의 체계</div>
+<div class="akey">
+  <div><b>01.</b> ③,④</div><div><b>02.</b> ②</div><div><b>03.</b> ③</div><div><b>04.</b> ③</div>
+  <div><b>05.</b> ②</div><div><b>06.</b> ①</div><div><b>07.</b> ③</div><div><b>08.</b> ③</div>
+  <div><b>09.</b> ②</div><div><b>10.</b> ③</div><div><b>11.</b> ③</div><div><b>12.</b> ③</div>
+  <div><b>13.</b> ②</div><div><b>14.</b> ③</div><div><b>15.</b> ②</div><div><b>16.</b> ③</div>
+  <div><b>17.</b> ③</div><div><b>18.</b> ②</div><div><b>19.</b> ②</div><div><b>20.</b> ③</div>
+</div>
+
+<div class="chap">제2장 · 함수와 그래프</div>
+<div class="akey">
+  <div><b>01.</b> ③</div><div><b>02.</b> ②</div><div><b>03.</b> ③</div><div><b>04.</b> ②</div>
+  <div><b>05.</b> ①</div><div><b>06.</b> ④</div><div><b>07.</b> ③</div><div><b>08.</b> ①</div>
+  <div><b>09.</b> ②</div><div><b>10.</b> ①</div><div><b>11.</b> ①</div><div><b>12.</b> ①</div>
+  <div><b>13.</b> ②</div><div><b>14.</b> ④</div><div><b>15.</b> ④</div><div><b>16.</b> ②</div>
+  <div><b>17.</b> ③</div><div><b>18.</b> ②</div><div><b>19.</b> ①</div><div><b>20.</b> ②</div>
+  <div><b>21.</b> ①</div><div><b>22.</b> ②</div><div><b>23.</b> ①</div><div><b>24.</b> ③</div>
+  <div><b>25.</b> ④</div>
+</div>
+
+<div class="chap">제3장 · 수열의 극한과 무한급수</div>
+<div class="akey">
+  <div><b>01.</b> ③</div><div><b>02.</b> ②</div><div><b>03.</b> ③</div><div><b>04.</b> ③</div>
+  <div><b>05.</b> ②</div><div><b>06.</b> ③</div><div><b>07.</b> ③</div><div><b>08.</b> ③</div>
+  <div><b>09.</b> ②</div><div><b>10.</b> ②</div><div><b>11.</b> ②</div><div><b>12.</b> ③</div>
+  <div><b>13.</b> ②</div><div><b>14.</b> ④</div><div><b>15.</b> ③</div><div><b>16.</b> ③</div>
+  <div><b>17.</b> ②</div>
+</div>
+
+<div class="note">
+  <b>3장 정답의 출처</b> — 1·2장은 교재의 <b>연습문제 정답</b> 상자를 그대로 옮긴 것이고,
+  <b>3장은 정답 상자 사진이 없어 직접 계산해 채운 것</b>이다. 사진의 연필 표시와
+  다른 곳이 몇 군데 있으니 교재 정답과 대조할 것.
+  <br>특히 <b>02</b>번은
+  $\sqrt{n^2+2n}-n=\dfrac{2n}{\sqrt{n^2+2n}+n}\to1$ 이라 <b>②</b> 가 맞고(연필은 ③),
+  <b>13</b>번 $p$-급수는 $p>1$ 에서 수렴하므로 <b>②</b> 가 맞다(연필은 ③).
+</div>
+
+</div>
+
+<nav class="pager">
+  <a href="index.html">← 목차<small>대학수학의 이해</small></a>
+  <span class="spacer"></span>
+</nav>
+
+</body>
+</html>
