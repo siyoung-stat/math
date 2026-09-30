@@ -12,29 +12,26 @@
   };
 </script>
 <style>
-  body{ max-width:980px; }
-  .paper{ font-size:0.97rem; }
-  .q{ margin:0 0 20px; padding:0 0 4px; line-height:1.7; break-inside:avoid; }
+  body{ max-width:1000px; }
+  .q{ margin:0 0 18px; line-height:1.7; break-inside:avoid; }
   .qn{ display:inline-block; min-width:2.1em; font-weight:800; color:var(--def); }
-  .stem{ display:inline; }
-  .ch{ display:grid; grid-template-columns:1fr 1fr; gap:2px 18px; margin:6px 0 0 2.1em; }
-  .ch > div{ padding:1px 0; }
-  .ch .n{ font-weight:700; color:#555; margin-right:5px; }
-  .lead{ margin:22px 0 10px; padding:6px 10px; background:#f4f6f8;
-         border-left:3px solid var(--def); font-weight:700; font-size:0.95rem; }
+  .ch2{ display:grid; grid-template-columns:1fr 1fr; gap:2px 18px; margin:5px 0 0 2.1em; }
+  .ch1{ display:grid; grid-template-columns:1fr; gap:2px; margin:5px 0 0 2.1em; }
+  .ch2 > div, .ch1 > div{ padding:1px 0; }
+  .n{ font-weight:700; color:#555; margin-right:5px; }
+  .lead{ margin:20px 0 10px; padding:6px 10px; background:#f4f6f8;
+         border-left:3px solid var(--def); font-weight:700; font-size:0.94rem; }
   .given{ margin:8px 0 8px 2.1em; }
-  .gap{ display:inline-block; background:#fdf3f2; border:1px dashed #d64541;
-        color:#b03a2e; font-size:0.8rem; font-weight:700; padding:1px 7px;
-        border-radius:4px; margin:0 2px; }
-  hr.sep{ border:0; border-top:1px solid var(--line); margin:26px 0; }
-  .head{ text-align:center; margin-bottom:6px; }
-  .head h1{ margin:0 0 4px; }
   .byline{ text-align:center; color:var(--muted); font-size:0.85rem; margin-bottom:22px; }
+  .answersheet{ page-break-before:always; }
+  .akey{ display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:4px 10px;
+         margin:10px 0 18px 0; font-size:0.95rem; }
+  .akey b{ color:var(--thm); }
+  .warn{ border-left:4px solid #d64541; background:#fdf3f2; padding:10px 14px; margin:18px 0; }
   @media print{
     .pager, .home, .note, .warn{ display:none; }
     a{ color:inherit; text-decoration:none; }
     .q{ page-break-inside:avoid; }
-    .gap{ border-color:#999; color:#333; background:none; }
   }
 </style>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
@@ -49,16 +46,7 @@
 
 <div class="byline">작성 : 문영준 튜터</div>
 
-<div class="warn" style="border-left:4px solid #d64541;background:#fdf3f2;padding:10px 14px;margin:18px 0">
-  <b>미완성 표시</b> — 원본 PDF에서 <b>행렬·일부 수식이 이미지</b>로 들어 있어 텍스트로 뽑히지 않았다.
-  그 자리는 <span class="gap">행렬 필요</span> 로 표시해 두었으니 해당 문항의 사진을 받아 채워 넣을 것.
-  지문과 선택지는 원본 그대로다.
-</div>
-
-<div class="paper">
-
 <div class="lead">※ (1~3) 다음 이원일차연립방정식들에 관해 물음에 답하라.</div>
-
 <div class="given">
 $$A:\begin{cases}2x-2y=2\\4x-4y=8\end{cases}\qquad
   B:\begin{cases}x+3y=1\\2x+6y=2\end{cases}$$
@@ -66,101 +54,115 @@ $$C:\begin{cases}x+5y=2\\2x+9y=7\end{cases}\qquad
   D:\begin{cases}2x+y=4\\6x+3y=12\end{cases}$$
 </div>
 
-<div class="q"><span class="qn">1.</span><span class="stem">부정인 방정식은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">1.</span>부정인 방정식은?
+  <div class="ch2">
     <div><span class="n">①</span>$A,B$</div><div><span class="n">②</span>$B,D$</div>
     <div><span class="n">③</span>$A,C$</div><div><span class="n">④</span>$C,D$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">2.</span><span class="stem">불능인 방정식은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">2.</span>불능인 방정식은?
+  <div class="ch2">
     <div><span class="n">①</span>$A$</div><div><span class="n">②</span>$B$</div>
     <div><span class="n">③</span>$C$</div><div><span class="n">④</span>$D$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">3.</span><span class="stem">유일한 해가 있는 방정식의 경우 해 $(x,y)$ 는?</span>
-  <div class="ch">
+<div class="q"><span class="qn">3.</span>유일한 해가 있는 방정식의 경우 해 $(x,y)$ 는?
+  <div class="ch2">
     <div><span class="n">①</span>$(6,-1)$</div><div><span class="n">②</span>$(-2,7)$</div>
     <div><span class="n">③</span>$(-13,6)$</div><div><span class="n">④</span>$(17,-3)$</div>
   </div>
 </div>
 
 <div class="lead">※ (4~6) 일차연립방정식 $AX=B$ 에서 확대행렬 $C$ 가 다음과 같을 때 물음에 답하라.</div>
+<div class="given">$$C=\begin{pmatrix}1&2&0&4\\2&5&-1&9\\0&3&1&3\end{pmatrix}$$</div>
 
-<div class="given">
-$$C=\begin{pmatrix}1&2&0&4\\2&5&-1&9\\0&3&1&3\end{pmatrix}$$
-</div>
-
-<div class="q"><span class="qn">4.</span><span class="stem">방정식의 개수(가)와 미지수의 개수(나)는?</span>
-  <div class="ch">
+<div class="q"><span class="qn">4.</span>방정식의 개수(가)와 미지수의 개수(나)는?
+  <div class="ch2">
     <div><span class="n">①</span>가 $=3$, 나 $=4$</div><div><span class="n">②</span>가 $=3$, 나 $=3$</div>
     <div><span class="n">③</span>가 $=4$, 나 $=3$</div><div><span class="n">④</span>가 $=4$, 나 $=4$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">5.</span><span class="stem">확대행렬 $C$ 를 행제형행렬로 변환한 것은?</span>
-  <div class="ch">
-    <div><span class="n">①</span>$\begin{pmatrix}1&2&0&4\\0&1&-1&1\\0&0&0&1\end{pmatrix}$</div>
-    <div><span class="n">②</span>$\begin{pmatrix}1&1&2&3\\0&1&-4&1\\0&0&2&1\end{pmatrix}$</div>
+<div class="q"><span class="qn">5.</span>확대행렬 $C$ 를 행제형행렬로 변환한 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}1&2&0&4\\0&1&-1&1\\0&0&1&0\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&1&2&3\\0&1&-4&1\\0&0&1&2\end{pmatrix}$</div>
     <div><span class="n">③</span>$\begin{pmatrix}1&0&0&3\\0&1&0&1\\0&0&1&2\end{pmatrix}$</div>
-    <div><span class="n">④</span>$\begin{pmatrix}1&2&0&4\\0&1&-1&1\\0&0&0&4\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}1&2&0&4\\0&1&-1&1\\0&0&4&0\end{pmatrix}$</div>
   </div>
-  <div class="note" style="margin-left:2.1em">선택지의 행렬은 추출이 흐려 <span class="gap">대조 필요</span></div>
 </div>
 
-<div class="q"><span class="qn">6.</span><span class="stem">문제 5번에서 구한 행제형행렬을 이용하여 가우스 소거법과 후진 대입법으로 해를 구하면?</span>
-  <div class="ch">
+<div class="q"><span class="qn">6.</span>문제 5번에서 구한 행제형행렬을 이용하여 가우스 소거법과 후진 대입법으로 해를 구하면?
+  <div class="ch2">
     <div><span class="n">①</span>$(-10,9,2)$</div><div><span class="n">②</span>$(2,1,0)$</div>
     <div><span class="n">③</span>$(3,4,5)$</div><div><span class="n">④</span>해가 무수히 많다.</div>
   </div>
 </div>
 
-<div class="lead">※ (7~8) 다음 연립방정식에 대해 물음에 답하라. <span class="gap">연립방정식 필요</span></div>
+<div class="lead">※ (7~8) 다음 연립방정식에 대해 물음에 답하라.</div>
+<div class="given">
+$$\begin{cases}w+2x+3y+4z=5\\ \qquad\ \ x\qquad\ +2z=3\\ \qquad\qquad\qquad 3z=6\end{cases}$$
+</div>
 
-<div class="q"><span class="qn">7.</span><span class="stem">다음 중 자유변수<span class="en">free variable</span>인 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">7.</span>다음 중 자유변수<span class="en">free variable</span>인 것은?
+  <div class="ch2">
     <div><span class="n">①</span>$w$</div><div><span class="n">②</span>$x$</div>
     <div><span class="n">③</span>$y$</div><div><span class="n">④</span>$z$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">8.</span><span class="stem">후진 대입법을 적용하여 주어진 방정식의 해를 구하면?</span>
-  <div class="ch">
+<div class="q"><span class="qn">8.</span>후진 대입법을 적용하여 주어진 방정식의 해를 구하면?
+  <div class="ch1">
     <div><span class="n">①</span>$(1,-1,0,2)$</div>
-    <div><span class="n">②</span>$(-1,-1,0,2)$, $(2,-1,-1,2)$</div>
-    <div><span class="n">③</span>$\{(-3t-1,\,-1,\,t,\,2)\mid t\in R\}$</div>
+    <div><span class="n">②</span>$(-1,-1,0,2),\ (2,-1,-1,2)$</div>
+    <div><span class="n">③</span>$\{(-3t-1,\ -1,\ t,\ 2)\mid t\in R\}$</div>
     <div><span class="n">④</span>해가 없다.</div>
   </div>
 </div>
 
-<div class="lead">※ (9~12) 다음 일차연립방정식에 대해 물음에 답하라. <span class="gap">연립방정식 필요</span></div>
-
-<div class="q"><span class="qn">9.</span><span class="stem">주어진 일차연립방정식의 확대행렬 $A$ 를 구하면?</span>
-  <span class="gap">선택지 행렬 필요</span>
+<div class="lead">※ (9~12) 다음 일차연립방정식에 대해 물음에 답하라.</div>
+<div class="given">
+$$\begin{cases}x-y\qquad\ =3\\ \quad\ \ y+2z=2\\ \qquad\quad z=1\end{cases}$$
 </div>
 
-<div class="q"><span class="qn">10.</span><span class="stem">문제 9의 확대행렬 $A$ 에 <span class="gap">기본행연산 필요</span> 를 적용시켜 얻는 행렬 $B$ 는 다음 중 어떤 행렬인가?</span>
-  <div class="ch">
+<div class="q"><span class="qn">9.</span>주어진 일차연립방정식의 확대행렬 $A$ 를 구하면?
+  <div class="ch2">
+    <div><span class="n">①</span>$A=\begin{pmatrix}1&-1&0&3\\0&1&2&2\\0&0&1&1\end{pmatrix}$</div>
+    <div><span class="n">②</span>$A=\begin{pmatrix}1&0&0\\-1&1&0\\0&2&1\\3&2&1\end{pmatrix}$</div>
+    <div><span class="n">③</span>$A=\begin{pmatrix}1&-1&0\\0&1&2\\0&0&1\end{pmatrix}$</div>
+    <div><span class="n">④</span>$A=\begin{pmatrix}1&0&0\\-1&1&0\\0&2&1\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">10.</span>문제 9의 확대행렬 $A$ 에 $R_{3,2}(-2)$ 를 적용시켜 얻는 행렬 $B$ 는
+  다음 중 어떤 행렬인가?
+  <div class="ch1">
     <div><span class="n">①</span>상삼각행렬</div><div><span class="n">②</span>소거행제형 행렬</div>
     <div><span class="n">③</span>정방행렬</div><div><span class="n">④</span>행제형 행렬</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">11.</span><span class="stem">가우스–조단 소거법을 이용하여 해를 구하려 할 때, 문제 10의 행렬 $B$ 에 적용시켜야 하는 기본행연산은?</span>
-  <span class="gap">선택지 필요</span>
+<div class="q"><span class="qn">11.</span>가우스–조단 소거법을 이용하여 해를 구하려 할 때,
+  문제 10의 행렬 $B$ 에 적용시켜야 하는 기본행연산은?
+  <div class="ch1">
+    <div><span class="n">①</span>$R_{2,3}$</div>
+    <div><span class="n">②</span>$R_{2,1}(1)$</div>
+    <div><span class="n">③</span>$R_{1,2}(1),\ R_{1,3}(-2)$</div>
+    <div><span class="n">④</span>$R_{2,1}(1),\ R_{3,1}(-2)$</div>
+  </div>
 </div>
 
-<div class="q"><span class="qn">12.</span><span class="stem">문제 11에서 구한 행렬을 이용하여 주어진 방정식의 해를 구하면?</span>
-  <div class="ch">
+<div class="q"><span class="qn">12.</span>문제 11에서 구한 행렬을 이용하여 주어진 방정식의 해 $(x,y,z)$ 를 구하면?
+  <div class="ch2">
     <div><span class="n">①</span>$(5,0,1)$</div><div><span class="n">②</span>$(3,2,1)$</div>
     <div><span class="n">③</span>$(5,1,0)$</div><div><span class="n">④</span>$(3,0,1)$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">13.</span><span class="stem">다음 행렬 중 소거행제형은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">13.</span>다음 행렬 중 소거행제형은?
+  <div class="ch2">
     <div><span class="n">①</span>$\begin{pmatrix}0&0&0&0\\1&0&0&0\\0&1&0&0\end{pmatrix}$</div>
     <div><span class="n">②</span>$\begin{pmatrix}1&2&0&0\\0&1&3&0\\0&0&1&4\end{pmatrix}$</div>
     <div><span class="n">③</span>$\begin{pmatrix}1&2&3&4\\0&1&2&3\\0&0&1&2\end{pmatrix}$</div>
@@ -168,35 +170,65 @@ $$C=\begin{pmatrix}1&2&0&4\\2&5&-1&9\\0&3&1&3\end{pmatrix}$$
   </div>
 </div>
 
-<div class="q"><span class="qn">14.</span><span class="stem">다음 두 행렬이 서로 같기 위한 조건은? <span class="gap">두 행렬 필요</span></span>
-  <div class="ch">
-    <div><span class="n">①</span>$-3,\ 1,\ 4$</div><div><span class="n">②</span>$1,\ 3,\ 4$</div>
-    <div><span class="n">③</span>$4,\ -3,\ 1$</div><div><span class="n">④</span>$4,\ 7,\ 3$</div>
+<div class="q"><span class="qn">14.</span>다음 두 행렬이 서로 같기 위한 조건은?
+  $$A=\begin{pmatrix}1&3&x\\0&1&y\\3&1&z\end{pmatrix},\qquad
+    B=\begin{pmatrix}1&3&4\\0&1&x+3\\3&1&y-x\end{pmatrix}$$
+  <div class="ch2">
+    <div><span class="n">①</span>$x=-3,\ y=1,\ z=4$</div><div><span class="n">②</span>$x=1,\ y=3,\ z=4$</div>
+    <div><span class="n">③</span>$x=4,\ y=-3,\ z=1$</div><div><span class="n">④</span>$x=4,\ y=7,\ z=3$</div>
   </div>
 </div>
 
-<div class="lead">※ (15~17) 다음 두 행렬에 관하여 물음에 답하시오. <span class="gap">행렬 $A$, $B$ 필요</span></div>
+<div class="lead">※ (15~17) 다음 두 행렬에 관하여 물음에 답하시오.
+  $$A=\begin{pmatrix}2&3\\4&7\end{pmatrix},\qquad B=\begin{pmatrix}1&3\\0&1\end{pmatrix}$$
+</div>
 
-<div class="q"><span class="qn">15.</span><span class="stem">$A+B$ 는?</span> <span class="gap">선택지 필요</span></div>
-<div class="q"><span class="qn">16.</span><span class="stem">$A-B$ 는?</span> <span class="gap">선택지 필요</span></div>
-<div class="q"><span class="qn">17.</span><span class="stem">$AB$ 는?</span> <span class="gap">선택지 필요</span></div>
+<div class="q"><span class="qn">15.</span>$A+B$ 는?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}3&9\\4&7\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&0\\4&6\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}2&9\\4&19\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}3&6\\4&8\end{pmatrix}$</div>
+  </div>
+</div>
 
-<div class="q"><span class="qn">18.</span><span class="stem">다음이 성립하도록 하는 실수 $a,b$ 를 구하면? <span class="gap">식 필요</span></span>
-  <div class="ch">
+<div class="q"><span class="qn">16.</span>$A-B$ 는?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}3&9\\4&7\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&0\\4&6\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}2&9\\4&19\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}3&6\\4&8\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">17.</span>$AB$ 는?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}3&9\\4&7\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&0\\4&6\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}2&9\\4&19\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}3&6\\4&8\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">18.</span>다음이 성립하도록 하는 실수 $a,b$ 를 구하면?
+  $$\begin{pmatrix}1&3\\2&b\end{pmatrix}\begin{pmatrix}a\\1\end{pmatrix}=\begin{pmatrix}5\\4\end{pmatrix}$$
+  <div class="ch2">
     <div><span class="n">①</span>$a=2,\ b=0$</div><div><span class="n">②</span>$a=1,\ b=4$</div>
     <div><span class="n">③</span>$a=2,\ b=4$</div><div><span class="n">④</span>$a=1,\ b=0$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">19.</span><span class="stem">다음 행렬 $A$ 가 대칭행렬이 되기 위한 조건은? <span class="gap">행렬 필요</span></span>
-  <div class="ch">
-    <div><span class="n">①</span>$0,\ 1$</div><div><span class="n">②</span>$1,\ 0$</div>
-    <div><span class="n">③</span>$2,\ 1$</div><div><span class="n">④</span>$1,\ 2$</div>
+<div class="q"><span class="qn">19.</span>다음 행렬 $A$ 가 대칭행렬이 되기 위한 조건은?
+  $$A=\begin{pmatrix}x&x&2y\\y+1&0&1\\x&1&1\end{pmatrix}$$
+  <div class="ch2">
+    <div><span class="n">①</span>$x=0,\ y=1$</div><div><span class="n">②</span>$x=1,\ y=0$</div>
+    <div><span class="n">③</span>$x=2,\ y=1$</div><div><span class="n">④</span>$x=1,\ y=2$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">20.</span><span class="stem">다음 행렬 $A$ 에 대한 설명 중 틀린 것은? <span class="gap">행렬 필요</span></span>
-  <div class="ch">
+<div class="q"><span class="qn">20.</span>다음 행렬 $A$ 에 대한 설명 중 <b>틀린</b> 것은?
+  $$A=\begin{pmatrix}2&0&0\\0&0&0\\0&0&3\end{pmatrix}$$
+  <div class="ch1">
     <div><span class="n">①</span>$A$ 는 상삼각 행렬이다.</div>
     <div><span class="n">②</span>$A$ 는 하삼각 행렬이다.</div>
     <div><span class="n">③</span>$A$ 는 대칭행렬이다.</div>
@@ -204,31 +236,55 @@ $$C=\begin{pmatrix}1&2&0&4\\2&5&-1&9\\0&3&1&3\end{pmatrix}$$
   </div>
 </div>
 
-<div class="q"><span class="qn">21.</span><span class="stem">다음 행렬 $A$ 를 잘못 설명한 것은? <span class="gap">행렬 필요</span></span>
-  <div class="ch">
+<div class="q"><span class="qn">21.</span>다음 행렬 $A$ 를 <b>잘못</b> 설명한 것은?
+  $$A=\begin{pmatrix}5&0&0\\0&5&0\\0&0&5\end{pmatrix}$$
+  <div class="ch2">
     <div><span class="n">①</span>기본행렬</div><div><span class="n">②</span>정방행렬</div>
     <div><span class="n">③</span>삼각행렬</div><div><span class="n">④</span>스칼라행렬</div>
   </div>
 </div>
 
-<div class="lead">※ (22~24) 다음 행렬 $A$ 에 관하여 물음에 답하라. <span class="gap">행렬 $A$ 필요</span></div>
+<div class="lead">※ (22~24) 다음 행렬 $A$ 에 관하여 물음에 답하라.
+  $$A=\begin{pmatrix}2&1&4\\0&1&3\\1&0&0\end{pmatrix}$$
+</div>
 
-<div class="q"><span class="qn">22.</span><span class="stem">행렬 $A$ 에 <span class="gap">기본행연산 필요</span> 을 순서대로 적용시켜 얻는 행렬 $B$ 를 잘못 설명한 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">22.</span>행렬 $A$ 에 $R_{1,3},\ R_{1,3}(-2),\ R_{2,3}(-1),\ R_{3,2}(-3)$ 을
+  순서대로 적용시켜 얻는 행렬 $B$ 를 <b>잘못</b> 설명한 것은?
+  <div class="ch2">
     <div><span class="n">①</span>대각행렬</div><div><span class="n">②</span>역행렬</div>
     <div><span class="n">③</span>삼각행렬</div><div><span class="n">④</span>단위행렬</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">23.</span><span class="stem">다음 중 행렬 $A$ 의 음행렬은?</span> <span class="gap">선택지 필요</span></div>
-<div class="q"><span class="qn">24.</span><span class="stem">다음 중 행렬 $A$ 의 전치행렬은?</span> <span class="gap">선택지 필요</span></div>
-
-<div class="q"><span class="qn">25.</span><span class="stem">기본행연산 <span class="gap">연산 필요</span> 에 대응되는 $3$ 차 기본행렬은?</span>
-  <span class="gap">선택지 필요</span>
+<div class="q"><span class="qn">23.</span>다음 중 행렬 $A$ 의 음행렬은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}2&0&1\\1&1&0\\4&3&0\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}-2&0&-1\\-1&-1&0\\-4&-3&0\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}-1&0&0\\0&-1&0\\0&0&-1\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}-2&-1&-4\\0&-1&-3\\-1&0&0\end{pmatrix}$</div>
+  </div>
 </div>
 
-<div class="q"><span class="qn">26.</span><span class="stem">$3$ 차 기본행렬의 예로서 틀린 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">24.</span>다음 중 행렬 $A$ 의 전치행렬은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}2&0&1\\1&1&0\\4&3&0\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}-2&0&-1\\-1&-1&0\\-4&-3&0\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}-1&0&0\\0&-1&0\\0&0&-1\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}-2&-1&-4\\0&-1&-3\\-1&0&0\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">25.</span>기본행연산 $R_{3,2}(5)$ 에 대응되는 $3$ 차 기본행렬은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}1&0&0\\0&2&0\\0&0&5\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&0&0\\0&1&0\\0&5&1\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}1&0&0\\0&5&0\\0&0&2\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}1&0&0\\0&1&5\\0&0&1\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">26.</span>$3$ 차 기본행렬의 예로서 <b>틀린</b> 것은?
+  <div class="ch2">
     <div><span class="n">①</span>$E_{1,2}(3)=\begin{pmatrix}1&0&0\\3&1&0\\0&0&1\end{pmatrix}$</div>
     <div><span class="n">②</span>$E_2(6)=\begin{pmatrix}1&0&0\\0&6&0\\0&0&1\end{pmatrix}$</div>
     <div><span class="n">③</span>$E_{1,3}=\begin{pmatrix}0&0&1\\0&1&0\\1&0&0\end{pmatrix}$</div>
@@ -236,14 +292,19 @@ $$C=\begin{pmatrix}1&2&0&4\\2&5&-1&9\\0&3&1&3\end{pmatrix}$$
   </div>
 </div>
 
-<div class="q"><span class="qn">27.</span><span class="stem">다음 중 대칭행렬이면서 정칙행렬인 것은?</span> <span class="gap">선택지 필요</span></div>
-
-<div class="q"><span class="qn">28.</span><span class="stem">다음 행렬 $A$ 에 대해 행렬 $B$ 는 $A$ 의 역행렬이다. 행렬의 곱 $C$ 를 구하면?</span>
-  <div class="given">
-  $$A=\begin{pmatrix}1&2\\1&1\end{pmatrix},\qquad
-    B=\begin{pmatrix}-1&2\\1&-1\end{pmatrix},\qquad C=AAABBABA$$
+<div class="q"><span class="qn">27.</span>다음 중 대칭행렬이면서 정칙행렬인 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}1&0\\0&4\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&1\\1&1\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}1&2\\2&4\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}1&2\\3&4\end{pmatrix}$</div>
   </div>
-  <div class="ch">
+</div>
+
+<div class="q"><span class="qn">28.</span>다음 행렬 $A$ 에 대해 행렬 $B$ 는 $A$ 의 역행렬이다. 행렬의 곱 $C$ 를 구하면?
+  $$A=\begin{pmatrix}1&2\\1&1\end{pmatrix},\quad
+    B=\begin{pmatrix}-1&2\\1&-1\end{pmatrix},\quad C=AAABBABA$$
+  <div class="ch2">
     <div><span class="n">①</span>$\begin{pmatrix}1&0\\0&1\end{pmatrix}$</div>
     <div><span class="n">②</span>$\begin{pmatrix}1&2\\1&1\end{pmatrix}$</div>
     <div><span class="n">③</span>$\begin{pmatrix}-1&2\\1&-1\end{pmatrix}$</div>
@@ -251,15 +312,16 @@ $$C=\begin{pmatrix}1&2&0&4\\2&5&-1&9\\0&3&1&3\end{pmatrix}$$
   </div>
 </div>
 
-<div class="q"><span class="qn">29.</span><span class="stem">행렬 $A$ 의 행렬식은? <span class="gap">행렬 필요</span></span>
-  <div class="ch">
+<div class="q"><span class="qn">29.</span>행렬 $A$ 의 행렬식은?
+  $$A=\begin{pmatrix}0&1&0\\1&0&0\\-1&0&2\end{pmatrix}$$
+  <div class="ch2">
     <div><span class="n">①</span>$2$</div><div><span class="n">②</span>$-2$</div>
     <div><span class="n">③</span>$1$</div><div><span class="n">④</span>$-1$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">30.</span><span class="stem">다음 중 행렬식을 잘못 계산한 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">30.</span>다음 중 행렬식을 <b>잘못</b> 계산한 것은?
+  <div class="ch2">
     <div><span class="n">①</span>$\begin{vmatrix}0&0&1\\0&1&0\\1&0&0\end{vmatrix}=1$</div>
     <div><span class="n">②</span>$\begin{vmatrix}1&0&0\\0&2&0\\0&0&3\end{vmatrix}=6$</div>
     <div><span class="n">③</span>$\begin{vmatrix}1&0&0\\0&2&0\\0&0&0\end{vmatrix}=0$</div>
@@ -267,86 +329,99 @@ $$C=\begin{pmatrix}1&2&0&4\\2&5&-1&9\\0&3&1&3\end{pmatrix}$$
   </div>
 </div>
 
-<div class="q"><span class="qn">31.</span><span class="stem">다음 행렬 $A$ 가 정칙행렬이기 위한 실수 $x$ 의 조건은?</span>
-  <div class="given">
+<div class="q"><span class="qn">31.</span>다음 행렬 $A$ 가 정칙행렬이기 위한 실수 $x$ 의 조건은?
   $$A=\begin{pmatrix}1&0&0\\2&2x&2x\\3&3&3x\end{pmatrix}$$
-  </div>
-  <div class="ch">
+  <div class="ch2">
     <div><span class="n">①</span>$x=0$</div><div><span class="n">②</span>$x\ne0$</div>
     <div><span class="n">③</span>$x\ne1$</div><div><span class="n">④</span>$x\ne0,\ x\ne1$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">32.</span><span class="stem">다음 $3$ 차 정방행렬 $A$ 의 행렬식은? (단, $I_3$ 은 $3$ 차 단위행렬)</span>
-  <div class="given">$$A=E_{1,2}\,E_3(2)\,E_{1,3}(3)\,I_3$$</div>
-  <div class="ch">
+<div class="q"><span class="qn">32.</span>다음 $3$ 차 정방행렬 $A$ 의 행렬식은? (단, $I_3$ 은 $3$ 차 단위행렬임)
+  $$A=E_{1,2}\,E_3(2)\,E_{1,3}(3)\,I_3$$
+  <div class="ch2">
     <div><span class="n">①</span>$1$</div><div><span class="n">②</span>$-2$</div>
     <div><span class="n">③</span>$-3$</div><div><span class="n">④</span>$6$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">33.</span><span class="stem">$3$ 차 정방행렬 $A,B,C$ 가 다음을 만족할 때 $|C|$ 는?</span>
-  <div class="given">
+<div class="q"><span class="qn">33.</span>$3$ 차 정방행렬 $A,B,C$ 가 다음을 만족할 때 $|C|$ 는?
   $$|A|=\frac13,\qquad B=3A^{T},\qquad C=9B^{-1}$$
-  </div>
-  <div class="ch">
+  <div class="ch2">
     <div><span class="n">①</span>$729$</div><div><span class="n">②</span>$9$</div>
     <div><span class="n">③</span>$81$</div><div><span class="n">④</span>$36$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">34.</span><span class="stem">$2$ 차 정방행렬 $A$ 에 대해 $|A|=4$ 일 경우, 다음 중 틀린 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">34.</span>$2$ 차 정방행렬 $A$ 에 대해 $|A|=4$ 일 경우, 다음 중 <b>틀린</b> 것은?
+  <div class="ch2">
     <div><span class="n">①</span>$|-2A|=16$</div><div><span class="n">②</span>$|A^{-1}|=0.25$</div>
     <div><span class="n">③</span>$|2A^{-1}|=1$</div><div><span class="n">④</span>$|2A^{T}|=8$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">35.</span><span class="stem">행렬 $A$ 의 역행렬은? <span class="gap">행렬·선택지 필요</span></span></div>
+<div class="q"><span class="qn">35.</span>행렬 $A$ 의 역행렬은?
+  $$A=\begin{pmatrix}2&1&4\\0&1&3\\1&0&0\end{pmatrix}$$
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}2&0&1\\1&1&0\\4&3&0\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}0&0&1\\-3&4&6\\1&-1&-2\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}-2&0&-1\\-1&-1&0\\-4&-3&0\end{pmatrix}$</div>
+  </div>
+</div>
 
-<div class="lead">※ (36~38) $R^3$ 벡터공간에서 벡터 $A=(3,1,2)$, $B=(1,0,1)$, $C=(1,1,0)$, $D=(0,1,1)$ 라고 할 때 다음 물음에 답하라.</div>
+<div class="lead">※ (36~38) $R^3$ 벡터공간에서 벡터 $A=(3,1,2)$, $B=(1,0,1)$, $C=(1,1,0)$,
+  $D=(0,1,1)$ 라고 할 때 다음 물음에 답하라.</div>
 
-<div class="q"><span class="qn">36.</span><span class="stem"><span class="gap">식 필요</span> 를 구한 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">36.</span>$|A-2B|$ 를 구한 것은?
+  <div class="ch2">
     <div><span class="n">①</span>$1$</div><div><span class="n">②</span>$(1,2,3)$</div>
-    <div><span class="n">③</span><span class="gap">필요</span></div><div><span class="n">④</span>$D$</div>
+    <div><span class="n">③</span>$\sqrt2$</div><div><span class="n">④</span>$D$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">37.</span><span class="stem">내적과 외적을 각각 구한 것은? <span class="gap">대상 벡터 필요</span></span>
-  <div class="ch">
-    <div><span class="n">①</span>$5,\ (-2,2,2)$</div><div><span class="n">②</span>$6,\ 4$</div>
-    <div><span class="n">③</span>$6,\ (4,0,2)$</div><div><span class="n">④</span>$(3,0,0),\ (3,1,0)$</div>
+<div class="q"><span class="qn">37.</span>$A\cdot B$ 와 $A\times C$ 를 각각 구한 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$5,\ (-2,2,2)$</div>
+    <div><span class="n">②</span>$6,\ 4$</div>
+    <div><span class="n">③</span>$6,\ (4,0,2)$</div>
+    <div><span class="n">④</span>$(3,0,0),\ (3,1,0)$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">38.</span><span class="stem">두 벡터의 사이각을 구한 것은? <span class="gap">대상 벡터·선택지 필요</span></span></div>
+<div class="q"><span class="qn">38.</span>$B$ 와 $D$ 의 사이각을 구한 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\dfrac\pi2$</div><div><span class="n">②</span>$\dfrac\pi3$</div>
+    <div><span class="n">③</span>$\dfrac\pi4$</div><div><span class="n">④</span>$\dfrac\pi6$</div>
+  </div>
+</div>
 
-<div class="lead">※ (39~40) $R^3$ 벡터공간에서 벡터 $A=(3,2,1)$, $B=(1,0,0)$, $C=(1,1,0)$, $D=(1,1,1)$ 라고 할 때 다음 물음에 답하라.</div>
+<div class="lead">※ (39~40) $R^3$ 벡터공간에서 벡터 $A=(3,2,1)$, $B=(1,0,0)$, $C=(1,1,0)$,
+  $D=(1,1,1)$ 라고 할 때 다음 물음에 답하라.</div>
 
-<div class="q"><span class="qn">39.</span><span class="stem">다음 중 $A$ 와 서로 수직인 벡터는?</span>
-  <div class="ch">
+<div class="q"><span class="qn">39.</span>다음 중 $A$ 와 서로 수직인 벡터는?
+  <div class="ch2">
     <div><span class="n">①</span>$(1,1,1)$</div><div><span class="n">②</span>$(-1,1,1)$</div>
     <div><span class="n">③</span>$(1,-1,1)$</div><div><span class="n">④</span>$(1,1,-1)$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">40.</span><span class="stem">두 벡터 $A=(1,2,k)$, $B=(3,k,1)$ 가 서로 수직이기 위한 실수 $k$ 의 조건은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">40.</span>두 벡터 $A=(1,2,k)$, $B=(3,k,1)$ 가 서로 수직이기 위한 실수 $k$ 의 조건은?
+  <div class="ch2">
     <div><span class="n">①</span>$k=0$</div><div><span class="n">②</span>$k=1$</div>
     <div><span class="n">③</span>$k=-1$</div><div><span class="n">④</span>$k=-2$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">41.</span><span class="stem">$3$ 차원 벡터 $A=(1,a,3)$ 와 $B=(-3,3,-b)$ 가 서로 직교하기 위한 조건을 구하면?</span>
-  <div class="ch">
+<div class="q"><span class="qn">41.</span>$3$ 차원 벡터 $A=(1,a,3)$ 와 $B=(-3,3,-b)$ 가 서로 직교하기 위한 조건을 구하면?
+  <div class="ch2">
     <div><span class="n">①</span>$a=0,\ b=0$</div><div><span class="n">②</span>$a=2,\ b=-3$</div>
     <div><span class="n">③</span>$a=b$</div><div><span class="n">④</span>$a=b+1$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">42.</span><span class="stem">다음 중 $S$ 가 부분공간이 되지 못하는 것은?</span>
-  <div class="ch" style="grid-template-columns:1fr">
+<div class="q"><span class="qn">42.</span>다음 중 $S$ 가 부분공간이 되지 <b>못하는</b> 것은?
+  <div class="ch1">
     <div><span class="n">①</span>$R^2$ 벡터공간의 부분집합 $S=\{(0,0)\}$</div>
     <div><span class="n">②</span>$R^2$ 벡터공간의 부분집합 $S=\{(x,0)\mid x\in R\}$</div>
     <div><span class="n">③</span>$R^3$ 벡터공간의 부분집합 $S=\{(x,y,0)\mid x,y\in R\}$</div>
@@ -354,8 +429,8 @@ $$C=\begin{pmatrix}1&2&0&4\\2&5&-1&9\\0&3&1&3\end{pmatrix}$$
   </div>
 </div>
 
-<div class="q"><span class="qn">43.</span><span class="stem">다음 중 $S$ 가 부분공간이 되지 못하는 것은?</span>
-  <div class="ch" style="grid-template-columns:1fr">
+<div class="q"><span class="qn">43.</span>다음 중 $S$ 가 부분공간이 되지 <b>못하는</b> 것은?
+  <div class="ch1">
     <div><span class="n">①</span>$R^2$ 벡터공간의 부분집합 $S=\{(1,1)\}$</div>
     <div><span class="n">②</span>$R^2$ 벡터공간의 부분집합 $S=\{(x,0)\mid x\in R\}$</div>
     <div><span class="n">③</span>$R^3$ 벡터공간의 부분집합 $S=\{(x,x,x)\mid x\in R\}$</div>
@@ -363,122 +438,150 @@ $$C=\begin{pmatrix}1&2&0&4\\2&5&-1&9\\0&3&1&3\end{pmatrix}$$
   </div>
 </div>
 
-<div class="lead">※ (44~45) $R^3$ 벡터공간에서 벡터 $A=(1,2,3)$, $B=(1,0,0)$, $C=(1,1,0)$, $D=(1,1,1)$ 라고 할 때 다음 물음에 답하라.</div>
+<div class="lead">※ (44~45) $R^3$ 벡터공간에서 벡터 $A=(1,2,3)$, $B=(1,0,0)$, $C=(1,1,0)$,
+  $D=(1,1,1)$ 라고 할 때 다음 물음에 답하라.</div>
 
-<div class="q"><span class="qn">44.</span><span class="stem">$A$ 를 $B,C,D$ 의 일차결합으로 나타낸 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">44.</span>$A$ 를 $B,C,D$ 의 일차결합으로 나타낸 것은?
+  <div class="ch2">
     <div><span class="n">①</span>$A=-B-C+3D$</div><div><span class="n">②</span>$A=2B-C+D$</div>
     <div><span class="n">③</span>$A=B+C-D$</div><div><span class="n">④</span>$A=4B-3C+5D$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">45.</span><span class="stem">$A$ 를 $B,C$ 의 일차결합으로 나타낸 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">45.</span>$A$ 를 $B,C$ 의 일차결합으로 나타낸 것은?
+  <div class="ch2">
     <div><span class="n">①</span>$A=4B-3C$</div><div><span class="n">②</span>$A=3B-2C$</div>
     <div><span class="n">③</span>$A=2B-C$</div><div><span class="n">④</span>일차결합으로 나타낼 수 없음</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">46.</span><span class="stem">다음 중 $R^2$ 벡터공간의 원소 $(1,2)$ 를 일차결합에 의해 나타낼 수 없는 벡터집합은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">46.</span>다음 중 $R^2$ 벡터공간의 원소 $(1,2)$ 를 일차결합에 의해 나타낼 수 <b>없는</b> 벡터집합은?
+  <div class="ch2">
     <div><span class="n">①</span>$\{(2,4)\}$</div><div><span class="n">②</span>$\{(1,0),(0,2)\}$</div>
     <div><span class="n">③</span>$\{(1,-3),(1,-2)\}$</div><div><span class="n">④</span>$\{(1,0),(2,0)\}$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">47.</span><span class="stem">집합 <span class="gap">집합 필요</span> 는 벡터공간의 부분공간이다. $S$ 의 차원은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">47.</span>집합 $S=\{(x+y,\ x-y,\ 0)\mid x,y\in R\}$ 는 벡터공간 $R^3$ 의 부분공간이다.
+  $S$ 의 차원은?
+  <div class="ch2">
     <div><span class="n">①</span>$0$</div><div><span class="n">②</span>$1$</div>
     <div><span class="n">③</span>$2$</div><div><span class="n">④</span>$3$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">48.</span><span class="stem">집합 $S=\{(x,\ x+y,\ x-y)\mid x,y\in R\}$ 는 벡터공간 $R^3$ 의 부분공간이다. 부분공간 $S$ 의 차원은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">48.</span>집합 $S=\{(x,\ x+y,\ x-y)\mid x,y\in R\}$ 는 벡터공간 $R^3$ 의 부분공간이다.
+  부분공간 $S$ 의 차원은?
+  <div class="ch2">
     <div><span class="n">①</span>$0$</div><div><span class="n">②</span>$1$</div>
     <div><span class="n">③</span>$2$</div><div><span class="n">④</span>$3$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">49.</span><span class="stem">집합 $S=\{(x,2x,4x)\mid x\in R\}$ 는 벡터공간 $R^3$ 의 부분공간이다. $S$ 의 차원은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">49.</span>집합 $S=\{(x,2x,4x)\mid x\in R\}$ 는 벡터공간 $R^3$ 의 부분공간이다. $S$ 의 차원은?
+  <div class="ch2">
     <div><span class="n">①</span>$0$</div><div><span class="n">②</span>$1$</div>
     <div><span class="n">③</span>$2$</div><div><span class="n">④</span>$3$</div>
   </div>
 </div>
 
-<div class="lead">※ (50~52) 선형변환 $T$ 가 <span class="gap">정의역·식 필요</span> 로 주어졌을 때 다음 물음에 답하라.</div>
+<div class="lead">※ (50~52) 선형변환 $T:R^2\to R^3$ 가 $T(x,y)=(x,\ y,\ x-y)$ 으로 주어졌을 때
+  다음 물음에 답하라.</div>
 
-<div class="q"><span class="qn">50.</span><span class="stem">표준기저를 이용한 $T$ 의 행렬은?</span> <span class="gap">선택지 필요</span></div>
+<div class="q"><span class="qn">50.</span>$R^2$ 와 $R^3$ 의 표준기저를 이용한 $T$ 의 행렬은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}1&0&1\\0&1&0\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}0&1&0\\1&0&-1\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}0&1\\1&0\\1&1\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}1&0\\0&1\\1&-1\end{pmatrix}$</div>
+  </div>
+</div>
 
-<div class="q"><span class="qn">51.</span><span class="stem">$\operatorname{Ker}(T)$ 를 구하면?</span> <span class="gap">선택지 필요</span></div>
+<div class="q"><span class="qn">51.</span>$\operatorname{Ker}(T)$ 를 구하면?
+  <div class="ch2">
+    <div><span class="n">①</span>$\{(0,0)\}$</div>
+    <div><span class="n">②</span>$\{(x,0)\mid x\in R\}$</div>
+    <div><span class="n">③</span>$\{(x,y,0)\mid x,y\in R\}$</div>
+    <div><span class="n">④</span>$\{(x+y,\ x,\ y)\mid x,y\in R\}$</div>
+  </div>
+</div>
 
-<div class="q"><span class="qn">52.</span><span class="stem">$\dim\operatorname{Ker}(T)$ 와 $\dim\operatorname{Im}(T)$ 를 순서대로 구한 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">52.</span>$\dim\operatorname{Ker}(T)$ 와 $\dim\operatorname{Im}(T)$ 를 순서대로 구한 것은?
+  <div class="ch2">
     <div><span class="n">①</span>$1,\ 2$</div><div><span class="n">②</span>$2,\ 1$</div>
     <div><span class="n">③</span>$0,\ 3$</div><div><span class="n">④</span>$3,\ 0$</div>
   </div>
 </div>
 
-<div class="lead">※ (53~55) 선형변환 $T:R^3\to R^2$ 가 $T(x,y,z)=(0,0)$ 으로 주어졌을 때 다음 물음에 답하라.</div>
+<div class="lead">※ (53~55) 선형변환 $T:R^3\to R^2$ 가 $T(x,y,z)=(0,\ 0)$ 으로 주어졌을 때
+  다음 물음에 답하라.</div>
 
-<div class="q"><span class="qn">53.</span><span class="stem">$R^3$ 와 $R^2$ 의 표준기저를 이용한 $T$ 의 행렬은?</span> <span class="gap">선택지 필요</span></div>
+<div class="q"><span class="qn">53.</span>$R^3$ 와 $R^2$ 의 표준기저를 이용한 $T$ 의 행렬은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}0&0\\0&0\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}0&0&0\\0&0&0\\0&0&0\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}0&0&0\\0&0&0\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}0&0\\0&0\\0&0\end{pmatrix}$</div>
+  </div>
+</div>
 
-<div class="q"><span class="qn">54.</span><span class="stem">$\operatorname{Ker}(T)$ 를 구하면?</span>
-  <div class="ch" style="grid-template-columns:1fr">
-    <div><span class="n">①</span>$\{O\}$</div>
+<div class="q"><span class="qn">54.</span>$\operatorname{Ker}(T)$ 를 구하면?
+  <div class="ch1">
+    <div><span class="n">①</span>$\{(0,0,0)\}$</div>
     <div><span class="n">②</span>$\{(x,0,0)\mid x\in R\}$</div>
     <div><span class="n">③</span>$\{(x,y,0)\mid x,y\in R\}$</div>
     <div><span class="n">④</span>$\{(x,y,z)\mid x,y,z\in R\}$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">55.</span><span class="stem">$\dim\operatorname{Ker}(T)$ 와 $\dim\operatorname{Im}(T)$ 를 순서대로 구한 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">55.</span>$\dim\operatorname{Ker}(T)$ 와 $\dim\operatorname{Im}(T)$ 를 순서대로 구한 것은?
+  <div class="ch2">
     <div><span class="n">①</span>$0,\ 3$</div><div><span class="n">②</span>$1,\ 2$</div>
     <div><span class="n">③</span>$2,\ 1$</div><div><span class="n">④</span>$3,\ 0$</div>
   </div>
 </div>
 
-<div class="lead">※ (56~58) $T:R^3\to R^3$ 가 $T(x,y,z)=(y-z,\ z-x,\ 0)$ 로 주어진 선형변환이라 할 때 다음 물음에 답하라.</div>
+<div class="lead">※ (56~58) $T:R^3\to R^3$ 가 $T(x,y,z)=(y-z,\ z-x,\ 0)$ 로 주어진 선형변환이라 할 때
+  다음 물음에 답하라.</div>
 
-<div class="q"><span class="qn">56.</span><span class="stem">$R^3$ 와 $R^3$ 의 표준기저를 이용한 $T$ 의 행렬은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">56.</span>$R^3$ 와 $R^3$ 의 표준기저를 이용한 $T$ 의 행렬은?
+  <div class="ch2">
     <div><span class="n">①</span>$\begin{pmatrix}1&-1&2\\2&1&0\\-1&-2&2\end{pmatrix}$</div>
     <div><span class="n">②</span>$\begin{pmatrix}1&2&-1\\-1&1&-2\\2&0&2\end{pmatrix}$</div>
     <div><span class="n">③</span>$\begin{pmatrix}1&1&1\\1&-1&4\end{pmatrix}$</div>
     <div><span class="n">④</span>$\begin{pmatrix}0&1&-1\\-1&0&1\\0&0&0\end{pmatrix}$</div>
   </div>
-  <div class="note" style="margin-left:2.1em">선택지 ①②③ 의 행렬은 추출이 흐려 <span class="gap">대조 필요</span></div>
 </div>
 
-<div class="q"><span class="qn">57.</span><span class="stem">$\operatorname{Ker}(T)$ 를 구하면?</span>
-  <div class="ch" style="grid-template-columns:1fr">
-    <div><span class="n">①</span>$\{(-2x,y,z)\mid z\in R\}$</div>
-    <div><span class="n">②</span>$\{(z,z,z)\mid z\in R\}$</div>
-    <div><span class="n">③</span>$\{(-5z,2z,3z)\mid z\in R\}$</div>
-    <div><span class="n">④</span>$\{(x,0,0)\mid x\in R\}$</div>
+<div class="q"><span class="qn">57.</span>$\operatorname{Ker}(T)$ 를 구하면?
+  <div class="ch1">
+    <div><span class="n">①</span>$\left\{\left(-\tfrac23x,\ y,\ z\right)\ \middle|\ z\in R\right\}$</div>
+    <div><span class="n">②</span>$\{(z,\ z,\ z)\mid z\in R\}$</div>
+    <div><span class="n">③</span>$\{(-5z,\ 2z,\ 3z)\mid z\in R\}$</div>
+    <div><span class="n">④</span>$\{(x,\ 0,\ 0)\mid x\in R\}$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">58.</span><span class="stem">$\dim\operatorname{Ker}(T)$ 와 $\dim\operatorname{Im}(T)$ 를 순서대로 구한 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">58.</span>$\dim\operatorname{Ker}(T)$ 와 $\dim\operatorname{Im}(T)$ 를 순서대로 구한 것은?
+  <div class="ch2">
     <div><span class="n">①</span>$1,\ 2$</div><div><span class="n">②</span>$2,\ 1$</div>
     <div><span class="n">③</span>$1,\ 1$</div><div><span class="n">④</span>$0,\ 3$</div>
   </div>
 </div>
 
-<div class="lead">※ (59~60) 다음 행렬 $M$ 에 대해 물음에 답하라. <span class="gap">행렬 $M$ 필요</span></div>
+<div class="lead">※ (59~60) 다음 행렬 $M$ 에 대해 물음에 답하라.
+  $$M=\begin{pmatrix}1&3\\6&4\end{pmatrix}$$
+</div>
 
-<div class="q"><span class="qn">59.</span><span class="stem">$M$ 의 고유값은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">59.</span>$M$ 의 고유값은?
+  <div class="ch2">
     <div><span class="n">①</span>$2$</div><div><span class="n">②</span>$3,\ 6$</div>
     <div><span class="n">③</span>$-2,\ 2$</div><div><span class="n">④</span>$-2,\ 7$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">60.</span><span class="stem">다음 중 $M$ 의 고유벡터가 아닌 것은?</span>
-  <div class="ch">
+<div class="q"><span class="qn">60.</span>다음 중 $M$ 의 고유벡터가 <b>아닌</b> 것은?
+  <div class="ch2">
     <div><span class="n">①</span>$\begin{pmatrix}1\\1\end{pmatrix}$</div>
     <div><span class="n">②</span>$\begin{pmatrix}2\\-2\end{pmatrix}$</div>
     <div><span class="n">③</span>$\begin{pmatrix}1\\2\end{pmatrix}$</div>
@@ -486,30 +589,35 @@ $$C=\begin{pmatrix}1&2&0&4\\2&5&-1&9\\0&3&1&3\end{pmatrix}$$
   </div>
 </div>
 
-<div class="q"><span class="qn">61.</span><span class="stem">다음 벡터집합 중 직교집합인 것은?</span>
+<div class="q"><span class="qn">61.</span>다음 벡터집합 중 직교집합인 것은?
   <div class="given">
-  $$P=\{(1,0,-1),\ (0,2,0)\}\qquad Q=\{(1,0,0),\ (0,1,0),\ (0,0,0)\}$$
-  $$R=\{(1,0,0),\ (0,2,0),\ (0,0,4)\}\qquad S=\{(1,1,1),\ (2,2,2),\ (3,3,3)\}$$
+  $$P=\{(1,0,-1),\ (0,2,0)\}$$
+  $$Q=\{(1,0,0),\ (0,1,0),\ (0,0,0)\}$$
+  $$R=\{(1,0,0),\ (0,2,0),\ (0,0,4)\}$$
+  $$S=\{(1,1,1),\ (2,2,2),\ (3,3,3)\}$$
   </div>
-  <div class="ch">
+  <div class="ch2">
     <div><span class="n">①</span>$S$</div><div><span class="n">②</span>$P,\ Q,\ R$</div>
     <div><span class="n">③</span>$Q,\ R,\ S$</div><div><span class="n">④</span>$P,\ R$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">62.</span><span class="stem">다음 벡터집합들 중 내적공간 $\{R^2,\ \cdot\}$ 에서 직교기저가 되지 못하는 것은?</span>
+<div class="q"><span class="qn">62.</span>다음 벡터집합들 중 내적공간 $\{R^2,\ \cdot\}$ 에서
+  직교기저가 되지 <b>못하는</b> 것은?
   <div class="given">
   $$A=\{(5,0),(0,3)\}\qquad B=\{(3,2),(4,-6)\}$$
   $$C=\{(1,0),(1,1)\}\qquad D=\{(2,1),(-1,2)\}$$
   </div>
-  <div class="ch">
+  <div class="ch2">
     <div><span class="n">①</span>$A$</div><div><span class="n">②</span>$B$</div>
     <div><span class="n">③</span>$C$</div><div><span class="n">④</span>$D$</div>
   </div>
 </div>
 
-<div class="q"><span class="qn">63.</span><span class="stem">$R^2$ 벡터공간에서 $A_1=(1,0)$, $A_2=(0,2)$ 이라 할 때 그램–슈미트<span class="en">Gram–Schmidt</span> 방법을 이용하면 기저 $\{A_1,A_2\}$ 를 직교기저 $\{B_1,B_2\}$ 로 바꿀 수 있다. 이때 $B_1$ 과 $B_2$ 를 차례로 나열한 것은?</span>
-  <div class="ch" style="grid-template-columns:1fr">
+<div class="q"><span class="qn">63.</span>$R^2$ 벡터공간에서 $A_1=(1,0)$, $A_2=(0,2)$ 이라 할 때
+  그램–슈미트<span class="en">Gram–Schmidt</span> 방법을 이용하면 기저 $\{A_1,A_2\}$ 를
+  직교기저 $\{B_1,B_2\}$ 로 바꿀 수 있다. 이때 $B_1$ 과 $B_2$ 를 차례로 나열한 것은?
+  <div class="ch1">
     <div><span class="n">①</span>$(1,0),\ (0,2)$</div>
     <div><span class="n">②</span>$(1,2),\ (-4,2)$</div>
     <div><span class="n">③</span>$(2,0),\ \left(\tfrac12,\tfrac12\right)$</div>
@@ -517,11 +625,54 @@ $$C=\begin{pmatrix}1&2&0&4\\2&5&-1&9\\0&3&1&3\end{pmatrix}$$
   </div>
 </div>
 
+<!-- ===================== 정답 시트 ===================== -->
+<div class="answersheet">
+<header class="doc">
+  <div class="ch">선형대수 · 기말 대비 핵심 63문제</div>
+  <h1><span class="no">정답</span>정답 시트 <span class="en">answer key</span></h1>
+</header>
+
+<div class="akey">
+  <div><b>1.</b> ②</div><div><b>2.</b> ①</div><div><b>3.</b> ④</div><div><b>4.</b> ②</div>
+  <div><b>5.</b> ①</div><div><b>6.</b> ②</div><div><b>7.</b> ③</div><div><b>8.</b> ③</div>
+  <div><b>9.</b> ①</div><div><b>10.</b> ④</div><div><b>11.</b> ②</div><div><b>12.</b> ④</div>
+  <div><b>13.</b> ④</div><div><b>14.</b> ④</div><div><b>15.</b> ④</div><div><b>16.</b> ②</div>
+  <div><b>17.</b> ③</div><div><b>18.</b> ①</div><div><b>19.</b> ③</div><div><b>20.</b> ④</div>
+  <div><b>21.</b> ①</div><div><b>22.</b> ②</div><div><b>23.</b> ④</div><div><b>24.</b> ①</div>
+  <div><b>25.</b> ④</div><div><b>26.</b> ④</div><div><b>27.</b> ①</div><div><b>28.</b> ④</div>
+  <div><b>29.</b> ②</div><div><b>30.</b> ①</div><div><b>31.</b> ④</div><div><b>32.</b> ②</div>
+  <div><b>33.</b> ③</div><div><b>34.</b> ④</div><div><b>35.</b> ③</div><div><b>36.</b> ③</div>
+  <div><b>37.</b> ①</div><div><b>38.</b> ②</div><div><b>39.</b> ②</div><div><b>40.</b> ③</div>
+  <div><b>41.</b> ④</div><div><b>42.</b> ④</div><div><b>43.</b> ①</div><div><b>44.</b> ①</div>
+  <div><b>45.</b> ④</div><div><b>46.</b> ④</div><div><b>47.</b> ③</div><div><b>48.</b> ③</div>
+  <div><b>49.</b> ②</div><div><b>50.</b> ④</div><div><b>51.</b> ①</div><div><b>52.</b> ②</div>
+  <div><b>53.</b> ③</div><div><b>54.</b> ④</div><div><b>55.</b> ④</div><div><b>56.</b> ④</div>
+  <div><b>57.</b> ②</div><div><b>58.</b> ①</div><div><b>59.</b> ④</div><div><b>60.</b> ①</div>
+  <div><b>61.</b> ④</div><div><b>62.</b> ③</div><div><b>63.</b> ①</div>
+</div>
+
+<div class="warn">
+  <b>52번 — 선택지에 정답이 없다</b>.
+  $T:R^2\to R^3$, $T(x,y)=(x,y,x-y)$ 는 $\operatorname{Ker}(T)=\{(0,0)\}$ 이므로
+  $\dim\operatorname{Ker}(T)=0$, 차원정리로 $\dim\operatorname{Im}(T)=2-0=2$ 다.
+  즉 정답은 <b>$0,\ 2$</b> 여야 하는데 ①~④ 어디에도 없다.
+  원본에 ②로 표시돼 있어 그대로 옮겼으나, 51번 정답이 $\{(0,0)\}$ 인 것과도 앞뒤가 맞지 않는다.
+  시험에서 같은 유형이 나오면 <b>$\dim\operatorname{Ker}+\dim\operatorname{Im}=\dim(\text{정의역})$</b>
+  으로 직접 계산할 것.
+</div>
+
+<div class="note">
+  <b>계산으로 확인해 둘 것 몇 가지</b> — 30번 ①은 행 교환이 한 번이므로 행렬식이 $-1$ 이라 <b>틀린 계산</b>이고,
+  59번은 $\lambda^2-5\lambda-14=(\lambda-7)(\lambda+2)$ 에서 고유값이 $7,-2$,
+  60번은 $\lambda=7$ 의 고유벡터가 $(1,2)$ 방향, $\lambda=-2$ 의 고유벡터가 $(1,-1)$ 방향이라
+  $(1,1)$ 만 고유벡터가 아니다.
+</div>
+
 </div>
 
 <nav class="pager">
-  <a href="index.html">← 목차<small>선형대수 시험지</small></a>
-  <span class="spacer"></span>
+  <a href="exam-workbook.html">← 이전<small>워크북 기출문제</small></a>
+  <a class="next" href="index.html">목차 →<small>선형대수 시험지</small></a>
 </nav>
 
 </body>
