@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선형대수 워크북 기출문제</title>
+<link rel="stylesheet" href="../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  body{ max-width:1000px; }
+  .q{ margin:0 0 18px; line-height:1.7; break-inside:avoid; }
+  .qn{ display:inline-block; min-width:2.2em; font-weight:800; color:var(--def); }
+  .ch2{ display:grid; grid-template-columns:1fr 1fr; gap:2px 18px; margin:5px 0 0 2.2em; }
+  .ch1{ display:grid; grid-template-columns:1fr; gap:2px; margin:5px 0 0 2.2em; }
+  .ch2 > div, .ch1 > div{ padding:1px 0; }
+  .n{ font-weight:700; color:#555; margin-right:5px; }
+  .lead{ margin:20px 0 10px; padding:6px 10px; background:#f4f6f8;
+         border-left:3px solid var(--def); font-weight:700; font-size:0.94rem; }
+  .given{ margin:8px 0 8px 2.2em; }
+  .chap{ margin:34px 0 14px; padding:8px 12px; background:var(--def); color:#fff;
+         border-radius:6px; font-weight:800; font-size:1.02rem; }
+  .answersheet{ page-break-before:always; }
+  .akey{ display:grid; grid-template-columns:repeat(auto-fill,minmax(112px,1fr)); gap:4px 10px;
+         margin:8px 0 18px 0; font-size:0.94rem; }
+  .akey b{ color:var(--thm); }
+  @media print{
+    .pager, .home, .note{ display:none; }
+    a{ color:inherit; text-decoration:none; }
+    .q{ page-break-inside:avoid; }
+    .chap{ background:none; color:#000; border:1px solid #000; }
+  }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../index.html">⌂ 홈</a>
+  <div class="ch">선형대수 · 시험지</div>
+  <h1>워크북 <span class="no">기출문제</span></h1>
+</header>
+
+<p><b>선형대수 워크북</b>의 장별 기출문제를 모은 시험지다. 정답은 뒤쪽 정답 시트에 있다.</p>
+
+<div class="note">
+  <b>수록 범위</b> — 1장~15장. 워크북 <b>주관식 괄호넣기</b>는 제외하고 <b>기출문제</b>만 실었다.
+  6장 기출 1(역행렬을 크래머 공식으로)은 서술형이라 선택지가 없다.
+</div>
+
+<!-- ===================== 1장 ===================== -->
+<div class="chap">제1장 · 일차연립방정식</div>
+
+<div class="lead">※ (1~2) 주어진 연립방정식 $\begin{cases}2x+3y=a\\ bx+6y=12\end{cases}$ 에 대하여 답하라.</div>
+
+<div class="q"><span class="qn">1-1.</span>유일한 해를 갖기 위한 조건은?
+  <div class="ch2">
+    <div><span class="n">①</span>$b\ne4$</div><div><span class="n">②</span>$b=4$</div>
+    <div><span class="n">③</span>$a=6,\ b=4$</div><div><span class="n">④</span>$a\ne6$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-2.</span>무수히 많은 해를 갖기 위한 조건은?
+  <div class="ch2">
+    <div><span class="n">①</span>$a=6,\ b=4$</div><div><span class="n">②</span>$a=6,\ b\ne4$</div>
+    <div><span class="n">③</span>$a\ne6,\ b=4$</div><div><span class="n">④</span>$a\ne6,\ b\ne4$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-3.</span>다음 연립방정식이 유일한 해를 갖기 위한 조건은?
+  $$\begin{cases}x+3y=1\\ 2x+ay=b\end{cases}$$
+  <div class="ch2">
+    <div><span class="n">①</span>$a\ne6$</div><div><span class="n">②</span>$b\ne2$</div>
+    <div><span class="n">③</span>$a=6,\ b\ne2$</div><div><span class="n">④</span>$a=6,\ b=2$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-4.</span>다음 이원 일차연립방정식 중 부정<span class="en">indeterminate</span>인 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{cases}2x+3y=5\\3x+4y=2\end{cases}$</div>
+    <div><span class="n">②</span>$\begin{cases}x+3y=5\\-2x-6y=-10\end{cases}$</div>
+    <div><span class="n">③</span>$\begin{cases}x+y=4\\-x-y=4\end{cases}$</div>
+    <div><span class="n">④</span>$\begin{cases}x+5y=2\\2x+9y=7\end{cases}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">1-5.</span>다음 연립방정식의 해에 대한 서술로 옳은 것은?
+  $$\begin{cases}3x-y=-6\\ -x+\tfrac13y=2\end{cases}$$
+  <div class="ch1">
+    <div><span class="n">①</span>유일한 해가 존재한다.</div>
+    <div><span class="n">②</span>모든 $x,y$ 가 해가 된다.</div>
+    <div><span class="n">③</span>$3x-y=-6$ 을 만족하는 $x,y$ 만 해가 된다.</div>
+    <div><span class="n">④</span>두 방정식이 배수 관계에 있으므로 해가 없다.</div>
+  </div>
+</div>
+
+<!-- ===================== 2장 ===================== -->
+<div class="chap">제2장 · 행렬과 가우스 소거법</div>
+
+<div class="q"><span class="qn">2-1.</span>일차연립방정식 $AX=B$ 에서 계수행렬 $A$ 가 아래와 같을 때,
+  방정식의 개수 (가)와 미지수의 개수 (나)는?
+  $$A=\begin{pmatrix}a_{11}&\cdots&a_{1m}\\ \vdots&\ddots&\vdots\\ a_{n1}&\cdots&a_{nm}\end{pmatrix}$$
+  <div class="ch2">
+    <div><span class="n">①</span>가 $=n$, 나 $=m$</div><div><span class="n">②</span>가 $=m$, 나 $=n$</div>
+    <div><span class="n">③</span>가 $=mn$, 나 $=m+n$</div><div><span class="n">④</span>가 $=m+n$, 나 $=mn$</div>
+  </div>
+</div>
+
+<div class="lead">※ (2~5) 다음 일차연립방정식에 관한 물음에 답하라.
+  $$\begin{cases}x+2y+3z=6\\ 3x+7y+9z=20\\ x+2y+4z=7\end{cases}$$
+</div>
+
+<div class="q"><span class="qn">2-2.</span>주어진 일차연립방정식의 확대행렬 $A$ 를 구하면?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}1&2&3\\3&7&9\\3&6&4\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&2&3\\3&7&9\\1&2&4\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}1&2&3&6\\3&7&9&20\\1&2&4&7\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}1&2&3\\3&7&9\\3&6&4\\6&14&7\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-3.</span>주어진 일차연립방정식 해를 가우스 소거법으로 구하려 할 때,
+  확대행렬 $A$ 에 적용해야 하는 기본행연산을 순서대로 열거한 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$R_{1,2}(-3),\ R_{1,3}(-1)$</div>
+    <div><span class="n">②</span>$R_{2,3},\ R_{1,2}(1),\ R_{1,3}\!\left(\tfrac12\right)$</div>
+    <div><span class="n">③</span>$R_{2,1}(-3),\ R_{3,1}(-1)$</div>
+    <div><span class="n">④</span>$R_{1,2}(-1),\ R_{1,3}(-3)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-4.</span>문제 3에서 정답이 되는 기본행연산을 적용하여 구한 행렬을 $B$ 라고 했을 때,
+  행렬 $B$ 는 다음 중 어떤 행렬인가?
+  <div class="ch2">
+    <div><span class="n">①</span>상삼각행렬</div><div><span class="n">②</span>정방행렬</div>
+    <div><span class="n">③</span>행제형 행렬</div><div><span class="n">④</span>소거행제형 행렬</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">2-5.</span>문제 4에서 구한 행렬 $B$ 를 이용하여 주어진 방정식의 해 $(x,y,z)$ 를 구하면?
+  <div class="ch2">
+    <div><span class="n">①</span>$(3,2,2)$</div><div><span class="n">②</span>$(-1,2,1)$</div>
+    <div><span class="n">③</span>$(5,2,1)$</div><div><span class="n">④</span>$(4,-3,2)$</div>
+  </div>
+</div>
+
+<!-- ===================== 3장 ===================== -->
+<div class="chap">제3장 · 행렬연산</div>
+
+<div class="q"><span class="qn">3-1.</span>$A$ 가 $m\times n$ 행렬이고 $B$ 가 $p\times q$ 행렬일 때,
+  두 행렬의 곱 $AB$ 가 정의되기 위한 조건과, 곱이 정의되는 경우 $AB$ 의 크기가
+  순서대로 바르게 나열된 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$n\ne p,\ n\times p$</div><div><span class="n">②</span>$n=p,\ m\times q$</div>
+    <div><span class="n">③</span>$m\ne q,\ m\times q$</div><div><span class="n">④</span>$n=p,\ n\times p$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-2.</span>다음 행렬 $A$ 가 대칭행렬이 되기 위한 조건은?
+  $$A=\begin{pmatrix}x&y&2x\\x+1&1&-1\\y&-1&0\end{pmatrix}$$
+  <div class="ch2">
+    <div><span class="n">①</span>$x=0,\ y=1$</div><div><span class="n">②</span>$x=1,\ y=2$</div>
+    <div><span class="n">③</span>$x=0,\ y=0$</div><div><span class="n">④</span>$x=2,\ y=1$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-3.</span>$3$ 차 단위행렬 $I_3$ 에 대한 설명 중 틀린 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$I_3$ 은 삼각행렬이다.</div>
+    <div><span class="n">②</span>$I_3$ 은 대각행렬이다.</div>
+    <div><span class="n">③</span>$I_3$ 은 스칼라행렬이다.</div>
+    <div><span class="n">④</span>$I_3$ 은 $3$ 차 정방행렬 집합에서 덧셈에 관한 항등원이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-4.</span>$k$ 가 임의의 실수이고 $A$ 와 $B$ 가 행렬일 때, 행렬 연산이 정의되는 경우
+  다음 중 옳지 <b>않은</b> 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$(AB)^{T}=B^{T}A^{T}$</div>
+    <div><span class="n">②</span>$(kA)^{T}=kA^{T}$</div>
+    <div><span class="n">③</span>$(A+B)^{T}=B^{T}+A^{T}$</div>
+    <div><span class="n">④</span>$(A-B)^{T}=B^{T}-A^{T}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">3-5.</span>행렬에 관한 설명으로 <b>부적절한</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$A=A^{T}$ 인 행렬 $A$ 를 대칭행렬이라 한다.</div>
+    <div><span class="n">②</span>$A$ 가 정방행렬이 아니면 $A$ 는 대칭행렬이 아니다.</div>
+    <div><span class="n">③</span>행렬 $A,B,C$ 에 대해 $B\ne C$ 이면 항상 $AB\ne AC$ 이다.</div>
+    <div><span class="n">④</span>행렬 $A,B$ 가 $A\ne O$, $B\ne O$ 이어도 $AB=O$ 이 될 수 있다.</div>
+  </div>
+</div>
+
+<!-- ===================== 4장 ===================== -->
+<div class="chap">제4장 · 역행렬</div>
+
+<div class="q"><span class="qn">4-1.</span>$c$ 가 임의의 실수이고 $A$ 와 $B$ 가 $n$ 차 정칙행렬일 때
+  다음 중 <b>부적절한</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$A^{-1}$ 도 정칙행렬이며 $(A^{-1})^{-1}=A$ 이다.</div>
+    <div><span class="n">②</span>$A^{T}$ 도 정칙행렬이며 $(A^{T})^{-1}=(A^{-1})^{T}$ 이다.</div>
+    <div><span class="n">③</span>$AB$ 도 정칙행렬이며 $(AB)^{-1}=A^{-1}B^{-1}$ 이다.</div>
+    <div><span class="n">④</span>$cA$ 도 정칙행렬이며 $(cA)^{-1}=c^{-1}A^{-1}$ 이다. (단, $c\ne0$)</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">4-2.</span>다음 중 $A$ 가 $n$ 차 정칙행렬일 때 동치관계가 <b>아닌</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$A$ 는 $I_n$ 과 행상등하다.</div>
+    <div><span class="n">②</span>동차방정식 $AX=O$ 은 유일한 해 $A^{-1}B$ 를 갖는다.</div>
+    <div><span class="n">③</span>방정식 $AX=B$ 는 유일한 해만 가진다.</div>
+    <div><span class="n">④</span>$A$ 는 유한개의 $n$ 차 기본행렬의 곱이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">4-3.</span>다음 행렬 중 $3$ 차 단위행렬과 행상등<span class="en">row-equivalent</span>하지 <b>못한</b> 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}1&0&0\\0&2&0\\0&0&3\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}0&0&1\\0&1&0\\1&0&0\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}1&2&3\\0&1&4\\0&0&5\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}1&0&1\\1&1&0\\2&1&1\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">4-4.</span>$3$ 차 정방행렬 $A$ 에 기본행연산 $R_{1,3}$ 을 적용하는 것은
+  행렬 $A$ 의 왼쪽에 다음 중 어떤 행렬을 곱하는 것과 동일한가?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}0&0&1\\0&1&0\\1&0&0\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&0&2\\0&0&0\\0&0&1\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}1&0&2\\0&1&0\\0&0&1\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}1&0&3\\0&0&0\\0&0&0\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">4-5.</span>다음 중 대칭행렬이면서 정칙행렬인 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}0&0\\0&0\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&1\\1&1\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}1&1\\3&3\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}1&0\\0&3\end{pmatrix}$</div>
+  </div>
+</div>
+
+<!-- ===================== 5장 ===================== -->
+<div class="chap">제5장 · 행렬식</div>
+
+<div class="q"><span class="qn">5-1.</span>$3$ 차 정방행렬 $A$ 가 다음과 같이 기본행렬들의 곱으로 표시된다고 하였을 때,
+  $A$ 의 행렬식은?
+  $$A=E_{1,2}\,E_3(4)\,E_{1,3}(3)$$
+  <div class="ch2">
+    <div><span class="n">①</span>$-3$</div><div><span class="n">②</span>$3$</div>
+    <div><span class="n">③</span>$-4$</div><div><span class="n">④</span>$4$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">5-2.</span>$c$ 가 임의의 실수이고 $A$ 와 $B$ 가 $n$ 차 정방행렬일 때, <b>부적절한</b> 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$|AB|=|A||B|$</div>
+    <div><span class="n">②</span>$|A+B|=|A|+|B|$</div>
+    <div><span class="n">③</span>$|cA|=c^{n}|A|$</div>
+    <div><span class="n">④</span>$|A^{-1}|=|A|^{-1}$ (단, $A$ 는 정칙행렬)</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">5-3.</span>$2$ 차 정방행렬 $A$ 에 대해 $|A|=5$ 일 경우, 옳지 <b>않은</b> 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$|-2A|=20$</div><div><span class="n">②</span>$|A^{-1}|=0.2$</div>
+    <div><span class="n">③</span>$|2A^{-1}|=0.8$</div><div><span class="n">④</span>$|2A^{T}|=10$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">5-4.</span>다음 행렬 $A$ 의 행렬식을 <b>올바르게</b> 구한 것은?
+  $$A=\begin{pmatrix}a&b&c\\d&e&f\\g&h&i\end{pmatrix}$$
+  <div class="ch1">
+    <div><span class="n">①</span>$a\begin{vmatrix}e&f\\h&i\end{vmatrix}+b\begin{vmatrix}d&f\\g&i\end{vmatrix}+c\begin{vmatrix}d&e\\g&h\end{vmatrix}$</div>
+    <div><span class="n">②</span>$b\begin{vmatrix}d&f\\g&i\end{vmatrix}-e\begin{vmatrix}a&c\\g&i\end{vmatrix}+h\begin{vmatrix}a&c\\d&f\end{vmatrix}$</div>
+    <div><span class="n">③</span>$g\begin{vmatrix}b&c\\e&f\end{vmatrix}-h\begin{vmatrix}a&c\\d&f\end{vmatrix}+i\begin{vmatrix}a&b\\d&e\end{vmatrix}$</div>
+    <div><span class="n">④</span>$-c\begin{vmatrix}d&e\\g&h\end{vmatrix}+f\begin{vmatrix}a&b\\g&h\end{vmatrix}-i\begin{vmatrix}a&b\\d&e\end{vmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">5-5.</span>다음 행렬 $A$ 가 정칙행렬이기 위한 실수 $x$ 의 조건은?
+  $$A=\begin{pmatrix}1&2&3\\0&x-2&0\\1&2&x+3\end{pmatrix}$$
+  <div class="ch2">
+    <div><span class="n">①</span>$x\ne\pm2$</div><div><span class="n">②</span>$x\ne2,\ x\ne-3$</div>
+    <div><span class="n">③</span>$x\ne0,\ x\ne2$</div><div><span class="n">④</span>$x=2,\ x=-3$</div>
+  </div>
+</div>
+
+<!-- ===================== 6장 ===================== -->
+<div class="chap">제6장 · 크래머 공식과 역행렬</div>
+
+<div class="q"><span class="qn">6-1.</span>다음 행렬 $A$ 의 역행렬을 크래머 공식으로 구하라. <span style="color:var(--muted)">(서술형)</span>
+  $$A=\begin{pmatrix}1&2&1\\0&0&3\\2&3&0\end{pmatrix}$$
+</div>
+
+<div class="q"><span class="qn">6-2.</span>크래머의 공식을 사용해서 다음 방정식의 해를 구하라.
+  $$\begin{cases}5x_1-x_2=3\\ 3x_1+x_2=5\end{cases}$$
+  <div class="ch2">
+    <div><span class="n">①</span>$(x_1,x_2)=(-1,2)$</div><div><span class="n">②</span>$(x_1,x_2)=(1,2)$</div>
+    <div><span class="n">③</span>$(x_1,x_2)=(2,1)$</div><div><span class="n">④</span>$(x_1,x_2)=(-2,1)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">6-3.</span>다음 $n$ 차 정칙행렬 $A$ 에 대해 올바른 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$(\operatorname{adj}A)^{-1}=|A|A$</div>
+    <div><span class="n">②</span>$|A|A=(\operatorname{adj}A)\cdot I_n$</div>
+    <div><span class="n">③</span>$A\cdot\dfrac{\operatorname{adj}A}{|A|}=-I_n$</div>
+    <div><span class="n">④</span>$A^{-1}=\dfrac{\operatorname{adj}A}{|A|}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">6-4.</span>다음 행렬의 행렬식과 $\operatorname{adj}A$ 를 맞게 짝 지은 것은?
+  $$A=\begin{pmatrix}2&-3&5\\0&1&-2\\0&-2&2\end{pmatrix}$$
+  <div class="ch2">
+    <div><span class="n">①</span>$4,\ \begin{pmatrix}-2&-4&1\\0&4&4\\0&4&2\end{pmatrix}$</div>
+    <div><span class="n">②</span>$4,\ \begin{pmatrix}-2&-4&1\\0&4&-4\\0&4&2\end{pmatrix}$</div>
+    <div><span class="n">③</span>$-4,\ \begin{pmatrix}-2&-4&1\\0&4&4\\0&4&2\end{pmatrix}$</div>
+    <div><span class="n">④</span>$-4,\ \begin{pmatrix}-2&-4&1\\0&4&-4\\0&4&2\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">6-5.</span>다음 중 $n$ 차 정방행렬 $A$ 의 성질로 맞는 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>하삼각행렬 $A$ 의 $\operatorname{adj}A$ 는 상삼각행렬이다.</div>
+    <div><span class="n">②</span>연립방정식 $AX=B$ 의 해는 항상 유일하게 존재한다.</div>
+    <div><span class="n">③</span>$|A|A^{-1}=\operatorname{adj}A$ 이다.</div>
+    <div><span class="n">④</span>$|A^{-1}||A|=-1$ 이다.</div>
+  </div>
+</div>
+
+<!-- ===================== 7장 ===================== -->
+<div class="chap">제7장 · 평면벡터와 공간벡터</div>
+
+<div class="lead">※ (1~2) $R^3$ 공간에서 벡터 $A=(3,4,0)$, $B=(1,1,2)$, $C=(0,2,0)$, $D=(0,0,3)$
+  이라고 할 때 다음 물음에 답하라.</div>
+
+<div class="q"><span class="qn">7-1.</span>다음 중 옳은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$A\cdot C=7$ 이다.</div><div><span class="n">②</span>$A\cdot B=8$ 이다.</div>
+    <div><span class="n">③</span>$A\times A=7$ 이다.</div><div><span class="n">④</span>$A$ 의 크기 $|A|=5$ 이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">7-2.</span>다음 중 $A$ 와 서로 수직인 벡터는?
+  <div class="ch2">
+    <div><span class="n">①</span>$A$</div><div><span class="n">②</span>$B$</div>
+    <div><span class="n">③</span>$C$</div><div><span class="n">④</span>$D$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">7-3.</span>$3$ 차원 공간벡터의 내적과 외적에 관한 성질로서 <b>부적절한</b> 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$A\cdot B=|A||B|\sin\theta$</div>
+    <div><span class="n">②</span>$|A\times B|=|A||B|\sin\theta$</div>
+    <div><span class="n">③</span>$A\cdot A=|A|^2$</div>
+    <div><span class="n">④</span>$A\times A=O$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">7-4.</span>$A=(3,4,0)$, $B=(4,-3,1)$ 에 대해 <b>부적절한</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$A\cdot B=0$ 이다.</div>
+    <div><span class="n">②</span>두 벡터의 사이각은 $90^\circ$ 이다.</div>
+    <div><span class="n">③</span>$A\times B=(4,-3,25)$ 이다.</div>
+    <div><span class="n">④</span>$|A|=\sqrt{3^2+4^2+0^2}=5$ 이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">7-5.</span>$3$ 차원 공간벡터의 곱셈에 관한 성질로 옳은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$A\cdot B=O$</div><div><span class="n">②</span>$A\times B=-(B\times A)$</div>
+    <div><span class="n">③</span>$A\cdot A=A^2$</div><div><span class="n">④</span>$A\times A=|A|^2$</div>
+  </div>
+</div>
+
+<!-- ===================== 8장 ===================== -->
+<div class="chap">제8장 · 벡터공간</div>
+
+<div class="q"><span class="qn">8-1.</span>다음 중 $S$ 가 부분공간이 되지 <b>못하는</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>벡터공간 $R^2$ 의 부분집합 $S=\{(0,0)\}$</div>
+    <div><span class="n">②</span>벡터공간 $R^2$ 의 부분집합 $S=\{(x,1)\mid x\in R\}$</div>
+    <div><span class="n">③</span>벡터공간 $R^3$ 의 부분집합 $S=\{(x,2x,3x)\mid x\in R\}$</div>
+    <div><span class="n">④</span>벡터공간 $R^3$ 의 부분집합 $S=\{(x,y,x+y)\mid x,y\in R\}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">8-2.</span>다음 집합 중 $M_{22}(R)$ 의 부분공간은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\left\{\begin{pmatrix}a&1\\b&c\end{pmatrix}\middle|\ a,b,c\in R\right\}$</div>
+    <div><span class="n">②</span>$\left\{\begin{pmatrix}a&1\\0&b\end{pmatrix}\middle|\ a,b\in R\right\}$</div>
+    <div><span class="n">③</span>$\left\{\begin{pmatrix}a&0\\b&c\end{pmatrix}\middle|\ a,b,c\in R\right\}$</div>
+    <div><span class="n">④</span>$\left\{\begin{pmatrix}a&0\\0&a+1\end{pmatrix}\middle|\ a\in R\right\}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">8-3.</span>다음 중 집합 $S$ 가 $R^2$ 벡터공간의 부분공간이 될 수 <b>없는</b> 것은?
+  (단, 벡터의 합과 곱은 $R^2$ 벡터공간에서와 동일함)
+  <div class="ch2">
+    <div><span class="n">①</span>$S=\{(0,0)\}$</div>
+    <div><span class="n">②</span>$S=\{(a,a+1)\mid a\in R\}$</div>
+    <div><span class="n">③</span>$S=\{(a,a)\mid a\in R\}$</div>
+    <div><span class="n">④</span>$S=\{(a,b+1)\mid a,b\in R\}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">8-4.</span>집합 $V$ 를 체 $F$ 위에 정의된 벡터공간이라 할 때,
+  다음 중 집합 $S$ 가 $V$ 의 부분공간이 되기 위한 조건으로 <b>부적절한</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$S$ 가 $V$ 의 부분집합이다.</div>
+    <div><span class="n">②</span>$A,B\in V$ 이면 $A+B\in V$ 이다.</div>
+    <div><span class="n">③</span>$A\in S$ 와 $k\in F$ 에 대해 $kA\in S$ 이다.</div>
+    <div><span class="n">④</span>$A,B\in S$ 와 $m,n\in F$ 에 대해 $mA+nB\in S$ 이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">8-5.</span>집합 $V$ 를 체 $F$ 위에 정의된 벡터공간이라 할 때, 다음 중 <b>부적절한</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$A,B\in V$ 이면 $A+B\in V$ 이다.</div>
+    <div><span class="n">②</span>$A\in V$ 와 $k\in F$ 에 대해 $kA\in V$ 이다.</div>
+    <div><span class="n">③</span>$V$ 에는 덧셈에 관한 항등원으로 단위벡터가 존재한다.</div>
+    <div><span class="n">④</span>$V$ 에는 덧셈에 관한 역원으로 $-A$ 가 존재한다.</div>
+  </div>
+</div>
+
+<!-- ===================== 9장 ===================== -->
+<div class="chap">제9장 · 기저와 차원</div>
+
+<div class="q"><span class="qn">9-1.</span>벡터공간 $V$ 의 기저와 차원에 관련된 성질로 <b>부적절한</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$V=\{O\}$ 이면 $\dim V=1$ 이다.</div>
+    <div><span class="n">②</span>$V$ 의 기저의 원소 개수는 일정하다.</div>
+    <div><span class="n">③</span>$V$ 의 차원은 $V$ 의 기저의 원소 개수이다.</div>
+    <div><span class="n">④</span>$V=R^n$ 이면 $\dim V=n$ 이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">9-2.</span>$R^3$ 의 세 벡터 $(1,0,0)$, $(0,1,2)$, $(0,0,3-x)$ 가 일차종속이 되는 $x$ 의 값은?
+  <div class="ch2">
+    <div><span class="n">①</span>$2$</div><div><span class="n">②</span>$3$</div>
+    <div><span class="n">③</span>$4$</div><div><span class="n">④</span>$5$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">9-3.</span>다음 중 $R^3$ 의 기저가 <b>아닌</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$\{(1,1,1),(0,1,1),(0,0,1)\}$</div>
+    <div><span class="n">②</span>$\{(1,1,1),(0,1,0),(1,0,1)\}$</div>
+    <div><span class="n">③</span>$\{(-1,1,1),(1,-1,1),(1,1,-1)\}$</div>
+    <div><span class="n">④</span>$\{(1,1,0),(1,0,1),(0,1,1)\}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">9-4.</span>집합 $S=\{(x+y,\ x-y,\ 0)\mid x,y\in R\}$ 은 벡터공간 $R^3$ 의 부분공간이다.
+  $S$ 의 차원은?
+  <div class="ch2">
+    <div><span class="n">①</span>$0$</div><div><span class="n">②</span>$1$</div>
+    <div><span class="n">③</span>$2$</div><div><span class="n">④</span>$3$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">9-5.</span>벡터공간의 기저와 차원에 관련된 서술로 <b>부적절한</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>기저의 원소인 벡터들은 일차독립이다.</div>
+    <div><span class="n">②</span>임의의 벡터는 기저의 원소들의 일차결합으로 나타낼 수 있다.</div>
+    <div><span class="n">③</span>주어진 벡터공간의 기저는 유일하다.</div>
+    <div><span class="n">④</span>$S$ 가 벡터공간 $V$ 의 부분공간이면 $\dim S\le\dim V$ 이다.</div>
+  </div>
+</div>
+
+<!-- ===================== 10장 ===================== -->
+<div class="chap">제10장 · 선형변환</div>
+
+<div class="q"><span class="qn">10-1.</span>다음 중 선형변환이 <b>아닌</b> 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$T(x,y)=(0,y)$</div><div><span class="n">②</span>$T(x,y)=(y,x)$</div>
+    <div><span class="n">③</span>$T(x,y)=(2x,y)$</div><div><span class="n">④</span>$T(x,y)=(x+1,y)$</div>
+  </div>
+</div>
+
+<div class="lead">※ (2~3) $T:R^2\to R^2$ 이 $T(x,y)=(2x+y,\ -x)$ 를,
+  $U:R^2\to R^2$ 이 $U(x,y)=(y,\ 2x)$ 를 각각 만족할 때 다음 물음에 답하라.</div>
+
+<div class="q"><span class="qn">10-2.</span>$(U\circ T)(x,y)$ 는 무엇과 같은가?
+  <div class="ch2">
+    <div><span class="n">①</span>$(-y,\ 3x+y)$</div><div><span class="n">②</span>$(-x,\ 4x+2y)$</div>
+    <div><span class="n">③</span>$(x+y,\ -x+3y)$</div><div><span class="n">④</span>$(2x-y,\ 4x+y)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">10-3.</span>$(T\circ U\circ T)(x,y)$ 는 무엇과 같은가?
+  <div class="ch2">
+    <div><span class="n">①</span>$(2x+2y,\ x)$</div><div><span class="n">②</span>$(-x+2y,\ 3x+y)$</div>
+    <div><span class="n">③</span>$(-x,\ x+y)$</div><div><span class="n">④</span>$(3x+y,\ -2x+3y)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">10-4.</span>선형변환 $T:V\to W$ 에 관련된 서술로 <b>부적절한</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$V'$ 을 $V$ 의 부분공간이라 하면 $T(V')$ 도 $V$ 의 부분공간이다.</div>
+    <div><span class="n">②</span>$\operatorname{Ker}(T)$ 는 $V$ 의 부분공간이다.</div>
+    <div><span class="n">③</span>$\operatorname{Ker}(T)=\{O\}$ 이면 $T$ 는 단사함수이다.</div>
+    <div><span class="n">④</span>$\dim V=\dim\operatorname{Ker}(T)+\dim\operatorname{Im}(T)$ 를 만족한다.</div>
+  </div>
+</div>
+
+<div class="lead">※ (5~6) 선형변환 $T:R^3\to R^2$ 가 $R^3$ 의 표준기저 $E_1,E_2,E_3$ 에 대하여
+  $T(E_1)=(1,2)$, $T(E_2)=(3,4)$, $T(E_3)=(5,6)$ 으로 주어졌을 때 다음 물음에 답하라.</div>
+
+<div class="q"><span class="qn">10-5.</span>$R^3$ 와 $R^2$ 의 표준기저를 이용한 $T$ 의 행렬은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}1&2\\3&4\\5&6\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&2\\3&4\\5&6\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}1&3&5\\2&4&6\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}1&2&3\\4&5&6\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">10-6.</span>$T(x,y,z)$ 를 표현한 것으로 옳은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$(1,2,3,4,5,6)$</div>
+    <div><span class="n">②</span>$(x+2y+3z,\ 4x+5y+6z)$</div>
+    <div><span class="n">③</span>$(x+3y+5z,\ 2x+4y+6z)$</div>
+    <div><span class="n">④</span>$(x,y,z)$</div>
+  </div>
+</div>
+
+<div class="lead">※ (7~9) 선형변환 $T:R^3\to R^2$ 이 $T(x,y,z)=(0,\ x)$ 로 주어졌을 때 다음 물음에 답하라.</div>
+
+<div class="q"><span class="qn">10-7.</span>$R^3$ 과 $R^2$ 의 표준기저를 이용한 $T$ 의 행렬은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}0&1\\0&0\\0&0\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&0\\0&0\\0&1\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}1&0&0\\0&0&1\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}0&0&0\\1&0&0\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">10-8.</span>$\operatorname{Ker}(T)$ 를 구하면?
+  <div class="ch2">
+    <div><span class="n">①</span>$\{(x,0,0)\mid x\in R\}$</div>
+    <div><span class="n">②</span>$\{(0,y,z)\mid y,z\in R\}$</div>
+    <div><span class="n">③</span>$\{(x,y,z)\mid x,y,z\in R\}$</div>
+    <div><span class="n">④</span>$\{(0,0,0)\}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">10-9.</span>$\dim\operatorname{Ker}(T)$ 와 $\dim\operatorname{Im}(T)$ 를 순서대로 구한 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$1,\ 2$</div><div><span class="n">②</span>$2,\ 1$</div>
+    <div><span class="n">③</span>$0,\ 3$</div><div><span class="n">④</span>$3,\ 0$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">10-10.</span>다음 선형변환 $T:R^3\to R^3$ 중에서 동형변환인 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$T(x,y,z)=(0,0,0)$</div>
+    <div><span class="n">②</span>$T(x,y,z)=(y,0,z)$</div>
+    <div><span class="n">③</span>$T(x,y,z)=(2x+y,\ y,\ y+z)$</div>
+    <div><span class="n">④</span>$T(x,y,z)=(0,\ 0,\ 2x+y)$</div>
+  </div>
+</div>
+
+<!-- ===================== 11장 ===================== -->
+<div class="chap">제11장 · 선형변환과 행렬</div>
+
+<div class="q"><span class="qn">11-1.</span>벡터공간 $V=R^3$ 과 $V$ 의 한 기저 $\tilde A=\{(1,1,0),(1,0,1),(0,1,1)\}$ 에 대해
+  벡터 $(-1,4,1)$ 을 기저 $\tilde A$ 로 표현한 좌표는?
+  <div class="ch2">
+    <div><span class="n">①</span>$(1,-2,3)_{\tilde A}$</div><div><span class="n">②</span>$(-2,3,1)_{\tilde A}$</div>
+    <div><span class="n">③</span>$(1,3,-2)_{\tilde A}$</div><div><span class="n">④</span>$(1,2,-3)_{\tilde A}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">11-2.</span>$T:R^3\to R^3$ 이 $T(x,y,z)=(y,\ x-y,\ z)$ 를 만족하고,
+  $R^3$ 의 기저 $\tilde A=\{(1,1,0),(0,2,1),(0,-1,2)\}$ 와 표준기저 $\tilde E$ 를 기저로 할 때
+  $(T)_{\tilde E}^{\tilde A}$ 는?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}1&2&-1\\0&-2&1\\0&1&2\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&2&1\\0&0&-2\\0&0&0\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}0&1&\tfrac12\\1&0&0\\0&1&0\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}\tfrac12&1&0\\0&1&0\\1&1&1\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="lead">※ (3~5) $T:R^2\to R^2$, $T(x,y)=(2y,\ -x)$,
+  $U:R^2\to R^2$, $U(x,y)=(0,\ y)$ 일 때 다음 물음에 답하라.</div>
+
+<div class="q"><span class="qn">11-3.</span>$(T+U)(x,y)$ 의 값은?
+  <div class="ch2">
+    <div><span class="n">①</span>$(x,\ y-x)$</div><div><span class="n">②</span>$(2y,\ y+x)$</div>
+    <div><span class="n">③</span>$(x,\ y+x)$</div><div><span class="n">④</span>$(2y,\ y-x)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">11-4.</span>표준기저에 의한 $T+U$ 의 행렬은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}1&0\\-1&2\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}0&2\\-1&1\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}2&1\\-1&0\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}-1&2\\0&1\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">11-5.</span>기저 $\tilde A=\{(1,0),(1,-1)\}$ 에 의한 $(T\circ U)_{\tilde A}^{\tilde A}$ 와
+  $(U\circ T)_{\tilde A}^{\tilde A}$ 를 바르게 묶은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}0&0\\-2&0\end{pmatrix},\ \begin{pmatrix}-1&-1\\1&1\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}0&-2\\0&0\end{pmatrix},\ \begin{pmatrix}0&0\\-1&-1\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}0&0\\0&-2\end{pmatrix},\ \begin{pmatrix}0&0\\-1&-1\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}0&-2\\0&0\end{pmatrix},\ \begin{pmatrix}-1&-1\\1&1\end{pmatrix}$</div>
+  </div>
+</div>
+
+<!-- ===================== 12장 ===================== -->
+<div class="chap">제12장 · 고유값과 고유벡터</div>
+
+<div class="q"><span class="qn">12-1.</span>다음 행렬 $M$ 에 대해 $M$ 의 고유값을 구하면?
+  $$M=\begin{pmatrix}1&2\\4&3\end{pmatrix}$$
+  <div class="ch2">
+    <div><span class="n">①</span>$1,\ 3$</div><div><span class="n">②</span>$-1,\ -3$</div>
+    <div><span class="n">③</span>$-1,\ 5$</div><div><span class="n">④</span>$1,\ -5$</div>
+  </div>
+</div>
+
+<div class="lead">※ (2~3) 다음 행렬 $M$ 에 대해 물음에 답하라.
+  $$M=\begin{pmatrix}1&0\\2&3\end{pmatrix}$$
+</div>
+
+<div class="q"><span class="qn">12-2.</span>$M$ 의 고유값은?
+  <div class="ch2">
+    <div><span class="n">①</span>$1,\ 3$</div><div><span class="n">②</span>$-1,\ -3$</div>
+    <div><span class="n">③</span>$2$</div><div><span class="n">④</span>$3$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">12-3.</span>$M$ 의 고유벡터가 <b>아닌</b> 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$(1,-1)$</div><div><span class="n">②</span>$(0,-1)$</div>
+    <div><span class="n">③</span>$(1,1)$</div><div><span class="n">④</span>$(0,1)$</div>
+  </div>
+</div>
+
+<!-- ===================== 13장 ===================== -->
+<div class="chap">제13장 · 행렬의 대각화</div>
+
+<div class="q"><span class="qn">13-1.</span>다음 중 대각화가 가능하지 <b>않은</b> 행렬은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\begin{pmatrix}1&2\\5&4\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\begin{pmatrix}1&0\\0&2\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}1&2\\0&3\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\begin{pmatrix}1&0\\1&1\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">13-2.</span>$A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$ 을 대각화하는 행렬 $P$ 를 구하면?
+  <div class="ch2">
+    <div><span class="n">①</span>$P=\begin{pmatrix}1&1\\1&1\end{pmatrix}$</div>
+    <div><span class="n">②</span>$P=\begin{pmatrix}1&1\\-1&1\end{pmatrix}$</div>
+    <div><span class="n">③</span>$P=\begin{pmatrix}1&1\\-1&-1\end{pmatrix}$</div>
+    <div><span class="n">④</span>$P=\begin{pmatrix}1&-1\\-1&1\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">13-3.</span>다음 설명 중 바르지 <b>않은</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$A$ 가 $n\times n$ 인 정방행렬일 때, $A$ 가 대각화 가능하면
+      $A$ 는 $n$ 개의 일차독립인 고유벡터를 갖는다.</div>
+    <div><span class="n">②</span>$v_1,v_2,\dots,v_k$ 가 서로 다른 고유값에 관한 고유벡터이면
+      $\{v_1,\dots,v_k\}$ 는 일차독립이다.</div>
+    <div><span class="n">③</span>행렬 $A$ 가 $n\times n$ 인 정방행렬이고, $n$ 개의 서로 다른 고유값을 갖는다면
+      $A$ 는 대각화 가능하다.</div>
+    <div><span class="n">④</span>행렬 $A$ 가 $n\times n$ 인 정방행렬이고, 고유값 $\lambda_1,\dots,\lambda_k$ 가
+      서로 다르면 서로 일차독립인 고유벡터가 존재할 수 없다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">13-4.</span>다음 내용 중 바르지 <b>않은</b> 내용은?
+  <div class="ch1">
+    <div><span class="n">①</span>$n\times n$ 행렬 $M,N$ 이 대각행렬이면 $MN$ 도 대각행렬이다.</div>
+    <div><span class="n">②</span>모든 행렬은 대각화 가능하다.</div>
+    <div><span class="n">③</span>$n\times n$ 행렬 $M$ 이 서로 일차독립인 $n$ 개의 고유벡터를 가지면 $M$ 은 대각화 가능하다.</div>
+    <div><span class="n">④</span>$MN$ 이 대각행렬이면 그 대각항성분들은 $M$ 과 $N$ 의 대각성분들의 곱이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">13-5.</span>행렬 $M=\begin{pmatrix}1&0\\2&-1\end{pmatrix}$ 의
+  일차독립인 고유벡터의 개수를 구하라.
+  <div class="ch2">
+    <div><span class="n">①</span>$0$</div><div><span class="n">②</span>$1$</div>
+    <div><span class="n">③</span>$2$</div><div><span class="n">④</span>$3$</div>
+  </div>
+</div>
+
+<!-- ===================== 14장 ===================== -->
+<div class="chap">제14장 · 내적공간과 직교벡터</div>
+
+<div class="q"><span class="qn">14-1.</span>내적공간 $\{R^3,\langle\ ,\ \rangle\}$ 에서
+  $\{(1,0,0),\ (0,1,0),\ (a,b,c)\}$ 가 직교집합이 되기 위한 조건은?
+  <div class="ch2">
+    <div><span class="n">①</span>$a\ne1,\ b\ne1,\ c=0$</div>
+    <div><span class="n">②</span>$a=1,\ b=1,\ c\in R$</div>
+    <div><span class="n">③</span>$a\ne0,\ b\ne0,\ c=0$</div>
+    <div><span class="n">④</span>$a=0,\ b=0,\ c\in R$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">14-2.</span>다음 중 내적공간 $\{R^3,\langle\ ,\ \rangle\}$ 위에서 단위직교집합인 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$\left(\tfrac1{\sqrt2},0,\tfrac1{\sqrt2}\right),\
+      \left(\tfrac1{\sqrt3},\tfrac{\sqrt3}{3},-\tfrac1{\sqrt3}\right),\
+      \left(-\tfrac1{\sqrt2},0,\tfrac1{\sqrt2}\right)$</div>
+    <div><span class="n">②</span>$\left(\tfrac23,-\tfrac23,\tfrac13\right),\
+      \left(\tfrac23,\tfrac13,-\tfrac23\right),\ \left(\tfrac13,\tfrac23,\tfrac23\right)$</div>
+    <div><span class="n">③</span>$(1,0,0),\ \left(0,\tfrac1{\sqrt2},\tfrac1{\sqrt2}\right),\ (0,0,1)$</div>
+    <div><span class="n">④</span>$\left(\tfrac1{\sqrt6},\tfrac1{\sqrt6},-\tfrac2{\sqrt6}\right),\
+      \left(\tfrac1{\sqrt2},-\tfrac1{\sqrt2},0\right)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">14-3.</span>다음 내용 중 옳지 <b>않은</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>내적공간 $\{V,\langle\ ,\ \rangle\}$ 에서 $O$ 아닌 벡터
+      $A_1,\dots,A_n$ 이 서로 직교하면 이 벡터들은 일차종속이다.</div>
+    <div><span class="n">②</span>$n$ 차 정방행렬 $M$ 이 직교행렬이기 위한 필요충분조건은
+      $M$ 의 열벡터들이 단위직교벡터인 것이다.</div>
+    <div><span class="n">③</span>행렬 $M$ 이 직교행렬이면 행렬식 $|M|$ 은 $1$ 또는 $-1$ 이다.</div>
+    <div><span class="n">④</span>$n$ 차 대칭행렬 $M$ 은 직교행렬에 의해 대각화된다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">14-4.</span>다음 내용 중 옳지 <b>않은</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$n$ 차 정칙행렬 $M$ 에 대하여 $M^{-1}=M^{T}$ 이면 $M$ 을 대칭행렬이라고 한다.</div>
+    <div><span class="n">②</span>행렬 $M$ 이 직교행렬이면 $M$ 의 행렬식 $|M|$ 은 $1$ 또는 $-1$ 이다.</div>
+    <div><span class="n">③</span>$2$ 차 정방행렬 $M$ 이 직교행렬이면 평면에서의 회전변환이나 대칭변환에 대응하는 행렬을 나타낸다.</div>
+    <div><span class="n">④</span>$n$ 차 대칭행렬 $M$ 은 직교행렬에 의해 대각화된다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">14-5.</span>다음 중 내적공간 $\{V,\langle\ ,\ \rangle\}$ 에서
+  $\{W,\langle\ ,\ \rangle\}$ 로의 선형변환 $T$ 에 관하여 동치관계가 <b>아닌</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$T$ 가 직교변환이다.</div>
+    <div><span class="n">②</span>모든 벡터 $A,B$ 에 대하여 $\langle T(A),T(B)\rangle\ne\langle A,B\rangle$ 이다.</div>
+    <div><span class="n">③</span>내적공간 $\{V,\langle\ ,\ \rangle\}$ 의 어떤 단위직교기저
+      $\{A_1,\dots,A_n\}$ 에 대하여 $\{T(A_1),\dots,T(A_n)\}$ 도 단위직교집합을 이룬다.</div>
+    <div><span class="n">④</span>단위직교기저에 의한 $T$ 에 대응하는 행렬 $M$ 은 $M^{T}M=I$ 를 만족한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">14-6.</span>다음 중 내적공간 $\{V,\langle\ ,\ \rangle\}$ 에서
+  $\{W,\langle\ ,\ \rangle\}$ 로의 선형변환 $T$ 에 관한 동치관계가 <b>아닌</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$T$ 가 직교변환이다.</div>
+    <div><span class="n">②</span>모든 벡터 $A,B$ 에 대하여 $\langle T(A),T(B)\rangle=\langle A,B\rangle$ 이다.</div>
+    <div><span class="n">③</span>내적공간 $\{V,\langle\ ,\ \rangle\}$ 의 단위직교기저
+      $\{A_1,\dots,A_n\}$ 에 대해 $\{T(A_1),\dots,T(A_n)\}$ 은 $W$ 의 단위직교기저를 이룬다.</div>
+    <div><span class="n">④</span>단위직교기저에 의한 $T$ 에 대응하는 행렬 $M$ 은 $M^{-1}=M^{T}$ 를 만족한다.</div>
+  </div>
+</div>
+
+<!-- ===================== 15장 ===================== -->
+<div class="chap">제15장 · 직교화 과정과 최소자승법</div>
+
+<div class="q"><span class="qn">15-1.</span>$R^2$ 벡터공간에서 기저 $\{A_1,A_2\}$, $A_1=(1,1)$, $A_2=(1,0)$ 이라 할 때
+  그램–슈미트 방법을 이용하면 $B_1$ 과 $B_2$ 를 차례로 나열한 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$(1,1),\ \left(\tfrac12,-\tfrac12\right)$</div>
+    <div><span class="n">②</span>$(1,0),\ \left(\tfrac12,\tfrac12\right)$</div>
+    <div><span class="n">③</span>$(1,1),\ (1,-1)$</div>
+    <div><span class="n">④</span>$(1,0),\ (-1,1)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">15-2.</span>다음 〈보기〉 중 벡터공간 $R^2$ 의 직교기저가 될 수 있는 것을 고르면?
+  <div class="given">
+  $$A.\ \{(1,1),(-1,1)\}\qquad B.\ \{(1,0),(0,-1)\}$$
+  $$C.\ \{(1,1),(-1,1)\}\qquad D.\ \{(0,1),(0,-1)\}$$
+  </div>
+  <div class="ch2">
+    <div><span class="n">①</span>$A,\ B$</div><div><span class="n">②</span>$B,\ C$</div>
+    <div><span class="n">③</span>$C,\ D$</div><div><span class="n">④</span>$D,\ A$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">15-3.</span>벡터공간 $R^3$ 의 부분집합 $\{(1,2,1),(2,1,2)\}$ 를 정규화한 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\left\{\tfrac16(1,2,1),\ \tfrac16(2,1,2)\right\}$</div>
+    <div><span class="n">②</span>$\left\{\tfrac1{\sqrt6}(1,2,1),\ \tfrac13(2,1,2)\right\}$</div>
+    <div><span class="n">③</span>$\{6(1,2,1),\ 6(2,1,2)\}$</div>
+    <div><span class="n">④</span>$\left\{\sqrt6(1,2,1),\ \sqrt6(2,1,2)\right\}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">15-4.</span>$W=\{A\in R^3\mid A\cdot B=0,\ B=(2,3,-1)\}$ 일 때
+  $W$ 의 원소가 <b>아닌</b> 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$(1,1,5)$</div><div><span class="n">②</span>$(-1,1,1)$</div>
+    <div><span class="n">③</span>$(1,2,-4)$</div><div><span class="n">④</span>$(2,-1,1)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">15-5.</span>벡터공간 $W$ 의 두 원소 $B_1,B_2$ 에 대한 성질 중 <b>틀린</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>$(\|B_2\|B_1-\|B_1\|B_2)\cdot(\|B_2\|B_1+\|B_1\|B_2)=0$</div>
+    <div><span class="n">②</span>$\{B_1,B_2\}$ 가 $W$ 의 직교기저이면 $B_1\cdot B_2=0$ 이다.</div>
+    <div><span class="n">③</span>$B_1\cdot B_2=0$ 이면 $\{B_1,B_2\}$ 는 $W$ 의 직교기저이다.</div>
+    <div><span class="n">④</span>$B_1\cdot B_2=0$ 이면 $\{B_1,B_2\}$ 는 일차독립이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">15-6.</span>$A=\begin{pmatrix}1\\2\\3\\1\end{pmatrix}$ 를
+  $A_1=\begin{pmatrix}1\\0\\0\\0\end{pmatrix}$ 과
+  $A_2=\begin{pmatrix}0\\1\\-1\\0\end{pmatrix}$ 으로 만들어진 부분공간 $W$ 와
+  $W^{\perp}$ 의 벡터들의 합으로 표현한 것으로 알맞은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\tfrac12\begin{pmatrix}2\\-1\\1\\0\end{pmatrix}+\tfrac12\begin{pmatrix}0\\5\\5\\2\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\tfrac12\begin{pmatrix}2\\1\\1\\0\end{pmatrix}+\tfrac12\begin{pmatrix}0\\-5\\5\\2\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\begin{pmatrix}1\\0\\1\\0\end{pmatrix}+\begin{pmatrix}0\\2\\2\\1\end{pmatrix}$</div>
+    <div><span class="n">④</span>$2\begin{pmatrix}1\\1\\2\\0\end{pmatrix}+\begin{pmatrix}1\\-1\\-1\\1\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">15-7.</span>$\begin{pmatrix}1&-1\\2&3\\-1&2\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}
+  =\begin{pmatrix}1\\2\\1\end{pmatrix}$ 의 최소자승해를 구하면?
+  <div class="ch2">
+    <div><span class="n">①</span>$\tfrac14\begin{pmatrix}1\\2\end{pmatrix}$</div>
+    <div><span class="n">②</span>$\tfrac14\begin{pmatrix}-1\\2\end{pmatrix}$</div>
+    <div><span class="n">③</span>$\tfrac15\begin{pmatrix}3\\2\end{pmatrix}$</div>
+    <div><span class="n">④</span>$\tfrac1{15}\begin{pmatrix}7\\6\end{pmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn">15-8.</span>내적공간 $V_2$ 의 벡터 $x^2+x+1$ 의 직교집합
+  $\left\{1,\ x-\tfrac12,\ x^2-x+\tfrac16\right\}$ 에 관한 푸리에 계수를 구하면?
+  <div class="ch2">
+    <div><span class="n">①</span>$\{1,2,3\}$</div><div><span class="n">②</span>$\{3,2,1\}$</div>
+    <div><span class="n">③</span>$\left\{2,1,\tfrac{11}6\right\}$</div>
+    <div><span class="n">④</span>$\left\{\tfrac{11}6,2,1\right\}$</div>
+  </div>
+</div>
+
+<!-- ===================== 정답 시트 ===================== -->
+<div class="answersheet">
+<header class="doc">
+  <div class="ch">선형대수 · 워크북 기출문제</div>
+  <h1><span class="no">정답</span>정답 시트 <span class="en">answer key</span></h1>
+</header>
+
+<div class="chap">제1장 · 일차연립방정식</div>
+<div class="akey">
+  <div><b>1-1.</b> ①</div><div><b>1-2.</b> ①</div><div><b>1-3.</b> ①</div>
+  <div><b>1-4.</b> ②</div><div><b>1-5.</b> ③</div>
+</div>
+
+<div class="chap">제2장 · 행렬과 가우스 소거법</div>
+<div class="akey">
+  <div><b>2-1.</b> ①</div><div><b>2-2.</b> ③</div><div><b>2-3.</b> ①</div>
+  <div><b>2-4.</b> ③</div><div><b>2-5.</b> ②</div>
+</div>
+
+<div class="chap">제3장 · 행렬연산</div>
+<div class="akey">
+  <div><b>3-1.</b> ②</div><div><b>3-2.</b> ②</div><div><b>3-3.</b> ④</div>
+  <div><b>3-4.</b> ④</div><div><b>3-5.</b> ③</div>
+</div>
+
+<div class="chap">제4장 · 역행렬</div>
+<div class="akey">
+  <div><b>4-1.</b> ③</div><div><b>4-2.</b> ②</div><div><b>4-3.</b> ④</div>
+  <div><b>4-4.</b> ①</div><div><b>4-5.</b> ④</div>
+</div>
+
+<div class="chap">제5장 · 행렬식</div>
+<div class="akey">
+  <div><b>5-1.</b> ③</div><div><b>5-2.</b> ②</div><div><b>5-3.</b> ④</div>
+  <div><b>5-4.</b> ③</div><div><b>5-5.</b> ③</div>
+</div>
+
+<div class="chap">제6장 · 크래머 공식과 역행렬</div>
+<div class="akey">
+  <div><b>6-2.</b> ②</div><div><b>6-3.</b> ④</div><div><b>6-4.</b> ③</div>
+  <div><b>6-5.</b> ③</div>
+</div>
+<p><b>6-1.</b> (서술형)
+$$A^{-1}=\frac{\operatorname{adj}A}{|A|}
+  =\frac13\begin{pmatrix}-9&3&6\\6&-2&-3\\0&1&0\end{pmatrix}
+  =\begin{pmatrix}-3&1&2\\2&-\tfrac23&-1\\0&\tfrac13&0\end{pmatrix}$$
+</p>
+
+<div class="chap">제7장 · 평면벡터와 공간벡터</div>
+<div class="akey">
+  <div><b>7-1.</b> ④</div><div><b>7-2.</b> ④</div><div><b>7-3.</b> ①</div>
+  <div><b>7-4.</b> ③</div><div><b>7-5.</b> ②</div>
+</div>
+
+<div class="chap">제8장 · 벡터공간</div>
+<div class="akey">
+  <div><b>8-1.</b> ②</div><div><b>8-2.</b> ③</div><div><b>8-3.</b> ②</div>
+  <div><b>8-4.</b> ②</div><div><b>8-5.</b> ③</div>
+</div>
+
+<div class="chap">제9장 · 기저와 차원</div>
+<div class="akey">
+  <div><b>9-1.</b> ①</div><div><b>9-2.</b> ②</div><div><b>9-3.</b> ②</div>
+  <div><b>9-4.</b> ③</div><div><b>9-5.</b> ③</div>
+</div>
+
+<div class="chap">제10장 · 선형변환</div>
+<div class="akey">
+  <div><b>10-1.</b> ④</div><div><b>10-2.</b> ②</div><div><b>10-3.</b> ①</div>
+  <div><b>10-4.</b> ①</div><div><b>10-5.</b> ③</div><div><b>10-6.</b> ③</div>
+  <div><b>10-7.</b> ④</div><div><b>10-8.</b> ②</div><div><b>10-9.</b> ②</div>
+  <div><b>10-10.</b> ③</div>
+</div>
+
+<div class="chap">제11장 · 선형변환과 행렬</div>
+<div class="akey">
+  <div><b>11-1.</b> ①</div><div><b>11-2.</b> ①</div><div><b>11-3.</b> ④</div>
+  <div><b>11-4.</b> ②</div><div><b>11-5.</b> ④</div>
+</div>
+
+<div class="chap">제12장 · 고유값과 고유벡터</div>
+<div class="akey">
+  <div><b>12-1.</b> ③</div><div><b>12-2.</b> ①</div><div><b>12-3.</b> ③</div>
+</div>
+
+<div class="chap">제13장 · 행렬의 대각화</div>
+<div class="akey">
+  <div><b>13-1.</b> ④</div><div><b>13-2.</b> ②</div><div><b>13-3.</b> ④</div>
+  <div><b>13-4.</b> ②</div><div><b>13-5.</b> ③</div>
+</div>
+
+<div class="chap">제14장 · 내적공간과 직교벡터</div>
+<div class="akey">
+  <div><b>14-1.</b> ④</div><div><b>14-2.</b> ①</div><div><b>14-3.</b> ①</div>
+  <div><b>14-4.</b> ①</div><div><b>14-5.</b> ②</div><div><b>14-6.</b> ③</div>
+</div>
+
+<div class="chap">제15장 · 직교화 과정과 최소자승법</div>
+<div class="akey">
+  <div><b>15-1.</b> ①</div><div><b>15-2.</b> ②</div><div><b>15-3.</b> ②</div>
+  <div><b>15-4.</b> ③</div><div><b>15-5.</b> ③</div><div><b>15-6.</b> ①</div>
+  <div><b>15-7.</b> ④</div><div><b>15-8.</b> ④</div>
+</div>
+
+</div>
+
+<nav class="pager">
+  <a href="index.html">← 목차<small>선형대수 시험지</small></a>
+  <a class="next" href="exam-63.html">다음 →<small>핵심 63문제</small></a>
+</nav>
+
+</body>
+</html>

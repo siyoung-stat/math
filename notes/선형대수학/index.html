@@ -3,123 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>선형대수학 · 정리 노트</title>
+<title>선형대수 · 시험지</title>
 <link rel="stylesheet" href="../../assets/note.css">
 </head>
 <body>
 
 <header class="doc">
   <a class="home" href="../../index.html">⌂ 홈</a>
-  <div class="ch">수학 · 정리 노트</div>
-  <h1>선형대수학 <span class="en">linear algebra</span></h1>
+  <div class="ch">수학 · 시험지</div>
+  <h1>선형대수 <span class="en">linear algebra</span></h1>
 </header>
 
-<p class="lead">제 I 부 — 일차연립방정식과 행렬</p>
+<p class="lead">설명 노트를 걷어내고 <b>문제만</b> 모은 시험지 모음이다.</p>
 
 <div class="chapter">
-  <h3>1장 — 일차연립방정식 <span class="en">systems of linear equations</span></h3>
+  <h3>시험지 <span class="en">exam papers</span></h3>
   <ul class="toc">
-    <li><a href="ch01/1-1_linear-equations.html"><b>1.1</b> 일차연립방정식<small>ax=b · 부정/불능/유일한 해 · n원 연립방정식 · 순서열 해</small></a></li>
-    <li><a href="ch01/1-2_elimination.html"><b>1.2</b> 소거법<small>소거법 · 후진대입 · 세 가지 기본연산 · 해집합의 세 경우</small></a></li>
-    <li><a href="ch01/1-3_applications.html"><b>1.3</b> 일차연립방정식의 응용<small>평형저울 · 광합성 반응식 · 부분 분수 · 회전교차로</small></a></li>
-    <li><a href="ch01/1-exercises.html"><b>연습</b> 연습문제 · 정답·해설<small>교재 연습문제 01~05 + 정답 시트</small></a></li>
+    <li><a href="exam-workbook.html"><b>워크북</b> 기출문제 1~15장 · 정답 시트<small>장별 기출문제 58문항 — 일차연립방정식 · 가우스 소거법 · 행렬연산 · 역행렬 · 행렬식 · 크래머 공식 · 벡터 · 벡터공간 · 기저와 차원 · 선형변환 · 선형변환과 행렬 · 고유값 · 대각화 · 내적공간 · 직교화와 최소자승법</small></a></li>
+    <li><a href="exam-63.html"><b>63문제</b> 기말시험 대비 핵심<small>문영준 튜터 작성 · 1~63번 — 원본 PDF의 행렬·일부 수식이 이미지라 빠진 자리는 표시해 둠</small></a></li>
   </ul>
 </div>
 
-<div class="chapter">
-  <h3>2장 — 행렬과 가우스 소거법 <span class="en">matrices and Gauss elimination</span></h3>
-  <ul class="toc">
-    <li><a href="ch02/2-1_matrix-and-linear-systems.html"><b>2.1</b> 행렬과 일차연립방정식<small>행렬·크기·ij원소 · 계수행렬·상수행렬·확대행렬 · 소거 과정의 행렬 표현</small></a></li>
-    <li><a href="ch02/2-2_elementary-row-operations.html"><b>2.2</b> 기본행연산<small>세 가지 기본행연산 · 행상등 · 역기본행연산 · 행제형·소거행제형</small></a></li>
-    <li><a href="ch02/2-3_gauss-elimination.html"><b>2.3</b> 가우스 소거법<small>알고리즘 2.1 · 선도변수·자유변수 · 후진대입(알고리즘 2.2)</small></a></li>
-    <li><a href="ch02/2-4_gauss-jordan.html"><b>2.4</b> 가우스–조르단 소거법<small>알고리즘 2.3 · 소거행제형으로 해 바로 읽기 · 자유변수가 있는 경우</small></a></li>
-    <li><a href="ch02/2-exercises.html"><b>연습</b> 연습문제 · 정답·해설<small>교재 연습문제 01~07 + 정답 시트</small></a></li>
-  </ul>
-</div>
-
-<div class="chapter">
-  <h3>3장 — 행렬연산 <span class="en">matrix operations</span></h3>
-  <ul class="toc">
-    <li><a href="ch03/3-1_matrix-types.html"><b>3.1</b> 행렬의 정의와 종류<small>(i,j)원소·정방행렬·주대각 · 대각/삼각/스칼라/단위행렬 · 상등</small></a></li>
-    <li><a href="ch03/3-2_matrix-addition.html"><b>3.2</b> 행렬의 합<small>정의 3.4 · 교환·결합법칙 · 영행렬(항등원)·음행렬(역원) · 행렬의 차</small></a></li>
-    <li><a href="ch03/3-3_scalar-multiple.html"><b>3.3</b> 행렬의 스칼라곱<small>정의 3.5 · −A=(−1)A · 분배·결합법칙 · 1A=A</small></a></li>
-    <li><a href="ch03/3-4_matrix-product.html"><b>3.4</b> 행렬의 곱<small>정의 3.6 · [그림 3.1] · 교환법칙 불성립 4경우 · B=A−I · AB=O · 정리 3.3 · 삼각행렬의 곱 · 케일리–해밀턴(2차)</small></a></li>
-    <li><a href="ch03/3-5_transpose.html"><b>3.5</b> 행렬의 전치<small>정의 3.7 · 정리 3.4((AB)ᵀ=BᵀAᵀ) · 대칭행렬 · 비대칭행렬 · A=S+T · 곱이 대칭일 조건</small></a></li>
-    <li><a href="ch03/3-exercises.html"><b>연습</b> 연습문제 · 정답·해설<small>교재 연습문제 01~10 + 정답 시트</small></a></li>
-  </ul>
-</div>
-
-<div class="chapter">
-  <h3>4장 — 역행렬 <span class="en">the inverse of a matrix</span></h3>
-  <ul class="toc">
-    <li><a href="ch04/4-1_nonsingular-and-inverse.html"><b>4.1</b> 정칙행렬과 역행렬<small>정의 4.1 · 정리 4.1(유일성) · 2차 역행렬 공식(D=ad−bc) · 음의 거듭제곱 · 정리 4.2 · 곱의 역행렬(역순)</small></a></li>
-    <li><a href="ch04/4-2_finding-inverse.html"><b>4.2</b> 역행렬을 구하는 방법<small>정의 4.2 기본행렬 · 정리 4.3(EA) · 정리 4.4 · 정리 4.5(동치조건) · 정리 4.6 · 알고리즘 4.1 (A|I)→(I|A⁻¹)</small></a></li>
-    <li><a href="ch04/4-3_linear-systems-and-inverse.html"><b>4.3</b> 일차연립방정식과 역행렬<small>해의 세 갈래 · 정의 4.3 위수 · 정리 4.7 · 정리 4.8(X=A⁻¹B) · 동차연립방정식 정리 4.9 · 정리 4.10 5동치 · 정리 4.11 해의 구조</small></a></li>
-    <li><a href="ch04/4-exercises.html"><b>연습</b> 연습문제 · 연구과제 · 정답·해설<small>교재 연습문제 01~09 + 연구과제 1~7(힐 암호 포함) + 정답 시트</small></a></li>
-  </ul>
-</div>
-
-<div class="chapter">
-  <h3>5장 — 행렬식 <span class="en">determinant</span></h3>
-  <ul class="toc">
-    <li><a href="ch05/5-1_determinant.html"><b>5.1</b> 행렬식<small>소행렬 · 소행렬식 Mᵢⱼ · 여인수 Aᵢⱼ=(−1)^(i+j)Mᵢⱼ · 정의 5.1 여인수 전개 · 정리 5.1 어느 행·열로 전개해도 동일</small></a></li>
-    <li><a href="ch05/5-2_properties.html"><b>5.2</b> 행렬식의 성질<small>정리 5.2 영행 · 정리 5.3 Rᵢⱼ 부호 반전 + 따름정리 · 정리 5.4 Rᵢ(c) · 정리 5.5 Rᵢⱼ(c) 불변 · 기본행연산 대조표 · 정리 5.6 삼각행렬</small></a></li>
-    <li><a href="ch05/5-3_matrix-operations.html"><b>5.3</b> 행렬연산과 행렬식<small>정리 5.7 기본행렬의 행렬식 · 정리 5.8 + 따름정리 · 정리 5.9 정칙 ⇔ |A|≠0 · 정리 5.10 |AB| · 정리 5.11 역행렬·스칼라곱·전치 · |A+B| 반례</small></a></li>
-    <li><a href="ch05/5-exercises.html"><b>연습</b> 연습문제 · 기출문제 · 정답·해설<small>교재 연습문제 01~10 + 기출문제 5문항 + 정답 시트</small></a></li>
-  </ul>
-</div>
-
-<div class="chapter">
-  <h3>6장 — 크래머 공식과 역행렬 <span class="en">Cramer's rule and the inverse matrix</span></h3>
-  <ul class="toc">
-    <li><a href="ch06/6-1_cramers-rule.html"><b>6.1</b> 크래머 공식<small>정리 6.1 xⱼ=|Aⱼ|/|A| · j열을 상수행렬로 대체 · 2차·3차 예 · 미지수 하나만 구하기 · |A|=0 인 경우</small></a></li>
-    <li><a href="ch06/6-2_determinant-and-inverse.html"><b>6.2</b> 행렬식과 역행렬<small>정의 6.1 여인수행렬·수반행렬 adjA · 정리 6.2 A⁻¹=adjA/|A| · A(adjA)=|A|I · 2차 역행렬 공식 유도 · 정리 6.3 X=A⁻¹B · 세 해법 비교</small></a></li>
-    <li><a href="ch06/6-exercises.html"><b>연습</b> 연습문제 · 연구과제 · 워크북 · 정답·해설<small>교재 연습문제 01~10 + 연구과제 1~3 + 워크북 주관식 6문항·객관식 4문항 + 기출문제 1 + 정답 시트</small></a></li>
-  </ul>
-</div>
-
-<div class="chapter">
-  <h3>7장 — 평면벡터와 공간벡터 <span class="en">vectors in the plane and in space</span></h3>
-  <ul class="toc">
-    <li><a href="ch07/7-exercises.html"><b>연습</b> 연습문제 · 연구과제 · 정답·해설<small>교재 연습문제 01~20 + 연구과제 1~6 + 정답 시트</small></a></li>
-  </ul>
-</div>
-
-<div class="chapter">
-  <h3>8장 — 벡터공간 <span class="en">vector spaces</span></h3>
-  <ul class="toc">
-    <li><a href="ch08/8-exercises.html"><b>연습</b> 연습문제 · 연구과제 · 정답·해설<small>본문 예제 8.1~8.4·8.6~8.15(체 F₂·Q(√2) · 벡터공간 · 부분공간 판정) + 교재 01~10 + 연구과제 1(⊕=뺄셈일 때 깨지는 공리) + 정답 시트</small></a></li>
-  </ul>
-</div>
-
-<div class="chapter">
-  <h3>9장 — 기저와 차원 <span class="en">basis and dimension</span></h3>
-  <ul class="toc">
-    <li><a href="ch09/9-exercises.html"><b>연습</b> 연습문제 · 정답·해설<small>일차결합 표현 01~05 · 일차독립/종속 06~09(행렬식 판정) · 기저와 차원 10·12 + 정답 시트</small></a></li>
-  </ul>
-</div>
-
-<div class="chapter">
-  <h3>10장 — 선형변환 <span class="en">linear transformations</span></h3>
-  <ul class="toc">
-    <li><a href="ch10/10-0_how-to-solve.html"><b>풀이법</b> 문제 풀이법<small>유형 1 선형사상 판정(상수항 없는 일차식 한 줄 판정 · 반례 순서 · 02번 한눈에 보기) · 유형 2 대응행렬 구하기(미정계수 4단계 · 표준기저의 상 뽑기 · 계수 옮겨 적기 · 기저를 바꾼 경우) · 유형 3 핵과 단사(성분=0 연립 3단계 · 원점/직선/평면 · 11~15 한눈에 보기)</small></a></li>
-    <li><a href="ch10/10-exercises.html"><b>연습</b> 연습문제 · 정답·해설<small>선형사상 판정 01~02 · 대응행렬 03~08(기저를 바꾼 대각행렬 포함) · 대칭·합성변환 09~10 · 핵과 단사 11~15 · 차원정리 16~20 + 정답 시트</small></a></li>
-  </ul>
-</div>
-
-<div class="chapter">
-  <h3>11장 — 선형변환과 행렬 <span class="en">linear transformations and matrices</span></h3>
-  <ul class="toc">
-    <li><a href="ch11/11-0_how-to-solve.html"><b>풀이법</b> 문제 풀이법<small>(T)ᴬ_ᴮ 표기 읽는 법(위=넣는 기저·아래=쓰는 기저) · 행렬 세우는 3단계 · 좌표 구하기(영벡터는 즉답) · 기저변환행렬과 정리 11.3</small></a></li>
-    <li><a href="ch11/11-exercises.html"><b>연습</b> 연습문제 · 기출문제 · 연구과제 · 정답·해설<small>주관식 괄호넣기 1~10(좌표·기저변환행렬) · 기출 1~5 · 교재 01~05(좌표 구하기 · (T)ᴬ_ᴮ · 기저변환행렬 · 합성변환) · 연구과제 1(T(A)=kA ⇒ kI₄) + 정답 시트</small></a></li>
-  </ul>
-</div>
-
-<div class="chapter">
-  <h3>12장 — 고유값과 고유벡터 <span class="en">eigenvalues and eigenvectors</span></h3>
-  <ul class="toc">
-    <li><a href="ch12/12-exercises.html"><b>연습</b> 연습문제<small>본문 예제 12.1~12.9(고유벡터 확인 · 특성방정식 · 고유공간의 기저) · 교재 01~05 — 문제 전용</small></a></li>
-  </ul>
+<div class="note">
+  <b>정리 이력</b> — 1~12장 설명 노트와 교재 연습문제 페이지는 모두 걷어냈다.
+  필요하면 git 이력에서 되살릴 수 있다.
 </div>
 
 </body>
