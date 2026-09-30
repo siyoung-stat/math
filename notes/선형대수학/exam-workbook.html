@@ -12,7 +12,12 @@
   };
 </script>
 <style>
-  body{ max-width:1000px; }
+  body{ max-width:1180px; }
+  .sheet{ column-count:2; column-gap:38px; column-rule:1px solid #e4e7ea; }
+  .sheet > .chap{ column-span:all; }
+  .lead, .given{ break-inside:avoid; }
+  .sheet .given{ font-size:0.92rem; overflow-x:auto; }
+  @media (max-width:860px){ .sheet{ column-count:1; column-rule:none; } }
   .q{ margin:0 0 18px; line-height:1.7; break-inside:avoid; }
   .qn{ display:inline-block; min-width:2.2em; font-weight:800; color:var(--def); }
   .ch2{ display:grid; grid-template-columns:1fr 1fr; gap:2px 18px; margin:5px 0 0 2.2em; }
@@ -52,6 +57,7 @@
   6장 기출 1(역행렬을 크래머 공식으로)은 서술형이라 선택지가 없다.
 </div>
 
+<div class="sheet">
 <!-- ===================== 1장 ===================== -->
 <div class="chap">제1장 · 일차연립방정식</div>
 
@@ -847,6 +853,8 @@
     <div><span class="n">④</span>$\left\{\tfrac{11}6,2,1\right\}$</div>
   </div>
 </div>
+
+</div><!-- /sheet -->
 
 <!-- ===================== 정답 시트 ===================== -->
 <div class="answersheet">

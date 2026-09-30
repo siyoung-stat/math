@@ -12,7 +12,12 @@
   };
 </script>
 <style>
-  body{ max-width:1000px; }
+  body{ max-width:1180px; }
+  .sheet{ column-count:2; column-gap:38px; column-rule:1px solid #e4e7ea; }
+  .sheet > .chap{ column-span:all; }
+  .lead, .given{ break-inside:avoid; }
+  .sheet .given{ font-size:0.92rem; overflow-x:auto; }
+  @media (max-width:860px){ .sheet{ column-count:1; column-rule:none; } }
   .q{ margin:0 0 18px; line-height:1.7; break-inside:avoid; }
   .qn{ display:inline-block; min-width:2.1em; font-weight:800; color:var(--def); }
   .ch2{ display:grid; grid-template-columns:1fr 1fr; gap:2px 18px; margin:5px 0 0 2.1em; }
@@ -45,6 +50,7 @@
 </header>
 
 <div class="byline">작성 : 문영준 튜터</div>
+<div class="sheet">
 
 <div class="lead">※ (1~3) 다음 이원일차연립방정식들에 관해 물음에 답하라.</div>
 <div class="given">
@@ -624,6 +630,8 @@ $$\begin{cases}x-y\qquad\ =3\\ \quad\ \ y+2z=2\\ \qquad\quad z=1\end{cases}$$
     <div><span class="n">④</span>$(1,2),\ \left(\tfrac12,-\tfrac12\right)$</div>
   </div>
 </div>
+
+</div><!-- /sheet -->
 
 <!-- ===================== 정답 시트 ===================== -->
 <div class="answersheet">
