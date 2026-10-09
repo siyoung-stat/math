@@ -187,7 +187,7 @@
   <li>어떤 함수 $F$ 가 CDF가 되기 위한 <b>필요충분조건 세 가지</b>를 각각 식으로 쓰라.</li></ol></div>
 
 <div class="qrow"><span class="qid">Q32</span>CDF로부터 다음을 각각 식으로 쓰라.
-  <ol><li>구간확률 $P(a<X\le b)$</li>
+  <ol><li>구간확률 $P(a&lt;X\le b)$</li>
   <li>한 점의 확률(점질량) $P(X=x)$</li>
   <li>연속형에서 미분가능한 점의 밀도 $f_X(x)$</li></ol></div>
 
@@ -327,7 +327,7 @@
   <ol><li>PDF를 정의역과 함께 식으로 쓰라.</li>
   <li>평균과 분산을 각각 쓰라.</li>
   <li>표준화 변수 $Z$ 를 식으로 쓰고 그 분포를 쓰라.</li>
-  <li>$P(a<X<b)$ 를 $\Phi$ 로 나타내는 식을 쓰라.</li>
+  <li>$P(a&lt;X<b)$ 를 $\Phi$ 로 나타내는 식을 쓰라.</li>
   <li><span class="mark">★</span>독립인 정규확률변수들의 선형결합에 관한 정리를 식으로 쓰라.</li></ol></div>
 
 <div class="qrow"><span class="qid">Q60</span><span class="mark">★</span>이변량 정규분포에 대하여
@@ -500,7 +500,7 @@
   <li>$p_X(x)\ge0$ (지지집합 위에서), $\displaystyle\sum_{x\in\mathrm{supp}(X)}p_X(x)=1$.</li></ol></div>
 
 <div class="ans"><span class="qid">A30.</span>
-  <ol><li>$P(a<X\le b)=\displaystyle\int_a^b f_X(x)\,dx$ 를 만족하는 비음함수.</li>
+  <ol><li>$P(a&lt;X\le b)=\displaystyle\int_a^b f_X(x)\,dx$ 를 만족하는 비음함수.</li>
   <li>$\displaystyle\int_{-\infty}^{\infty}f_X(x)\,dx=1$.</li>
   <li>$P(X=x)=0$. $f_X(x)$ 는 확률 자체가 아니라, 밀도의 높이로서 작은 구간의 확률을 근사하는 값이다.</li></ol></div>
 
@@ -509,7 +509,7 @@
   <li>① $F$ 는 단조 비감소; ② $F$ 는 우연속; ③ $\lim_{x\to-\infty}F(x)=0,\ \lim_{x\to\infty}F(x)=1$.</li></ol></div>
 
 <div class="ans"><span class="qid">A32.</span>
-  <ol><li>$P(a<X\le b)=F_X(b)-F_X(a)$.</li>
+  <ol><li>$P(a&lt;X\le b)=F_X(b)-F_X(a)$.</li>
   <li>$P(X=x)=F_X(x)-F_X(x^-)$ (CDF의 점프 크기).</li>
   <li>$f_X(x)=F_X'(x)$.</li></ol></div>
 
@@ -531,7 +531,7 @@
 
 <div class="ans"><span class="qid">A36.</span>
   <ol><li>모든 지지집합에서 $p_{X,Y}(x,y)=p_X(x)p_Y(y)$ 또는 $f_{X,Y}(x,y)=f_X(x)f_Y(y)$.</li>
-  <li>결합밀도의 대수식이 $g(x)h(y)$ 로 보이더라도 지지집합이 삼각형 $\{0<y<x<1\}$ 처럼 $x$ 와 $y$ 를 함께 묶으면 독립이 아니다. 독립이면 결합 지지집합도 본질적으로 주변 지지집합의 데카르트 곱이어야 한다.</li></ol></div>
+  <li>결합밀도의 대수식이 $g(x)h(y)$ 로 보이더라도 지지집합이 삼각형 $\{0&lt;y&lt;x<1\}$ 처럼 $x$ 와 $y$ 를 함께 묶으면 독립이 아니다. 독립이면 결합 지지집합도 본질적으로 주변 지지집합의 데카르트 곱이어야 한다.</li></ol></div>
 
 <h2 class="sub">G. 기대값·분산·공분산</h2>
 
@@ -554,7 +554,7 @@
   <li>$\sigma_X\sigma_Y>0$ 일 때 $\mathrm{Corr}(X,Y)=\dfrac{\mathrm{Cov}(X,Y)}{\sigma_X\sigma_Y}$.</li></ol></div>
 
 <div class="ans"><span class="qid">A41.</span>
-  <ol><li>$\mathrm{Var}\!\left(\sum_{i=1}^n X_i\right)=\sum_{i=1}^n\mathrm{Var}(X_i)+2\sum_{i<j}\mathrm{Cov}(X_i,X_j)$.</li>
+  <ol><li>$\mathrm{Var}\!\left(\sum_{i=1}^n X_i\right)=\sum_{i=1}^n\mathrm{Var}(X_i)+2\sum_{i&lt;j}\mathrm{Cov}(X_i,X_j)$.</li>
   <li>서로 독립이면 모든 공분산이 $0$ 이므로 $\mathrm{Var}\!\left(\sum_{i=1}^n X_i\right)=\sum_{i=1}^n\mathrm{Var}(X_i)$.</li></ol></div>
 
 <div class="ans"><span class="qid">A42.</span>
@@ -588,7 +588,7 @@
 
 <div class="ans"><span class="qid">A48.</span>
   <ol><li>평균 $\mu$ 와 유한한 분산 $\sigma^2$ 를 갖는 $X$ 에 대해 $P(|X-\mu|\ge k\sigma)\le\dfrac{1}{k^2},\ k>0$.</li>
-  <li>$P(|X-\mu|<k\sigma)\ge1-\dfrac{1}{k^2}$.</li>
+  <li>$P(|X-\mu|&lt;k\sigma)\ge1-\dfrac{1}{k^2}$.</li>
   <li>Markov 부등식을 비음 확률변수 $(X-\mu)^2$ 와 문턱값 $k^2\sigma^2$ 에 적용한다.</li></ol></div>
 
 <div class="ans"><span class="qid">A49.</span>
@@ -648,8 +648,8 @@
 <h2 class="sub">K. 주요 연속형 확률분포</h2>
 
 <div class="ans"><span class="qid">A57.</span>
-  <ol><li>$f(x)=\dfrac{1}{b-a},\ a<x<b$.</li>
-  <li>$F(x)=\begin{cases}0,&x\le a,\\[2pt] \dfrac{x-a}{b-a},&a<x<b,\\[4pt] 1,&x\ge b.\end{cases}$</li>
+  <ol><li>$f(x)=\dfrac{1}{b-a},\ a&lt;x<b$.</li>
+  <li>$F(x)=\begin{cases}0,&x\le a,\\[2pt] \dfrac{x-a}{b-a},&a&lt;x<b,\\[4pt] 1,&x\ge b.\end{cases}$</li>
   <li>$E(X)=\dfrac{a+b}{2}$, $\mathrm{Var}(X)=\dfrac{(b-a)^2}{12}$.</li></ol></div>
 
 <div class="ans"><span class="qid">A58.</span>
@@ -661,10 +661,10 @@
   <li>연속형 무기억성: $X\sim\text{Exp}(\lambda)$ 이면 $P(X>s+t\mid X>s)=P(X>t)$.</li></ol></div>
 
 <div class="ans"><span class="qid">A59.</span>
-  <ol><li>$f(x)=\dfrac{1}{\sqrt{2\pi}\,\sigma}\exp\!\left(-\dfrac{(x-\mu)^2}{2\sigma^2}\right),\ -\infty<x<\infty$.</li>
+  <ol><li>$f(x)=\dfrac{1}{\sqrt{2\pi}\,\sigma}\exp\!\left(-\dfrac{(x-\mu)^2}{2\sigma^2}\right),\ -\infty&lt;x<\infty$.</li>
   <li>$E(X)=\mu$, $\mathrm{Var}(X)=\sigma^2$.</li>
   <li>$Z=\dfrac{X-\mu}{\sigma}\sim N(0,1)$.</li>
-  <li>$P(a<X<b)=\Phi\!\left(\dfrac{b-\mu}{\sigma}\right)-\Phi\!\left(\dfrac{a-\mu}{\sigma}\right)$.</li>
+  <li>$P(a&lt;X<b)=\Phi\!\left(\dfrac{b-\mu}{\sigma}\right)-\Phi\!\left(\dfrac{a-\mu}{\sigma}\right)$.</li>
   <li>서로 독립인 $X_i\sim N(\mu_i,\sigma_i^2)$ 에 대해 $\displaystyle\sum_{i=1}^n a_iX_i\sim N\!\left(\sum_{i=1}^n a_i\mu_i,\ \sum_{i=1}^n a_i^2\sigma_i^2\right)$.</li></ol></div>
 
 <div class="ans"><span class="qid">A60.</span>
@@ -683,7 +683,7 @@
 
 <div class="ans"><span class="qid">A62.</span>
   <ol><li>$B(\alpha,\beta)=\displaystyle\int_0^1 x^{\alpha-1}(1-x)^{\beta-1}dx=\dfrac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$.</li>
-  <li>$f(x)=\dfrac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)},\ 0<x<1$.</li>
+  <li>$f(x)=\dfrac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)},\ 0&lt;x<1$.</li>
   <li>$E(X)=\dfrac{\alpha}{\alpha+\beta}$, $\mathrm{Var}(X)=\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$.</li>
   <li>확률·비율·성공확률처럼 $(0,1)$ 범위의 양을 모델링하는 데 적합하다. $\alpha=\beta=1$ 이면 $U(0,1)$.</li></ol></div>
 
@@ -691,11 +691,11 @@
 <table>
 <thead><tr><th>분포</th><th>지지집합</th><th>PDF</th><th>평균</th><th>분산</th></tr></thead>
 <tbody>
-<tr><td>Uniform$(a,b)$</td><td>$a<x<b$</td><td>$1/(b-a)$</td><td>$(a+b)/2$</td><td>$(b-a)^2/12$</td></tr>
+<tr><td>Uniform$(a,b)$</td><td>$a&lt;x<b$</td><td>$1/(b-a)$</td><td>$(a+b)/2$</td><td>$(b-a)^2/12$</td></tr>
 <tr><td>Exponential$(\lambda)$</td><td>$x>0$</td><td>$\lambda e^{-\lambda x}$</td><td>$1/\lambda$</td><td>$1/\lambda^2$</td></tr>
 <tr><td>Normal$(\mu,\sigma^2)$</td><td>$\mathbb R$</td><td>$\dfrac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/(2\sigma^2)}$</td><td>$\mu$</td><td>$\sigma^2$</td></tr>
 <tr><td>Gamma$(\alpha,\beta)$</td><td>$x>0$</td><td>$\dfrac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}$</td><td>$\alpha/\beta$</td><td>$\alpha/\beta^2$</td></tr>
-<tr><td>Beta$(\alpha,\beta)$</td><td>$0<x<1$</td><td>$\dfrac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$</td><td>$\dfrac{\alpha}{\alpha+\beta}$</td><td>$\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$</td></tr>
+<tr><td>Beta$(\alpha,\beta)$</td><td>$0&lt;x<1$</td><td>$\dfrac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$</td><td>$\dfrac{\alpha}{\alpha+\beta}$</td><td>$\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$</td></tr>
 </tbody></table></div>
 
 </div>
