@@ -14,7 +14,8 @@
 <style>
   body{ max-width:1180px; }
   .sheet{ column-count:2; column-gap:38px; column-rule:1px solid #e4e7ea; }
-  .sheet > .chap{ column-span:all; }
+  .sheet > *:first-child{ margin-top:0; }
+  .sheet{ margin-bottom:6px; }
   .given{ break-inside:avoid; }
   .sheet .given{ font-size:0.92rem; overflow-x:auto; }
   .miss{ margin:6px 0 0 2.6em; padding:6px 10px; border-left:3px solid #d64541;
@@ -58,9 +59,9 @@
   5장 함수의 미분(01~19) · 6장 함수의 적분(01~20) · 7장 벡터와 행렬(01~20). 총 <b>133문항</b>.
 </div>
 
-<div class="sheet">
 <!-- ===================== 1장 ===================== -->
 <div class="chap">제1장 · 집합과 수의 체계</div>
+<div class="sheet">
 
 <div class="q"><span class="qn">1-01.</span>다음 중 집합의 표현 방법이 <b>아닌</b> 것을 모두 고르시오.
   <div class="ch2">
@@ -218,7 +219,10 @@
 </div>
 
 <!-- ===================== 2장 ===================== -->
+</div><!-- /sheet -->
+
 <div class="chap">제2장 · 함수와 그래프</div>
+<div class="sheet">
 
 <div class="q"><span class="qn">2-01.</span>함수의 정의로 옳은 것은?
   <div class="ch1">
@@ -418,7 +422,10 @@
 </div>
 
 <!-- ===================== 3장 ===================== -->
+</div><!-- /sheet -->
+
 <div class="chap">제3장 · 수열의 극한과 무한급수</div>
+<div class="sheet">
 
 <div class="q"><span class="qn">3-01.</span>다음 수열의 극한값은?
   $$\lim_{n\to\infty}\frac{3n+1}{2n-1}$$
@@ -565,7 +572,10 @@
 </div>
 
 <!-- ===================== 4장 ===================== -->
+</div><!-- /sheet -->
+
 <div class="chap">제4장 · 함수의 극한과 연속</div>
+<div class="sheet">
 
 <div class="q"><span class="qn">4-01.</span>다음 함수의 극한값은?
   <div class="given">$$\lim_{x\to0}\frac{\sqrt{1+x}-1}{x}$$</div>
@@ -662,7 +672,10 @@
 </div>
 
 <!-- ===================== 5장 ===================== -->
+</div><!-- /sheet -->
+
 <div class="chap">제5장 · 함수의 미분</div>
+<div class="sheet">
 
 <div class="q"><span class="qn">5-01.</span>함수 $f(x)=x^3-3x^2+2$ 의 도함수는?
   <div class="ch2">
@@ -804,7 +817,10 @@
 </div>
 
 <!-- ===================== 6장 ===================== -->
+</div><!-- /sheet -->
+
 <div class="chap">제6장 · 함수의 적분</div>
+<div class="sheet">
 
 <div class="q"><span class="qn">6-01.</span>다음 부정적분의 값은?
   <div class="given">$$\int\frac{2x}{x^2+1}\,dx$$</div>
@@ -966,7 +982,10 @@
 </div>
 
 <!-- ===================== 7장 ===================== -->
+</div><!-- /sheet -->
+
 <div class="chap">제7장 · 벡터와 행렬</div>
+<div class="sheet">
 
 <div class="q"><span class="qn">7-01.</span>두 벡터 $\mathbf a=(1,-2,2)$ 와 $\mathbf b=(2,1,-1)$ 의 합 $\mathbf a+\mathbf b$ 는?
   <div class="ch2">
