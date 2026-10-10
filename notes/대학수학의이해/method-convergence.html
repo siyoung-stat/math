@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수렴·발산 판정법 요약</title>
+<link rel="stylesheet" href="../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  body{ max-width:1000px; }
+  table.m{ width:100%; border-collapse:collapse; margin:10px 0 18px; font-size:0.95rem; }
+  table.m th, table.m td{ border:1px solid var(--line); padding:8px 10px; vertical-align:top; }
+  table.m th{ background:#f4f6f8; text-align:left; font-size:0.9rem; }
+  table.m td:first-child{ width:34%; }
+  .step{ counter-reset:none; }
+  ol.order > li{ margin:0 0 10px; }
+  .tag{ display:inline-block; background:var(--def-bg); color:var(--def); border-radius:4px;
+        padding:1px 6px; font-size:0.78rem; font-weight:700; margin-left:5px; }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../index.html">⌂ 홈</a>
+  <div class="ch">대학수학의 이해 · 풀이법</div>
+  <h1>수렴·발산 판정법 <span class="en">convergence tests</span></h1>
+</header>
+
+<p class="lead">교재와 워크북의 수렴·발산 문제에서 실제로 쓰인 방법만 모았다. 이론 설명이 아니라 <b>어떤 꼴이면 어떤 방법</b>인지의 표다.</p>
+
+<div class="chapter">
+<h3>1. 수열의 극한 <span class="en">limit of a sequence</span></h3>
+
+<p>꼴을 보고 바로 고른다.</p>
+
+<table class="m">
+  <tr><th>보이는 꼴</th><th>방법과 예</th></tr>
+  <tr>
+    <td><b>근호끼리의 차</b> ($\infty-\infty$)</td>
+    <td><b>켤레식을 분자·분모에 곱한다.</b> 차가 곱으로 바뀌면서 근호가 소거된다.
+      <br>$\sqrt{9n^{2}+6n}-3n=\dfrac{6n}{\sqrt{9n^{2}+6n}+3n}\to 1$
+      <br>$\sqrt{n^{2}+2n}-n=\dfrac{2n}{\sqrt{n^{2}+2n}+n}\to 1$</td>
+  </tr>
+  <tr>
+    <td><b>다항식 / 다항식</b> ($\infty/\infty$)</td>
+    <td><b>최고차항으로 나눈다.</b> 남는 건 최고차 계수의 비.
+      <br>$\dfrac{2n-1}{n}\to 2$, &nbsp; $\dfrac{\sqrt{4n^{2}+1}}{2n}\to 1$</td>
+  </tr>
+  <tr>
+    <td><b>지수끼리</b> $\dfrac{a^{n}}{a^{n}+b^{n}}$</td>
+    <td><b>가장 큰 밑으로 나눈다.</b> 작은 쪽 비율이 $0$ 으로 죽는다.
+      <br>$\dfrac{5^{n}}{5^{n}+4^{n}}=\dfrac{1}{1+(4/5)^{n}}\to 1$</td>
+  </tr>
+  <tr>
+    <td><b>$\sin n$, $\cos n$ 이 섞임</b></td>
+    <td><b>조임정리</b><span class="tag">squeeze</span> — 유계인 부분을 $\pm1$ 로 끼운다.
+      <br>$-\dfrac1n\le\dfrac{\sin n}{n}\le\dfrac1n$ 이고 양 끝이 $0$ 이므로 $\dfrac{\sin n}{n}\to 0$</td>
+  </tr>
+  <tr>
+    <td><b>$\left(1+\dfrac{a}{n}\right)^{n}$</b></td>
+    <td><b>$e$ 꼴로 치환한다.</b> $\dfrac{a}{n}=\dfrac1k$ 로 두면
+      $\left(1+\dfrac2n\right)^{n}=\left[\left(1+\dfrac1k\right)^{k}\right]^{2}=e^{2}$</td>
+  </tr>
+  <tr>
+    <td><b>극한값을 못 구하겠다</b></td>
+    <td><b>단조수렴정리</b> — <b>단조이고 유계면 수렴한다</b>. 값은 몰라도 수렴은 보장된다.
+      $\left(1+\frac1n\right)^{n}$ 의 수렴을 이렇게 보인다.
+      <br><span style="color:#d64541">단조만으로도, 유계만으로도 안 된다. 둘 다 필요하다.</span></td>
+  </tr>
+</table>
+</div>
+
+<div class="chapter">
+<h3>2. 무한급수 판정 <span class="en">series tests</span></h3>
+
+<p>이 순서로 걸러 내려가면 교재·워크북 문제는 전부 잡힌다.</p>
+
+<ol class="order">
+  <li><b>항 판정부터</b> — $a_{n}\not\to 0$ 이면 <b>즉시 발산</b>. 계산할 것도 없다.
+    <br>$\sum\dfrac{k^{2}}{k^{2}+1}$ 은 $a_{n}\to1\ne0$ 이라 발산.
+    <div class="note" style="margin:8px 0 0">
+      <b>역은 성립하지 않는다.</b> $a_{n}\to0$ 은 수렴의 <b>필요조건일 뿐</b>이다.
+      조화급수 $\sum\frac1k$ 가 반례 — 일반항은 $0$ 으로 가는데 급수는 발산한다.
+    </div>
+  </li>
+
+  <li><b>등비급수인가?</b> $\sum ar^{k-1}$ 이면 $|r|&lt;1$ 일 때만 수렴하고 합은 $\dfrac{a}{1-r}$.
+    <br>$a_{n}=\left(\frac35\right)^{n-1}$ → 합 $=\dfrac{1}{1-3/5}=\dfrac52$</li>
+
+  <li><b>$p$-급수인가?</b> $\sum\dfrac{1}{k^{p}}$ 는 <b>$p>1$ 수렴, $p\le1$ 발산</b>.
+    <br>$\sum\frac{1}{4k}$ 는 $p=1$ 이라 발산, $\sum\frac{1}{k^{7/3}}$ 은 수렴.
+    <br><b>쪼개서 쓰기</b>: $\dfrac{2k+1}{k^{4}}=\dfrac{2}{k^{3}}+\dfrac{1}{k^{4}}$ — 둘 다 $p>1$ 이라 수렴.</li>
+
+  <li><b>비율판정법</b><span class="tag">ratio</span> — $c=\lim\dfrac{a_{n+1}}{a_{n}}$ 를 본다.
+    $c&lt;1$ 수렴, $c>1$ 발산, <b>$c=1$ 이면 판정 불가</b>.
+    <br>지수·팩토리얼처럼 <b>비가 깔끔하게 떨어지는 꼴</b>에 쓴다.
+    <br>$\sum\dfrac{7k^{2}}{4^{k}}$ → $c=\left(\frac{n+1}{n}\right)^{2}\cdot\frac14\to\frac14&lt;1$ 수렴
+    <br>$\sum\dfrac{4k}{3^{k}}$ → $c=\dfrac13&lt;1$ 수렴</li>
+
+  <li><b>비교판정법</b><span class="tag">comparison</span> — <b>큰 게 수렴하면 작은 것도 수렴</b>,
+    <b>작은 게 발산하면 큰 것도 발산</b>. 방향을 거꾸로 쓰면 안 된다.
+    <br>$\dfrac{3^{k}}{5^{k}+k}\le\left(\dfrac35\right)^{k}$ 이고 우변이 등비급수로 수렴 → 수렴
+    <br>$\sum\frac{1}{k^{2}}$ 은 $1+\frac12+\frac14+\cdots=2$ 로 묶어 비교해 수렴,
+    $\sum\frac1k$ 은 $1+\frac12+\frac12+\cdots$ 로 묶어 비교해 발산.</li>
+
+  <li><b>교대급수 판정</b><span class="tag">alternating</span> —
+    $\sum(-1)^{k-1}a_{k}$ 는 <b>$a_{n}$ 이 단조감소하고 $a_{n}\to0$</b> 이면 수렴.
+    <br>$1-\frac{1}{2^{2}}+\frac{1}{3^{2}}-\cdots$ 는 $\frac{1}{n^{2}}$ 이 단조감소·$\to0$ 이라 수렴.</li>
+
+  <li><b>절대수렴인지 조건수렴인지</b> — 절댓값 급수 $\sum|a_{k}|$ 를 따로 본다.
+    <table class="m" style="margin-top:8px">
+      <tr><th>$\sum|a_k|$</th><th>$\sum a_k$</th><th>결론</th></tr>
+      <tr><td>수렴</td><td>(자동으로 수렴)</td><td><b>절대수렴</b></td></tr>
+      <tr><td>발산</td><td>수렴</td><td><b>조건수렴</b></td></tr>
+    </table>
+    $\sum\dfrac{(-1)^{k}}{\sqrt k}$ — 교대급수로 수렴하지만 $\sum\frac{1}{\sqrt k}$ 은 $p=\frac12$ 이라 발산 → <b>조건수렴</b>
+    <br>$\sum\dfrac{(-1)^{k}}{k^{p}}$ 가 절대수렴할 조건은 $\sum\frac{1}{k^{p}}$ 의 수렴조건과 같은 $\mathbf{p>1}$</li>
+</ol>
+</div>
+
+<div class="chapter">
+<h3>3. 특이적분 <span class="en">improper integral</span></h3>
+
+<p><b>끝점을 극한으로 바꿔 계산한다.</b> 값이 유한하면 수렴, $\pm\infty$ 면 발산. 판정법이 따로 없고 그냥 계산이다.</p>
+
+<table class="m">
+  <tr><th>적분</th><th>계산</th></tr>
+  <tr><td>$\displaystyle\int_{1}^{\infty}\frac{1}{x^{2}}dx$</td>
+      <td>$\lim\limits_{t\to\infty}\left[-\frac1x\right]_{1}^{t}=1$ &nbsp; <b>수렴</b></td></tr>
+  <tr><td>$\displaystyle\int_{1}^{\infty}\frac{\ln x}{x^{2}}dx$</td>
+      <td>부분적분 → $1$ &nbsp; <b>수렴</b></td></tr>
+  <tr><td>$\displaystyle\int_{e}^{\infty}\frac{1}{x\ln x}dx$</td>
+      <td>$[\ln(\ln x)]_{e}^{t}\to\infty$ &nbsp; <b>발산</b> — 분모가 커 보여도 발산한다</td></tr>
+  <tr><td>$\displaystyle\int_{0}^{\infty}xe^{-2x}dx$</td>
+      <td>부분적분 → $\dfrac14$ &nbsp; <b>수렴</b></td></tr>
+  <tr><td>$\displaystyle\int_{0}^{1}\ln x\,dx$</td>
+      <td>$\lim\limits_{t\to0^{+}}[x\ln x-x]_{t}^{1}=-1$ &nbsp; <b>수렴</b>
+        <br>($x\ln x\to0$ 은 로피탈로 먼저 확인)</td></tr>
+</table>
+</div>
+
+<div class="chapter">
+<h3>4. 진폭 · 주기 · 위상각 <span class="en">amplitude, period, phase</span></h3>
+
+<p>기준 꼴로 맞춰 놓고 읽으면 된다.</p>
+
+<div class="box def">
+$$y=A\cos(\omega x-\varphi)+d \qquad\text{또는}\qquad y=A\sin(\omega x-\varphi)+d$$
+</div>
+
+<table class="m">
+  <tr><th>이름</th><th>값과 뜻</th></tr>
+  <tr><td><b>진폭</b> <span class="en">amplitude</span></td>
+      <td>$|A|$ — 중심선에서 위아래로 흔들리는 <b>폭</b>. $\dfrac{\text{최댓값}-\text{최솟값}}{2}$ 와 같다.</td></tr>
+  <tr><td><b>주기</b> <span class="en">period</span></td>
+      <td>$\dfrac{2\pi}{|\omega|}$ — 그래프가 <b>한 번 반복되는 데 걸리는 $x$ 의 길이</b>.
+        $\omega$ 가 클수록 촘촘하다. <br><span style="color:#d64541">$\tan$ 은 $\dfrac{\pi}{|\omega|}$ 로 다르다.</span></td></tr>
+  <tr><td><b>위상각</b> <span class="en">phase</span></td>
+      <td>$\varphi$ — <b>괄호 안의 상수항</b> 그 자체. 그래프를 오른쪽으로
+        $\dfrac{\varphi}{\omega}$ 만큼 민 것과 같다($=$ 위상이동).</td></tr>
+</table>
+
+<div class="note">
+  <b>위상각과 위상이동은 다르다.</b> $\cos\!\left(3x-\frac{\pi}{4}\right)$ 에서
+  <b>위상각은 $\frac{\pi}{4}$</b> 지만, 실제로 그래프가 밀린 거리는 $3$ 으로 나눈
+  $\frac{\pi}{12}$ 다. 문제가 묻는 게 어느 쪽인지 보고 답할 것.
+</div>
+
+<table class="m">
+  <tr><th>식</th><th>진폭 / 주기 / 위상각</th></tr>
+  <tr><td>$y=\cos\!\left(3x-\dfrac{\pi}{4}\right)$</td>
+      <td>$1$ &nbsp;/&nbsp; $\dfrac{2\pi}{3}$ &nbsp;/&nbsp; $\dfrac{\pi}{4}$</td></tr>
+  <tr><td>$y=3\sin(2x)$</td>
+      <td>$3$ &nbsp;/&nbsp; $\pi$ &nbsp;/&nbsp; $0$</td></tr>
+  <tr><td>$y=2\cos\!\left(x-\dfrac{\pi}{3}\right)$</td>
+      <td>$2$ &nbsp;/&nbsp; $2\pi$ &nbsp;/&nbsp; $\dfrac{\pi}{3}$</td></tr>
+  <tr><td>$y=-2\tan x$</td>
+      <td>진폭 없음(무한히 커진다) &nbsp;/&nbsp; $\pi$ &nbsp;/&nbsp; $0$</td></tr>
+</table>
+</div>
+
+<nav class="pager">
+  <a href="index.html">← 목차<small>대학수학의 이해</small></a>
+  <a href="exam-textbook.html">교재 시험지 →<small>3장 수열의 극한과 무한급수</small></a>
+</nav>
+
+</body>
+</html>

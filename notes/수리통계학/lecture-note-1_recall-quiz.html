@@ -327,7 +327,7 @@
   <ol><li>PDF를 정의역과 함께 식으로 쓰라.</li>
   <li>평균과 분산을 각각 쓰라.</li>
   <li>표준화 변수 $Z$ 를 식으로 쓰고 그 분포를 쓰라.</li>
-  <li>$P(a&lt;X<b)$ 를 $\Phi$ 로 나타내는 식을 쓰라.</li>
+  <li>$P(a&lt;X&lt;b)$ 를 $\Phi$ 로 나타내는 식을 쓰라.</li>
   <li><span class="mark">★</span>독립인 정규확률변수들의 선형결합에 관한 정리를 식으로 쓰라.</li></ol></div>
 
 <div class="qrow"><span class="qid">Q60</span><span class="mark">★</span>이변량 정규분포에 대하여
@@ -648,8 +648,8 @@
 <h2 class="sub">K. 주요 연속형 확률분포</h2>
 
 <div class="ans"><span class="qid">A57.</span>
-  <ol><li>$f(x)=\dfrac{1}{b-a},\ a&lt;x<b$.</li>
-  <li>$F(x)=\begin{cases}0,&x\le a,\\[2pt] \dfrac{x-a}{b-a},&a&lt;x<b,\\[4pt] 1,&x\ge b.\end{cases}$</li>
+  <ol><li>$f(x)=\dfrac{1}{b-a},\ a&lt;x&lt;b$.</li>
+  <li>$F(x)=\begin{cases}0,&x\le a,\\[2pt] \dfrac{x-a}{b-a},&a&lt;x&lt;b,\\[4pt] 1,&x\ge b.\end{cases}$</li>
   <li>$E(X)=\dfrac{a+b}{2}$, $\mathrm{Var}(X)=\dfrac{(b-a)^2}{12}$.</li></ol></div>
 
 <div class="ans"><span class="qid">A58.</span>
@@ -664,7 +664,7 @@
   <ol><li>$f(x)=\dfrac{1}{\sqrt{2\pi}\,\sigma}\exp\!\left(-\dfrac{(x-\mu)^2}{2\sigma^2}\right),\ -\infty&lt;x<\infty$.</li>
   <li>$E(X)=\mu$, $\mathrm{Var}(X)=\sigma^2$.</li>
   <li>$Z=\dfrac{X-\mu}{\sigma}\sim N(0,1)$.</li>
-  <li>$P(a&lt;X<b)=\Phi\!\left(\dfrac{b-\mu}{\sigma}\right)-\Phi\!\left(\dfrac{a-\mu}{\sigma}\right)$.</li>
+  <li>$P(a&lt;X&lt;b)=\Phi\!\left(\dfrac{b-\mu}{\sigma}\right)-\Phi\!\left(\dfrac{a-\mu}{\sigma}\right)$.</li>
   <li>서로 독립인 $X_i\sim N(\mu_i,\sigma_i^2)$ 에 대해 $\displaystyle\sum_{i=1}^n a_iX_i\sim N\!\left(\sum_{i=1}^n a_i\mu_i,\ \sum_{i=1}^n a_i^2\sigma_i^2\right)$.</li></ol></div>
 
 <div class="ans"><span class="qid">A60.</span>
@@ -691,7 +691,7 @@
 <table>
 <thead><tr><th>분포</th><th>지지집합</th><th>PDF</th><th>평균</th><th>분산</th></tr></thead>
 <tbody>
-<tr><td>Uniform$(a,b)$</td><td>$a&lt;x<b$</td><td>$1/(b-a)$</td><td>$(a+b)/2$</td><td>$(b-a)^2/12$</td></tr>
+<tr><td>Uniform$(a,b)$</td><td>$a&lt;x&lt;b$</td><td>$1/(b-a)$</td><td>$(a+b)/2$</td><td>$(b-a)^2/12$</td></tr>
 <tr><td>Exponential$(\lambda)$</td><td>$x>0$</td><td>$\lambda e^{-\lambda x}$</td><td>$1/\lambda$</td><td>$1/\lambda^2$</td></tr>
 <tr><td>Normal$(\mu,\sigma^2)$</td><td>$\mathbb R$</td><td>$\dfrac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/(2\sigma^2)}$</td><td>$\mu$</td><td>$\sigma^2$</td></tr>
 <tr><td>Gamma$(\alpha,\beta)$</td><td>$x>0$</td><td>$\dfrac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}$</td><td>$\alpha/\beta$</td><td>$\alpha/\beta^2$</td></tr>
