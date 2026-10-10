@@ -17,6 +17,8 @@
   table.m th, table.m td{ border:1px solid var(--line); padding:8px 10px; vertical-align:top; }
   table.m th{ background:#f4f6f8; text-align:left; font-size:0.9rem; }
   table.m td:first-child{ width:34%; }
+  table.m.t3 td:first-child{ width:19%; }
+  table.m.t3 td:nth-child(2){ width:26%; }
   .step{ counter-reset:none; }
   ol.order > li{ margin:0 0 10px; }
   .tag{ display:inline-block; background:var(--def-bg); color:var(--def); border-radius:4px;
@@ -79,49 +81,77 @@
 <div class="chapter">
 <h3>2. 무한급수 판정 <span class="en">series tests</span></h3>
 
-<p>이 순서로 걸러 내려가면 교재·워크북 문제는 전부 잡힌다.</p>
+<p>위에서부터 차례로 걸러 내려가면 교재·워크북 문제는 전부 잡힌다.</p>
 
-<ol class="order">
-  <li><b>항 판정부터</b> — $a_{n}\not\to 0$ 이면 <b>즉시 발산</b>. 계산할 것도 없다.
-    <br>$\sum\dfrac{k^{2}}{k^{2}+1}$ 은 $a_{n}\to1\ne0$ 이라 발산.
-    <div class="note" style="margin:8px 0 0">
-      <b>역은 성립하지 않는다.</b> $a_{n}\to0$ 은 수렴의 <b>필요조건일 뿐</b>이다.
-      조화급수 $\sum\frac1k$ 가 반례 — 일반항은 $0$ 으로 가는데 급수는 발산한다.
-    </div>
-  </li>
+<table class="m t3">
+  <tr><th>판정법</th><th>이런 꼴일 때</th><th>기준과 예</th></tr>
 
-  <li><b>등비급수인가?</b> $\sum ar^{k-1}$ 이면 $|r|&lt;1$ 일 때만 수렴하고 합은 $\dfrac{a}{1-r}$.
-    <br>$a_{n}=\left(\frac35\right)^{n-1}$ → 합 $=\dfrac{1}{1-3/5}=\dfrac52$</li>
+  <tr>
+    <td><b>① 항 판정</b><br><span class="en">n-th term test</span></td>
+    <td>무조건 <b>제일 먼저</b>.<br>일반항의 극한만 보면 된다.</td>
+    <td>$a_{n}\not\to0$ 이면 <b>즉시 발산</b>. 계산할 것도 없다.
+      <br>$\sum\dfrac{k^{2}}{k^{2}+1}$ → $a_{n}\to1\ne0$ 이라 <b>발산</b>
+      <br><span style="color:#d64541">$a_{n}\to0$ 이어도 수렴은 보장되지 않는다. 다음 단계로.</span></td>
+  </tr>
 
-  <li><b>$p$-급수인가?</b> $\sum\dfrac{1}{k^{p}}$ 는 <b>$p>1$ 수렴, $p\le1$ 발산</b>.
-    <br>$\sum\frac{1}{4k}$ 는 $p=1$ 이라 발산, $\sum\frac{1}{k^{7/3}}$ 은 수렴.
-    <br><b>쪼개서 쓰기</b>: $\dfrac{2k+1}{k^{4}}=\dfrac{2}{k^{3}}+\dfrac{1}{k^{4}}$ — 둘 다 $p>1$ 이라 수렴.</li>
+  <tr>
+    <td><b>② 등비급수</b><br><span class="en">geometric</span></td>
+    <td>$\sum ar^{k-1}$ — 항끼리의 <b>비가 일정</b></td>
+    <td>$|r|&lt;1$ 수렴, 합 $=\dfrac{a}{1-r}$. &nbsp; $|r|\ge1$ 발산.
+      <br>$a_{n}=\left(\dfrac35\right)^{n-1}$ → 합 $=\dfrac{1}{1-3/5}=\dfrac52$</td>
+  </tr>
 
-  <li><b>비율판정법</b><span class="tag">ratio</span> — $c=\lim\dfrac{a_{n+1}}{a_{n}}$ 를 본다.
-    $c&lt;1$ 수렴, $c>1$ 발산, <b>$c=1$ 이면 판정 불가</b>.
-    <br>지수·팩토리얼처럼 <b>비가 깔끔하게 떨어지는 꼴</b>에 쓴다.
-    <br>$\sum\dfrac{7k^{2}}{4^{k}}$ → $c=\left(\frac{n+1}{n}\right)^{2}\cdot\frac14\to\frac14&lt;1$ 수렴
-    <br>$\sum\dfrac{4k}{3^{k}}$ → $c=\dfrac13&lt;1$ 수렴</li>
+  <tr>
+    <td><b>③ $p$-급수</b><br><span class="en">p-series</span></td>
+    <td>$\sum\dfrac{1}{k^{p}}$ — 분모가 $k$ 의 거듭제곱</td>
+    <td><b>$p>1$ 수렴, $p\le1$ 발산.</b>
+      <br>$\sum\dfrac{1}{4k}$ 는 $p=1$ → 발산 &nbsp;·&nbsp; $\sum\dfrac{1}{k^{7/3}}$ → 수렴
+      <br><b>쪼개서 쓰기</b> — $\dfrac{2k+1}{k^{4}}=\dfrac{2}{k^{3}}+\dfrac{1}{k^{4}}$, 둘 다 $p>1$ → 수렴</td>
+  </tr>
 
-  <li><b>비교판정법</b><span class="tag">comparison</span> — <b>큰 게 수렴하면 작은 것도 수렴</b>,
-    <b>작은 게 발산하면 큰 것도 발산</b>. 방향을 거꾸로 쓰면 안 된다.
-    <br>$\dfrac{3^{k}}{5^{k}+k}\le\left(\dfrac35\right)^{k}$ 이고 우변이 등비급수로 수렴 → 수렴
-    <br>$\sum\frac{1}{k^{2}}$ 은 $1+\frac12+\frac14+\cdots=2$ 로 묶어 비교해 수렴,
-    $\sum\frac1k$ 은 $1+\frac12+\frac12+\cdots$ 로 묶어 비교해 발산.</li>
+  <tr>
+    <td><b>④ 비율판정법</b><br><span class="en">ratio test</span></td>
+    <td>지수 $r^{k}$, 팩토리얼처럼 <b>이웃 항의 비가 깔끔하게 떨어지는</b> 꼴</td>
+    <td>$c=\lim\dfrac{a_{n+1}}{a_{n}}$ 에 대해
+      <br>$c&lt;1$ <b>수렴</b> &nbsp;/&nbsp; $c>1$ <b>발산</b> &nbsp;/&nbsp;
+      <span style="color:#d64541">$c=1$ <b>판정 불가</b></span>
+      <br>$\sum\dfrac{7k^{2}}{4^{k}}$ → $c=\left(\dfrac{n+1}{n}\right)^{2}\!\cdot\dfrac14\to\dfrac14$ 수렴
+      <br>$\sum\dfrac{4k}{3^{k}}$ → $c=\dfrac13$ 수렴</td>
+  </tr>
 
-  <li><b>교대급수 판정</b><span class="tag">alternating</span> —
-    $\sum(-1)^{k-1}a_{k}$ 는 <b>$a_{n}$ 이 단조감소하고 $a_{n}\to0$</b> 이면 수렴.
-    <br>$1-\frac{1}{2^{2}}+\frac{1}{3^{2}}-\cdots$ 는 $\frac{1}{n^{2}}$ 이 단조감소·$\to0$ 이라 수렴.</li>
+  <tr>
+    <td><b>⑤ 비교판정법</b><br><span class="en">comparison</span></td>
+    <td>위 넷으로 안 되는데 <b>부등식으로 묶을 만한</b> 더 쉬운 급수가 보일 때</td>
+    <td><b>큰 게 수렴 ⟹ 작은 것도 수렴</b><br><b>작은 게 발산 ⟹ 큰 것도 발산</b>
+      <br><span style="color:#d64541">방향을 거꾸로 쓰면 안 된다.</span>
+      <br>$\dfrac{3^{k}}{5^{k}+k}\le\left(\dfrac35\right)^{k}$, 우변이 등비로 수렴 → <b>수렴</b>
+      <br>$\sum\dfrac{1}{k^{2}}\le1+\dfrac12+\dfrac14+\cdots=2$ → 수렴
+      <br>$\sum\dfrac1k\ge1+\dfrac12+\dfrac12+\cdots$ → 발산</td>
+  </tr>
 
-  <li><b>절대수렴인지 조건수렴인지</b> — 절댓값 급수 $\sum|a_{k}|$ 를 따로 본다.
-    <table class="m" style="margin-top:8px">
-      <tr><th>$\sum|a_k|$</th><th>$\sum a_k$</th><th>결론</th></tr>
-      <tr><td>수렴</td><td>(자동으로 수렴)</td><td><b>절대수렴</b></td></tr>
-      <tr><td>발산</td><td>수렴</td><td><b>조건수렴</b></td></tr>
-    </table>
-    $\sum\dfrac{(-1)^{k}}{\sqrt k}$ — 교대급수로 수렴하지만 $\sum\frac{1}{\sqrt k}$ 은 $p=\frac12$ 이라 발산 → <b>조건수렴</b>
-    <br>$\sum\dfrac{(-1)^{k}}{k^{p}}$ 가 절대수렴할 조건은 $\sum\frac{1}{k^{p}}$ 의 수렴조건과 같은 $\mathbf{p>1}$</li>
-</ol>
+  <tr>
+    <td><b>⑥ 교대급수 판정</b><br><span class="en">alternating</span></td>
+    <td>$\sum(-1)^{k-1}a_{k}$ — 부호가 번갈아 바뀜</td>
+    <td>$a_{n}$ 이 <b>단조감소</b>하고 <b>$a_{n}\to0$</b> 이면 수렴. (두 조건 모두 필요)
+      <br>$1-\dfrac{1}{2^{2}}+\dfrac{1}{3^{2}}-\cdots$ → $\dfrac{1}{n^{2}}$ 이 단조감소·$\to0$ 이라 <b>수렴</b></td>
+  </tr>
+
+  <tr>
+    <td><b>⑦ 절대수렴 / 조건수렴</b><br><span class="en">absolute · conditional</span></td>
+    <td>교대급수가 수렴한 뒤, <b>어느 쪽 수렴인지</b> 물을 때</td>
+    <td>절댓값 급수 $\sum|a_{k}|$ 를 따로 판정한다.
+      <br>$\sum|a_{k}|$ 수렴 → <b>절대수렴</b>(원급수도 자동 수렴)
+      <br>$\sum|a_{k}|$ 발산인데 $\sum a_{k}$ 수렴 → <b>조건수렴</b>
+      <br>$\sum\dfrac{(-1)^{k}}{\sqrt k}$ → 교대급수로 수렴, $\sum\dfrac{1}{\sqrt k}$ 는 $p=\dfrac12$ 라 발산 → <b>조건수렴</b>
+      <br>$\sum\dfrac{(-1)^{k}}{k^{p}}$ 의 절대수렴 조건 $=\sum\dfrac{1}{k^{p}}$ 의 수렴 조건 $=\mathbf{p>1}$</td>
+  </tr>
+</table>
+
+<div class="note">
+  <b>가장 많이 틀리는 곳</b> — $a_{n}\to0$ 은 수렴의 <b>필요조건일 뿐</b>이다.
+  조화급수 $\sum\dfrac1k$ 이 반례다. 일반항은 $0$ 으로 가는데 급수는 발산한다.
+  <br>즉 <b>①로는 발산만 결론낼 수 있고, 수렴은 결론낼 수 없다.</b>
+</div>
 </div>
 
 <div class="chapter">
