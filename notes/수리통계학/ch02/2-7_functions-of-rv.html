@@ -147,19 +147,22 @@
   <p><b>종속성.</b> 곱 $f_{Y_1}(y_1)f_{Y_2}(y_2)=\tfrac12\,y_1e^{-y_1}e^{-|y_2|}$ 은 결합밀도 $\tfrac12 e^{-y_1}$ 과 다르다 — 지지집합이 사각형이 아니라 $y_1\gt|y_2|$ 인 <b>삼각형(쐐기)</b>이라 결합이 두 주변으로 쪼개지지 않는다. 즉 $Y_1,Y_2$ 는 <b>독립이 아니다</b>.</p>
 </div>
 <div class="box ex">
-  <span class="tag">예 2.46</span><span class="title">두 표준정규의 비 $X_1/X_2$ — 코시분포</span>
-  <p>독립 $X_1,X_2\sim N(0,1)$ 에서 $Y_2=X_1/X_2$ 의 분포를 구한다. 비 하나만으로는 2차원 일대일 변환이 안 되므로, <b>보조변수</b> $Y_1=X_2$ 를 도입해 $2\to2$ 일대일 변환으로 만든다.</p>
-  <p><b>① 역변환 ($x_1,x_2$ 구하기).</b> $Y_1=X_2$, $Y_2=X_1/X_2$ 를 $X_1,X_2$ 에 대해 풀면</p>
-  $$x_2=y_1,\qquad x_1=x_2\,y_2=y_1y_2.$$
+  <span class="tag">예 2.46</span><span class="title">두 표준정규의 결합변환 $X_1+X_2$, $X_1/X_2$ — 비는 코시분포</span>
+  <p>독립 $X_1,X_2\sim N(0,1)$ 에서 결합변환된 두 변수 $Y_1=X_1+X_2$, $Y_2=X_1/X_2$ 를 고려한다. 비 $X_1/X_2$ 하나만으로는 $2\to2$ 일대일 변환이 안 되므로 <b>합을 짝으로 붙여</b> 결합변환으로 만든다.</p>
+  <p><b>① 역변환 ($x_1,x_2$ 구하기).</b> $y_1=x_1+x_2$, $y_2=x_1/x_2$ 를 <b>연립방정식으로</b> 푼다. 둘째 식에서 $x_1=x_2y_2$ 이므로 이를 첫 식에 넣으면 $x_2(1+y_2)=y_1$ 이고</p>
+  $$x_2=h_2(y_1,y_2)=\frac{y_1}{1+y_2},\qquad x_1=h_1(y_1,y_2)=\frac{y_1y_2}{1+y_2}.$$
   <p><b>② 야코비안.</b></p>
-  $$J=\det\begin{bmatrix}\partial x_1/\partial y_1&\partial x_1/\partial y_2\\[2pt]\partial x_2/\partial y_1&\partial x_2/\partial y_2\end{bmatrix}
-    =\det\begin{bmatrix}y_2&y_1\\ 1&0\end{bmatrix}=-y_1,\qquad |J|=|y_1|.$$
-  <p><b>③ 결합밀도.</b> $f_{X_1,X_2}(x_1,x_2)=\dfrac{1}{2\pi}e^{-(x_1^2+x_2^2)/2}$ 에 역변환과 $|J|$ 를 대입(정리 2.25):</p>
-  $$f_{Y_1,Y_2}(y_1,y_2)=\frac{1}{2\pi}e^{-(y_1^2y_2^2+y_1^2)/2}\,|y_1|=\frac{|y_1|}{2\pi}\,e^{-y_1^2(1+y_2^2)/2}.$$
-  <p><b>④ 보조변수 적분 (주변분포).</b> $y_1$ 을 적분해 없앤다. 피적분함수가 $y_1$ 의 우함수라 $2\int_0^\infty$ 로 바꾸고, $a=\dfrac{1+y_2^2}{2}$ 에 대해 $\displaystyle\int_0^\infty y_1 e^{-ay_1^2}dy_1=\frac{1}{2a}$ 를 쓰면</p>
-  $$f_{Y_2}(y_2)=\int_{-\infty}^{\infty}\frac{|y_1|}{2\pi}e^{-y_1^2(1+y_2^2)/2}\,dy_1
-    =\frac{2}{2\pi}\cdot\frac{1}{2a}=\frac{1}{\pi(1+y_2^2)},\qquad-\infty\lt y_2\lt\infty.$$
-  <p>곧 <b>코시분포</b><span class="en">Cauchy</span>다 — 표준정규 둘의 비는 코시분포를 따르며, 평균이 존재하지 않는 두꺼운 꼬리 분포다.</p>
+  $$J=\det\begin{bmatrix}\dfrac{y_2}{1+y_2}&\dfrac{y_1}{(1+y_2)^2}\\[8pt]
+       \dfrac{1}{1+y_2}&\dfrac{-y_1}{(1+y_2)^2}\end{bmatrix}
+    =-\frac{y_1(y_2+1)}{(1+y_2)^3}=-\frac{y_1}{(1+y_2)^2},
+    \qquad |J|=\frac{|y_1|}{(1+y_2)^2}.$$
+  <p><b>③ 결합밀도.</b> 지수부는 $x_1^2+x_2^2=\dfrac{y_1^2y_2^2+y_1^2}{(1+y_2)^2}=\dfrac{(1+y_2^2)\,y_1^2}{(1+y_2)^2}$ 로 묶인다. $f_{X_1,X_2}(x_1,x_2)=\dfrac{1}{2\pi}e^{-(x_1^2+x_2^2)/2}$ 에 역변환과 $|J|$ 를 대입(정리 2.25):</p>
+  $$f_{Y_1,Y_2}(y_1,y_2)=\frac{1}{2\pi}\,\frac{|y_1|}{(1+y_2)^2}
+    \exp\!\left[-\frac12\,\frac{(1+y_2^2)\,y_1^2}{(1+y_2)^2}\right].$$
+  <p><b>④ 주변분포.</b> $Y_1$ 은 독립인 두 표준정규의 합이므로 적분할 것도 없이 $\mathbf{N(0,2)}$ 다. $Y_2$ 는 $y_1$ 을 적분해 없앤다. 피적분함수가 $y_1$ 의 우함수라 $2\int_0^\infty$ 로 바꾸고 $u=\dfrac{1+y_2^2}{2(1+y_2)^2}y_1^2$ 로 치환하면 $du=\dfrac{1+y_2^2}{(1+y_2)^2}y_1\,dy_1$ 이므로</p>
+  $$f_{Y_2}(y_2)=\frac{1}{2\pi}\times\frac{1}{(1+y_2)^2}\times\frac{(1+y_2)^2}{1+y_2^2}\times2\int_0^{\infty}e^{-u}du
+    =\frac{1}{\pi}\,\frac{1}{1+y_2^2},\qquad-\infty\lt y_2\lt\infty.$$
+  <p>곧 <b>코시분포</b><span class="en">Cauchy</span>다 — 서로 독립인 두 표준정규의 <b>비는 코시분포를 따르며</b>, 평균이 존재하지 않는 두꺼운 꼬리 분포다.</p>
 </div>
 <div class="box thm">
   <span class="tag">정리 2.26</span><span class="title">합성곱 <span class="en">convolution</span></span>
