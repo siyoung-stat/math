@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선형대수 · 행제형·소거행제형·상삼각행렬</title>
+<link rel="stylesheet" href="../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  table.m{ width:100%; border-collapse:collapse; margin:10px 0 18px; font-size:0.95rem; }
+  table.m th, table.m td{ border:1px solid var(--line); padding:8px 10px; vertical-align:middle; }
+  table.m th{ background:#f4f6f8; text-align:left; font-size:0.9rem; }
+  table.m td.c{ text-align:center; font-weight:700; }
+  .o{ color:var(--ex); } .x{ color:#d64541; }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../index.html">⌂ 홈</a>
+  <div class="ch">선형대수 · 요약 노트</div>
+  <h1>행제형 · 소거행제형 · 상삼각행렬 <span class="en">echelon forms and triangular matrices</span></h1>
+</header>
+
+<p class="lead">셋 다 “아래쪽이 $0$ 인 계단 모양” 이라 헷갈리기 쉽다.
+<b>행제형·소거행제형은 행(row)의 선행 1 로</b>, <b>상삼각행렬은 주대각선으로</b> 정의된다는 것이 핵심 차이다.</p>
+
+<h2 class="sub">정의 <span class="en">definitions</span></h2>
+
+<p>영행이 아닌 행에서 왼쪽부터 처음 나오는 $0$ 이 아닌 성분을 그 행의 <b>선행성분</b><span class="en">leading entry</span>이라 한다.</p>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">행제형 행렬 <span class="en">row echelon form</span></span>
+  <p>다음 세 조건을 모두 만족하는 행렬.</p>
+  <ol class="props">
+    <li>영행(모든 성분이 $0$ 인 행)이 있으면 <b>맨 아래</b>에 모여 있다.</li>
+    <li>영행이 아닌 행의 선행성분은 <b>$1$</b> 이다 (<b>선행 1</b><span class="en">leading 1</span>).</li>
+    <li>아래 행의 선행 1 은 위 행의 선행 1 보다 <b>오른쪽</b>에 있다.</li>
+  </ol>
+  <p>그 결과 각 선행 1 의 <b>아래</b>는 모두 $0$ 이 되어 계단 모양이 된다. 크기는 $m\times n$ 아무거나 된다.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">소거행제형 행렬 <span class="en">reduced row echelon form</span></span>
+  <p>행제형의 세 조건에 하나를 더한 행렬.</p>
+  <ol class="props" start="4">
+    <li>선행 1 이 있는 열에서 선행 1 을 뺀 나머지 성분은 <b>위아래 모두 $0$</b> 이다.</li>
+  </ol>
+  <p>즉 선행 1 의 열은 단위벡터 꼴이다. 어떤 행렬이든 기본행연산으로 바꾼 소거행제형은 <b>하나뿐</b>이다.</p>
+</div>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">상삼각행렬 <span class="en">upper triangular matrix</span></span>
+  <p><b>정방행렬</b> $A=(a_{ij})_{n\times n}$ 에서 주대각선 <b>아래</b> 성분이 모두 $0$ 인 행렬.</p>
+  $$a_{ij}=0\quad(i>j),\qquad
+    \begin{pmatrix}a_{11}&a_{12}&a_{13}\\0&a_{22}&a_{23}\\0&0&a_{33}\end{pmatrix}$$
+  <p>대각성분이나 위쪽 성분에는 아무 제약이 없다 ($0$ 이어도 된다). 반대로 주대각선 위가 모두 $0$ 이면 하삼각행렬<span class="en">lower triangular matrix</span>이다.</p>
+</div>
+
+<h2 class="sub">세 개념의 관계 <span class="en">relationships</span></h2>
+
+<table class="m">
+  <tr><th></th><th>행제형</th><th>소거행제형</th><th>상삼각행렬</th></tr>
+  <tr><td>크기</td><td>$m\times n$ 아무거나</td><td>$m\times n$ 아무거나</td><td><b>정방행렬만</b></td></tr>
+  <tr><td>기준</td><td>각 행의 선행 1</td><td>각 행의 선행 1</td><td>주대각선</td></tr>
+  <tr><td>선행성분 / 대각성분</td><td>$1$ 이어야 함</td><td>$1$ 이어야 함</td><td>제약 없음</td></tr>
+  <tr><td>$0$ 이어야 하는 곳</td><td>선행 1 의 아래</td><td>선행 1 의 위·아래</td><td>대각선 아래</td></tr>
+  <tr><td>영행의 위치</td><td>맨 아래</td><td>맨 아래</td><td>제약 없음</td></tr>
+</table>
+
+<div class="box thm">
+  <span class="tag">성질</span><span class="title">포함 관계</span>
+  <ol class="props">
+    <li>소거행제형이면 행제형이다. 역은 성립하지 않는다.</li>
+    <li><b>정방</b>행렬이 행제형이면 상삼각행렬이다. 선행 1 이 한 행 내려갈 때마다 적어도 한 열씩 오른쪽으로 가므로, $i$ 행의 선행 1 은 $i$ 열이나 그 오른쪽에 있다.</li>
+    <li>상삼각행렬이라고 행제형인 것은 아니다. 대각성분이 $1$ 이 아니거나, 영행이 중간에 끼어 있을 수 있다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">판별 예 <span class="en">examples</span></h2>
+
+<table class="m">
+  <tr><th>행렬</th><th>행제형</th><th>소거행제형</th><th>상삼각</th><th>이유</th></tr>
+  <tr>
+    <td>$\begin{pmatrix}1&2&0&4\\0&0&1&0\\0&0&0&0\end{pmatrix}$</td>
+    <td class="c o">O</td><td class="c o">O</td><td class="c x">X</td>
+    <td>선행 1 의 열(1·3열)이 단위벡터. 영행은 맨 아래. 정방이 아니라 상삼각은 아님.</td>
+  </tr>
+  <tr>
+    <td>$\begin{pmatrix}1&2&0&4\\0&1&-1&1\\0&0&1&0\end{pmatrix}$</td>
+    <td class="c o">O</td><td class="c x">X</td><td class="c x">X</td>
+    <td>2열의 $2$, 3열의 $-1$ 이 선행 1 위에 남아 있다. 확대행렬 꼴($3\times4$)이라 상삼각 아님.</td>
+  </tr>
+  <tr>
+    <td>$\begin{pmatrix}1&2&0&4\\0&1&-1&1\\0&0&4&0\end{pmatrix}$</td>
+    <td class="c x">X</td><td class="c x">X</td><td class="c x">X</td>
+    <td>3행의 선행성분이 $4\ne1$.</td>
+  </tr>
+  <tr>
+    <td>$\begin{pmatrix}1&-1&0\\0&1&2\\0&0&1\end{pmatrix}$</td>
+    <td class="c o">O</td><td class="c x">X</td><td class="c o">O</td>
+    <td>정방 행제형이므로 상삼각. 선행 1 위의 $-1$, $2$ 때문에 소거행제형은 아님.</td>
+  </tr>
+  <tr>
+    <td>$\begin{pmatrix}2&0&0\\0&0&0\\0&0&3\end{pmatrix}$</td>
+    <td class="c x">X</td><td class="c x">X</td><td class="c o">O</td>
+    <td>대각선 아래가 $0$ 이라 상삼각(하삼각·대각행렬이기도 함). 선행성분 $2\ne1$ 이고 영행이 중간에 있어 행제형 아님.</td>
+  </tr>
+  <tr>
+    <td>$\begin{pmatrix}0&0&0&0\\1&0&0&0\\0&1&0&0\end{pmatrix}$</td>
+    <td class="c x">X</td><td class="c x">X</td><td class="c x">X</td>
+    <td>영행이 맨 위에 있다.</td>
+  </tr>
+  <tr>
+    <td>$I_3=\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}$</td>
+    <td class="c o">O</td><td class="c o">O</td><td class="c o">O</td>
+    <td>셋 다 만족한다. 가역인 $n\times n$ 행렬의 소거행제형은 언제나 $I_n$.</td>
+  </tr>
+</table>
+
+<div class="note">
+  <b>어디에 쓰이나</b> — <b>가우스 소거법</b>은 확대행렬을 <b>행제형</b>까지 바꾼 뒤 후진대입<span class="en">back substitution</span>으로 해를 구하고,
+  <b>가우스–조단 소거법</b>은 <b>소거행제형</b>까지 바꿔 해를 바로 읽는다.
+  상삼각행렬은 행렬식이 대각성분의 곱 $\det A=a_{11}a_{22}\cdots a_{nn}$ 이라는 데서 주로 쓰인다.
+</div>
+
+</body>
+</html>
