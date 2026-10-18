@@ -40,7 +40,7 @@
 
 <h2 class="sub">A. 합과 평균의 분포 (3.2)</h2>
 <div class="qrow"><span class="qid">Q1</span>$X_1,\dots,X_5\overset{\text{iid}}{\sim}\text{EXP}(2)$ (pdf $f(x)=\tfrac12e^{-x/2}$) 일 때 다음을 구하여라.<span class="src">예제 3.3</span>
-  <ol><li>$T=\sum_i X_i$ 의 분포</li><li>$\bar X$ 의 분포</li><li><span class="mark">★</span>$P(T\le1)$</li></ol></div>
+  <ol><li>$T=\sum_i X_i$ 의 분포</li><li>$\bar X$ 의 분포</li></ol></div>
 <div class="qrow"><span class="qid">Q2</span>독립인 연속형 $X,Y$ 에 대해 $W=X+Y$ 의 PDF 를 구하는 합성곱 공식을 식으로 쓰라.</div>
 
 <h2 class="sub">B. 정규표본의 정확분포 (3.3)</h2>
@@ -113,8 +113,7 @@
 <h2 class="sub">A. 합과 평균의 분포</h2>
 <div class="ans"><span class="qid">A1.</span> $M_X(t)=(1-2t)^{-1}$
   <ol><li>$M_T(t)=(1-2t)^{-5}$ 이므로 $T\sim\text{GAM}(5,2)$</li>
-  <li>$M_{\bar X}(t)=M_T(t/5)=\big(1-\tfrac{2t}5\big)^{-5}$ 이므로 $\bar X\sim\text{GAM}(5,\tfrac25)$</li>
-  <li>$P(T\le1)=1-e^{-1/2}\displaystyle\sum_{j=0}^4\frac{(1/2)^j}{j!}=1-\frac{633}{384}e^{-1/2}\approx0.00017$</li></ol></div>
+  <li>$M_{\bar X}(t)=M_T(t/5)=\big(1-\tfrac{2t}5\big)^{-5}$ 이므로 $\bar X\sim\text{GAM}(5,\tfrac25)$</li></ol></div>
 <div class="ans"><span class="qid">A2.</span> $f_W(w)=\displaystyle\int_{-\infty}^{\infty}f_X(x)f_Y(w-x)\,dx$ (적분범위: $x$ 와 $w-x$ 가 각각 지지집합에 드는 범위)</div>
 
 <h2 class="sub">B. 정규표본의 정확분포</h2>
