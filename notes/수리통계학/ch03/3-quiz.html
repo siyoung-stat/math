@@ -39,7 +39,7 @@
 <div class="sheettitle">■ 문제 시트 <span class="en">questions</span></div>
 
 <h2 class="sub">A. 합과 평균의 분포 (3.2)</h2>
-<div class="qrow"><span class="qid">Q1</span>$X_1,\dots,X_5\overset{\text{iid}}{\sim}\text{EXP}(\tfrac12)$ 일 때 다음을 구하여라.<span class="src">예제 3.3</span>
+<div class="qrow"><span class="qid">Q1</span>$X_1,\dots,X_5\overset{\text{iid}}{\sim}\text{EXP}(2)$ 일 때 다음을 구하여라.<span class="src">예제 3.3</span>
   <ol><li>$T=\sum_i X_i$ 의 분포</li><li>$\bar X$ 의 분포</li><li>$P(T\le1)$</li></ol></div>
 <div class="qrow"><span class="qid">Q2</span>독립인 연속형 $X,Y$ 에 대해 $W=X+Y$ 의 PDF 를 구하는 합성곱 공식을 식으로 쓰라.</div>
 
@@ -98,7 +98,7 @@
 <div class="qrow"><span class="qid">Q15</span>$X_i\overset{\text{iid}}{\sim}\text{Poisson}(3)$, $n=4$, $T=\sum_iX_i$ 일 때 다음을 구하여라.<span class="src">확인문제 3.3</span>
   <ol><li>$T$ 의 MGF</li><li>$T$ 의 분포</li><li>$P(\bar X=2)$</li></ol></div>
 <div class="qrow"><span class="qid">Q16</span>$X_i\overset{\text{iid}}{\sim}\text{Bernoulli}(p)$ 이다. Chebyshev 부등식으로 $P(|\bar X-p|\ge0.1)\le0.01$ 을 모든 $p$ 에 대해 보장하는 충분한 표본 수를 구하여라.<span class="src">확인문제 3.6</span></div>
-<div class="qrow"><span class="qid">Q17</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(2)$, $n=100$ 일 때<span class="src">확인문제 3.7</span>
+<div class="qrow"><span class="qid">Q17</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(\tfrac12)$, $n=100$ 일 때<span class="src">확인문제 3.7</span>
   <ol><li>중심극한정리로 $P(\bar X\le2.4)$ 를 근사하라.</li><li>$\bar X$ 의 정확분포를 쓰라.</li></ol></div>
 <div class="qrow"><span class="qid">Q18</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$ 이다. $M_n=X_{(n)}$ 이 $\theta$ 에 확률수렴함을 CDF 를 이용하여 직접 증명하라.<span class="src">확인문제 3.8</span></div>
 <div class="qrow"><span class="qid">Q19</span>$X_1,\dots,X_4\overset{\text{iid}}{\sim}U(0,1)$ 일 때 다음을 구하여라.<span class="src">확인문제 3.9</span>
@@ -111,10 +111,10 @@
 <div class="sheettitle">■ 정답 시트 <span class="en">answer key</span></div>
 
 <h2 class="sub">A. 합과 평균의 분포</h2>
-<div class="ans"><span class="qid">A1.</span> $M_X(t)=\big(1-\tfrac t2\big)^{-1}$
-  <ol><li>$M_T(t)=\big(1-\tfrac t2\big)^{-5}$ 이므로 $T\sim\text{GAM}(5,\tfrac12)$</li>
-  <li>$M_{\bar X}(t)=M_T(t/5)=\big(1-\tfrac t{10}\big)^{-5}$ 이므로 $\bar X\sim\text{GAM}(5,\tfrac1{10})$</li>
-  <li>$P(T\le1)=1-e^{-2}\displaystyle\sum_{j=0}^4\frac{2^j}{j!}=1-7e^{-2}\approx0.0527$</li></ol></div>
+<div class="ans"><span class="qid">A1.</span> $M_X(t)=(1-2t)^{-1}$
+  <ol><li>$M_T(t)=(1-2t)^{-5}$ 이므로 $T\sim\text{GAM}(5,2)$</li>
+  <li>$M_{\bar X}(t)=M_T(t/5)=\big(1-\tfrac{2t}5\big)^{-5}$ 이므로 $\bar X\sim\text{GAM}(5,\tfrac25)$</li>
+  <li>$P(T\le1)=1-e^{-1/2}\displaystyle\sum_{j=0}^4\frac{(1/2)^j}{j!}=1-\frac{633}{384}e^{-1/2}\approx0.00017$</li></ol></div>
 <div class="ans"><span class="qid">A2.</span> $f_W(w)=\displaystyle\int_{-\infty}^{\infty}f_X(x)f_Y(w-x)\,dx$ (적분범위: $x$ 와 $w-x$ 가 각각 지지집합에 드는 범위)</div>
 
 <h2 class="sub">B. 정규표본의 정확분포</h2>
@@ -181,8 +181,8 @@
   <li>$P(\bar X=2)=P(T=8)=\dfrac{e^{-12}12^8}{8!}$</li></ol></div>
 <div class="ans"><span class="qid">A16.</span> $P(|\bar X-p|\ge0.1)\le\dfrac{p(1-p)}{n(0.1)^2}\le\dfrac1{4n(0.1)^2}=\dfrac{25}n\le0.01$ 이므로 $n\ge2500$</div>
 <div class="ans"><span class="qid">A17.</span>
-  <ol><li>$E(X_i)=2,\ Var(X_i)=4$, $SE(\bar X)=0.2$; $P(\bar X\le2.4)\approx\Phi\Big(\dfrac{2.4-2}{0.2}\Big)=\Phi(2)=0.9772$</li>
-  <li>$\bar X\sim\text{GAM}(100,\tfrac1{50})$</li></ol></div>
+  <ol><li>$E(X_i)=\tfrac12,\ Var(X_i)=\tfrac14$, $SE(\bar X)=0.05$; $P(\bar X\le2.4)\approx\Phi\Big(\dfrac{2.4-0.5}{0.05}\Big)=\Phi(38)\approx1$</li>
+  <li>$\bar X\sim\text{GAM}(100,\tfrac1{200})$</li></ol></div>
 <div class="ans"><span class="qid">A18.</span> $0\lt\varepsilon\lt\theta$: $P(|M_n-\theta|\gt\varepsilon)=P(M_n\lt\theta-\varepsilon)=\Big(1-\dfrac\varepsilon\theta\Big)^n\to0$; $\varepsilon\ge\theta$: 확률 $0$. 따라서 $M_n\xrightarrow{p}\theta$.</div>
 <div class="ans"><span class="qid">A19.</span>
   <ol><li>$X_{(2)}\sim\text{Beta}(2,3)$: $f(x)=12x(1-x)^2,\ 0\lt x\lt1$</li><li>$E(X_{(2)})=\dfrac25$</li>
