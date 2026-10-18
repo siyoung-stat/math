@@ -56,12 +56,7 @@
   <ol><li>정리를 식으로 쓰라(조건 포함).</li>
   <li>mgf 가 $0$ 의 열린 근방에서 존재할 때 정리를 증명하라.</li></ol></div>
 <div class="qrow"><span class="qid">Q6</span>$T\sim\text{Bin}(100,0.4)$ 일 때 $P(35\le T\le45)$ 를 연속성 수정을 써서 정규근사하라.<span class="src">예제 3.8</span></div>
-<div class="qrow"><span class="qid">Q7</span>연속사상 정리와 Slutsky 정리에 대하여
-  <ol><li>연속사상 정리를 식으로 쓰라(조건 포함).</li>
-  <li>Slutsky 정리의 조건을 식으로 쓰라.</li>
-  <li>그 조건에서 $A_n+B_n$ 의 극한분포를 쓰라.</li>
-  <li>그 조건에서 $A_nB_n$ 의 극한분포를 쓰라.</li>
-  <li>그 조건에서 $A_n/B_n$ 의 극한분포를 쓰라.</li></ol></div>
+<div class="qrow"><span class="qid">Q7</span>Slutsky 정리를 식으로 설명하라.</div>
 <div class="qrow"><span class="qid">Q8</span>일차 Delta 방법에 대하여
   <ol><li>정리를 식으로 쓰라(조건 포함).</li>
   <li>$g'(\theta)=0$ 일 때 극한이 무엇인지 쓰라.</li>
@@ -124,10 +119,8 @@
   <ol><li>$X_i$ 독립·동일분포, $E(X_i)=\mu$, $0\lt Var(X_i)=\sigma^2\lt\infty$ 이면 $\dfrac{\sum_{i=1}^nX_i-n\mu}{\sigma\sqrt n}=\dfrac{\sqrt n(\bar X_n-\mu)}{\sigma}\xrightarrow{d}N(0,1)$</li>
   <li>$Y_i=(X_i-\mu)/\sigma$: $E(Y_i)=0,\ E(Y_i^2)=1$ 이므로 $M_Y(u)=1+\dfrac{u^2}2+o(u^2)$. $M_{n^{-1/2}\sum Y_i}(t)=\Big{M_Y\Big(\dfrac t{\sqrt n}\Big)\Big}^n=\Big{1+\dfrac{t^2}{2n}+o(n^{-1})\Big}^n\to e^{t^2/2}$ — 표준정규의 mgf 이므로 $N(0,1)$ 로 분포수렴.</li></ol></div>
 <div class="ans"><span class="qid">A6.</span> $E(T)=40,\ Var(T)=24$; $P(35\le T\le45)\approx\Phi\Big(\dfrac{45.5-40}{\sqrt{24}}\Big)-\Phi\Big(\dfrac{34.5-40}{\sqrt{24}}\Big)\approx0.7384$</div>
-<div class="ans"><span class="qid">A7.</span>
-  <ol><li>$T_n\xrightarrow{p}\theta$ 이고 $g$ 가 $\theta$ 에서 연속이면 $g(T_n)\xrightarrow{p}g(\theta)$</li>
-  <li>$A_n\xrightarrow{d}A,\ B_n\xrightarrow{p}b$ (상수)</li>
-  <li>$A_n+B_n\xrightarrow{d}A+b$</li><li>$A_nB_n\xrightarrow{d}bA$</li><li>$\dfrac{A_n}{B_n}\xrightarrow{d}\dfrac Ab\ \ (b\ne0)$</li></ol></div>
+<div class="ans"><span class="qid">A7.</span> $A_n rightarrow{d}A, B_n rightarrow{p}b$ (상수) 이면 $A_n+B_n rightarrow{d}A+b,quad A_nB_n rightarrow{d}bA,quad dfrac{A_n}{B_n} rightarrow{d}dfrac Ab  (b
+e0)$</div>
 <div class="ans"><span class="qid">A8.</span>
   <ol><li>$\sqrt n(T_n-\theta)\xrightarrow{d}N(0,v)$ 이고 $g$ 가 $\theta$ 에서 미분가능하면 $\sqrt n\{g(T_n)-g(\theta)\}\xrightarrow{d}N\big(0,[g'(\theta)]^2v\big)$</li>
   <li>$N(0,0)$, 곧 $0$ 에 몰린 퇴화분포(분산 $0$ 인 상수)</li>
