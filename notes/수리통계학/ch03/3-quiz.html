@@ -47,9 +47,8 @@
 <div class="qrow"><span class="qid">Q3</span>정규표본의 핵심 정리: $X_1,\dots,X_n\overset{\text{iid}}{\sim}N(\mu,\sigma^2)$, $n\ge2$ 일 때
   <ol><li>$\bar X$ 의 분포를 쓰라.</li><li>$(n-1)S^2/\sigma^2$ 의 분포를 쓰라.</li>
   <li>$\bar X$ 와 $S^2$ 의 관계를 쓰라.</li><li>$t$ 분포를 따르는 통계량 $T$ 를 식으로 쓰고, 그 분포(자유도 포함)를 쓰라.</li></ol></div>
-<div class="qrow"><span class="qid">Q4</span>Q3 의 정리를 증명하라.
-  <ol><li>표준화 $Z_i$ 와 직교행렬 $A$ 를 잡고, $\boldsymbol Y=A\boldsymbol Z$ 의 분포를 밝혀라.</li>
-  <li>$Y_1$ 을 $\bar X$ 로 나타내고 $\bar X$ 의 분포를 이끌어라.</li>
+<div class="qrow"><span class="qid">Q4</span>Q3 의 정리를 증명하라. ($Z_i=(X_i-\mu)/\sigma$, 첫 행이 $(1,\dots,1)/\sqrt n$ 인 직교행렬 $A$ 로 $\boldsymbol Y=A\boldsymbol Z$ 라 하자.)
+  <ol><li>$Y_1$ 을 $\bar X$ 로 나타내고 $\bar X$ 의 분포를 이끌어라.</li>
   <li>$\sum_{i=2}^nY_i^2$ 를 $S^2$ 로 나타내고 $(n-1)S^2/\sigma^2$ 의 분포를 이끌어라.</li>
   <li>$\bar X\perp S^2$ 와 $t$ 분포 결론을 이끌어라.</li>
   <li>(다른 방법) 제곱합 분해식 $\sum(X_i-\bar X)^2$ 을 $\sum(X_i-\mu)^2$ 로 나타내고 유도하라.</li>
@@ -121,8 +120,7 @@
   <ol><li>$\bar X\sim N\big(\mu,\tfrac{\sigma^2}n\big)$</li><li>$\dfrac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1}$</li>
   <li>$\bar X\perp S^2$ (독립)</li><li>$T=\dfrac{\bar X-\mu}{S/\sqrt n}\sim t_{n-1}$</li></ol></div>
 <div class="ans"><span class="qid">A4.</span>
-  <ol><li>$Z_i=(X_i-\mu)/\sigma$, 첫 행이 $(1,\dots,1)/\sqrt n$ 인 직교행렬 $A$; $\boldsymbol Y=A\boldsymbol Z\sim N_n(\boldsymbol0,AA^T)=N_n(\boldsymbol0,I_n)$ 이므로 $Y_1,\dots,Y_n$ 은 독립 표준정규.</li>
-  <li>$Y_1=\dfrac1{\sqrt n}(Z_1+\cdots+Z_n)=\sqrt n\,\bar Z=\dfrac{\sqrt n(\bar X-\mu)}{\sigma}\sim N(0,1)$, 곧 $\bar X\sim N(\mu,\sigma^2/n)$.</li>
+  <ol><li>$Y_1=\dfrac1{\sqrt n}(Z_1+\cdots+Z_n)=\sqrt n\,\bar Z=\dfrac{\sqrt n(\bar X-\mu)}{\sigma}\sim N(0,1)$, 곧 $\bar X\sim N(\mu,\sigma^2/n)$.</li>
   <li>$\displaystyle\sum_{i=2}^nY_i^2=\sum_{i=1}^nZ_i^2-Y_1^2=\sum Z_i^2-n\bar Z^2=\sum(Z_i-\bar Z)^2=\frac1{\sigma^2}\sum(X_i-\bar X)^2=\frac{(n-1)S^2}{\sigma^2}$ — 독립 표준정규 $n-1$ 개의 제곱합이므로 $\chi^2_{n-1}$.</li>
   <li>$\bar X$ 는 $Y_1$ 의 함수, $S^2$ 은 $Y_2,\dots,Y_n$ 의 함수이므로 $\bar X\perp S^2$. $\dfrac{\bar X-\mu}{S/\sqrt n}=\dfrac{Y_1}{\sqrt{\frac{(n-1)S^2/\sigma^2}{n-1}}}\sim t_{n-1}$.</li>
   <li>$\displaystyle\sum(X_i-\bar X)^2=\sum(X_i-\mu)^2-n(\bar X-\mu)^2$. 유도: $\sum(X_i-\mu)^2=\sum[(X_i-\bar X)+(\bar X-\mu)]^2=\sum(X_i-\bar X)^2+2(\bar X-\mu)\sum(X_i-\bar X)+n(\bar X-\mu)^2$, 가운데 항 $=0$.</li>
