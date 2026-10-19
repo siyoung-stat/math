@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대학수학의 이해 ★ 문항 모음</title>
+<link rel="stylesheet" href="../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  body{ max-width:1180px; }
+  .sheet{ column-count:2; column-gap:38px; column-rule:1px solid #e4e7ea; }
+  .sheet > *:first-child{ margin-top:0; }
+  .sheet{ margin-bottom:6px; }
+  .q{ margin:0 0 18px; line-height:1.7; break-inside:avoid; }
+  .qn{ display:inline-block; min-width:4.4em; font-weight:800; color:var(--def); }
+  .src{ display:inline-block; font-size:0.72rem; font-weight:700; padding:0 5px; margin-right:4px;
+        border-radius:3px; vertical-align:2px; color:#fff; }
+  .src.tb{ background:#3d6a9e; }
+  .src.wb{ background:#7a8a3d; }
+  .ch2{ display:grid; grid-template-columns:1fr 1fr; gap:2px 18px; margin:5px 0 0 4.4em; }
+  .ch1{ display:grid; grid-template-columns:1fr; gap:2px; margin:5px 0 0 4.4em; }
+  .ch2 > div, .ch1 > div{ padding:1px 0; }
+  .n{ font-weight:700; color:#555; margin-right:5px; }
+  .sub{ margin:4px 0 0 4.4em; }
+  .sub > div{ padding:1px 0; }
+  .given{ margin:8px 0 8px 4.4em; break-inside:avoid; }
+  .sheet .given{ font-size:0.92rem; overflow-x:auto; }
+  .chap{ margin:34px 0 14px; padding:8px 12px; background:var(--def); color:#fff;
+         border-radius:6px; font-weight:800; font-size:1.02rem; }
+  .mark{ color:#d64541; font-weight:800; margin-right:3px; }
+  .answersheet{ page-break-before:always; }
+  .ans{ margin:0 0 14px; line-height:1.75; break-inside:avoid; }
+  .an{ display:inline-block; min-width:4.4em; font-weight:800; color:var(--thm); }
+  .sheet .ans{ font-size:0.95rem; }
+  .sheet .ans mjx-container[display="true"]{ overflow-x:auto; }
+  @media (max-width:860px){ .sheet{ column-count:1; column-rule:none; } }
+  @media print{
+    .pager, .home, .note{ display:none; }
+    a{ color:inherit; text-decoration:none; }
+    .q{ page-break-inside:avoid; }
+    .chap{ background:none; color:#000; border:1px solid #000; }
+    .src{ color:#000; background:none; border:1px solid #000; }
+  }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../index.html">⌂ 홈</a>
+  <div class="ch">대학수학의 이해 · 시험지</div>
+  <h1>★ 문항 <span class="no">모음</span></h1>
+</header>
+
+<!-- ===================== 1장 ===================== -->
+<div class="chap">제1장 · 집합과 수의 체계</div>
+<div class="sheet">
+
+<div class="q"><span class="qn"><span class="src wb">워</span>1-01.</span><span class="mark">★</span>다음 중 집합의 표현 방법이 <b>아닌</b> 것을 모두 고르시오.
+  <div class="ch2">
+    <div><span class="n">①</span>원소나열법</div><div><span class="n">②</span>조건제시법</div>
+    <div><span class="n">③</span>함수 표현법</div><div><span class="n">④</span>문장 표현법</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>1-09.</span><span class="mark">★</span>집합 $A$ 의 원소 개수가 $4$ 일 때,
+  곱집합 $A\times A$ 에서 서로 다른 원소(순서쌍)의 개수는?
+  <div class="ch2">
+    <div><span class="n">①</span>$16$</div><div><span class="n">②</span>$12$</div>
+    <div><span class="n">③</span>$8$</div><div><span class="n">④</span>$4$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>1-19.</span><span class="mark">★</span>다음 중 귀류법의 설명으로 옳은 것은 무엇인가?
+  <div class="ch1">
+    <div><span class="n">①</span>결론을 먼저 가정한다.</div>
+    <div><span class="n">②</span>명제가 거짓이라고 가정하여 모순을 이끈다.</div>
+    <div><span class="n">③</span>자연수에 대해 반복한다.</div>
+    <div><span class="n">④</span>이미 알려진 사실만 사용한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>1-03.</span><span class="mark">★</span>$(A^{c}\cup B)^{c}=\varnothing$ 일 때, 항상 옳은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$A^{c}\supset B^{c}$</div><div><span class="n">②</span>$A^{c}\supset B$</div>
+    <div><span class="n">③</span>$A\cap B=B$</div><div><span class="n">④</span>$B-A=U$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>1-09.</span><span class="mark">★★</span>어느 학교의 학생 $100$ 명을 대상으로 축구와 농구에 대한 선호도를 조사하였다.
+  축구를 좋아하는 학생은 $65$ 명, 농구를 좋아하는 학생은 $48$ 명이었다. 두 종목을 모두 좋아하는 학생이
+  최소 $a$ 명, 최대 $b$ 명이라고 할 때, $a+b$ 의 값을 구하시오.</div>
+
+<!-- ===================== 2장 ===================== -->
+</div><!-- /sheet -->
+
+<div class="chap">제2장 · 함수와 그래프</div>
+<div class="sheet">
+
+<div class="q"><span class="qn"><span class="src wb">워</span>2-05.</span><span class="mark">★</span>함수 $f(x)=\dfrac1{x^2+1}$ 의 치역은?
+  <div class="ch2">
+    <div><span class="n">①</span>$(0,1]$</div><div><span class="n">②</span>$[0,1)$</div>
+    <div><span class="n">③</span>$(0,\infty)$</div><div><span class="n">④</span>$[1,\infty)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>2-17.</span><span class="mark">★</span>함수 $f(x)=\sin x$ 에 대하여
+  $f\!\left(\dfrac\pi2-x\right)$ 와 같은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\sin x$</div><div><span class="n">②</span>$-\sin x$</div>
+    <div><span class="n">③</span>$\cos x$</div><div><span class="n">④</span>$-\cos x$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>2-18.</span><span class="mark">★</span>함수 $y=3\sin(2x)$ 의 주기는?
+  <div class="ch2">
+    <div><span class="n">①</span>$2\pi$</div><div><span class="n">②</span>$\pi$</div>
+    <div><span class="n">③</span>$\dfrac\pi2$</div><div><span class="n">④</span>$4\pi$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>2-19.</span><span class="mark">★</span>함수 $y=2\cos\!\left(x-\dfrac\pi3\right)$ 에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>진폭은 $2$ 이다.</div>
+    <div><span class="n">②</span>주기는 $\pi$ 이다.</div>
+    <div><span class="n">③</span>위상각은 $\dfrac\pi3$ 이다.</div>
+    <div><span class="n">④</span>각주파수는 $2$ 이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>2-20.</span><span class="mark">★</span>함수 $y=-2\tan x$ 에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>진폭은 $-2$ 이다.</div>
+    <div><span class="n">②</span>주기는 $\pi$ 이다.</div>
+    <div><span class="n">③</span>위상이동이 있다.</div>
+    <div><span class="n">④</span>각주파수는 $2$ 이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>2-22.</span><span class="mark">★</span>함수 $f(x)=\ln(x-1)+\ln(x+1)$ 에 대하여
+  $f^{-1}(\ln3)$ 의 값과 같은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$1$</div><div><span class="n">②</span>$2$</div>
+    <div><span class="n">③</span>$\sqrt2$</div><div><span class="n">④</span>$3$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>2-24.</span><span class="mark">★</span>타원 $\dfrac{x^2}9+\dfrac{y^2}4=1$ 에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>장축은 $y$ 축 방향이다.</div>
+    <div><span class="n">②</span>단축의 길이는 $3$ 이다.</div>
+    <div><span class="n">③</span>두 초점으로부터의 거리는 $6$ 이다.</div>
+    <div><span class="n">④</span>중심은 $(1,1)$ 이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>2-25.</span><span class="mark">★</span>함수 $f(x)=\sin x$, $g(x)=\ln\!\left(\dfrac{1+x}{1-x}\right)$ 에 대하여,
+  $(g\circ f)(x)$ 의 역함수가 존재하도록 하는 정의역으로 적절한 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>모든 실수</div>
+    <div><span class="n">②</span>$-2\pi&lt;x<2\pi$</div>
+    <div><span class="n">③</span>$-\pi&lt;x<\pi$</div>
+    <div><span class="n">④</span>$-\dfrac\pi2&lt;x<\dfrac\pi2$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>2-03.</span><span class="mark">★★</span>다음 중 함수는?
+  <div class="ch2">
+    <div><span class="n">①</span>$y^{2}=x$</div><div><span class="n">②</span>$x^{2}+y^{2}=1$</div>
+    <div><span class="n">③</span>$y=\dfrac{1}{x-1}$ (단, $x\neq1$)</div><div><span class="n">④</span>$x=y^{2}-2$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>2-04.</span><span class="mark">★</span>다음 함수 $f:R\to R$ 중 전사함수이지만 단사함수가 <b>아닌</b> 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$f(x)=x^{3}$</div><div><span class="n">②</span>$f(x)=x^{2}$</div>
+    <div><span class="n">③</span>$f(x)=x^{2}+1$</div><div><span class="n">④</span>$f(x)=x^{3}-x$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>2-05.</span><span class="mark">★</span>구간 $\left[\tfrac{\pi}{2},2\pi\right]$ 에서 정의된 $y=\sin x$ 에 대하여,
+  역함수가 존재하도록 하는 가장 큰 부분구간을 구하시오.</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>2-08.</span><span class="mark">★★</span>$y=\cos\!\left(3x-\dfrac{\pi}{4}\right)$ 의 진폭, 주기, 위상각을 구하시오.</div>
+
+<!-- ===================== 3장 ===================== -->
+</div><!-- /sheet -->
+
+<div class="chap">제3장 · 수열의 극한과 무한급수</div>
+<div class="sheet">
+
+<div class="q"><span class="qn"><span class="src wb">워</span>3-05.</span><span class="mark">★</span>다음 중 수열에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>수렴하는 수열은 항상 발산한다.</div>
+    <div><span class="n">②</span>수렴하는 수열은 항상 유계이다.</div>
+    <div><span class="n">③</span>유계 수열은 항상 수렴한다.</div>
+    <div><span class="n">④</span>발산하는 수열은 항상 유계이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>3-06.</span><span class="mark">★</span>다음 중 단조수렴정리에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>단조수열은 항상 수렴한다.</div>
+    <div><span class="n">②</span>유계 수열은 항상 수렴한다.</div>
+    <div><span class="n">③</span>단조이고 유계인 수열은 수렴한다.</div>
+    <div><span class="n">④</span>단조감소수열은 항상 발산한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>3-11.</span><span class="mark">★</span>다음 중 양항급수에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>부분합이 감소한다.</div>
+    <div><span class="n">②</span>부분합이 단조증가한다.</div>
+    <div><span class="n">③</span>항상 발산한다.</div>
+    <div><span class="n">④</span>항상 수렴한다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>3-15.</span><span class="mark">★</span>다음 중 급수에 대한 설명으로 옳지 <b>않은</b> 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>절대수렴하면 반드시 수렴한다.</div>
+    <div><span class="n">②</span>조건수렴하는 급수는 절대수렴하지 않는다.</div>
+    <div><span class="n">③</span>절대수렴하면 발산한다.</div>
+    <div><span class="n">④</span>조건수렴은 수렴의 한 형태이다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>3-16.</span><span class="mark">★</span>다음 교대급수에 대한 설명으로 옳은 것은?
+  $$\sum_{k=1}^{\infty}(-1)^{k-1}\frac1k$$
+  <div class="ch2">
+    <div><span class="n">①</span>진동한다.</div><div><span class="n">②</span>절대수렴한다.</div>
+    <div><span class="n">③</span>조건수렴한다.</div><div><span class="n">④</span>수렴하지 않는다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>3-17.</span><span class="mark">★</span>다음 중 교대급수의 수렴 조건으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>항의 절댓값이 증가하고 $0$ 으로 수렴</div>
+    <div><span class="n">②</span>항의 절댓값이 감소하고 $0$ 으로 수렴</div>
+    <div><span class="n">③</span>항의 절댓값이 일정</div>
+    <div><span class="n">④</span>항의 절댓값이 발산</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>3-03.</span><span class="mark">★</span>다음 급수 중 수렴하는 것을 모두 고르시오.
+  <div class="given">
+    $$\text{㉮ }\sum_{k=1}^{\infty}\frac{1}{4k}\qquad
+      \text{㉯ }\sum_{k=1}^{\infty}\frac{1}{k^{7/3}}\qquad
+      \text{㉰ }\sum_{k=1}^{\infty}(-1)^{k-1}\frac{1}{k^{2}}$$
+  </div>
+  <div class="ch2">
+    <div><span class="n">①</span>㉮, ㉯</div><div><span class="n">②</span>㉯, ㉰</div>
+    <div><span class="n">③</span>㉮, ㉰</div><div><span class="n">④</span>㉮, ㉯, ㉰</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>3-05.</span><span class="mark">★★</span>$\displaystyle\sum_{k=1}^{\infty}\frac{7k^{2}}{4^{k}}$ 의 수렴, 발산 여부를 판정하시오.</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>3-06.</span><span class="mark">★★</span>수열 $a_{n}=\dfrac{\sin n}{n}$ 의 극한값을 구하시오.</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>3-07.</span><span class="mark">★★</span>$\displaystyle\sum_{k=1}^{\infty}\frac{2k+1}{k^{4}}$ 의 수렴, 발산 여부를 판정하시오.</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>3-08.</span><span class="mark">★★</span>급수 $\displaystyle\sum_{k=1}^{\infty}(-1)^{k}\frac{1}{k^{p}}$ 을 절대수렴하게 하는 실수 $p$ 의 범위를 구하시오.</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>3-09.</span><span class="mark">★★</span>$\displaystyle\sum_{k=1}^{\infty}(-1)^{k}\frac{1}{\sqrt{k}}$ 의 수렴 및 절대수렴 여부를 판정하시오.</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>3-10.</span><span class="mark">★★</span>$\displaystyle\sum_{k=1}^{\infty}\frac{3^{k}}{5^{k}+k}$ 의 수렴, 발산 여부를 판정하시오.</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>예 3.4</span><span class="mark">★</span>다음 극한값을 구하시오.
+  <div class="given">$$\lim_{n\to\infty}\left(1+\frac2n\right)^{n}$$</div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>예 3.5</span><span class="mark">★</span>다음 수열의 극한값을 구하시오.
+  <div class="sub">
+    <div>$\lim\limits_{n\to\infty}\dfrac{5^{n}}{5^{n}+4^{n}}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>예 3.8</span><span class="mark">★</span>$\displaystyle\sum_{k=1}^{\infty}\frac{k^{2}}{k^{2}+1}$ 은 수렴하는지 판정하시오.</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>예 3.9</span><span class="mark">★</span>$a_{n}=\dfrac1n$ 일 때, $\displaystyle\sum_{k=1}^{\infty}a_{k}$ 는 수렴하는지 판정하시오.</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>예 3.10</span><span class="mark">★</span>무한등비급수
+  $\displaystyle\sum_{k=1}^{\infty}\left\{\left(\frac13\right)^{k-1}+4\cdot\left(\frac15\right)^{k}\right\}$ 의 값을 구하시오.</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>예 3.14</span><span class="mark">★</span>급수 $\displaystyle\sum_{k=1}^{\infty}\frac{4k}{3^{k}}$ 가 수렴함을 보이시오.</div>
+
+<!-- ===================== 4장 ===================== -->
+</div><!-- /sheet -->
+
+<div class="chap">제4장 · 함수의 극한과 연속</div>
+<div class="sheet">
+
+<div class="q"><span class="qn"><span class="src wb">워</span>4-08.</span><span class="mark">★</span>다음 함수 $f(x)$ 가 $x=1$ 에서 연속이 되도록 하는 $k$ 는?
+  <div class="given">$$f(x)=\begin{cases}\dfrac{\sqrt{x}-1}{x-1}, & x<1\\[6pt] k, & x\ge 1\end{cases}$$</div>
+  <div class="ch2">
+    <div><span class="n">①</span>$0$</div><div><span class="n">②</span>$1$</div>
+    <div><span class="n">③</span>$2$</div><div><span class="n">④</span>$0.5$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>4-09.</span><span class="mark">★</span>다음 중 극한값이 존재하지 <b>않는</b> 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>$\lim\limits_{x\to0}\dfrac{x^2-1}{x}$</div>
+    <div><span class="n">②</span>$\lim\limits_{x\to0}\dfrac{\sin x}{x}$</div>
+    <div><span class="n">③</span>$\lim\limits_{x\to0}\dfrac{\tan x}{x}$</div>
+    <div><span class="n">④</span>$\lim\limits_{x\to0}\dfrac{|x|}{x}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>4-04.</span><span class="mark">★</span>$\lim\limits_{x\to0}\dfrac{\sin 3x}{x}$ 를 구하시오.</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>4-05.</span><span class="mark">★</span>$\lim\limits_{x\to0}\dfrac{\tan x-\sin x}{x}$ 를 구하시오.</div>
+
+<!-- ===================== 5장 ===================== -->
+</div><!-- /sheet -->
+
+<div class="chap">제5장 · 함수의 미분</div>
+<div class="sheet">
+
+<div class="q"><span class="qn"><span class="src wb">워</span>5-11.</span><span class="mark">★</span>곡선 $x^2+y^2=5$ 위의 점 $(1,2)$ 에서의 접선의 방정식은?
+  <div class="ch2">
+    <div><span class="n">①</span>$y=-\tfrac12x+\tfrac52$</div><div><span class="n">②</span>$y=-2x+4$</div>
+    <div><span class="n">③</span>$y=\tfrac12x+\tfrac32$</div><div><span class="n">④</span>$y=-x+3$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>5-14.</span><span class="mark">★</span>함수 $f(x)=x^4-4x^2$ 에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>극댓값이 없고 극솟값만 존재한다.</div>
+    <div><span class="n">②</span>극솟값이 없고 극댓값만 존재한다.</div>
+    <div><span class="n">③</span>임계점이 4개 존재한다.</div>
+    <div><span class="n">④</span>극댓값과 극솟값을 모두 가진다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>5-16.</span><span class="mark">★</span>함수 $f(x)=\ln x-x$ 에 대한 설명으로 옳은 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>항상 증가한다.</div><div><span class="n">②</span>항상 감소한다.</div>
+    <div><span class="n">③</span>극댓값을 가진다.</div><div><span class="n">④</span>극솟값을 가진다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>5-18.</span><span class="mark">★</span>함수 $f(x)=e^{-x}+x$ 를 열린구간 $(0,2)$ 에서 고려할 때, 함숫값의 최솟값에 대한 설명으로 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>최솟값은 존재하지 않는다.</div>
+    <div><span class="n">②</span>최솟값은 $x=0$ 에서 존재한다.</div>
+    <div><span class="n">③</span>최솟값은 $x=2$ 에서 존재한다.</div>
+    <div><span class="n">④</span>구간 내부의 어떤 점에서 최솟값을 가진다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>5-02.</span>다음 함수의 그래프 위에 주어진 점 $P$ 에서 접선의 방정식을 구하시오.
+  <div class="sub">
+    <div>(2) <span class="mark">★★</span>$g(x)=\dfrac{\ln x}{x}$, $P=\left(e,\dfrac1e\right)$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>5-03.</span>다음 곡선의 주어진 점 $P$ 에서 접선의 방정식을 구하시오.
+  <div class="sub">
+    <div>(1) <span class="mark">★</span>$x^{2}-y^{2}=4$, $P=(\sqrt5,1)$</div>
+    <div>(2) <span class="mark">★★</span>$x^{3}+y^{3}+3xy=5$, $P=(1,1)$ (단, $0&lt;x<1$)</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>5-04.</span><span class="mark">★★</span>다음 함수의 $x=0$ 에서의 우극한값을 구하시오.
+  <div class="given">$$\lim_{x\to0^{+}}x\ln x$$</div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>5-05.</span>다음 함수의 최댓값과 최솟값을 구하시오.
+  <div class="sub">
+    <div>(2) <span class="mark">★★</span>$g(x)=e^{x}\cos x$ (단, $0\le x\le\pi$)</div>
+  </div>
+</div>
+
+<!-- ===================== 6장 ===================== -->
+</div><!-- /sheet -->
+
+<div class="chap">제6장 · 함수의 적분</div>
+<div class="sheet">
+
+<div class="q"><span class="qn"><span class="src wb">워</span>6-02.</span><span class="mark">★</span>다음 부정적분의 값은?
+  <div class="given">$$\int x\sqrt{x^2+1}\,dx$$</div>
+  <div class="ch2">
+    <div><span class="n">①</span>$\tfrac13(x^2+1)^{3/2}+C$</div><div><span class="n">②</span>$\tfrac12(x^2+1)^{3/2}+C$</div>
+    <div><span class="n">③</span>$\sqrt{x^2+1}+C$</div><div><span class="n">④</span>$\ln(x^2+1)+C$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>6-08.</span><span class="mark">★</span>다음 정적분의 값은?
+  <div class="given">$$\int_1^e\frac{\ln x+1}{x}\,dx$$</div>
+  <div class="ch2">
+    <div><span class="n">①</span>$1$</div><div><span class="n">②</span>$\tfrac32$</div>
+    <div><span class="n">③</span>$2$</div><div><span class="n">④</span>$e-1$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>6-10.</span><span class="mark">★</span>다음 정적분의 값은?
+  <div class="given">$$\int_0^{\pi}\sin x\,dx$$</div>
+  <div class="ch2">
+    <div><span class="n">①</span>$0$</div><div><span class="n">②</span>$1$</div>
+    <div><span class="n">③</span>$2$</div><div><span class="n">④</span>$\pi$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>6-13.</span><span class="mark">★</span>다음 정적분의 값은?
+  <div class="given">$$\int_0^1 x^2\ln(x+1)\,dx$$</div>
+  <div class="ch2">
+    <div><span class="n">①</span>$\tfrac23\ln 2-\tfrac{5}{18}$</div><div><span class="n">②</span>$\tfrac13\ln 2+\tfrac{5}{18}$</div>
+    <div><span class="n">③</span>$\tfrac23\ln 2+\tfrac{5}{18}$</div><div><span class="n">④</span>$\tfrac12\ln 2-\tfrac16$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>6-14.</span><span class="mark">★</span>다음 중 옳지 <b>않은</b> 것은?
+  <div class="ch2">
+    <div><span class="n">①</span>연속함수는 적분가능하다.</div><div><span class="n">②</span>적분가능하면 반드시 연속이다.</div>
+    <div><span class="n">③</span>정적분은 구간의 길이에 영향을 받는다.</div><div><span class="n">④</span>정적분은 선형성을 가진다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>6-17.</span><span class="mark">★</span>다음 특이적분값은?
+  <div class="given">$$\int_1^{\infty}\frac{\ln x}{x^2}\,dx$$</div>
+  <div class="ch2">
+    <div><span class="n">①</span>$0$</div><div><span class="n">②</span>$1$</div>
+    <div><span class="n">③</span>$2$</div><div><span class="n">④</span>발산</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>6-18.</span><span class="mark">★</span>다음 특이적분값은?
+  <div class="given">$$\int_e^{\infty}\frac{1}{x\ln x}\,dx$$</div>
+  <div class="ch2">
+    <div><span class="n">①</span>$0$</div><div><span class="n">②</span>$1$</div>
+    <div><span class="n">③</span>$2$</div><div><span class="n">④</span>발산</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src wb">워</span>6-20.</span><span class="mark">★</span>다음 중 옳은 것은?
+  <div class="ch1">
+    <div><span class="n">①</span>치환적분은 곱의 적분에만 사용된다.</div>
+    <div><span class="n">②</span>부분적분은 합성함수에만 사용된다.</div>
+    <div><span class="n">③</span>치환적분은 합성함수의 적분에 유용하다.</div>
+    <div><span class="n">④</span>부분적분은 모든 적분에 적용된다.</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>6-01.</span><span class="mark">★</span>다음 함수의 부정적분을 구하시오.
+  <div class="sub">
+    <div>(1) $\displaystyle\int\frac{1}{(4x+1)^{3}}dx$</div>
+    <div>(2) $\displaystyle\int x\cos(x^{2})\,dx$</div>
+    <div>(3) $\displaystyle\int xe^{3x}\,dx$</div>
+    <div>(4) <span class="mark">★</span>$\displaystyle\int e^{2\sqrt{x}}\,dx$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>6-02.</span><span class="mark">★</span>다음 함수의 도함수를 구하시오.
+  <div class="sub">
+    <div>(1) $h(x)=\displaystyle\int_{1}^{x}t^{3}\cos t\,dt$</div>
+    <div>(2) $g(x)=\displaystyle\int_{1}^{2-3x}\frac{t}{1+t^{2}}\,dt$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>6-03.</span>다음 정적분의 값을 구하시오.
+  <div class="sub">
+    <div>(2) <span class="mark">★</span>$\displaystyle\int_{0}^{4}(3e^{x}+2\cos x)\,dx$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>6-05.</span>다음 특이적분이 수렴하는지 조사하고, 수렴할 경우 그 값을 구하시오.
+  <div class="sub">
+    <div>(2) <span class="mark">★★</span>$\displaystyle\int_{0}^{1}\ln x\,dx$</div>
+  </div>
+</div>
+
+<!-- ===================== 7장 ===================== -->
+</div><!-- /sheet -->
+
+<div class="chap">제7장 · 벡터와 행렬</div>
+<div class="sheet">
+
+<div class="q"><span class="qn"><span class="src tb">교</span>7-04.</span>$\det\begin{bmatrix}a&b&c\\d&e&f\\g&h&i\end{bmatrix}=4$ 일 때, 다음을 구하시오.
+  <div class="sub">
+    <div>(2) <span class="mark">★</span>$\det\begin{bmatrix}2a&2b&2c\\-d&-e&-f\\3g&3h&3i\end{bmatrix}$</div>
+  </div>
+</div>
+
+<div class="q"><span class="qn"><span class="src tb">교</span>7-06.</span><span class="mark">★</span>연립일차방정식 $\begin{cases}2x+ky=4\\ x+(k-3)y=1\end{cases}$
+  이 단 하나의 해를 갖게 하는 상수 $k$ 의 범위를 구하시오.</div>
+
+</div><!-- /sheet -->
+
+<!-- ===================== 정답 시트 ===================== -->
+<div class="answersheet">
+<header class="doc">
+  <div class="ch">대학수학의 이해 · ★ 문항 모음</div>
+  <h1><span class="no">정답</span>정답 시트 <span class="en">answer key</span></h1>
+</header>
+
+<div class="chap">제1장 · 집합과 수의 체계</div>
+<div class="sheet">
+<div class="ans"><span class="an"><span class="src wb">워</span>1-01.</span><b>③, ④</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>1-09.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>1-19.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src tb">교</span>1-03.</span><b>①</b> — $(A^{c}\cup B)^{c}=A\cap B^{c}=\varnothing$ 이므로 $A\subseteq B$, 즉 $B^{c}\subseteq A^{c}$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>1-09.</span>최대 $b=\min(65,48)=48$, 최소 $a=65+48-100=13$. 따라서 $a+b=13+48=\mathbf{61}$</div>
+</div><!-- /sheet -->
+
+<div class="chap">제2장 · 함수와 그래프</div>
+<div class="sheet">
+<div class="ans"><span class="an"><span class="src wb">워</span>2-05.</span><b>①</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>2-17.</span><b>③</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>2-18.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>2-19.</span><b>①</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>2-20.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>2-22.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>2-24.</span><b>③</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>2-25.</span><b>④</b></div>
+<div class="ans"><span class="an"><span class="src tb">교</span>2-03.</span><b>③</b> — 나머지는 한 $x$ 에 $y$ 가 둘 이상 대응한다.</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>2-04.</span><b>④</b> — $x^{3}-x$ 는 치역이 $R$ 이라 전사지만 $x(x^{2}-1)=0$ 의 근이 셋이라 단사가 아니다.</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>2-05.</span>$\left[\dfrac{\pi}{2},\dfrac{3\pi}{2}\right]$ — 이 구간에서 $\sin x$ 는 $1$ 에서 $-1$ 까지 단조감소라 일대일이다.</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>2-08.</span>진폭 $=1$, 주기 $=\dfrac{2\pi}{3}$, 위상각 $=\dfrac{\pi}{4}$</div>
+</div><!-- /sheet -->
+
+<div class="chap">제3장 · 수열의 극한과 무한급수</div>
+<div class="sheet">
+<div class="ans"><span class="an"><span class="src wb">워</span>3-05.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>3-06.</span><b>③</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>3-11.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>3-15.</span><b>③</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>3-16.</span><b>③</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>3-17.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src tb">교</span>3-03.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src tb">교</span>3-05.</span>비율판정법: $\dfrac{a_{n+1}}{a_{n}}=\left(\dfrac{n+1}{n}\right)^{2}\cdot\dfrac14\to\dfrac14<1$ 이므로 <b>수렴</b></div>
+<div class="ans"><span class="an"><span class="src tb">교</span>3-06.</span>$-\dfrac1n\le\dfrac{\sin n}{n}\le\dfrac1n$ 이고 양쪽이 $0$ 으로 수렴하므로
+  조임정리에 의해 $\lim\limits_{n\to\infty}\dfrac{\sin n}{n}=\mathbf{0}$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>3-07.</span>$\dfrac{2k+1}{k^{4}}=\dfrac{2}{k^{3}}+\dfrac{1}{k^{4}}$ 이고 둘 다 $p>1$ 인 $p$-급수이므로 <b>수렴</b></div>
+<div class="ans"><span class="an"><span class="src tb">교</span>3-08.</span>절댓값 급수 $\sum\dfrac{1}{k^{p}}$ 이 $p$-급수 판정법에 따라 $p>1$ 일 때 수렴하므로 $\mathbf{p>1}$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>3-09.</span>$a_{n}=\dfrac{1}{\sqrt n}$ 은 단조감소하고 $0$ 으로 수렴하므로 교대급수 수렴 정리에 의해 <b>수렴</b>.
+  그러나 $\sum\dfrac{1}{\sqrt k}$ 는 $p=\tfrac12\le1$ 이라 발산하므로 <b>절대수렴하지 않는다</b>(조건수렴).</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>3-10.</span>$5^{k}+k\ge5^{k}$ 이므로 $0\le\dfrac{3^{k}}{5^{k}+k}\le\left(\dfrac35\right)^{k}$.
+  우변이 공비 $\tfrac35$ 인 무한등비급수로 수렴하므로 비교판정법에 의해 <b>수렴</b></div>
+<div class="ans"><span class="an"><span class="src tb">교</span>예 3.4</span>$\tfrac2n$ 을 $\tfrac1k$ 로 치환하면
+  $\lim\limits_{n\to\infty}\left(1+\tfrac2n\right)^{n}=\left[\lim\limits_{k\to\infty}\left(1+\tfrac1k\right)^{k}\right]^{2}=\mathbf{e^{2}}$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>예 3.5</span>$\left(\tfrac45\right)^{n}\to0$ 이므로 $\dfrac{1}{1+(4/5)^{n}}\to\mathbf{1}$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>예 3.8</span>$a_{n}=\dfrac{n^{2}}{n^{2}+1}$ 이고 $\lim a_{n}=1\neq0$ 이므로 <b>발산</b>한다.</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>예 3.9</span>$\lim a_{n}=0$ 이지만 $1+\tfrac12+\tfrac13+\cdots$ 는 $\infty$ 로 <b>발산</b>한다.
+  즉 $\lim a_{n}=0$ 은 수렴의 충분조건이 아니다.</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>예 3.10</span>$\dfrac{1}{1-\frac13}+\dfrac45\cdot\dfrac{1}{1-\frac15}=\dfrac32+1=\dfrac52$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>예 3.14</span>$\lim\dfrac{a_{n+1}}{a_{n}}=\lim\dfrac{4(n+1)}{4n}\cdot\dfrac{3^{n}}{3^{n+1}}=\dfrac13<1$ 이므로
+  비율판정법에 의해 <b>수렴</b>한다.</div>
+</div><!-- /sheet -->
+
+<div class="chap">제4장 · 함수의 극한과 연속</div>
+<div class="sheet">
+<div class="ans"><span class="an"><span class="src wb">워</span>4-08.</span><b>④</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>4-09.</span><b>④</b></div>
+<div class="ans"><span class="an"><span class="src tb">교</span>4-04.</span>$3\lim\limits_{x\to0}\dfrac{\sin3x}{3x}=\mathbf{3}$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>4-05.</span>$\lim\dfrac{\tan x}{x}-\lim\dfrac{\sin x}{x}=1-1=\mathbf{0}$</div>
+</div><!-- /sheet -->
+
+<div class="chap">제5장 · 함수의 미분</div>
+<div class="sheet">
+<div class="ans"><span class="an"><span class="src wb">워</span>5-11.</span><b>①</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>5-14.</span><b>④</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>5-16.</span><b>③</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>5-18.</span><b>①</b></div>
+<div class="ans"><span class="an"><span class="src tb">교</span>5-02.</span>(2) $g'(x)=\dfrac{1-\ln x}{x^{2}}$, $g'(e)=\dfrac{1-1}{e^{2}}=0$ 이므로 $y=\dfrac1e$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>5-03.</span>(1) 음함수 미분 $2x-2y\dfrac{dy}{dx}=0\Rightarrow\dfrac{dy}{dx}=\dfrac{x}{y}=\sqrt5$,
+  따라서 $y=\sqrt5(x-\sqrt5)+1=\sqrt5\,x-4$
+  <br>(2) $3x^{2}+3y^{2}\dfrac{dy}{dx}+3y+3x\dfrac{dy}{dx}=0\Rightarrow\dfrac{dy}{dx}=-\dfrac{x^{2}+y}{x+y^{2}}=-1$,
+  따라서 $y=-(x-1)+1=-x+2$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>5-04.</span>로피탈의 정리로 $\lim\limits_{x\to0^{+}}x\ln x=\lim\limits_{x\to0^{+}}\dfrac{1/x}{-1/x^{2}}=\lim\limits_{x\to0^{+}}(-x)=\mathbf{0}$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>5-05.</span>(2) $g'(x)=e^{x}(\cos x-\sin x)=0$ 에서 $x=\tfrac{\pi}{4}$.
+  $x=\tfrac{\pi}{4}$ 에서 최댓값 $\dfrac{e^{\pi/4}\sqrt2}{2}$, $x=\pi$ 에서 최솟값 $-e^{\pi}$</div>
+</div><!-- /sheet -->
+
+<div class="chap">제6장 · 함수의 적분</div>
+<div class="sheet">
+<div class="ans"><span class="an"><span class="src wb">워</span>6-02.</span><b>①</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>6-08.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>6-10.</span><b>③</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>6-13.</span><b>①</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>6-14.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>6-17.</span><b>②</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>6-18.</span><b>④</b></div>
+<div class="ans"><span class="an"><span class="src wb">워</span>6-20.</span><b>③</b></div>
+<div class="ans"><span class="an"><span class="src tb">교</span>6-01.</span>(1) $-\dfrac{1}{8(4x+1)^{2}}+C$ &nbsp;&nbsp; (2) $\dfrac12\sin(x^{2})+C$
+  <br>(3) $\dfrac{xe^{3x}}{3}-\dfrac{e^{3x}}{9}+C$ &nbsp;&nbsp;
+  (4) $\sqrt{x}\,e^{2\sqrt x}-\dfrac{e^{2\sqrt x}}{2}+C$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>6-02.</span>(1) $h'(x)=x^{3}\cos x$
+  <br>(2) $g'(x)=-3F'(2-3x)=-\dfrac{3(2-3x)}{1+(2-3x)^{2}}$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>6-03.</span>(2) $3e^{4}+2\sin4-3$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>6-05.</span>(2) $\lim\limits_{t\to0^{+}}[x\ln x-x]_{t}^{1}=\lim\limits_{t\to0^{+}}(-1-t\ln t+t)=\mathbf{-1}$ (수렴)</div>
+</div><!-- /sheet -->
+
+<div class="chap">제7장 · 벡터와 행렬</div>
+<div class="sheet">
+<div class="ans"><span class="an"><span class="src tb">교</span>7-04.</span>(2) $2R_{1},-R_{2},3R_{3}$ 이므로 $2\cdot(-1)\cdot3\cdot4=-24$</div>
+<div class="ans"><span class="an"><span class="src tb">교</span>7-06.</span>계수행렬 $A=\begin{bmatrix}2&k\\1&k-3\end{bmatrix}$ 이 가역이면 유일해를 가진다.
+  $\det A=2(k-3)-k=k-6\neq0$ 이어야 하므로 $\mathbf{k\neq6}$</div>
+</div><!-- /sheet -->
+
+</div>
+
+<nav class="pager">
+  <a href="index.html">← 목차<small>대학수학의 이해</small></a>
+  <a href="exam-workbook.html">워크북 시험지 →<small>1~7장 133문항</small></a>
+</nav>
+
+</body>
+</html>
