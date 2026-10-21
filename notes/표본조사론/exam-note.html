@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>표본조사론 · 시험노트</title>
+<link rel="stylesheet" href="../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<style>
+  table.data td, table.data th{ font-size:0.86rem; }
+  .ck{ margin:14px 0; padding:12px 16px; border:1px solid #d9a441; border-radius:8px; background:#fff7e6; }
+  .ck ol{ margin:6px 0 0; padding-left:22px; } .ck li{ margin:6px 0; }
+  .ck .h{ font-weight:800; font-size:0.74rem; letter-spacing:0.05em; color:#c98a1e; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } }
+</style>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../index.html">⌂ 홈</a>
+  <div class="ch">표본조사론 · 1~4장</div>
+  <h1><span class="no">시험노트</span>표본조사론 <span class="en">exam sheet</span></h1>
+</header>
+
+<p class="lead">분류축 — <b>1장</b> 용어(무엇을 재고 · 무엇을 뽑고 · 어디서 뽑나) × 오차(표본/비표본) ·
+<b>2장</b> 모수(평균·총계·비율) × (추정량·분산·표본크기) ·
+<b>3장</b> 산점도가 원점을 지나는가 → 비추정 / 회귀추정 ·
+<b>4장</b> 층화 × 배분(비례·네이만·최적) × 사전/사후</p>
+
+<!-- ==================================================== 1장 -->
+<h2 class="sub">1장 · 기본 용어 <span class="en">basic terms</span></h2>
+
+<div class="scroll"><table class="data">
+  <tr><th>용어</th><th>정의</th><th>한 줄로</th></tr>
+  <tr><th>기본단위<br><span class="en">elementary unit</span></th>
+      <td>필요한 정보를 얻기 위해 조사할 때 <b>조사의 대상이 되는 가장 최소의 요소</b>.
+        <b>조사단위 · 관찰단위</b>와 같은 말</td>
+      <td>값을 <b>재는</b> 대상</td></tr>
+  <tr><th>모집단</th>
+      <td>관심을 갖는 집단에 속하는 <b>모든 기본단위의 집합</b>. 내용·기본단위·범위·시간으로 정의</td>
+      <td>기본단위 전부</td></tr>
+  <tr><th>목표모집단</th><td>관심의 대상이 되는 모든 기본단위의 집합</td><td>알고 싶은 집단</td></tr>
+  <tr><th>조사가능모집단</th>
+      <td>현실적으로 조사 가능하고 <b>추출틀을 만들 수 있는</b> 추출단위만 모은 모집단</td>
+      <td>예: ‘제주·도서지방 제외’ 전국 성인</td></tr>
+  <tr><th>추출단위<br><span class="en">sampling unit</span></th>
+      <td>모집단에서 표본을 뽑기 위해 설정한 <b>기본단위들의 집합</b> (표집단위).
+        기본단위 1개일 수도, 여러 개일 수도 있다</td>
+      <td>실제로 <b>뽑는</b> 대상</td></tr>
+  <tr><th>추출틀<br><span class="en">sampling frame</span></th>
+      <td>모집단에 속하는 <b>모든 추출단위의 목록</b> (명부·파일·지도)</td>
+      <td><b>뽑을 때 쓰는</b> 목록</td></tr>
+  <tr><th>표본</th><td>모집단을 대표하여 <b>추출틀로부터</b> 뽑힌 추출단위의 집합</td><td>실제로 뽑힌 것</td></tr>
+</table></div>
+
+<div class="box thm">
+  <span class="tag">관계</span><span class="title">잴 대상 → 뽑는 묶음 → 그 묶음의 목록</span>
+  <p><b>기본단위</b> ⊂ <b>추출단위</b> ∈ <b>추출틀</b> → 추출틀에서 <b>표본</b>을 뽑는다 (모집단에서 직접 뽑지 않는다).<br>
+  각 기본단위는 <b>단 하나의 추출단위에만</b> 속해야 한다. 추출단위는 <b>추출틀을 만들 수 있는지</b>를 먼저 보고 정한다
+  (전국 가구 목록 ✗ → 동(洞) 목록 ✓).</p>
+</div>
+
+<div class="scroll"><table class="data">
+  <tr><th>상황</th><th>기본단위</th><th>추출단위</th><th>추출틀</th></tr>
+  <tr><td>종로구 가구당 월평균소득 — 통/반을 뽑아 그 안의 모든 가구 조사</td><td>가구</td><td>통/반</td><td>종로구 통/반 목록</td></tr>
+  <tr><td>여론조사 — 개인을 직접 뽑음</td><td>개인</td><td>개인</td><td>개인 명부</td></tr>
+  <tr><td>가구를 뽑고 그 안에서 한 사람 조사</td><td>개인</td><td>가구</td><td>가구 목록</td></tr>
+  <tr><td>경북 사과나무 한 그루당 수확량 — 과수원을 뽑음</td><td>사과나무 각 그루</td><td>과수원</td><td>경북 과수원 목록</td></tr>
+  <tr><td>서울시 호텔 조사 — 각 호텔의 정보를 수집</td><td><b>호텔</b></td><td>호텔</td><td>서울시 전체 호텔 목록</td></tr>
+</table></div>
+
+<div class="box def">
+  <span class="tag">조건</span><span class="title">올바른 추출틀</span>
+  <ol class="props">
+    <li>정의된 모집단의 추출단위가 <b>빠짐없이</b> 망라될 것</li>
+    <li>어느 추출단위도 <b>중복</b>되지 않을 것</li>
+    <li>조사 현장에서 <b>쉽게 식별</b>될 것</li>
+  </ol>
+  <p>누락·중복이 있으면 표본을 아무리 키워도 <b>편향(bias)</b>이 생긴다 — 1936년 리터러리 다이제스트(전화번호부·자동차 등록부).</p>
+</div>
+
+<h2 class="sub">1장 · 추출법과 오차 <span class="en">sampling methods &amp; errors</span></h2>
+
+<div class="scroll"><table class="data">
+  <tr><th></th><th>확률추출법</th><th>비확률추출법</th></tr>
+  <tr><th>정의</th><td>모든 추출단위에 <b>사전에 추출확률</b>이 주어짐</td><td>추출확률을 객관적으로 나타낼 수 <b>없음</b></td></tr>
+  <tr><th>종류</th><td>단순임의 · 층화임의 · <b>계통</b>(20명당 1명꼴) · 집락</td><td><b>전형법</b>(주관적으로 대표 선정) · 할당법 · 편의(처음 10명)</td></tr>
+  <tr><th>오차 계산</th><td>표본분포를 알아 표준오차·오차한계·신뢰구간 <b>계산 가능</b></td><td><b>불가능</b> — 정확성 평가 못 함</td></tr>
+  <tr><th>일반화</th><td>모집단 전체로 <b>가능</b></td><td><b>불가능</b> (편향 — 예이츠의 돌 54.15g → 66.34g)</td></tr>
+  <tr><th>쓰는 경우</th><td>표본이 클 때, 과학적 조사</td><td>추출틀을 규정 못 할 때 · 표본오차가 문제 안 될 때 · <b>표본이 작을 때</b>. 장점은 간편·경제</td></tr>
+</table></div>
+
+<div class="scroll"><table class="data">
+  <tr><th></th><th>표본오차</th><th>비표본오차</th></tr>
+  <tr><th>원인</th><td>일부만 조사해 모수를 추정하기 때문</td><td>계획~보고서 전 과정의 부주의·실수·무응답·입력오류</td></tr>
+  <tr><th>전수조사</th><td><b>없다</b></td><td>있다 — 오히려 <b>더 크다</b> (규모가 커 관리가 어려움)</td></tr>
+  <tr><th>표본조사</th><td>있다 (n↑ 이면 감소)</td><td>작다 — 전문 조사원 투입 가능</td></tr>
+  <tr><th>측정</th><td>표준오차 · 오차한계 · RSE</td><td>위 척도들로 <b>측정되지 않음</b></td></tr>
+</table></div>
+
+$$\text{표준오차}=\sqrt{V(\hat\theta)},\qquad
+  B=z_{\alpha/2}\sqrt{V(\hat\theta)}\ (\approx2\,SE),\qquad
+  RSE(\hat\theta)=\frac{\sqrt{V(\hat\theta)}}{\theta}\times100\%,\qquad
+  \text{신뢰구간}=\hat\theta\pm B$$
+
+<div class="box def">
+  <span class="tag">성질</span><span class="title">추정량에 요구되는 두 가지</span>
+  <p><b>비편향성</b> $E(\hat\theta)=\theta$ — 과대·과소 추정하지 않음 &nbsp;|&nbsp;
+  <b>효율성</b> — 비편향 추정량 중 <b>분산이 작은</b> 것</p>
+</div>
+
+<div class="ck">
+  <div class="h">1장 함정</div>
+  <ol>
+    <li>“<b>조사단위</b>는 표본 추출을 위해 설정한 기본단위들의 집합” → <b>틀림</b>. 그건 <b>추출단위</b>. 조사단위 = 기본단위.</li>
+    <li>“여러 개의 추출단위가 모여 하나의 기본단위” → <b>틀림</b>. 관계가 거꾸로다.</li>
+    <li>“모든 추출단위의 목록은 모집단” → <b>틀림</b>. 그건 <b>추출틀</b>. 추출틀은 중복 없이 나열되어야 한다.</li>
+    <li>호텔 조사에서 기본단위가 “고객 관리 담당자” → <b>틀림</b>. 응답자가 아니라 <b>정보의 주인(호텔)</b>이 기본단위.</li>
+    <li>표준오차·오차한계·RSE 는 <b>정도(precision)</b>를 잰다. <b>편향</b>이나 <b>비표본오차</b>와는 무관.</li>
+    <li>RSE 가 <b>작을수록</b> 정확. 표준오차↓ → RSE↓ · 오차한계↓ · 신뢰구간 폭↓.</li>
+    <li>표본조사의 이유에 “표본오차를 줄이려고”는 <b>없다</b> — 표본조사로 바꾸면 표본오차가 새로 생긴다.
+      장점 5개는 경제성 · 신속성 · 심도 있는 조사 · 조사의 정확성(비표본오차↓) · 파괴검사에 적절.</li>
+    <li>신뢰구간은 <b>구간추정</b>, 모평균은 추정값이 아니라 <b>모수</b>.</li>
+    <li>‘20명당 1명꼴’ = <b>계통추출</b> = 확률추출. ‘처음 10명’ = 비확률.</li>
+  </ol>
+</div>
+
+<!-- ==================================================== 2장 -->
+<h2 class="sub">2장 · 단순임의추출법 <span class="en">simple random sampling</span></h2>
+
+<div class="scroll"><table class="data">
+  <tr><th>모수</th><th>추정량</th><th>추정분산</th><th>오차한계 $B$</th></tr>
+  <tr><th>모평균 $\mu$</th>
+      <td>$\bar y=\frac1n\sum y_i$</td>
+      <td>$\hat V(\bar y)=\dfrac{N-n}{N}\cdot\dfrac{s^2}{n}$</td>
+      <td>$2\sqrt{\hat V(\bar y)}$</td></tr>
+  <tr><th>모총계 $\tau$</th>
+      <td>$\hat\tau=N\bar y$ &nbsp;(<b>N배</b>)</td>
+      <td>$N^2\cdot\dfrac{N-n}{N}\cdot\dfrac{s^2}{n}$ &nbsp;(<b>N²배</b>)</td>
+      <td>$2N\sqrt{\hat V(\bar y)}$</td></tr>
+  <tr><th>모비율 $p$</th>
+      <td>$\hat p=\frac1n\sum y_i$ ($y_i=0,1$)</td>
+      <td>$\dfrac{N-n}{N}\cdot\dfrac{\hat p\hat q}{n-1}$</td>
+      <td>$2\sqrt{\hat V(\hat p)}$</td></tr>
+</table></div>
+
+<p>$s^2=\frac{1}{n-1}\sum(y_i-\bar y)^2$ 은 $S^2$ 의 <b>비편향추정량</b> ($E(s^2)=S^2$, 그래서 $n-1$).
+$\frac{N-n}{N}$ = <b>유한모집단 수정계수(FPC)</b> — $n=N$ 이면 0, $N$ 이 매우 크면 1.</p>
+
+<h3 class="sub">표본크기 — 언제나 $n=\dfrac{n_0}{1+n_0/N}$ (N 이 크면 $n\approx n_0$)</h3>
+
+<div class="scroll"><table class="data">
+  <tr><th>목표</th><th>$n_0$</th></tr>
+  <tr><th>모평균, 절대오차 $B$</th><td>$\left(\dfrac{z_{\alpha/2}S}{B}\right)^2$</td></tr>
+  <tr><th>모비율, 절대오차 $B$</th><td>$\dfrac{z^2_{\alpha/2}\,pq}{B^2}$ &nbsp;— 사전정보가 없으면 <b>$p=0.5$</b> (pq 최대)</td></tr>
+  <tr><th>모총계, 절대오차 $B$</th><td>$N^2\cdot\dfrac{(z_{\alpha/2}S)^2}{B^2}$</td></tr>
+  <tr><th>상대오차 $D$</th><td>$\left(\dfrac{z_{\alpha/2}C}{D}\right)^2$, &nbsp;$C=S/\mu$ (변동계수)</td></tr>
+</table></div>
+
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>$N=50{,}000$, $\hat p=0.44$, $B=0.025$ → $n_0=\dfrac{4(0.44)(0.56)}{0.025^2}=1{,}577$,
+  &nbsp;$n=\dfrac{1{,}577}{1+1{,}577/50{,}000}\approx1{,}530$. &nbsp;사전정보 없으면 $n_0=1{,}600\to n\approx1{,}550$.</p>
+</div>
+
+<div class="ck">
+  <div class="h">2장 함정</div>
+  <ol>
+    <li>표준오차 $\propto 1/\sqrt n$ — 표본을 <b>4배</b>로 늘리면 표준오차는 <b>1/2</b> (9 → 4.5).</li>
+    <li>$n$↑ 이면 줄어드는 것은 <b>표준오차</b>(추정량의 흩어짐). <b>표본표준편차 $s$</b>는 $S$ 의 추정값이라 $n$ 과 무관.</li>
+    <li>모총계 분산에 <b>$N^2$</b> 을 빠뜨린 보기 = 사실은 $\bar y$ 의 분산. 총계 신뢰구간은 $\hat\tau\pm2N\sqrt{\cdots}$.</li>
+    <li>모비율 분산의 분모는 <b>$n-1$</b>. 문제에 $(N-n)/N$ 이 주어지면 반드시 곱한다.</li>
+    <li>단순임의추출에는 조사원의 <b>선택편향이 없다</b> (편향은 주관적 선택에서 생긴다).</li>
+    <li>지지율 차이가 오차한계 안에 있으면 <b>우열을 단정할 수 없다</b> (42% vs 39%, ±4.5%).</li>
+    <li>$n_0$ 를 구하고 <b>FPC 보정</b>을 잊지 말 것. 결과는 <b>올림</b> (90.9 → 91).</li>
+  </ol>
+</div>
+
+<!-- ==================================================== 3장 -->
+<h2 class="sub">3장 · 보조 정보 — 비추정 vs 회귀추정 <span class="en">which estimator?</span></h2>
+
+<p>보조변수 $x$ 의 조건 — <b>주변수 $y$ 와 상관이 강하고</b>, 모집단 값($\mu_x$ 또는 $\tau_x$)을 <b>싸게 알 수 있을 것</b>.</p>
+
+<div class="scroll"><table class="data">
+  <tr><th></th><th>비추정 <span class="en">ratio</span></th><th>회귀추정 <span class="en">regression</span></th></tr>
+  <tr><th>산점도</th><td><b>원점을 지나는</b> 직선 $y=rx$</td><td>원점을 <b>지나지 않는</b> 직선</td></tr>
+  <tr><th>핵심 통계량</th><td>$r=\dfrac{\sum y_i}{\sum x_i}=\dfrac{\bar y}{\bar x}$ &nbsp;($x$ 1단위당 $y$)</td>
+      <td>$b=\dfrac{\sum(x_i-\bar x)(y_i-\bar y)}{\sum(x_i-\bar x)^2}$</td></tr>
+  <tr><th>모평균</th><td>$\hat\mu_y=r\,\mu_x$</td><td>$\hat\mu_{yL}=\bar y+b(\mu_x-\bar x)$</td></tr>
+  <tr><th>모총계</th><td>$\hat\tau_y=r\,\tau_x$ &nbsp;(<b>$\tau_x$ 를 곱함</b>)</td><td>$\hat\tau_{yL}=N\hat\mu_{yL}$ &nbsp;(<b>$N$ 을 곱함</b>)</td></tr>
+  <tr><th>평균의 추정분산</th>
+      <td>$\dfrac{N-n}{N}\cdot\dfrac1n\cdot\dfrac{\sum(y_i-rx_i)^2}{n-1}$</td>
+      <td>$\dfrac{N-n}{N}\cdot\dfrac{MSE}{n}$</td></tr>
+  <tr><th>유리할 조건</th>
+      <td>$\hat\rho>\dfrac12\cdot\dfrac{s_x/\bar x}{s_y/\bar y}$ → 변동계수가 비슷하면 <b>$\hat\rho>\tfrac12$</b></td>
+      <td><b>$|\rho|$</b> 가 1에 가까울수록 &nbsp;$RE=\dfrac{1}{1-\hat\rho^{\,2}}$</td></tr>
+</table></div>
+
+$$\hat V(r)=\frac{N-n}{N}\cdot\frac1n\cdot\frac{1}{\mu_x^2}\cdot\frac{\sum(y_i-rx_i)^2}{n-1}\ (\mu_x\ \text{모르면}\ \bar x),\qquad
+  \hat V(\hat\tau_y)=\tau_x^2\,\hat V(r)$$
+$$MSE=\frac{1}{n-2}\left\{\sum(y_i-\bar y)^2-b^2\sum(x_i-\bar x)^2\right\}$$
+
+<div class="box ex">
+  <span class="tag">예</span>
+  <p>표본 4가구 소비지출 합 600, 면적 합 369, 도시 평균 면적 $\mu_x=103.7$ →
+  $r=600/369=1.626$, &nbsp;$\hat\mu_y=1.626\times103.7=168.6$.
+  $\bar y=150$ 을 그대로 답하면 오답. $\mu_x\gt\bar x(=92.25)$ 이므로 추정값이 $\bar y$ 보다 <b>커지는 게 맞다</b>.</p>
+</div>
+
+<div class="ck">
+  <div class="h">3장 함정</div>
+  <ol>
+    <li>$r$ 은 <b>$\sum y/\sum x$</b> — $x,y$ 를 뒤집으면 오답 보기(오렌지 17.68)로 간다.</li>
+    <li>모총계: 비추정은 <b>$\tau_x\cdot r$</b>, 회귀추정은 <b>$N\cdot\hat\mu_{yL}$</b> ($b$ 에 $N$ 을 곱하는 게 아님).</li>
+    <li>$\hat\rho\approx0$ 이면 비추정은 표본평균보다 <b>오히려 나쁘다</b>.</li>
+    <li>회귀추정은 상관의 <b>부호가 아니라 절댓값</b> — $\rho\to-1$ 이어도 매우 효율적.</li>
+    <li>비추정이 좋으려면 ⓐ 원점 통과 ⓑ 직선관계 뚜렷 ⓒ 기울기 양수. 원점을 안 지나면 <b>회귀추정</b>.</li>
+  </ol>
+</div>
+
+<!-- ==================================================== 4장 -->
+<h2 class="sub">4장 · 층화임의추출법 <span class="en">stratified random sampling</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">층화임의추출법</span>
+  <p>모집단을 <b>겹치지 않는 층</b>으로 나눈 뒤 <b>각 층에서 독립적으로 단순임의추출</b>.
+  층화는 추출이 아니라 추출을 위해 모집단을 나누는 작업이고, 층화변수는 <b>모든 단위에 대해 값을 알아야</b> 한다.</p>
+  <p><b>쓰는 이유 3</b> — ① 층 내부가 동질적이면 <b>정도↑</b> ② <b>층별 추정</b>도 가능 (도별 추정값)
+  ③ 대표성↑ · 조사 관리 편리 · <b>비용 절감</b></p>
+</div>
+
+<p>$W_h=N_h/N$ (층 가중치), $w_h=n_h/n$ (배분 비율).</p>
+$$\bar y_{st}=\sum W_h\bar y_h=\frac1N\sum N_h\bar y_h,\qquad
+  \hat V(\bar y_{st})=\frac{1}{N^2}\sum N_h^2\cdot\frac{N_h-n_h}{N_h}\cdot\frac{s_h^2}{n_h},\qquad
+  \hat\tau_{st}=N\bar y_{st}$$
+
+<div class="scroll"><table class="data">
+  <tr><th>배분</th><th>$n_h$</th><th>특징</th></tr>
+  <tr><th>비례배분</th><td>$n\cdot\dfrac{N_h}{N}$</td><td>모든 층의 <b>추출률 $n_h/N_h$ 가 같다</b></td></tr>
+  <tr><th>네이만배분</th><td>$n\cdot\dfrac{N_hS_h}{\sum N_jS_j}$</td><td>$S_h$ 가 큰 층에 표본이 몰림 (추출률도 큼)</td></tr>
+  <tr><th>최적배분</th><td>$n\cdot\dfrac{N_hS_h/\sqrt{c_h}}{\sum N_jS_j/\sqrt{c_j}}$</td><td>조사비용 $c_h$ 가 비싼 층은 줄임</td></tr>
+</table></div>
+
+$$n=\frac{\sum N_h^2S_h^2/w_h}{N^2D+\sum N_hS_h^2},\qquad D=\frac{B^2}{z^2_{\alpha/2}}\ (\text{평균})\quad
+  \text{비례배분이면}\ n=\frac{N\sum N_hS_h^2}{N^2D+\sum N_hS_h^2}$$
+
+<div class="scroll"><table class="data">
+  <tr><th></th><th>사전층화</th><th>사후층화</th></tr>
+  <tr><th>층화 시점</th><td>표본설계 단계</td><td>단순임의추출 <b>후</b> 조사된 자료로</td></tr>
+  <tr><th>$n_h$</th><td>미리 정한 <b>고정값</b></td><td><b>확률변수</b></td></tr>
+  <tr><th>추정량</th><td>$\sum W_h\bar y_h$</td><td>$\bar y_{post}=\sum W_h\bar y_{ph}$</td></tr>
+  <tr><th>분산</th><td>위 식</td><td>$\dfrac{N-n}{Nn}\sum W_hs_{ph}^2+\dfrac{1}{n^2}\sum(1-W_h)s_{ph}^2$ — <b>둘째 항만큼 손해</b></td></tr>
+  <tr><th>언제</th><td colspan="2">표본 구성비(남 150 : 여 50)가 <b>알려진 모집단 비율</b>(6 : 4)과 다를 때 → $0.6\hat p_{남}+0.4\hat p_{여}$</td></tr>
+</table></div>
+
+<div class="ck">
+  <div class="h">4장 함정</div>
+  <ol>
+    <li>전체 평균은 층 평균의 <b>단순평균이 아니라 $N_h$ 가중평균</b> (18.5, 10.7 → 14.6 ✗, 13.82 ✓).</li>
+    <li>분산은 층별 분산에 <b>$N_h^2$</b> 을 곱해 더하고 <b>$N^2$</b> 으로 나눈다.</li>
+    <li>한 층만의 추정은 그 층을 떼어 <b>단순임의추출</b>로 본다.</li>
+    <li>추출률이 모든 층에서 같은 것은 <b>비례배분</b> — 네이만이 아니다.</li>
+    <li>층화는 <b>층 내부가 동질적</b>일 때만 이득. 잘못 층화하면 단순임의추출보다 <b>나빠진다</b>
+      (체인망 기준 2.01 &gt; SRS 1.77, 규모 기준 0.78).</li>
+    <li>층화임의추출은 단순임의추출보다 조사 관리가 <b>편리</b>하고 비용이 <b>절감</b>된다 (“불편·비용 증가” 보기는 틀림).</li>
+    <li>사후층화에서 과대·과소의 <b>방향은 단정할 수 없다</b> — 층별 값의 대소에 달렸다.</li>
+  </ol>
+</div>
+
+<!-- ==================================================== 풀이 순서 -->
+<h2 class="sub">풀이 순서 <span class="en">solving order</span></h2>
+
+<div class="box thm">
+  <span class="tag">절차</span><span class="title">계산 문제를 받으면</span>
+  <ol class="fill">
+    <li><span class="step">추출법.</span> 단순임의 / 비추정(원점 통과) / 회귀추정 / 층화 / 사후층화.</li>
+    <li><span class="step">모수.</span> 평균 · 총계 · 비율 — 총계면 추정량 ×($N$ 또는 $\tau_x$), 분산 ×제곱.</li>
+    <li><span class="step">추정값.</span> $\bar y$ · $\hat p$ · $r\mu_x$ · $\bar y+b(\mu_x-\bar x)$ · $\sum W_h\bar y_h$.</li>
+    <li><span class="step">추정분산.</span> FPC $\frac{N-n}{N}$ 확인 (주어지지 않으면 $N$ 큼 → 1), 비율은 $n-1$.</li>
+    <li><span class="step">오차한계.</span> $B=2\sqrt{\hat V}$ → 신뢰구간 $\hat\theta\pm B$.</li>
+    <li><span class="step">표본크기.</span> $n_0$ → $n=n_0/(1+n_0/N)$ → 올림.</li>
+  </ol>
+</div>
+
+<nav class="pager">
+  <a href="index.html">← 목차<small>표본조사론</small></a>
+  <a href="formula-map.html">공식 대조 →<small>추출법별 공식 + 예제</small></a>
+</nav>
+
+</body>
+</html>
