@@ -210,11 +210,13 @@ $$\int_0^\infty y^{\frac{m+n}2-1}e^{-\frac y2(1+\frac mnx)}dy=\frac{\Gamma(\frac
 <span class="hl">$$f_X(x)=\frac{\Gamma(\frac{m+n}2)}{\Gamma(\frac m2)\Gamma(\frac n2)}\Big(\frac mn\Big)^{\frac m2}x^{\frac m2-1}\Big(1+\frac mn{\color{#d64541}x}\Big)^{-\frac{m+n}2},\quad x\gt0$$</span>
 <div class="orig">원래 풀이: 마지막 두 줄의 $\big(1+\tfrac mnx\big)$ 를 $\big(1+\tfrac mny\big)$ 로 씀 — $y$ 로 적분했으므로 $x$ 여야 함.</div></div>
 
-<div class="ex"><span class="exn">09</span><span class="fix">추가</span>
-$$M_n(t)=M_{S_n}(t/n)=\big(1-p+pe^{t/n}\big)^n=\big\{1+p(e^{t/n}-1)\big\}^n$$
-<span class="hl">$p(e^{t/n}-1)=\dfrac{pt}n+o\big(\tfrac1n\big)$ 이므로 $\displaystyle\lim_{n\to\infty}M_n(t)=e^{pt}$ — 상수 $p$ 에 몰린 분포의 mgf 이다.
-따라서 $X_n\xrightarrow{d}p$ 이고, 상수로의 분포수렴은 확률수렴이므로 $\dfrac{S_n}n\xrightarrow{p}p$ (표본비율의 대수의 법칙).</span>
-<div class="orig">원래 풀이: 첫 줄에서 멈춤 — 극한과 대수의 법칙 부분이 빠져 있었다.</div></div>
+<div class="ex"><span class="exn">09</span><span class="fix">수정</span>
+$$M_{S_n/n}(t)=M_{S_n}\Big(\frac tn\Big)=\big(1-p+pe^{t/n}\big)^n=\big(1+p(e^{t/n}-1)\big)^n=\Big(1+p\Big(\frac tn+{\color{#d64541}\frac{t^2}{2n^2}}+\cdots\Big)\Big)^n$$
+$$e^{t/n}=1+\frac tn+\frac{t^2}{2n^2}+\frac{t^3}{3!\,n^3}+\cdots$$
+$$=\Big(1+\frac{pt}n\underbrace{\Big(1+\frac t{2n}+o\Big(\frac1n\Big)\Big)}_{\to1}\Big)^n\ {\color{#d64541}\longrightarrow}\ \lim_{n\to\infty}\Big(1+\frac{pt}n\Big)^n=e^{pt}$$
+<span class="fix">추가</span><span class="hl">$e^{pt}$ 는 상수 $p$ 에 몰린 분포의 mgf 이므로 $\dfrac{S_n}n\xrightarrow{d}p$. 상수로의 분포수렴은 확률수렴이므로 $\dfrac{S_n}n\xrightarrow{p}p$ (표본비율의 대수의 법칙).</span>
+<div class="orig">원래 풀이: 둘째 항을 $\dfrac{t^2}{2p^2}$ 로 씀 ($\tfrac{t^2}{2n^2}$), 마지막 두 단계를 등호로 씀 — 괄호가 $1$ 로 가는 것은 $n\to\infty$ 의 극한이므로 $\to$ 이다. 대수의 법칙 부분은 비어 있었다.</div></div>
+
 
 <div class="ex"><span class="exn">12</span>
 $$P\Big(4\lt\frac{\sum(X_i-\bar X)^2}{10}\lt14\Big)=P\Big(\frac85\lt\frac{9S^2}{25}\lt\frac{28}5\Big)=P\Big(\frac85\lt\chi^2(9)\lt\frac{28}5\Big)$$</div>
