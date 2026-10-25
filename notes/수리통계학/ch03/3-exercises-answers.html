@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3장 · 연습문제 답지</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    output: { font: 'mathjax-fira', mtextInheritFont: true },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-svg.js"></script>
+<style>
+  .ex{ margin:22px 0; line-height:1.75; }
+  .exn{ font-weight:800; color:var(--thm); margin-right:8px; }
+  .ex ol{ margin:4px 0 0; padding-left:26px; }
+  .ex li{ margin:3px 0; }
+  .fix{ display:inline-block; font-size:.74rem; font-weight:800; color:#fff; background:#d64541;
+        border-radius:3px; padding:0 6px; margin-right:6px; vertical-align:2px; }
+  .hl{ background:#fdecea; border-radius:3px; padding:0 2px; }
+  .orig{ margin:4px 0 0; font-size:.86rem; color:var(--muted); border-left:3px solid #d64541; padding-left:8px; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; }
+    .fix{ color:#000; background:none; border:1px solid #000; } .hl{ background:none; text-decoration:underline; } }
+</style>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">수리통계학 · 3장 표본분포 및 그의 근사</div>
+  <h1><span class="no">답지</span>3장 연습문제 <span class="en">answers</span></h1>
+</header>
+
+<p class="note">손풀이를 그대로 옮겼다. 틀렸거나 빠진 곳만 고쳤고, 고친 문항에는 <span class="fix">수정</span>·<span class="fix">추가</span> 표시와 함께 바뀐 부분을 <span class="hl">강조</span>하고, 원래 풀이를 아래에 적어 두었다.</p>
+
+<div class="ex"><span class="exn">01</span>
+$$E(S_n^2)=E\Big(\frac{\sum(X_i-\bar X)^2}{n-1}\Big)=\frac1{n-1}E\Big[\sum(X_i-\mu)^2-n(\bar X-\mu)^2\Big]=\frac1{n-1}(n\sigma^2-\sigma^2)=\frac{n-1}{n-1}\sigma^2=\sigma^2$$</div>
+
+<div class="ex"><span class="exn">02</span><span class="fix">수정</span>
+<span class="hl">$$P(|S_n^2-\sigma^2|\gt\varepsilon)\le\frac{Var(S_n^2)}{\varepsilon^2}=\frac1{n\varepsilon^2}\Big(\mu_4-\frac{n-3}{n-1}\sigma^4\Big)\to0\quad\text{as }n\to\infty$$</span>
+<div class="orig">원래 풀이: 괄호 안 마지막 항을 $\dfrac{n-3}{n-1}\sigma^2$ 으로 씀 ($\sigma^4$ 이어야 함).</div></div>
+
+<div class="ex"><span class="exn">03</span>$X_i\sim U(0,\theta)$ 이므로 $0\le X_{(n)}\le\theta$ 이다 (단 $0\lt\varepsilon\lt\theta$).
+$X_{(n)}\le\theta$ 이므로 $|X_{(n)}-\theta|\ge\varepsilon$ 이려면 $X_{(n)}\lt\theta-\varepsilon$ 이어야 한다 — 즉 최댓값 $X_{(n)}$ 이 반드시 $\theta-\varepsilon$ 보다 작아야 한다. 그러므로
+$$P(|X_{(n)}-\theta|\ge\varepsilon)=P(X_{(n)}\lt\theta-\varepsilon).$$
+최댓값 $X_{(n)}$ 이 $\theta-\varepsilon$ 보다 작다는 것은 <b>모든 표본</b>이 $\theta-\varepsilon$ 보다 작다는 것이므로, $X_i$ 가 상호 독립임을 이용하면
+$$P(X_{(n)}\lt\theta-\varepsilon)=P(X_1\lt\theta-\varepsilon,\dots,X_n\lt\theta-\varepsilon)
+=\prod_{i=1}^n P(X_i\lt\theta-\varepsilon)=\left(\frac{\theta-\varepsilon}{\theta}\right)^n=\left(1-\frac{\varepsilon}{\theta}\right)^n.$$
+$0\lt1-\dfrac{\varepsilon}{\theta}\lt1$ 이므로 $n\to\infty$ 이면
+$$P(|X_{(n)}-\theta|\ge\varepsilon)=\lim_{n\to\infty}\left(1-\frac{\varepsilon}{\theta}\right)^n=0.$$
+따라서 $X_{(n)}\xrightarrow{\ p\ }\theta$. $\blacksquare$</div>
+
+<div class="ex"><span class="exn">04</span>
+$$P(|\bar X-\lambda|\gt\varepsilon)\le\frac{Var(\bar X)}{\varepsilon^2}=\frac{\lambda}{n\varepsilon^2}\to0\quad\text{as }n\to\infty$$</div>
+
+<div class="ex"><span class="exn">05</span>
+$$P\big(1\lt(X-5)^2\lt10\big)=P\Big(\frac19\lt\frac{(X-5)^2}{3^2}\lt\frac{10}9\Big)=P\Big(\frac19\lt\chi^2(1)\lt\frac{10}9\Big)$$</div>
+
+<div class="ex"><span class="exn">06</span>
+<ol><li>$\bar X\sim N(0,5)$.
+  $P(\bar X\lt c)=P\Big(\dfrac{\bar X}{\sqrt5}\lt\dfrac c{\sqrt5}\Big)=0.9$, $z_{0.1}=\dfrac c{\sqrt5}=1.282$, $c=1.282\times\sqrt5=2.87$</li>
+<li><span class="fix">수정</span><span class="hl">$P\Big(\displaystyle\sum\Big(\frac{X_i-0}{5}\Big)^2\lt\frac c5\Big)=P\Big(\chi^2(5)\lt\frac c5\Big)=0.9$</span>,
+  $\dfrac c5=\chi^2_{0.1}(5)=9.236$, $c=5\times9.236=46.18$
+  <div class="orig">원래 풀이: $P\Big(\sum\big(\tfrac{X_i-0}{\sqrt5}\big)^2\lt\tfrac c5\Big)=P(\chi^2(5)\lt c)=0.9$ — 표준화는 표준편차 $5$ 로 나눠야 하고, 그러면 $\chi^2(5)\lt c/5$ 가 된다. 최종 $c=46.18$ 은 같음.</div></li></ol></div>
+
+<div class="ex"><span class="exn">07</span>
+$$Var\Big(\frac{\sum(X_i-\bar X)^2}{n}\Big)=\frac{\sigma^4}{n^2}Var\Big(\frac{(n-1)S^2}{\sigma^2}\Big)=\frac{\sigma^4}{n^2}Var\big(\chi^2(n-1)\big)=\frac{2(n-1)\sigma^4}{n^2}$$</div>
+
+<div class="ex"><span class="exn">08</span><span class="fix">수정</span>
+$X=\dfrac{U/m}{W/n}$, $Y=W$ 로 두면 $U=\dfrac mnXY$, $W=Y$.
+$$|J|=\begin{vmatrix}\frac{\partial u}{\partial x}&\frac{\partial u}{\partial y}\\[2pt]\frac{\partial w}{\partial x}&\frac{\partial w}{\partial y}\end{vmatrix}=\begin{vmatrix}\frac mny&\frac mnx\\0&1\end{vmatrix}=\frac mny$$
+$$\begin{aligned}f_{X,Y}(x,y)&=f_{U,W}\Big(\frac mnxy,\,y\Big)|J|
+=\frac1{\Gamma(\frac m2)\Gamma(\frac n2)2^{\frac{m+n}2}}\Big(\frac mnxy\Big)^{\frac m2-1}y^{\frac n2-1}e^{-\frac12(\frac mnxy+y)}\,\frac mny\\
+&=\frac1{\Gamma(\frac m2)\Gamma(\frac n2)2^{\frac{m+n}2}}\Big(\frac mn\Big)^{\frac m2}x^{\frac m2-1}y^{\frac{m+n}2-1}e^{-\frac y2(1+\frac mnx)},\quad x\gt0,\ y\gt0\end{aligned}$$
+$$\int_0^\infty y^{\frac{m+n}2-1}e^{-\frac y2(1+\frac mnx)}dy=\frac{\Gamma(\frac{m+n}2)}{\big(\frac12\big)^{\frac{m+n}2}\big(1+\frac mn{\color{#d64541}x}\big)^{\frac{m+n}2}}$$
+<span class="hl">$$f_X(x)=\frac{\Gamma(\frac{m+n}2)}{\Gamma(\frac m2)\Gamma(\frac n2)}\Big(\frac mn\Big)^{\frac m2}x^{\frac m2-1}\Big(1+\frac mn{\color{#d64541}x}\Big)^{-\frac{m+n}2},\quad x\gt0$$</span>
+<div class="orig">원래 풀이: 마지막 두 줄의 $\big(1+\tfrac mnx\big)$ 를 $\big(1+\tfrac mny\big)$ 로 씀 — $y$ 로 적분했으므로 $x$ 여야 함.</div></div>
+
+<div class="ex"><span class="exn">09</span><span class="fix">추가</span>
+$$M_n(t)=M_{S_n}(t/n)=\big(1-p+pe^{t/n}\big)^n=\big\{1+p(e^{t/n}-1)\big\}^n$$
+<span class="hl">$p(e^{t/n}-1)=\dfrac{pt}n+o\big(\tfrac1n\big)$ 이므로 $\displaystyle\lim_{n\to\infty}M_n(t)=e^{pt}$ — 상수 $p$ 에 몰린 분포의 mgf 이다.
+따라서 $X_n\xrightarrow{d}p$ 이고, 상수로의 분포수렴은 확률수렴이므로 $\dfrac{S_n}n\xrightarrow{p}p$ (표본비율의 대수의 법칙).</span>
+<div class="orig">원래 풀이: 첫 줄에서 멈춤 — 극한과 대수의 법칙 부분이 빠져 있었다.</div></div>
+
+<div class="ex"><span class="exn">12</span>
+$$P\Big(4\lt\frac{\sum(X_i-\bar X)^2}{10}\lt14\Big)=P\Big(\frac85\lt\frac{9S^2}{25}\lt\frac{28}5\Big)=P\Big(\frac85\lt\chi^2(9)\lt\frac{28}5\Big)$$</div>
+
+<div class="ex"><span class="exn">13</span>
+$\bar X\sim N\big(5,\tfrac{25}{16}\big)$, $\bar X\perp\sum(X_i-\bar X)^2$ 이므로
+$$P\Big(0\lt\bar X_{16}\lt6,\ 20\lt\frac{\sum(X_i-\bar X)^2}{16}\lt30\Big)=P(0\lt\bar X\lt6)\,P\Big(20\lt\frac{\sum(X_i-\bar X)^2}{16}\lt30\Big)$$
+$$=P\Big(-4\lt Z\lt\frac45\Big)\,P\Big(\frac{64}5\lt\frac{15S^2}{25}\lt\frac{96}5\Big)=0.7881\times0.4129\approx0.325$$</div>
+
+<div class="ex"><span class="exn">14</span>
+<ol><li>$\bar X\sim N\big(0,\tfrac9{16}\big)$, $\bar Y\sim N\big(2,\tfrac{16}{25}\big)$.
+  $E(\bar X-\bar Y)=0-2=-2$, $Var(\bar X-\bar Y)=Var(\bar X)+Var(\bar Y)=\dfrac9{16}+\dfrac{16}{25}=\dfrac{225+256}{400}=\dfrac{481}{400}$
+  $$\bar X-\bar Y\sim N\Big(-2,\frac{481}{400}\Big)$$</li>
+<li>$$P(\bar X_{16}-\bar Y_{25}\gt0)=P\Big(\frac{(\bar X-\bar Y)+2}{\sqrt{481/400}}\gt\frac{2}{\sqrt{481/400}}\Big)=P\Big(Z\gt\frac{2}{\sqrt{481/400}}\Big)$$</li></ol></div>
+
+<div class="ex"><span class="exn">15</span>
+$T=\dfrac Z{\sqrt{U/n}}$, $T^2=\dfrac{Z^2}{U/n}$, $Z^2\sim\chi^2(1)$ 이므로 $T^2\sim F(1,n)$</div>
+
+<div class="ex"><span class="exn">17</span>
+<ol><li>$E(X_1-X_2)=0$, $Var(X_1-X_2)=2$.
+  $P(X_1-X_2\lt2)=P\Big(\dfrac{X_1-X_2}{\sqrt2}\lt\dfrac2{\sqrt2}\Big)=P(Z\lt\sqrt2)=\Phi(\sqrt2)$</li>
+<li>$E(X_1+X_2)=0$, $Var(X_1+X_2)=2$ 이므로 (1)과 답이 동일하다.</li>
+<li>$X_i^2\sim\chi^2(1)$ 이고 $\sum_1^{n}\chi^2(1)=\chi^2(n)$ 이므로 $P(X_1^2+\cdots+X_{50}^2\lt60)=P(\chi^2(50)\lt60)$</li>
+<li>(3)과 동일한 원리로 $P(40\lt X_1^2+\cdots+X_{50}^2\lt60)=P(40\lt\chi^2(50)\lt60)$</li>
+<li>$P(\chi^2(50)\lt50+c)=0.9$, $50+c=\chi^2_{0.1}(50)$ 이므로 $c=\chi^2_{0.1}(50)-50$</li></ol></div>
+
+<div class="ex"><span class="exn">18</span>
+$E(X)=\dfrac{a+b}2=\dfrac12$, $Var(X)=\dfrac{(b-a)^2}{12}=\dfrac1{12}$. CLT 에 의해 $\bar X\sim N\big(\tfrac12,\tfrac1{360}\big)$
+$$P\Big(\frac49\lt\bar X_{30}\lt\frac59\Big)=P\Big(\frac{\frac49-\frac12}{1/\sqrt{360}}\lt Z\lt\frac{\frac59-\frac12}{1/\sqrt{360}}\Big)=P\Big(-\frac{\sqrt{360}}{18}\lt Z\lt\frac{\sqrt{360}}{18}\Big)=\Phi\Big(\frac{\sqrt{360}}{18}\Big)-\Phi\Big(-\frac{\sqrt{360}}{18}\Big)$$</div>
+
+<div class="ex"><span class="exn">19</span>
+$X\sim\text{EXP}(3)$, $\bar X_{30}\sim\text{GAM}\big(30,\tfrac1{10}\big)$. $E(\bar X)=k\theta=3$, $Var(\bar X)=\dfrac1{30}Var(X_i)=\dfrac9{30}$ 이므로 $\bar X\approx N\big(3,\tfrac9{30}\big)$
+$$P(\bar X_{30}\lt4)=P\Big(Z\lt\frac1{3/\sqrt{30}}=\frac{\sqrt{30}}3\Big)=\Phi\Big(\frac{\sqrt{30}}3\Big)$$</div>
+
+<div class="ex"><span class="exn">20</span>
+$X\sim\chi^2(50)$: $E(X)=50$, $Var(X)=100$ 이므로 $\bar X_{100}\approx N(50,1)$
+$$P(49\lt\bar X_{100}\lt51)=P\Big(\frac{49-50}1\lt Z\lt\frac{51-50}1\Big)=P(-1\lt Z\lt1)=\Phi(1)-\Phi(-1)$$</div>
+
+<div class="ex"><span class="exn">21</span><span class="fix">수정</span>
+$E(X)=25$, $Var(X)=100\times\dfrac14\times\dfrac34=\dfrac{75}4$
+<ol><li>연속성 수정 ✕: $P(X\gt30)=P\Big(Z\gt\dfrac{10}{\sqrt{75}}\Big)=P\Big(Z\gt\dfrac2{\sqrt3}\Big)=1-\Phi\Big(\dfrac2{\sqrt3}\Big)$</li>
+<li>연속성 수정 ○: <span class="hl">$P(X\gt30.5)=P\Big(Z\gt\dfrac{30.5-25}{\sqrt{75}/2}\Big)=P\Big(Z\gt\dfrac{11}{5\sqrt3}\Big)=1-\Phi\Big(\dfrac{11}{5\sqrt3}\Big)$</span></li></ol>
+<div class="orig">원래 풀이: 연속성 수정 쪽을 $P\big(Z\gt\tfrac9{5\sqrt3}\big)$ 로 씀 — $\tfrac{5.5}{\sqrt{75}/2}=\tfrac{11}{\sqrt{75}}=\tfrac{11}{5\sqrt3}$.</div></div>
+
+<div class="ex"><span class="exn">22</span><span class="fix">수정</span>
+$X_i\overset{\text{iid}}{\sim}\text{POI}\big(\tfrac15\big)$, $i=1,\dots,25$. <span class="hl">$E(X_i)=Var(X_i)=\tfrac15$ 이므로 $E(\sum X_i)=5$, $Var(\sum X_i)=5$</span>
+$$P\Big(3\lt\sum X_i\lt7\Big)=P\Big(\frac{3-5}{\sqrt5}\lt\frac{\sum X_i-n\mu}{\sqrt n\sigma}\lt\frac{7-5}{\sqrt5}\Big)=P\Big(-\frac{2\sqrt5}5\lt Z\lt\frac{2\sqrt5}5\Big)$$
+<div class="orig">원래 풀이: "$E(\bar X)=\tfrac15$, $Var(\bar X)=5$" 라고 씀 — $\tfrac15$ 는 $E(X_i)$, $5$ 는 $Var(\sum X_i)$ 이다. 이후 계산은 같음.</div></div>
+
+<div class="ex"><span class="exn">23</span><span class="fix">수정</span>
+<span class="hl">중심극한정리에 의해 $\bar X\approx N\big(\mu_1,\tfrac{\sigma^2}n\big)$, $\bar Y\approx N\big(\mu_2,\tfrac{\sigma^2}n\big)$ (서로 독립)</span>
+$$E(\bar X-\bar Y)=\mu_1-\mu_2,\qquad Var(\bar X-\bar Y)=\frac{2\sigma^2}n$$
+<span class="hl">$$\frac{(\bar X-\bar Y)-(\mu_1-\mu_2)}{\sigma\sqrt{2/n}}\xrightarrow{d}N(0,1)$$</span>
+<div class="orig">원래 풀이: $X\sim N(\mu_1,\sigma^2)$, $Y\sim N(\mu_2,\sigma^2)$ 로 정규분포를 가정함 — 문제는 평균·분산만 주므로 중심극한정리로 극한분포를 구해야 한다. 결론 $N(0,1)$ 은 같음.</div></div>
+
+<div class="ex"><span class="exn">24</span>
+코시분포는 평균과 분산이 존재하지 않으므로 중심극한정리의 조건을 충족하지 않는다.</div>
+
+<div class="ex"><span class="exn">25</span>
+<ol><li>
+$$\begin{array}{cc|c|c}X_{(1)}&X_{(2)}&X_{(2)}-X_{(1)}&\frac{X_1+X_2}2\\\hline1&2&1&1.5\\1&3&2&2\\1&4&3&2.5\\2&3&1&2.5\\2&4&2&3\\3&4&1&3.5\end{array}$$
+$f_{X_{(1)},X_{(2)}}(x,y)=\dfrac16$ ($x\lt y$, $x,y\in\{1,2,3,4\}$)</li>
+<li>$Y=X_{(2)}-X_{(1)}$: $P(Y=1)=\tfrac12$, $P(Y=2)=\tfrac13$, $P(Y=3)=\tfrac16$
+  $$f_Y(y)=\begin{cases}\frac12,&y=1\\\frac13,&y=2\\\frac16,&y=3\end{cases}$$</li>
+<li>$Z=\dfrac{X_1+X_2}2$: $P(Z=1.5)=\tfrac16$, $P(Z=2)=\tfrac16$, $P(Z=2.5)=\tfrac13$, $P(Z=3)=\tfrac16$, $P(Z=3.5)=\tfrac16$
+  $$f_Z(z)=\begin{cases}\frac16,&z=1.5,\,2,\,3,\,3.5\\\frac13,&z=2.5\\0,&\text{otherwise}\end{cases}$$</li></ol></div>
+
+<div class="ex"><span class="exn">26</span>
+$f_X(x)=2x$ $(0\lt x\lt1)$, $f_Y(y)=3y^2$ $(0\lt y\lt1)$, $U=\max(X,Y)$, $V=\min(X,Y)$.
+<ol><li>$X\gt Y$ 이면 $U=X$, $V=Y$, 즉 $X=U$, $Y=V$: $f_{U,V}(u,v)=f_{X,Y}(u,v)=6uv^2$</li>
+<li>$X\lt Y$ 이면 $U=Y$, $V=X$, 즉 $X=V$, $Y=U$: $f_{U,V}(u,v)=f_{X,Y}(v,u)=6vu^2$</li>
+<li>$X=Y$ 이면 — 연속형이므로 두 값이 같을 확률은 $0$.</li></ol>
+두 확률밀도함수를 더하면 $f_{U,V}(u,v)=6uv(u+v)$, $0\lt\max(X,Y)\lt1$, $0\lt\min(X,Y)\lt1$ 이므로 지지집합은 $0\lt v\lt u\lt1$.</div>
+
+<div class="ex"><span class="exn">27</span>
+<ol><li>$f(x)=\dfrac1\theta$, $F(x)=\dfrac x\theta$ $(0\lt x\lt\theta)$,
+  $f_{X_{(1)},X_{(n)}}(x,y)=n(n-1)[F(y)-F(x)]^{n-2}f(x)f(y)$ 에서
+  $$f_{X_{(1)},X_{(n)}}(x,y)=n(n-1)\Big(\frac{y-x}\theta\Big)^{n-2}\frac1{\theta^2}=n(n-1)\frac{(y-x)^{n-2}}{\theta^n},\quad 0\lt x\lt y\lt\theta$$</li>
+<li><span class="fix">추가</span><span class="hl">$R=X_{(n)}-X_{(1)}$, $S=X_{(1)}$ 로 두면 $|J|=1$, $0\lt s\lt\theta-r$:
+  $$f_R(r)=\int_0^{\theta-r}n(n-1)\frac{r^{n-2}}{\theta^n}ds=\frac{n(n-1)r^{n-2}(\theta-r)}{\theta^n},\quad 0\lt r\lt\theta$$
+  즉 $R/\theta\sim\text{Beta}(n-1,2)$</span>
+  <div class="orig">원래 풀이: (2) 가 비어 있었다.</div></li></ol></div>
+
+<div class="ex"><span class="exn">28</span>
+$$f_{X_{(k)}}(x)=\frac{n!}{(k-1)!(n-k)!}F(x)^{k-1}\{1-F(x)\}^{n-k}f(x)$$
+$F(x)=x$, $f(x)=1$ 이므로
+$$f_{X_{(k)}}(x)=\frac{\Gamma(n+1)}{\Gamma(k)\Gamma(n-k+1)}x^{k-1}(1-x)^{n-k},\quad 0\lt x\lt1$$
+pdf 를 통해 $X_{(k)}\sim\text{Beta}(k,n-k+1)$ 임을 확인 가능.</div>
+
+<div class="ex"><span class="exn">29</span><span class="fix">수정</span>
+$f(x)=\dfrac1\lambda e^{-x/\lambda}$ $(x\gt0)$,
+<span class="hl">$F(x)=\dfrac1\lambda\displaystyle\int_0^xe^{-t/\lambda}dt=\Big[-e^{-t/\lambda}\Big]_0^x=1-e^{-x/\lambda}$</span>, $x\gt0$
+<ol><li><span class="hl">$F_{X_{(1)}}(x)=1-[1-F(x)]^n=1-e^{-nx/\lambda}$ 이므로 $f_{X_{(1)}}(x)=\dfrac n\lambda e^{-nx/\lambda}$, $x\gt0$</span></li>
+<li><span class="hl">$F_{X_{(n)}}(x)=F(x)^n=\big(1-e^{-x/\lambda}\big)^n$ 이므로 $f_{X_{(n)}}(x)=\dfrac n\lambda e^{-x/\lambda}\big(1-e^{-x/\lambda}\big)^{n-1}$, $x\gt0$</span></li>
+<li><span class="fix">추가</span><span class="hl">$n=2r+1$ 의 표본중위수는 $X_{(r+1)}$:
+  $$f_{X_{(r+1)}}(x)=\frac{(2r+1)!}{r!\,r!}\big(1-e^{-x/\lambda}\big)^r\big(e^{-x/\lambda}\big)^r\frac1\lambda e^{-x/\lambda}=\frac{(2r+1)!}{(r!)^2\lambda}\big(1-e^{-x/\lambda}\big)^re^{-(r+1)x/\lambda},\quad x\gt0$$</span></li></ol>
+<div class="orig">원래 풀이: $F(x)=1-e^{x/\lambda}$ (지수 부호 빠짐), (1) $f_{X_{(1)}}(x)=1-[1-(1-e^{x/\lambda})]^n=1+e^{nx/\lambda}$, (2) $f_{X_{(n)}}(x)=(1-e^{x/\lambda})^n$ — (1)(2) 모두 CDF 를 구한 채 pdf 라고 썼고 부호도 틀렸다. (3) 은 비어 있었다.</div></div>
+
+<div class="ex"><span class="exn">30</span>
+$X_{(k)}\le x$ 는 이항분포 관점에서 $n$ 개 중 $x$ 이하인 것이 $k$ 개 이상일 수 있다는 것이다 ($Y\sim B(n,F(x))$).
+$$P(X_{(k)}\le x)=P(Y\ge k)=\sum_{j=k}^n\binom nj[F(x)]^j[1-F(x)]^{n-j}$$</div>
+
+<div class="ex"><span class="exn">31</span>
+$f_X(x)=\dfrac1{(x+1)^2}$ $(x\gt0)$, $F(x)=\displaystyle\int_0^x\frac1{(t+1)^2}dt=\Big[-\frac1{t+1}\Big]_0^x=1-\frac1{x+1}$
+$$P(Y\le y)=P\big(X_{(1)}\le y/n\big)=1-\big(1-F(y/n)\big)^n=1-\Big(\frac n{n+y}\Big)^n=1-\Big(\frac{n+y}n\Big)^{-n}=1-\Big(1+\frac yn\Big)^{-n}\to1-e^{-y}$$
+이는 $\text{EXP}(1)$ 의 CDF 이므로 $Y\xrightarrow{d}\text{EXP}(1)$.</div>
+
+<div class="ex"><span class="exn">32</span>
+$np=\lambda$ 이므로 $p=\dfrac\lambda n$.
+$$M_{Y_n}(t)=(1-p+pe^t)^n=\Big(1-\frac\lambda n+\frac\lambda ne^t\Big)^n=\Big(1+\frac{\lambda(e^t-1)}n\Big)^n\to e^{\lambda(e^t-1)},\quad -\infty\lt t\lt\infty$$
+이므로 $Y_n\xrightarrow{d}\text{POI}(\lambda)$.</div>
+
+<div class="ex"><span class="exn">33</span><span class="fix">수정</span>
+$X_i\overset{\text{iid}}{\sim}\text{EXP}(1)$ ($\theta=1$, $\sigma^2=1$). Delta Thm: $\sqrt n\big(g(\bar X)-g(\theta)\big)\xrightarrow{d}N\big(0,[g'(\theta)]^2\sigma^2\big)$.
+$g(x)=\sqrt x$, $g'(x)=\dfrac1{2\sqrt x}$, <span class="hl">$g'(1)=\dfrac12$</span>
+<span class="hl">$$\sqrt n\big(\sqrt{\bar X}-1\big)\xrightarrow{d}N\Big(0,\frac14\Big)$$</span>
+<div class="orig">원래 풀이: $N(0,1)$ — 분산은 $[g'(1)]^2\sigma^2=\tfrac14\cdot1=\tfrac14$.</div></div>
+
+<div class="ex"><span class="exn">34</span>
+<ol><li>델타정리 $\sqrt n\big(g(T_n)-g(\theta)\big)\xrightarrow{d}N\big(0,[g'(\theta)]^2\sigma^2\big)$ 에서 $T_n=\bar X$, $\theta=\mu$, $g(x)=x^2$, $g'(x)=2x$, $g'(\theta)=2\mu$:
+  $$\sqrt n\big(\bar X^2-\mu^2\big)\xrightarrow{d}N(0,4\mu^2\sigma^2)$$</li>
+<li><span class="fix">수정</span><span class="hl">$\mu=0$ 이면 $g'(0)=0$ 이라 극한분산 $4\mu^2\sigma^2=0$ — 델타정리는 퇴화분포 $\sqrt n\,\bar X^2\xrightarrow{p}0$ 만 줄 뿐 쓸모 있는 정규근사가 되지 않는다 (델타정리로 비퇴화 극한을 얻으려면 $g'(\theta)\ne0$ 이어야 함).
+  이때는 $\sqrt n\bar X\xrightarrow{d}N(0,\sigma^2)$ 이므로 $n\bar X^2=(\sqrt n\bar X)^2\xrightarrow{d}\sigma^2\chi^2(1)$.</span>
+  <div class="orig">원래 풀이: "델타정리가 성립하지 않는다. 델타정리에서 극한분포의 $\sigma^2\ne0$ 의 조건을 위반하기 때문이다." — 위반되는 조건은 $g'(\mu)\ne0$ 이다.</div></li></ol></div>
+
+<nav class="pager">
+  <a href="3-exercises.html">← 이전<small>연습문제 · 3장</small></a>
+  <span class="spacer"></span>
+</nav>
+
+</body>
+</html>

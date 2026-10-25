@@ -8,17 +8,17 @@
 <script>
   MathJax = {
     tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    output: { font: 'mathjax-fira', mtextInheritFont: true },
     svg: { fontCache: 'global' }
   };
 </script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-svg.js"></script>
 <style>
   .ex{ margin:26px 0; line-height:1.75; }
   .exn{ font-weight:800; color:var(--def); margin-right:8px; }
   .mark{ color:#d64541; font-weight:800; margin:0 5px 0 2px; letter-spacing:2px; }
   .ex ol{ margin:4px 0 0; padding-left:26px; }
   .ex li{ margin:3px 0; }
-  .answersheet{ page-break-before:always; }
   @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } }
 </style>
 </head>
@@ -53,24 +53,24 @@ $$E(S_n^2)=\sigma^2,\qquad Var(S_n^2)=\frac1n\left(\mu_4-\frac{n-3}{n-1}\sigma^4
 
 <div class="ex"><span class="exn">05</span>$X\sim N(5,9)$ 일 때, $P[1\lt(X-5)^2\lt10]$ 을 구하라.</div>
 
-<div class="ex"><span class="exn">06</span>모분포 $N(0,25)$ 로부터 랜덤표본 $X_1,X_2,\cdots,X_5$ 를 얻었다고 할 때,
+<div class="ex"><span class="exn">06</span><span class="mark">★</span>모분포 $N(0,25)$ 로부터 랜덤표본 $X_1,X_2,\cdots,X_5$ 를 얻었다고 할 때,
 <ol><li>$P(\overline{X}_5\lt c)=0.90$ 을 만족하는 상수 $c$ 의 값을 구하라.</li>
 <li>$P\Big(\dfrac15\displaystyle\sum_{i=1}^{5}X_i^2\lt c\Big)=0.90$ 을 만족하는 상수 $c$ 의 값을 구하라.</li></ol></div>
 
-<div class="ex"><span class="exn">07</span>$X_1,X_2,\cdots,X_n$ 이 $N(\mu,\sigma^2)$ 으로부터 구한 랜덤표본이라고 하자. 이때 $\displaystyle\sum_{i=1}^n (X_i-\overline{X}_n)^2/n$ 의 분산을 구하라.</div>
+<div class="ex"><span class="exn">07</span><span class="mark">★</span>$X_1,X_2,\cdots,X_n$ 이 $N(\mu,\sigma^2)$ 으로부터 구한 랜덤표본이라고 하자. 이때 $\displaystyle\sum_{i=1}^n (X_i-\overline{X}_n)^2/n$ 의 분산을 구하라.</div>
 
-<div class="ex"><span class="exn">08</span>식 (3.3)에 있는 $F$ 분포의 확률밀도함수를 유도하라.
+<div class="ex"><span class="exn">08</span><span class="mark">★</span>식 (3.3)에 있는 $F$ 분포의 확률밀도함수를 유도하라.
 (힌트: $X=(U/m)/(V/n)$, $Y=V$ 라고 놓고 $(X,Y)$ 의 결합분포를 구한 결과를 $y$ 에 대하여 적분할 것.)</div>
 
-<div class="ex"><span class="exn">09</span>$S_n\sim B(n,p)$ 일 때, $X_n=S_n/n$ 의 적률생성함수를 $M_n(t)$ 라고 하면 $\displaystyle\lim_{n\to\infty}M_n(t)=\exp(pt)$ 임을 보여라. 나아가, 이로부터 표본비율에 대한 대수의 법칙을 말하라.</div>
+<div class="ex"><span class="exn">09</span><span class="mark">★</span>$S_n\sim B(n,p)$ 일 때, $X_n=S_n/n$ 의 적률생성함수를 $M_n(t)$ 라고 하면 $\displaystyle\lim_{n\to\infty}M_n(t)=\exp(pt)$ 임을 보여라. 나아가, 이로부터 표본비율에 대한 대수의 법칙을 말하라.</div>
 
 <div class="ex"><span class="exn">12</span>$X_1,X_2,\cdots,X_{10}$ 이 $N(\mu,25)$ 으로부터 구한 랜덤표본이라고 하자. 이때
 $P\Big(4\lt\displaystyle\sum_{i=1}^{10}(X_i-\overline{X}_{10})^2/10\lt14\Big)$ 를 계산하라.</div>
 
-<div class="ex"><span class="exn">13</span>$X_1,X_2,\cdots,X_{16}$ 이 $N(5,25)$ 으로부터 구한 랜덤표본이라고 하자. 이때
+<div class="ex"><span class="exn">13</span><span class="mark">★</span>$X_1,X_2,\cdots,X_{16}$ 이 $N(5,25)$ 으로부터 구한 랜덤표본이라고 하자. 이때
 $P\Big(0\lt\overline{X}_{16}\lt6,\ 20\lt\displaystyle\sum_{i=1}^{16}(X_i-\overline{X}_{16})^2/16\lt30\Big)$ 을 계산하라.</div>
 
-<div class="ex"><span class="exn">14</span>$X_1,X_2,\cdots,X_{16}$ 과 $Y_1,Y_2,\cdots,Y_{25}$ 이 각각 $N(0,9)$ 와 $N(2,16)$ 으로부터 구한 서로 독립인 랜덤표본이라고 하자. 이때
+<div class="ex"><span class="exn">14</span><span class="mark">★</span>$X_1,X_2,\cdots,X_{16}$ 과 $Y_1,Y_2,\cdots,Y_{25}$ 이 각각 $N(0,9)$ 와 $N(2,16)$ 으로부터 구한 서로 독립인 랜덤표본이라고 하자. 이때
 <ol><li>$\overline{X}_{16}-\overline{Y}_{25}$ 의 분포를 구하라.</li>
 <li>$P(\overline{X}_{16}-\overline{Y}_{25}\gt0)$ 를 계산하라.</li></ol></div>
 
@@ -83,15 +83,15 @@ $P\Big(0\lt\overline{X}_{16}\lt6,\ 20\lt\displaystyle\sum_{i=1}^{16}(X_i-\overli
 <li>$P(40\lt X_1^2+\cdots+X_{50}^2\lt60)$ 을 계산하라.</li>
 <li>$P(X_1^2+\cdots+X_{50}^2\lt50+c)=0.9$ 를 만족하는 상수 $c$ 를 구하라.</li></ol></div>
 
-<div class="ex"><span class="exn">18</span>$X_1,X_2,\cdots,X_{30}$ 이 $U(0,1)$ 로부터의 랜덤표본이라고 할 때, $P(4/9\lt\overline{X}_{30}\lt5/9)$ 를 근사계산하라.</div>
+<div class="ex"><span class="exn">18</span><span class="mark">★</span>$X_1,X_2,\cdots,X_{30}$ 이 $U(0,1)$ 로부터의 랜덤표본이라고 할 때, $P(4/9\lt\overline{X}_{30}\lt5/9)$ 를 근사계산하라.</div>
 
-<div class="ex"><span class="exn">19</span>평균이 $3$ 인 지수분포로부터 얻은 크기가 $30$ 인 표본의 평균을 $\overline{X}_{30}$ 이라고 할 때, $P(\overline{X}_{30}\lt4)$ 를 근사계산하라.</div>
+<div class="ex"><span class="exn">19</span><span class="mark">★</span>평균이 $3$ 인 지수분포로부터 얻은 크기가 $30$ 인 표본의 평균을 $\overline{X}_{30}$ 이라고 할 때, $P(\overline{X}_{30}\lt4)$ 를 근사계산하라.</div>
 
 <div class="ex"><span class="exn">20</span>자유도가 $50$ 인 카이제곱분포로부터 얻은 크기가 $100$ 인 랜덤표본의 평균을 $\overline{X}_{100}$ 이라고 할 때, 중심극한정리를 이용하여 $P(49\lt\overline{X}_{100}\lt51)$ 를 근사계산하라.</div>
 
-<div class="ex"><span class="exn">21</span>이항확률변수 $X\sim B(100,1/4)$ 에서 $P(X\gt30)$ 의 값을 중심극한정리를 활용하여 근사계산하라. 연속성 수정을 한 경우와 하지 않은 경우를 모두 구해서 비교해 보라.</div>
+<div class="ex"><span class="exn">21</span><span class="mark">★</span>이항확률변수 $X\sim B(100,1/4)$ 에서 $P(X\gt30)$ 의 값을 중심극한정리를 활용하여 근사계산하라. 연속성 수정을 한 경우와 하지 않은 경우를 모두 구해서 비교해 보라.</div>
 
-<div class="ex"><span class="exn">22</span>$X_1,X_2,\cdots,X_{25}$ 가 평균이 $\lambda=1/5$ 인 포아송 분포로부터 얻은 랜덤표본이라고 할 때, $P\Big(3\lt\displaystyle\sum_{i=1}^{25}X_i\lt7\Big)$ 를 근사계산하라.</div>
+<div class="ex"><span class="exn">22</span><span class="mark">★</span>$X_1,X_2,\cdots,X_{25}$ 가 평균이 $\lambda=1/5$ 인 포아송 분포로부터 얻은 랜덤표본이라고 할 때, $P\Big(3\lt\displaystyle\sum_{i=1}^{25}X_i\lt7\Big)$ 를 근사계산하라.</div>
 
 <div class="ex"><span class="exn">23</span>서로 독립인 랜덤표본 $X_1,X_2,\cdots,X_n$ 과 $Y_1,Y_2,\cdots,Y_n$ 이 각각 평균이 $\mu_1,\mu_2$ 이고 분산은 $\sigma^2$ 으로 같다고 하자. 이때
 $$\frac{(\overline{X}_n-\overline{Y}_n)-(\mu_1-\mu_2)}{\sigma\sqrt{2/n}}$$
@@ -99,14 +99,14 @@ $$\frac{(\overline{X}_n-\overline{Y}_n)-(\mu_1-\mu_2)}{\sigma\sqrt{2/n}}$$
 
 <div class="ex"><span class="exn">24</span>모분포가 코시 분포인 경우 중심극한정리의 성립여부를 말하고, 그 이유를 설명하라.</div>
 
-<div class="ex"><span class="exn">25</span>어떤 주머니에 숫자 $1,2,3,4$ 가 적힌 네 개의 공이 들어 있다. 이제 무작위로 두 개의 공을 비복원으로 추출해서 공에 적힌 숫자를 $(X_1,X_2)$ 라고 할 때,
+<div class="ex"><span class="exn">25</span><span class="mark">★</span>어떤 주머니에 숫자 $1,2,3,4$ 가 적힌 네 개의 공이 들어 있다. 이제 무작위로 두 개의 공을 비복원으로 추출해서 공에 적힌 숫자를 $(X_1,X_2)$ 라고 할 때,
 <ol><li>순서통계량 $(X_{(1)},X_{(2)})$ 의 결합 확률밀도함수를 구하라.</li>
 <li>$X_{(2)}-X_{(1)}$ 의 확률밀도함수를 구하라.</li>
 <li>표본평균 $(X_1+X_2)/2$ 의 확률밀도함수를 구하라.</li></ol></div>
 
-<div class="ex"><span class="exn">26</span>서로 독립인 두 개의 확률변수 $X$ 와 $Y$ 의 확률밀도함수가 $f_X(x)=2x,\ 0\lt x\lt1$, $f_Y(y)=3y^2,\ 0\lt y\lt1$ 로 주어졌을 때, $U=\max(X,Y)$ 와 $V=\min(X,Y)$ 의 결합 확률밀도함수를 구하라.</div>
+<div class="ex"><span class="exn">26</span><span class="mark">★</span>서로 독립인 두 개의 확률변수 $X$ 와 $Y$ 의 확률밀도함수가 $f_X(x)=2x,\ 0\lt x\lt1$, $f_Y(y)=3y^2,\ 0\lt y\lt1$ 로 주어졌을 때, $U=\max(X,Y)$ 와 $V=\min(X,Y)$ 의 결합 확률밀도함수를 구하라.</div>
 
-<div class="ex"><span class="exn">27</span>$X_1,X_2,\cdots,X_n$ 이 $U(0,\theta)$ 로부터의 랜덤표본이라고 할 때,
+<div class="ex"><span class="exn">27</span><span class="mark">★</span>$X_1,X_2,\cdots,X_n$ 이 $U(0,\theta)$ 로부터의 랜덤표본이라고 할 때,
 <ol><li>$X_{(1)}$ 과 $X_{(n)}$ 의 결합 확률밀도함수를 구하라.</li>
 <li>표본범위 $X_{(n)}-X_{(1)}$ 의 분포를 구하라.</li></ol></div>
 
@@ -117,35 +117,23 @@ $$\frac{(\overline{X}_n-\overline{Y}_n)-(\mu_1-\mu_2)}{\sigma\sqrt{2/n}}$$
 <li>$X_{(n)}$ 의 확률밀도함수를 구하라.</li>
 <li>$n=2r+1$ 이라고 가정하고, 표본중위수 $X_{(r)}$ 의 확률밀도함수를 구하라.</li></ol></div>
 
-<div class="ex"><span class="exn">30</span>모확률분포가 $F(x)$ 인 $k$ 번째의 순서통계량 $X_{(k)}$ 의 누적확률분포는
+<div class="ex"><span class="exn">30</span><span class="mark">★</span>모확률분포가 $F(x)$ 인 $k$ 번째의 순서통계량 $X_{(k)}$ 의 누적확률분포는
 $$G_k(x_{(k)})=\sum_{j=k}^{n}\frac{n!}{j!\,(n-j)!}\big[F(x_{(k)})\big]^{j}\big[1-F(x_{(k)})\big]^{n-j}$$
 이 됨을 보여라. 이는 이산형, 연속형 모두에 대해 성립한다.</div>
 
-<div class="ex"><span class="exn">31</span>확률변수 $X$ 의 확률밀도함수가 $f_X(x)=\dfrac{1}{(x+1)^2},\ x\gt0$ 으로 주어졌을 때, $Y=nX_{(1)}$ 이 $EXP(1)$ 로 분포수렴함을 보여라.</div>
+<div class="ex"><span class="exn">31</span><span class="mark">★</span>확률변수 $X$ 의 확률밀도함수가 $f_X(x)=\dfrac{1}{(x+1)^2},\ x\gt0$ 으로 주어졌을 때, $Y=nX_{(1)}$ 이 $EXP(1)$ 로 분포수렴함을 보여라.</div>
 
 <div class="ex"><span class="exn">32</span>$X_1,X_2,\cdots,X_n$ 은 성공확률이 $p$ 인 베르누이 분포에서 뽑은 랜덤표본이고, $Y_n=\displaystyle\sum_{i=1}^n X_i$ 로 정의된다. $n\to\infty$ 에서 $np=\lambda$ ($\lambda$ 는 어떤 양수)로 고정된다고 가정할 때, 적률생성함수의 극한을 이용하여 $Y_n$ 이 $POI(\lambda)$ 로 분포수렴함을 보여라.</div>
 
-<div class="ex"><span class="exn">33</span>평균이 $1$ 인 지수분포로부터 랜덤표본 $X_1,X_2,\cdots,X_n$ 을 얻었다. $\sqrt{n}\big(\sqrt{\overline{X}_n}-1\big)$ 의 극한분포를 구하라.</div>
+<div class="ex"><span class="exn">33</span><span class="mark">★</span>평균이 $1$ 인 지수분포로부터 랜덤표본 $X_1,X_2,\cdots,X_n$ 을 얻었다. $\sqrt{n}\big(\sqrt{\overline{X}_n}-1\big)$ 의 극한분포를 구하라.</div>
 
 <div class="ex"><span class="exn">34</span>평균과 분산이 각각 $\mu$ 와 $\sigma^2\lt\infty$ 인 확률밀도함수 $f(x)$ 로부터 랜덤표본 $X_1,X_2,\cdots,X_n$ 을 얻었다.
 <ol><li>$\sqrt{n}\big(\overline{X}_n^{\,2}-\mu^2\big)\xrightarrow{\ d\ }N(0,4\mu^2\sigma^2)$ 임을 보여라. 단, $\mu\neq0$.</li>
-<li>(1)에서 $\mu=0$ 인 경우에 대해 설명하라.</li></ol></div>
-
-<h2 class="sub answersheet">답지 <span class="en">answers</span></h2>
-
-<div class="ex"><span class="exn">03</span>$X_i\sim U(0,\theta)$ 이므로 $0\le X_{(n)}\le\theta$ 이다 (단 $0\lt\varepsilon\lt\theta$).
-$X_{(n)}\le\theta$ 이므로 $|X_{(n)}-\theta|\ge\varepsilon$ 이려면 $X_{(n)}\lt\theta-\varepsilon$ 이어야 한다 — 즉 최댓값 $X_{(n)}$ 이 반드시 $\theta-\varepsilon$ 보다 작아야 한다. 그러므로
-$$P(|X_{(n)}-\theta|\ge\varepsilon)=P(X_{(n)}\lt\theta-\varepsilon).$$
-최댓값 $X_{(n)}$ 이 $\theta-\varepsilon$ 보다 작다는 것은 <b>모든 표본</b>이 $\theta-\varepsilon$ 보다 작다는 것이므로, $X_i$ 가 상호 독립임을 이용하면
-$$P(X_{(n)}\lt\theta-\varepsilon)=P(X_1\lt\theta-\varepsilon,\dots,X_n\lt\theta-\varepsilon)
-=\prod_{i=1}^n P(X_i\lt\theta-\varepsilon)=\left(\frac{\theta-\varepsilon}{\theta}\right)^n=\left(1-\frac{\varepsilon}{\theta}\right)^n.$$
-$0\lt1-\dfrac{\varepsilon}{\theta}\lt1$ 이므로 $n\to\infty$ 이면
-$$P(|X_{(n)}-\theta|\ge\varepsilon)=\lim_{n\to\infty}\left(1-\frac{\varepsilon}{\theta}\right)^n=0.$$
-따라서 $X_{(n)}\xrightarrow{\ p\ }\theta$. $\blacksquare$</div>
+<li><span class="mark">★</span>(1)에서 $\mu=0$ 인 경우에 대해 설명하라.</li></ol></div>
 
 <nav class="pager">
   <a href="3-quiz.html">← 이전<small>퀴즈 · 3장</small></a>
-  <span class="spacer"></span>
+  <a class="next" href="3-exercises-answers.html">다음 →<small>연습문제 답지 · 3장</small></a>
 </nav>
 
 </body>
