@@ -16,13 +16,10 @@
 <style>
   .sheettitle{ margin:30px 0 4px; font-size:1.5rem; font-weight:800; }
   .sheettitle .en{ font-weight:400; }
-  .answersheet{ page-break-before:always; }
   .qrow{ margin:11px 0; line-height:1.6; }
   .qid{ font-weight:800; color:var(--def); margin-right:8px; }
   .qrow ol, .ans ol{ margin:4px 0 0; padding-left:26px; }
   .qrow li, .ans li{ margin:4px 0; }
-  .ans{ margin:11px 0; padding-left:12px; border-left:3px solid var(--thm); }
-  .ans .qid{ color:var(--thm); }
   .mark{ color:#d64541; font-weight:800; margin:0 5px 0 2px; letter-spacing:2px; }
   .src{ font-size:.82em; font-weight:700; color:var(--ex); margin-left:6px; white-space:nowrap; }
   @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } .mark{ color:#000; } }
@@ -95,79 +92,6 @@
   <ol><li>$X_{(2)}$ 의 PDF</li><li>$E(X_{(2)})$</li><li><span class="mark">★</span>$P(X_{(2)}\le1/2)$</li></ol></div>
 <div class="qrow"><span class="qid">Q20</span>$X_1,\dots,X_4\overset{\text{iid}}{\sim}U(0,\theta)$, $R=X_{(4)}-X_{(1)}$ 일 때 다음을 구하여라.<span class="src">확인문제 3.10</span>
   <ol><li><span class="mark">★</span>$R$ 의 PDF</li><li><span class="mark">★</span>$cR$ 이 $\theta$ 의 불편추정량이 되는 $c$</li></ol></div>
-
-<!-- ===== 정답 시트 ===== -->
-<div class="answersheet">
-<div class="sheettitle">■ 정답 시트 <span class="en">answer key</span></div>
-
-<h2 class="sub">A. 합과 평균의 분포</h2>
-<div class="ans"><span class="qid">A1.</span> $M_X(t)=(1-2t)^{-1}$
-  <ol><li>$M_T(t)=(1-2t)^{-5}$ 이므로 $T\sim\text{GAM}(5,2)$</li>
-  <li>$M_{\bar X}(t)=M_T(t/5)=\big(1-\tfrac{2t}5\big)^{-5}$ 이므로 $\bar X\sim\text{GAM}(5,\tfrac25)$</li></ol></div>
-<div class="ans"><span class="qid">A2.</span> $f_W(w)=\displaystyle\int_{-\infty}^{\infty}f_X(x)f_Y(w-x)\,dx$ (적분범위: $x$ 와 $w-x$ 가 각각 지지집합에 드는 범위)</div>
-
-<h2 class="sub">B. 정규표본의 정확분포</h2>
-<div class="ans"><span class="qid">A3.</span>
-  <ol><li>$\bar X\sim N\big(\mu,\tfrac{\sigma^2}n\big)$</li><li>$\dfrac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1}$</li>
-  <li>$\bar X\perp S^2$ (독립)</li><li>$T=\dfrac{\bar X-\mu}{S/\sqrt n}\sim t_{n-1}$</li></ol></div>
-
-<h2 class="sub">C. 수렴, 중심극한정리, Slutsky, Delta 방법</h2>
-<div class="ans"><span class="qid">A4.</span>
-  <ol><li>$T_n\xrightarrow{p}T\iff P(|T_n-T|\gt\varepsilon)\to0\ \ (\forall\varepsilon\gt0)$</li>
-  <li>$T_n\xrightarrow{d}T\iff F_{T_n}(t)\to F_T(t)$ ($F_T$ 의 모든 연속점 $t$)</li></ol></div>
-<div class="ans"><span class="qid">A5.</span>
-  <ol><li>$X_i$ 독립·동일분포, $E(X_i)=\mu$, $0\lt Var(X_i)=\sigma^2\lt\infty$ 이면 $\dfrac{\sum_{i=1}^nX_i-n\mu}{\sigma\sqrt n}=\dfrac{\sqrt n(\bar X_n-\mu)}{\sigma}\xrightarrow{d}N(0,1)$</li>
-  <li>$Y_i=(X_i-\mu)/\sigma$: $E(Y_i)=0,\ E(Y_i^2)=1$ 이므로 $M_Y(u)=1+\dfrac{u^2}2+o(u^2)$. $M_{n^{-1/2}\sum Y_i}(t)=\BBig{M_Y\Big(\dfrac t{\sqrt n}\Big)\BBig}^n=\BBig{1+\dfrac{t^2}{2n}+o(n^{-1})\BBig}^n\to e^{t^2/2}$ — 표준정규의 mgf 이므로 $N(0,1)$ 로 분포수렴.</li></ol></div>
-<div class="ans"><span class="qid">A6.</span> $E(T)=40,\ Var(T)=24$; $P(35\le T\le45)\approx\Phi\Big(\dfrac{45.5-40}{\sqrt{24}}\Big)-\Phi\Big(\dfrac{34.5-40}{\sqrt{24}}\Big)\approx0.7384$</div>
-<div class="ans"><span class="qid">A7.</span>
-  <ol><li>$T_n\xrightarrow{p}\theta$ 이고 $g$ 가 $\theta$ 에서 연속이면 $g(T_n)\xrightarrow{p}g(\theta)$</li>
-  <li>$A_n\xrightarrow{d}A,\ B_n\xrightarrow{p}b$ (상수) 이면 $A_n+B_n\xrightarrow{d}A+b,\quad A_nB_n\xrightarrow{d}bA,\quad \dfrac{A_n}{B_n}\xrightarrow{d}\dfrac Ab\ \ (b\ne0)$</li></ol></div>
-<div class="ans"><span class="qid">A8.</span> $\sqrt n(T_n-\theta)\xrightarrow{d}N(0,v)$ 이고 $g$ 가 $\theta$ 에서 미분가능하면 $\sqrt n\{g(T_n)-g(\theta)\}\xrightarrow{d}N\big(0,[g'(\theta)]^2v\big)$</div>
-<div class="ans"><span class="qid">A9.</span>
-  <ol><li>$\bar X\xrightarrow{p}\theta$ (대수의 법칙), $g(x)=1/x$ 는 양의 점에서 연속이므로 $1/\bar X=g(\bar X)\xrightarrow{p}1/\theta$</li>
-  <li>$\sqrt n(\bar X-\theta)\xrightarrow{d}N(0,\theta^2)$, $g'(\theta)=-1/\theta^2$ 이므로 $\sqrt n\big(\tfrac1{\bar X}-\tfrac1\theta\big)\xrightarrow{d}N\big(0,\tfrac1{\theta^4}\cdot\theta^2\big)=N\big(0,\tfrac1{\theta^2}\big)$</li></ol></div>
-
-<h2 class="sub">D. 순서통계량</h2>
-<div class="ans"><span class="qid">A10.</span>
-  <ol><li>$P(X_{(r)}\le x)=\displaystyle\sum_{j=r}^n\binom nj[F(x)]^j[1-F(x)]^{n-j}$</li>
-  <li>$f_{X_{(r)}}(x)=\dfrac{n!}{(r-1)!(n-r)!}[F(x)]^{r-1}[1-F(x)]^{n-r}f(x)$</li>
-  <li>$F_{X_{(n)}}(x)=F(x)^n$</li><li>$F_{X_{(1)}}(x)=1-[1-F(x)]^n$</li></ol></div>
-<div class="ans"><span class="qid">A11.</span>
-  <ol><li>$g(y_1,\dots,y_n)=n!\,f(y_1)\cdots f(y_n),\ y_1\lt\cdots\lt y_n$ (그 외 $0$)</li>
-  <li>$f_{X_{(r)},X_{(s)}}(x,y)=\dfrac{n!}{(r-1)!(s-r-1)!(n-s)!}F(x)^{r-1}[F(y)-F(x)]^{s-r-1}[1-F(y)]^{n-s}f(x)f(y),\ x\lt y$</li>
-  <li>$f_{X_{(1)},X_{(n)}}(x,y)=n(n-1)[F(y)-F(x)]^{n-2}f(x)f(y),\ x\lt y$</li>
-  <li>$X_{(r)}\sim\text{Beta}(r,n-r+1)$</li><li>$E(X_{(r)})=\dfrac r{n+1}$</li><li>$Var(X_{(r)})=\dfrac{r(n-r+1)}{(n+1)^2(n+2)}$</li>
-  <li>$\dfrac{\alpha}{\alpha+\beta}$</li><li>$\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$</li></ol></div>
-<div class="ans"><span class="qid">A12.</span>
-  <ol><li>$F_M(m)=(m/\theta)^n,\ 0\lt m\lt\theta$</li><li>$f_M(m)=\dfrac{nm^{n-1}}{\theta^n},\ 0\lt m\lt\theta$</li>
-  <li>$E(M^k)=\displaystyle\int_0^\theta m^k\frac{nm^{n-1}}{\theta^n}dm=\frac n{n+k}\theta^k$</li>
-  <li>$E(M)=\dfrac n{n+1}\theta$</li><li>$Var(M)=\dfrac{n}{n+2}\theta^2-\Big(\dfrac n{n+1}\theta\Big)^2=\dfrac{n\theta^2}{(n+1)^2(n+2)}$</li>
-  <li>$\tilde\theta=\dfrac{(n+1)M}n$</li><li>$Var(\tilde\theta)=\dfrac{\theta^2}{n(n+2)}$</li></ol></div>
-<div class="ans"><span class="qid">A13.</span>
-  <ol><li>$f_{X_{(3)}}(x)=\dfrac{5!}{2!\,2!}x^2(1-x)^2=30x^2(1-x)^2,\ 0\lt x\lt1$</li>
-  <li>$\text{Beta}(3,3)$</li>
-  <li>$P(X_{(3)}\le0.4)=\displaystyle\sum_{j=3}^5\binom5j(0.4)^j(0.6)^{5-j}=0.2304+0.0768+0.01024=0.31744$</li></ol></div>
-<div class="ans"><span class="qid">A14.</span>
-  <ol><li>$f_{U,V}(u,v)=n(n-1)(v-u)^{n-2},\ 0\lt u\lt v\lt1$</li>
-  <li>$(u,v)\mapsto(u,r=v-u)$, $|J|=1$, $0\lt u\lt1-r$: $f_R(r)=\displaystyle\int_0^{1-r}n(n-1)r^{n-2}du=n(n-1)r^{n-2}(1-r),\ 0\lt r\lt1$</li>
-  <li>$R\sim\text{Beta}(n-1,2)$</li><li>$E(R)=\dfrac{n-1}{n+1}$</li></ol></div>
-
-<h2 class="sub">E. 확인문제</h2>
-<div class="ans"><span class="qid">A15.</span>
-  <ol><li>$M_T(t)=\{e^{3(e^t-1)}\}^4=e^{12(e^t-1)}$</li><li>$T\sim\text{Poisson}(12)$</li>
-  <li>$P(\bar X=2)=P(T=8)=\dfrac{e^{-12}12^8}{8!}$</li></ol></div>
-<div class="ans"><span class="qid">A16.</span> $P(|\bar X-p|\ge0.1)\le\dfrac{p(1-p)}{n(0.1)^2}\le\dfrac1{4n(0.1)^2}=\dfrac{25}n\le0.01$ 이므로 $n\ge2500$</div>
-<div class="ans"><span class="qid">A17.</span>
-  <ol><li>$E(X_i)=\tfrac12,\ Var(X_i)=\tfrac14$, $SE(\bar X)=0.05$; $P(\bar X\le2.4)\approx\Phi\Big(\dfrac{2.4-0.5}{0.05}\Big)=\Phi(38)\approx1$</li>
-  <li>$\bar X\sim\text{GAM}(100,\tfrac1{200})$</li></ol></div>
-<div class="ans"><span class="qid">A18.</span> $0\lt\varepsilon\lt\theta$: $P(|M_n-\theta|\gt\varepsilon)=P(M_n\lt\theta-\varepsilon)=\Big(1-\dfrac\varepsilon\theta\Big)^n\to0$; $\varepsilon\ge\theta$: 확률 $0$. 따라서 $M_n\xrightarrow{p}\theta$.</div>
-<div class="ans"><span class="qid">A19.</span>
-  <ol><li>$X_{(2)}\sim\text{Beta}(2,3)$: $f(x)=12x(1-x)^2,\ 0\lt x\lt1$</li><li>$E(X_{(2)})=\dfrac25$</li>
-  <li>$P(X_{(2)}\le\tfrac12)=1-P\{\text{Bin}(4,\tfrac12)\le1\}=1-\dfrac{1+4}{16}=\dfrac{11}{16}$</li></ol></div>
-<div class="ans"><span class="qid">A20.</span>
-  <ol><li>$R/\theta\sim\text{Beta}(3,2)$: $f_R(r)=\dfrac{12r^2(\theta-r)}{\theta^4},\ 0\lt r\lt\theta$</li>
-  <li>$E(R)=\dfrac{3\theta}5$ 이므로 $c=\dfrac53$</li></ol></div>
-</div>
 
 <nav class="pager">
   <a href="3-5_order-statistics.html">← 이전<small>3.5 순서통계량</small></a>

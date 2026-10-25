@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3장 · 연습문제 답지</title>
+<title>3장 · 답지</title>
 <link rel="stylesheet" href="../../../assets/note.css">
 <script>
   MathJax = {
@@ -31,10 +31,141 @@
 <header class="doc">
   <a class="home" href="../../../index.html">⌂ 홈</a>
   <div class="ch">수리통계학 · 3장 표본분포 및 그의 근사</div>
-  <h1><span class="no">답지</span>3장 연습문제 <span class="en">answers</span></h1>
+  <h1><span class="no">답지</span>3장 퀴즈 · 연습문제 <span class="en">answers</span></h1>
 </header>
 
 <p class="note">손풀이를 그대로 옮겼다. 틀렸거나 빠진 곳만 고쳤고, 고친 문항에는 <span class="fix">수정</span>·<span class="fix">추가</span> 표시와 함께 바뀐 부분을 <span class="hl">강조</span>하고, 원래 풀이를 아래에 적어 두었다.</p>
+
+<h2 class="sub">퀴즈 <span class="en">quiz</span></h2>
+
+<div class="ex"><span class="exn">Q1</span>
+<ol><li>$T\sim\text{GAM}(5,2)$</li><li>$\bar X\sim\text{GAM}\big(5,\tfrac25\big)$</li></ol></div>
+
+<div class="ex"><span class="exn">Q2</span>
+$$f_W(w)=\int_{-\infty}^{\infty}f_X(x)\,f_Y(w-x)\,dx$$</div>
+
+<div class="ex"><span class="exn">Q3</span>
+<ol><li>$\bar X\sim N\big(\mu,\tfrac{\sigma^2}n\big)$</li>
+<li>$\dfrac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1)$
+  $$\underbrace{\frac{\sum(X_i-\mu)^2}{\sigma^2}}_{\sim\chi^2(n)}=\underbrace{\frac{\sum(X_i-\bar X)^2}{\sigma^2}}_{=\frac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1)}+\underbrace{\frac{n(\bar X-\mu)^2}{\sigma^2}}_{\sim\chi^2(1)}$$</li>
+<li><span class="fix">수정</span>$\bar X\perp S^2$.
+  <span class="hl">$\sigma^2$ 를 고정하면</span> $\sum X_i$ 는 <span class="hl">$\mu$ 의</span> 완비충분통계량.
+  $\sum(X_i-\bar X)^2$ 의 함수 $\dfrac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1)$ 로, <span class="hl">$S^2$ 의 분포는 $\mu$ 에 의존하지 않는다</span>. 따라서 <span class="hl">$\mu$ 의</span> 보조통계량이다.
+  바수 정리에 의해, 완비충분통계량과 보조통계량은 독립이다.
+  <div class="orig">원래 풀이: "카이제곱분포는 $\mu,\sigma^2$ 에 의존하지 않는다" — $S^2$ 의 분포는 $\sigma^2$ 에 의존하므로, $\sigma^2$ 를 고정하고 $\mu$ 에 대한 완비충분·보조통계량으로 바수 정리를 써야 한다.</div></li>
+<li><span class="fix">추가</span>$T=Z\big/\sqrt{U/k}$, $Z\sim N(0,1)$, $U\sim\chi^2(k)$, <span class="hl">$Z\perp U$ 이면 $T\sim t(k)$. 정규표본에서는 $T=\dfrac{\bar X-\mu}{S/\sqrt n}\sim t(n-1)$</span>
+  <div class="orig">원래 풀이: $T=Z/\sqrt{U/k}$, $Z\sim N(0,1)$, $U\sim\chi^2(k)$ 까지만 — 독립 조건과 분포(자유도)가 빠졌다.</div></li></ol></div>
+
+<div class="ex"><span class="exn">Q4</span>
+<ol><li><span class="fix">수정</span><span class="hl">$\displaystyle\lim_{n\to\infty}P(|T_n-T|\gt\varepsilon)=0$</span> $(\forall\varepsilon\gt0)$
+  <div class="orig">원래 풀이: $\lim P(|T_n-T|\lt\varepsilon)=0$ — 부등호 방향이 반대 ($\lt\varepsilon$ 이면 극한이 $1$).</div></li>
+<li>$\displaystyle\lim_{n\to\infty}F_{T_n}(t)=F_T(t)$ ($F_T$ 가 연속인 점 $t$)</li></ol></div>
+
+<div class="ex"><span class="exn">Q5</span>
+<ol><li>$\dfrac{\sum X_i-n\mu}{\sqrt n\sigma}=\dfrac{\sqrt n(\bar X-\mu)}{\sigma}\xrightarrow{d}N(0,1)$. 조건: ① $\mu,\sigma^2\lt\infty$ ② $X_i$ 가 iid</li>
+<li><span class="fix">수정</span>$Y_i=\dfrac{X_i-\mu}\sigma$ 일 때 $E(Y_i)=0$, $E(Y_i^2)=1$
+  $$M_Y(u)=E(e^{uY})=E\Big(1+uY+\frac{(uY)^2}2+\cdots\Big)=1+\frac12u^2+o(u^2)$$
+  <span class="hl">$$M_{\frac1{\sqrt n}\sum Y_i}(t)=M_{\sum Y_i}(t/\sqrt n)=\Big(1+\frac{t^2}{2n}+o\Big(\frac1n\Big)\Big)^n\to e^{t^2/2}$$</span>
+  <div class="orig">원래 풀이: 나머지항을 $o\big(\tfrac1{\sqrt n}\big)$ 로 씀 — $u=t/\sqrt n$ 이면 $o(u^2)=o(1/n)$. (나머지가 $o(1/\sqrt n)$ 이면 극한이 보장되지 않는다.)</div></li></ol></div>
+
+<div class="ex"><span class="exn">Q6</span>
+$$P(35\le T\le45)=P\Big(\frac{34.5-40}{\sqrt{24}}\lt\frac{T-40}{\sqrt{24}}\lt\frac{45.5-40}{\sqrt{24}}\Big)=\Phi(1.1225)-\Phi(-1.1225)$$</div>
+
+<div class="ex"><span class="exn">Q7</span>
+<ol><li>$T_n\xrightarrow{d}T$ 이고 함수 $g$ 가 연속일 때 $g(T_n)\xrightarrow{d}g(T)$. 예) $\bar X_n\xrightarrow{p}\mu$ 이면 $\dfrac1{\bar X}\xrightarrow{p}\dfrac1\mu$</li>
+<li>$A_n\xrightarrow{d}A$, $B_n\xrightarrow{p}b$ 이면 $A_n+B_n\xrightarrow{d}A+b$, $A_nB_n\xrightarrow{d}bA$</li></ol></div>
+
+<div class="ex"><span class="exn">Q8</span>
+$\sqrt n(T_n-\theta)\xrightarrow{d}N(0,v)$ 이고 $g(x)$ 가 $\theta$ 에서 미분가능하면 $\sqrt n\big(g(T_n)-g(\theta)\big)\xrightarrow{d}N\big(0,[g'(\theta)]^2v\big)$</div>
+
+<div class="ex"><span class="exn">Q9</span>
+<ol><li>$\bar X\xrightarrow{p}\theta$ 이고 $g(x)=\dfrac1x$ 은 $\theta$ 에서 미분가능하므로 $\dfrac1{\bar X}\xrightarrow{p}\dfrac1\theta$ 이다.</li>
+<li>델타정리에 의해 $\sqrt n\big(g(T_n)-g(\theta)\big)\xrightarrow{d}N\big(0,[g'(\theta)]^2v\big)$ 이며 $E(X)=\theta$, $Var(X)=\theta^2$ 이다. $g'(\theta)=-\dfrac1{\theta^2}$
+  $$\sqrt n\Big(\frac1{\bar X}-\frac1\theta\Big)\xrightarrow{d}N\Big(0,\frac1{\theta^2}\Big)$$</li></ol></div>
+
+<div class="ex"><span class="exn">Q10</span>
+<ol><li>이항분포 형태로 생각할 수 있다. $P(X_{(r)}\le x)=\displaystyle\sum_{j=r}^n\binom nj[F(x)]^j[1-F(x)]^{n-j}$</li>
+<li><span class="fix">수정</span>$f_{X_{(r)}}(x)=\dfrac{n!}{(r-1)!(n-r)!}[F(x)]^{r-1}f(x)\,$<span class="hl">$[1-F(x)]^{n-r}$</span>
+  <div class="orig">원래 풀이: 마지막 항을 $[1-F(x)]^{r-1}$ 로 씀.</div></li>
+<li>$P(X_{(n)}\le x)=[F(x)]^n$</li>
+<li>$P(X_{(1)}\le x)=1-[1-F(x)]^n$</li></ol></div>
+
+<div class="ex"><span class="exn">Q11</span>
+<ol><li>$g_{X_{(1)},\dots,X_{(n)}}(y_1,\dots,y_n)=n!\,f(y_1)f(y_2)\cdots f(y_n)$, $y_1\lt y_2\lt\cdots\lt y_n$</li>
+<li>$f_{X_{(r)},X_{(s)}}(x_1,x_2)=\dfrac{n!}{(r-1)!(s-r-1)!(n-s)!}[F(x_1)]^{r-1}[F(x_2)-F(x_1)]^{s-r-1}[1-F(x_2)]^{n-s}f(x_1)f(x_2)$, $x_1\lt x_2$</li>
+<li><span class="fix">수정</span>$f_{X_{(1)},X_{(n)}}(x,y)=\dfrac{n!}{(n-2)!}[F(y)-F(x)]^{n-2}f(x)f(y)=$<span class="hl">$n(n-1)$</span>$[F(y)-F(x)]^{n-2}f(x)f(y)$ $(x\lt y)$
+  <div class="orig">원래 풀이: $\tfrac{n!}{(n-2)!}=n(n+1)$ 로 씀.</div></li>
+<li>$f(x)=1$, $F(x)=\displaystyle\int_0^xdt=x$ $(0\lt x\lt1)$
+  $$f_{X_{(r)}}(x)=\frac{n!}{(r-1)!(n-r)!}x^{r-1}(1-x)^{n-r}=\frac{\Gamma(n+1)}{\Gamma(r)\Gamma(n-r+1)}x^{r-1}(1-x)^{(n-r+1)-1}\ (0\lt x\lt1),\qquad X_{(r)}\sim\text{Beta}(r,n-r+1)$$</li>
+<li>$E(X_{(r)})=\dfrac\alpha{\alpha+\beta}=\dfrac r{n+1}$</li>
+<li>$Var(X_{(r)})=\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}=\dfrac{r(n-r+1)}{(n+1)^2(n+2)}$</li>
+<li>$E(Y)=\dfrac\alpha{\alpha+\beta}$</li>
+<li>$Var(Y)=\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$</li></ol></div>
+
+<div class="ex"><span class="exn">Q12</span>
+<ol><li>$P(X_{(n)}\le x)=\prod P(X_i\le x)=[P(X\le x)]^n=\Big(\dfrac x\theta\Big)^n$, $0\lt x\lt\theta$</li>
+<li>$f_{X_{(n)}}(x)=\dfrac{nx^{n-1}}{\theta^n}$, $0\lt x\lt\theta$</li>
+<li>$E(X_{(n)}^k)=\dfrac n{n+k}\theta^k$ $(k\gt0)$</li>
+<li>$E(X_{(n)})=\dfrac n{n+1}\theta$</li>
+<li>$E(X^2)=\dfrac n{n+2}\theta^2$, $E(X)=\dfrac n{n+1}\theta$
+  $$Var(X_{(n)})=\frac n{n+2}\theta^2-\Big(\frac n{n+1}\Big)^2\theta^2=\frac{n(n+1)^2\theta^2-n^2(n+2)\theta^2}{(n+2)(n+1)^2}=\frac{n\theta^2}{(n+2)(n+1)^2}$$</li>
+<li>$\tilde\theta=\dfrac{n+1}nX_{(n)}$</li>
+<li>$Var(\tilde\theta)=\Big(\dfrac{n+1}n\Big)^2Var(X_{(n)})=\Big(\dfrac{n+1}n\Big)^2\dfrac{n\theta^2}{(n+2)(n+1)^2}=\dfrac{\theta^2}{n(n+2)}$</li></ol></div>
+
+<div class="ex"><span class="exn">Q13</span>
+<ol><li>$f_{X_{(r)}}(x)=\dfrac{n!}{(r-1)!(n-r)!}[F(x)]^{r-1}[1-F(x)]^{n-r}$,
+  $f_{X_{(3)}}(x)=\dfrac{5!}{2!\,2!}x^2(1-x)^2=30x^2(1-x)^2$, $0\lt x\lt1$</li>
+<li>$\dfrac{\Gamma(6)}{\Gamma(3)\Gamma(3)}x^{3-1}(1-x)^{3-1}\sim\text{Beta}(3,3)$</li>
+<li>$P(X_{(3)}\le0.4)=\displaystyle\sum_{j=3}^5\binom5j(0.4)^j(0.6)^{5-j}$</li></ol></div>
+
+<div class="ex"><span class="exn">Q14</span>
+<ol><li>$f_{X_{(i)},X_{(j)}}(x,y)=\dfrac{n!}{(i-1)!(j-i-1)!(n-j)!}[F(x)]^{i-1}[F(y)-F(x)]^{j-i-1}[1-F(y)]^{n-j}f(x)f(y)$
+  $$f_{X_{(1)},X_{(n)}}(x,y)=\frac{n!}{(n-2)!}[F(y)-F(x)]^{n-2}f(x)f(y)=n(n-1)(y-x)^{n-2}\quad(0\lt x\lt y\lt1)$$</li>
+<li><span class="fix">수정</span>$R=X_{(n)}-X_{(1)}$, $S=X_{(1)}$; $U=X_{(1)}=S$, $W=X_{(n)}=S+R$
+  $$|J|=\begin{vmatrix}\frac{\partial u}{\partial r}&\frac{\partial u}{\partial s}\\[2pt]\frac{\partial w}{\partial r}&\frac{\partial w}{\partial s}\end{vmatrix}=\begin{vmatrix}0&1\\1&1\end{vmatrix}=1\ (\text{절댓값})$$
+  <span class="hl">$f_{R,S}(r,s)=f_{U,W}(s,s+r)=n(n-1)r^{n-2}$</span>. $0\lt u\lt w\lt1\Rightarrow0\lt s\lt s+r\lt1$, 즉 $0\lt s\lt1-r$
+  $$\int_0^{1-r}n(n-1)\,{\color{#d64541}r^{n-2}}\,ds=n(n-1)r^{n-2}(1-r),\quad0\lt r\lt1$$
+  <div class="orig">원래 풀이: $f_{R,S}(r,s)=n(n-1)(r)$, 적분식도 $\int_0^{1-r}n(n-1)r\,ds$ 로 씀 — $(w-u)^{n-2}=r^{n-2}$ 이다. 최종 결과는 같음.</div></li>
+<li>$n(n-1)r^{n-2}(1-r)=\dfrac{n!}{1!\,(n-2)!}r^{n-2}(1-r)=\dfrac{\Gamma(n+1)}{\Gamma(2)\Gamma(n-1)}r^{(n-1)-1}(1-r)^{2-1}$, $R\sim\text{Beta}(n-1,2)$</li>
+<li>$E(X)=\dfrac\alpha{\alpha+\beta}$ 이므로 $E(R)=\dfrac{n-1}{n+1}$</li></ol></div>
+
+<div class="ex"><span class="exn">Q15</span>
+<ol><li>MGF of $T=\exp\big(12(e^t-1)\big)$, $t\in\mathbb R$</li>
+<li>$T\sim\text{POI}(12)$</li>
+<li>$P(\bar X=2)=P(T=8)=\dfrac{e^{-12}12^8}{8!}$</li></ol></div>
+
+<div class="ex"><span class="exn">Q16</span>
+$$P(|\bar X-p|\ge0.1)\le\frac{Var(\bar X)}{0.1^2}=\frac{p(1-p)}{n(0.1)^2}\le0.01$$
+$p=\tfrac12$ 일 때 분산이 최대이므로 $\dfrac{25}n\le0.01\Rightarrow n\ge\dfrac{25}{0.01}=2500$</div>
+
+<div class="ex"><span class="exn">Q17</span>
+<ol><li><span class="fix">수정</span><span class="hl">$E(X_i)=\tfrac12$, $Var(X_i)=\tfrac14$ 이므로</span>
+  $P(\bar X\le2.4)=P\Big(\dfrac{10(\bar X-\frac12)}{\color{#d64541}1/2}\le\dfrac{10(2.4-0.5)}{1/2}\Big)=P(Z\le38)$
+  <div class="orig">원래 풀이: 좌변 분모를 $1/4$ 로 씀 — 표준편차 $1/2$ 로 나눠야 한다. 최종 $P(Z\le38)$ 은 같음.</div></li>
+<li>$\bar X\sim\text{GAM}\big(100,\tfrac1{200}\big)$</li></ol></div>
+
+<div class="ex"><span class="exn">Q18</span>
+$$P(|X_{(n)}-\theta|\gt\varepsilon)=P(X_{(n)}\lt\theta-\varepsilon)+\underbrace{P(X_{(n)}\gt\theta+\varepsilon)}_{0}=P(X_{(n)}\lt\theta-\varepsilon)=\prod P(X_i\lt\theta-\varepsilon)=\Big(\frac{\theta-\varepsilon}\theta\Big)^n\to0$$</div>
+
+<div class="ex"><span class="exn">Q19</span>
+<ol><li>$f_{X_{(r)}}(x)=\dfrac{n!}{(r-1)!(n-r)!}[F(x)]^{r-1}[1-F(x)]^{n-r}$, $F(x)=x$ $(0\lt x\lt1)$
+  $$f_{X_{(2)}}(x)=\frac{4!}{2!}x(1-x)^2=12x(1-x)^2,\quad0\lt x\lt1$$</li>
+<li>$U(0,1)$ 일 때 $X_{(r)}\sim\text{Beta}(r,n-r+1)$ 이므로 $E(X_{(r)})=\dfrac\alpha{\alpha+\beta}=\dfrac r{n+1}$, $E(X_{(2)})=\dfrac25$</li>
+<li><span class="fix">수정</span>$P(X_{(r)}\le x)=\displaystyle\sum_{j=r}^n\binom nj[F(x)]^j[1-F(x)]^{n-j}$
+  $$P(X_{(2)}\le\tfrac12)=\sum_{j=2}^4\binom4j\Big(\frac12\Big)^j\Big(\frac12\Big)^{4-j}=\sum_{j=2}^4\binom4j\Big(\frac12\Big)^4={\color{#d64541}\frac{6+4+1}{16}=\frac{11}{16}}$$
+  <div class="orig">원래 풀이: $\big(\tfrac12\big)^4+4\cdot\big(\tfrac12\big)^4=\tfrac5{16}$ — 이는 $j=0,1$ 항의 합, 즉 $P(X_{(2)}\gt\tfrac12)$ 이다.</div></li></ol></div>
+
+<div class="ex"><span class="exn">Q20</span>
+<ol><li>$f(x)=f(y)=\dfrac1\theta$, $F(x)=\dfrac x\theta$, $F(y)=\dfrac y\theta$
+  $$f_{X_{(1)},X_{(4)}}(x,y)=n(n-1)\Big(\frac y\theta-\frac x\theta\Big)^2\frac1{\theta^2}$$
+  $R=X_{(4)}-X_{(1)}$, $S=X_{(1)}$; $U=X_{(1)}=S$, $W=X_{(4)}=R+S$, $|J|=|-1|=1$
+  $$f_{R,S}(r,s)=f_{U,W}(s,r+s)|J|=n(n-1)\frac{r^2}{\theta^4}$$
+  $0\lt u\lt w\lt\theta\Rightarrow0\lt s\lt r+s\lt\theta$, 즉 $0\lt s\lt\theta-r$
+  $$f_R(r)=\frac{12}{\theta^4}r^2(\theta-r),\quad0\lt r\lt\theta$$</li>
+<li><span class="fix">추가</span><span class="hl">$$E(R)=\int_0^\theta r\cdot\frac{12}{\theta^4}r^2(\theta-r)\,dr=\frac{12}{\theta^4}\Big(\frac{\theta^5}4-\frac{\theta^5}5\Big)=\frac{3\theta}5,\qquad E(cR)=\theta\ \Rightarrow\ c=\frac53$$</span>
+  <div class="orig">원래 풀이: (2) 가 비어 있었다.</div></li></ol></div>
+
+<h2 class="sub">연습문제 <span class="en">exercises</span></h2>
 
 <div class="ex"><span class="exn">01</span>
 $$E(S_n^2)=E\Big(\frac{\sum(X_i-\bar X)^2}{n-1}\Big)=\frac1{n-1}E\Big[\sum(X_i-\mu)^2-n(\bar X-\mu)^2\Big]=\frac1{n-1}(n\sigma^2-\sigma^2)=\frac{n-1}{n-1}\sigma^2=\sigma^2$$</div>
