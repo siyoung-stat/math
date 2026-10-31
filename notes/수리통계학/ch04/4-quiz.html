@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4장 · 추정 퀴즈</title>
+<link rel="stylesheet" href="../../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    output: { font: 'mathjax-fira', mtextInheritFont: true, linebreaks: { inline: false } },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-svg.js"></script>
+<style>
+  .sheettitle{ margin:30px 0 4px; font-size:1.5rem; font-weight:800; }
+  .sheettitle .en{ font-weight:400; }
+  .qrow{ margin:11px 0; line-height:1.6; }
+  .qid{ font-weight:800; color:var(--def); margin-right:8px; }
+  .qrow ol, .ans ol{ margin:4px 0 0; padding-left:26px; }
+  .qrow li, .ans li{ margin:4px 0; }
+  .mark{ color:#d64541; font-weight:800; margin:0 5px 0 2px; letter-spacing:2px; }
+  .src{ font-size:.82em; font-weight:700; color:var(--ex); margin-left:6px; white-space:nowrap; }
+  @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } .mark{ color:#000; } }
+</style>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../../index.html">⌂ 홈</a>
+  <div class="ch">수리통계학 · 4장 추정</div>
+  <h1><span class="no">퀴즈</span>4장 추정 점검 <span class="en">estimation</span></h1>
+</header>
+
+<div class="note">강의노트 4장의 정의·정리·증명 점검. 예제·확인문제는 <a href="4-exercises.html">연습문제</a>의 E01~E20 · C01~C12 에 있다.
+표기는 강의노트를 따른다 — 지수·감마분포는 <b>rate</b> 모수, $z_p,\ t_{\nu,p},\ \chi^2_{\nu,p}$ 는 <b>하측 누적확률</b> $p$ 의 분위수.</div>
+
+<!-- ===== 문제 시트 ===== -->
+<div class="sheettitle">■ 문제 시트 <span class="en">questions</span></div>
+
+<h2 class="sub">A. 적률추정법과 최대가능도 (4.1–4.2)</h2>
+<div class="qrow"><span class="qid">Q1</span>적률추정량에 대하여
+  <ol><li>모수가 $k$ 개인 모형에서 적률추정량을 정의하는 방정식을 쓰라.</li>
+  <li>표본 2차 중심적률 $v_n$ 을 $m_1',m_2'$ 로 쓰고, $S^2$ 와의 관계를 쓰라.</li>
+  <li>적률추정량을 구한 뒤 확인해야 할 것 세 가지를 쓰라.</li></ol></div>
+<div class="qrow"><span class="qid">Q2</span>가능도에 대하여
+  <ol><li>가능도함수 $L(\theta;x)$ 와 MLE 의 정의를 식으로 쓰라.</li>
+  <li>“가능도는 $\theta$ 의 확률분포가 아니다”의 뜻을 쓰라.</li>
+  <li>최대화에서 생략해도 되는 것과 생략하면 안 되는 것을 하나씩 쓰라.</li>
+  <li>MLE 계산의 4단계 순서를 쓰라.</li></ol></div>
+<div class="qrow"><span class="qid">Q3</span>MLE 의 불변성에 대하여
+  <ol><li>불변성을 진술하라. $g$ 가 일대일이 아닌 경우의 해석도 쓰라.</li>
+  <li>rate $\lambda$ 인 지수표본에서 평균 수명 $\tau=1/\lambda$ 의 MLE 를 쓰라.</li>
+  <li>MLE 의 불변성이 불편성도 보존하는가?</li></ol></div>
+
+<h2 class="sub">B. 추정의 기준 (4.3)</h2>
+<div class="qrow"><span class="qid">Q4</span>편향과 평균제곱오차에 대하여
+  <ol><li>$\tau(\theta)$ 의 추정량 $T$ 의 편향과 MSE 의 정의를 쓰라.</li>
+  <li>$MSE=Var+Bias^2$ 를 증명하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q5</span>Fisher 정보에 대하여
+  <ol><li>한 관측값의 점수함수 $U_1(\theta)$ 를 쓰고, 정규조건 아래 $E_\theta[U_1(\theta)]$ 를 쓰라.</li>
+  <li>$I_1(\theta)$ 의 두 가지 표현을 쓰라.</li>
+  <li>독립·동일분포 표본의 정보 $I_n(\theta)$ 를 쓰라.</li>
+  <li>필요한 정규조건 네 가지를 쓰라.</li></ol></div>
+<div class="qrow"><span class="qid">Q6</span>Cramér–Rao 분산하한에 대하여
+  <ol><li>$\tau(\theta)$ 의 불편추정량 $T$ 에 대한 하한을 쓰라.</li>
+  <li>정리를 증명하라.</li>
+  <li>등호 성립 조건을 쓰라.</li></ol></div>
+<div class="qrow"><span class="qid">Q7</span>CRLB 를 기계적으로 적용하면 안 되는 경우 세 가지를 쓰라. (예: $U(0,\theta)$)</div>
+
+<h2 class="sub">C. 최소분산 불편추정량 (4.4)</h2>
+<div class="qrow"><span class="qid">Q8</span>충분통계량에 대하여
+  <ol><li>충분통계량의 정의를 쓰라.</li>
+  <li>Fisher–Neyman 인수분해 정리를 진술하라. 모수에 의존하는 받침의 지시함수는 어느 인수에 넣는가?</li>
+  <li>이산형에서 인수분해 $\Rightarrow$ 충분성 을 증명하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q9</span>완비통계량에 대하여
+  <ol><li>완비성의 정의를 쓰라. 완비성은 무엇의 성질인가?</li>
+  <li>$T\sim\text{Bin}(n,p)$, $p\in(0,1)$ 이 완비임을 증명하라.</li>
+  <li>충분성·완비성·최소충분성의 역할 차이를 쓰라.</li></ol></div>
+<div class="qrow"><span class="qid">Q10</span>Rao–Blackwell 정리를 진술하고 증명하라. 충분성은 증명 어디에 쓰이는가?</div>
+<div class="qrow"><span class="qid">Q11</span>Lehmann–Scheffé 정리에 대하여
+  <ol><li>정리를 진술하라.</li>
+  <li>정리를 증명하라.</li>
+  <li>UMVUE 문제의 풀이 순서를 쓰라.</li></ol></div>
+
+<h2 class="sub">D. 점근적 성질 (4.5)</h2>
+<div class="qrow"><span class="qid">Q12</span>일치성에 대하여
+  <ol><li>일치추정량의 정의를 쓰라.</li>
+  <li>$MSE_\theta(T_n)\to0$ 이면 일치함을 증명하라.</li>
+  <li>불편성과 일치성의 관계를 쓰라.</li></ol></div>
+<div class="qrow"><span class="qid">Q13</span>정규적인 모형의 MLE 점근분포에 대하여
+  <ol><li>정리를 식으로 쓰라(조건 포함).</li>
+  <li>Taylor 전개를 이용한 증명 개요를 쓰라.</li></ol></div>
+<div class="qrow"><span class="qid">Q14</span>Delta 방법에 대하여
+  <ol><li>$g(\hat\theta)$ 의 근사분산을 쓰라.</li>
+  <li>Bernoulli 의 $0\lt p\lt1$ 에서 $\sqrt n(\log\hat p-\log p)$ 의 극한분포를 구하라.</li>
+  <li>$U(0,\theta)$ 의 MLE 는 왜 표준적인 $\sqrt n$ 정규근사를 따르지 않는가? 대신 어떤 극한이 나오는가?</li></ol></div>
+
+<h2 class="sub">E. 구간추정 (4.6)</h2>
+<div class="qrow"><span class="qid">Q15</span>신뢰구간에 대하여
+  <ol><li>신뢰수준이 적어도 $1-\alpha$ 인 신뢰구간의 정의를 쓰라.</li>
+  <li>추축량의 정의를 쓰라.</li>
+  <li>관측 후 얻은 하나의 $95\%$ 구간을 어떻게 해석해야 하는가?</li></ol></div>
+<div class="qrow"><span class="qid">Q16</span>$X_i\overset{\text{iid}}{\sim}N(\mu,\sigma^2)$, $n\ge2$ 일 때 정확한 $1-\alpha$ 신뢰구간을 쓰라.
+  <ol><li>$\mu$ ($\sigma$ 기지)</li><li>$\mu$ ($\sigma$ 미지)</li><li>$\sigma^2$ ($\mu$ 미지) — 어느 분위수가 하한의 분모에 들어가는지 이유와 함께</li></ol></div>
+<div class="qrow"><span class="qid">Q17</span>정확 신뢰구간에 대하여
+  <ol><li>rate $\lambda$ 인 지수표본, $T=\sum X_i$ 에서 사용하는 추축량과 $\lambda$ 의 정확구간을 쓰라.</li>
+  <li>$U(0,\theta)$ 표본, $M=X_{(n)}$ 에서 사용하는 추축량과 $\theta$ 의 정확구간을 쓰라.</li></ol></div>
+<div class="qrow"><span class="qid">Q18</span>모비율 구간에 대하여
+  <ol><li>Bernoulli 의 Wald 구간을 쓰고, 문제점을 쓰라.</li>
+  <li>Wilson 구간을 쓰라. 정확구간인가?</li></ol></div>
+
+<h2 class="sub">F. 베이즈 추정 (4.7)</h2>
+<div class="qrow"><span class="qid">Q19</span>베이즈 추정에 대하여
+  <ol><li>사후분포의 정의를 쓰라.</li>
+  <li>제곱오차 손실, 절대오차 손실에서의 베이즈 추정량을 각각 쓰라. MAP 는 무엇인가?</li>
+  <li>제곱오차 손실에서 사후평균이 최적임을 증명하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q20</span>켤레사전분포에 대하여 ($T=\sum X_i$, Gamma 는 shape–rate)
+  <ol><li>켤레사전분포의 정의를 쓰라.</li>
+  <li>Bernoulli$(p)$, $p\sim\text{Beta}(a,b)$ 의 사후분포</li>
+  <li>Poisson$(\lambda)$, $\lambda\sim\text{Gamma}(a,b)$ 의 사후분포</li>
+  <li>rate $\lambda$ 인 지수분포, $\lambda\sim\text{Gamma}(a,b)$ 의 사후분포</li></ol></div>
+<div class="qrow"><span class="qid">Q21</span>빈도주의 신뢰구간과 베이즈 신용구간의 차이를 쓰라.</div>
+
+<nav class="pager">
+  <a href="4-6_interval-estimation.html">← 이전<small>4.6 구간추정</small></a>
+  <a class="next" href="4-answers.html">다음 →<small>답지 · 4장 퀴즈</small></a>
+</nav>
+
+</body>
+</html>

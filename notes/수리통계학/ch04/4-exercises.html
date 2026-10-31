@@ -18,6 +18,7 @@
   .mark{ color:#d64541; font-weight:800; margin:0 5px 0 2px; letter-spacing:2px; }
   .ex ol{ margin:4px 0 0; padding-left:26px; }
   .ex li{ margin:5px 0; }
+  .src{ font-size:.82em; font-weight:700; color:var(--ex); margin-left:6px; white-space:nowrap; }
   .answersheet{ page-break-before:always; }
   .ans{ margin:24px 0; line-height:1.75; }
   .ans .exn{ color:var(--thm); }
@@ -38,7 +39,7 @@
   <h1><span class="no">연습문제</span>4장 <span class="en">exercises</span></h1>
 </header>
 
-<p>4장(추정)의 정의·정리 암기 문제 A01~A41(4.1~4.6 전 절)과 교재 연습문제 01~52, 그리고 정답·해설. 정답 시트는 인쇄 시 다음 페이지부터 나온다.
+<p>4장(추정)의 정의·정리 암기 문제 A01~A41(4.1~4.6 전 절)과 교재 연습문제 01~52, 강의노트 예제 E01~E20 · 확인문제 C01~C12, 그리고 정답·해설. 정답 시트는 인쇄 시 다음 페이지부터 나온다.
 표기는 본문과 같이 $\overline{X}_n=\frac1n\sum X_i$, $S^2=\frac{1}{n-1}\sum(X_i-\overline X_n)^2$,
 $X_{(1)}\le\cdots\le X_{(n)}$ 은 순서통계량, $\mathrm{EXP}(\lambda)$ 는 평균이 $\lambda$ 인 지수분포를 뜻한다.
 $\chi^2_{k;\alpha}$, $t_{k;\alpha}$, $F_{k_1,k_2;\alpha}$ 는 각각 상위 $\alpha$ 분위수이다.</p>
@@ -545,6 +546,110 @@ $$E\left(\left.\frac{d}{d\theta}\log f(X;\theta)\right|_{\theta=\theta_0}\right)
 로그가능도함수를 $l(\theta)$ 로 표시하자. 모수의 참값이 $\theta_0$ 일 때 적절한 조건하에서
 $$\frac{1}{\sqrt n}\,l'(\theta_0)\ \xrightarrow{\ d\ }\ N\big(0,\ I(\theta_0)\big)$$
 이 성립함을 보여라.</div>
+
+<div class="sec">강의노트 예제 (E01~E20)</div>
+
+<div class="note">강의노트 4장의 풀이 예제 4.1~4.20. 강의노트는 지수·감마분포를 <b>rate</b> 모수로 쓰므로,
+해당 문항에는 pdf 를 함께 적었다(교재의 $\mathrm{EXP}(\lambda)$ 와 혼동하지 말 것). 분위수는 이 페이지 표기(상위 $\alpha$)로 바꿔 적었다.</div>
+
+<div class="ex"><span class="exn">E01</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$ 일 때<span class="src">예제 4.1</span>
+  <ol>
+    <li>$\theta$ 의 적률추정량을 구하라.</li>
+    <li>자료가 $1,2,3,8$ 일 때 추정값을 구하고, 이 추정값의 한계점을 설명하라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">E02</span>$X_i\overset{\text{iid}}{\sim}\mathrm{Gamma}(a,b)$, pdf $f(x)=\dfrac{b^a}{\Gamma(a)}x^{a-1}e^{-bx}$ ($b$ 는 rate) 일 때<span class="src">예제 4.2</span>
+  <ol>
+    <li>$a,b$ 의 적률추정량을 구하라.</li>
+    <li>$\bar x=6$, $m_2'=45$ 일 때 추정값을 계산하라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">E03</span>$X_i\overset{\text{iid}}{\sim}\text{Bernoulli}(p)$, $p\in[0,1]$ 에서 $p$ 의 MLE 를 구하라.
+  $T=\sum X_i$ 가 $0$ 또는 $n$ 인 경우, 그리고 모수공간을 $(0,1)$ 로 제한한 경우도 설명하라.<span class="src">예제 4.3</span></div>
+
+<div class="ex"><span class="exn">E04</span>$X_i\overset{\text{iid}}{\sim}N(\mu,\sigma^2)$ 에서 두 모수가 모두 미지이다. MLE 를 구하고,
+  모든 관측값이 같은 경우에는 어떻게 되는지 설명하라.<span class="src">예제 4.4</span></div>
+
+<div class="ex"><span class="exn">E05</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$, $\theta\gt0$ 에서 $\theta$ 의 MLE 를 구하라.<span class="src">예제 4.5</span></div>
+
+<div class="ex"><span class="exn">E06</span>정규표본에서 $S^2$ 와 $V_n=\frac{n-1}{n}S^2$ 의 MSE 를 비교하라.<span class="src">예제 4.6</span></div>
+
+<div class="ex"><span class="exn">E07</span>$U(0,\theta)$ 표본에서 $T_1=2\overline X$ 와 $T_2=\frac{n+1}{n}X_{(n)}$ 을 비교하라.<span class="src">예제 4.7</span></div>
+
+<div class="ex"><span class="exn">E08</span>$p\in(0,1)$ 인 Bernoulli 표본에서 $I_1(p)$ 를 구하고 $\overline X$ 가 크래머–라오 하한을 달성함을 보여라.<span class="src">예제 4.8</span></div>
+
+<div class="ex"><span class="exn">E09</span>$X_i\overset{\text{iid}}{\sim}N(\mu,\sigma^2)$ 일 때 충분통계량을 구하라.<span class="src">예제 4.9</span>
+  <ol>
+    <li>$\sigma^2$ 이 알려진 경우</li>
+    <li>두 모수가 모두 미지인 경우</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">E10</span>$X_i\overset{\text{iid}}{\sim}\text{Bernoulli}(p)$, $n\ge2$ 이다. $p^2$ 의 UMVUE 를 구하라.<span class="src">예제 4.10</span></div>
+
+<div class="ex"><span class="exn">E11</span>$X_i\overset{\text{iid}}{\sim}\text{Poisson}(\lambda)$, $n\ge2$ 이다. $e^{-\lambda}$ 의 UMVUE 를 구하라.<span class="src">예제 4.11</span></div>
+
+<div class="ex"><span class="exn">E12</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$ 에서 $M=X_{(n)}$ 이 완비임을 보이고, $M$ 을 이용하여 $\theta$ 의 UMVUE 를 구하라.<span class="src">예제 4.12</span></div>
+
+<div class="ex"><span class="exn">E13</span>$X_i\overset{\text{iid}}{\sim}N(\mu,1)$ 이다. $T_n=X_1$ 과 $\overline X_n$ 을 불편성·일치성 측면에서 비교하라.<span class="src">예제 4.13</span></div>
+
+<div class="ex"><span class="exn">E14</span>$X_i$ 가 pdf $f(x)=\lambda e^{-\lambda x}$ ($x\gt0$) 로부터의 랜덤표본이고 $T=\sum X_i$ 이다.<span class="src">예제 4.14</span>
+  <ol>
+    <li>$\hat\lambda=n/T$ 의 편향을 구하라.</li>
+    <li>불편보정량 $\tilde\lambda$ 와 그 분산을 구하라.</li>
+    <li>$\hat\lambda$ 의 점근분포를 구하라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">E15</span>$M_n$ 이 $U(0,\theta)$ 표본의 최댓값일 때 $n(\theta-M_n)/\theta$ 의 극한분포를 구하라.<span class="src">예제 4.15</span></div>
+
+<div class="ex"><span class="exn">E16</span>독립 정규표본 $25$ 개에서 $\bar x=10$, $s=2$ 이다. $\mu$ 의 $95\%$ 신뢰구간을 구하라. ($t_{24;0.025}\approx2.0639$)<span class="src">예제 4.16</span></div>
+
+<div class="ex"><span class="exn">E17</span>정규표본 $16$ 개에서 $s^2=9$ 를 얻었다. 평균은 미지이다. $\sigma^2$ 의 $95\%$ 신뢰구간을 구하라.
+  ($\chi^2_{15;0.025}\approx27.488$, $\chi^2_{15;0.975}\approx6.262$)<span class="src">예제 4.17</span></div>
+
+<div class="ex"><span class="exn">E18</span>pdf $\lambda e^{-\lambda x}$ 의 지수표본에서 $n=10$, $\sum x_i=20$ 이다. rate $\lambda$ 의 MLE 와 $95\%$ 정확 신뢰구간을 구하라.
+  ($\chi^2_{20;0.975}\approx9.591$, $\chi^2_{20;0.025}\approx34.170$)<span class="src">예제 4.18</span></div>
+
+<div class="ex"><span class="exn">E19</span>$p\sim\text{Beta}(2,3)$ 이고, 조건부로 독립인 Bernoulli 시행 $10$ 번 중 $7$ 번 성공했다.<span class="src">예제 4.19</span>
+  <ol>
+    <li>사후분포를 구하라.</li>
+    <li>제곱오차 손실 아래 $p$ 의 추정값을 구하라.</li>
+    <li>다음 시행의 성공확률과, 다음 두 시행이 모두 성공할 확률을 구하라.</li>
+  </ol>
+</div>
+
+<div class="ex"><span class="exn">E20</span>$X_i\mid\mu\overset{\text{iid}}{\sim}N(\mu,\sigma^2)$, $\sigma^2$ 은 알려져 있고 사전분포가 $\mu\sim N(m_0,v_0)$ 이다.
+  사후분포와 제곱오차 손실의 베이즈 추정량, 중앙 $1-\alpha$ 신용구간을 구하라.<span class="src">예제 4.20</span></div>
+
+<div class="sec">강의노트 확인문제 (C01~C12)</div>
+
+<div class="ex"><span class="exn">C01</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$ 이다. 적률추정량과 MLE 를 구하고, 각각의 편향을 구하라.<span class="src">확인문제 4.1</span></div>
+
+<div class="ex"><span class="exn">C02</span>$X_i\overset{\text{iid}}{\sim}\mathrm{Gamma}(a,b)$ ($b$ 는 rate) 에서 shape $a$ 는 알려져 있고 rate $b\gt0$ 는 미지이다. $b$ 의 MLE 를 구하라.<span class="src">확인문제 4.2</span></div>
+
+<div class="ex"><span class="exn">C03</span>정규표본 $n=6$ 에서 $\sum(x_i-\bar x)^2=20$ 이다. $\sigma^2$ 의 MLE 와 불편추정값을 계산하고, 두 추정량의 MSE 공식을 비교하라.<span class="src">확인문제 4.3</span></div>
+
+<div class="ex"><span class="exn">C04</span>Bernoulli 표본에서 $\overline X^{\,2}$ 의 편향을 구하라. 이를 보정하여 $p^2$ 의 불편추정량을 $\overline X$ 의 함수로 표현하라.<span class="src">확인문제 4.4</span></div>
+
+<div class="ex"><span class="exn">C05</span>$X_i\overset{\text{iid}}{\sim}\text{Poisson}(\lambda)$ 에서 Fisher 정보와 $\lambda$ 의 불편추정량의 CRLB 를 구하고, $\overline X$ 가 하한을 달성하는지 확인하라.<span class="src">확인문제 4.5</span></div>
+
+<div class="ex"><span class="exn">C06</span>$X_i\overset{\text{iid}}{\sim}\text{Bernoulli}(p)$, $n\ge2$ 이다. $p(1-p)$ 의 UMVUE 를 구하라.<span class="src">확인문제 4.6</span></div>
+
+<div class="ex"><span class="exn">C07</span>Poisson 표본의 크기가 $5$ 이고 합계가 $10$ 이다. $e^{-\lambda}$ 의 UMVUE 와 MLE 를 각각 계산하라.<span class="src">확인문제 4.7</span></div>
+
+<div class="ex"><span class="exn">C08</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$ 일 때 $\theta^2$ 의 UMVUE 를 구하라. $X_{(n)}$ 의 완비충분성을 이용해도 좋다.<span class="src">확인문제 4.8</span></div>
+
+<div class="ex"><span class="exn">C09</span>pdf $\lambda e^{-\lambda x}$ 의 지수표본에서 $\hat\lambda=1/\overline X$ 이다. $\log\hat\lambda$ 의 점근분산을 구하고,
+  이를 이용하여 양수인 $\lambda$ 의 근사 신뢰구간을 구성하라.<span class="src">확인문제 4.9</span></div>
+
+<div class="ex"><span class="exn">C10</span>pdf $\lambda e^{-\lambda x}$ 의 지수표본에서 크기가 $8$ 이고 합계가 $24$ 이다. rate $\lambda$ 의 $90\%$ 정확 신뢰구간을 카이제곱 분위수로 표현하라.<span class="src">확인문제 4.10</span></div>
+
+<div class="ex"><span class="exn">C11</span>$U(0,\theta)$ 표본에서 크기는 $4$, 최댓값은 $10$ 이다. 추축량 $X_{(n)}/\theta$ 를 이용하여 $\theta$ 의 $95\%$ 신뢰구간을 구하라.<span class="src">확인문제 4.11</span></div>
+
+<div class="ex"><span class="exn">C12</span>$p\sim\text{Beta}(1,1)$ 이고 Bernoulli 시행 $8$ 번 중 $3$ 번 성공하였다. 사후분포, 제곱오차 손실의 베이즈 추정값, 다음 시행의 성공확률을 구하라.<span class="src">확인문제 4.12</span></div>
 
 <div class="sec">보충 문제</div>
 
@@ -1137,6 +1242,146 @@ $$\frac{1}{\sqrt n}\,l'(\theta_0)\ \xrightarrow{\ d\ }\ N\big(0,\ I(\theta_0)\bi
   <div class="qed">∎</div>
 </div>
 
+<div class="sec">강의노트 예제 (E01~E20)</div>
+
+<div class="ans"><span class="exn">E01</span><b>정답</b> $\hat\theta_{\text{MOM}}=2\overline X$, 추정값 $7$
+  $$E(X)=\frac\theta2=\overline X\ \Rightarrow\ \hat\theta=2\overline X=2(3.5)=7$$
+  <p>관측값 $8$ 이 추정된 받침 $(0,7)$ 밖에 있다 — 적률법은 받침 조건을 보장하지 않는다.</p>
+</div>
+
+<div class="ans"><span class="exn">E02</span><b>정답</b> $\hat a=\overline X^{\,2}/v_n$, $\hat b=\overline X/v_n$; 추정값 $\hat a=4$, $\hat b=2/3$
+  $$\frac ab=\overline X,\quad \frac a{b^2}=v_n=m_2'-\overline X^{\,2}=45-36=9$$
+</div>
+
+<div class="ans"><span class="exn">E03</span><b>정답</b> $\hat p=T/n=\overline X$
+  $$\ell'(p)=\frac Tp-\frac{n-T}{1-p}=0,\qquad \ell''(p)=-\frac T{p^2}-\frac{n-T}{(1-p)^2}\lt0$$
+  <p>$T=0\Rightarrow\hat p=0$, $T=n\Rightarrow\hat p=1$. 모수공간이 $(0,1)$ 이면 이 두 경우 MLE 가 존재하지 않는다(상한만 존재).</p>
+</div>
+
+<div class="ans"><span class="exn">E04</span><b>정답</b> $\hat\mu=\overline X$, $\hat\sigma^2=\frac1n\sum(X_i-\overline X)^2=\frac{n-1}nS^2$
+  $$\frac{\partial\ell}{\partial v}=-\frac n{2v}+\frac{\sum(x_i-\bar x)^2}{2v^2}=0$$
+  <p>모든 관측값이 같으면 $v\downarrow0$ 에서 가능도가 발산하므로 $v\gt0$ 에서 MLE 가 존재하지 않는다.</p>
+</div>
+
+<div class="ans"><span class="exn">E05</span><b>정답</b> $\hat\theta=X_{(n)}$
+  $$L(\theta)=\theta^{-n}\,\mathbf 1\{\theta\ge X_{(n)}\}$$
+  <p>$\theta\ge X_{(n)}$ 에서 감소하므로 경계에서 최대.</p>
+</div>
+
+<div class="ans"><span class="exn">E06</span><b>정답</b> $MSE(V_n)\lt MSE(S^2)$
+  $$MSE(S^2)=\frac{2\sigma^4}{n-1},\qquad
+    MSE(V_n)=\Big(\frac{n-1}n\Big)^2\frac{2\sigma^4}{n-1}+\frac{\sigma^4}{n^2}=\frac{2n-1}{n^2}\sigma^4$$
+</div>
+
+<div class="ans"><span class="exn">E07</span><b>정답</b> 둘 다 불편, $n\gt1$ 이면 $T_2$ 의 분산이 더 작다.
+  $$Var(T_1)=\frac{\theta^2}{3n},\qquad Var(T_2)=\frac{\theta^2}{n(n+2)}$$
+</div>
+
+<div class="ans"><span class="exn">E08</span><b>정답</b> $I_1(p)=\dfrac1{p(1-p)}$, 하한 $\dfrac{p(1-p)}n=Var(\overline X)$
+  $$U_1(p)=\frac Xp-\frac{1-X}{1-p}=\frac{X-p}{p(1-p)},\qquad I_1(p)=\frac{Var(X)}{p^2(1-p)^2}$$
+</div>
+
+<div class="ans"><span class="exn">E09</span><b>정답</b> (1) $\sum X_i$ (또는 $\overline X$) (2) $\big(\sum X_i,\ \sum X_i^2\big)$ (또는 $(\overline X,S^2)$)
+  $$-\frac1{2\sigma^2}\sum x_i^2+\frac\mu{\sigma^2}\sum x_i-\frac{n\mu^2}{2\sigma^2}$$
+</div>
+
+<div class="ans"><span class="exn">E10</span><b>정답</b> $\widehat{p^2}=\dfrac{T(T-1)}{n(n-1)}$
+  $$E(X_1X_2\mid T=t)=\frac tn\cdot\frac{t-1}{n-1}$$
+  <p>$U=X_1X_2$ 를 완비충분통계량 $T$ 로 Rao–Blackwell 화.</p>
+</div>
+
+<div class="ans"><span class="exn">E11</span><b>정답</b> $\Big(1-\dfrac1n\Big)^{T}$
+  $$X_1\mid T=t\sim\text{Bin}(t,1/n)\ \Rightarrow\ P(X_1=0\mid T)=\Big(1-\frac1n\Big)^T$$
+</div>
+
+<div class="ans"><span class="exn">E12</span><b>정답</b> $\delta(M)=\dfrac{n+1}nM$
+  $$\frac n{\theta^n}\int_0^\theta a(m)m^{n-1}dm=0\ \forall\theta
+    \ \xrightarrow{\ \frac d{d\theta}\ }\ a(\theta)\theta^{n-1}=0\ \Rightarrow\ \text{완비}$$
+  <p>$E(M)=\frac n{n+1}\theta$ 이므로 $\delta(M)$ 은 불편, 레만–쉐페로 UMVUE.</p>
+</div>
+
+<div class="ans"><span class="exn">E13</span><b>정답</b> 둘 다 불편, $\overline X_n$ 만 일치.
+  $$P(|X_1-\mu|\gt\varepsilon)=2\{1-\Phi(\varepsilon)\}\not\to0,\qquad Var(\overline X_n)=\frac1n\to0$$
+</div>
+
+<div class="ans"><span class="exn">E14</span><b>정답</b> 편향 $\dfrac\lambda{n-1}$, $\tilde\lambda=\dfrac{n-1}T$, $Var(\tilde\lambda)=\dfrac{\lambda^2}{n-2}$, $\sqrt n(\hat\lambda-\lambda)\xrightarrow{d}N(0,\lambda^2)$
+  $$T\sim\mathrm{Gamma}(n,\lambda)\ (\text{rate}),\qquad E(T^{-k})=\lambda^k\frac{\Gamma(n-k)}{\Gamma(n)}$$
+</div>
+
+<div class="ans"><span class="exn">E15</span><b>정답</b> $\dfrac{n(\theta-M_n)}\theta\xrightarrow{d}\mathrm{Exp}(1)$ (평균 $1$)
+  $$P\Big(\frac{n(\theta-M_n)}\theta\gt z\Big)=\Big(1-\frac zn\Big)^n\to e^{-z}$$
+</div>
+
+<div class="ans"><span class="exn">E16</span><b>정답</b> $[9.1744,\ 10.8256]$
+  $$10\pm2.0639\cdot\frac25$$
+</div>
+
+<div class="ans"><span class="exn">E17</span><b>정답</b> $[4.9112,\ 21.5581]$
+  $$\left[\frac{135}{\chi^2_{15;0.025}},\ \frac{135}{\chi^2_{15;0.975}}\right]=\left[\frac{135}{27.488},\ \frac{135}{6.262}\right]$$
+</div>
+
+<div class="ans"><span class="exn">E18</span><b>정답</b> $\hat\lambda=0.5$, $[0.2398,\ 0.8542]$
+  $$2\lambda T\sim\chi^2_{20},\qquad\left[\frac{\chi^2_{20;0.975}}{40},\ \frac{\chi^2_{20;0.025}}{40}\right]$$
+</div>
+
+<div class="ans"><span class="exn">E19</span><b>정답</b> (1) $\text{Beta}(9,6)$ (2) $0.6$ (3) $0.6$, $0.375$
+  $$E(p\mid x)=\frac9{15}=\frac5{15}(0.4)+\frac{10}{15}(0.7),\qquad E(p^2\mid x)=\frac{9\cdot10}{15\cdot16}=0.375\ne0.6^2$$
+</div>
+
+<div class="ans"><span class="exn">E20</span><b>정답</b> $\mu\mid x\sim N(m_n,v_n)$, 베이즈 추정량 $m_n$, 신용구간 $m_n\pm z_{\alpha/2}\sqrt{v_n}$
+  $$v_n=\Big(\frac n{\sigma^2}+\frac1{v_0}\Big)^{-1},\qquad m_n=v_n\Big(\frac{n\bar x}{\sigma^2}+\frac{m_0}{v_0}\Big)$$
+</div>
+
+<div class="sec">강의노트 확인문제 (C01~C12)</div>
+
+<div class="ans"><span class="exn">C01</span><b>정답</b> 적률추정량 $2\overline X$ (편향 $0$), MLE $X_{(n)}$ (편향 $-\frac\theta{n+1}$)
+  $$E(X_{(n)})=\frac n{n+1}\theta$$
+</div>
+
+<div class="ans"><span class="exn">C02</span><b>정답</b> $\hat b=\dfrac{na}T=\dfrac a{\overline X}$
+  $$\ell(b)=na\log b-bT+\cdots,\qquad \ell'(b)=\frac{na}b-T=0,\qquad \ell''(b)=-\frac{na}{b^2}\lt0$$
+</div>
+
+<div class="ans"><span class="exn">C03</span><b>정답</b> MLE $\frac{10}3$, 불편추정값 $4$; MLE 의 MSE 가 더 작다.
+  $$MSE(\hat\sigma^2_{\text{MLE}})=\frac{11}{36}\sigma^4\ \lt\ MSE(S^2)=\frac25\sigma^4$$
+</div>
+
+<div class="ans"><span class="exn">C04</span><b>정답</b> 편향 $\dfrac{p(1-p)}n$, 불편추정량 $\dfrac{n\overline X^{\,2}-\overline X}{n-1}=\dfrac{T(T-1)}{n(n-1)}$
+  $$E(\overline X^{\,2})=p^2+\frac{p(1-p)}n$$
+</div>
+
+<div class="ans"><span class="exn">C05</span><b>정답</b> $I_1(\lambda)=\dfrac1\lambda$, CRLB $\dfrac\lambda n=Var(\overline X)$ — 달성한다.
+  $$U_1(\lambda)=\frac X\lambda-1,\qquad I_1(\lambda)=\frac{Var(X)}{\lambda^2}=\frac1\lambda$$
+</div>
+
+<div class="ans"><span class="exn">C06</span><b>정답</b> $\dfrac{T(n-T)}{n(n-1)}=\dfrac n{n-1}\overline X(1-\overline X)$
+  $$E[T(n-T)]=n(n-1)p(1-p)$$
+</div>
+
+<div class="ans"><span class="exn">C07</span><b>정답</b> UMVUE $0.8^{10}\approx0.1074$, MLE $e^{-2}\approx0.1353$
+  $$\Big(1-\frac15\Big)^{10},\qquad e^{-\bar x}=e^{-2}$$
+</div>
+
+<div class="ans"><span class="exn">C08</span><b>정답</b> $\dfrac{n+2}nX_{(n)}^2$
+  $$E(M^2)=\frac n{n+2}\theta^2$$
+</div>
+
+<div class="ans"><span class="exn">C09</span><b>정답</b> 점근분산 $\frac1n$, 근사구간 $\big[\hat\lambda e^{-z_{\alpha/2}/\sqrt n},\ \hat\lambda e^{z_{\alpha/2}/\sqrt n}\big]$
+  $$\sqrt n(\hat\lambda-\lambda)\xrightarrow{d}N(0,\lambda^2),\quad g'(\lambda)=\frac1\lambda\ \Rightarrow\ \sqrt n(\log\hat\lambda-\log\lambda)\xrightarrow{d}N(0,1)$$
+</div>
+
+<div class="ans"><span class="exn">C10</span><b>정답</b> $\left[\dfrac{\chi^2_{16;0.95}}{48},\ \dfrac{\chi^2_{16;0.05}}{48}\right]\approx[0.1659,\ 0.5478]$
+  $$2\lambda T\sim\chi^2_{16},\qquad 2T=48$$
+</div>
+
+<div class="ans"><span class="exn">C11</span><b>정답</b> $[10,\ 21.1474]$
+  $$\big[M,\ M/\alpha^{1/n}\big]=\big[10,\ 10/0.05^{1/4}\big]$$
+</div>
+
+<div class="ans"><span class="exn">C12</span><b>정답</b> $\text{Beta}(4,6)$, 추정값 $0.4$, 다음 시행 성공확률 $0.4$
+  $$E(p\mid x)=\frac4{10}$$
+</div>
+
 <div class="sec">보충 문제</div>
 
 <div class="ans"><span class="exn">보충</span><b>정답</b>
@@ -1151,7 +1396,7 @@ $$\frac{1}{\sqrt n}\,l'(\theta_0)\ \xrightarrow{\ d\ }\ N\big(0,\ I(\theta_0)\bi
 </div>
 
 <nav class="pager">
-  <a href="4-6_interval-estimation.html">← 이전<small>4.6 구간추정</small></a>
+  <a href="4-answers.html">← 이전<small>답지 · 4장 퀴즈</small></a>
   <a class="next" href="../ch05/5-1_basic-elements.html">다음 →<small>5.1 검정의 기본 요소</small></a>
 </nav>
 
