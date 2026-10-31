@@ -150,12 +150,12 @@ $\dfrac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1)$, $Var(\chi^2(n-1))=2(n-1)$
   Slutsky: $\xrightarrow{d}\dfrac1{I_1(\theta_0)}N(0,I_1(\theta_0))=N\Big(0,\dfrac1{I_1(\theta_0)}\Big)$</li></ol></div>
 
 <div class="ex"><span class="exn">Q21</span>
-$T\sim\text{GAM}(n,\theta)$
-<ol><li>$\displaystyle E(T^{-k})=\int_0^\infty t^{-k}\frac{t^{n-1}e^{-t/\theta}}{\Gamma(n)\theta^n}dt=\frac{\Gamma(n-k)\theta^{n-k}}{\Gamma(n)\theta^n}=\frac{\Gamma(n-k)}{\Gamma(n)\,\theta^k}$</li>
-<li>$E(\hat\lambda)=\dfrac n{(n-1)\theta}\ \Rightarrow\ \text{Bias}=\dfrac n{(n-1)\theta}-\dfrac1\theta=\dfrac1{(n-1)\theta}$</li>
+$T\sim\text{GAM}\big(n,\tfrac1\lambda\big)$, $f_T(t)=\dfrac{\lambda^n}{\Gamma(n)}t^{n-1}e^{-\lambda t}$
+<ol><li>$\displaystyle E(T^{-k})=\int_0^\infty t^{-k}\frac{\lambda^nt^{n-1}e^{-\lambda t}}{\Gamma(n)}dt=\frac{\lambda^n}{\Gamma(n)}\cdot\frac{\Gamma(n-k)}{\lambda^{n-k}}=\lambda^k\frac{\Gamma(n-k)}{\Gamma(n)}$</li>
+<li>$E(\hat\lambda)=\dfrac{n\lambda}{n-1}\ \Rightarrow\ \text{Bias}=\dfrac{n\lambda}{n-1}-\lambda=\dfrac\lambda{n-1}$</li>
 <li>$\tilde\lambda=\dfrac{n-1}T$</li>
-<li>$E(\tilde\lambda^2)=(n-1)^2\dfrac{\Gamma(n-2)}{\Gamma(n)\theta^2}=\dfrac{n-1}{(n-2)\theta^2}\ \Rightarrow\ Var(\tilde\lambda)=\dfrac{n-1}{(n-2)\theta^2}-\dfrac1{\theta^2}=\dfrac1{(n-2)\theta^2}$</li>
-<li>$\sqrt n\big(\hat\lambda-\tfrac1\theta\big)\xrightarrow{d}N\Big(0,\dfrac1{\theta^2}\Big)$</li></ol></div>
+<li>$E(\tilde\lambda^2)=(n-1)^2\lambda^2\dfrac{\Gamma(n-2)}{\Gamma(n)}=\dfrac{(n-1)\lambda^2}{n-2}\ \Rightarrow\ Var(\tilde\lambda)=\dfrac{(n-1)\lambda^2}{n-2}-\lambda^2=\dfrac{\lambda^2}{n-2}$</li>
+<li>$I_1(\lambda)=\dfrac1{\lambda^2}\ \Rightarrow\ \sqrt n(\hat\lambda-\lambda)\xrightarrow{d}N(0,\lambda^2)$</li></ol></div>
 
 <div class="ex"><span class="exn">Q22</span>
 $z\ge0$ 에서
@@ -221,8 +221,8 @@ $$\widehat{p(1-p)}=\frac{T(n-T)}{n(n-1)}=\frac n{n-1}\bar X(1-\bar X)$$</div>
 $E(M^2)=\dfrac n{n+2}\theta^2\ \Rightarrow\ \widehat{\theta^2}_{\text{UMVUE}}=\dfrac{n+2}nM^2$</div>
 
 <div class="ex"><span class="exn">Q35</span>
-<ol><li>$\sqrt n\big(\hat\lambda-\tfrac1\theta\big)\xrightarrow{d}N\big(0,\tfrac1{\theta^2}\big)$, $g(\lambda)=\log\lambda$, $g'\big(\tfrac1\theta\big)=\theta$
-  $$\sqrt n\Big(\log\hat\lambda-\log\tfrac1\theta\Big)\xrightarrow{d}N\Big(0,\ \theta^2\cdot\frac1{\theta^2}\Big)=N(0,1)$$</li>
+<ol><li>$\sqrt n(\hat\lambda-\lambda)\xrightarrow{d}N(0,\lambda^2)$, $g(\lambda)=\log\lambda$, $g'(\lambda)=\dfrac1\lambda$
+  $$\sqrt n(\log\hat\lambda-\log\lambda)\xrightarrow{d}N\Big(0,\ \frac1{\lambda^2}\cdot\lambda^2\Big)=N(0,1)$$</li>
 <li>$\left[\hat\lambda e^{-z_{1-\alpha/2}/\sqrt n},\ \hat\lambda e^{z_{1-\alpha/2}/\sqrt n}\right]$</li></ol></div>
 
 <div class="ex"><span class="exn">Q36</span>

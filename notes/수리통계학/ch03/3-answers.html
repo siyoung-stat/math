@@ -139,10 +139,9 @@ $$P(|\bar X-p|\ge0.1)\le\frac{Var(\bar X)}{0.1^2}=\frac{p(1-p)}{n(0.1)^2}\le0.01
 $p=\tfrac12$ 일 때 분산이 최대이므로 $\dfrac{25}n\le0.01\Rightarrow n\ge\dfrac{25}{0.01}=2500$</div>
 
 <div class="ex"><span class="exn">Q17</span>
-<ol><li><span class="fix">수정</span><span class="hl">$E(X_i)=\tfrac12$, $Var(X_i)=\tfrac14$ 이므로</span>
-  $P(\bar X\le2.4)=P\Big(\dfrac{10(\bar X-\frac12)}{\color{#d64541}1/2}\le\dfrac{10(2.4-0.5)}{1/2}\Big)=P(Z\le38)$
-  <div class="orig">원래 풀이: 좌변 분모를 $1/4$ 로 씀 — 표준편차 $1/2$ 로 나눠야 한다. 최종 $P(Z\le38)$ 은 같음.</div></li>
-<li>$\bar X\sim\text{GAM}\big(100,\tfrac1{200}\big)$</li></ol></div>
+<ol><li>$E(X_i)=2$, $Var(X_i)=4$ 이므로
+  $P(\bar X\le2.4)=P\Big(\dfrac{10(\bar X-2)}{2}\le\dfrac{10(2.4-2)}{2}\Big)\approx\Phi(2)=0.9772$</li>
+<li>$\bar X\sim\text{GAM}\big(100,\tfrac1{50}\big)$ ($\tfrac1{50}$ 은 scale, 즉 rate $50$)</li></ol></div>
 
 <div class="ex"><span class="exn">Q18</span>
 $$P(|X_{(n)}-\theta|\gt\varepsilon)=P(X_{(n)}\lt\theta-\varepsilon)+\underbrace{P(X_{(n)}\gt\theta+\varepsilon)}_{0}=P(X_{(n)}\lt\theta-\varepsilon)=\prod P(X_i\lt\theta-\varepsilon)=\Big(\frac{\theta-\varepsilon}\theta\Big)^n\to0$$</div>
