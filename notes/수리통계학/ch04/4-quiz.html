@@ -30,107 +30,99 @@
 <header class="doc">
   <a class="home" href="../../../index.html">⌂ 홈</a>
   <div class="ch">수리통계학 · 4장 추정</div>
-  <h1><span class="no">퀴즈</span>4장 추정 · 풀이 도구 점검 <span class="en">estimation drills</span></h1>
+  <h1><span class="no">퀴즈</span>4장 추정 점검 <span class="en">estimation</span></h1>
 </header>
-
-<div class="note">강의노트 4장 예제·확인문제를 풀 때 실제로 쓰는 계산(적률·가능도·정보·조건부기대·추축량·사후분포)을 손에 익히는 퀴즈다.
-예제·확인문제 자체는 <a href="4-exercises.html">연습문제</a>의 E01~E20 · C01~C12 에 있으므로, 여기서는 <b>다른 분포·다른 수치</b>로 같은 도구를 연습한다.
-표기는 강의노트를 따른다 — 지수·감마분포는 <b>rate</b> 모수, $T=\sum X_i$, $z_p,\ t_{\nu,p},\ \chi^2_{\nu,p}$ 는 <b>하측 누적확률</b> $p$ 의 분위수.</div>
 
 <!-- ===== 문제 시트 ===== -->
 <div class="sheettitle">■ 문제 시트 <span class="en">questions</span></div>
 
-<h2 class="sub">A. 적률추정법과 최대가능도 (4.1–4.2)</h2>
-<div class="qrow"><span class="qid">Q1</span>적률추정량을 구하라.
-  <ol><li>$X_i\overset{\text{iid}}{\sim}\text{Exp}(\lambda)$ (rate): $E(X),\ Var(X)$ 를 쓰고 $\lambda$ 의 적률추정량</li>
-  <li>$X_i\overset{\text{iid}}{\sim}\text{Poisson}(\lambda)$: 1차 적률로 구한 적률추정량과, 2차 중심적률 $v_n$ 으로 구한 적률추정량</li>
-  <li>pdf $f(x)=\theta x^{\theta-1}$ $(0\lt x\lt1,\ \theta\gt0)$: $E(X)$ 를 계산하고 $\theta$ 의 적률추정량</li></ol></div>
-<div class="qrow"><span class="qid">Q2</span>로그가능도를 세우고 MLE 를 구하라. (정지점이 최대인지 2계도함수로 확인)
-  <ol><li>$\text{Poisson}(\lambda)$, $\lambda\gt0$ ($T\gt0$ 가정)</li>
-  <li>pdf $f(x)=\theta x^{\theta-1}$ $(0\lt x\lt1)$</li>
-  <li>기하분포 $P(X=x)=p(1-p)^{x-1}$, $x=1,2,\dots$</li></ol></div>
-<div class="qrow"><span class="qid">Q3</span>받침이 모수에 의존하는 MLE 와 불변성
-  <ol><li>pdf $f(x)=e^{-(x-\theta)}$ $(x\ge\theta)$ 에서 $L(\theta)$ 를 지시함수까지 써서 $\theta$ 의 MLE 를 구하라.</li>
-  <li>$X_i\overset{\text{iid}}{\sim}U(\theta,\theta+1)$ 에서 MLE 가 될 수 있는 $\theta$ 의 범위를 구하라.</li>
-  <li>Poisson 표본에서 $P(X=0)=e^{-\lambda}$ 의 MLE, 정규표본($\mu,\sigma^2$ 미지)에서 $\sigma$ 의 MLE 를 쓰라.</li></ol></div>
+<h2 class="sub">A. 적률추정법과 최대가능도 추정법 (4.1–4.2)</h2>
+<div class="qrow"><span class="qid">Q1</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$ 일 때 다음을 구하여라.<span class="src">예제 4.1</span>
+  <ol><li>$\theta$ 의 적률추정량</li><li>자료가 $1,2,3,8$ 일 때 (1) 의 추정값</li><li>(2) 의 추정값이 자료와 모순되는 점</li></ol></div>
+<div class="qrow"><span class="qid">Q2</span>$X_i\overset{\text{iid}}{\sim}\text{GAM}(k,\theta)$ (pdf $f(x)=\frac1{\Gamma(k)\theta^k}x^{k-1}e^{-x/\theta}$) 에서 $k,\theta$ 가 모두 미지일 때 다음을 구하여라.<span class="src">예제 4.2</span>
+  <ol><li>$k,\theta$ 의 적률추정량 ($v_n=\frac1n\sum(X_i-\bar X)^2$ 을 써서)</li><li>$\bar x=6$, $m_2'=45$ 일 때 $k,\theta$ 의 추정값</li></ol></div>
+<div class="qrow"><span class="qid">Q3</span>$X_i\overset{\text{iid}}{\sim}N(\mu,\sigma^2)$ 에서 두 모수가 모두 미지일 때 다음을 구하여라.<span class="src">예제 4.4</span>
+  <ol><li>$\mu$ 의 MLE</li><li>$\sigma^2$ 의 MLE</li><li>$\sigma^2$ 의 MLE 의 편향</li></ol></div>
+<div class="qrow"><span class="qid">Q4</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$, $\theta\gt0$ 일 때 다음을 구하여라.<span class="src">예제 4.5</span>
+  <ol><li>지시함수를 포함한 가능도함수 $L(\theta)$</li><li>$\theta$ 의 MLE</li></ol></div>
+<div class="qrow"><span class="qid">Q5</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(\theta)$ (pdf $f(x)=\tfrac1\theta e^{-x/\theta}$) 일 때
+  <ol><li>$\theta$ 의 MLE 를 구하고, 정지점이 최대임을 확인하라.</li><li>$1/\theta$ 의 MLE 를 구하여라.</li><li>(2) 의 MLE 가 $1/\theta$ 의 불편추정량인지 판단하라.</li></ol></div>
 
 <h2 class="sub">B. 추정의 기준 (4.3)</h2>
-<div class="qrow"><span class="qid">Q4</span>편향과 MSE 계산
-  <ol><li>Poisson 표본에서 $\overline X^{\,2}$ 의 편향을 구하고, $\lambda^2$ 의 불편추정량을 만들라.</li>
-  <li>$U(0,\theta)$ 표본, $M=X_{(n)}$: $E(M)$, $Var(M)$ 을 구하고 $MSE_\theta(M)$ 을 계산하라. ($M/\theta\sim\text{Beta}(n,1)$)</li>
-  <li>$MSE_\theta(M)$ 과 $Var_\theta\!\big(\tfrac{n+1}nM\big)=\dfrac{\theta^2}{n(n+2)}$ 를 비교하라.</li></ol></div>
-<div class="qrow"><span class="qid">Q5</span>$I_1(\theta)=-E_\theta\!\left[\dfrac{\partial^2}{\partial\theta^2}\log f_\theta(X)\right]$ 로 Fisher 정보를 계산하라.
-  <ol><li>$\text{Exp}(\lambda)$ (rate) 의 $I_1(\lambda)$</li>
-  <li>$N(\mu,\sigma^2)$, $\sigma^2$ 기지 일 때 $I_1(\mu)$</li>
-  <li>기하분포 $p(1-p)^{x-1}$ 의 $I_1(p)$ &nbsp;($E(X)=1/p$)</li>
-  <li>$N(0,v)$ 에서 분산 $v$ 에 대한 $I_1(v)$</li></ol></div>
-<div class="qrow"><span class="qid">Q6</span>CRLB 를 계산하고, 제시된 불편추정량이 하한을 달성하는지 판정하라.
-  <ol><li>$\text{Exp}(\lambda)$, $\tau(\lambda)=1/\lambda$, 추정량 $\overline X$</li>
-  <li>$N(0,v)$, $\tau(v)=v$, 추정량 $\frac1n\sum X_i^2$</li>
-  <li>$\text{Poisson}(\lambda)$, $\tau(\lambda)=e^{-\lambda}$ — 하한의 식만</li></ol></div>
-<div class="qrow"><span class="qid">Q7</span>$U(0,\theta)$ 에서 형식적으로 $I_1(\theta)=E[(\partial_\theta\log f)^2]$ 를 계산해 “CRLB” $\theta^2/n$ 을 얻었다.
-  $\frac{n+1}nX_{(n)}$ 의 분산과 비교해 무엇이 잘못되었는지 설명하라.</div>
+<div class="qrow"><span class="qid">Q6</span>$\tau(\theta)$ 의 추정량 $T$ 에 대하여
+  <ol><li>편향의 정의를 식으로 쓰라.</li><li>평균제곱오차를 분산과 편향으로 분해하는 식을 쓰고 증명하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q7</span>정규표본에서 $\sigma^2$ 의 두 추정량 $S^2$ 와 $V_n=\frac{n-1}nS^2$ 에 대하여 다음을 구하여라.<span class="src">예제 4.6</span>
+  <ol><li>$MSE(S^2)$</li><li>$MSE(V_n)$</li><li>두 MSE 중 작은 쪽</li></ol></div>
+<div class="qrow"><span class="qid">Q8</span>$U(0,\theta)$ 표본에서 $T_1=2\bar X$, $T_2=\frac{n+1}nX_{(n)}$ 일 때 다음을 구하여라.<span class="src">예제 4.7</span>
+  <ol><li>$Var(T_1)$</li><li>$Var(T_2)$</li><li>$n\gt1$ 에서 분산이 작은 쪽</li></ol></div>
+<div class="qrow"><span class="qid">Q9</span>한 관측값의 Fisher 정보에 대하여 (정규조건 가정)
+  <ol><li>점수함수 $U_1(\theta)$ 를 식으로 쓰라.</li><li>$E_\theta[U_1(\theta)]$ 의 값을 쓰고 증명하라.</li>
+  <li>$I_1(\theta)$ 를 두 가지 식으로 쓰라.</li><li>iid 표본의 정보 $I_n(\theta)$ 를 $I_1(\theta)$ 로 쓰라.</li></ol></div>
+<div class="qrow"><span class="qid">Q10</span>Cramér–Rao 분산하한에 대하여
+  <ol><li>$\tau(\theta)$ 의 불편추정량 $T$ 에 대한 정리를 식으로 쓰라.</li><li>정리를 증명하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q11</span>$X_i\overset{\text{iid}}{\sim}\text{Bernoulli}(p)$, $p\in(0,1)$ 일 때 다음을 구하여라.<span class="src">예제 4.8</span>
+  <ol><li>$U_1(p)$</li><li>$I_1(p)$</li><li>$p$ 의 불편추정량의 분산하한</li><li>$\bar X$ 가 하한을 달성하는지 여부</li></ol></div>
 
 <h2 class="sub">C. 최소분산 불편추정량 (4.4)</h2>
-<div class="qrow"><span class="qid">Q8</span>인수분해 정리로 충분통계량을 찾아라.
-  <ol><li>$\text{Poisson}(\lambda)$</li>
-  <li>$\text{Gamma}(a,b)$, $a,b$ 모두 미지</li>
-  <li>$U(-\theta,\theta)$</li>
-  <li>pdf $e^{-(x-\theta)}$ $(x\ge\theta)$</li></ol></div>
-<div class="qrow"><span class="qid">Q9</span>pdf/pmf 를 지수족 꼴 $\exp\{c(\theta)T(x)+d(\theta)+S(x)\}$ 로 고쳐 쓰고, 표본의 완비충분통계량을 읽어라.
-  <ol><li>$\text{Bernoulli}(p)$</li>
-  <li>$N(\mu,\sigma^2)$, 둘 다 미지</li>
-  <li>$f(x)=\theta x^{\theta-1}$ $(0\lt x\lt1)$</li></ol></div>
-<div class="qrow"><span class="qid">Q10</span>Rao–Blackwell 에 쓰는 조건부기대를 계산하라.
-  <ol><li>Bernoulli 표본: $E(X_1\mid T=t)$</li>
-  <li>Poisson 표본: $X_1\mid T=t$ 의 분포를 쓰고 $P(X_1=1\mid T)$ 를 구하라. 이것은 무엇의 UMVUE 인가?</li>
-  <li>$U(0,\theta)$ 표본: $2X_1$ 을 $M=X_{(n)}$ 으로 Rao–Blackwell 화하면 결과는? (계산 없이 Lehmann–Scheffé 로)</li></ol></div>
-<div class="qrow"><span class="qid">Q11</span>완비충분통계량 $T$ 의 함수 중 불편인 것을 찾아 UMVUE 를 구하라.
-  <ol><li>Poisson: $\lambda^2$ &nbsp;(힌트: $E[T(T-1)]$)</li>
-  <li>$\text{Exp}(\lambda)$ (rate), $n\ge2$: $\lambda$ &nbsp;(힌트: $T\sim\text{Gamma}(n,\lambda)$, $E(1/T)$)</li>
-  <li>$N(\mu,\sigma^2)$, $\sigma^2$ 기지: $\mu^2$</li></ol></div>
+<div class="qrow"><span class="qid">Q12</span>충분통계량에 대하여
+  <ol><li>충분통계량의 정의를 쓰라.</li><li>Fisher–Neyman 인수분해 정리를 식으로 쓰라.</li><li>이산형에서 인수분해 정리를 증명하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q13</span>완비통계량에 대하여
+  <ol><li>완비성의 정의를 식으로 쓰라.</li><li>$T\sim\text{Bin}(n,p)$, $p\in(0,1)$ 이 완비임을 증명하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q14</span>Rao–Blackwell 정리에 대하여
+  <ol><li>정리를 식으로 쓰라.</li><li>정리를 증명하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q15</span>Lehmann–Scheffé 정리에 대하여
+  <ol><li>정리를 쓰라.</li><li>정리를 증명하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q16</span>$X_i\overset{\text{iid}}{\sim}\text{Bernoulli}(p)$, $n\ge2$, $T=\sum_iX_i$ 일 때 다음을 구하여라.<span class="src">예제 4.10</span>
+  <ol><li>$X_1,X_2$ 로 만든 $p^2$ 의 간단한 불편추정량</li><li>$E(X_1X_2\mid T=t)$</li><li>$p^2$ 의 UMVUE</li><li>$E(\bar X^2)$</li></ol></div>
+<div class="qrow"><span class="qid">Q17</span>$X_i\overset{\text{iid}}{\sim}\text{Poisson}(\lambda)$, $n\ge2$, $T=\sum_iX_i$ 일 때 다음을 구하여라.<span class="src">예제 4.11</span>
+  <ol><li>$X_1$ 로 만든 $e^{-\lambda}$ 의 간단한 불편추정량</li><li>$X_1\mid T=t$ 의 분포</li><li>$e^{-\lambda}$ 의 UMVUE</li></ol></div>
+<div class="qrow"><span class="qid">Q18</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$, $M=X_{(n)}$ 에 대하여<span class="src">예제 4.12</span>
+  <ol><li>$M$ 이 완비임을 증명하라.</li><li>$\theta$ 의 UMVUE 를 구하여라.</li></ol></div>
 
-<h2 class="sub">D. 점근적 성질 (4.5)</h2>
-<div class="qrow"><span class="qid">Q12</span>일치성을 보여라. (MSE$\to0$, 직접 확률계산, WLLN+연속사상 중 적절한 것)
-  <ol><li>$U(0,\theta)$ 의 $X_{(n)}$</li>
-  <li>$\text{Exp}(\lambda)$ 의 $1/\overline X$</li>
-  <li>평균·분산이 유한한 표본의 $S^2$</li></ol></div>
-<div class="qrow"><span class="qid">Q13</span>$\sqrt n(\hat\theta-\theta)\xrightarrow{d}N(0,I_1(\theta)^{-1})$ 를 이용해 극한분포와 근사 표준오차를 쓰라.
-  <ol><li>Poisson 의 $\hat\lambda=\overline X$</li>
-  <li>기하분포의 $\hat p=1/\overline X$</li>
-  <li>$f(x)=\theta x^{\theta-1}$ 의 MLE</li></ol></div>
-<div class="qrow"><span class="qid">Q14</span>Delta 방법으로 극한분포를 구하라.
-  <ol><li>Poisson: $\sqrt n\,(e^{-\overline X}-e^{-\lambda})$</li>
-  <li>Bernoulli: 오즈 $g(p)=\dfrac p{1-p}$ 에 대한 $\sqrt n\,(g(\hat p)-g(p))$</li>
-  <li>Poisson: $\sqrt n\,(\sqrt{\overline X}-\sqrt\lambda)$ — 극한분산이 $\lambda$ 에 의존하지 않음을 확인</li></ol></div>
+<h2 class="sub">D. 추정량의 점근적 성질 (4.5)</h2>
+<div class="qrow"><span class="qid">Q19</span>일치추정량에 대하여
+  <ol><li>일치추정량의 정의를 식으로 쓰라.</li><li>$MSE_\theta(T_n)\to0$ 이면 $T_n$ 이 일치추정량임을 증명하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q20</span>정규적인 모형의 MLE 에 대하여
+  <ol><li>$\sqrt n(\hat\theta-\theta_0)$ 의 점근분포를 쓰라.</li><li>(1) 을 증명하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q21</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(\theta)$ (pdf $f(x)=\tfrac1\theta e^{-x/\theta}$), $T=\sum_iX_i$ 이고 $1/\theta$ 의 추정량을 $\hat\lambda=n/T$ 라 할 때 다음을 구하여라.<span class="src">예제 4.14</span>
+  <ol><li>$E(T^{-k})$ $(n\gt k)$</li><li>$\hat\lambda$ 의 편향</li><li>$1/\theta$ 의 불편추정량 $\tilde\lambda$</li><li>$Var(\tilde\lambda)$ $(n\gt2)$</li><li>$\sqrt n\big(\hat\lambda-\tfrac1\theta\big)$ 의 점근분포</li></ol></div>
+<div class="qrow"><span class="qid">Q22</span>$M_n$ 이 $U(0,\theta)$ 표본의 최댓값일 때 $n(\theta-M_n)/\theta$ 의 극한분포를 구하여라.<span class="src">예제 4.15</span></div>
 
 <h2 class="sub">E. 구간추정 (4.6)</h2>
-<div class="qrow"><span class="qid">Q15</span>추축량을 만들어 정확한 $1-\alpha$ 신뢰구간을 구하라.
-  <ol><li>$f(x)=\theta x^{\theta-1}$ $(0\lt x\lt1)$: $Y=-\log X$ 의 분포를 구하고, $2\theta\sum(-\log X_i)$ 를 추축량으로 써서 $\theta$ 의 구간</li>
-  <li>pdf $e^{-(x-\theta)}$ $(x\ge\theta)$: $n(X_{(1)}-\theta)\sim\text{Exp}(1)$ 을 써서 $\theta$ 의 구간 (위쪽 끝은 $X_{(1)}$)</li></ol></div>
-<div class="qrow"><span class="qid">Q16</span>정규표본 $n=9$, $\bar x=20$, $s=3$ 이다. ($z_{0.975}=1.96$, $t_{8,0.975}=2.306$, $\chi^2_{8,0.025}=2.180$, $\chi^2_{8,0.975}=17.535$)
-  <ol><li>$\sigma=3$ 이 알려져 있을 때 $\mu$ 의 $95\%$ 구간</li>
-  <li>$\sigma$ 미지일 때 $\mu$ 의 $95\%$ 구간</li>
-  <li>$\sigma^2$ 의 $95\%$ 구간</li>
-  <li>$\sigma=3$ 기지에서 $95\%$ 구간의 반폭을 $0.5$ 이하로 하려면 $n$ 은 최소 얼마?</li></ol></div>
-<div class="qrow"><span class="qid">Q17</span>정확 신뢰구간 수치 계산
-  <ol><li>rate $\lambda$ 지수표본 $n=5$, $\sum x_i=10$: $\lambda$ 의 $90\%$ 구간과 평균수명 $1/\lambda$ 의 $90\%$ 구간 ($\chi^2_{10,0.05}=3.940$, $\chi^2_{10,0.95}=18.307$)</li>
-  <li>$U(0,\theta)$ 표본 $n=5$, $x_{(5)}=8$: $\theta$ 의 $95\%$ 구간 ($0.05^{1/5}\approx0.5493$)</li></ol></div>
-<div class="qrow"><span class="qid">Q18</span>모비율 구간 ($z=1.96$)
-  <ol><li>$n=100$, 성공 $40$: Wald 구간과 Wilson 구간</li>
-  <li>$n=20$, 성공 $0$: Wald 구간은 어떻게 되는가? Wilson 구간의 상한은?</li></ol></div>
+<div class="qrow"><span class="qid">Q23</span>$X_i\overset{\text{iid}}{\sim}N(\mu,\sigma^2)$, $n\ge2$ 일 때 정확한 $1-\alpha$ 신뢰구간을 쓰라.
+  <ol><li>$\mu$ ($\sigma$ 기지)</li><li>$\mu$ ($\sigma$ 미지)</li><li>$\sigma^2$ ($\mu$ 미지)</li><li>$\sigma^2$ ($\mu$ 기지)</li></ol></div>
+<div class="qrow"><span class="qid">Q24</span>다음 정규표본의 95% 신뢰구간을 구하여라.<span class="src">예제 4.16·4.17</span>
+  <ol><li>$n=25$, $\bar x=10$, $s=2$ 일 때 $\mu$ ($t_{24,0.975}=2.0639$)</li>
+  <li>$n=16$, $s^2=9$ 일 때 $\sigma^2$ ($\chi^2_{15,0.025}=6.2621$, $\chi^2_{15,0.975}=27.4884$)</li></ol></div>
+<div class="qrow"><span class="qid">Q25</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(\theta)$ (pdf $f(x)=\tfrac1\theta e^{-x/\theta}$), $T=\sum_iX_i$ 일 때<span class="src">예제 4.18</span>
+  <ol><li>추축량 $2T/\theta$ 의 분포를 쓰라.</li><li>$\theta$ 의 정확한 $1-\alpha$ 신뢰구간을 쓰라.</li>
+  <li>$n=10$, $\sum x_i=20$ 일 때 $\theta$ 의 MLE 를 구하여라.</li>
+  <li>(3) 에서 $\theta$ 의 95% 정확 신뢰구간을 구하여라. ($\chi^2_{20,0.025}=9.5908$, $\chi^2_{20,0.975}=34.1696$)</li></ol></div>
+<div class="qrow"><span class="qid">Q26</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$, $M=X_{(n)}$ 일 때
+  <ol><li>$M/\theta$ 의 분포를 쓰라.</li><li>$\theta$ 의 정확한 $1-\alpha$ 신뢰구간을 유도하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q27</span>점근 신뢰구간을 식으로 쓰라.
+  <ol><li>정규적인 MLE $\hat\theta$ 의 Wald 구간</li><li>Bernoulli 모비율 $p$ 의 Wald 구간</li><li>Bernoulli 모비율 $p$ 의 Wilson 구간</li></ol></div>
 
 <h2 class="sub">F. 베이즈 추정 (4.7)</h2>
-<div class="qrow"><span class="qid">Q19</span>Poisson 표본 $n=4$, $\sum x_i=10$, 사전분포 $\lambda\sim\text{Gamma}(2,1)$ (shape–rate).
-  <ol><li>사후분포</li>
-  <li>사후평균(제곱오차 베이즈추정), MAP, MLE</li>
-  <li>사후평균을 사전평균과 MLE 의 가중평균으로 쓰라.</li></ol></div>
-<div class="qrow"><span class="qid">Q20</span>rate $\lambda$ 지수표본 $n=5$, $\sum x_i=10$, 사전분포 $\lambda\sim\text{Gamma}(3,2)$.
-  <ol><li>사후분포와 $\lambda$ 의 사후평균</li>
-  <li>평균수명 $1/\lambda$ 의 제곱오차 베이즈추정량 $E(1/\lambda\mid x)$ 를 구하고, (1)의 역수와 다른 이유를 쓰라.</li></ol></div>
-<div class="qrow"><span class="qid">Q21</span>$X_i\mid\mu\sim N(\mu,4)$, $n=4$, $\bar x=3$, 사전분포 $\mu\sim N(0,1)$.
-  <ol><li>사후분포 $N(m_n,v_n)$ 의 $m_n,\ v_n$</li>
-  <li>$\mu$ 의 $95\%$ 신용구간을 구하고, 같은 자료의 $95\%$ 신뢰구간 $\bar x\pm1.96\cdot\sqrt{4/4}$ 와 비교하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q28</span>사전밀도 $\pi(\theta)$, 가능도 $L(\theta;\boldsymbol x)$ 에 대하여
+  <ol><li>사후분포 $\pi(\theta\mid\boldsymbol x)$ 를 식으로 쓰라.</li><li>제곱오차 손실 아래 베이즈 추정량을 쓰라.</li>
+  <li>(2) 를 증명하라.</li><li>절대오차 손실 아래 베이즈 추정량을 쓰라.</li></ol></div>
+<div class="qrow"><span class="qid">Q29</span>$p\sim\text{Beta}(2,3)$ 이고 조건부로 독립인 Bernoulli 시행 $10$ 번 중 $7$ 번 성공했을 때 다음을 구하여라.<span class="src">예제 4.19</span>
+  <ol><li>$p$ 의 사후분포</li><li>제곱오차 손실 아래 $p$ 의 추정값</li><li>다음 시행의 성공확률</li><li>다음 두 시행이 모두 성공할 확률</li></ol></div>
+<div class="qrow"><span class="qid">Q30</span>$X_i\mid\mu\overset{\text{iid}}{\sim}N(\mu,\sigma^2)$, $\sigma^2$ 기지, 사전분포 $\mu\sim N(m_0,v_0)$ 일 때 다음을 구하여라.<span class="src">예제 4.20</span>
+  <ol><li>$\mu$ 의 사후분포</li><li>$\mu$ 의 중앙 $1-\alpha$ 신용구간</li></ol></div>
+
+<h2 class="sub">G. 확인문제</h2>
+<div class="qrow"><span class="qid">Q31</span>$X_i\overset{\text{iid}}{\sim}\text{GAM}(k,\theta)$ 에서 $k$ 는 기지이고 $\theta\gt0$ 는 미지일 때<span class="src">확인문제 4.2</span>
+  <ol><li>$\theta$ 의 MLE 를 구하여라.</li><li>(1) 이 최댓값임을 확인하라.</li></ol></div>
+<div class="qrow"><span class="qid">Q32</span>$X_i\overset{\text{iid}}{\sim}\text{Bernoulli}(p)$, $n\ge2$ 일 때 $p(1-p)$ 의 UMVUE 를 구하여라.<span class="src">확인문제 4.6</span></div>
+<div class="qrow"><span class="qid">Q33</span>Poisson 표본의 크기가 $5$ 이고 합계가 $10$ 일 때 다음을 계산하여라.<span class="src">확인문제 4.7</span>
+  <ol><li>$e^{-\lambda}$ 의 UMVUE</li><li>$e^{-\lambda}$ 의 MLE</li></ol></div>
+<div class="qrow"><span class="qid">Q34</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$ 일 때 $\theta^2$ 의 UMVUE 를 구하여라.<span class="src">확인문제 4.8</span></div>
+<div class="qrow"><span class="qid">Q35</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(\theta)$ 에서 $1/\theta$ 의 MLE $\hat\lambda=1/\bar X$ 에 대하여<span class="src">확인문제 4.9</span>
+  <ol><li>$\log\hat\lambda$ 의 점근분포를 구하여라.</li><li>(1) 을 이용하여 $1/\theta$ 의 근사 $1-\alpha$ 신뢰구간을 구하여라.</li></ol></div>
+<div class="qrow"><span class="qid">Q36</span>$\text{EXP}(\theta)$ 표본의 크기가 $8$ 이고 합계가 $24$ 일 때 $\theta$ 의 90% 정확 신뢰구간을 카이제곱 분위수로 표현하라.<span class="src">확인문제 4.10</span></div>
+<div class="qrow"><span class="qid">Q37</span>$U(0,\theta)$ 표본의 크기가 $4$, 최댓값이 $10$ 일 때 $\theta$ 의 95% 신뢰구간을 구하여라.<span class="src">확인문제 4.11</span></div>
 
 <nav class="pager">
   <a href="4-6_interval-estimation.html">← 이전<small>4.6 구간추정</small></a>

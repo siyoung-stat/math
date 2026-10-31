@@ -29,134 +29,208 @@
   <h1><span class="no">답지</span>4장 퀴즈 <span class="en">answers</span></h1>
 </header>
 
-<p class="note">강의노트 4장 기준 풀이. 표기는 퀴즈와 같다(rate 모수, $T=\sum X_i$, 하측 누적확률 분위수). 수치는 소수 넷째 자리까지 반올림.</p>
-
-<h2 class="sub">A. 적률추정법과 최대가능도</h2>
+<h2 class="sub">퀴즈 <span class="en">quiz</span></h2>
 
 <div class="ex"><span class="exn">Q1</span>
-<ol><li>$E(X)=1/\lambda$, $Var(X)=1/\lambda^2$. $\ 1/\hat\lambda=\overline X\Rightarrow\hat\lambda_{\text{MOM}}=1/\overline X$</li>
-<li>$E(X)=\lambda\Rightarrow\hat\lambda=\overline X$. $\ Var(X)=\lambda\Rightarrow\tilde\lambda=v_n=\frac1n\sum(X_i-\overline X)^2$ — 어떤 적률을 쓰느냐에 따라 적률추정량이 달라진다(유일하지 않음).</li>
-<li>$E(X)=\int_0^1\theta x^{\theta}\,dx=\dfrac\theta{\theta+1}$. $\ \overline X=\dfrac{\hat\theta}{\hat\theta+1}\Rightarrow\hat\theta_{\text{MOM}}=\dfrac{\overline X}{1-\overline X}$</li></ol></div>
+<ol><li>$E(X)=\dfrac\theta2=\bar X\ \Rightarrow\ \hat\theta_{\text{MOM}}=2\bar X$</li>
+<li>$\bar x=3.5\ \Rightarrow\ \hat\theta=7$</li>
+<li>관측값 $8\gt\hat\theta=7$ — 추정된 받침 $(0,7)$ 이 관측값 $8$ 을 포함하지 못한다.</li></ol></div>
 
 <div class="ex"><span class="exn">Q2</span>
-<ol><li>$\ell(\lambda)=T\log\lambda-n\lambda-\sum\log x_i!$, $\ \ell'(\lambda)=T/\lambda-n=0\Rightarrow\hat\lambda=\overline X$. $\ \ell''=-T/\lambda^2\lt0$ 이므로 최대.</li>
-<li>$\ell(\theta)=n\log\theta+(\theta-1)\sum\log x_i$, $\ \ell'(\theta)=n/\theta+\sum\log x_i=0$
-  $$\hat\theta_{\text{MLE}}=-\frac n{\sum\log X_i}\quad(\log X_i\lt0\text{ 이므로 양수}),\qquad\ell''=-n/\theta^2\lt0$$</li>
-<li>$\ell(p)=n\log p+(T-n)\log(1-p)$, $\ \ell'(p)=\dfrac np-\dfrac{T-n}{1-p}=0\Rightarrow\hat p=\dfrac nT=\dfrac1{\overline X}$.
-  $\ \ell''=-\dfrac n{p^2}-\dfrac{T-n}{(1-p)^2}\lt0$. ($T=n$ 이면 경계 $\hat p=1$)</li></ol></div>
+<ol><li>$E(X)=k\theta$, $Var(X)=k\theta^2$ 이므로 $\hat k\hat\theta=\bar X$, $\hat k\hat\theta^2=v_n$
+  $$\hat\theta=\frac{v_n}{\bar X},\qquad\hat k=\frac{\bar X^2}{v_n}$$</li>
+<li>$v_n=45-36=9\ \Rightarrow\ \hat k=\dfrac{36}9=4,\quad\hat\theta=\dfrac96=\dfrac32$</li></ol></div>
 
 <div class="ex"><span class="exn">Q3</span>
-<ol><li>$L(\theta)=e^{n\theta-\sum x_i}\,\mathbf 1\{\theta\le X_{(1)}\}$. $\ \theta\le X_{(1)}$ 에서 $\theta$ 의 증가함수이므로 $\hat\theta=X_{(1)}$ — 미분해서 $0$ 으로 놓으면 안 되는 대표 유형.</li>
-<li>$L(\theta)=\mathbf 1\{\theta\le X_{(1)}\}\mathbf 1\{X_{(n)}\le\theta+1\}=\mathbf 1\{X_{(n)}-1\le\theta\le X_{(1)}\}$.
-  구간 $[X_{(n)}-1,\ X_{(1)}]$ 의 모든 값이 MLE — MLE 가 유일하지 않다.</li>
-<li>불변성: $\widehat{e^{-\lambda}}=e^{-\overline X}$, $\ \hat\sigma=\sqrt{\frac1n\sum(X_i-\overline X)^2}$ ($S$ 가 아님).</li></ol></div>
-
-<h2 class="sub">B. 추정의 기준</h2>
+$\ell(\mu,v)=-\frac n2\log(2\pi)-\frac n2\log v-\frac1{2v}\sum(x_i-\mu)^2$, $v=\sigma^2$
+<ol><li>$\dfrac{\partial\ell}{\partial\mu}=\dfrac1v\sum(x_i-\mu)=0\ \Rightarrow\ \hat\mu=\bar X$</li>
+<li>$\dfrac{\partial\ell}{\partial v}=-\dfrac n{2v}+\dfrac{\sum(x_i-\bar x)^2}{2v^2}=0\ \Rightarrow\ \hat\sigma^2=\dfrac1n\sum(X_i-\bar X)^2=\dfrac{n-1}nS^2$</li>
+<li>$E(\hat\sigma^2)-\sigma^2=\dfrac{n-1}n\sigma^2-\sigma^2=-\dfrac{\sigma^2}n$</li></ol></div>
 
 <div class="ex"><span class="exn">Q4</span>
-<ol><li>$E(\overline X^{\,2})=Var(\overline X)+\{E\overline X\}^2=\dfrac\lambda n+\lambda^2$ → 편향 $\lambda/n$. $\ \overline X$ 가 $\lambda$ 의 불편추정량이므로 $\ \overline X^{\,2}-\dfrac{\overline X}n$ 이 $\lambda^2$ 의 불편추정량.</li>
-<li>$E(M)=\dfrac{n\theta}{n+1}$, $\ E(M^2)=\dfrac{n\theta^2}{n+2}$, $\ Var(M)=\dfrac{n\theta^2}{(n+1)^2(n+2)}$, 편향 $-\dfrac\theta{n+1}$
-  $$MSE_\theta(M)=\frac{n\theta^2}{(n+1)^2(n+2)}+\frac{\theta^2}{(n+1)^2}=\frac{2\theta^2}{(n+1)(n+2)}$$</li>
-<li>비 $\dfrac{MSE(M)}{Var(\frac{n+1}nM)}=\dfrac{2n}{n+1}\ge1$ (등호는 $n=1$). $n\ge2$ 이면 불편으로 보정한 $\frac{n+1}nM$ 이 MSE 도 더 작다.</li></ol></div>
+<ol><li>$L(\theta)=\displaystyle\prod_{i=1}^n\frac1\theta I(0\lt x_i\le\theta)=\theta^{-n}\,I(\theta\ge x_{(n)})\,I(x_{(1)}\gt0)$</li>
+<li>$\theta\lt x_{(n)}$ 이면 $L=0$, $\theta\ge x_{(n)}$ 에서 $\theta^{-n}$ 은 감소 $\Rightarrow\ \hat\theta_{\text{MLE}}=X_{(n)}$</li></ol></div>
 
 <div class="ex"><span class="exn">Q5</span>
-<ol><li>$\log f=\log\lambda-\lambda x$, $\ \partial^2_\lambda=-1/\lambda^2$ → $I_1(\lambda)=1/\lambda^2$</li>
-<li>$\log f=-\frac{(x-\mu)^2}{2\sigma^2}+c$, $\ \partial^2_\mu=-1/\sigma^2$ → $I_1(\mu)=1/\sigma^2$</li>
-<li>$\log f=\log p+(x-1)\log(1-p)$, $\ \partial^2_p=-\dfrac1{p^2}-\dfrac{x-1}{(1-p)^2}$, $E(X-1)=\dfrac{1-p}p$
-  $$I_1(p)=\frac1{p^2}+\frac1{p(1-p)}=\frac1{p^2(1-p)}$$</li>
-<li>$\log f=-\frac12\log(2\pi v)-\dfrac{x^2}{2v}$, $\ \partial^2_v=\dfrac1{2v^2}-\dfrac{x^2}{v^3}$, $E(X^2)=v$ → $I_1(v)=\dfrac1{2v^2}$</li></ol></div>
+<ol><li>$\ell(\theta)=-n\log\theta-\dfrac T\theta$, $\ \ell'(\theta)=-\dfrac n\theta+\dfrac T{\theta^2}=0\ \Rightarrow\ \hat\theta=\bar X$
+  $$\ell''(\hat\theta)=\frac n{\hat\theta^2}-\frac{2T}{\hat\theta^3}=\frac n{\bar X^2}-\frac{2n}{\bar X^2}=-\frac n{\bar X^2}\lt0$$</li>
+<li>불변성: $\widehat{1/\theta}=\dfrac1{\bar X}$</li>
+<li>$T\sim\text{GAM}(n,\theta)$, $E\big(\tfrac1T\big)=\dfrac1{(n-1)\theta}$ 이므로 $E\big(\tfrac1{\bar X}\big)=\dfrac n{(n-1)\theta}\ne\dfrac1\theta$ — 불편추정량이 아니다.</li></ol></div>
 
 <div class="ex"><span class="exn">Q6</span>
-<ol><li>$\tau'(\lambda)=-1/\lambda^2$: $\ \text{CRLB}=\dfrac{1/\lambda^4}{n/\lambda^2}=\dfrac1{n\lambda^2}$. $\ Var(\overline X)=\dfrac{1}{n\lambda^2}$ → <b>달성</b>.</li>
-<li>$\text{CRLB}=\dfrac1{nI_1(v)}=\dfrac{2v^2}n$. $\ X_i^2/v\sim\chi^2_1$ 이므로 $Var(X_i^2)=2v^2$, $Var(\frac1n\sum X_i^2)=\dfrac{2v^2}n$ → <b>달성</b>.</li>
-<li>$I_1(\lambda)=1/\lambda$, $\tau'=-e^{-\lambda}$: $\ \text{CRLB}=\dfrac{\lambda e^{-2\lambda}}n$</li></ol></div>
+<ol><li>$\text{Bias}_\theta(T)=E_\theta(T)-\tau(\theta)$</li>
+<li>$MSE_\theta(T)=E_\theta[(T-\tau(\theta))^2]=Var_\theta(T)+\{\text{Bias}_\theta(T)\}^2$
+  $$E[(T-ET+ET-\tau)^2]=E[(T-ET)^2]+2(ET-\tau)\underbrace{E(T-ET)}_{=0}+(ET-\tau)^2$$</li></ol></div>
 
 <div class="ex"><span class="exn">Q7</span>
-$\log f=-\log\theta$ ($0\lt x\lt\theta$) 이므로 형식적 계산은 $I_1=1/\theta^2$, “하한” $\theta^2/n$. 그런데 $\frac{n+1}nX_{(n)}$ 은 불편이고 $Var=\dfrac{\theta^2}{n(n+2)}\lt\dfrac{\theta^2}n$ — “하한”보다 작다.
-원인: 받침 $(0,\theta)$ 가 모수에 의존해 미분·적분 교환이 안 되고, $E[U_1]=-1/\theta\ne0$ 이다. 정규조건 위반이므로 CRLB 를 쓸 수 없다.</div>
-
-<h2 class="sub">C. 최소분산 불편추정량</h2>
+$\dfrac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1)$, $Var(\chi^2(n-1))=2(n-1)$
+<ol><li>$MSE(S^2)=Var(S^2)=\dfrac{\sigma^4}{(n-1)^2}\cdot2(n-1)=\dfrac{2\sigma^4}{n-1}$</li>
+<li>$MSE(V_n)=\Big(\dfrac{n-1}n\Big)^2\dfrac{2\sigma^4}{n-1}+\Big(-\dfrac{\sigma^2}n\Big)^2=\dfrac{2n-1}{n^2}\sigma^4$</li>
+<li>$(2n-1)(n-1)=2n^2-3n+1\lt2n^2\ \Rightarrow\ \dfrac{2n-1}{n^2}\lt\dfrac2{n-1}$ — $MSE(V_n)$ 이 더 작다.</li></ol></div>
 
 <div class="ex"><span class="exn">Q8</span>
-<ol><li>$\prod f=\underbrace{\lambda^Te^{-n\lambda}}_{g_\lambda(T)}\cdot\underbrace{\textstyle\prod\frac1{x_i!}}_{h}$ → $T=\sum X_i$</li>
-<li>$\prod f=\Big(\dfrac{b^a}{\Gamma(a)}\Big)^n\Big(\prod x_i\Big)^{a-1}e^{-b\sum x_i}$ → $\big(\sum\log X_i,\ \sum X_i\big)$ (또는 $(\prod X_i,\sum X_i)$)</li>
-<li>$\prod f=(2\theta)^{-n}\,\mathbf 1\{\max|x_i|\le\theta\}$ → $\max_i|X_i|$</li>
-<li>$\prod f=e^{n\theta}\mathbf 1\{\theta\le x_{(1)}\}\cdot e^{-\sum x_i}$ → $X_{(1)}$ (지시함수는 $g_\theta$ 쪽)</li></ol></div>
+<ol><li>$Var(T_1)=4\cdot\dfrac{\theta^2/12}n=\dfrac{\theta^2}{3n}$</li>
+<li>$Var(X_{(n)})=\dfrac{n\theta^2}{(n+1)^2(n+2)}\ \Rightarrow\ Var(T_2)=\Big(\dfrac{n+1}n\Big)^2\dfrac{n\theta^2}{(n+1)^2(n+2)}=\dfrac{\theta^2}{n(n+2)}$</li>
+<li>$n+2\gt3\ (n\gt1)$ 이므로 $Var(T_2)\lt Var(T_1)$</li></ol></div>
 
 <div class="ex"><span class="exn">Q9</span>
-<ol><li>$p^x(1-p)^{1-x}=\exp\big\{x\log\frac p{1-p}+\log(1-p)\big\}$ → $\sum X_i$</li>
-<li>$\exp\Big\{\dfrac\mu{\sigma^2}x-\dfrac1{2\sigma^2}x^2-\dfrac{\mu^2}{2\sigma^2}-\dfrac12\log(2\pi\sigma^2)\Big\}$ → $\big(\sum X_i,\ \sum X_i^2\big)$ (동치로 $(\overline X,S^2)$)</li>
-<li>$\exp\{(\theta-1)\log x+\log\theta\}$ → $\sum\log X_i$</li></ol>
-세 경우 모두 자연모수 $c(\theta)$ 의 범위가 열린집합을 포함하므로 완비충분.</div>
+<ol><li>$U_1(\theta)=\dfrac{\partial}{\partial\theta}\log f(X;\theta)$</li>
+<li>$E_\theta[U_1(\theta)]=0$. $\ \int f(x;\theta)\,dx=1$ 을 $\theta$ 로 미분하면
+  $$0=\int\frac{\partial f}{\partial\theta}dx=\int\Big(\frac{\partial}{\partial\theta}\log f\Big)f\,dx=E_\theta[U_1(\theta)]$$</li>
+<li>$I_1(\theta)=E_\theta[U_1(\theta)^2]=-E_\theta\Big[\dfrac{\partial^2}{\partial\theta^2}\log f(X;\theta)\Big]$</li>
+<li>$I_n(\theta)=nI_1(\theta)$</li></ol></div>
 
 <div class="ex"><span class="exn">Q10</span>
-<ol><li>대칭성으로 $E(X_i\mid T)$ 는 모두 같고 합이 $t$ → $E(X_1\mid T=t)=t/n$</li>
-<li>$X_1\mid T=t\sim\text{Bin}(t,1/n)$:
-  $$P(X_1=1\mid T)=\frac Tn\Big(1-\frac1n\Big)^{T-1}$$
-  $E[\mathbf 1\{X_1=1\}]=\lambda e^{-\lambda}$ 이므로 이것이 $\lambda e^{-\lambda}$ 의 UMVUE.</li>
-<li>$2X_1$ 은 $\theta$ 의 불편추정량 → $E(2X_1\mid M)$ 은 $M$ 의 함수인 불편추정량. $M$ 은 완비충분이므로 그런 함수는 하나뿐: $E(2X_1\mid M)=\dfrac{n+1}nM$.</li></ol></div>
+<ol><li>$Var_\theta(T)\ge\dfrac{[\tau'(\theta)]^2}{I_n(\theta)}=\dfrac{[\tau'(\theta)]^2}{nI_1(\theta)}$</li>
+<li>$U_n=\dfrac{\partial}{\partial\theta}\log f(\boldsymbol x;\theta)$. $\ E_\theta(T)=\int T(\boldsymbol x)f(\boldsymbol x;\theta)\,d\boldsymbol x=\tau(\theta)$ 를 미분하면
+  $$\int T\frac{\partial f}{\partial\theta}d\boldsymbol x=\int T\,U_nf\,d\boldsymbol x=E_\theta(TU_n)=\tau'(\theta)$$
+  $$Cov(T,U_n)=E(TU_n)-E(T)\underbrace{E(U_n)}_{0}=\tau'(\theta)$$
+  Cauchy–Schwarz: $[Cov(T,U_n)]^2\le Var(T)\,Var(U_n)$
+  $$[\tau'(\theta)]^2\le Var(T)\,I_n(\theta)\ \Rightarrow\ Var(T)\ge\frac{[\tau'(\theta)]^2}{nI_1(\theta)}$$</li></ol></div>
 
 <div class="ex"><span class="exn">Q11</span>
-<ol><li>$T\sim\text{Poisson}(n\lambda)$, $E[T(T-1)]=(n\lambda)^2$ → UMVUE $=\dfrac{T(T-1)}{n^2}$</li>
-<li>$E(T^{-1})=\dfrac{\lambda^n}{\Gamma(n)}\displaystyle\int_0^\infty t^{n-2}e^{-\lambda t}dt=\dfrac{\lambda\,\Gamma(n-1)}{\Gamma(n)}=\dfrac\lambda{n-1}$ → UMVUE $=\dfrac{n-1}T$ (MLE $n/T$ 는 편향)</li>
-<li>$E(\overline X^{\,2})=\mu^2+\sigma^2/n$ → UMVUE $=\overline X^{\,2}-\dfrac{\sigma^2}n$</li></ol></div>
-
-<h2 class="sub">D. 점근적 성질</h2>
+<ol><li>$\log f=X\log p+(1-X)\log(1-p)$, $\ U_1(p)=\dfrac Xp-\dfrac{1-X}{1-p}=\dfrac{X-p}{p(1-p)}$</li>
+<li>$I_1(p)=\dfrac{Var(X)}{p^2(1-p)^2}=\dfrac1{p(1-p)}$</li>
+<li>$\dfrac1{nI_1(p)}=\dfrac{p(1-p)}n$</li>
+<li>$Var(\bar X)=\dfrac{p(1-p)}n$ — 하한을 달성한다.</li></ol></div>
 
 <div class="ex"><span class="exn">Q12</span>
-<ol><li>$P(|X_{(n)}-\theta|\gt\varepsilon)=P(X_{(n)}\lt\theta-\varepsilon)=\big(\frac{\theta-\varepsilon}\theta\big)^n\to0$ (또는 Q4 의 $MSE\to0$)</li>
-<li>WLLN: $\overline X\xrightarrow{p}1/\lambda$. $g(x)=1/x$ 는 $1/\lambda\gt0$ 에서 연속 → $1/\overline X\xrightarrow{p}\lambda$</li>
-<li>$\frac1n\sum X_i^2\xrightarrow{p}\sigma^2+\mu^2$, $\overline X^{\,2}\xrightarrow{p}\mu^2$ → $v_n\xrightarrow{p}\sigma^2$, $S^2=\frac n{n-1}v_n\xrightarrow{p}\sigma^2$</li></ol></div>
+<ol><li>$T$ 가 주어졌을 때 $\boldsymbol X$ 의 조건부분포 $f(\boldsymbol x\mid T=t)$ 가 $\theta$ 에 의존하지 않으면 $T$ 는 $\theta$ 의 충분통계량</li>
+<li>$T$ 가 충분 $\iff f_\theta(\boldsymbol x)=g_\theta(T(\boldsymbol x))\,h(\boldsymbol x)$, $h$ 는 $\theta$ 와 무관 (모수에 의존하는 받침의 지시함수는 $g_\theta$ 에 포함)</li>
+<li>($\Leftarrow$) $T(\boldsymbol x)=t$ 일 때 $P_\theta(T=t)=\sum_{\boldsymbol y:T(\boldsymbol y)=t}g_\theta(t)h(\boldsymbol y)=g_\theta(t)\sum_{\boldsymbol y:T(\boldsymbol y)=t}h(\boldsymbol y)$
+  $$P_\theta(\boldsymbol X=\boldsymbol x\mid T=t)=\frac{g_\theta(t)h(\boldsymbol x)}{g_\theta(t)\sum_{\boldsymbol y:T(\boldsymbol y)=t}h(\boldsymbol y)}=\frac{h(\boldsymbol x)}{\sum_{\boldsymbol y:T(\boldsymbol y)=t}h(\boldsymbol y)}\quad(\theta\text{ 와 무관})$$
+  ($\Rightarrow$) $P_\theta(\boldsymbol X=\boldsymbol x)=\underbrace{P_\theta(T=t)}_{g_\theta(t)}\underbrace{P(\boldsymbol X=\boldsymbol x\mid T=t)}_{h(\boldsymbol x)}$</li></ol></div>
 
 <div class="ex"><span class="exn">Q13</span>
-<ol><li>$I_1=1/\lambda$: $\sqrt n(\overline X-\lambda)\xrightarrow{d}N(0,\lambda)$, $\ \text{SE}\approx\sqrt{\overline X/n}$</li>
-<li>$I_1=\frac1{p^2(1-p)}$: $\sqrt n(\hat p-p)\xrightarrow{d}N\big(0,\ p^2(1-p)\big)$, $\ \text{SE}\approx\hat p\sqrt{(1-\hat p)/n}$</li>
-<li>$\ell''=-n/\theta^2$ → $I_1=1/\theta^2$: $\sqrt n(\hat\theta-\theta)\xrightarrow{d}N(0,\theta^2)$, $\ \text{SE}\approx\hat\theta/\sqrt n$</li></ol></div>
+<ol><li>모든 $\theta$ 에서 $E_\theta[a(T)]=0\ \Rightarrow$ 모든 $\theta$ 에서 $P_\theta(a(T)=0)=1$</li>
+<li>모든 $p$ 에서 $\displaystyle\sum_{t=0}^na(t)\binom ntp^t(1-p)^{n-t}=0$. $(1-p)^n$ 으로 나누고 $u=\dfrac p{1-p}\in(0,\infty)$:
+  $$\sum_{t=0}^na(t)\binom ntu^t=0\quad(\forall u\gt0)$$
+  다항식이 $(0,\infty)$ 에서 항등적으로 $0$ 이므로 모든 계수 $a(t)\binom nt=0\ \Rightarrow\ a(t)=0$</li></ol></div>
 
 <div class="ex"><span class="exn">Q14</span>
-<ol><li>$g'(\lambda)=-e^{-\lambda}$: $\ N\big(0,\ \lambda e^{-2\lambda}\big)$</li>
-<li>$g'(p)=\dfrac1{(1-p)^2}$: $\ N\Big(0,\ \dfrac{p(1-p)}{(1-p)^4}\Big)=N\Big(0,\ \dfrac p{(1-p)^3}\Big)$</li>
-<li>$g'(\lambda)=\dfrac1{2\sqrt\lambda}$: $\ N\Big(0,\ \dfrac{\lambda}{4\lambda}\Big)=N\big(0,\tfrac14\big)$ — 분산안정화 변환.</li></ol></div>
-
-<h2 class="sub">E. 구간추정</h2>
+<ol><li>$U$ 가 $\tau(\theta)$ 의 유한분산 불편추정량, $T$ 가 충분통계량이면 $\delta(T)=E(U\mid T)$ 는
+  $$E_\theta[\delta(T)]=\tau(\theta),\qquad Var_\theta(\delta(T))\le Var_\theta(U)$$</li>
+<li>충분성 $\Rightarrow$ $E(U\mid T)$ 는 $\theta$ 와 무관한 통계량. 이중기대값: $E[\delta(T)]=E[E(U\mid T)]=E(U)=\tau(\theta)$. 전분산 공식:
+  $$Var(U)=\underbrace{E[Var(U\mid T)]}_{\ge0}+Var[E(U\mid T)]\ge Var(\delta(T))$$</li></ol></div>
 
 <div class="ex"><span class="exn">Q15</span>
-<ol><li>$P(Y\gt y)=P(X\lt e^{-y})=e^{-\theta y}$ → $Y\sim\text{Exp}(\theta)$. $W=-\sum\log X_i\sim\text{Gamma}(n,\theta)$ 이므로 $2\theta W\sim\chi^2_{2n}$:
-  $$\left[\frac{\chi^2_{2n,\alpha/2}}{2W},\ \frac{\chi^2_{2n,1-\alpha/2}}{2W}\right]$$</li>
-<li>$P\{n(X_{(1)}-\theta)\le c\}=1-e^{-c}=1-\alpha\Rightarrow c=\log(1/\alpha)$. $\ X_{(1)}\ge\theta$ 는 항상 성립하므로
-  $$\left[X_{(1)}-\frac{\log(1/\alpha)}n,\ X_{(1)}\right]$$</li></ol></div>
+<ol><li>$T$ 가 완비충분통계량이고 $\delta(T)$ 가 $\tau(\theta)$ 의 유한분산 불편추정량이면 $\delta(T)$ 는 $\tau(\theta)$ 의 유일한 UMVUE (거의 확실히)</li>
+<li>임의의 불편추정량 $U$ 에 대해 $\phi(T)=E(U\mid T)$ 는 불편, $Var(\phi(T))\le Var(U)$ (Rao–Blackwell).
+  $$E_\theta[\delta(T)-\phi(T)]=\tau(\theta)-\tau(\theta)=0\quad(\forall\theta)$$
+  완비성 $\Rightarrow\ \delta(T)=\phi(T)$ (a.s.) $\Rightarrow\ Var(\delta(T))=Var(\phi(T))\le Var(U)$</li></ol></div>
 
 <div class="ex"><span class="exn">Q16</span>
-<ol><li>$20\pm1.96\cdot\dfrac3{3}=[18.04,\ 21.96]$</li>
-<li>$20\pm2.306\cdot\dfrac3{3}=[17.694,\ 22.306]$</li>
-<li>$(n-1)s^2=72$: $\ \left[\dfrac{72}{17.535},\ \dfrac{72}{2.180}\right]=[4.1061,\ 33.0275]$</li>
-<li>$1.96\cdot\dfrac3{\sqrt n}\le0.5\iff n\ge(11.76)^2=138.30$ → $n=139$</li></ol></div>
+<ol><li>$U=X_1X_2$, $\ E(X_1X_2)=p\cdot p=p^2$</li>
+<li>$E(X_1X_2\mid T=t)=P(X_1=X_2=1\mid T=t)=\dfrac{\binom{n-2}{t-2}}{\binom nt}=\dfrac tn\cdot\dfrac{t-1}{n-1}$</li>
+<li>$\widehat{p^2}_{\text{UMVUE}}=\dfrac{T(T-1)}{n(n-1)}$</li>
+<li>$E(\bar X^2)=Var(\bar X)+[E(\bar X)]^2=p^2+\dfrac{p(1-p)}n$</li></ol></div>
 
 <div class="ex"><span class="exn">Q17</span>
-<ol><li>$2\lambda T\sim\chi^2_{10}$, $2T=20$: $\ \lambda\in\left[\dfrac{3.940}{20},\ \dfrac{18.307}{20}\right]=[0.1970,\ 0.9153]$.
-  역수(감소함수)를 취해 끝점을 뒤집으면 $1/\lambda\in[1.0925,\ 5.0761]$.</li>
-<li>$\left[M,\ \dfrac M{\alpha^{1/n}}\right]=\left[8,\ \dfrac8{0.5493}\right]=[8,\ 14.5645]$</li></ol></div>
+<ol><li>$U=I(X_1=0)$, $\ E(U)=P(X_1=0)=e^{-\lambda}$</li>
+<li>$\displaystyle P(X_1=x\mid T=t)=\frac{\frac{e^{-\lambda}\lambda^x}{x!}\cdot\frac{e^{-(n-1)\lambda}((n-1)\lambda)^{t-x}}{(t-x)!}}{\frac{e^{-n\lambda}(n\lambda)^t}{t!}}=\binom tx\Big(\frac1n\Big)^x\Big(1-\frac1n\Big)^{t-x}$ $\ \Rightarrow\ X_1\mid T=t\sim\text{Bin}\big(t,\tfrac1n\big)$</li>
+<li>$E(U\mid T)=P(X_1=0\mid T)=\Big(1-\dfrac1n\Big)^T$</li></ol></div>
 
 <div class="ex"><span class="exn">Q18</span>
-<ol><li>$\hat p=0.4$. Wald: $0.4\pm1.96\sqrt{0.0024}=0.4\pm0.0960=[0.3040,\ 0.4960]$.
-  Wilson: $\dfrac{0.4+0.0192\pm1.96\sqrt{0.0024+0.000096}}{1.0384}=[0.3094,\ 0.4980]$ — 중심이 $0.5$ 쪽으로 당겨진다.</li>
-<li>Wald: $\hat p=0$ 이면 표준오차가 $0$ → $[0,0]$ 으로 붕괴. Wilson: 하한 $0$, 상한 $\dfrac{z^2/n}{1+z^2/n}=\dfrac{0.1921}{1.1921}=0.1611$</li></ol></div>
-
-<h2 class="sub">F. 베이즈 추정</h2>
+<ol><li>$f_M(m)=\dfrac{nm^{n-1}}{\theta^n}$, $0\lt m\lt\theta$. 모든 $\theta\gt0$ 에서
+  $$E_\theta[a(M)]=\frac n{\theta^n}\int_0^\theta a(m)m^{n-1}\,dm=0\ \Rightarrow\ \int_0^\theta a(m)m^{n-1}\,dm=0$$
+  $\theta$ 로 미분: $a(\theta)\theta^{n-1}=0$ (거의 모든 $\theta$) $\Rightarrow\ a(M)=0$ (a.s.) — 완비</li>
+<li>$E(M)=\dfrac n{n+1}\theta\ \Rightarrow\ \delta(M)=\dfrac{n+1}nM$ (Lehmann–Scheffé)</li></ol></div>
 
 <div class="ex"><span class="exn">Q19</span>
-<ol><li>$\lambda\mid x\sim\text{Gamma}(2+10,\ 1+4)=\text{Gamma}(12,5)$</li>
-<li>사후평균 $12/5=2.4$, MAP $=(12-1)/5=2.2$, MLE $=\bar x=2.5$</li>
-<li>$2.4=\dfrac15\cdot\underbrace{2}_{\text{사전평균 }a/b}+\dfrac45\cdot\underbrace{2.5}_{\bar x}$ — 가중치 $\dfrac b{b+n},\ \dfrac n{b+n}$</li></ol></div>
+<ol><li>모든 $\theta$ 와 $\varepsilon\gt0$ 에서 $\displaystyle\lim_{n\to\infty}P_\theta(|T_n-\tau(\theta)|\gt\varepsilon)=0$, 즉 $T_n\xrightarrow{p}\tau(\theta)$</li>
+<li>Chebyshev(Markov) 부등식:
+  $$P(|T_n-\tau(\theta)|\ge\varepsilon)=P\big((T_n-\tau(\theta))^2\ge\varepsilon^2\big)\le\frac{E[(T_n-\tau(\theta))^2]}{\varepsilon^2}=\frac{MSE_\theta(T_n)}{\varepsilon^2}\to0$$</li></ol></div>
 
 <div class="ex"><span class="exn">Q20</span>
-<ol><li>$\lambda\mid x\sim\text{Gamma}(3+5,\ 2+10)=\text{Gamma}(8,12)$, 사후평균 $8/12=0.6667$</li>
-<li>$\text{Gamma}(a,b)$ 에서 $E(1/\lambda)=\dfrac b{a-1}$ → $\dfrac{12}7=1.7143$. $1/0.6667=1.5$ 와 다르다 — $1/x$ 가 볼록이라 $E(1/\lambda)\ge1/E(\lambda)$ (Jensen). 베이즈추정량은 MLE 와 달리 비선형 변환에 불변이 아니다.</li></ol></div>
+<ol><li>$\sqrt n(\hat\theta-\theta_0)\xrightarrow{d}N\Big(0,\dfrac1{I_1(\theta_0)}\Big)$</li>
+<li>$\ell'(\hat\theta)=0$ 을 $\theta_0$ 에서 Taylor 전개: $0=\ell'(\hat\theta)\approx\ell'(\theta_0)+\ell''(\theta_0)(\hat\theta-\theta_0)$
+  $$\sqrt n(\hat\theta-\theta_0)=\frac{\frac1{\sqrt n}\ell'(\theta_0)}{-\frac1n\ell''(\theta_0)}$$
+  분자: $\ell'(\theta_0)=\sum U_1(X_i)$, $E(U_1)=0$, $Var(U_1)=I_1(\theta_0)$ — CLT 로 $\xrightarrow{d}N(0,I_1(\theta_0))$<br>
+  분모: $-\frac1n\sum\frac{\partial^2}{\partial\theta^2}\log f(X_i;\theta_0)\xrightarrow{p}-E\big[\frac{\partial^2}{\partial\theta^2}\log f\big]=I_1(\theta_0)$ (대수의 법칙)<br>
+  Slutsky: $\xrightarrow{d}\dfrac1{I_1(\theta_0)}N(0,I_1(\theta_0))=N\Big(0,\dfrac1{I_1(\theta_0)}\Big)$</li></ol></div>
 
 <div class="ex"><span class="exn">Q21</span>
-<ol><li>$v_n=\Big(\dfrac n{\sigma^2}+\dfrac1{v_0}\Big)^{-1}=(1+1)^{-1}=0.5$, $\ m_n=v_n\Big(\dfrac{n\bar x}{\sigma^2}+\dfrac{m_0}{v_0}\Big)=0.5\cdot3=1.5$</li>
-<li>신용구간 $m_n\pm1.96\sqrt{v_n}=1.5\pm1.3859=[0.1141,\ 2.8859]$. 신뢰구간 $3\pm1.96=[1.04,\ 4.96]$.
-  사전정보 때문에 사전평균 $0$ 쪽으로 수축되고 폭이 좁다. 해석도 다르다(사후확률 vs 반복 피복확률).</li></ol></div>
+$T\sim\text{GAM}(n,\theta)$
+<ol><li>$\displaystyle E(T^{-k})=\int_0^\infty t^{-k}\frac{t^{n-1}e^{-t/\theta}}{\Gamma(n)\theta^n}dt=\frac{\Gamma(n-k)\theta^{n-k}}{\Gamma(n)\theta^n}=\frac{\Gamma(n-k)}{\Gamma(n)\,\theta^k}$</li>
+<li>$E(\hat\lambda)=\dfrac n{(n-1)\theta}\ \Rightarrow\ \text{Bias}=\dfrac n{(n-1)\theta}-\dfrac1\theta=\dfrac1{(n-1)\theta}$</li>
+<li>$\tilde\lambda=\dfrac{n-1}T$</li>
+<li>$E(\tilde\lambda^2)=(n-1)^2\dfrac{\Gamma(n-2)}{\Gamma(n)\theta^2}=\dfrac{n-1}{(n-2)\theta^2}\ \Rightarrow\ Var(\tilde\lambda)=\dfrac{n-1}{(n-2)\theta^2}-\dfrac1{\theta^2}=\dfrac1{(n-2)\theta^2}$</li>
+<li>$\sqrt n\big(\hat\lambda-\tfrac1\theta\big)\xrightarrow{d}N\Big(0,\dfrac1{\theta^2}\Big)$</li></ol></div>
+
+<div class="ex"><span class="exn">Q22</span>
+$z\ge0$ 에서
+$$P\Big(\frac{n(\theta-M_n)}\theta\gt z\Big)=P\Big(M_n\lt\theta\Big(1-\frac zn\Big)\Big)=\Big(1-\frac zn\Big)^n\to e^{-z}$$
+$\dfrac{n(\theta-M_n)}\theta\xrightarrow{d}\text{EXP}(1)$</div>
+
+<div class="ex"><span class="exn">Q23</span>
+<ol><li>$\bar X\pm z_{1-\alpha/2}\dfrac\sigma{\sqrt n}$</li>
+<li>$\bar X\pm t_{n-1,1-\alpha/2}\dfrac S{\sqrt n}$</li>
+<li>$\left[\dfrac{(n-1)S^2}{\chi^2_{n-1,1-\alpha/2}},\ \dfrac{(n-1)S^2}{\chi^2_{n-1,\alpha/2}}\right]$</li>
+<li>$\left[\dfrac{\sum(X_i-\mu)^2}{\chi^2_{n,1-\alpha/2}},\ \dfrac{\sum(X_i-\mu)^2}{\chi^2_{n,\alpha/2}}\right]$</li></ol></div>
+
+<div class="ex"><span class="exn">Q24</span>
+<ol><li>$10\pm2.0639\cdot\dfrac25=[9.1744,\ 10.8256]$</li>
+<li>$(n-1)s^2=135$: $\left[\dfrac{135}{27.4884},\ \dfrac{135}{6.2621}\right]=[4.9112,\ 21.5583]$</li></ol></div>
+
+<div class="ex"><span class="exn">Q25</span>
+<ol><li>$\dfrac{2T}\theta\sim\chi^2(2n)$</li>
+<li>$P\Big(\chi^2_{2n,\alpha/2}\le\dfrac{2T}\theta\le\chi^2_{2n,1-\alpha/2}\Big)=1-\alpha\ \Rightarrow\ \left[\dfrac{2T}{\chi^2_{2n,1-\alpha/2}},\ \dfrac{2T}{\chi^2_{2n,\alpha/2}}\right]$</li>
+<li>$\hat\theta=\bar x=\dfrac{20}{10}=2$</li>
+<li>$2T=40$: $\left[\dfrac{40}{34.1696},\ \dfrac{40}{9.5908}\right]=[1.1706,\ 4.1707]$</li></ol></div>
+
+<div class="ex"><span class="exn">Q26</span>
+<ol><li>$\dfrac M\theta\sim\text{Beta}(n,1)$, $\ P\big(\tfrac M\theta\le x\big)=x^n\ (0\lt x\lt1)$</li>
+<li>$P\big(\tfrac M\theta\ge\alpha^{1/n}\big)=1-\alpha$ 이고 항상 $\tfrac M\theta\le1$:
+  $$\alpha^{1/n}\le\frac M\theta\le1\iff M\le\theta\le\frac M{\alpha^{1/n}}\qquad\Rightarrow\ \left[M,\ \frac M{\alpha^{1/n}}\right]$$</li></ol></div>
+
+<div class="ex"><span class="exn">Q27</span>
+<ol><li>$\hat\theta\pm\dfrac{z_{1-\alpha/2}}{\sqrt{nI_1(\hat\theta)}}$</li>
+<li>$\hat p\pm z_{1-\alpha/2}\sqrt{\dfrac{\hat p(1-\hat p)}n}$</li>
+<li>$\dfrac{\hat p+\frac{z^2}{2n}\pm z\sqrt{\frac{\hat p(1-\hat p)}n+\frac{z^2}{4n^2}}}{1+\frac{z^2}n}$, $\ z=z_{1-\alpha/2}$</li></ol></div>
+
+<div class="ex"><span class="exn">Q28</span>
+<ol><li>$\pi(\theta\mid\boldsymbol x)=\dfrac{L(\theta;\boldsymbol x)\pi(\theta)}{\int_\Theta L(u;\boldsymbol x)\pi(u)\,du}\propto L(\theta;\boldsymbol x)\pi(\theta)$</li>
+<li>사후평균 $E(\theta\mid\boldsymbol x)$</li>
+<li>$E[(\theta-a)^2\mid\boldsymbol x]=Var(\theta\mid\boldsymbol x)+\{a-E(\theta\mid\boldsymbol x)\}^2$ — 첫째 항은 $a$ 와 무관하므로 $a=E(\theta\mid\boldsymbol x)$ 에서 최소</li>
+<li>사후중앙값</li></ol></div>
+
+<div class="ex"><span class="exn">Q29</span>
+<ol><li>$\pi(p\mid\boldsymbol x)\propto p^7(1-p)^3\cdot p^1(1-p)^2=p^8(1-p)^5\ \Rightarrow\ p\mid\boldsymbol x\sim\text{Beta}(9,6)$</li>
+<li>$E(p\mid\boldsymbol x)=\dfrac9{15}=0.6$</li>
+<li>$E(p\mid\boldsymbol x)=0.6$</li>
+<li>$E(p^2\mid\boldsymbol x)=\dfrac{9\cdot10}{15\cdot16}=0.375$</li></ol></div>
+
+<div class="ex"><span class="exn">Q30</span>
+<ol><li>$\pi(\mu\mid\boldsymbol x)\propto\exp\Big\{-\dfrac12\Big[\dfrac n{\sigma^2}(\mu-\bar x)^2+\dfrac1{v_0}(\mu-m_0)^2\Big]\Big\}\ \Rightarrow\ \mu\mid\boldsymbol x\sim N(m_n,v_n)$
+  $$v_n=\Big(\frac n{\sigma^2}+\frac1{v_0}\Big)^{-1},\qquad m_n=v_n\Big(\frac{n\bar x}{\sigma^2}+\frac{m_0}{v_0}\Big)$$</li>
+<li>$m_n\pm z_{1-\alpha/2}\sqrt{v_n}$</li></ol></div>
+
+<div class="ex"><span class="exn">Q31</span>
+<ol><li>$\ell(\theta)=-nk\log\theta-\dfrac T\theta+C$, $\ \ell'(\theta)=-\dfrac{nk}\theta+\dfrac T{\theta^2}=0\ \Rightarrow\ \hat\theta=\dfrac T{nk}=\dfrac{\bar X}k$</li>
+<li>$\ell''(\hat\theta)=\dfrac{nk}{\hat\theta^2}-\dfrac{2T}{\hat\theta^3}=\dfrac{nk}{\hat\theta^2}-\dfrac{2nk}{\hat\theta^2}=-\dfrac{nk}{\hat\theta^2}\lt0$ — 최댓값</li></ol></div>
+
+<div class="ex"><span class="exn">Q32</span>
+$E[T(n-T)]=n^2p-\{np(1-p)+n^2p^2\}=n(n-1)p(1-p)$
+$$\widehat{p(1-p)}=\frac{T(n-T)}{n(n-1)}=\frac n{n-1}\bar X(1-\bar X)$$</div>
+
+<div class="ex"><span class="exn">Q33</span>
+<ol><li>$\Big(1-\dfrac15\Big)^{10}=0.8^{10}\approx0.1074$</li>
+<li>$e^{-\bar x}=e^{-2}\approx0.1353$</li></ol></div>
+
+<div class="ex"><span class="exn">Q34</span>
+$E(M^2)=\dfrac n{n+2}\theta^2\ \Rightarrow\ \widehat{\theta^2}_{\text{UMVUE}}=\dfrac{n+2}nM^2$</div>
+
+<div class="ex"><span class="exn">Q35</span>
+<ol><li>$\sqrt n\big(\hat\lambda-\tfrac1\theta\big)\xrightarrow{d}N\big(0,\tfrac1{\theta^2}\big)$, $g(\lambda)=\log\lambda$, $g'\big(\tfrac1\theta\big)=\theta$
+  $$\sqrt n\Big(\log\hat\lambda-\log\tfrac1\theta\Big)\xrightarrow{d}N\Big(0,\ \theta^2\cdot\frac1{\theta^2}\Big)=N(0,1)$$</li>
+<li>$\left[\hat\lambda e^{-z_{1-\alpha/2}/\sqrt n},\ \hat\lambda e^{z_{1-\alpha/2}/\sqrt n}\right]$</li></ol></div>
+
+<div class="ex"><span class="exn">Q36</span>
+$\dfrac{2T}\theta\sim\chi^2(16)$, $2T=48$:
+$$\left[\frac{48}{\chi^2_{16,0.95}},\ \frac{48}{\chi^2_{16,0.05}}\right]$$</div>
+
+<div class="ex"><span class="exn">Q37</span>
+$\left[M,\ \dfrac M{\alpha^{1/n}}\right]=\left[10,\ \dfrac{10}{0.05^{1/4}}\right]\approx[10,\ 21.1474]$</div>
 
 <nav class="pager">
   <a href="4-quiz.html">← 이전<small>퀴즈 · 4장</small></a>
