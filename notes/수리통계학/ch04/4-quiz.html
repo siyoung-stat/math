@@ -39,13 +39,13 @@
 <h2 class="sub">A. 적률추정법과 최대가능도 추정법 (4.1–4.2)</h2>
 <div class="qrow"><span class="qid">Q1</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$ 일 때 다음을 구하여라.<span class="src">예제 4.1</span>
   <ol><li>$\theta$ 의 적률추정량</li><li>자료가 $1,2,3,8$ 일 때 (1) 의 추정값</li><li>(2) 의 추정값이 자료와 모순되는 점</li></ol></div>
-<div class="qrow"><span class="qid">Q2</span>$X_i\overset{\text{iid}}{\sim}\text{GAM}(k,\theta)$ (pdf $f(x)=\frac1{\Gamma(k)\theta^k}x^{k-1}e^{-x/\theta}$) 에서 $k,\theta$ 가 모두 미지일 때 다음을 구하여라.<span class="src">예제 4.2</span>
+<div class="qrow"><span class="qid">Q2</span>$X_i\overset{\text{iid}}{\sim}\text{GAM}(k,\theta)$ ($\theta$ 는 scale) 에서 $k,\theta$ 가 모두 미지일 때 다음을 구하여라.<span class="src">예제 4.2</span>
   <ol><li>$k,\theta$ 의 적률추정량 ($v_n=\frac1n\sum(X_i-\bar X)^2$ 을 써서)</li><li>$\bar x=6$, $m_2'=45$ 일 때 $k,\theta$ 의 추정값</li></ol></div>
 <div class="qrow"><span class="qid">Q3</span>$X_i\overset{\text{iid}}{\sim}N(\mu,\sigma^2)$ 에서 두 모수가 모두 미지일 때 다음을 구하여라.<span class="src">예제 4.4</span>
   <ol><li>$\mu$ 의 MLE</li><li>$\sigma^2$ 의 MLE</li><li>$\sigma^2$ 의 MLE 의 편향</li></ol></div>
 <div class="qrow"><span class="qid">Q4</span>$X_i\overset{\text{iid}}{\sim}U(0,\theta)$, $\theta\gt0$ 일 때 다음을 구하여라.<span class="src">예제 4.5</span>
   <ol><li>지시함수를 포함한 가능도함수 $L(\theta)$</li><li>$\theta$ 의 MLE</li></ol></div>
-<div class="qrow"><span class="qid">Q5</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(\theta)$ (pdf $f(x)=\tfrac1\theta e^{-x/\theta}$) 일 때
+<div class="qrow"><span class="qid">Q5</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(\theta)$ ($\theta$ 는 scale) 일 때
   <ol><li>$\theta$ 의 MLE 를 구하고, 정지점이 최대임을 확인하라.</li><li>$1/\theta$ 의 MLE 를 구하여라.</li><li>(2) 의 MLE 가 $1/\theta$ 의 불편추정량인지 판단하라.</li></ol></div>
 
 <h2 class="sub">B. 추정의 기준 (4.3)</h2>
@@ -84,7 +84,7 @@
   <ol><li>일치추정량의 정의를 식으로 쓰라.</li><li>$MSE_\theta(T_n)\to0$ 이면 $T_n$ 이 일치추정량임을 증명하라.</li></ol></div>
 <div class="qrow"><span class="qid">Q20</span>정규적인 모형의 MLE 에 대하여
   <ol><li>$\sqrt n(\hat\theta-\theta_0)$ 의 점근분포를 쓰라.</li><li>(1) 을 증명하라.</li></ol></div>
-<div class="qrow"><span class="qid">Q21</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(\theta)$ (pdf $f(x)=\tfrac1\theta e^{-x/\theta}$), $T=\sum_iX_i$ 이고 $1/\theta$ 의 추정량을 $\hat\lambda=n/T$ 라 할 때 다음을 구하여라.<span class="src">예제 4.14</span>
+<div class="qrow"><span class="qid">Q21</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(\theta)$ ($\theta$ 는 scale), $T=\sum_iX_i$ 이고 $1/\theta$ 의 추정량을 $\hat\lambda=n/T$ 라 할 때 다음을 구하여라.<span class="src">예제 4.14</span>
   <ol><li>$E(T^{-k})$ $(n\gt k)$</li><li>$\hat\lambda$ 의 편향</li><li>$1/\theta$ 의 불편추정량 $\tilde\lambda$</li><li>$Var(\tilde\lambda)$ $(n\gt2)$</li><li>$\sqrt n\big(\hat\lambda-\tfrac1\theta\big)$ 의 점근분포</li></ol></div>
 <div class="qrow"><span class="qid">Q22</span>$M_n$ 이 $U(0,\theta)$ 표본의 최댓값일 때 $n(\theta-M_n)/\theta$ 의 극한분포를 구하여라.<span class="src">예제 4.15</span></div>
 
@@ -94,7 +94,7 @@
 <div class="qrow"><span class="qid">Q24</span>다음 정규표본의 95% 신뢰구간을 구하여라.<span class="src">예제 4.16·4.17</span>
   <ol><li>$n=25$, $\bar x=10$, $s=2$ 일 때 $\mu$ ($t_{24,0.975}=2.0639$)</li>
   <li>$n=16$, $s^2=9$ 일 때 $\sigma^2$ ($\chi^2_{15,0.025}=6.2621$, $\chi^2_{15,0.975}=27.4884$)</li></ol></div>
-<div class="qrow"><span class="qid">Q25</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(\theta)$ (pdf $f(x)=\tfrac1\theta e^{-x/\theta}$), $T=\sum_iX_i$ 일 때<span class="src">예제 4.18</span>
+<div class="qrow"><span class="qid">Q25</span>$X_i\overset{\text{iid}}{\sim}\text{EXP}(\theta)$ ($\theta$ 는 scale), $T=\sum_iX_i$ 일 때<span class="src">예제 4.18</span>
   <ol><li>추축량 $2T/\theta$ 의 분포를 쓰라.</li><li>$\theta$ 의 정확한 $1-\alpha$ 신뢰구간을 쓰라.</li>
   <li>$n=10$, $\sum x_i=20$ 일 때 $\theta$ 의 MLE 를 구하여라.</li>
   <li>(3) 에서 $\theta$ 의 95% 정확 신뢰구간을 구하여라. ($\chi^2_{20,0.025}=9.5908$, $\chi^2_{20,0.975}=34.1696$)</li></ol></div>
