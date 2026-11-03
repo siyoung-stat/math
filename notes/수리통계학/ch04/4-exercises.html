@@ -28,6 +28,27 @@
   .sec{ margin:34px 0 10px; padding-bottom:4px; border-bottom:2px solid #ddd;
         font-size:0.9rem; font-weight:700; letter-spacing:0.04em; color:var(--muted); }
   @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } }
+  body{ max-width:1180px; }
+  .sheet{ column-count:2; column-gap:38px; column-rule:1px solid #e4e7ea; }
+  .sheet > .sec, .sheet > h2.sub{ column-span:all; }
+  .sheet .ex, .sheet .qrow, .sheet .note, .sheet table{ break-inside:avoid; }
+  .sheet mjx-container[display="true"]{ overflow-x:auto; overflow-y:hidden; }
+  @media (max-width:860px){ .sheet{ column-count:1; column-rule:none; } }
+  /* 시험지 스타일 */
+  .sec, h2.sub{ margin:30px 0 14px; padding:8px 12px; background:var(--def); color:#fff;
+        border:none; border-radius:6px; font-weight:800; font-size:1.02rem; letter-spacing:0; }
+  .sec .en, h2.sub .en{ color:#fff; opacity:.75; }
+  .ex, .qrow{ margin:0 0 18px; line-height:1.7; }
+  .exn, .qid{ display:inline-block; min-width:2.4em; font-weight:800; margin-right:4px; }
+  .ex .exn::after, .qrow .qid::after{ content:"."; }
+  .mini{ margin:18px 0 8px; padding-bottom:3px; border-bottom:1px solid var(--line);
+        font-weight:800; font-size:0.95rem; color:var(--def); break-after:avoid; }
+  .mini .en{ font-weight:400; color:var(--muted); }
+  @media print{
+    body{ max-width:none; }
+    .sec, h2.sub{ background:none; color:#000; border:1px solid #000; }
+    .sec .en, h2.sub .en{ color:#000; }
+  }
 </style>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-svg.js"></script>
 </head>
@@ -43,6 +64,8 @@
 표기는 본문과 같이 $\overline{X}_n=\frac1n\sum X_i$, $S^2=\frac{1}{n-1}\sum(X_i-\overline X_n)^2$,
 $X_{(1)}\le\cdots\le X_{(n)}$ 은 순서통계량, $\mathrm{EXP}(\lambda)$ 는 평균이 $\lambda$ 인 지수분포를 뜻한다.
 $\chi^2_{k;\alpha}$, $t_{k;\alpha}$, $F_{k_1,k_2;\alpha}$ 는 각각 상위 $\alpha$ 분위수이다.</p>
+
+<div class="sheet">
 
 <div class="sec">정의·정리 암기 (A01~A41)</div>
 
@@ -659,6 +682,8 @@ $$\frac{1}{\sqrt n}\,l'(\theta_0)\ \xrightarrow{\ d\ }\ N\big(0,\ I(\theta_0)\bi
     <li>$nX_{(1)}$ 이 일치성을 갖지 <b>않음</b>을 보여라. (본문 예 4.41)</li>
   </ol>
 </div>
+
+</div><!-- /sheet -->
 
 <div class="answersheet">
 

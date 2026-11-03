@@ -23,6 +23,27 @@
   .ans{ margin:24px 0; line-height:1.75; }
   .ans .exn{ color:var(--thm); }
   @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } .mark{ color:#000; } }
+  body{ max-width:1180px; }
+  .sheet{ column-count:2; column-gap:38px; column-rule:1px solid #e4e7ea; }
+  .sheet > .sec, .sheet > h2.sub{ column-span:all; }
+  .sheet .ex, .sheet .qrow, .sheet .note, .sheet table{ break-inside:avoid; }
+  .sheet mjx-container[display="true"]{ overflow-x:auto; overflow-y:hidden; }
+  @media (max-width:860px){ .sheet{ column-count:1; column-rule:none; } }
+  /* 시험지 스타일 */
+  .sec, h2.sub{ margin:30px 0 14px; padding:8px 12px; background:var(--def); color:#fff;
+        border:none; border-radius:6px; font-weight:800; font-size:1.02rem; letter-spacing:0; }
+  .sec .en, h2.sub .en{ color:#fff; opacity:.75; }
+  .ex, .qrow{ margin:0 0 18px; line-height:1.7; }
+  .exn, .qid{ display:inline-block; min-width:2.4em; font-weight:800; margin-right:4px; }
+  .ex .exn::after, .qrow .qid::after{ content:"."; }
+  .mini{ margin:18px 0 8px; padding-bottom:3px; border-bottom:1px solid var(--line);
+        font-weight:800; font-size:0.95rem; color:var(--def); break-after:avoid; }
+  .mini .en{ font-weight:400; color:var(--muted); }
+  @media print{
+    body{ max-width:none; }
+    .sec, h2.sub{ background:none; color:#000; border:1px solid #000; }
+    .sec .en, h2.sub .en{ color:#000; }
+  }
 </style>
 </head>
 <body>
@@ -36,7 +57,10 @@
 <p>2장 본문의 예제와 교재 연습문제를 모은 것이다. 정답 시트는 인쇄 시 다음 페이지부터 나온다.
 자세한 유도는 본문 노트와 <a href="2-quiz.html">증명·정리 퀴즈</a> 참고.</p>
 
-<h2 class="sub">가우스적분 <span class="en">Gaussian integral</span></h2>
+<div class="sheet">
+
+<h2 class="sub">기초 계산 <span class="en">basics</span></h2>
+<div class="mini">가우스적분 <span class="en">Gaussian integral</span></div>
 <p class="note">$a\gt0$ 일 때 다음 두 공식을 쓴다. 정규분포의 밀도·적률생성함수가 모두 여기서 나온다.
 $$\int_{-\infty}^{\infty}e^{-ax^2}dx=\sqrt{\frac\pi a},\qquad
   \int_{-\infty}^{\infty}e^{-ax^2+bx}dx=\sqrt{\frac\pi a}\;e^{\frac{b^2}{4a}}$$</p>
@@ -50,7 +74,7 @@ $$\int_{-\infty}^{\infty}e^{-3x^2+6x}dx$$</div>
 <div class="ex"><span class="exn">G3</span>다음 적분의 값을 구하라.
 $$\int_{-\infty}^{\infty}e^{-\frac{x^2}{2}+2x}dx$$</div>
 
-<h2 class="sub">미적분의 기본정리 <span class="en">fundamental theorem of calculus</span></h2>
+<div class="mini">미적분의 기본정리 <span class="en">fundamental theorem of calculus</span></div>
 <p class="note">적분으로 정의된 함수를 미분할 때 쓴다. <b>적분을 실제로 계산하지 않고</b> 피적분함수에 끝점을 대입하면 된다.
 $$\frac{d}{dx}\int_a^x f(t)\,dt=f(x),\qquad
   \frac{d}{dx}\int_a^{g(x)} f(t)\,dt=f(g(x))\,g'(x)$$
@@ -68,6 +92,30 @@ $$\frac{d}{dx}\int_{x}^{3x}e^{-t^2}\,dt$$</div>
 
 <div class="ex"><span class="exn">F4</span>확률변수 $\Theta$ 의 누적분포함수가 $F(\theta)=\dfrac{2}{\pi}\arcsin\sqrt\theta\ (0\lt\theta\lt1)$ 일 때,
 확률밀도함수 $f(\theta)$ 를 구하라.</div>
+
+<div class="mini">감마적분 <span class="en">gamma integral</span></div>
+<p class="note">$\alpha\gt0,\ \beta\gt0$ 일 때 다음 공식을 쓴다. 감마·지수·카이제곱분포의 정규화상수와 적률이 모두 여기서 나온다.
+$$\int_0^{\infty}x^{\alpha-1}e^{-x/\beta}dx=\Gamma(\alpha)\,\beta^{\alpha},\qquad
+  \Gamma(n)=(n-1)!,\qquad \Gamma\!\left(\tfrac12\right)=\sqrt\pi$$</p>
+
+<div class="ex"><span class="exn">Γ1</span>다음 적분의 값을 구하라.
+$$\int_0^{\infty}x^{3}e^{-2x}dx$$</div>
+
+<div class="ex"><span class="exn">Γ2</span>다음 적분의 값을 구하라.
+$$\int_0^{\infty}\sqrt{x}\,e^{-x/2}dx$$</div>
+
+<div class="mini">테일러 급수 <span class="en">Taylor series</span></div>
+<p class="note">$x=a$ 에서의 테일러 급수와 지수함수의 매클로린 급수($a=0$)는 다음과 같다. 포아송분포의 정규화·적률 계산이 여기서 나온다.
+$$f(x)=\sum_{k=0}^{\infty}\frac{f^{(k)}(a)}{k!}(x-a)^k,\qquad
+  e^{x}=\sum_{k=0}^{\infty}\frac{x^k}{k!}=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots$$</p>
+
+<div class="ex"><span class="exn">T1</span>$e^x$ 의 매클로린 급수를 이용하여, $\lambda\gt0$ 일 때 다음을 보여라.
+$$\sum_{x=0}^{\infty}x\cdot\frac{\lambda^x e^{-\lambda}}{x!}=\lambda$$</div>
+
+<div class="ex"><span class="exn">T2</span>$e^{-x^2}$ 의 매클로린 급수를 $x^6$ 항까지 구하고, 이를 이용하여 다음 적분의 근삿값을 구하라.
+$$\int_0^{1}e^{-x^2}dx$$</div>
+
+</div><!-- /sheet -->
 
 <h2 class="sub">예제 <span class="en">examples</span></h2>
 <div class="ex"><span class="exn">예 2.6</span>결합밀도 $f_{X,Y}(x,y)=xy\,e^{-(x+y)}\ (x,y\gt0)$ 에 대하여 $P(X\ge2Y)$ 를 구하라.</div>
@@ -249,7 +297,8 @@ $$f_{X,Y}(x,y)=4e^{-2(x+y)},\qquad x\gt0,\ y\gt0$$
   <h1><span class="no">정답·해설</span>2장 연습문제 <span class="en">answers</span></h1>
 </header>
 
-<div class="sec">가우스적분</div>
+<div class="sec">기초 계산</div>
+<div class="mini">가우스적분</div>
 
 <div class="ans"><span class="exn">G1</span><b>정답</b>
   $$a=4:\quad \int_{-\infty}^{\infty}e^{-4x^2}dx=\sqrt{\frac\pi4}=\frac{\sqrt\pi}{2}
@@ -268,6 +317,8 @@ $$f_{X,Y}(x,y)=4e^{-2(x+y)},\qquad x\gt0,\ y\gt0$$
     =(2.50663)(7.38906)\fallingdotseq18.5218$$
 </div>
 
+<div class="mini">미적분의 기본정리</div>
+
 <div class="ans"><span class="exn">F1</span><b>정답</b>
   $$\frac{d}{dx}\int_{0}^{x}t^2e^{-t}\,dt=x^2e^{-x}$$
   위 끝이 $x$ 그 자체이므로 피적분함수에 $x$ 를 넣기만 하면 된다.
@@ -285,6 +336,37 @@ $$f_{X,Y}(x,y)=4e^{-2(x+y)},\qquad x\gt0,\ y\gt0$$
   $$f(\theta)=F'(\theta)=\frac{2}{\pi}\cdot\frac{1}{\sqrt{1-(\sqrt\theta)^2}}\cdot\frac{1}{2\sqrt\theta}
     =\frac{1}{\pi\sqrt{\theta(1-\theta)}}\quad(0\lt\theta\lt1)$$
   $\text{BETA}\!\left(\tfrac12,\tfrac12\right)$ 의 밀도다. $\theta=\tfrac12$ 에서 $f=\dfrac{1}{\pi(1/2)}=\dfrac{2}{\pi}\fallingdotseq0.6366$
+</div>
+
+<div class="mini">감마적분</div>
+
+<div class="ans"><span class="exn">Γ1</span><b>정답</b>
+  $$\alpha=4,\ \beta=\frac12:\quad \int_0^{\infty}x^{3}e^{-2x}dx=\Gamma(4)\left(\frac12\right)^{4}
+    =\frac{3!}{16}=\frac38=0.375$$
+</div>
+
+<div class="ans"><span class="exn">Γ2</span><b>정답</b>
+  $$\alpha=\frac32,\ \beta=2:\quad \Gamma\!\left(\frac32\right)=\frac12\Gamma\!\left(\frac12\right)=\frac{\sqrt\pi}{2}$$
+  $$\int_0^{\infty}\sqrt{x}\,e^{-x/2}dx=\frac{\sqrt\pi}{2}\cdot2^{3/2}=\sqrt{2\pi}
+    \fallingdotseq2.5066$$
+</div>
+
+<div class="mini">테일러 급수</div>
+
+<div class="ans"><span class="exn">T1</span><b>정답</b>
+  $$x=0\ \text{항은}\ 0\ \text{이므로}\quad
+    \sum_{x=0}^{\infty}x\cdot\frac{\lambda^x e^{-\lambda}}{x!}
+    =\lambda e^{-\lambda}\sum_{x=1}^{\infty}\frac{\lambda^{x-1}}{(x-1)!}$$
+  $$k=x-1:\quad =\lambda e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^{k}}{k!}
+    =\lambda e^{-\lambda}e^{\lambda}=\lambda$$
+</div>
+
+<div class="ans"><span class="exn">T2</span><b>정답</b>
+  $$e^{u}=1+u+\frac{u^2}{2}+\frac{u^3}{6}+\cdots,\ \ u=-x^2:\quad
+    e^{-x^2}=1-x^2+\frac{x^4}{2}-\frac{x^6}{6}+\cdots$$
+  $$\int_0^{1}e^{-x^2}dx\fallingdotseq1-\frac13+\frac1{10}-\frac1{42}
+    =\frac{26}{35}\fallingdotseq0.7429$$
+  (참값 $\fallingdotseq0.7468$)
 </div>
 
 <div class="sec">예제</div>

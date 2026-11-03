@@ -27,6 +27,27 @@
   .src{ font-size:.82em; font-weight:700; color:var(--ex); margin-left:6px; white-space:nowrap; }
   .lead{ margin:14px 0 22px; padding:12px 14px; border-left:3px solid var(--def); line-height:1.7; }
   @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } .mark{ color:#000; } }
+  body{ max-width:1180px; }
+  .sheet{ column-count:2; column-gap:38px; column-rule:1px solid #e4e7ea; }
+  .sheet > .sec, .sheet > h2.sub{ column-span:all; }
+  .sheet .ex, .sheet .qrow, .sheet .note, .sheet table{ break-inside:avoid; }
+  .sheet mjx-container[display="true"]{ overflow-x:auto; overflow-y:hidden; }
+  @media (max-width:860px){ .sheet{ column-count:1; column-rule:none; } }
+  /* 시험지 스타일 */
+  .sec, h2.sub{ margin:30px 0 14px; padding:8px 12px; background:var(--def); color:#fff;
+        border:none; border-radius:6px; font-weight:800; font-size:1.02rem; letter-spacing:0; }
+  .sec .en, h2.sub .en{ color:#fff; opacity:.75; }
+  .ex, .qrow{ margin:0 0 18px; line-height:1.7; }
+  .exn, .qid{ display:inline-block; min-width:2.4em; font-weight:800; margin-right:4px; }
+  .ex .exn::after, .qrow .qid::after{ content:"."; }
+  .mini{ margin:18px 0 8px; padding-bottom:3px; border-bottom:1px solid var(--line);
+        font-weight:800; font-size:0.95rem; color:var(--def); break-after:avoid; }
+  .mini .en{ font-weight:400; color:var(--muted); }
+  @media print{
+    body{ max-width:none; }
+    .sec, h2.sub{ background:none; color:#000; border:1px solid #000; }
+    .sec .en, h2.sub .en{ color:#000; }
+  }
 </style>
 </head>
 <body>
@@ -45,6 +66,8 @@
 
 <!-- ===== 문제 시트 ===== -->
 <div class="sheettitle">■ 문제 시트 <span class="en">questions</span></div>
+
+<div class="sheet">
 
 <h2 class="sub">A. 확률모형과 집합연산 (1.1–1.2)</h2>
 
@@ -354,6 +377,8 @@
 <div class="qrow"><span class="qid">Q63</span><span class="mark">★</span>연속분포 요약표를 <b>아무것도 보지 않고</b> 복원하라. (분포 · 지지집합 · PDF · 평균 · 분산의 5열, 5개 분포)</div>
 
 <!-- ===== 정답 시트 ===== -->
+</div><!-- /sheet -->
+
 <div class="answersheet">
 <div class="sheettitle">■ 정답 시트 <span class="en">answer key</span></div>
 

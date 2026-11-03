@@ -31,6 +31,27 @@
   table.data th, table.data td{ border:1px solid #bbb; padding:4px 12px; text-align:center; }
   table.data th{ background:#f0f0f0; font-weight:700; }
   @media print{ .pager, .home{ display:none; } a{ color:inherit; text-decoration:none; } .mark{ color:#000; } }
+  body{ max-width:1180px; }
+  .sheet{ column-count:2; column-gap:38px; column-rule:1px solid #e4e7ea; }
+  .sheet > .sec, .sheet > h2.sub{ column-span:all; }
+  .sheet .ex, .sheet .qrow, .sheet .note, .sheet table{ break-inside:avoid; }
+  .sheet mjx-container[display="true"]{ overflow-x:auto; overflow-y:hidden; }
+  @media (max-width:860px){ .sheet{ column-count:1; column-rule:none; } }
+  /* 시험지 스타일 */
+  .sec, h2.sub{ margin:30px 0 14px; padding:8px 12px; background:var(--def); color:#fff;
+        border:none; border-radius:6px; font-weight:800; font-size:1.02rem; letter-spacing:0; }
+  .sec .en, h2.sub .en{ color:#fff; opacity:.75; }
+  .ex, .qrow{ margin:0 0 18px; line-height:1.7; }
+  .exn, .qid{ display:inline-block; min-width:2.4em; font-weight:800; margin-right:4px; }
+  .ex .exn::after, .qrow .qid::after{ content:"."; }
+  .mini{ margin:18px 0 8px; padding-bottom:3px; border-bottom:1px solid var(--line);
+        font-weight:800; font-size:0.95rem; color:var(--def); break-after:avoid; }
+  .mini .en{ font-weight:400; color:var(--muted); }
+  @media print{
+    body{ max-width:none; }
+    .sec, h2.sub{ background:none; color:#000; border:1px solid #000; }
+    .sec .en, h2.sub .en{ color:#000; }
+  }
 </style>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-svg.js"></script>
 </head>
@@ -48,6 +69,8 @@
 
 <div class="note"><b>수록 범위</b> — <b>01, 05~07, 09~24, 27</b>. 교재 번호는 그대로 두었다.
 <b>02·03·04·08·25·26</b> 은 뺐다.</div>
+
+<div class="sheet">
 
 <div class="sec">확률의 계산과 표본공간 (01, 05)</div>
 
@@ -180,6 +203,8 @@ $10$ 일 확률을 각각 구하여 비교하라.</div>
 한 번씩 변하는데 $\frac25$ 의 확률로 $100$ 원이 오르거나 $\frac35$ 의 확률로 $80$ 원이 내린다고 한다.
 매일의 가격변화는 독립이라고 가정하자. 지금 이 주식 한 주를 $1000$ 원에 구입하였다면 $3$ 일 후에
 손해를 보지 않을 확률을 구하라.</div>
+
+</div><!-- /sheet -->
 
 <div class="answersheet">
 
