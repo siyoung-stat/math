@@ -37,6 +37,15 @@
          margin:8px 0 18px 0; font-size:0.94rem; }
   .akey b{ color:var(--thm); }
   .warn{ border-left:4px solid #d64541; background:#fdf3f2; padding:10px 14px; margin:18px 0; }
+  [hidden]{ display:none !important; }
+  .filter{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:14px 0 4px; font-size:0.92rem; }
+  .filter .lbl{ font-weight:700; color:var(--muted); margin-right:2px; }
+  .filter button{ font:inherit; padding:5px 12px; border:1px solid var(--line); border-radius:999px;
+         background:#fff; color:var(--ink); cursor:pointer; }
+  .filter button[aria-pressed="true"]{ background:var(--def); border-color:var(--def); color:#fff; font-weight:700; }
+  .filter .cnt{ color:var(--muted); }
+  .filter a{ margin-left:auto; color:var(--def); font-weight:700; text-decoration:none; }
+  @media print{ .filter{ display:none; } }
   @media print{
     .pager, .home, .note, .warn{ display:none; }
     a{ color:inherit; text-decoration:none; }
@@ -55,6 +64,14 @@
 </header>
 
 <div class="note">워크북 ★ 52문항 + 핵심 63문제 ★ 22문항 = 총 <b>74문항</b> — 번호는 원래 시험지 번호 그대로.</div>
+
+<div class="filter" role="group" aria-label="별표 필터">
+  <span class="lbl">필터</span>
+  <button type="button" data-min="1" aria-pressed="true">전체</button>
+  <button type="button" data-min="2" aria-pressed="false">★★ 이상</button>
+  <span class="cnt" id="fcnt"></span>
+  <a href="exam-starred-solutions.html">★★ 이상 해설 →</a>
+</div>
 
 <div class="chap">워크북 · 제1장 · 일차연립방정식</div>
 <div class="sheet">
@@ -926,8 +943,58 @@ $$\begin{cases}w+2x+3y+4z=5\\ \qquad\ \ x\qquad\ +2z=3\\ \qquad\qquad\qquad 3z=6
 
 <nav class="pager">
   <a href="exam-63.html">← 이전<small>핵심 63문제</small></a>
-  <a class="next" href="index.html">목차 →<small>선형대수 시험지</small></a>
+  <a class="next" href="exam-starred-solutions.html">다음 →<small>★★ 이상 해설</small></a>
 </nav>
 
+<script>
+/* 별표 필터: 문제·공통 지문·장 제목·정답 시트를 함께 거른다 */
+(function(){
+  var KEY = 'la-starred-min';
+  function stars(q){ var m = q.querySelector('.mark'); return m ? (m.textContent.match(/★/g) || []).length : 0; }
+  function id(el){ return (el.textContent || '').trim(); }
+  function apply(min){
+    var shown = {}, n = 0;
+    document.querySelectorAll('.q').forEach(function(q){
+      var ok = stars(q) >= min; q.hidden = !ok;
+      if (ok){ shown[id(q.querySelector('.qn'))] = true; n++; }
+    });
+    document.querySelectorAll('.sheet').forEach(function(sh){
+      var kids = Array.prototype.slice.call(sh.children), after = false, any = false;
+      for (var i = kids.length - 1; i >= 0; i--){
+        var k = kids[i];
+        if (k.classList.contains('q')){ if (!k.hidden){ after = true; any = true; } }
+        else if (k.classList.contains('given')){ k.hidden = !after; }
+        else if (k.classList.contains('lead')){ k.hidden = !after; after = false; }
+      }
+      sh.hidden = !any;
+      var p = sh.previousElementSibling;
+      if (p && p.classList.contains('chap')) p.hidden = !any;
+    });
+    document.querySelectorAll('.akey').forEach(function(ak){
+      var any = false;
+      Array.prototype.forEach.call(ak.children, function(d){
+        var b = d.querySelector('b'); var ok = !b || shown[id(b)];
+        d.hidden = !ok; if (ok) any = true;
+      });
+      ak.hidden = !any;
+      var p = ak.previousElementSibling;
+      if (p && p.classList.contains('chap')) p.hidden = !any;
+    });
+    document.querySelectorAll('.filter button').forEach(function(b){
+      b.setAttribute('aria-pressed', String(+b.dataset.min === min));
+    });
+    document.getElementById('fcnt').textContent = n + '문항';
+    try { localStorage.setItem(KEY, String(min)); } catch (e) {}
+  }
+  var min = 1;
+  var q = /[?&]min=(\d)/.exec(location.search);
+  if (q) min = +q[1];
+  else { try { min = +(localStorage.getItem(KEY) || 1) || 1; } catch (e) {} }
+  document.querySelectorAll('.filter button').forEach(function(b){
+    b.addEventListener('click', function(){ apply(+b.dataset.min); });
+  });
+  apply(min);
+})();
+</script>
 </body>
 </html>
