@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대학수학의 이해 · 핵심 요약</title>
+<link rel="stylesheet" href="../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    output: { font: 'mathjax-fira', mtextInheritFont: true, linebreaks: { inline: false } },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../index.html">⌂ 홈</a>
+  <div class="ch">대학수학의 이해 · 요약 노트</div>
+  <h1>핵심 요약 <span class="en">key summary</span></h1>
+</header>
+
+<p class="lead">시험 직전에 볼 핵심만 모았다. 함수의 정의, 전사·단사함수, 삼각함수의 진폭·주기·위상각, 교대급수 판정법,
+$\ln x$ 의 극한, 주요 삼각함수값, 타원, 단조수렴정리.</p>
+
+<h2 class="sub">함수의 정의 <span class="en">definition of a function</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">함수</span>
+  <p>$X$ 에서 $Y$ 로의 대응 $f$ 가 다음 두 조건을 만족하면 함수이다.</p>
+  <ol class="props">
+    <li>정의역 $X$ 의 모든 원소가 빠짐없이 대응한다.</li>
+    <li>$X$ 의 각 원소에 $Y$ 의 원소가 오직 하나만 대응한다. 그래프로 보면 $x$ 축에 수직선을 그었을 때 그래프와 만나는 점이 하나뿐이다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">전사함수와 단사함수 <span class="en">surjective and injective functions</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">단사함수 · 전사함수</span>
+  <ol class="props">
+    <li><b>단사함수(일대일 함수)</b>: $x_1\ne x_2$ 이면 $f(x_1)\ne f(x_2)$.</li>
+    <li><b>전사함수</b>: 공역 $Y$ 의 모든 원소가 적어도 하나의 정의역 원소의 대응 결과가 된다. 즉 치역 $=$ 공역.</li>
+  </ol>
+</div>
+
+<h2 class="sub">진폭 · 주기 · 위상각 <span class="en">amplitude, period, and phase angle</span></h2>
+
+<table class="anova">
+  <tr><th></th><th>$A\sin(\omega x-\phi)$, $A\cos(\omega x-\phi)$</th><th>$A\tan(\omega x-\phi)$</th></tr>
+  <tr><td>진폭</td><td>$|A|$</td><td>없음</td></tr>
+  <tr><td>주기</td><td>$\dfrac{2\pi}{|\omega|}$</td><td>$\dfrac{\pi}{|\omega|}$</td></tr>
+  <tr><td>위상각</td><td>$\phi$</td><td>$\phi$</td></tr>
+</table>
+
+<h2 class="sub">교대급수 판정법 <span class="en">alternating series test</span></h2>
+
+<div class="box thm">
+  <span class="tag">정리</span><span class="title">교대급수의 조건수렴</span>
+  <p>$\sum(-1)^{k}a_k$ 에서 다음 세 조건이 성립하면 급수는 수렴한다.</p>
+  <ol class="props">
+    <li>$a_k\ge 0$</li>
+    <li>$\displaystyle\lim_{k\to\infty}a_k=0$</li>
+    <li>$a_k$ 가 단조감소</li>
+  </ol>
+  <p>이때 $\sum a_k$ 가 발산하면 원래 급수는 <b>조건수렴</b>한다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">$\sum(-1)^k\dfrac1{\sqrt k}$</span>
+  <p>$\sum\dfrac1{\sqrt k}$ 은 $p=\tfrac12<1$ 인 $p$-급수라 발산하므로 절대수렴하지 않는다.
+  그러나 $a_k=\dfrac1{\sqrt k}\to0$ 이고 단조감소하므로 교대급수 판정법에 의해 수렴한다. 따라서 조건수렴.</p>
+</div>
+
+<h2 class="sub">로그함수의 극한 <span class="en">limits of the natural logarithm</span></h2>
+
+<div class="box thm">
+  <span class="tag">공식</span><span class="title">$x\to0^+$ 에서 $\ln x$ 와 $x\ln x$</span>
+  $$\lim_{x\to0^+}\ln x=-\infty$$
+  <p>$y=\ln x$ 의 그래프는 $x\to0^+$ 에서 $y$ 축을 점근선으로 $-\infty$ 로 내려가고, $x=1$ 에서 $0$ 을 지나 천천히 증가한다.</p>
+  <p>$x\ln x$ 는 $0\cdot(-\infty)$ 꼴이므로 분수로 바꾸면 $\dfrac{-\infty}{\infty}$ 꼴이 되어 로피탈 정리를 쓸 수 있다.</p>
+  $$\lim_{x\to0^+}x\ln x=\lim_{x\to0^+}\frac{\ln x}{1/x}
+    =\lim_{x\to0^+}\frac{1/x}{-1/x^2}=\lim_{x\to0^+}(-x)=0$$
+</div>
+
+<h2 class="sub">주요 삼각함수값 <span class="en">special values of trigonometric functions</span></h2>
+
+<table class="anova">
+  <tr><th>$\theta$</th><th>$\sin\theta$</th><th>$\cos\theta$</th><th>$\tan\theta$</th></tr>
+  <tr><td>$0$</td><td>$0$</td><td>$1$</td><td>$0$</td></tr>
+  <tr><td>$\pi/6$</td><td>$1/2$</td><td>$\sqrt3/2$</td><td>$1/\sqrt3$</td></tr>
+  <tr><td>$\pi/4$</td><td>$\sqrt2/2$</td><td>$\sqrt2/2$</td><td>$1$</td></tr>
+  <tr><td>$\pi/3$</td><td>$\sqrt3/2$</td><td>$1/2$</td><td>$\sqrt3$</td></tr>
+  <tr><td>$\pi/2$</td><td>$1$</td><td>$0$</td><td>없음</td></tr>
+</table>
+
+<h2 class="sub">타원 <span class="en">ellipse</span></h2>
+
+<div class="box def">
+  <span class="tag">공식</span><span class="title">타원의 방정식</span>
+  $$\frac{(x-p)^2}{a^2}+\frac{(y-q)^2}{b^2}=1\qquad(a>b>0)$$
+  <ol class="props">
+    <li>중심: $(p,q)$</li>
+    <li>장축의 길이 $2a$, 단축의 길이 $2b$</li>
+    <li>중심에서 초점까지의 거리: $c=\sqrt{a^2-b^2}$</li>
+    <li>두 초점 사이의 거리: $2c$</li>
+    <li>타원 위의 점에서 두 초점까지의 거리의 합: $2a$</li>
+  </ol>
+</div>
+
+<h2 class="sub">단조수렴정리 <span class="en">monotone convergence theorem</span></h2>
+
+<div class="box thm">
+  <span class="tag">정리</span><span class="title">단조수렴정리</span>
+  <p>단조이면서 유계인 수열은 수렴한다.</p>
+</div>
+
+</body>
+</html>

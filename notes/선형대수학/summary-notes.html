@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선형대수 · 핵심 요약</title>
+<link rel="stylesheet" href="../../assets/note.css">
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    output: { font: 'mathjax-fira', mtextInheritFont: true, linebreaks: { inline: false } },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="doc">
+  <a class="home" href="../../index.html">⌂ 홈</a>
+  <div class="ch">선형대수 · 요약 노트</div>
+  <h1>핵심 요약 <span class="en">key summary</span></h1>
+</header>
+
+<p class="lead">시험 직전에 볼 핵심만 모았다. 연립방정식의 해, 외적, 크래머 공식, 부분공간, 차원, 핵과 치역,
+동형변환, 대각화, 직교행렬, 그램–슈미트, 최소자승해, 주요 $\cos$ 값.</p>
+
+<h2 class="sub">불능과 부정 <span class="en">inconsistent and dependent systems</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">불능 · 부정</span>
+  <ol class="props">
+    <li><b>불능</b>: 해가 없는 경우. 소거하다가 $0=8$ 처럼 말이 안 되는 식이 나온다.</li>
+    <li><b>부정</b>: 해가 무수히 많은 경우. 소거하다가 $0x+0y=0$ 처럼 항상 참인 식이 나온다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">유일해 판정 <span class="en">uniqueness of solutions</span></h2>
+
+<div class="box thm">
+  <span class="tag">정리</span><span class="title">유일해 조건</span>
+  <p>정사각행렬 $A$ 에 대해 $|A|\ne0$ 이면 $AX=B$ 는 유일해를 가진다.</p>
+</div>
+
+<h2 class="sub">외적의 성질 <span class="en">properties of the cross product</span></h2>
+
+<div class="box thm">
+  <span class="tag">성질</span><span class="title">외적의 비결합성</span>
+  <p>외적은 결합법칙이 성립하지 않는다.</p>
+  $$(A\times B)\times C\ne A\times(B\times C)$$
+</div>
+
+<h2 class="sub">크래머 공식 <span class="en">Cramer's rule</span></h2>
+
+<div class="box thm">
+  <span class="tag">공식</span><span class="title">크래머 공식</span>
+  <p>$\begin{pmatrix}a&b\\c&d\end{pmatrix}\begin{pmatrix}x_1\\x_2\end{pmatrix}=\begin{pmatrix}c_1\\c_2\end{pmatrix}$, $|A|\ne0$ 일 때
+  $x_i$ 는 $A$ 의 $i$ 번째 열을 상수항 열로 바꾼 행렬식을 $|A|$ 로 나눈 값이다.</p>
+  $$x_1=\frac1{|A|}\begin{vmatrix}c_1&b\\c_2&d\end{vmatrix},\qquad
+    x_2=\frac1{|A|}\begin{vmatrix}a&c_1\\c&c_2\end{vmatrix}$$
+</div>
+
+<h2 class="sub">부분공간 판정법 <span class="en">subspace test</span></h2>
+
+<div class="box thm">
+  <span class="tag">정리</span><span class="title">부분공간 판정법</span>
+  <p>벡터공간 $V$ 의 부분집합 $S$ 가 다음을 만족하면 부분공간이다.</p>
+  <ol class="props">
+    <li>$S\subseteq V$ 이고 $S$ 는 공집합이 아니다. (영벡터를 포함하는지 확인하면 빠르다.)</li>
+    <li>$S$ 안에서 덧셈에 대해 닫혀 있다. $V$ 에 대해 닫힌 것이 아님에 유의한다.</li>
+    <li>$S$ 안에서 스칼라배에 대해 닫혀 있다. $A\in S$, $k\in F$ 이면 $kA\in S$.</li>
+  </ol>
+</div>
+
+<h2 class="sub">벡터공간의 공리 <span class="en">vector space axioms</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">벡터공간의 공리 (핵심)</span>
+  <ol class="props">
+    <li>덧셈에 대해 닫혀 있다.</li>
+    <li>스칼라배에 대해 닫혀 있다.</li>
+    <li>덧셈의 항등원(영벡터)과 역원이 존재한다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">부분공간의 차원 <span class="en">dimension of a subspace</span></h2>
+
+<div class="box thm">
+  <span class="tag">공식</span><span class="title">집합으로 주어진 부분공간의 차원</span>
+  <p>부분공간의 차원 $=$ 기저벡터의 개수.</p>
+  <ol class="props">
+    <li>원소를 매개변수별로 쪼갠다.</li>
+    <li>쪼갠 벡터 중 일차독립인 벡터의 개수가 차원이다.</li>
+  </ol>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">$S=\{(x+y,\ x-y,\ 0)\mid x,y\in R\}$ (워크북 9-4)</span>
+  $$(x+y,\ x-y,\ 0)=x(1,1,0)+y(1,-1,0)$$
+  <p>$(1,1,0)$, $(1,-1,0)$ 은 서로 상수배가 아니므로 일차독립이다. 따라서 $\dim S=2$.</p>
+</div>
+
+<h2 class="sub">핵과 치역, 계수 <span class="en">kernel, image, and rank</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">핵 · 치역 · 차원</span>
+  <ol class="props">
+    <li>$\mathrm{Im}(T)$: 치역.</li>
+    <li>$\ker(T)$: $T$ 를 거치면 $0$ 이 되는 입력들의 모임.</li>
+    <li>$\dim\mathrm{Im}(T)$: 치역을 일차결합으로 표현했을 때 일차독립인 벡터의 개수.</li>
+    <li>$\dim\ker(T)$: $T(X)=0$ 의 해를 일차결합으로 썼을 때 일차독립인 벡터의 개수.</li>
+  </ol>
+</div>
+
+<div class="box thm">
+  <span class="tag">정리</span><span class="title">계수정리 (차원정리)</span>
+  <p>$T:V\to W$ 가 선형변환이면</p>
+  $$\dim V=\dim\ker(T)+\dim\mathrm{Im}(T),\qquad \mathrm{rank}(T)=\dim\mathrm{Im}(T)$$
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">$T(x,y)=(x+y,\ 0)$</span>
+  <p><b>치역</b>: $(x+y,0)=(x+y)(1,0)$ 이므로 일차독립인 벡터는 $(1,0)$ 하나. $\dim\mathrm{Im}(T)=1$.</p>
+  <p><b>핵</b>: $(x+y,0)=0$ 이면 $x+y=0$, $y=-x$ 이므로 $(x,y)=(x,-x)=x(1,-1)$. $\dim\ker(T)=1$.</p>
+  <p>확인: $\dim R^2=2=1+1$.</p>
+</div>
+
+<h2 class="sub">동형변환 <span class="en">isomorphism</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">동형변환</span>
+  <p>$\dim\ker(T)=0$ 이고 $\dim\mathrm{Im}(T)=$ 공역 전체의 차원인 선형변환. 즉 일대일이면서 위로의 선형변환이다.</p>
+</div>
+
+<div class="box ex">
+  <span class="tag">예</span><span class="title">$T:R^2\to R^3$, $T(x,y)=(x,\ y,\ x+y)$</span>
+  <p>$T(x,y)=0$ 이면 $x=0$, $y=0$ 이므로 $\dim\ker(T)=0$.</p>
+  $$(x,\ y,\ x+y)=x(1,0,1)+y(0,1,1)$$
+  <p>이므로 $\dim\mathrm{Im}(T)=2\ne3$. 따라서 동형변환이 아니다.</p>
+</div>
+
+<h2 class="sub">대각화 <span class="en">diagonalization</span></h2>
+
+<div class="box thm">
+  <span class="tag">정리</span><span class="title">대각화 가능 조건</span>
+  <ol class="props">
+    <li>정사각행렬 $A$ 에 대해 $P^{-1}AP=D$ ($D$ 는 대각행렬)인 가역행렬 $P$ 가 존재하면 $A$ 는 대각화 가능하다.</li>
+    <li>$n\times n$ 행렬에서 일차독립인 고유벡터가 $n$ 개 존재하면 대각화 가능하다.</li>
+    <li>고유벡터를 열로 나열하면 $P$ 가 된다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">직교행렬 <span class="en">orthogonal matrix</span></h2>
+
+<div class="box def">
+  <span class="tag">정의</span><span class="title">직교행렬</span>
+  <ol class="props">
+    <li>$M^{-1}=M^T$ 이면 직교행렬이다.</li>
+    <li>직교행렬은 열벡터가 서로 수직이고 길이가 $1$ 인 행렬이다.</li>
+    <li>$\det M=\pm1$.</li>
+    <li>대칭행렬은 항상 직교대각화가 가능하다.</li>
+  </ol>
+</div>
+
+<h2 class="sub">그램–슈미트 직교화 <span class="en">Gram–Schmidt orthogonalization</span></h2>
+
+<div class="box thm">
+  <span class="tag">공식</span><span class="title">그램–슈미트 직교화</span>
+  <p>기저를 서로 수직인 기저로 바꾸는 방법이다.</p>
+  $$B_1=A_1,\qquad B_2=A_2-\frac{\langle A_2,B_1\rangle}{\langle B_1,B_1\rangle}B_1$$
+  <p>$B_2$ 는 두 번째 벡터에서 첫 번째 벡터 위로의 정사영(projection)을 뺀 것이다.
+  자세한 계산은 <a href="gram-schmidt.html">그램–슈미트 직교화</a> 노트.</p>
+</div>
+
+<h2 class="sub">최소자승해 <span class="en">least squares solution</span></h2>
+
+<div class="box thm">
+  <span class="tag">공식</span><span class="title">정규방정식</span>
+  <p>$AX=B$ 의 해가 없을 때 근사해를 찾는 방법이다. $AX=B$ 대신 다음을 푼다.</p>
+  $$A^TAX=A^TB$$
+</div>
+
+<h2 class="sub">주요 코사인 값 <span class="en">special values of cosine</span></h2>
+
+<table class="anova">
+  <tr><th>$\theta$</th><td>$\pi/6$</td><td>$\pi/4$</td><td>$\pi/3$</td><td>$\pi/2$</td></tr>
+  <tr><th>$\cos\theta$</th><td>$\sqrt3/2$</td><td>$\sqrt2/2$</td><td>$1/2$</td><td>$0$</td></tr>
+</table>
+
+</body>
+</html>
